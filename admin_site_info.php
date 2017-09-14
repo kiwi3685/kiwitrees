@@ -21,16 +21,16 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_site_info.php');
+define('KT_SCRIPT_NAME', 'admin_site_info.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('Server information'))
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('Server information'))
 	->pageHeader();
 
-$variables = WT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
+$variables = KT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
 array_walk($variables, function (&$x) { $x = str_replace(',', ', ', $x); });
 
 ob_start();
@@ -46,7 +46,7 @@ $html = $matches[1];
 			<tbody>
 				<tr class="h">
 					<td>
-						<h2><?php echo WT_I18N::translate('MySQL variables'); ?></h2>
+						<h2><?php echo KT_I18N::translate('MySQL variables'); ?></h2>
 					</td>
 				</tr>
 			</tbody>
@@ -55,8 +55,8 @@ $html = $matches[1];
 			<tbody>
 				<?php foreach ($variables as $variable => $value): ?>
 					<tr>
-						<td class="e"><?php echo WT_Filter::escapeHtml($variable); ?></td>
-						<td class="v"><?php echo WT_Filter::escapeHtml($value); ?></td>
+						<td class="e"><?php echo KT_Filter::escapeHtml($variable); ?></td>
+						<td class="v"><?php echo KT_Filter::escapeHtml($value); ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>

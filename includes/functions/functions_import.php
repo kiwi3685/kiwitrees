@@ -21,19 +21,19 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_export.php';
+require_once KT_ROOT.'includes/functions/functions_export.php';
 
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
 function reformat_record_import($rec) {
 	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
 
 	// Strip out UTF8 formatting characters
-	$rec=str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
+	$rec=str_replace(array(KT_UTF8_BOM, KT_UTF8_LRM, KT_UTF8_RLM), '', $rec);
 
 	// Strip out control characters and mac/msdos line endings
 	static $control1="\r\x01\x02\x03\x04\x05\x06\x07\x08\x0B\x0C\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F\x7F";
@@ -51,10 +51,11 @@ function reformat_record_import($rec) {
 		switch ($tag) {
 		// Convert PGV tags to WT
 		case '_PGVU':
-			$tag='_WT_USER';
+			$tag='_KT_USER';
 			break;
 		case '_PGV_OBJS':
-			$tag='_WT_OBJE_SORT';
+		case '_WT_OBJE_SORT':
+			$tag='_KT_OBJE_SORT';
 			break;
 		// Convert FTM-style "TAG_FORMAL_NAME" into "TAG".
 		case 'ABBREVIATION':
@@ -602,19 +603,19 @@ function import_record($gedrec, $ged_id, $update) {
 	static $sql_insert_media=null;
 	static $sql_insert_other=null;
 	if (!$sql_insert_indi) {
-		$sql_insert_indi=WT_DB::prepare(
+		$sql_insert_indi=KT_DB::prepare(
 			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?,?,?,?,?)"
 		);
-		$sql_insert_fam=WT_DB::prepare(
+		$sql_insert_fam=KT_DB::prepare(
 			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?)"
 		);
-		$sql_insert_sour=WT_DB::prepare(
+		$sql_insert_sour=KT_DB::prepare(
 			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?,?,?,?)"
 		);
-		$sql_insert_media=WT_DB::prepare(
+		$sql_insert_media=KT_DB::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
-		$sql_insert_other=WT_DB::prepare(
+		$sql_insert_other=KT_DB::prepare(
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, LEFT(?, 15), ?)"
 		);
 	}
@@ -628,17 +629,17 @@ function import_record($gedrec, $ged_id, $update) {
 	$gedrec=reformat_record_import($gedrec);
 
 	// import different types of records
-	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match) > 0) {
+	if (preg_match('/^0 @('.KT_REGEX_XREF.')@ ('.KT_REGEX_TAG.')/', $gedrec, $match) > 0) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID ".uuid();
 		}
-	} elseif (preg_match('/0 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+	} elseif (preg_match('/0 ('.KT_REGEX_TAG.')/', $gedrec, $match)) {
 		$xref = $match[1];
 		$type = $match[1];
 	} else {
-		echo WT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
+		echo KT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
 		return;
 	}
 
@@ -650,7 +651,7 @@ function import_record($gedrec, $ged_id, $update) {
 	// back in.
 	if ($keep_media) {
 		$old_linked_media=
-			WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
+			KT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
 			->execute(array($xref, $ged_id))
 			->fetchOneColumn();
 		foreach ($old_linked_media as $media_id) {
@@ -660,7 +661,7 @@ function import_record($gedrec, $ged_id, $update) {
 
 	switch ($type) {
 	case 'INDI':
-		$record=new WT_Person($gedrec);
+		$record=new KT_Person($gedrec);
 		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin=$match[1];
 		} else {
@@ -674,18 +675,18 @@ function import_record($gedrec, $ged_id, $update) {
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'FAM':
-		$record=new WT_Family($gedrec);
-		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
+		$record=new KT_Family($gedrec);
+		if (preg_match('/\n1 HUSB @('.KT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$husb=$match[1];
 		} else {
 			$husb='';
 		}
-		if (preg_match('/\n1 WIFE @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
+		if (preg_match('/\n1 WIFE @('.KT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$wife=$match[1];
 		} else {
 			$wife='';
 		}
-		if ($nchi=preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
+		if ($nchi=preg_match_all('/\n1 CHIL @('.KT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$chil=implode(';', $match[1]).';';
 		} else {
 			$chil='';
@@ -701,7 +702,7 @@ function import_record($gedrec, $ged_id, $update) {
 		//update_names ($xref, $ged_id, $record); We do not store family names in wt_names
 		break;
 	case 'SOUR':
-		$record=new WT_Source($gedrec);
+		$record=new KT_Source($gedrec);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
 			$name=$match[1];
 		} elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
@@ -715,14 +716,14 @@ function import_record($gedrec, $ged_id, $update) {
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'REPO':
-		$record=new WT_Repository($gedrec);
+		$record=new KT_Repository($gedrec);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
 		update_names ($xref, $ged_id, $record);
 		break;
 	case 'OBJE':
-		$record=new WT_Media($gedrec);
+		$record=new KT_Media($gedrec);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
@@ -732,7 +733,7 @@ function import_record($gedrec, $ged_id, $update) {
 		// Custom records beginning with frequently do not contain unique
 		// identifiers - so we cannot load them.
 		if (substr($type, 0, 1)!='_') {
-			$record=new WT_GedcomRecord($gedrec);
+			$record=new KT_GedcomRecord($gedrec);
 			if ($type=='HEAD' && !strpos($gedrec, "\n1 DATE ")) {
 				$gedrec.="\n1 DATE ".date('j M Y');
 			}
@@ -761,13 +762,13 @@ function update_places($gid, $ged_id, $gedrec) {
 		// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
 		// Of course, there almost certainly are such places .....
 		// We need a better solution that attaches multiple names to single places
-		$sql_insert_placelinks=WT_DB::prepare(
+		$sql_insert_placelinks=KT_DB::prepare(
 			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
 		);
-		$sql_insert_places=WT_DB::prepare(
+		$sql_insert_places=KT_DB::prepare(
 			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?)"
 		);
-		$sql_select_places=WT_DB::prepare(
+		$sql_select_places=KT_DB::prepare(
 			"SELECT p_id FROM `##places` WHERE p_file=? AND p_parent_id=? AND p_place=?"
 		);
 	}
@@ -819,10 +820,10 @@ function update_places($gid, $ged_id, $gedrec) {
 
 			//-- if we are not searching then we have to insert the place into the db
 			if (!$search) {
-				$std_soundex = WT_Soundex::soundex_std($place);
-				$dm_soundex = WT_Soundex::soundex_dm($place);
+				$std_soundex = KT_Soundex::soundex_std($place);
+				$dm_soundex = KT_Soundex::soundex_dm($place);
 				$sql_insert_places->execute(array($place, $parent_id, $ged_id, $std_soundex, $dm_soundex));
-				$p_id=WT_DB::getInstance()->lastInsertId();
+				$p_id=KT_DB::getInstance()->lastInsertId();
 			}
 
 			$sql_insert_placelinks->execute(array($p_id, $gid, $ged_id));
@@ -838,7 +839,7 @@ function update_places($gid, $ged_id, $gedrec) {
 function update_dates($xref, $ged_id, $gedrec) {
 	static $sql_insert_date=null;
 	if (!$sql_insert_date) {
-		$sql_insert_date=WT_DB::prepare(
+		$sql_insert_date=KT_DB::prepare(
 			"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
 		);
 	}
@@ -849,7 +850,7 @@ function update_dates($xref, $ged_id, $gedrec) {
 			if (($fact=='FACT' || $fact=='EVEN') && preg_match("/\n2 TYPE ([A-Z]{3,5})/", $match[0], $tmatch)) {
 				$fact=$tmatch[1];
 			}
-			$date=new WT_Date($match[2]);
+			$date=new KT_Date($match[2]);
 			$sql_insert_date->execute(array($date->date1->d, $date->date1->Format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->Format('%@')));
 			if ($date->date2) {
 				$sql_insert_date->execute(array($date->date2->d, $date->date2->Format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->Format('%@')));
@@ -863,10 +864,10 @@ function update_dates($xref, $ged_id, $gedrec) {
 function update_links($xref, $ged_id, $gedrec) {
 	static $sql_insert_link = null;
 	if (!$sql_insert_link) {
-		$sql_insert_link = WT_DB::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
+		$sql_insert_link = KT_DB::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
 	}
 
-	if (preg_match_all('/^\d+ ('.WT_REGEX_TAG.') @('.WT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
+	if (preg_match_all('/^\d+ ('.KT_REGEX_TAG.') @('.KT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
 		$data = array();
 		foreach ($matches as $match) {
 			// Include each link once only.
@@ -888,8 +889,8 @@ function update_names($xref, $ged_id, $record) {
 	static $sql_insert_name_indi=null;
 	static $sql_insert_name_other=null;
 	if (!$sql_insert_name_indi) {
-		$sql_insert_name_indi=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$sql_insert_name_other=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?,?,?,?,?,?)");
+		$sql_insert_name_indi=KT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$sql_insert_name_other=KT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?,?,?,?,?,?)");
 	}
 
 	foreach ($record->getAllNames() as $n=>$name) {
@@ -898,15 +899,15 @@ function update_names($xref, $ged_id, $record) {
 				$soundex_givn_std = null;
 				$soundex_givn_dm = null;
 			} else {
-				$soundex_givn_std = WT_Soundex::soundex_std($name['givn']);
-				$soundex_givn_dm = WT_Soundex::soundex_dm($name['givn']);
+				$soundex_givn_std = KT_Soundex::soundex_std($name['givn']);
+				$soundex_givn_dm = KT_Soundex::soundex_dm($name['givn']);
 			}
 			if ($name['surn'] == '@N.N.') {
 				$soundex_surn_std = null;
 				$soundex_surn_dm = null;
 			} else {
-				$soundex_surn_std = WT_Soundex::soundex_std($name['surname']);
-				$soundex_surn_dm = WT_Soundex::soundex_dm($name['surname']);
+				$soundex_surn_std = KT_Soundex::soundex_std($name['surname']);
+				$soundex_surn_dm = KT_Soundex::soundex_dm($name['surname']);
 			}
 			$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
 		} else {
@@ -934,10 +935,10 @@ function create_media_object($level, $gedrec, $ged_id) {
 	static $sql_insert_media=null;
 	static $sql_select_media=null;
 	if (!$sql_insert_media) {
-		$sql_insert_media=WT_DB::prepare(
+		$sql_insert_media=KT_DB::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
-		$sql_select_media=WT_DB::prepare(
+		$sql_select_media=KT_DB::prepare(
 			"SELECT m_id FROM `##media` WHERE m_filename=? AND m_titl=? AND m_file=?"
 		);
 	}
@@ -970,7 +971,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 		// Fix FTB GEDCOMS
 		$gedrec = preg_replace('/\n1 FORM (.+)\n1 TITL (.+)\n1 FILE (.+)/', "\n1 FILE $3\n2 FORM $1\n2 TITL $2", $gedrec);
 		// Create new record
-		$record = new WT_Media($gedrec);
+		$record = new KT_Media($gedrec);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 	}
 	return "\n" . $level . ' OBJE @' . $xref . '@';
@@ -984,27 +985,27 @@ function create_media_object($level, $gedrec, $ged_id) {
 * @param boolean $keepmedia Whether or not to keep media and media links in the tables
 */
 function empty_database($ged_id, $keepmedia) {
-	WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##sources`     WHERE s_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##other`       WHERE o_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##places`      WHERE p_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file  =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##name`        WHERE n_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##dates`       WHERE d_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##change`      WHERE gedcom_id=?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##sources`     WHERE s_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##other`       WHERE o_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##places`      WHERE p_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file  =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##name`        WHERE n_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##dates`       WHERE d_file   =?")->execute(array($ged_id));
+	KT_DB::prepare("DELETE FROM `##change`      WHERE gedcom_id=?")->execute(array($ged_id));
 
 	if ($keepmedia) {
-		WT_DB::prepare("DELETE FROM `##link`          WHERE l_file =? AND l_type<>'OBJE'")->execute(array($ged_id));
+		KT_DB::prepare("DELETE FROM `##link`          WHERE l_file =? AND l_type<>'OBJE'")->execute(array($ged_id));
 	} else {
-		WT_DB::prepare("DELETE FROM `##link`          WHERE l_file =?")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM `##media`         WHERE m_file =?")->execute(array($ged_id));
+		KT_DB::prepare("DELETE FROM `##link`          WHERE l_file =?")->execute(array($ged_id));
+		KT_DB::prepare("DELETE FROM `##media`         WHERE m_file =?")->execute(array($ged_id));
 	}
 }
 
 // Accept all pending changes for a specified record
 function accept_all_changes($xref, $ged_id) {
-	$changes=WT_DB::prepare(
+	$changes=KT_DB::prepare(
 		"SELECT change_id, gedcom_name, old_gedcom, new_gedcom".
 		" FROM `##change` c".
 		" JOIN `##gedcom` g USING (gedcom_id)".
@@ -1019,7 +1020,7 @@ function accept_all_changes($xref, $ged_id) {
 			// add/update
 			update_record($change->new_gedcom, $ged_id, false);
 		}
-		WT_DB::prepare(
+		KT_DB::prepare(
 			"UPDATE `##change`".
 			" SET status='accepted'".
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
@@ -1030,7 +1031,7 @@ function accept_all_changes($xref, $ged_id) {
 
 // Accept all pending changes for a specified record
 function reject_all_changes($xref, $ged_id) {
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"UPDATE `##change`".
 		" SET status='rejected'".
 		" WHERE status='pending' AND xref=? AND gedcom_id=?"
@@ -1038,7 +1039,7 @@ function reject_all_changes($xref, $ged_id) {
 }
 
 // Find a string in a file, preceded by a any form of line-ending.
-// Although kiwitrees always writes them as WT_EOL, it is possible that the file was
+// Although kiwitrees always writes them as KT_EOL, it is possible that the file was
 // edited externally by an editor that uses different endings.
 function find_newline_string($haystack, $needle, $offset=0) {
 	if ($pos=strpos($haystack, "\r\n{$needle}", $offset)) {
@@ -1059,7 +1060,7 @@ function find_newline_string($haystack, $needle, $offset=0) {
 function update_record($gedrec, $ged_id, $delete) {
 	global $GEDCOM;
 
-	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+	if (preg_match('/^0 @('.KT_REGEX_XREF.')@ ('.KT_REGEX_TAG.')/', $gedrec, $match)) {
 		list(,$gid, $type)=$match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
@@ -1068,42 +1069,42 @@ function update_record($gedrec, $ged_id, $delete) {
 
 	// TODO deleting unlinked places can be done more efficiently in a single query
 	$placeids=
-		WT_DB::prepare("SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")
+		KT_DB::prepare("SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")
 		->execute(array($gid, $ged_id))
 		->fetchOneColumn();
 
-	WT_DB::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
+	KT_DB::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
+	KT_DB::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
 
 	//-- delete any unlinked places
 	foreach ($placeids as $p_id) {
 		$num=
-			WT_DB::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
+			KT_DB::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($p_id, $ged_id))
 			->fetchOne();
 		if ($num==0) {
-			WT_DB::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
+			KT_DB::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
 		}
 	}
 
-	WT_DB::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
+	KT_DB::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
+	KT_DB::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
 
 	switch ($type) {
 	case 'INDI':
-		WT_DB::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
+		KT_DB::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'FAM':
-		WT_DB::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
+		KT_DB::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'SOUR':
-		WT_DB::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
+		KT_DB::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'OBJE':
-		WT_DB::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute(array($gid, $ged_id));
+		KT_DB::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute(array($gid, $ged_id));
 		break;
 	default:
-		WT_DB::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
+		KT_DB::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
 		break;
 	}
 

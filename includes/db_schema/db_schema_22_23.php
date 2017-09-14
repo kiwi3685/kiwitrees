@@ -21,12 +21,12 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-$_data_dir = realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site::preference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR;
+$_data_dir = realpath(KT_Site::preference('INDEX_DIRECTORY') ? KT_Site::preference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR;
 
 $_cfgs = self::prepare(
 	"SELECT gs1.gedcom_id AS gedcom_id, gs1.setting_value AS media_directory, gs2.setting_value AS use_media_firewall, gs3.setting_value AS media_firewall_thumbs, gs4.setting_value AS media_firewall_rootdir" .
@@ -70,11 +70,11 @@ foreach ($_cfgs as $_cfg) {
 	} else {
 		// Not using the media firewall - just move the public folder to the new location (if we can).
 		if (
-			file_exists(WT_ROOT . $_cfg->media_directory) &&
-			is_dir(WT_ROOT . $_cfg->media_directory) &&
+			file_exists(KT_ROOT . $_cfg->media_directory) &&
+			is_dir(KT_ROOT . $_cfg->media_directory) &&
 			!file_exists($_data_dir . $_cfg->media_directory)
 		) {
-			@rename(WT_ROOT . $_cfg->media_directory, $_data_dir . $_cfg->media_directory);
+			@rename(KT_ROOT . $_cfg->media_directory, $_data_dir . $_cfg->media_directory);
 			@unlink($_data_dir . $_cfg->media_directory . '.htaccess');
 			@unlink($_data_dir . $_cfg->media_directory . 'index.php');
 			@unlink($_data_dir . $_cfg->media_directory . 'Mediainfo.txt');
@@ -89,4 +89,4 @@ unset($_data_dir, $_cfgs, $_cfg, $_mf_dir, $_tmp_dir);
 self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS', 'MEDIA_FIREWALL_ROOTDIR')");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

@@ -21,62 +21,62 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+class gedcom_block_KT_Module extends KT_Module implements KT_Module_Block {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Home');
+		return /* I18N: Name of a module */ KT_I18N::translate('Home');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Home” module */ WT_I18N::translate('A greeting message for site visitors.');
+		return /* I18N: Description of the “Home” module */ KT_I18N::translate('A greeting message for site visitors.');
 	}
 
-	// Extend class WT_Module_Block
+	// Extend class KT_Module_Block
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $controller;
 
 		$indi_xref=$controller->getSignificantIndividual()->getXref();
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title='<span dir="auto">'.WT_TREE_TITLE.'</span>';
+		$title='<span dir="auto">'.KT_TREE_TITLE.'</span>';
 		$content = '<table><tr>';
-		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('Default chart').'</a></td>';
-		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('Default individual').'</a></td>';
-		if (WT_Site::preference('USE_REGISTRATION_MODULE') && WT_USER_ID==false) {
-			$content .= '<td><a href="'.WT_LOGIN_URL.'?action=register"><i class="fa-user"></i><br>'.WT_I18N::translate('Request new user account').'</a></td>';
+		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.KT_GEDURL.'"><i class="icon-pedigree"></i><br>'.KT_I18N::translate('Default chart').'</a></td>';
+		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.KT_GEDURL.'"><i class="icon-indis"></i><br>'.KT_I18N::translate('Default individual').'</a></td>';
+		if (KT_Site::preference('USE_REGISTRATION_MODULE') && KT_USER_ID==false) {
+			$content .= '<td><a href="'.KT_LOGIN_URL.'?action=register"><i class="fa-user"></i><br>'.KT_I18N::translate('Request new user account').'</a></td>';
 		}
 		$content .= "</tr>";
 		$content .= "</table>";
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
 	}
 }

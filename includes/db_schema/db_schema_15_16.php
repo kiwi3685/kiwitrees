@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -42,5 +42,5 @@ self::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND set
 self::exec("ALTER TABLE `##session` CHANGE session_id session_id CHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);
 

@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class report_individual_WT_Module extends WT_Module implements WT_Module_Report {
+class report_individual_KT_Module extends KT_Module implements KT_Module_Report {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Individual');
+		return /* I18N: Name of a module. Tasks that need further research. */ KT_I18N::translate('Individual');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Research tasks” module */ WT_I18N::translate('A report of an individual’s details.');
+		return /* I18N: Description of “Research tasks” module */ KT_I18N::translate('A report of an individual’s details.');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,21 +49,21 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Report
+	// Implement KT_Module_Report
 	public function getReportMenus() {
 		global $controller;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
 
 		$menus	= array();
-		$menu	= new WT_Menu(
+		$menu	= new KT_Menu(
 			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $indi_xref . '&amp;ged=' . KT_GEDURL,
 			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;
@@ -71,80 +71,80 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 		return $menus;
 	}
 
-	// Implement class WT_Module_Report
+	// Implement class KT_Module_Report
 	public function show() {
 		global $controller, $GEDCOM;
-		require WT_ROOT.'includes/functions/functions_resource.php';
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		require KT_ROOT.'includes/functions/functions_resource.php';
+		require KT_ROOT.'includes/functions/functions_edit.php';
 
-		$controller = new WT_Controller_Individual();
+		$controller = new KT_Controller_Individual();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 				savestate(\'' . $this->getName() . '\');
 			');
 
 		//-- args
-		$go 			= WT_Filter::post('go');
-		$rootid 		= WT_Filter::get('rootid');
-		$root_id		= WT_Filter::post('root_id');
+		$go 			= KT_Filter::post('go');
+		$rootid 		= KT_Filter::get('rootid');
+		$root_id		= KT_Filter::post('root_id');
 		$rootid			= empty($root_id) ? $rootid : $root_id;
-		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
-		$ged			= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
-		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 0;
-		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 0;
-		$exclude_tags	= array('FAMC', 'FAMS', '_WT_OBJE_SORT', 'HUSB', 'WIFE', 'CHIL');
+		$photos			= KT_Filter::post('photos') ? KT_Filter::post('photos') : 'highlighted';
+		$ged			= KT_Filter::post('ged') ? KT_Filter::post('ged') : $GEDCOM;
+		$showsources	= KT_Filter::post('showsources') ? KT_Filter::post('showsources') : 0;
+		$shownotes		= KT_Filter::post('shownotes') ? KT_Filter::post('shownotes') : 0;
+		$exclude_tags	= array('FAMC', 'FAMS', '_KT_OBJE_SORT', 'HUSB', 'WIFE', 'CHIL');
 
 		?>
 		<div id="page" class="individual_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="noprint">
 				<h5><?php echo $this->getDescription(); ?></h5>
-				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo WT_GEDURL; ?>">
+				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo KT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
-						<label for = "root_id"><?php echo WT_I18N::translate('Individual'); ?></label>
+						<label for = "root_id"><?php echo KT_I18N::translate('Individual'); ?></label>
 						<input data-autocomplete-type="INDI" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>">
 					</div>
 					<div class="chart_options">
-						<label for = "showsources"><?php echo WT_I18N::translate('Show sources'); ?></label>
+						<label for = "showsources"><?php echo KT_I18N::translate('Show sources'); ?></label>
 						<input class="savestate" type="checkbox" id="showsources" name="showsources" value="1"
 							<?php if ($showsources) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
-						<label for = "shownotes"><?php echo WT_I18N::translate('Show notes'); ?></label>
+						<label for = "shownotes"><?php echo KT_I18N::translate('Show notes'); ?></label>
 						<input class="savestate" type="checkbox" id="shownotes" name="shownotes" value="1"
 							<?php if ($shownotes) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
-						<label for = "photos"><?php echo WT_I18N::translate('Show media'); ?></label>
+						<label for = "photos"><?php echo KT_I18N::translate('Show media'); ?></label>
 						<?php echo select_edit_control(
 							'photos',
 							array(
-								'none'=>WT_I18N::translate('None'),
-								'all'=>WT_I18N::translate('All'),
-								'highlighted'=>WT_I18N::translate('Highlighted image')
+								'none'=>KT_I18N::translate('None'),
+								'all'=>KT_I18N::translate('All'),
+								'highlighted'=>KT_I18N::translate('Highlighted image')
 							),
 							null,
 							$photos,
 						 	'class="savestate"'
 						); ?>
 					</div>
-	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
+	 				<button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>">
 						<i class="fa fa-eye"></i>
-						<?php echo WT_I18N::translate('show'); ?>
+						<?php echo KT_I18N::translate('show'); ?>
 					</button>
 				</form>
 			</div>
 			<hr style="clear:both;">
 			<!-- end of form -->
 				<?php
-				$person = WT_Person::getInstance($rootid);
+				$person = KT_Person::getInstance($rootid);
 				$person->add_family_facts(false);
 				$indifacts = $person->getIndiFacts();
 				sort_facts($indifacts);
@@ -164,7 +164,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 							//show all level 1 images ?>
 							<div class="images">
 								<?php $sort_current_objes = array();
-								$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+								$sort_ct = preg_match_all('/\n1 _KT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 								for ($i = 0; $i < $sort_ct; $i++) {
 									if (!isset($sort_current_objes[$sort_match[$i][1]])) {
 										$sort_current_objes[$sort_match[$i][1]] = 1;
@@ -174,7 +174,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 									$sort_obje_links[] = $sort_match[$i][1];
 								}
 								foreach ($sort_obje_links as $media) {
-									$image = WT_Media::getInstance($media);
+									$image = KT_Media::getInstance($media);
 									if ($image && $image->canDisplayDetails()) { ?>
 										<span><?php echo $image->displayImage(); ?></span>
 									<?php }
@@ -188,13 +188,13 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 						break;
 					} ?>
 				<div class="facts_events">
-					<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
+					<h3><?php echo KT_I18N::translate('Facts and events'); ?></h3>
 					<?php
 					$source_num = 1;
 					$source_list = array();
 					foreach ($indifacts as $fact) {
 						if (
-							(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
+							(!array_key_exists('extra_info', KT_Module::getActiveSidebars()) || !extra_info_KT_Module::showFact($fact))
 							&& !in_array($fact->getTag(), $exclude_tags)
 						) { ?>
 							<div class="report_fact">
@@ -240,7 +240,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 										echo $fe_notes ? '
 											<div style="font-size: 90%;">
 												<span class="label indent">' .
-													WT_I18N::translate('Note') . ': <br>
+													KT_I18N::translate('Note') . ': <br>
 												</span>
 												<br>
 												<span style="white-space: pre-wrap;">' . $fe_notes . '</span>
@@ -256,7 +256,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 					foreach ($otherfacts as $fact) {
 						if ($fact->getTag() == 'NOTE') { ?>
 							<div class="notes">
-								<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
+								<h3><?php echo KT_I18N::translate('Notes'); ?></h3>
 								<ol>
 									<li>
 										<?php echo print_resourcenotes($fact, 1, true, true); ?>
@@ -267,7 +267,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 					}
 				} ?>
 				<div id="families">
-					<h3><?php echo WT_I18N::translate('Families'); ?></h3>
+					<h3><?php echo KT_I18N::translate('Families'); ?></h3>
 					<?php
 					$families = $person->getChildFamilies();
 					// parents
@@ -281,7 +281,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 							if (!empty($husband)) { ?>
 								<p>
 									<span class="label indent">
-										<?php echo WT_I18N::translate('Father'); ?>
+										<?php echo KT_I18N::translate('Father'); ?>
 									</span>
 									<?php echo $husband->getFullName(); ?>&nbsp;
 									<span class="details">
@@ -292,7 +292,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 							if (!empty($wife)) { ?>
 								<p>
 									<span class="label indent">
-										<?php echo WT_I18N::translate('Mother'); ?>
+										<?php echo KT_I18N::translate('Mother'); ?>
 									</span>
 									<?php echo $wife->getFullName(); ?>&nbsp;
 									<span class="details">
@@ -331,12 +331,12 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 						$spouse		= $family->getSpouse($person);
 						$married	= $family->getMarriage();
 						$marriage	= marriageDetails($family); ?>
-						<h4><?php echo ($married ? WT_I18N::translate('Family with spouse') : WT_I18N::translate('Family with partner')); ?></h4>
+						<h4><?php echo ($married ? KT_I18N::translate('Family with spouse') : KT_I18N::translate('Family with partner')); ?></h4>
 						<div id="spouses">
 							<?php if (!empty($spouse)) { ?>
 								<p>
 									<span class="label indent">
-										<?php echo ($married ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner')); ?>
+										<?php echo ($married ? KT_I18N::translate('Spouse') : KT_I18N::translate('Partner')); ?>
 									</span>
 									<?php echo $spouse->getFullName(); ?>&nbsp;
 									<span class="details">
@@ -372,7 +372,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 				</div>
 				<?php if ($showsources) {?>
 					<div id="facts_sources">
-						<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
+						<h3><?php echo KT_I18N::translate('Sources'); ?></h3>
 						<?php
 							foreach ($source_list as $key => $value) {
 								echo '
@@ -387,11 +387,11 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 				<?php }
 				} elseif ($person && $person->canDisplayName()) { ?>
 					<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $person->getFullName(); ?></h2>
-					<p class="ui-state-highlight"><?php echo WT_I18N::translate('The details of this individual are private.'); ?></p>
+					<p class="ui-state-highlight"><?php echo KT_I18N::translate('The details of this individual are private.'); ?></p>
 					<?php exit;
 				} else { ?>
 					<h2><?php echo $this->getTitle(); ?></h2>
-					<p class="ui-state-error"><?php echo WT_I18N::translate('This individual does not exist or you do not have permission to view it.'); ?></p>
+					<p class="ui-state-error"><?php echo KT_I18N::translate('This individual does not exist or you do not have permission to view it.'); ?></p>
 					<?php exit;
 				} ?>
 			</div>

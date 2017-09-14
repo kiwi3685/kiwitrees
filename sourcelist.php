@@ -21,17 +21,17 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'sourcelist.php');
+define('KT_SCRIPT_NAME', 'sourcelist.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_sources', WT_USER_ACCESS_LEVEL))
-	->setPageTitle(WT_I18N::translate('Sources'))
+	->restrictAccess(KT_Module::isActiveList(KT_GED_ID, 'list_sources', KT_USER_ACCESS_LEVEL))
+	->setPageTitle(KT_I18N::translate('Sources'))
 	->pageHeader();
 
 echo '<div id="sourcelist-page">',
-	'<h2>', WT_I18N::translate('Sources'), '</h2>';
-	echo format_sour_table(get_source_list(WT_GED_ID));
+	'<h2>', KT_I18N::translate('Sources'), '</h2>';
+	echo format_sour_table(get_source_list(KT_GED_ID));
 echo '</div>';

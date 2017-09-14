@@ -21,18 +21,18 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 class name_format_bu_plugin extends base_plugin {
 	static function getName() {
-		return WT_I18N::translate('Fix name slashes and spaces');
+		return KT_I18N::translate('Fix name slashes and spaces');
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('Correct NAME records of the form \'John/DOE/\' or \'John /DOE\', as produced by older genealogy programs.');
+		return KT_I18N::translate('Correct NAME records of the form \'John/DOE/\' or \'John /DOE\', as produced by older genealogy programs.');
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {

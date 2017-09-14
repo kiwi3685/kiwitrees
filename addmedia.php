@@ -21,26 +21,26 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'addmedia.php');
+define('KT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
-require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
+require_once KT_ROOT . 'includes/functions/functions_print_lists.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
-$pid			= WT_Filter::get('pid', WT_REGEX_XREF, WT_Filter::post('pid', WT_REGEX_XREF)); // edit this media object
-$linktoid		= WT_Filter::get('linktoid', WT_REGEX_XREF, WT_Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record
-$action			= WT_Filter::get('action', null, WT_Filter::post('action'));
-$type			= WT_Filter::get('type');
-$filename		= WT_Filter::get('filename', null, WT_Filter::post('filename'));
-$text			= WT_Filter::postArray('text');
-$tag			= WT_Filter::postArray('tag', WT_REGEX_TAG);
-$islink			= WT_Filter::postArray('islink');
-$glevels		= WT_Filter::postArray('glevels', '[0-9]');
-$folder			= WT_Filter::post('folder');
-$update_CHAN	= !WT_Filter::postBool('preserve_last_changed');
+$pid			= KT_Filter::get('pid', KT_REGEX_XREF, KT_Filter::post('pid', KT_REGEX_XREF)); // edit this media object
+$linktoid		= KT_Filter::get('linktoid', KT_REGEX_XREF, KT_Filter::post('linktoid', KT_REGEX_XREF)); // create a new media object, linked to this record
+$action			= KT_Filter::get('action', null, KT_Filter::post('action'));
+$type			= KT_Filter::get('type');
+$filename		= KT_Filter::get('filename', null, KT_Filter::post('filename'));
+$text			= KT_Filter::postArray('text');
+$tag			= KT_Filter::postArray('tag', KT_REGEX_TAG);
+$islink			= KT_Filter::postArray('islink');
+$glevels		= KT_Filter::postArray('glevels', '[0-9]');
+$folder			= KT_Filter::post('folder');
+$update_CHAN	= !KT_Filter::postBool('preserve_last_changed');
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		display_help();
@@ -48,18 +48,18 @@ $controller
 	->requireMemberLogin();
 
 $disp = true;
-$media = WT_Media::getInstance($pid);
+$media = KT_Media::getInstance($pid);
 if ($media) {
 	$disp = $media->canDisplayDetails();
 }
 if ($action == 'update' || $action == 'create') {
 	if (!isset($linktoid) || $linktoid == 'new') $linktoid = '';
 	if (!empty($linktoid)) {
-		$disp = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+		$disp = KT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 	}
 }
 
-if (!WT_USER_CAN_EDIT || !$disp) {
+if (!KT_USER_CAN_EDIT || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');
@@ -71,7 +71,7 @@ if (!WT_USER_CAN_EDIT || !$disp) {
 
 switch ($action) {
 	case 'create': // Save the information from the “showcreateform” action
-		$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
+		$controller->setPageTitle(KT_I18N::translate('Create a new media object'));
 
 		// Validate the media folder
 		$folderName = str_replace('\\', '/', $folder);
@@ -83,28 +83,28 @@ switch ($action) {
 			$folderName .= '/';
 			// Not allowed to use “../”
 			if (strpos('/' . $folderName, '/../') !== false) {
-				WT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
+				KT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
 				break;
 			}
 		}
 
 		// Make sure the media folder exists
-		if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY, WT_PERM_EXE, true)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+		if (!is_dir(KT_DATA_DIR . $MEDIA_DIRECTORY)) {
+			if (@mkdir(KT_DATA_DIR . $MEDIA_DIRECTORY, KT_PERM_EXE, true)) {
+				KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s was created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 			} else {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+				KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 				break;
 			}
 		}
 
 		// Managers can create new media paths (subfolders).  Users must use existing folders.
-		if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-			if (WT_USER_GEDCOM_ADMIN) {
-				if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, WT_PERM_EXE, true)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+		if ($folderName && !is_dir(KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
+			if (KT_USER_GEDCOM_ADMIN) {
+				if (@mkdir(KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, KT_PERM_EXE, true)) {
+					KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s was created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 				} else {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 					break;
 				}
 			} else {
@@ -114,9 +114,9 @@ switch ($action) {
 		}
 
 		// The media folder exists.  Now create a thumbnail folder to match it.
-		if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-			if (!@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, WT_PERM_EXE, true)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
+		if (!is_dir(KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
+			if (!@mkdir(KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, KT_PERM_EXE, true)) {
+				KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
 				break;
 			}
 		}
@@ -130,7 +130,7 @@ switch ($action) {
 
 		// Thumbnails must be images.
 		if (!empty($_FILES['thumbnail']['name']) && !preg_match('/^image/', $_FILES['thumbnail']['type'])) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnails must be images.'));
+			KT_FlashMessages::addMessage(KT_I18N::translate('Thumbnails must be images.'));
 			break;
 		}
 
@@ -152,16 +152,16 @@ switch ($action) {
 			unset($_FILES['mediafile'], $_FILES['thumbnail']);
 		} elseif (preg_match('/([\/\\\\<>])/', $filename, $match)) {
 			// Local media files cannot contain certain special characters
-			WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
+			KT_FlashMessages::addMessage(KT_I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
 			$filename = '';
 			break;
 		} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
 			// Do not allow obvious script files.
-			WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
+			KT_FlashMessages::addMessage(KT_I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
 			$filename = '';
 			break;
 		} elseif (!$filename) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('No media file was provided.'));
+			KT_FlashMessages::addMessage(KT_I18N::translate('No media file was provided.'));
 			break;
 		} else {
 			$fileName = $filename;
@@ -169,18 +169,18 @@ switch ($action) {
 
 		// Now copy the file to the correct location.
 		if (!empty($_FILES['mediafile']['name'])) {
-			$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . $fileName;
+			$serverFileName = KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . $fileName;
 			if (file_exists($serverFileName)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s already exists.  Use another filename.', $folderName . $fileName));
+				KT_FlashMessages::addMessage(KT_I18N::translate('The file %s already exists.  Use another filename.', $folderName . $fileName));
 				$filename = '';
 				break;
 			}
 			if (move_uploaded_file($_FILES['mediafile']['tmp_name'], $serverFileName)) {
-				chmod($serverFileName, WT_PERM_FILE);
+				chmod($serverFileName, KT_PERM_FILE);
 				AddToLog('Media file ' . $serverFileName . ' uploaded', 'media');
 			} else {
-				WT_FlashMessages::addMessage(
-					WT_I18N::translate('There was an error uploading your file.') .
+				KT_FlashMessages::addMessage(
+					KT_I18N::translate('There was an error uploading your file.') .
 					'<br>' .
 					file_upload_error_text($_FILES['mediafile']['error'])
 				);
@@ -198,9 +198,9 @@ switch ($action) {
 				} else {
 					$thumbFile = $fileName;
 				}
-				$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
+				$serverFileName = KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
 				if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $serverFileName)) {
-					chmod($serverFileName, WT_PERM_FILE);
+					chmod($serverFileName, KT_PERM_FILE);
 					AddToLog('Thumbnail file ' . $serverFileName . ' uploaded', 'media');
 				}
 			}
@@ -221,7 +221,7 @@ switch ($action) {
 
 			$newged  = handle_updates($newged);
 
-			if (append_gedrec($newged, WT_GED_ID)) {
+			if (append_gedrec($newged, KT_GED_ID)) {
 				if ($linktoid) {
 					linkMedia($media_id, $linktoid, 1);
 					AddToLog('Media ID ' . $media_id . ' successfully added to ' . $linktoid, 'edit');
@@ -237,15 +237,15 @@ switch ($action) {
 		<div style="margin: 20px 50px">
 			<button class="btn btn-primary" type="button"  onclick="closePopupAndReloadParent();">
 				<i class="fa fa-times"></i>
-				<?php echo WT_I18N::translate('close'); ?>
+				<?php echo KT_I18N::translate('close'); ?>
 			</button>
-			<p class="warning"><?php echo WT_I18N::translate('Click the close button to return to the manage media page.'); ?></p>
+			<p class="warning"><?php echo KT_I18N::translate('Click the close button to return to the manage media page.'); ?></p>
 		</div>
 	<?php
 		exit;
 
 	case 'update': // Save the information from the “editmedia” action
-		$controller->setPageTitle(WT_I18N::translate('Edit media object'));
+		$controller->setPageTitle(KT_I18N::translate('Edit media object'));
 
 		// Validate the media folder
 		$folderName = str_replace('\\', '/', $folder);
@@ -257,28 +257,28 @@ switch ($action) {
 			$folderName .= '/';
 			// Not allowed to use “../”
 			if (strpos('/' . $folderName, '/../')!==false) {
-				WT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
+				KT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
 				break;
 			}
 		}
 
 		// Make sure the media folder exists
-		if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY, WT_PERM_EXE, true)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+		if (!is_dir(KT_DATA_DIR . $MEDIA_DIRECTORY)) {
+			if (@mkdir(KT_DATA_DIR . $MEDIA_DIRECTORY, KT_PERM_EXE, true)) {
+				KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s was created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 			} else {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+				KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 				break;
 			}
 		}
 
 		// Managers can create new media paths (subfolders).  Users must use existing folders.
-		if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-			if (WT_USER_GEDCOM_ADMIN) {
-				if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, WT_PERM_EXE, true)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+		if ($folderName && !is_dir(KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
+			if (KT_USER_GEDCOM_ADMIN) {
+				if (@mkdir(KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, KT_PERM_EXE, true)) {
+					KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s was created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 				} else {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 					break;
 				}
 			} else {
@@ -288,9 +288,9 @@ switch ($action) {
 		}
 
 		// The media folder exists.  Now create a thumbnail folder to match it.
-		if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-			if (!@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, WT_PERM_EXE, true)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
+		if (!is_dir(KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
+			if (!@mkdir(KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, KT_PERM_EXE, true)) {
+				KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . KT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
 				break;
 			}
 		}
@@ -303,16 +303,16 @@ switch ($action) {
 			unset($_FILES['mediafile'], $_FILES['thumbnail']);
 		} elseif (preg_match('/([\/\\\\<>])/', $filename, $match)) {
 			// Local media files cannot contain certain special characters
-			WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
+			KT_FlashMessages::addMessage(KT_I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
 			$filename = '';
 			break;
 		} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
 			// Do not allow obvious script files.
-			WT_FlashMessages::addMessage(WT_I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
+			KT_FlashMessages::addMessage(KT_I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
 			$filename = '';
 			break;
 		} elseif (!$filename) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('No media file was provided.'));
+			KT_FlashMessages::addMessage(KT_I18N::translate('No media file was provided.'));
 			break;
 		} else {
 			$fileName = $filename;
@@ -323,7 +323,7 @@ switch ($action) {
 
 		// Cannot rename local to external or vice-versa
 		if (isFileExternal($oldFilename) != isFileExternal($filename)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+			KT_FlashMessages::addMessage(KT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 			break;
 		}
 
@@ -333,7 +333,7 @@ switch ($action) {
 			$oldServerFile  = $media->getServerFilename('main');
 			$oldServerThumb = $media->getServerFilename('thumb');
 
-			$newmedia = new WT_Media("0 @xxx@ OBJE\n1 FILE " . $newFilename);
+			$newmedia = new KT_Media("0 @xxx@ OBJE\n1 FILE " . $newFilename);
 			$newServerFile  = $newmedia->getServerFilename('main');
 			$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -341,36 +341,36 @@ switch ($action) {
 			if ($oldServerFile != $newServerFile) {
 				//-- check if the file is used in more than one gedcom
 				//-- do not allow it to be moved or renamed if it is
-				$multi_gedcom=!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID);
+				$multi_gedcom=!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), KT_GED_ID);
 				if ($multi_gedcom) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
 					break;
 				}
 
 				if (!file_exists($newServerFile) || @md5_file($oldServerFile)==md5_file($newServerFile)) {
 					if (@rename($oldServerFile, $newServerFile)) {
-						WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+						KT_FlashMessages::addMessage(KT_I18N::translate('Media file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 					} else {
-						WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+						KT_FlashMessages::addMessage(KT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 					}
 					$messages = true;
 				}
 				if (!file_exists($newServerFile)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Media file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('Media file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
 					$messages = true;
 				}
 			}
 			if ($oldServerThumb != $newServerThumb) {
 				if (!file_exists($newServerThumb) || @md5_file($oldServerFile)==md5_file($newServerThumb)) {
 					if (@rename($oldServerThumb, $newServerThumb)) {
-						WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+						KT_FlashMessages::addMessage(KT_I18N::translate('Thumbnail file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 					} else {
-						WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+						KT_FlashMessages::addMessage(KT_I18N::translate('Thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 					}
 					$messages = true;
 				}
 				if (!file_exists($newServerThumb)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('Thumbnail file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
 					$messages = true;
 				}
 			}
@@ -383,7 +383,7 @@ switch ($action) {
 		$text		= array_merge(array($newFilename), $text);
 
 		if (!empty($pid)) {
-			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
+			$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
 		}
 		$newrec = "0 @$pid@ OBJE\n";
 		$newrec = handle_updates($newrec);
@@ -393,7 +393,7 @@ switch ($action) {
 		//-- look for the old record media in the file
 		//-- if the old media record does not exist that means it was
 		//-- generated at import and we need to append it
-		replace_gedrec($pid, WT_GED_ID, $newrec, $update_CHAN);
+		replace_gedrec($pid, KT_GED_ID, $newrec, $update_CHAN);
 
 		if ($pid && $linktoid != '') {
 			$link = linkMedia($pid, $linktoid, 1);
@@ -404,7 +404,7 @@ switch ($action) {
 		$controller->pageHeader();
 		if ($messages) { ?>
 			<button onclick="closePopupAndReloadParent();">
-				<?php echo WT_I18N::translate('close'); ?>
+				<?php echo KT_I18N::translate('close'); ?>
 			</button>
 		<?php } else {
 			$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -412,11 +412,11 @@ switch ($action) {
 		}
 		exit;
 	case 'showmediaform':
-		$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
+		$controller->setPageTitle(KT_I18N::translate('Create a new media object'));
 		$action = 'create';
 		break;
 	case 'editmedia':
-		$controller->setPageTitle(WT_I18N::translate('Edit media object'));
+		$controller->setPageTitle(KT_I18N::translate('Edit media object'));
 		$action = 'update';
 		break;
 	default:
@@ -431,7 +431,7 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="<?php echo $action; ?>">
-		<input type="hidden" name="ged" value="<?php echo  WT_GEDCOM; ?>">
+		<input type="hidden" name="ged" value="<?php echo  KT_GEDCOM; ?>">
 		<input type="hidden" name="pid" value="<?php echo  $pid; ?>">
 		<?php if ($linktoid) { ?>
 			<input type="hidden" name="linktoid" value="<?php echo $linktoid; ?>">
@@ -440,19 +440,19 @@ $controller
 			<?php if (!$linktoid && $type != 'event' && $action == 'create') { ?>
 				<div id="MEDIA_factdiv">
 					<label>
-						<?php echo WT_I18N::translate('Enter a Person, Family, or Source ID'); ?>
+						<?php echo KT_I18N::translate('Enter a Person, Family, or Source ID'); ?>
 					</label>
 					<div class="input">
 						<input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" value="">
 					</div>
 					<div class="help_text">
 						<span class="help_content">
-							<?php echo WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?>
+							<?php echo KT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?>
 						</span>
 					</div>
 				</div>
 			<?php }
-			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
+			$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
 			// 0 OBJE
 			// 1 FILE
 			if ($gedrec == '') {
@@ -474,23 +474,23 @@ $controller
 				// Box for user to choose to upload file from local computer ?>
 				<div id="MEDIA-UP_factdiv">
 					<label>
-						<?php echo  WT_I18N::translate('Media file to upload'); ?>
+						<?php echo  KT_I18N::translate('Media file to upload'); ?>
 					</label>
 					<div class="input">
 						<input type="file" name="mediafile" onchange="updateFormat(this.value);">
 						<div class="help_text">
 							<span class="help_content">
-								<?php echo WT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()); ?>
+								<?php echo KT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()); ?>
 							</span>
 						</div>
 					</div>
 				</div>
 				<?php
 				// Check for thumbnail generation support
-				if (WT_USER_GEDCOM_ADMIN) { ?>
+				if (KT_USER_GEDCOM_ADMIN) { ?>
 					<div id="THUMB-UP_factdiv">
 						<label>
-							<?php echo WT_I18N::translate('Thumbnail to upload'); ?>
+							<?php echo KT_I18N::translate('Thumbnail to upload'); ?>
 						</label>
 						<div class="input">
 							<input type="file" name="thumbnail">
@@ -503,15 +503,15 @@ $controller
 			// Filename on server
 			$isExternal = isFileExternal($gedfile);
 			if ($gedfile == 'FILE') {
-				if (WT_USER_GEDCOM_ADMIN) { ?>
+				if (KT_USER_GEDCOM_ADMIN) { ?>
 					<div id="FILE_factdiv">
-						<?php add_simple_tag("1 $gedfile",'',WT_I18N::translate('File name on server'),'','NOCLOSE'); ?>
+						<?php add_simple_tag("1 $gedfile",'',KT_I18N::translate('File name on server'),'','NOCLOSE'); ?>
 					</div>
 					<div class="help_text">
 						<span class="help_content">
 							<?php echo
-								WT_I18N::translate('Do not change to keep original file name.') .
-								WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.');
+								KT_I18N::translate('Do not change to keep original file name.') .
+								KT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.');
 							?>
 						</span>
 					</div>
@@ -532,10 +532,10 @@ $controller
 				} ?>
 				<div id="SERVER_factdiv">
 					<label>
-						<?php echo WT_I18N::translate('File name on server'); ?>
+						<?php echo KT_I18N::translate('File name on server'); ?>
 					</label>
 					<div class="input">
-						<?php if (WT_USER_GEDCOM_ADMIN) { ?>
+						<?php if (KT_USER_GEDCOM_ADMIN) { ?>
 						    <input name="filename" type="text" value="<?php echo htmlspecialchars($fileName); ?>"
 						    <?php if ($isExternal) {
 						        echo '>';
@@ -549,7 +549,7 @@ $controller
 					</div>
 					<div class="help_text">
 						<span class="helpcontent">
-							<?php echo /* I18N: Help text for add media screens*/WT_I18N::translate('Leave this field blank to keep the original name of the file you have uploaded from your local computer.<br><br>Media files can and perhaps should be named differently on the server than on your local computer. This is because often the local file name has meaning to you but is less meaningful to others visiting this site. Consider also the possibility that you and someone else both try to upload different files called "granny.jpg".<br>In this field you specify the new name of the file. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)'); ?>
+							<?php echo /* I18N: Help text for add media screens*/KT_I18N::translate('Leave this field blank to keep the original name of the file you have uploaded from your local computer.<br><br>Media files can and perhaps should be named differently on the server than on your local computer. This is because often the local file name has meaning to you but is less meaningful to others visiting this site. Consider also the possibility that you and someone else both try to upload different files called "granny.jpg".<br>In this field you specify the new name of the file. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)'); ?>
 						</span>
 					</div>
 				</div>
@@ -559,23 +559,23 @@ $controller
 				<?php // Box for user to choose the folder to store the image
 				if (!$isExternal) { ?>
 						<label>
-							<?php echo WT_I18N::translate('Folder name on server'); ?>
+							<?php echo KT_I18N::translate('Folder name on server'); ?>
 						</label>
 					<div class="input">
 						<?php //-- don’t let regular users change the location of media items
-						if ($action != 'update' || WT_USER_GEDCOM_ADMIN) {
-							$mediaFolders = WT_Query_Media::folderList();
+						if ($action != 'update' || KT_USER_GEDCOM_ADMIN) {
+							$mediaFolders = KT_Query_Media::folderList();
 							echo '<span dir="ltr">
 								<select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">
 									<option';
 										if ($folder == '') {
 											echo ' selected="selected"';
 										}
-										echo ' value=""> ' . WT_I18N::translate('Choose: ') . '
+										echo ' value=""> ' . KT_I18N::translate('Choose: ') . '
 									</option>';
-									if (WT_USER_IS_ADMIN) {
+									if (KT_USER_IS_ADMIN) {
 										echo ' <option value="other" disabled>'.
-											WT_I18N::translate('Other folder... please type in') . '
+											KT_I18N::translate('Other folder... please type in') . '
 										</option>';
 									}
 									foreach ($mediaFolders as $f) {
@@ -590,7 +590,7 @@ $controller
 						} else {
 							echo $folder;
 						}
-						if (WT_USER_IS_ADMIN) {
+						if (KT_USER_IS_ADMIN) {
 							echo '<br>
 							<span dir="ltr">
 								<input type="text" name="folder" value="' . $folder . '">
@@ -602,7 +602,7 @@ $controller
 					<?php if ($gedfile == 'FILE') { ?>
 						<div class="help_text">
 							<span class="help_content">
-								<?php echo WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'); ?>
+								<?php echo KT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'); ?>
 							</span>
 							<span id="upload_server_folder" class="help_text"></span>
 						</div>
@@ -733,7 +733,7 @@ $controller
 							add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
 							add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
 							add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-							add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+							add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', KT_Gedcom_Tag::getLabel('DATA:DATE'));
 							add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
 							$sourceSOUR = '';
 						}
@@ -781,12 +781,12 @@ $controller
 					add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
 					add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
 					add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-					add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+					add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', KT_Gedcom_Tag::getLabel('DATA:DATE'));
 					add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
 				}
 			}
 
-			if (WT_USER_IS_ADMIN && $action != 'create') {
+			if (KT_USER_IS_ADMIN && $action != 'create') {
 				echo no_update_chan($media);
 			} ?>
 
@@ -800,11 +800,11 @@ $controller
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="submit">
 				<i class="fa fa-save"></i>
-				<?php echo WT_I18N::translate('save'); ?>
+				<?php echo KT_I18N::translate('save'); ?>
 			</button>
 			<button class="btn btn-primary" type="button" onclick="window.close();">
 				<i class="fa fa-times"></i>
-				<?php echo WT_I18N::translate('close'); ?>
+				<?php echo KT_I18N::translate('close'); ?>
 			</button>
 		</p>
 	</form>

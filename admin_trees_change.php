@@ -21,27 +21,27 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_change.php');
+define('KT_SCRIPT_NAME', 'admin_trees_change.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Changes'));
+	->setPageTitle(KT_I18N::translate('Changes'));
 
-require WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'library/php-diff/lib/Diff.php';
-require_once WT_ROOT.'library/php-diff/lib/Diff/Renderer/Html/SideBySide.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
+require_once KT_ROOT.'library/php-diff/lib/Diff.php';
+require_once KT_ROOT.'library/php-diff/lib/Diff/Renderer/Html/SideBySide.php';
 
 $statuses=array(
 	''        =>'',
-	'accepted'=>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('accepted'),
-	'rejected'=>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('rejected'),
-	'pending' =>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('pending' ),
+	'accepted'=>/* I18N: the status of an edit accepted/rejected/pending */ KT_I18N::translate('accepted'),
+	'rejected'=>/* I18N: the status of an edit accepted/rejected/pending */ KT_I18N::translate('rejected'),
+	'pending' =>/* I18N: the status of an edit accepted/rejected/pending */ KT_I18N::translate('pending' ),
 );
 
-$earliest=WT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
-$latest  =WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
+$earliest=KT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
+$latest  =KT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
 
 // Filtering
 $action=safe_GET('action');
@@ -52,12 +52,12 @@ $oldged=safe_GET('oldged');
 $newged=safe_GET('newged');
 $xref  =safe_GET('xref');
 $user  =safe_GET('user');
-if (WT_USER_IS_ADMIN) {
+if (KT_USER_IS_ADMIN) {
 	// Administrators can see all logs
 	$gedc=safe_GET('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
-	$gedc=WT_GEDCOM;
+	$gedc=KT_GEDCOM;
 }
 
 $query=array();
@@ -117,13 +117,13 @@ case 'delete':
 		" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
 		" LEFT JOIN `##gedcom` USING (gedcom_id)". // gedcom may be deleted
 		$WHERE;
-	WT_DB::prepare($DELETE)->execute($args);
+	KT_DB::prepare($DELETE)->execute($args);
 	break;
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="kiwitrees-changes.csv"');
-	$rows=WT_DB::prepare($SELECT1.$WHERE.' ORDER BY change_id')->execute($args)->fetchAll();
+	$rows=KT_DB::prepare($SELECT1.$WHERE.' ORDER BY change_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$row->old_gedcom = str_replace('"', '""', $row->old_gedcom);
 		$row->old_gedcom = str_replace("\n", '""', $row->old_gedcom);
@@ -144,7 +144,7 @@ case 'load_json':
 	Zend_Session::writeClose();
 	$iDisplayStart =(int)safe_GET('iDisplayStart');
 	$iDisplayLength=(int)safe_GET('iDisplayLength');
-	set_user_setting(WT_USER_ID, 'admin_site_change_page_size', $iDisplayLength);
+	set_user_setting(KT_USER_ID, 'admin_site_change_page_size', $iDisplayLength);
 	if ($iDisplayLength>0) {
 		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 	} else {
@@ -181,7 +181,7 @@ case 'load_json':
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$aaData=KT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
 
 		$a = explode("\n", htmlspecialchars($row[3]));
@@ -199,15 +199,15 @@ case 'load_json':
 		// Initialize the diff class
 		$diff = new Diff($a, $b, $options);
 
-		$row[1]=WT_I18N::translate($row[1]);
+		$row[1]=KT_I18N::translate($row[1]);
 		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank" rel="noopener noreferrer">'.$row[2].'</a>';
 		$row[3]=$diff->Render($renderer);
 		$row[4]='';
 	}
 
 	// Total filtered/unfiltered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
+	$iTotalDisplayRecords=KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+	$iTotalRecords=KT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
@@ -221,18 +221,18 @@ case 'load_json':
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
 	->addInlineJavascript('
 		var oTable=jQuery("#change_list").dataTable( {
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&oldged='.rawurlencode($oldged).'&newged='.rawurlencode($newged).'&xref='.rawurlencode($xref).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
-			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
+			"sAjaxSource": "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&oldged='.rawurlencode($oldged).'&newged='.rawurlencode($newged).'&xref='.rawurlencode($xref).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
+			'.KT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],
-			"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_site_change_page_size', 10).',
+			"iDisplayLength": '.get_user_setting(KT_USER_ID, 'admin_site_change_page_size', 10).',
 			"sPaginationType": "full_numbers",
 			"aoColumns": [
 			/* Timestamp   */ {},
@@ -247,7 +247,7 @@ $controller
 	');
 
 $url=
-	WT_SCRIPT_NAME.'?from='.rawurlencode($from).
+	KT_SCRIPT_NAME.'?from='.rawurlencode($from).
 	'&amp;to='.rawurlencode($to).
 	'&amp;type='.rawurlencode($type).
 	'&amp;oldged='.rawurlencode($oldged).
@@ -260,36 +260,36 @@ $users_array=array_combine(get_all_users(), get_all_users());
 uksort($users_array, 'strnatcasecmp');
 
 echo
-	'<form name="changes" method="get" action="'.WT_SCRIPT_NAME.'">',
+	'<form name="changes" method="get" action="'.KT_SCRIPT_NAME.'">',
 		'<input type="hidden" name="action", value="show">',
 		'<table class="site_change">',
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'">'),
+					KT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'">'),
 				'</td>',
 			'</tr><tr>',
 				'<td>',
-					WT_I18N::translate('Status'), '<br>', select_edit_control('type', $statuses, null, $type, ''),
+					KT_I18N::translate('Status'), '<br>', select_edit_control('type', $statuses, null, $type, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars($xref), '"> ',
+					KT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars($xref), '"> ',
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars($oldged), '"> ',
+					KT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars($oldged), '"> ',
 				'</td>',
 				'<td></td>',
 				'<td>',
-					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
+					KT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
+					KT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', KT_Tree::getNameList(), '', $gedc, KT_USER_IS_ADMIN ? '' : 'disabled'),
 				'</td>',
 			'</tr><tr>',
 				'<td colspan="6">',
-					'<input type="submit" value="', WT_I18N::translate('Filter'), '">',
-					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.changes.action.value=\'export\';return true;" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
-					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', htmlspecialchars(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
+					'<input type="submit" value="', KT_I18N::translate('Filter'), '">',
+					'<input type="submit" value="', KT_I18N::translate('Export'), '" onclick="document.changes.action.value=\'export\';return true;" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
+					'<input type="submit" value="', KT_I18N::translate('Delete'), '" onclick="if (confirm(\'', htmlspecialchars(KT_I18N::translate('Permanently delete these records?')) , '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
 				'</td>',
 			'</tr>',
 		'</table>',
@@ -301,13 +301,13 @@ if ($action) {
 		'<table id="change_list">',
 			'<thead>',
 				'<tr>',
-					'<th>', WT_I18N::translate('Timestamp'), '</th>',
-					'<th>', WT_I18N::translate('Status'), '</th>',
-					'<th>', WT_I18N::translate('Record'), '</th>',
-					'<th>', WT_I18N::translate('GEDCOM Data'), '</th>',
+					'<th>', KT_I18N::translate('Timestamp'), '</th>',
+					'<th>', KT_I18N::translate('Status'), '</th>',
+					'<th>', KT_I18N::translate('Record'), '</th>',
+					'<th>', KT_I18N::translate('GEDCOM Data'), '</th>',
 					'<th></th>',
-					'<th>', WT_I18N::translate('User'), '</th>',
-					'<th>', WT_I18N::translate('Family tree'), '</th>',
+					'<th>', KT_I18N::translate('User'), '</th>',
+					'<th>', KT_I18N::translate('Family tree'), '</th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>',

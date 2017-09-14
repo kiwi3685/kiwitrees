@@ -21,12 +21,12 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-WT_DB::exec(
+KT_DB::exec(
 	"CREATE TABLE IF NOT EXISTS `##favorites` (".
 	" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
 	" fv_username VARCHAR(32)            NOT NULL,".
@@ -42,4 +42,4 @@ WT_DB::exec(
 );
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

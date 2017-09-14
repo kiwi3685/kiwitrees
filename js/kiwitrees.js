@@ -168,11 +168,11 @@ function MM_showHideLayers() { //v6.0
 	    	}
 	    	else {
 	    		//obj.top="auto";
-	    		if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
+	    		if (KT_SCRIPT_NAME.indexOf("fanchart")>0) {
 		    		obj.top=(msY-20)+'px';
 			    	obj.left=(msX-20)+'px';
 	    		}
-	    		else if (WT_SCRIPT_NAME.indexOf("index.php")==-1) {
+	    		else if (KT_SCRIPT_NAME.indexOf("index.php")==-1) {
 		    		Xadjust = document.getElementById('content').offsetLeft;
 		    		obj.left=(5+(msX-Xadjust))+'px';
 		    		obj.top="auto";
@@ -227,7 +227,7 @@ var show = false;
 				if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
 				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
 				famlinks.style.left = famleft + "px";
-				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
+				if (KT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
 				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
 				return;
 			}
@@ -265,7 +265,7 @@ var show = false;
 				pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
 				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
 				famlinks.style.left = famleft + "px";
-				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
+				if (KT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
 				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
 			}
 			else MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
@@ -310,7 +310,7 @@ function edit_interface(params, windowspecs, pastefield) {
 //	var features = windowspecs || edit_window_specs;
 	var features = '';
 	window.pastefield = pastefield;
-	var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + WT_GEDCOM;
+	var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + KT_GEDCOM;
 	window.open(url, '_blank', features);
 	return false;
 }
@@ -350,7 +350,7 @@ function add_record(pid, fact_field) {
 	var fact = jQuery('#' + fact_field).val();
 	if (fact) {
 		if (fact === "OBJE") {
-			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
+			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(KT_GEDCOM), '_blank', edit_window_specs);
 		} else {
 			return edit_interface({
 				"action": "add",
@@ -1220,7 +1220,7 @@ var monthLabels = [];
 function findWindow(ged, type, pastefield, queryParams) {
 	queryParams = queryParams || {};
 	queryParams.type = type;
-	queryParams.ged = typeof ged === 'undefined' ? WT_GEDCOM : ged;
+	queryParams.ged = typeof ged === 'undefined' ? KT_GEDCOM : ged;
 	window.pastefield = pastefield;
 	window.open('find.php?' + jQuery.param(queryParams), '_blank', find_window_specs);	return false;
 }
@@ -1474,7 +1474,7 @@ function autocomplete(selector) {
 
 		// Default to the current tree
 		if (typeof(ged) === "undefined") {
-			jQuery(this).data("autocomplete-ged", WT_GEDCOM);
+			jQuery(this).data("autocomplete-ged", KT_GEDCOM);
 		}
 
 		var self = jQuery(this);

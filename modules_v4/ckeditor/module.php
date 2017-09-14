@@ -21,39 +21,39 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class ckeditor_WT_Module extends WT_Module {
-	// Extend WT_Module
+class ckeditor_KT_Module extends KT_Module {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ WT_I18N::translate('CKEditor™');
+		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ KT_I18N::translate('CKEditor™');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
+		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ KT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 
 	// Convert <textarea class="html-edit"> fields to CKEditor fields
 	public static function enableEditor($controller) {
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/ckeditor.js')
-			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
+			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/ckeditor.js')
+			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
 			// Need to specify the path before we load the libary
-			->addInlineJavascript('var CKEDITOR_BASEPATH="' . WT_MODULES_DIR . 'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			->addInlineJavascript('var CKEDITOR_BASEPATH="' . KT_MODULES_DIR . 'ckeditor/";', KT_Controller_Base::JS_PRIORITY_HIGH)
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
-					contentsCss: "' . WT_MODULES_DIR . 'ckeditor/kt_ckeditor.css",
+					contentsCss: "' . KT_MODULES_DIR . 'ckeditor/kt_ckeditor.css",
 					skin : "moono-lisa",
 					allowedContent: true,
 					width: "100%",
 					height: "400px",
-					filebrowserImageBrowseUrl:	"' . WT_MODULES_DIR . 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
-					filebrowserImageUploadUrl:	"' . WT_MODULES_DIR . 'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
+					filebrowserImageBrowseUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
+					filebrowserImageUploadUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
 					extraPlugins: "slideshow,footnotes",
 					footnotesPrefix: "a",
 					toolbarGroups: [
@@ -79,10 +79,10 @@ class ckeditor_WT_Module extends WT_Module {
 	// Convert <textarea class="html-edit"> fields to CKEditor fields with basic settings only for messsaging
 	public static function enableBasicEditor($controller) {
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/ckeditor.js')
-			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
+			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/ckeditor.js')
+			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
 			// Need to specify the path before we load the libary
-			->addInlineJavascript('var CKEDITOR_BASEPATH="' . WT_MODULES_DIR . 'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			->addInlineJavascript('var CKEDITOR_BASEPATH="' . KT_MODULES_DIR . 'ckeditor/";', KT_Controller_Base::JS_PRIORITY_HIGH)
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {

@@ -21,8 +21,8 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'setup.php');
-define('WT_CONFIG_FILE', 'config.ini.php');
+define('KT_SCRIPT_NAME', 'setup.php');
+define('KT_CONFIG_FILE', 'config.ini.php');
 
 // magic quotes were deprecated in PHP5.3.0
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
@@ -66,45 +66,45 @@ if (version_compare(PHP_VERSION, '5.3')<0) {
 // This script (uniquely) does not load session.php.
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
-define('WT_KIWITREES',    'kiwitrees');
+define('KT_KIWITREES',    'kiwitrees');
 require 'includes/authentication.php'; // for AddToLog()
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
-define('WT_DATA_DIR',    'data/');
-define('WT_DEBUG_SQL',   false);
-define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
-define('WT_MODULES_DIR', 'modules_v4/');
-define('WT_ROOT', '');
-define('WT_GED_ID', null);
-define('WT_USER_ID', 0);
-define('WT_PRIV_PUBLIC', 2);
-define('WT_PRIV_USER',   1);
-define('WT_PRIV_NONE',   0);
-define('WT_PRIV_HIDE',  -1);
+define('KT_DATA_DIR',    'data/');
+define('KT_DEBUG_SQL',   false);
+define('KT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
+define('KT_MODULES_DIR', 'modules_v4/');
+define('KT_ROOT', '');
+define('KT_GED_ID', null);
+define('KT_USER_ID', 0);
+define('KT_PRIV_PUBLIC', 2);
+define('KT_PRIV_USER',   1);
+define('KT_PRIV_NONE',   0);
+define('KT_PRIV_HIDE',  -1);
 
 // PHP requires a time zone to be set.
 date_default_timezone_set('UTC');
 
-if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
+if (file_exists(KT_DATA_DIR . KT_CONFIG_FILE)) {
 	header('Location: index.php');
 	exit;
 }
 
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library' . PATH_SEPARATOR . get_include_path());
+// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and KT_XXXXX classes
+set_include_path(KT_ROOT.'library' . PATH_SEPARATOR . get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
+Zend_Loader_Autoloader::getInstance()->registerNamespace('KT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
-$WT_REQUEST = new Zend_Controller_Request_Http();
-$WT_SESSION = new \stdClass;
-$WT_SESSION->locale = null; // Can't use Zend_Session until we've checked ini_set
-define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
+$KT_REQUEST = new Zend_Controller_Request_Http();
+$KT_SESSION = new \stdClass;
+$KT_SESSION->locale = null; // Can't use Zend_Session until we've checked ini_set
+define('KT_LOCALE', KT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
 echo
 	'<!DOCTYPE html>',
-	'<html ', WT_I18N::html_markup(), '>',
+	'<html ', KT_I18N::html_markup(), '>',
 	'<head>',
 	'<title>Kiwitrees setup wizard</title>',
 	'<style type="text/css">
@@ -124,10 +124,10 @@ echo
 		.info {color: blue;}
 	</style>',
 	'</head><body>',
-	'<h1>', WT_I18N::translate('Installing kiwitrees'), '</h1>';
+	'<h1>', KT_I18N::translate('Installing kiwitrees'), '</h1>';
 
-echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
-echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
+echo '<form name="config" action="', KT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
+echo '<input type="hidden" name="lang" value="', KT_LOCALE, '">';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Step one - choose language and confirm server configuration
@@ -135,10 +135,10 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 if (!isset($_POST['lang'])) {
 	echo
-		'<p>', WT_I18N::translate('Select your default language'), ' ',
-		edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' .  WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
+		'<p>', KT_I18N::translate('Select your default language'), ' ',
+		edit_field_language('change_lang', KT_LOCALE, 'onchange="window.location=\'' .  KT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
-		'<h2>', WT_I18N::translate('1 - Checking your server configuration'), '</h2>';
+		'<h2>', KT_I18N::translate('1 - Checking your server configuration'), '</h2>';
 	$warnings	= false;
 	$errors		= false;
 
@@ -146,42 +146,42 @@ if (!isset($_POST['lang'])) {
 	$disable_functions=preg_split('/ *, */', ini_get('disable_functions'));
 	foreach (array('parse_ini_file') as $function) {
 		if (in_array($function, $disable_functions)) {
-			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ WT_I18N::translate('%s is disabled on this server.  You cannot install Kiwitrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
+			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ KT_I18N::translate('%s is disabled on this server.  You cannot install Kiwitrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
 			$errors=true;
 		}
 	}
 	// Mandatory extensions
 	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP extension "%s" is disabled.  You cannot install Kiwitrees until this is enabled.  Please ask your server\'s administrator to enable it.', $extension), '</p>';
+			echo '<p class="bad">', KT_I18N::translate('PHP extension "%s" is disabled.  You cannot install Kiwitrees until this is enabled.  Please ask your server\'s administrator to enable it.', $extension), '</p>';
 			$errors=true;
 		}
 	}
 	// Recommended extensions
 	foreach (array(
-		'calendar'  => /* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
-		'gd'        => /* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
-		'xml'       => /* I18N: a program feature */ WT_I18N::translate('reporting'),
-		'simplexml' => /* I18N: a program feature */ WT_I18N::translate('reporting'),
+		'calendar'  => /* I18N: a program feature */ KT_I18N::translate('jewish calendar'),
+		'gd'        => /* I18N: a program feature */ KT_I18N::translate('creating thumbnails of images'),
+		'xml'       => /* I18N: a program feature */ KT_I18N::translate('reporting'),
+		'simplexml' => /* I18N: a program feature */ KT_I18N::translate('reporting'),
 	) as $extension=>$features) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP extension "%1$s" is disabled.  Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $extension, $features), '</p>';
+			echo '<p class="bad">', KT_I18N::translate('PHP extension "%1$s" is disabled.  Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $extension, $features), '</p>';
 			$warnings=true;
 		}
 	}
 	// Settings
 	foreach (array(
-		'file_uploads'=>/* I18N: a program feature */ WT_I18N::translate('file upload capability'),
+		'file_uploads'=>/* I18N: a program feature */ KT_I18N::translate('file upload capability'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
+			echo '<p class="bad">', KT_I18N::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
 			$warnings=true;
 		}
 	}
 	if (!$warnings && !$errors) {
-		echo '<p class="good">', WT_I18N::translate('The server configuration is OK.'), '</p>';
+		echo '<p class="good">', KT_I18N::translate('The server configuration is OK.'), '</p>';
 	}
-	echo '<h2>', WT_I18N::translate('2 - Checking your server capacity'), '</h2>';
+	echo '<h2>', KT_I18N::translate('2 - Checking your server capacity'), '</h2>';
 	// Previously, we tried to determine the maximum value that we could set for these values.
 	// However, this is unreliable, especially on servers with custom restrictions.
 	// Now, we just show the default values.  These can (hopefully!) be changed using the
@@ -190,27 +190,27 @@ if (!isset($_POST['lang'])) {
 	$maxcpu = ini_get('max_execution_time');
 	echo
 		'<p>',
-		WT_I18N::translate('The memory and CPU time requirements depend on the number of individuals in your family tree.'),
+		KT_I18N::translate('The memory and CPU time requirements depend on the number of individuals in your family tree.'),
 		'<br>',
-		WT_I18N::translate('The following list shows typical requirements.'),
+		KT_I18N::translate('The following list shows typical requirements.'),
 		'</p><p>',
-		WT_I18N::translate('Small systems (500 individuals): 16-32MB, 10-20 seconds'),
+		KT_I18N::translate('Small systems (500 individuals): 16-32MB, 10-20 seconds'),
 		'<br>',
-		WT_I18N::translate('Medium systems (5000 individuals): 32-64MB, 20-40 seconds'),
+		KT_I18N::translate('Medium systems (5000 individuals): 32-64MB, 20-40 seconds'),
 		'<br>',
-		WT_I18N::translate('Large systems (50000 individuals): 64-128MB, 40-80 seconds'),
+		KT_I18N::translate('Large systems (50000 individuals): 64-128MB, 40-80 seconds'),
 		'</p>',
 		($maxmem<32 || $maxcpu<20) ? '<p class="bad">' : '<p class="good">',
-		WT_I18N::translate('This server\'s memory limit is %dMB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
+		KT_I18N::translate('This server\'s memory limit is %dMB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
 		'</p><p>',
-		WT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
+		KT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
-		WT_I18N::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>Kiwitrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
+		KT_I18N::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>Kiwitrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
 		'</p>';
 	if (!$errors) {
 		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
 		echo '<input type="hidden" name="maxmem" value="', $maxmem, '">';
-		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ WT_I18N::translate('continue'), '">';
+		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ KT_I18N::translate('continue'), '">';
 
 	}
 	echo '</form></body></html>';
@@ -225,16 +225,16 @@ if (!isset($_POST['lang'])) {
 // Step two - The data folder needs to be writable
 ////////////////////////////////////////////////////////////////////////////////
 
-@file_put_contents(WT_DATA_DIR . 'test.txt', 'OK!');
-$OK = @file_get_contents(WT_DATA_DIR . 'test.txt');
-@unlink(WT_DATA_DIR . 'test.txt');
+@file_put_contents(KT_DATA_DIR . 'test.txt', 'OK!');
+$OK = @file_get_contents(KT_DATA_DIR . 'test.txt');
+@unlink(KT_DATA_DIR . 'test.txt');
 
 if ($OK != 'OK!') {
-	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
-	echo '<p class="bad">', WT_I18N::translate('Oops!  Kiwitrees was unable to create files in this folder.'), '</p>';
-	echo '<p>', WT_I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';
-	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
-	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
+	echo '<h2>', realpath(KT_DATA_DIR), '</h2>';
+	echo '<p class="bad">', KT_I18N::translate('Oops!  Kiwitrees was unable to create files in this folder.'), '</p>';
+	echo '<p>', KT_I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';
+	echo '<p>', KT_I18N::translate('You must change this before you can continue.'), '</p>';
+	echo '<br><hr><input type="submit" id="btncontinue" value="', KT_I18N::translate('continue'), '">';
 	echo '</form></body></html>';
 	exit;
 }
@@ -250,63 +250,63 @@ if (!isset($_POST['dbpass'])) $_POST['dbpass']='';
 if (!isset($_POST['dbname'])) $_POST['dbname']='';
 if (!isset($_POST['tblpfx'])) $_POST['tblpfx']='kt_';
 
-define('WT_TBLPREFIX', $_POST['tblpfx']);
+define('KT_TBLPREFIX', $_POST['tblpfx']);
 try {
 	$db_version_ok=false;
-	WT_DB::createInstance(
+	KT_DB::createInstance(
 		$_POST['dbhost'],
 		$_POST['dbport'],
 		'',               // No DBNAME - we will connect to it explicitly
 		$_POST['dbuser'],
 		$_POST['dbpass']
 	);
-	WT_DB::exec("SET NAMES 'utf8'");
-	$row=WT_DB::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
-	if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
-		echo '<p class="bad">', WT_I18N::translate('This database is only running MySQL version %s.  You cannot install Kiwitrees here.', $row->value), '</p>';
+	KT_DB::exec("SET NAMES 'utf8'");
+	$row=KT_DB::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
+	if (version_compare($row->value, KT_REQUIRED_MYSQL_VERSION, '<')) {
+		echo '<p class="bad">', KT_I18N::translate('This database is only running MySQL version %s.  You cannot install Kiwitrees here.', $row->value), '</p>';
 	} else {
 		$db_version_ok=true;
 	}
 } catch (PDOException $ex) {
-	WT_DB::disconnect();
+	KT_DB::disconnect();
 	if ($_POST['dbuser']) {
 		// If we’ve supplied a login, then show the error
 		echo
-			'<p class="bad">', WT_I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
+			'<p class="bad">', KT_I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
-			'<p class="bad">', WT_I18N::translate('Check the settings and try again.'), '</p>';
+			'<p class="bad">', KT_I18N::translate('Check the settings and try again.'), '</p>';
 	}
 }
 
-if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
+if (empty($_POST['dbuser']) || !KT_DB::isConnected() || !$db_version_ok) {
 	echo '
-		<h2>', WT_I18N::translate('3 - Checking the connection to your database server'), '</h2>
-		<p>', WT_I18N::translate('Kiwitrees needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>
-		<p>', WT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>
+		<h2>', KT_I18N::translate('3 - Checking the connection to your database server'), '</h2>
+		<p>', KT_I18N::translate('Kiwitrees needs a MySQL database, version %s or later.', KT_REQUIRED_MYSQL_VERSION), '</p>
+		<p>', KT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>
 		<fieldset>
-			<legend>', WT_I18N::translate('Database connection'), '</legend>
+			<legend>', KT_I18N::translate('Database connection'), '</legend>
 			<div class="label_set">
-				<label for="dbhost">', WT_I18N::translate('Server name'), '</label>
+				<label for="dbhost">', KT_I18N::translate('Server name'), '</label>
 				<input type="text" id="dbhost" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '" dir="ltr">
-				<span>', WT_I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'), '</span>
+				<span>', KT_I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for="dbport">', WT_I18N::translate('Port number'), '</label>
+				<label for="dbport">', KT_I18N::translate('Port number'), '</label>
 				<input type="text"  id="dbport"name="dbport" value="', htmlspecialchars($_POST['dbport']), '">
-				<span>', WT_I18N::translate('Most sites are configured to use the default value of 3306.'), '</span>
+				<span>', KT_I18N::translate('Most sites are configured to use the default value of 3306.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for="dbuser">', WT_I18N::translate('Database user account'), '</label>
+				<label for="dbuser">', KT_I18N::translate('Database user account'), '</label>
 				<input type="text" id="dbuser" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '" autofocus>
-				<span>', WT_I18N::translate('This is case sensitive.'), '</span>
+				<span>', KT_I18N::translate('This is case sensitive.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for="dbpass">', WT_I18N::translate('Database password'), '</label>
+				<label for="dbpass">', KT_I18N::translate('Database password'), '</label>
 				<input type="password" id="dbpass" name="dbpass" value="', htmlspecialchars($_POST['dbpass']), '">
-				<span>', WT_I18N::translate('This is case sensitive.'), '</span>
+				<span>', KT_I18N::translate('This is case sensitive.'), '</span>
 			</div>
 		</fieldset>
-		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
+		<br><hr><input type="submit" id="btncontinue" value="', KT_I18N::translate('continue'), '">
 		</form></body></html>';
 		exit;
 } else {
@@ -335,19 +335,19 @@ $dbname_ok=false;
 if ($DBNAME && $DBNAME==$_POST['dbname'] && $TBLPREFIX==$_POST['tblpfx']) {
 	try {
 		// Try to create the database, if it does not exist.
-		WT_DB::exec("CREATE DATABASE IF NOT EXISTS `{$DBNAME}` COLLATE utf8_unicode_ci");
+		KT_DB::exec("CREATE DATABASE IF NOT EXISTS `{$DBNAME}` COLLATE utf8_unicode_ci");
 	} catch (PDOException $ex) {
 		// If we have no permission to do this, there’s nothing helpful we can say.
 		// We’ll get a more helpful error message from the next test.
 	}
 	try {
-		WT_DB::exec("USE `{$DBNAME}`");
+		KT_DB::exec("USE `{$DBNAME}`");
 		$dbname_ok=true;
 	} catch (PDOException $ex) {
 		echo
-			'<p class="bad">', WT_I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
+			'<p class="bad">', KT_I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
-			'<p class="bad">', WT_I18N::translate('Check the settings and try again.'), '</p>';
+			'<p class="bad">', KT_I18N::translate('Check the settings and try again.'), '</p>';
 	}
 }
 
@@ -356,8 +356,8 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
 		// Kiwitrees has a USER table
-		$dummy=WT_DB::query("SELECT COUNT(*) FROM `##users`")->fetchOne();
-		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new Kiwitrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		$dummy=KT_DB::query("SELECT COUNT(*) FROM `##users`")->fetchOne();
+		echo '<p class="bad">', KT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new Kiwitrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
 		// Table not found?  Good!
@@ -367,8 +367,8 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
 		// [We changed the column name in Kiwitrees, so we can tell the difference!]
-		$dummy=WT_DB::query("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
-		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new Kiwitrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		$dummy=KT_DB::query("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
+		echo '<p class="bad">', KT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new Kiwitrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
 		// Table/column not found?  Good!
@@ -377,22 +377,22 @@ if ($dbname_ok) {
 
 if (!$dbname_ok) {
 	echo '
-		<h2>', WT_I18N::translate('4 - Enter your database and table names'), '</h2>
-		<p>', WT_I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server\'s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>
+		<h2>', KT_I18N::translate('4 - Enter your database and table names'), '</h2>
+		<p>', KT_I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server\'s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>
 		<fieldset>
-			<legend>', WT_I18N::translate('Database name'), '</legend>
+			<legend>', KT_I18N::translate('Database name'), '</legend>
 			<div class="label_set">
-				<label for "dbname">', WT_I18N::translate('Database name'), '</label>
+				<label for "dbname">', KT_I18N::translate('Database name'), '</label>
 				<input type="text" id="dbname" name="dbname" value="', htmlspecialchars($_POST['dbname']), '" autofocus>
-				<span>', WT_I18N::translate('This is case sensitive. If a database with this name does not already exist Kiwitrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'), '</span>
+				<span>', KT_I18N::translate('This is case sensitive. If a database with this name does not already exist Kiwitrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for "tblpfx">', WT_I18N::translate('Table prefix'), '</label>
+				<label for "tblpfx">', KT_I18N::translate('Table prefix'), '</label>
 				<input type="text" id="tblpfx" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '">
-				<span>', WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "kt_" is suggested, but can be anything you want.'), '</span>
+				<span>', KT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "kt_" is suggested, but can be anything you want.'), '</span>
 			</div>
 		</fieldset>
-		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
+		<br><hr><input type="submit" id="btncontinue" value="', KT_I18N::translate('continue'), '">
 		</form></body></html>';
 		exit;
 } else {
@@ -413,45 +413,45 @@ if (!isset($_POST['ktemail'   ])) $_POST['ktemail'   ]='';
 
 if (empty($_POST['ktname']) || empty($_POST['ktuser']) || strlen($_POST['ktpass'])<6 || strlen($_POST['ktpass2'])<6 || empty($_POST['ktemail']) || $_POST['ktpass']<>$_POST['ktpass2']) {
 	if (strlen($_POST['ktpass'])>0 && strlen($_POST['ktpass'])<6) {
-		echo '<p class="bad">', WT_I18N::translate('The password needs to be at least six characters long.'), '</p>';
+		echo '<p class="bad">', KT_I18N::translate('The password needs to be at least six characters long.'), '</p>';
 	} elseif ($_POST['ktpass']<>$_POST['ktpass2']) {
-		echo '<p class="bad">', WT_I18N::translate('The passwords do not match.'), '</p>';
+		echo '<p class="bad">', KT_I18N::translate('The passwords do not match.'), '</p>';
 	} elseif ((empty($_POST['ktname']) || empty($_POST['ktuser']) || empty($_POST['ktpass']) || empty($_POST['ktemail'])) && $_POST['ktname'].$_POST['ktuser'].$_POST['ktpass'].$_POST['ktemail']!='') {
-		echo '<p class="bad">', WT_I18N::translate('You must enter all the administrator account fields.'), '</p>';
+		echo '<p class="bad">', KT_I18N::translate('You must enter all the administrator account fields.'), '</p>';
 	}
 	echo'
-		<h2>', WT_I18N::translate('5 - System settings'), '</h2>
-		<h3>', WT_I18N::translate('Administrator account'), '</h3>
-		<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>Kiwitrees</b> installation.  Please choose a strong password.'), '</p>
+		<h2>', KT_I18N::translate('5 - System settings'), '</h2>
+		<h3>', KT_I18N::translate('Administrator account'), '</h3>
+		<p>', KT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>Kiwitrees</b> installation.  Please choose a strong password.'), '</p>
 		<fieldset>
-			<legend>', WT_I18N::translate('Administrator account'), '</legend>
+			<legend>', KT_I18N::translate('Administrator account'), '</legend>
 			<div class="label_set">
-				<label for "ktname">', WT_I18N::translate('Your name'), '</label>
+				<label for "ktname">', KT_I18N::translate('Your name'), '</label>
 				<input type="text" id="ktname" name="ktname" value="', htmlspecialchars($_POST['ktname']), '" autofocus>
-				<span>', WT_I18N::translate('This is your real name, as you would like it displayed on screen.'), '</span>
+				<span>', KT_I18N::translate('This is your real name, as you would like it displayed on screen.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for "ktuser">', WT_I18N::translate('Login ID'), '</label>
+				<label for "ktuser">', KT_I18N::translate('Login ID'), '</label>
 				<input type="text" id="ktuser" name="ktuser" value="', htmlspecialchars($_POST['ktuser']), '">
-				<span>', WT_I18N::translate('You will use this to login to Kiwitrees.'), '</span>
+				<span>', KT_I18N::translate('You will use this to login to Kiwitrees.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for "ktpass">', WT_I18N::translate('Password'), '</label>
+				<label for "ktpass">', KT_I18N::translate('Password'), '</label>
 				<input type="password" id="ktpass" name="ktpass" value="', htmlspecialchars($_POST['ktpass']), '">
-				<span>', WT_I18N::translate('This must to be at least six characters.  It is case-sensitive.'), '</span>
+				<span>', KT_I18N::translate('This must to be at least six characters.  It is case-sensitive.'), '</span>
 			</div>
 			<div class="label_set">
 				<label for "ktpass2"></label>
 				<input type="password" id="ktpass2" name="ktpass2" value="', htmlspecialchars($_POST['ktpass2']), '">
-				<span>', WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'), '</span>
+				<span>', KT_I18N::translate('Type your password again, to make sure you have typed it correctly.'), '</span>
 			</div>
 			<div class="label_set">
-				<label for "ktemail">', WT_I18N::translate('Email address'), '</label>
+				<label for "ktemail">', KT_I18N::translate('Email address'), '</label>
 				<input type="email" id="ktemail" name="ktemail" value="', htmlspecialchars($_POST['ktemail']), '">
-				<span>', WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'), '</span>
+				<span>', KT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'), '</span>
 			</div>
 		</fieldset>
-		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
+		<br><hr><input type="submit" id="btncontinue" value="', KT_I18N::translate('continue'), '">
 		</form></body></html>';
 		exit;
 } else {
@@ -469,7 +469,7 @@ if (empty($_POST['ktname']) || empty($_POST['ktuser']) || strlen($_POST['ktpass'
 
 try {
 	// These shouldn’t fail.
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##gedcom` (".
 		" gedcom_id     INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_name   VARCHAR(255)           NOT NULL,".
@@ -479,14 +479,14 @@ try {
 		"         KEY `##gedcom_ix2` (sort_order)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##site_setting` (".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY (setting_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##gedcom_setting` (".
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
@@ -494,7 +494,7 @@ try {
 		" PRIMARY KEY                        (gedcom_id, setting_name),".
 		" FOREIGN KEY `##gedcom_setting_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##user` (".
 		" user_id   INTEGER AUTO_INCREMENT NOT NULL,".
 		" user_name VARCHAR(32)            NOT NULL,".
@@ -506,7 +506,7 @@ try {
 		" UNIQUE  KEY `##user_ix2` (email)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##user_setting` (".
 		" user_id       INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
@@ -515,7 +515,7 @@ try {
 		" FOREIGN KEY `##user_setting_fk1` (user_id) REFERENCES `##user` (user_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##user_gedcom_setting` (".
 		" user_id       INTEGER      NOT NULL,".
 		" gedcom_id     INTEGER      NOT NULL,".
@@ -526,7 +526,7 @@ try {
 		" FOREIGN KEY `##user_gedcom_setting_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##log` (".
 		" log_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
@@ -543,7 +543,7 @@ try {
 		" FOREIGN KEY `##log_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE SET NULL */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##change` (".
 		" change_id      INTEGER AUTO_INCREMENT                  NOT NULL,".
 		" change_time    TIMESTAMP                               NOT NULL DEFAULT CURRENT_TIMESTAMP,".
@@ -559,7 +559,7 @@ try {
 		" FOREIGN KEY `##change_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##message` (".
 		" message_id INTEGER AUTO_INCREMENT NOT NULL,".
 		" sender     VARCHAR(64)            NOT NULL,". // username or email address
@@ -572,7 +572,7 @@ try {
 		" FOREIGN KEY `##message_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##default_resn` (".
 		" default_resn_id INTEGER AUTO_INCREMENT                             NOT NULL,".
 		" gedcom_id       INTEGER                                            NOT NULL,".
@@ -586,7 +586,7 @@ try {
 		" FOREIGN KEY `##default_resn_fk1` (gedcom_id)  REFERENCES `##gedcom` (gedcom_id)".
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##individuals` (".
 		" i_id     VARCHAR(20)         NOT NULL,".
 		" i_file   INTEGER             NOT NULL,".
@@ -597,7 +597,7 @@ try {
 		" UNIQUE  KEY `##individuals_ix1` (i_file, i_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##families` (".
 		" f_id      VARCHAR(20)  NOT NULL,".
 		" f_file    INTEGER      NOT NULL,".
@@ -611,7 +611,7 @@ try {
 		"         KEY `##families_ix3` (f_wife)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##places` (".
 		" p_id          INTEGER AUTO_INCREMENT NOT NULL,".
 		" p_place       VARCHAR(150)               NULL,".
@@ -624,7 +624,7 @@ try {
 		" UNIQUE  KEY `##places_ix2` (p_parent_id, p_file, p_place)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##placelinks` (".
 		" pl_p_id INTEGER NOT NULL,".
 		" pl_gid  VARCHAR(20)  NOT NULL,".
@@ -635,7 +635,7 @@ try {
 		"         KEY `##placelinks_ix3` (pl_file)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##dates` (".
 		" d_day        TINYINT     NOT NULL,".
 		" d_month      CHAR(5)         NULL,".
@@ -659,7 +659,7 @@ try {
 		" KEY `##dates_ix10` (d_fact, d_gid)".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##media` (".
 		" m_id       VARCHAR(20)            NOT NULL,".
 		" m_ext      VARCHAR(6)                 NULL,".
@@ -674,7 +674,7 @@ try {
 		"         KEY `##media_ix3` (m_titl)".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##next_id` (".
 		" gedcom_id   INTEGER     NOT NULL,".
 		" record_type VARCHAR(15) NOT NULL,".
@@ -683,7 +683,7 @@ try {
 		" FOREIGN KEY `##next_id_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##other` (".
 		" o_id     VARCHAR(20) NOT NULL,".
 		" o_file   INTEGER     NOT NULL,".
@@ -693,7 +693,7 @@ try {
 		" UNIQUE  KEY `##other_ix1` (o_file, o_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##sources` (".
 		" s_id     VARCHAR(20)    NOT NULL,".
 		" s_file   INTEGER        NOT NULL,".
@@ -704,7 +704,7 @@ try {
 		"         KEY `##sources_ix2` (s_name)".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##link` (".
 		" l_file    INTEGER     NOT NULL,".
 		" l_from    VARCHAR(20) NOT NULL,".
@@ -714,7 +714,7 @@ try {
 		" UNIQUE  KEY `##link_ix1` (l_to, l_file, l_type, l_from)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##name` (".
 		" n_file             INTEGER      NOT NULL,".
 		" n_id               VARCHAR(20)  NOT NULL,".
@@ -735,7 +735,7 @@ try {
 		"         KEY `##name_ix2` (n_surn, n_file, n_type, n_id),".
 		"         KEY `##name_ix3` (n_givn, n_file, n_type, n_id)".		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##module` (".
 		" module_name   	VARCHAR(32)               		NOT NULL,".
 		" status        	ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
@@ -746,7 +746,7 @@ try {
 		" PRIMARY KEY (module_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##module_setting` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
@@ -755,7 +755,7 @@ try {
 		" FOREIGN KEY `##module_setting_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##module_privacy` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" gedcom_id     INTEGER     NOT NULL,".
@@ -766,7 +766,7 @@ try {
 		" FOREIGN KEY `##module_privacy_fk2` (gedcom_id)   REFERENCES `##gedcom` (gedcom_id)   /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##block` (".
 		" block_id    INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_id   INTEGER                    NULL,".
@@ -781,7 +781,7 @@ try {
 		" FOREIGN KEY `##block_fk3` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##block_setting` (".
 		" block_id      INTEGER     NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
@@ -790,7 +790,7 @@ try {
 		" FOREIGN KEY `##block_setting_fk1` (block_id) REFERENCES `##block` (block_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##hit_counter` (".
 		" gedcom_id      INTEGER     NOT NULL,".
 		" page_name      VARCHAR(32) NOT NULL,".
@@ -800,7 +800,7 @@ try {
 		" FOREIGN KEY `##hit_counter_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##ip_address` (".
 		" ip_address VARCHAR(40)                                NOT NULL,". // long enough for IPv6
 		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL,".
@@ -808,7 +808,7 @@ try {
 		" PRIMARY KEY (ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##session` (".
 		" session_id   CHAR(128)   NOT NULL,".
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
@@ -820,7 +820,7 @@ try {
 		"         KEY `##session_ix2` (user_id, ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##gedcom_chunk` (".
 		" gedcom_chunk_id INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_id       INTEGER                NOT NULL,".
@@ -832,7 +832,7 @@ try {
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##custom_lang`(".
 		" custom_lang_id    INTEGER      NOT NULL AUTO_INCREMENT,".
 		" language          VARCHAR(10)  NOT NULL,".
@@ -843,7 +843,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 
-	WT_DB::exec(
+	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##site_access_rule` (".
 		" site_access_rule_id INTEGER          NOT NULL AUTO_INCREMENT,".
 		" ip_address_start     INTEGER UNSIGNED NOT NULL DEFAULT 0,".
@@ -859,7 +859,7 @@ try {
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
 
-	WT_DB::exec(
+	KT_DB::exec(
 		"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
 		" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'Gecko-based browsers'),".
 		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko)%', 'allow', 'WebKit-based browsers'),".
@@ -869,20 +869,20 @@ try {
 		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
 	);
 
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"INSERT IGNORE INTO `##gedcom` (gedcom_id, gedcom_name) VALUES ".
 		" (-1, 'DEFAULT_TREE')"
 	)->execute();
 
 	$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES ".
 		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
 		$_POST['ktuser'], $_POST['ktname'], $_POST['ktemail'], crypt($_POST['ktpass'], $hash)
 	));
 
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'canadmin',          ?),".
 		" (1, 'language',          ?),".
@@ -892,12 +892,12 @@ try {
 		" (1, 'visibleonline',     ?),".
 		" (1, 'notify_clipping',   ?)"
 	)->execute(array(
-		1, WT_LOCALE, 1, 1, 0, 1, 1
+		1, KT_LOCALE, 1, 1, 0, 1, 1
 	));
 
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '-2'),".
+		"('KT_SCHEMA_VERSION',               '-2'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
@@ -917,10 +917,10 @@ try {
 	));
 
 	// Create the default modules for new family trees
-	WT_Module::setDefaultModules();
+	KT_Module::setDefaultModules();
 
 	// Create the default block settings for new family trees
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES
 			(-1, 'main', 1, 'gedcom_stats'),
 			(-1, 'side', 1, 'gedcom_block'),
@@ -942,7 +942,7 @@ try {
 		'dbname="' . addcslashes($_POST['dbname'], '"') . '"' . PHP_EOL.
 		'tblpfx="' . addcslashes($_POST['tblpfx'], '"') . '"' . PHP_EOL;
 
-	file_put_contents(WT_DATA_DIR . 'config.ini.php', $config_ini_php);
+	file_put_contents(KT_DATA_DIR . 'config.ini.php', $config_ini_php);
 
 	// Done - start using Kiwitrees
 	echo
@@ -951,9 +951,9 @@ try {
 	exit;
 } catch (PDOException $ex) {
 	echo
-		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',
+		'<p class="bad">', KT_I18N::translate('An unexpected database error occurred.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
-		'<p class="info">', WT_I18N::translate('The kiwitrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
+		'<p class="info">', KT_I18N::translate('The kiwitrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
 echo '</form>';
 echo '</body>';

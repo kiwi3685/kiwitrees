@@ -21,25 +21,25 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'site-php-version.php');
+define('KT_SCRIPT_NAME', 'site-php-version.php');
 
 // This script does not load session.php.
 // It may well invoke code that won’t run on PHP5.2…
 // This next block of code is a minimal version of session.php
-define('WT_KIWITREES', 'kiwitrees');
-define('WT_ROOT', '');
-define('WT_GED_ID', 0);
-define('WT_USER_ID', 0);
-define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
-$WT_SESSION = new stdClass();
-$WT_SESSION->locale='';
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
+define('KT_KIWITREES', 'kiwitrees');
+define('KT_ROOT', '');
+define('KT_GED_ID', 0);
+define('KT_USER_ID', 0);
+define('KT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
+$KT_SESSION = new stdClass();
+$KT_SESSION->locale='';
+// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and KT_XXXXX classes
+set_include_path(KT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
+Zend_Loader_Autoloader::getInstance()->registerNamespace('KT_');
 require 'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_utf-8.php';
-define('WT_LOCALE', WT_I18N::init());
+require KT_ROOT.'includes/functions/functions_utf-8.php';
+define('KT_LOCALE', KT_I18N::init());
 
 if (version_compare(PHP_VERSION, '5.3.3', '>=')) {
 	//header('Location: index.php');
@@ -49,10 +49,10 @@ header('Content-Type: text/html; charset=UTF-8');
 
 ?>
 <!DOCTYPE html>
-<html <?php echo WT_I18N::html_markup(); ?>>
+<html <?php echo KT_I18N::html_markup(); ?>>
 	<head>
 		<meta charset="UTF-8">
-		<title><?php echo WT_KIWITREES; ?></title>
+		<title><?php echo KT_KIWITREES; ?></title>
 		<meta name="robots" content="noindex,follow">
 		<style type="text/css">
 			body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
@@ -67,20 +67,20 @@ header('Content-Type: text/html; charset=UTF-8');
 	</head>
 	<body>
 		<h1>
-			<?php echo WT_I18N::translate('This website is temporarily unavailable'); ?>
+			<?php echo KT_I18N::translate('This website is temporarily unavailable'); ?>
 		</h1>
 		<div class="content">
 			<p>
-				<?php echo WT_I18N::translate('This version of kiwitrees cannot be installed on this web-server.'); ?>
+				<?php echo KT_I18N::translate('This version of kiwitrees cannot be installed on this web-server.'); ?>
 			</p>
 			<p>
-				<?php echo WT_I18N::translate('You have the following options:'); ?>
+				<?php echo KT_I18N::translate('You have the following options:'); ?>
 			</p>
 			<ul>
-				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.3.3'); ?></li>
+				<li><?php /* I18N: %s is a version number */ echo KT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.3.3'); ?></li>
 			</ul>
 			<p class="good">
-				<?php echo WT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://kiwitrees.net">kiwitrees.net</a>'); ?>
+				<?php echo KT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://kiwitrees.net">kiwitrees.net</a>'); ?>
 			</p>
 		</div>
 		<!-- <?php echo PHP_VERSION; ?> -->

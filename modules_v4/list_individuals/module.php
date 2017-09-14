@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class list_individuals_WT_Module extends WT_Module implements WT_Module_List {
+class list_individuals_KT_Module extends KT_Module implements KT_Module_List {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Individuals');
+		return /* I18N: Name of a module */ KT_I18N::translate('Individuals');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the individuals list module */ WT_I18N::translate('A list of individuals by surname');
+		return /* I18N: Description of the individuals list module */ KT_I18N::translate('A list of individuals by surname');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,17 +49,17 @@ class list_individuals_WT_Module extends WT_Module implements WT_Module_List {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_List
+	// Implement KT_Module_List
 	public function getListMenus() {
 		global $controller;
-		$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . WT_GEDURL;
+		$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
 		$menus = array();
-		$menu  = new WT_Menu(
+		$menu  = new KT_Menu(
 			$this->getTitle(),
 			'indilist.php' . $surname_url,
 			'menu-list-indi'

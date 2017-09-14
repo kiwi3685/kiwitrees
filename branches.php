@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'branches.php');
+define('KT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
 
 //-- args
@@ -34,21 +34,21 @@ if (empty($ged)) {
 }
 
 $user_ancestors=array();
-if (WT_USER_GEDCOM_ID) {
-	load_ancestors_array(WT_Person::getInstance(WT_USER_GEDCOM_ID), 1);
+if (KT_USER_GEDCOM_ID) {
+	load_ancestors_array(KT_Person::getInstance(KT_USER_GEDCOM_ID), 1);
 }
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 if ($surn) {
-	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', htmlspecialchars($surn)));
+	$controller->setPageTitle(/* I18N: %s is a surname */ KT_I18N::translate('Branches of the %s family', htmlspecialchars($surn)));
 } else {
-	$controller->setPageTitle(WT_I18N::translate('Branches'));
+	$controller->setPageTitle(KT_I18N::translate('Branches'));
 }
 $controller
-	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_branches', WT_USER_ACCESS_LEVEL))
+	->restrictAccess(KT_Module::isActiveList(KT_GED_ID, 'list_branches', KT_USER_ACCESS_LEVEL))
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_TREEVIEW_JS_URL)
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_JQUERY_TREEVIEW_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		jQuery("#branch-list").treeview({
@@ -64,17 +64,17 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="surnlist" id="surnlist" method="get" action="?">
 		<div class="chart_options">
-			<label for = "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
-			<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($surn); ?>" dir="auto">
+			<label for = "SURN"><?php echo KT_Gedcom_Tag::getLabel('SURN'); ?></label>
+			<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo KT_Filter::escapeHtml($surn); ?>" dir="auto">
 		</div>
 		<div class="chart_options branches">
-			<label><?php echo WT_I18N::translate('Phonetic search'); ?></label>
+			<label><?php echo KT_I18N::translate('Phonetic search'); ?></label>
 					<?php
 						echo '
-							<label class="branches" for="soundex_std">' ,WT_I18N::translate('Russell'), '</label>
+							<label class="branches" for="soundex_std">' ,KT_I18N::translate('Russell'), '</label>
 							<input type="checkbox" name="soundex_std" id="soundex_std" value="1" ';
 								if ($soundex_std) echo ' checked="checked"'; echo '>
-							<label for="soundex_dm">' ,WT_I18N::translate('Daitch-Mokotoff'), '</label>
+							<label for="soundex_dm">' ,KT_I18N::translate('Daitch-Mokotoff'), '</label>
 							<input style="margin: auto 10px; width: initial;" type="checkbox" name="soundex_dm" id="soundex_dm" value="1" ';
 								if ($soundex_dm) echo ' checked="checked"'; echo '>
 						';
@@ -82,7 +82,7 @@ $controller
 		</div>
 		<button class="btn btn-primary show" type="submit">
 			<i class="fa fa-eye"></i>
-			<?php echo WT_I18N::translate('Show'); ?>
+			<?php echo KT_I18N::translate('Show'); ?>
 		</button>
 	</form>
 	<hr style="clear:both;">
@@ -93,13 +93,13 @@ $controller
 if ($surn) {
 	echo '
 		<div id="treecontrol">
-			<a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a>
+			<a href="#">', KT_I18N::translate('Collapse all'), '</a> | <a href="#">', KT_I18N::translate('Expand all'), '</a>
 		</div>
 		<div class="loading-image"></div>
 	';
 
 	$indis = indisArray($surn, $soundex_std, $soundex_dm);
-	usort($indis, array('WT_Person', 'CompareBirtDate'));
+	usort($indis, array('KT_Person', 'CompareBirtDate'));
 	echo '<ul id="branch-list">';
 	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
@@ -121,8 +121,8 @@ echo '</div>'; // close branches-page
 if (false) {
 	// These messages were added (briefly) and translated.
 	// Keep them in the translation template, as we will want them in the future
-	WT_I18N::translate('Collapse all');
-	WT_I18N::translate('Expand all');
+	KT_I18N::translate('Collapse all');
+	KT_I18N::translate('Expand all');
 }
 
 function print_fams($person, $famid=null) {
@@ -136,8 +136,8 @@ function print_fams($person, $famid=null) {
 			stripos($surn1, $surn)!==false ||
 			stripos($surn, $surn1)!==false ||
 			// one name sounds like the other
-			$soundex_std && WT_Soundex::compare(WT_Soundex::soundex_std($surn1), WT_Soundex::soundex_std($surn)) ||
-			$soundex_dm  && WT_Soundex::compare(WT_Soundex::soundex_dm ($surn1), WT_Soundex::soundex_dm ($surn))
+			$soundex_std && KT_Soundex::compare(KT_Soundex::soundex_std($surn1), KT_Soundex::soundex_std($surn)) ||
+			$soundex_dm  && KT_Soundex::compare(KT_Soundex::soundex_dm ($surn1), KT_Soundex::soundex_dm ($surn))
 		) {
 			$person_name = $name['full'];
 			break;
@@ -153,7 +153,7 @@ function print_fams($person, $famid=null) {
 	$sosa = array_search($person->getXref(), $user_ancestors, true);
 	if ($sosa) {
 		$class = 'search_hit';
-		$sosa = '<a target="_blank" rel="noopener noreferrer" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
+		$sosa = '<a target="_blank" rel="noopener noreferrer" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.KT_I18N::translate('Sosa').'" href="relationship.php?pid2='.KT_USER_ROOT_ID.'&amp;pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
 		'<a target="_blank" rel="noopener noreferrer" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.$person_name.'</a> '.
@@ -163,7 +163,7 @@ function print_fams($person, $famid=null) {
 		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcomRecord());
 		$pedi = get_gedcom_value('PEDI', 2, $famcrec);
 		if ($pedi) {
-			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
+			$label = KT_Gedcom_Code_Pedi::getValue($pedi, $person);
 		}
 		$current = '<span class="red">'.$label.'</span> '.$current;
 	}
@@ -179,7 +179,7 @@ function print_fams($person, $famid=null) {
 			$sosa2 = array_search($spouse->getXref(), $user_ancestors, true);
 			if ($sosa2) {
 				$class = 'search_hit';
-				$sosa2 = '<a target="_blank" rel="noopener noreferrer" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
+				$sosa2 = '<a target="_blank" rel="noopener noreferrer" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.KT_I18N::translate('Sosa').'" href="relationship.php?pid2='.KT_USER_ROOT_ID.'&amp;pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
 			$marriage_year=$family->getMarriageYear();
 			if ($marriage_year) {
@@ -188,7 +188,7 @@ function print_fams($person, $famid=null) {
 			}
 			else if ($family->getMarriage()) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.WT_I18N::translate('yes').'"><i class="icon-rings"></i></span></a>';
+				$txt .= '<span class="details1" title="'.KT_I18N::translate('yes').'"><i class="icon-rings"></i></span></a>';
 			}
 		$txt .=
 			$spouse->getSexImage().
@@ -224,32 +224,32 @@ function indisArray($surn, $soundex_std, $soundex_dm) {
 		" WHERE n_file=?".
 		" AND n_type!=?".
 		" AND (n_surn=? OR n_surname=?";
-	$args=array(WT_GED_ID, '_MARNM', $surn, $surn);
+	$args=array(KT_GED_ID, '_MARNM', $surn, $surn);
 	if ($soundex_std) {
-		foreach (explode(':', WT_Soundex::soundex_std($surn)) as $value) {
+		foreach (explode(':', KT_Soundex::soundex_std($surn)) as $value) {
 			$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 			$args[]=$value;
 		}
 	}
 	if ($soundex_dm) {
-		foreach (explode(':', WT_Soundex::soundex_dm($surn)) as $value) {
+		foreach (explode(':', KT_Soundex::soundex_dm($surn)) as $value) {
 			$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 			$args[]=$value;
 		}
 	}
 	$sql .= ')';
 	$rows=
-		WT_DB::prepare($sql)
+		KT_DB::prepare($sql)
 		->execute($args)
 		->fetchAll(PDO::FETCH_ASSOC);
 	$data=array();
 	foreach ($rows as $row) {
-		$data[]=WT_Person::getInstance($row);
+		$data[]=KT_Person::getInstance($row);
 	}
 	return $data;
 }
 
 function sosa_gen($sosa) {
 	$gen = (int)log($sosa, 2)+1;
-	return '<sup title="'.WT_I18N::translate('Generation').'">'.$gen.'</sup>';
+	return '<sup title="'.KT_I18N::translate('Generation').'">'.$gen.'</sup>';
 }

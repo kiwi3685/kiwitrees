@@ -21,30 +21,30 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class notes_WT_Module extends WT_Module implements WT_Module_Tab {
-	// Extend WT_Module
+class notes_KT_Module extends KT_Module implements KT_Module_Tab {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Notes');
+		return /* I18N: Name of a module */ KT_I18N::translate('Notes');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Notes” module */ WT_I18N::translate('A tab showing the notes attached to an individual.');
+		return /* I18N: Description of the “Notes” module */ KT_I18N::translate('A tab showing the notes attached to an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 40;
 	}
 
 	protected $noteCount = null;
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $NAV_NOTES, $controller;
 
@@ -54,7 +54,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<input id="checkbox_note2" type="checkbox">
-					<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
+					<label for="checkbox_note2"><?php echo KT_I18N::translate('Show all notes'); ?></label>
 					<?php echo help_link('show_fact_sources'); ?>
 				</td>
 			</tr>
@@ -81,25 +81,25 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		if ($this->get_note_count()==0) {
-			echo '<tr><td id="no_tab2" colspan="2" class="facts_value">', WT_I18N::translate('There are no Notes for this individual.'), '</td></tr>';
+			echo '<tr><td id="no_tab2" colspan="2" class="facts_value">', KT_I18N::translate('There are no Notes for this individual.'), '</td></tr>';
 		}
 		//-- New Note Link
 		if ($controller->record->canEdit()) {
 			?>
 		<tr>
-			<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('NOTE'); ?></td>
+			<td class="facts_label"><?php echo KT_Gedcom_Tag::getLabel('NOTE'); ?></td>
 			<td class="facts_value">
 				<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
-					<?php echo WT_I18N::translate('Add a note'); ?>
+					<?php echo KT_I18N::translate('Add a note'); ?>
 				</a>
 				<?php echo help_link('add_note'); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('SHARED_NOTE'); ?></td>
+			<td class="facts_label"><?php echo KT_Gedcom_Tag::getLabel('SHARED_NOTE'); ?></td>
 			<td class="facts_value">
 				<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;">
-					<?php echo WT_I18N::translate('Add a shared note'); ?>
+					<?php echo KT_I18N::translate('Add a shared note'); ?>
 				</a>
 				<?php echo help_link('add_shared_note'); ?>
 			</td>
@@ -128,29 +128,29 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $this->noteCount;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_note_count()>0;
+		return KT_USER_CAN_EDIT || $this->get_note_count()>0;
 	}
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return $this->get_note_count()==0;
 	}
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
 }

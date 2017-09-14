@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -46,40 +46,40 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 
 	if (empty($ALBUM_TITLES)) {
 		$ALBUM_TITLES = array(
-			WT_I18N::translate('Photos'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Census'),
-			WT_I18N::translate('Other')
+			KT_I18N::translate('Photos'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Census'),
+			KT_I18N::translate('Other')
 		);
 	}
 
 	$default_groups = array(
-			WT_I18N::translate('Other'),
-			WT_I18N::translate('Other'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Other'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Census'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Census'),
-			WT_I18N::translate('Census'),
-			WT_I18N::translate('Documents'),
-			WT_I18N::translate('Other'),
-			WT_I18N::translate('Photos'),
-			WT_I18N::translate('Photos'),
-			WT_I18N::translate('Photos'),
-			WT_I18N::translate('Other')
+			KT_I18N::translate('Other'),
+			KT_I18N::translate('Other'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Other'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Census'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Census'),
+			KT_I18N::translate('Census'),
+			KT_I18N::translate('Documents'),
+			KT_I18N::translate('Other'),
+			KT_I18N::translate('Photos'),
+			KT_I18N::translate('Photos'),
+			KT_I18N::translate('Photos'),
+			KT_I18N::translate('Other')
 	);
 
 	if (empty($ALBUM_OPTIONS))	{
-		$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
+		$ALBUM_OPTIONS = array_combine(array_keys(KT_Gedcom_Tag::getFileFormTypes()), $default_groups);
 	}
 
 	$ged_id = get_id_from_gedcom($GEDCOM);
-	$person = WT_Person::getInstance($pid);
+	$person = KT_Person::getInstance($pid);
 	$ctf = 0;
 	if ($level > 0) {
 		$regexp = '/\n' . $level . ' OBJE @(.*)@/';
@@ -94,9 +94,9 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 			$ctf += preg_match_all($regexp, $family->getGedcomRecord(), $match, PREG_SET_ORDER);
 		}
 	}
-	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _KT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
-	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+	$sort_ct = preg_match_all('/\n1 _KT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 	for ($i = 0; $i < $sort_ct; $i++) {
 		if (!isset($sort_current_objes[$sort_match[$i][1]])) {
 			$sort_current_objes[$sort_match[$i][1]] = 1;
@@ -134,7 +134,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 		" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
 		" WHERE m_file=? AND l_from IN (";
 	$i=0;
-	$vars = array(WT_GED_ID);
+	$vars = array(KT_GED_ID);
 	foreach ($ids as $media_id) {
 		if ($i > 0) $sqlmm .= ", ";
 		$sqlmm .= "?";
@@ -153,7 +153,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 					if ($value == $tt) {
 						$sqlmm .= "m_gedcom LIKE '%TYPE " .strtolower($key). "%' OR ";
 					}
-					if ($tt == WT_I18N::translate('Other')) {
+					if ($tt == KT_I18N::translate('Other')) {
 						$sqlmm .= "m_gedcom NOT LIKE '%TYPE %' OR ";
 					}
 				}
@@ -167,7 +167,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 		$sqlmm .= $orderbylist;
 	}
 
-	$rows = WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
+	$rows = KT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 	$numm = count($rows);
 	$foundObjs = array();
 
@@ -177,7 +177,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 			echo '<table class="facts_table">
 				<tr>
 					<td class="descriptionbox" style="width:120px; text-align:center; vertical-align:middle;">
-						<span style="font-weight:900;">', WT_I18N::translate($tt),'</span>
+						<span style="font-weight:900;">', KT_I18N::translate($tt),'</span>
 					</td>
 					<td class="optionbox">';
 		}
@@ -243,7 +243,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 function album_print_media_row($rtype, $rowm, $pid) {
 	global $sort_i, $notes;
 
-	$media = WT_Media::getInstance($rowm['m_id']);
+	$media = KT_Media::getInstance($rowm['m_id']);
 
 	if ($media && !$media->canDisplayDetails()) {
 		// This media object is private;
@@ -281,7 +281,7 @@ function album_print_media_row($rtype, $rowm, $pid) {
 
 	// Prepare Below Thumbnail  menu ----------------------------------------------------
 	$mtitle = '<div class="album_media_title">' . $mediaTitle . '</div>';
-	$menu = new WT_Menu();
+	$menu = new KT_Menu();
 	$menu->addLabel($mtitle, 'right');
 
 	if ($rtype=='old') {
@@ -292,29 +292,29 @@ function album_print_media_row($rtype, $rowm, $pid) {
 
 		// View Notes
 		if (strpos($rowm['m_gedcom'], "\n1 NOTE")) {
-			$submenu = new WT_Menu(WT_I18N::translate('View Notes'), '#');
+			$submenu = new KT_Menu(KT_I18N::translate('View Notes'), '#');
 			// Notes Tooltip ----------------------------------------------------
-			$submenu->addOnclick("modalNotes('". $notes ."','". WT_I18N::translate('View Notes') ."'); return false;");
+			$submenu->addOnclick("modalNotes('". $notes ."','". KT_I18N::translate('View Notes') ."'); return false;");
 			$submenu->addClass("submenuitem");
 			$menu->addSubMenu($submenu);
 		}
 		//View Details
-		$submenu = new WT_Menu(WT_I18N::translate('View Details'), WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$rowm['m_id'].'&amp;ged='.WT_GEDURL, 'right');
+		$submenu = new KT_Menu(KT_I18N::translate('View Details'), KT_SERVER_NAME.KT_SCRIPT_PATH . "mediaviewer.php?mid=".$rowm['m_id'].'&amp;ged='.KT_GEDURL, 'right');
 		$submenu->addClass("submenuitem");
 		$menu->addSubMenu($submenu);
 
 		//View Sources
 		$source_menu = null;
 		foreach ($media->getAllFactsByType('SOUR') as $source_fact) {
-			$source = WT_Source::getInstance(trim($source_fact->detail, '@'));
+			$source = KT_Source::getInstance(trim($source_fact->detail, '@'));
 			if ($source && $source->canDisplayDetails()) {
 				if (!$source_menu) {
 					// Group sources under a top level menu
-					$source_menu = new WT_Menu(WT_I18N::translate('Sources'), '#', null, 'right', 'right');
+					$source_menu = new KT_Menu(KT_I18N::translate('Sources'), '#', null, 'right', 'right');
 					$source_menu->addClass('submenuitem', 'submenu');
 				}
 				//now add a link to the actual source as a submenu
-				$submenu = new WT_Menu(new WT_Menu(strip_tags($source->getFullName()), $source->getHtmlUrl()));
+				$submenu = new KT_Menu(new KT_Menu(strip_tags($source->getFullName()), $source->getHtmlUrl()));
 				$submenu->addClass('submenuitem', 'submenu');
 				$source_menu->addSubMenu($submenu);
 			}
@@ -323,21 +323,21 @@ function album_print_media_row($rtype, $rowm, $pid) {
 			$menu->addSubMenu($source_menu);
 		}
 
-		if (WT_USER_CAN_EDIT) {
+		if (KT_USER_CAN_EDIT) {
 			// Edit Media
-			$submenu = new WT_Menu(WT_I18N::translate('Edit media'), 'addmedia.php?action=editmedia&amp;pid=' . $rowm['m_id']);
+			$submenu = new KT_Menu(KT_I18N::translate('Edit media'), 'addmedia.php?action=editmedia&amp;pid=' . $rowm['m_id']);
 			$submenu->addTarget('_blank');
 			$submenu->addClass('submenuitem');
 			$menu->addSubMenu($submenu);
 			// Manage Links
-			if (WT_USER_IS_ADMIN) {
-				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . WT_GEDCOM);
+			if (KT_USER_IS_ADMIN) {
+				$submenu = new KT_Menu(KT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . KT_GEDCOM);
 				$submenu->addClass('submenuitem');
 				$submenu->addTarget('_blank');
 				$menu->addSubmenu($submenu);
 				// Unlink Media
-				$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
-				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '" . $rowm['m_id'] . "', '".WT_I18N::translate('Are you sure you want to delete this link?')."');");
+				$submenu = new KT_Menu(KT_I18N::translate('Unlink Media'));
+				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '" . $rowm['m_id'] . "', '".KT_I18N::translate('Are you sure you want to delete this link?')."');");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}

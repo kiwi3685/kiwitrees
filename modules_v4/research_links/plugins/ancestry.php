@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -34,8 +34,8 @@ class ancestry_plugin extends research_base_plugin {
 			'sv'		=> 'se',		// Swedish
 			);
 		// ancestry supports Canada in English and French versions, too; but kiwitrees doesn't support these language versions
-		if (isset($domain[WT_LOCALE])) {
-			$ancestry_domain = $domain[WT_LOCALE];
+		if (isset($domain[KT_LOCALE])) {
+			$ancestry_domain = $domain[KT_LOCALE];
 		} else {
 			$ancestry_domain = $domain['en_US'];
 		}
@@ -63,7 +63,7 @@ class ancestry_plugin extends research_base_plugin {
 
 		foreach($collection as $x=>$x_value) {
 			$link[] = array(
-				'title' => WT_I18N::translate($x),
+				'title' => KT_I18N::translate($x),
 				'link'  => $url. '&cp=' . $x_value
 			);
 		}

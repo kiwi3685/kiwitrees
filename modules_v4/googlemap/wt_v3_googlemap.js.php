@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -98,11 +98,11 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 		// Use flag icon (if defined) instead of regular marker icon
 		if (marker_icon) {
-			var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
+			var icon_image = new google.maps.MarkerImage(KT_STATIC_URL+KT_MODULES_DIR+'googlemap/'+marker_icon,
 				new google.maps.Size(25, 15),
 				new google.maps.Point(0,0),
 				new google.maps.Point(12, 15));
-			var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
+			var icon_shadow = new google.maps.MarkerImage(KT_STATIC_URL+KT_MODULES_DIR+'googlemap/images/flag_shadow.png',
 				new google.maps.Size(35, 45),	// Shadow size
 				new google.maps.Point(0,0),		// Shadow origin
 				new google.maps.Point(12, 15)	// Shadow anchor is base of flagpole
@@ -277,7 +277,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		controlText.style.fontSize = '12px';
 		controlText.style.paddingLeft = '15px';
 		controlText.style.paddingRight = '15px';
-		controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?><\/b>';
+		controlText.innerHTML = '<b><?php echo KT_I18N::translate('Redraw map')?><\/b>';
 		controlUI.appendChild(controlText);
 
 		// Setup the click event listeners: simply set the map to original LatLng
@@ -327,10 +327,10 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 				// create thumbnail images of highlighted images
 				if (!empty($pid)) {
-					$this_person = WT_Person::getInstance($pid);
+					$this_person = KT_Person::getInstance($pid);
 				}
 				if (!empty($gmark['name'])) {
-					$person = WT_Person::getInstance($gmark['name']);
+					$person = KT_Person::getInstance($gmark['name']);
 				} else {
 					$person = null;
 				}
@@ -369,9 +369,9 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php echo $gmark['fact_label'].''; ?>",
 					"<?php echo $gmark['lati']; ?>",
 					"<?php echo $gmark['lng']; ?>",
-					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
+					"<?php if (!empty($gmark['date'])) { $date=new KT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo KT_I18N::translate('Date not known'); } ?>",
 					"<?php if (!empty($gmark['info'])) { echo addslashes($gmark['info']); } else { echo NULL; } ?>",
-					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '<\/a>'; } } ?>",
+					"<?php if (!empty($gmark['name'])) { $person=KT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', addslashes($person->getFullName()), '<\/a>'; } } ?>",
 					"<?php echo addslashes(print_fact_place_map($gmark['placerec'])); ?>",
 					"<?php echo $gmark['index'].''; ?>",
 					"<?php echo $gmark['tabindex'].''; ?>",
@@ -381,7 +381,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php echo strip_tags(preg_replace('/\"/', '\\\"', print_fact_place_map($gmark['placerec']))); ?>",
 
 					// Element 11. persons Name
-					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo addslashes($person->getFullName()); } } ?>",
+					"<?php if (!empty($gmark['name'])) { $person=KT_Person::getInstance($gmark['name']); if ($person) { echo addslashes($person->getFullName()); } } ?>",
 
 					// Element 12. Other people's Highlighted image.
 					"<?php if (!empty($gmark['name'])) { echo $image2; } else { echo ''; } ?>",
@@ -453,7 +453,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 			// Employ of image tab function using an information image
 			if (media == null || media == '') {
-				media = WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
+				media = KT_STATIC_URL+KT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
 			} else {
 				media = media;
 			}
@@ -490,9 +490,9 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			'<div class="infowindow">',
 				'<div id = "gmtabs">',
 					'<ul class="tabs" >',
-						'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
+						'<li><a href="#event" id="EV"><?php echo KT_I18N::translate('Events'); ?><\/a><\/li>',
 						<?php if ($STREETVIEW) { ?>
-						'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View™'); ?><\/a><\/li>',
+						'<li><a href="#sview" id="SV"><?php echo KT_I18N::translate('Google Street View™'); ?><\/a><\/li>',
 						<?php } ?>
 
 					// To be used later === Do not delete

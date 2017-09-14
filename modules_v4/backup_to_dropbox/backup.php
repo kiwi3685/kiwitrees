@@ -55,7 +55,7 @@ class Backup {
 
                 //loop through all entries
 				foreach ($iterator as $pathname => $fileInfo) {
-					$file = str_replace(WT_DATA_DIR, "", $fileInfo);
+					$file = str_replace(KT_DATA_DIR, "", $fileInfo);
 					if (is_file($file)) {
 						$this->uploadFile($file);
 					}

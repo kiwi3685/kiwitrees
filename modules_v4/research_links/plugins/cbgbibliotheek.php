@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -32,7 +32,7 @@ class cbgbibliotheek_plugin extends research_base_plugin {
 			);
 		foreach($collection as $x => $x_value) {
 			$link[] = array(
-				'title' => WT_I18N::translate($x),
+				'title' => KT_I18N::translate($x),
 				'link'  => $base_url. $x_value
 			);
 		}

@@ -21,28 +21,28 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widget {
-	// Extend class WT_Module
+class widget_theme_select_KT_Module extends KT_Module implements KT_Module_Widget {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Theme change');
+		return /* I18N: Name of a module */ KT_I18N::translate('Theme change');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Theme change” module */ WT_I18N::translate('An alternative way to select a new theme.');
+		return /* I18N: Description of the “Theme change” module */ KT_I18N::translate('An alternative way to select a new theme.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template = true, $cfg = null) {
 		$id = $this->getName().$widget_id;
 		$class = $this->getName();
 		$title = $this->getTitle();
-		$current_themedir = str_replace(array('themes','/'), '', WT_THEME_DIR);
+		$current_themedir = str_replace(array('themes','/'), '', KT_THEME_DIR);
 		if(strstr(get_query_url(), 'php?')) {
 			$separator = '&amp;';
 		} else {
@@ -63,28 +63,28 @@ class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widge
 		$content .= '</div><br>';
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Widget
+	// Implement class KT_Module_Widget
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement WT_Module_Widget
+	// Implement KT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 130;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
 	}
 }

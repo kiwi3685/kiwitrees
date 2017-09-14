@@ -21,33 +21,33 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Config {
-	// Extend WT_Module
+class album_KT_Module extends KT_Module implements KT_Module_Tab, KT_Module_Config {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Album');
+		return /* I18N: Name of a module */ KT_I18N::translate('Album');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Album” module */ WT_I18N::translate('A tab showing the media objects linked to an individual.');
+		return /* I18N: Description of the “Album” module */ KT_I18N::translate('A tab showing the media objects linked to an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 90;
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
@@ -62,22 +62,22 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		}
 	}
 
-	// Implement WT_Module_Config
+	// Implement KT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_media_count()>0;
+		return KT_USER_CAN_EDIT || $this->get_media_count()>0;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return $this->get_media_count()==0;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $controller;
 
@@ -86,20 +86,20 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 			$ALBUM_GROUPS = 4;
 		}
 
-		require_once WT_ROOT.WT_MODULES_DIR.'album/album_print_media.php';
+		require_once KT_ROOT.KT_MODULES_DIR.'album/album_print_media.php';
 		$html='<div id="'.$this->getName().'_content">';
 			//Show Album header Links
-			if (WT_USER_CAN_EDIT) {
+			if (KT_USER_CAN_EDIT) {
 				$html.='<div class="descriptionbox rela">';
 				// Add a media object
-				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-					$html.='<span><a href="addmedia.php?action=showmediaform&amp;linktoid=' . $controller->record->getXref() . '" target="_blank" rel="noopener noreferrer"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>' .WT_I18N::translate('Add a media object'). '</a></span>';
+				if (get_gedcom_setting(KT_GED_ID, 'MEDIA_UPLOAD') >= KT_USER_ACCESS_LEVEL) {
+					$html.='<span><a href="addmedia.php?action=showmediaform&amp;linktoid=' . $controller->record->getXref() . '" target="_blank" rel="noopener noreferrer"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>' .KT_I18N::translate('Add a media object'). '</a></span>';
 					// Link to an existing item
-					$html.='<span><a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=person" target="_blank"><i style="margin: 0 3px 0 10px;" class="icon-image_link">&nbsp;</i>' .WT_I18N::translate('Link to an existing media object'). '</a></span>';
+					$html.='<span><a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=person" target="_blank"><i style="margin: 0 3px 0 10px;" class="icon-image_link">&nbsp;</i>' .KT_I18N::translate('Link to an existing media object'). '</a></span>';
 				}
-				if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
+				if (KT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 					// Popup Reorder Media
-					$html.='<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')"><i style="margin: 0 3px 0 10px;" class="icon-image_sort">&nbsp;</i>' .WT_I18N::translate('Re-order media'). '</a></span>';
+					$html.='<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')"><i style="margin: 0 3px 0 10px;" class="icon-image_sort">&nbsp;</i>' .KT_I18N::translate('Re-order media'). '</a></span>';
 				}
 				$html.='</div>';
 			}
@@ -129,21 +129,21 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 	}
 
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}
 
 	// Reset all settings to default
 	private function album_reset() {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'ALBUM%'")->execute();
+		KT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'ALBUM%'")->execute();
 		AddToLog($this->getTitle().' reset to default values', 'config');
 	}
 
@@ -154,17 +154,17 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 		if ($this->mediaCount===null) {
 			$this->mediaCount = 0;
-			preg_match_all('/\d OBJE @(' . WT_REGEX_XREF . ')@/', $controller->record->getGedcomRecord(), $matches);
+			preg_match_all('/\d OBJE @(' . KT_REGEX_XREF . ')@/', $controller->record->getGedcomRecord(), $matches);
 			foreach ($matches[1] as $match) {
-				$obje = WT_Media::getInstance($match);
+				$obje = KT_Media::getInstance($match);
 				if ($obje && $obje->canDisplayDetails()) {
 					$this->mediaCount++;
 				}
 			}
 			foreach ($controller->record->getSpouseFamilies() as $sfam) {
-				preg_match_all('/\d OBJE @(' . WT_REGEX_XREF . ')@/', $sfam->getGedcomRecord(), $matches);
+				preg_match_all('/\d OBJE @(' . KT_REGEX_XREF . ')@/', $sfam->getGedcomRecord(), $matches);
 				foreach ($matches[1] as $match) {
-					$obje = WT_Media::getInstance($match);
+					$obje = KT_Media::getInstance($match);
 					if ($obje && $obje->canDisplayDetails()) {
 						$this->mediaCount++;
 					}
@@ -175,15 +175,15 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 	}
 
 	private function find_no_type() {
-		$medialist = WT_Query_Media::medialist('', 'include', 'title', '', 'blank');
+		$medialist = KT_Query_Media::medialist('', 'include', 'title', '', 'blank');
 		$ct = count($medialist);
 		if ($medialist) {
 			$html = '
-				<p>' .WT_I18N::translate('%s media objects', $ct). '</p>
+				<p>' .KT_I18N::translate('%s media objects', $ct). '</p>
 				<table>
 					<tr>
-						<th>' . WT_I18N::translate('Media object') . '</th>
-						<th>' . WT_I18N::translate('Media title') . '</th>
+						<th>' . KT_I18N::translate('Media object') . '</th>
+						<th>' . KT_I18N::translate('Media title') . '</th>
 					</tr>';
 					for ($i=0; $i<$ct; ++$i) {
 						$mediaobject = $medialist[$i];
@@ -196,7 +196,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 					}
 				$html .= '</table>';
 		} else {
-			$html = '<p>' .WT_I18N::translate('No media objects found'). '</p>';
+			$html = '<p>' .KT_I18N::translate('No media objects found'). '</p>';
 		}
 		return $html;
 	}
@@ -206,25 +206,25 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 	}
 
 	private function config() {
-		require WT_ROOT.'includes/functions/functions_edit.php';
-		$controller = new WT_Controller_Page();
+		require KT_ROOT.'includes/functions/functions_edit.php';
+		$controller = new KT_Controller_Page();
 		$controller
-			->restrictAccess(WT_USER_IS_ADMIN)
+			->restrictAccess(KT_USER_IS_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
-		if (WT_Filter::postBool('save')) {
-			$ALBUM_GROUPS = WT_Filter::post('NEW_ALBUM_GROUPS');
-			$ALBUM_TITLES = WT_Filter::postArray('NEW_ALBUM_TITLES');
-			$ALBUM_OPTIONS = WT_Filter::postArray('NEW_ALBUM_OPTIONS');
+		if (KT_Filter::postBool('save')) {
+			$ALBUM_GROUPS = KT_Filter::post('NEW_ALBUM_GROUPS');
+			$ALBUM_TITLES = KT_Filter::postArray('NEW_ALBUM_TITLES');
+			$ALBUM_OPTIONS = KT_Filter::postArray('NEW_ALBUM_OPTIONS');
 			if (isset($ALBUM_GROUPS)) set_module_setting($this->getName(), 'ALBUM_GROUPS', $ALBUM_GROUPS);
 			if (!empty($ALBUM_TITLES)) set_module_setting($this->getName(), 'ALBUM_TITLES', serialize($ALBUM_TITLES));
 			if (!empty($ALBUM_OPTIONS)) set_module_setting($this->getName(), 'ALBUM_OPTIONS', serialize($ALBUM_OPTIONS));
 
 			AddToLog($this->getTitle().' set to new values', 'config');
 		}
-		$SHOW_FIND = WT_Filter::post('show');
-		$HIDE_FIND = WT_Filter::post('hide');
+		$SHOW_FIND = KT_Filter::post('show');
+		$HIDE_FIND = KT_Filter::post('hide');
 		$ALBUM_GROUPS = get_module_setting($this->getName(), 'ALBUM_GROUPS');
 		$ALBUM_TITLES = unserialize(get_module_setting($this->getName(), 'ALBUM_TITLES'));
 		$ALBUM_OPTIONS = unserialize(get_module_setting($this->getName(), 'ALBUM_OPTIONS'));
@@ -235,76 +235,76 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 		if (empty($ALBUM_TITLES)) {
 			$ALBUM_TITLES = array(
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Other')
+				KT_I18N::translate('Photos'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Census'),
+				KT_I18N::translate('Other')
 			);
 		}
 
 		$default_groups = array(
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Other')
+				KT_I18N::translate('Other'),
+				KT_I18N::translate('Other'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Other'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Census'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Census'),
+				KT_I18N::translate('Census'),
+				KT_I18N::translate('Documents'),
+				KT_I18N::translate('Other'),
+				KT_I18N::translate('Photos'),
+				KT_I18N::translate('Photos'),
+				KT_I18N::translate('Photos'),
+				KT_I18N::translate('Other')
 		);
 
 		if (empty($ALBUM_OPTIONS))	{
-			$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
+			$ALBUM_OPTIONS = array_combine(array_keys(KT_Gedcom_Tag::getFileFormTypes()), $default_groups);
 		}
 
 		$html = '<div id="album_config">';
-			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" rel="noopener noreferrer" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 			<h2>' .$controller->getPageTitle(). '</h2>
-			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
+			<h3>' . KT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
 
 			// check for emty groups
 			foreach ($ALBUM_TITLES as $value) {
-				if(!in_array($value, $ALBUM_OPTIONS)) echo '<script>alert(\''.WT_I18N::translate('You can not have any empty group.').'\')</script>';
+				if(!in_array($value, $ALBUM_OPTIONS)) echo '<script>alert(\''.KT_I18N::translate('You can not have any empty group.').'\')</script>';
 			}
 
 			$html .= '<form method="post" name="album_form" action="'.$this->getConfigLink().'">
 				<input type="hidden" name="save" value="1">
 				<div id="album_groups">
-					<label for="NEW_ALBUM_GROUPS" class="label">'.WT_I18N::translate('Number of groups').'</label>'.
+					<label for="NEW_ALBUM_GROUPS" class="label">'.KT_I18N::translate('Number of groups').'</label>'.
 					select_edit_control('NEW_ALBUM_GROUPS',
 						array(
-							0=>WT_I18N::number(0),
-							1=>WT_I18N::number(1),
-							2=>WT_I18N::number(2),
-							3=>WT_I18N::number(3),
-							4=>WT_I18N::number(4),
-							5=>WT_I18N::number(5),
-							6=>WT_I18N::number(6),
-							7=>WT_I18N::number(7)
+							0=>KT_I18N::number(0),
+							1=>KT_I18N::number(1),
+							2=>KT_I18N::number(2),
+							3=>KT_I18N::number(3),
+							4=>KT_I18N::number(4),
+							5=>KT_I18N::number(5),
+							6=>KT_I18N::number(6),
+							7=>KT_I18N::number(7)
 						), null, $ALBUM_GROUPS);
 
 				$html .= '</div>
 				<div id="album_options">
-					<label for="NEW_ALBUM_OPTIONS" class="label">'.WT_I18N::translate('Match groups to types').'</label>
+					<label for="NEW_ALBUM_OPTIONS" class="label">'.KT_I18N::translate('Match groups to types').'</label>
 					<table>';
-						$html .= '<tr><th colspan="2" rowspan="2"></th><th colspan="4">'.WT_I18N::translate('Groups (These must always be English titles)').'</th></tr>';
+						$html .= '<tr><th colspan="2" rowspan="2"></th><th colspan="4">'.KT_I18N::translate('Groups (These must always be English titles)').'</th></tr>';
 							for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
 								$html .= '<th style="min-width:130px;"><input type="input" name="NEW_ALBUM_TITLES[]" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '"></th>';
 							}
 						$html .= '</tr>';
-							$html .= '<tr><th rowspan="19" style="max-width:25px;"><span class="rotate">'.WT_I18N::translate('Types').'</span></th></tr>';
+							$html .= '<tr><th rowspan="19" style="max-width:25px;"><span class="rotate">'.KT_I18N::translate('Types').'</span></th></tr>';
 							foreach ($ALBUM_OPTIONS as $key=>$value) {
-								$translated_type = WT_Gedcom_Tag::getFileFormTypeValue($key);
+								$translated_type = KT_Gedcom_Tag::getFileFormTypeValue($key);
 								$html .= '
 									<tr>
 										<td>' .$translated_type. '</td>';
@@ -322,20 +322,20 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 				</div>
 				<button class="btn btn-primary save" type="submit">
 					<i class="fa fa-floppy-o"></i>'.
-					WT_I18N::translate('save').'
+					KT_I18N::translate('save').'
 				</button>
 			</form>
-			<button class="btn btn-primary reset" type="submit" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+			<button class="btn btn-primary reset" type="submit" onclick="if (confirm(\''.KT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
 				<i class="fa fa-refresh"></i>'.
-				WT_I18N::translate('Reset').'
+				KT_I18N::translate('Reset').'
 			</button>
 			<form method="post" name="find_show" action="'.$this->getConfigLink().'">
 				<div id="album_find">
 				    <input type="hidden" name="show">
-				    <a class="current" href="javascript:document.find_show.submit()">'.WT_I18N::translate('Show media objects with no TYPE'). '</a>';
+				    <a class="current" href="javascript:document.find_show.submit()">'.KT_I18N::translate('Show media objects with no TYPE'). '</a>';
 					if (isset($SHOW_FIND) && !isset($HIDE_FIND)) {
 						$html .= '<div id="show_list">' .$this->find_no_type(). '</div>
-						<input type="submit" name="hide" value="'.WT_I18N::translate('close'). '">';
+						<input type="submit" name="hide" value="'.KT_I18N::translate('close'). '">';
 					}
 				$html .= '</div>
 			</form>

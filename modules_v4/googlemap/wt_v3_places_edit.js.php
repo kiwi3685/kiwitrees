@@ -21,16 +21,16 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 ?>
 
 <head>
-	<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
-	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
+	<script src="<?php echo KT_GM_SCRIPT; ?>"></script>
+	<script src="<?php echo KT_STATIC_URL, KT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
+	<link type="text/css" href="<?php echo KT_STATIC_URL, KT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
 
 	<script>
 	var map;
@@ -170,7 +170,7 @@ if (!defined('WT_KIWITREES')) {
 		controlText.style.fontSize = '12px';
 		controlText.style.paddingLeft = '15px';
 		controlText.style.paddingRight = '15px';
-		controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?><\/b>';
+		controlText.innerHTML = '<b><?php echo KT_I18N::translate('Redraw map')?><\/b>';
 		controlUI.appendChild(controlText);
 
 		// Setup the click event listeners: simply set the map to original LatLng
@@ -214,7 +214,7 @@ if (!defined('WT_KIWITREES')) {
 
 		// *** === NOTE *** This function creates the UK country overlays ==========================
 		overlays();
-		// === Above function is located in WT_MODULES_DIR/googlemap/wt_v3_placeOverlays.js.php ====
+		// === Above function is located in KT_MODULES_DIR/googlemap/wt_v3_placeOverlays.js.php ====
 
 
 		// Close any infowindow when map is clicked
@@ -237,12 +237,12 @@ if (!defined('WT_KIWITREES')) {
 		// Create the Main Location Marker
 		<?php
 		if ($level < 3 && $place_icon != '') {
-			echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/',$place_icon,'",';
+			echo 'var image = new google.maps.MarkerImage("', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/',$place_icon,'",';
 				echo 'new google.maps.Size(25, 15),';	// Image size
 				echo 'new google.maps.Point(0, 0),';	// Image origin
 				echo 'new google.maps.Point(0, 44)';	// Image anchor
 			echo ');';
-			echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
+			echo 'var iconShadow = new google.maps.MarkerImage("', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 				echo 'new google.maps.Size(35, 45),';	// Shadow size
 				echo 'new google.maps.Point(0,0),';		// Shadow origin
 				echo 'new google.maps.Point(12, 15)';	// Shadow anchor is base of flagpole
@@ -333,12 +333,12 @@ if (!defined('WT_KIWITREES')) {
 	function createMarker(i, point, name) {
 		var contentString = '<div id="iwcontent_edit">'+name+'<\/div>';
 		<?php
-		echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
+		echo 'var image = new google.maps.MarkerImage("', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
 			echo 'new google.maps.Size(20, 34),';	// Image size
 			echo 'new google.maps.Point(0, 0),';	// Image origin
 			echo 'new google.maps.Point(10, 34)';	// Image anchor
 		echo ');';
-		echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png",';
+		echo 'var iconShadow = new google.maps.MarkerImage("', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/images/shadow50.png",';
 			echo 'new google.maps.Size(37, 34),';	// Shadow size
 			echo 'new google.maps.Point(0, 0),';	// Shadow origin
 			echo 'new google.maps.Point(10, 34)';	// Shadow anchor is base of image
@@ -372,19 +372,19 @@ if (!defined('WT_KIWITREES')) {
 
 	function remove_icon() {
 		document.editplaces.icon.value = '';
-		document.getElementById('flagsDiv').innerHTML = '<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>';
+		document.getElementById('flagsDiv').innerHTML = '<a href="#" onclick="change_icon();return false;"><?php echo KT_I18N::translate('Change flag'); ?></a>';
 	}
 
 	function addAddressToMap(response) {
 		var bounds = new google.maps.LatLngBounds();
 		if (!response ) {
-			alert('<?php echo WT_I18N::translate('No places found'); ?>');
+			alert('<?php echo KT_I18N::translate('No places found'); ?>');
 		} else {
 			if (response.length > 0) {
 				for (i=0; i<response.length; i++) {
 					// 5 decimal places is approx 1 metre accuracy.
  					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+'';
-						name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo WT_I18N::translate('Use this value'); ?></div></a>';
+						name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo KT_I18N::translate('Use this value'); ?></div></a>';
 						name += '</div>';
 					var point = response[i].geometry.location;
 					var marker = createMarker(i, point, name);

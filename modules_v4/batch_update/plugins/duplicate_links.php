@@ -21,18 +21,18 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 class duplicate_links_bu_plugin extends base_plugin {
 	static function getName() {
-		return WT_I18N::translate('Remove duplicate links');
+		return KT_I18N::translate('Remove duplicate links');
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
+		return KT_I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
 	}
 
 	// Default is to operate on INDI records

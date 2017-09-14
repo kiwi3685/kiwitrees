@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'hourglass_ajax.php');
+define('KT_SCRIPT_NAME', 'hourglass_ajax.php');
 require './includes/session.php';
 
 /*
@@ -30,7 +30,7 @@ require './includes/session.php';
  * label the pair as a pair.
  */
 
-$controller = new WT_Controller_Hourglass();
+$controller = new KT_Controller_Hourglass();
 
 header('Content-type: text/html; charset=UTF-8');
 
@@ -38,6 +38,6 @@ Zend_Session::writeClose();
 
 // -- print html header information
 if (isset($_REQUEST['type']) && $_REQUEST['type']=='desc')
-	$controller->print_descendency(WT_Person::getInstance($controller->pid), 1, false);
+	$controller->print_descendency(KT_Person::getInstance($controller->pid), 1, false);
 else
-	$controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 0);
+	$controller->print_person_pedigree(KT_Person::getInstance($controller->pid), 0);

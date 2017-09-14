@@ -21,31 +21,31 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME' , 'medialist.php');
+define('KT_SCRIPT_NAME' , 'medialist.php');
 require './includes/session.php';
 
-require_once WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+require_once KT_ROOT.'includes/functions/functions_edit.php';
+require_once KT_ROOT.'includes/functions/functions_print_facts.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_media', WT_USER_ACCESS_LEVEL))
-	->setPageTitle(WT_I18N::translate('Media objects'))
+	->restrictAccess(KT_Module::isActiveList(KT_GED_ID, 'list_media', KT_USER_ACCESS_LEVEL))
+	->setPageTitle(KT_I18N::translate('Media objects'))
 	->pageHeader();
 
-$search = WT_Filter::get('search');
-$sortby = WT_Filter::get('sortby' , 'file|title' , 'title');
-if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
+$search = KT_Filter::get('search');
+$sortby = KT_Filter::get('sortby' , 'file|title' , 'title');
+if (!KT_USER_CAN_EDIT && !KT_USER_CAN_ACCEPT) {
 	$sortby='title';
 }
-$start          = WT_Filter::getInteger('start');
-$max            = WT_Filter::get('max' , '10|20|30|40|50|75|100|125|150|200' , '20');
-$folder         = WT_Filter::get('folder' , null, ''); // MySQL needs an empty string, not NULL
-$reset          = WT_Filter::get('reset');
-$apply_filter   = WT_Filter::get('apply_filter');
-$filter         = WT_Filter::get('filter' , null, ''); // MySQL needs an empty string, not NULL
-$subdirs        = WT_Filter::get('subdirs' , 'on');
-$form_type      = WT_Filter::get('form_type');
+$start          = KT_Filter::getInteger('start');
+$max            = KT_Filter::get('max' , '10|20|30|40|50|75|100|125|150|200' , '20');
+$folder         = KT_Filter::get('folder' , null, ''); // MySQL needs an empty string, not NULL
+$reset          = KT_Filter::get('reset');
+$apply_filter   = KT_Filter::get('apply_filter');
+$filter         = KT_Filter::get('filter' , null, ''); // MySQL needs an empty string, not NULL
+$subdirs        = KT_Filter::get('subdirs' , 'on');
+$form_type      = KT_Filter::get('form_type');
 $currentdironly = ($subdirs=='on') ? false : true;
 
 // reset all variables
@@ -59,10 +59,10 @@ if ($reset == 'reset') {
 }
 
 // A list of all subfolders used by this tree
-$folders = WT_Query_Media::folderList();
+$folders = KT_Query_Media::folderList();
 
 // A list of all media objects matching the search criteria
-$medialist = WT_Query_Media::mediaList(
+$medialist = KT_Query_Media::mediaList(
 	$folder,
 	$currentdironly ? 'exclude' : 'include' ,
 	$sortby,
@@ -79,24 +79,24 @@ $medialist = WT_Query_Media::mediaList(
 		<input type="hidden" name="action" value="filter">
 		<input type="hidden" name="search" value="yes">
 		<div class="chart_options">
-			<label for = "folder"><?php echo WT_I18N::translate('Folder'); ?></label>
+			<label for = "folder"><?php echo KT_I18N::translate('Folder'); ?></label>
 			<?php echo select_edit_control('folder' , $folders, null, $folder); ?>
 		</div>
 		<div class="chart_options">
-			<label for = "subdirs"><?php /* I18N: Label for check-box */ echo WT_I18N::translate('Include subfolders'); ?></label>
+			<label for = "subdirs"><?php /* I18N: Label for check-box */ echo KT_I18N::translate('Include subfolders'); ?></label>
 			<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
 		</div>
 		<div class="chart_options">
 			<?php
-				if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+				if (KT_USER_CAN_EDIT || KT_USER_CAN_ACCEPT) {
 					echo '
-						<label for = "folder">' . WT_I18N::translate('Sort order') . '</label>
+						<label for = "folder">' . KT_I18N::translate('Sort order') . '</label>
 						<select name="sortby" id="sortby">
 							<option value="title" ' , ($sortby=='title') ? 'selected="selected"' : '' , '>' .
-								/* I18N: An option in a list-box */ WT_I18N::translate('sort by title') . '
+								/* I18N: An option in a list-box */ KT_I18N::translate('sort by title') . '
 							</option>
 							<option value="file" ' , ($sortby=='file') ? 'selected="selected"' : '' , '>' .
-								/* I18N: An option in a list-box */ WT_I18N::translate('sort by filename') . '
+								/* I18N: An option in a list-box */ KT_I18N::translate('sort by filename') . '
 							</option>
 						</select>
 					';
@@ -104,13 +104,13 @@ $medialist = WT_Query_Media::mediaList(
 			?>
 		</div>
 		<div class="chart_options">
-			<label for="form-type"><?php echo WT_I18N::translate('Type'); ?></label>
+			<label for="form-type"><?php echo KT_I18N::translate('Type'); ?></label>
 			<select name="form_type" id="form-type">
 				<option value=""></option>
 				<option value="blank" <?php echo $form_type == 'blank' ? 'selected' : ''; ?>>
-					<?php echo /* I18N: A filter on the media list for items with no TYPE tag set */ WT_I18N::translate('No type'); ?>
+					<?php echo /* I18N: A filter on the media list for items with no TYPE tag set */ KT_I18N::translate('No type'); ?>
 				</option>
-				<?php foreach (WT_Gedcom_Tag::getFileFormTypes() as $value => $label): ?>
+				<?php foreach (KT_Gedcom_Tag::getFileFormTypes() as $value => $label): ?>
 					<option value="<?php echo $value; ?>" <?php echo $value === $form_type ? 'selected' : ''; ?>>
 						<?php echo $label; ?>
 					</option>
@@ -118,7 +118,7 @@ $medialist = WT_Query_Media::mediaList(
 			</select>
 		</div>
 		<div class="chart_options">
-			<label for = "max"><?php echo WT_I18N::translate('Media objects per page'); ?></label>
+			<label for = "max"><?php echo KT_I18N::translate('Media objects per page'); ?></label>
 			<select name="max" id="max">
 				<?php
 				foreach (array('10' , '20' , '30' , '40' , '50' , '75' , '100' , '125' , '150' , '200') as $selectEntry) {
@@ -130,17 +130,17 @@ $medialist = WT_Query_Media::mediaList(
 			</select>
 		</div>
 		<div class="chart_options">
-			<label for = "filter"><?php echo WT_I18N::translate('Search filters'); ?></label>
-			<input id="filter" name="filter" value="<?php echo WT_Filter::escapeHtml($filter); ?>" size="14" dir="auto">
+			<label for = "filter"><?php echo KT_I18N::translate('Search filters'); ?></label>
+			<input id="filter" name="filter" value="<?php echo KT_Filter::escapeHtml($filter); ?>" size="14" dir="auto">
 		</div>
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="submit" name="apply_filter" value="apply_filter">
 				<i class="fa fa-search"></i>
-				<?php echo WT_I18N::translate('Search'); ?>
+				<?php echo KT_I18N::translate('Search'); ?>
 			</button>
 			<button class="btn btn-primary" type="submit" name="reset"value="reset">
 				<i class="fa fa-refresh"></i>
-				<?php echo WT_I18N::translate('Reset'); ?>
+				<?php echo KT_I18N::translate('Reset'); ?>
 			</button>
 		</p>
 	</form>
@@ -192,7 +192,7 @@ $medialist = WT_Query_Media::mediaList(
 						}
 					}
 				$pagination .= '</p>
-					<p class="aligncenter">' . WT_I18N::translate('Page %s of %s' , $currentPage, $lastPage). '</p>
+					<p class="aligncenter">' . KT_I18N::translate('Page %s of %s' , $currentPage, $lastPage). '</p>
 					<p class="alignright">';
 						if ($TEXT_DIRECTION=='ltr') {
 							if ($ct>$max) {
@@ -222,7 +222,7 @@ $medialist = WT_Query_Media::mediaList(
 				$pagination .= '</p></div>';
 
 				// Output display
-				echo '<h3>' , WT_I18N::translate('%s media objects found', $ct) , '</h3>';
+				echo '<h3>' , KT_I18N::translate('%s media objects found', $ct) , '</h3>';
 				echo $pagination;
 				echo '<div class="media-list-items">';
 				// Start media loop
@@ -230,8 +230,8 @@ $medialist = WT_Query_Media::mediaList(
 					$mediaobject = $medialist[$i];
 
 					echo '<div class="media-list-item">';
-						if (WT_USER_CAN_EDIT) {
-							echo WT_Controller_Media::getMediaListMenu($mediaobject);
+						if (KT_USER_CAN_EDIT) {
+							echo KT_Controller_Media::getMediaListMenu($mediaobject);
 						}
 						echo '<div class="media-list-image">';
 							echo $mediaobject->displayImage();
@@ -246,33 +246,33 @@ $medialist = WT_Query_Media::mediaList(
 								echo '<p><b><a href="' , $mediaobject->getHtmlUrl(), '">';
 								echo basename($mediaobject->getFilename());
 								echo '</a></b></p>';
-								echo WT_Gedcom_Tag::getLabelValue('TITL' , $mediaobject->getFullName());
+								echo KT_Gedcom_Tag::getLabelValue('TITL' , $mediaobject->getFullName());
 							}
 							// Show file details
 							if ($mediaobject->isExternal()) {
-								echo WT_Gedcom_Tag::getLabelValue('URL' , $mediaobject->getFilename());
+								echo KT_Gedcom_Tag::getLabelValue('URL' , $mediaobject->getFilename());
 							} else {
 								if ($mediaobject->fileExists()) {
-									if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-										echo WT_Gedcom_Tag::getLabelValue('FILE' , $mediaobject->getFilename());
+									if (KT_USER_CAN_EDIT || KT_USER_CAN_ACCEPT) {
+										echo KT_Gedcom_Tag::getLabelValue('FILE' , $mediaobject->getFilename());
 									}
-									echo WT_Gedcom_Tag::getLabelValue('FORM' , $mediaobject->mimeType());
-									echo WT_Gedcom_Tag::getLabelValue('TYPE' , WT_Gedcom_Tag::getFileFormTypeValue($mediaobject->getMediaType()));
+									echo KT_Gedcom_Tag::getLabelValue('FORM' , $mediaobject->mimeType());
+									echo KT_Gedcom_Tag::getLabelValue('TYPE' , KT_Gedcom_Tag::getFileFormTypeValue($mediaobject->getMediaType()));
 									switch ($mediaobject->isPrimary()) {
 									case 'Y':
-										echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('yes'));
+										echo KT_Gedcom_Tag::getLabelValue('_PRIM', KT_I18N::translate('yes'));
 										break;
 									case 'N':
-										echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('no'));
+										echo KT_Gedcom_Tag::getLabelValue('_PRIM', KT_I18N::translate('no'));
 										break;
 									}
-									echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__' , $mediaobject->getFilesize());
+									echo KT_Gedcom_Tag::getLabelValue('__FILE_SIZE__' , $mediaobject->getFilesize());
 									$imgsize = $mediaobject->getImageAttributes();
 									if ($imgsize['WxH']) {
-										echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__' , $imgsize['WxH']);
+										echo KT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__' , $imgsize['WxH']);
 									}
 								} else {
-									echo '<p class="ui-state-error">' , /* I18N: %s is a filename */ WT_I18N::translate('The file “%s” does not exist.' , $mediaobject->getFilename()), '</p>';
+									echo '<p class="ui-state-error">' , /* I18N: %s is a filename */ KT_I18N::translate('The file “%s” does not exist.' , $mediaobject->getFilename()), '</p>';
 								}
 							}
 							if (is_null(print_fact_sources($mediaobject->getGedcomRecord(), 1)) && is_null(print_fact_notes($mediaobject->getGedcomRecord(), 1)) ) {
@@ -284,13 +284,13 @@ $medialist = WT_Query_Media::mediaList(
 									print_fact_notes($mediaobject->getGedcomRecord(), 1), '
 							</div>';
 							foreach ($mediaobject->fetchLinkedIndividuals('OBJE') as $individual) {
-								echo '<a class="media-list-link" href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
+								echo '<a class="media-list-link" href="' . $individual->getHtmlUrl() . '">' . KT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
 							}
 							foreach ($mediaobject->fetchLinkedFamilies('OBJE') as $family) {
-								echo '<a class="media-list-link" href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
+								echo '<a class="media-list-link" href="' . $family->getHtmlUrl() . '">' . KT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
 							}
 							foreach ($mediaobject->fetchLinkedSources('OBJE') as $source) {
-								echo '<a class="media-list-link" href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
+								echo '<a class="media-list-link" href="' . $source->getHtmlUrl() . '">' . KT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
 							}
 						echo '</div>';
 					echo '</div>';

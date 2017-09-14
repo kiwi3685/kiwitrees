@@ -21,13 +21,13 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Delete any data that might violate the new constraints
-WT_DB::exec(
+KT_DB::exec(
 	"DELETE FROM `##news`".
 	" WHERE user_id   NOT IN (SELECT user_id   FROM `##user`  )".
 	" OR    gedcom_id NOT IN (SELECT gedcom_id FROM `##gedcom`)"
@@ -35,7 +35,7 @@ WT_DB::exec(
 
 // Add the new constraints
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"ALTER TABLE `##news`".
 		" ADD FOREIGN KEY news_fk1 (user_id  ) REFERENCES `##user`   (user_id)   ON DELETE CASCADE,".
 		" ADD FOREIGN KEY news_fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
@@ -45,4 +45,4 @@ try {
 }
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

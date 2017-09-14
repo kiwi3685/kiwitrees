@@ -21,28 +21,28 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_places.php');
+define('KT_SCRIPT_NAME', 'admin_trees_places.php');
 
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_import.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_import.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
-$search  = WT_Filter::post('search', null, WT_Filter::get('search'));
-$replace = WT_Filter::post('replace');
-$confirm = WT_Filter::post('confirm');
+$search  = KT_Filter::post('search', null, KT_Filter::get('search'));
+$replace = KT_Filter::post('replace');
+$confirm = KT_Filter::post('confirm');
 
 $changes = array();
 
 if ($search && $replace) {
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')".
 		" WHERE i_file = ?" .
 		" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array(WT_GED_ID, preg_quote($search)))->fetchAll();
+	)->execute(array(KT_GED_ID, preg_quote($search)))->fetchAll();
 	foreach ($rows as $row) {
-		$record = WT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = KT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record) {
 			foreach ($record->getFacts() as $fact) {
 				$old_place = $fact->getPlace();
@@ -51,21 +51,21 @@ if ($search && $replace) {
 					$changes[$old_place] = $new_place;
 					if ($confirm == 'update') {
 						$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $row->gedcom);
-						replace_gedrec($row->xref, WT_GED_ID, $gedcom, false);
+						replace_gedrec($row->xref, KT_GED_ID, $gedcom, false);
 					}
 				}
 			}
 		}
 	}
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
 		" FROM `##families`".
 		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')".
 		" WHERE f_file = ?" .
 		" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array(WT_GED_ID, preg_quote($search)))->fetchAll();
+	)->execute(array(KT_GED_ID, preg_quote($search)))->fetchAll();
 	foreach ($rows as $row) {
-		$record = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = KT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record) {
 			foreach ($record->getFacts() as $fact) {
 				$old_place = $fact->getPlace();
@@ -74,7 +74,7 @@ if ($search && $replace) {
 					$changes[$old_place] = $new_place;
 					if ($confirm == 'update') {
 						$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $row->gedcom);
-						replace_gedrec($row->xref, WT_GED_ID, $gedcom, false);
+						replace_gedrec($row->xref, KT_GED_ID, $gedcom, false);
 					}
 				}
 			}
@@ -82,63 +82,63 @@ if ($search && $replace) {
 	}
 }
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Administration - place edit'))
+	->setPageTitle(KT_I18N::translate('Administration - place edit'))
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 ?>
 <div id="places">
 	<h2>
-		<?php echo WT_I18N::translate('Update all the place names in a family tree'); ?>
+		<?php echo KT_I18N::translate('Update all the place names in a family tree'); ?>
 	</h2>
 	<p>
-		<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
+		<?php echo KT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
 	</p>
 	<form method="post">
 		<div id="admin_options">
 			<div class="input">
-				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
-				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+				<label><?php echo KT_I18N::translate('Family tree'); ?></label>
+				<?php echo select_edit_control('ged', KT_Tree::getNameList(), null, KT_GEDCOM); ?>
 			</div>
 			<div class="input">
-				<label for="search"><?php echo WT_I18N::translate('Search for'); ?></label>
-				<input name="search" id="search" type="text" data-autocomplete-type="PLAC" value="<?php echo WT_Filter::escapeHtml($search); ?>" required><?php echo print_specialchar_link('search'); ?>
+				<label for="search"><?php echo KT_I18N::translate('Search for'); ?></label>
+				<input name="search" id="search" type="text" data-autocomplete-type="PLAC" value="<?php echo KT_Filter::escapeHtml($search); ?>" required><?php echo print_specialchar_link('search'); ?>
 			</div>
 			<div class="input">
-				<label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label>
-				<input name="replace" id="replace" type="text" data-autocomplete-type="PLAC" value="<?php echo WT_Filter::escapeHtml($replace); ?>" required><?php echo print_specialchar_link('replace'); ?>
+				<label for="replace"><?php echo KT_I18N::translate('Replace with'); ?></label>
+				<input name="replace" id="replace" type="text" data-autocomplete-type="PLAC" value="<?php echo KT_Filter::escapeHtml($replace); ?>" required><?php echo print_specialchar_link('replace'); ?>
 			</div>
 			<p>
-				<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
-				<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
+				<button type="submit" value="preview"><?php echo /* I18N: button label */ KT_I18N::translate('preview'); ?></button>
+				<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ KT_I18N::translate('update'); ?></button>
 			</p>
 		</div>
 	</form>
 
 	<p class="error clearfloat">
-		<?php echo WT_I18N::translate('Caution! This may take a long time. Be patient.'); ?>
+		<?php echo KT_I18N::translate('Caution! This may take a long time. Be patient.'); ?>
 	</p>
 
 	<?php if ($search && $replace) { ?>
 		<?php if ($changes) { ?>
 		<p>
-			<?php echo ($confirm) ? WT_I18N::translate('The following places were changed:') : WT_I18N::translate('The following places would be changed:'); ?>
+			<?php echo ($confirm) ? KT_I18N::translate('The following places were changed:') : KT_I18N::translate('The following places would be changed:'); ?>
 		</p>
 		<ul>
 			<?php foreach ($changes as $old_place => $new_place) { ?>
 			<li>
-				<?php echo WT_Filter::escapeHtml($old_place); ?>
+				<?php echo KT_Filter::escapeHtml($old_place); ?>
 				&nbsp;&rarr;&nbsp;
-				<?php echo WT_Filter::escapeHtml($new_place); ?>
+				<?php echo KT_Filter::escapeHtml($new_place); ?>
 			</li>
 			<?php } ?>
 		</ul>
 		<?php } else { ?>
 		<p>
-			<?php echo WT_I18N::translate('No places were found.'); ?>
+			<?php echo KT_I18N::translate('No places were found.'); ?>
 		</p>
 		<?php } ?>
 	<?php } ?>

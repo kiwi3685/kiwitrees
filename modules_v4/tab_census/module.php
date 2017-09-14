@@ -21,38 +21,38 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
-	// Extend WT_Module
+class tab_census_KT_Module extends KT_Module implements KT_Module_Tab {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/tab on the individual page. */ WT_I18N::translate('Census summary');
+		return /* I18N: Name of a module/tab on the individual page. */ KT_I18N::translate('Census summary');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Facts and events" module */ WT_I18N::translate('A tab summarising census events.');
+		return /* I18N: Description of the "Facts and events" module */ KT_I18N::translate('A tab summarising census events.');
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 100;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return $this->getCensFacts() == null;
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $EXPAND_SOURCES, $EXPAND_NOTES, $controller;
 		$person		= $controller->getSignificantIndividual();
@@ -89,24 +89,24 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 		</style>
 		<div id="tab_census_content">
 			<!-- Show header Links -->
-			<?php if (WT_USER_CAN_EDIT) { ?>
+			<?php if (KT_USER_CAN_EDIT) { ?>
 				<div class="descriptionbox rela">
 					<span>
-						<a href="edit_interface.php?action=add&pid=<?php echo $xref; ?>&fact=CENS&accesstime=<?php echo WT_TIMESTAMP; ?>&ged=<?php echo WT_GEDCOM; ?>" target="_blank">
+						<a href="edit_interface.php?action=add&pid=<?php echo $xref; ?>&fact=CENS&accesstime=<?php echo KT_TIMESTAMP; ?>&ged=<?php echo KT_GEDCOM; ?>" target="_blank">
 							<i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>
-							<?php echo WT_I18N::translate('Add census'); ?>
+							<?php echo KT_I18N::translate('Add census'); ?>
 						</a>
 					</span>
 					<?php if (!$EXPAND_SOURCES) { ?>
 						<span>
 							<input id="checkbox_sour" type="checkbox">
-							<label for="checkbox_sour"><?php echo WT_I18N::translate('Expand all sources'); ?></label>
+							<label for="checkbox_sour"><?php echo KT_I18N::translate('Expand all sources'); ?></label>
 						</span>
 					<?php } ?>
 					<?php if (!$EXPAND_NOTES) { ?>
 						<span>
 							<input id="checkbox_note" type="checkbox">
-							<label for="checkbox_note"><?php echo WT_I18N::translate('Expand all notes'); ?></label>
+							<label for="checkbox_note"><?php echo KT_I18N::translate('Expand all notes'); ?></label>
 						</span>
 					<?php } ?>
 				</div>
@@ -115,14 +115,14 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 				<table>
 					<thead>
 						<tr>
-							<th><?php echo WT_I18N::translate('Date'); ?></th>
-							<th><?php echo WT_I18N::translate('Place'); ?></th>
-							<th><?php echo WT_I18N::translate('Address'); ?></th>
-							<th><?php echo WT_I18N::translate('Notes'); ?></th>
-							<th><?php echo WT_I18N::translate('Sources'); ?></th>
-							<th><?php echo WT_I18N::translate('Media'); ?></th>
-							<?php if (WT_USER_CAN_EDIT) { ?>
-								<th><?php echo WT_I18N::translate('Edit'); ?></th>
+							<th><?php echo KT_I18N::translate('Date'); ?></th>
+							<th><?php echo KT_I18N::translate('Place'); ?></th>
+							<th><?php echo KT_I18N::translate('Address'); ?></th>
+							<th><?php echo KT_I18N::translate('Notes'); ?></th>
+							<th><?php echo KT_I18N::translate('Sources'); ?></th>
+							<th><?php echo KT_I18N::translate('Media'); ?></th>
+							<?php if (KT_USER_CAN_EDIT) { ?>
+								<th><?php echo KT_I18N::translate('Edit'); ?></th>
 							<?php } ?>
 						</tr>
 					</thead>
@@ -140,22 +140,22 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 									<td class="small"><?php echo print_fact_notes($fact->getGedcomRecord(), 2); ?></td>
 									<td class="small"><?php echo print_fact_sources($fact->getGedcomRecord(), 2, true, true); ?></td>
 									<td><?php echo print_media_links($fact->getGedcomRecord(), 2, $xref); ?></td>
-									<?php if (WT_USER_CAN_EDIT && $styleadd!='change_old' && $fact->getLineNumber()>0 && $fact->canEdit()) { ?>
+									<?php if (KT_USER_CAN_EDIT && $styleadd!='change_old' && $fact->getLineNumber()>0 && $fact->canEdit()) { ?>
 										<td>
 											<div class="editfacts">
 												<div class="editlink">
-													<a class="icon-edit" onclick="return edit_record('<?php echo $xref; ?>', <?php echo $fact->getLineNumber(); ?>);" href="#" title="<?php echo WT_I18N::translate('Edit'); ?>">
-														<span class="link_text"><?php echo WT_I18N::translate('Edit'); ?></span>
+													<a class="icon-edit" onclick="return edit_record('<?php echo $xref; ?>', <?php echo $fact->getLineNumber(); ?>);" href="#" title="<?php echo KT_I18N::translate('Edit'); ?>">
+														<span class="link_text"><?php echo KT_I18N::translate('Edit'); ?></span>
 													</a>
 												</div>
 												<div class="copylink">
-													<a class="icon-copy" href="#" onclick="jQuery.post('action.php',{action:'copy-fact', type:'<?php echo $fact->getParentObject()->getType(); ?>', factgedcom:'<?php echo rawurlencode($fact->getGedcomRecord()); ?>'},function(){location.reload();})" title="<?php echo  WT_I18N::translate('Copy'); ?>">
-														<span class="link_text"><?php echo WT_I18N::translate('Copy'); ?></span>
+													<a class="icon-copy" href="#" onclick="jQuery.post('action.php',{action:'copy-fact', type:'<?php echo $fact->getParentObject()->getType(); ?>', factgedcom:'<?php echo rawurlencode($fact->getGedcomRecord()); ?>'},function(){location.reload();})" title="<?php echo  KT_I18N::translate('Copy'); ?>">
+														<span class="link_text"><?php echo KT_I18N::translate('Copy'); ?></span>
 													</a>
 												</div>
 												<div class="deletelink">
-													<a class="icon-delete" onclick="return delete_fact('<?php echo $xref; ?>', <?php echo $fact->getLineNumber(); ?>, '', '<?php echo WT_I18N::translate('Are you sure you want to delete this fact?'); ?>');" href="#" title="<?php echo WT_I18N::translate('Delete'); ?>">
-														<span class="link_text"><?php echo WT_I18N::translate('Delete'); ?></span>
+													<a class="icon-delete" onclick="return delete_fact('<?php echo $xref; ?>', <?php echo $fact->getLineNumber(); ?>, '', '<?php echo KT_I18N::translate('Are you sure you want to delete this fact?'); ?>');" href="#" title="<?php echo KT_I18N::translate('Delete'); ?>">
+														<span class="link_text"><?php echo KT_I18N::translate('Delete'); ?></span>
 													</a>
 												</div>
 											</div>
@@ -171,17 +171,17 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->getCensFacts();
+		return KT_USER_CAN_EDIT || $this->getCensFacts();
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}

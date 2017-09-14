@@ -21,38 +21,38 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
-$theme_name = "webtrees"; /* I18N: Name of a theme. */ WT_I18N::translate('webtrees');
+$theme_name = "webtrees"; /* I18N: Name of a theme. */ KT_I18N::translate('webtrees');
 
-$headerfile = WT_THEME_DIR.'header.php';
-$footerfile = WT_THEME_DIR.'footer.php';
+$headerfile = KT_THEME_DIR.'header.php';
+$footerfile = KT_THEME_DIR.'footer.php';
 
 //- main icons
-$WT_IMAGES=array(
+$KT_IMAGES=array(
 	// used to draw charts
-	'dline'          =>WT_THEME_URL.'images/dline.png',
-	'dline2'         =>WT_THEME_URL.'images/dline2.png',
-	'hline'          =>WT_THEME_URL.'images/hline.png',
-	'spacer'         =>WT_THEME_URL.'images/spacer.png',
-	'vline'          =>WT_THEME_URL.'images/vline.png',
+	'dline'          =>KT_THEME_URL.'images/dline.png',
+	'dline2'         =>KT_THEME_URL.'images/dline2.png',
+	'hline'          =>KT_THEME_URL.'images/hline.png',
+	'spacer'         =>KT_THEME_URL.'images/spacer.png',
+	'vline'          =>KT_THEME_URL.'images/vline.png',
 
 	// used in button images and javascript
-	'add'            =>WT_THEME_URL.'images/add.png',
-	'button_family'  =>WT_THEME_URL.'images/buttons/family.png',
-	'minus'          =>WT_THEME_URL.'images/minus.png',
-	'plus'           =>WT_THEME_URL.'images/plus.png',
-	'remove'         =>WT_THEME_URL.'images/remove.png',
-	'search'         =>WT_THEME_URL.'images/search.png',
+	'add'            =>KT_THEME_URL.'images/add.png',
+	'button_family'  =>KT_THEME_URL.'images/buttons/family.png',
+	'minus'          =>KT_THEME_URL.'images/minus.png',
+	'plus'           =>KT_THEME_URL.'images/plus.png',
+	'remove'         =>KT_THEME_URL.'images/remove.png',
+	'search'         =>KT_THEME_URL.'images/search.png',
 
 	// need different sizes before moving to CSS
-	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
-	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
-	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
+	'default_image_M'=>KT_THEME_URL.'images/silhouette_male.png',
+	'default_image_F'=>KT_THEME_URL.'images/silhouette_female.png',
+	'default_image_U'=>KT_THEME_URL.'images/silhouette_unknown.png',
 );
 
 //-- pedigree chart variables
@@ -84,16 +84,16 @@ $cbheight = 50;
 
 // --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
 // --  The largest possible area for charts is 300,000 pixels, so the maximum height or width is 1000 pixels
-$WT_STATS_S_CHART_X = 550;
-$WT_STATS_S_CHART_Y = 200;
-$WT_STATS_L_CHART_X = 900;
+$KT_STATS_S_CHART_X = 550;
+$KT_STATS_S_CHART_Y = 200;
+$KT_STATS_L_CHART_X = 900;
 // --  For map charts, the maximum size is 440 pixels wide by 220 pixels high
-$WT_STATS_MAP_X = 440;
-$WT_STATS_MAP_Y = 220;
+$KT_STATS_MAP_X = 440;
+$KT_STATS_MAP_Y = 220;
 
-$WT_STATS_CHART_COLOR1 = "ffffff";
-$WT_STATS_CHART_COLOR2 = "9ca3d4";
-$WT_STATS_CHART_COLOR3 = "e5e6ef";
+$KT_STATS_CHART_COLOR1 = "ffffff";
+$KT_STATS_CHART_COLOR2 = "9ca3d4";
+$KT_STATS_CHART_COLOR3 = "e5e6ef";
 
 //-- variables for the fan chart
 $fanChart = array(
@@ -103,6 +103,6 @@ $fanChart = array(
 	'bgFColor'=>'#e9daf1'
 );
 
-if (file_exists(WT_THEME_URL . 'mytheme.php')) {
+if (file_exists(KT_THEME_URL . 'mytheme.php')) {
 	include 'mytheme.php';
 }

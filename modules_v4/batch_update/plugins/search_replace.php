@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -35,11 +35,11 @@ class search_replace_bu_plugin extends base_plugin {
 	var $error   = null; // Message for bad user parameters
 
 	static function getName() {
-		return WT_I18N::translate('Search and replace');
+		return KT_I18N::translate('Search and replace');
 	}
 
 	static function getDescription() {
-		return /* I18N: Description of the “Search and replace” option of the batch update module */ WT_I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
+		return /* I18N: Description of the “Search and replace” option of the batch update module */ KT_I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
 	}
 
 	// Default is to operate on INDI records
@@ -59,8 +59,8 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptions() {
 		parent::getOptions();
-		$this->search  = safe_GET('search', WT_REGEX_UNSAFE);
-		$this->replace = safe_GET('replace', WT_REGEX_UNSAFE);
+		$this->search  = safe_GET('search', KT_REGEX_UNSAFE);
+		$this->replace = safe_GET('replace', KT_REGEX_UNSAFE);
 		$this->method  = safe_GET('method', array('exact', 'words', 'wildcards', 'regex'), 'exact');
 		$this->case    = safe_GET('case', 'i');
 
@@ -81,7 +81,7 @@ class search_replace_bu_plugin extends base_plugin {
 			// A valid regex on a null string returns zero.
 			// An invalid regex on a null string returns false (and throws a warning).
 			if (@preg_match('/'.$this->search.'/', null) === false) {
-				$this->error = '<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
+				$this->error = '<br><span class="error">'.KT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
 			}
 			break;
 		}
@@ -89,37 +89,37 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptionsForm() {
 		$descriptions = array(
-			'exact'		=> WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
-			'words'		=> WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
-			'wildcards'	=> WT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
-			'regex'		=> WT_I18N::translate('Regular expressions are an advanced pattern matching technique.  See <a href="http://php.net/manual/en/regexp.reference.php" target="_new">php.net/manual/en/regexp.reference.php</a> for futher details.'),
+			'exact'		=> KT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
+			'words'		=> KT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
+			'wildcards'	=> KT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
+			'regex'		=> KT_I18N::translate('Regular expressions are an advanced pattern matching technique.  See <a href="http://php.net/manual/en/regexp.reference.php" target="_new">php.net/manual/en/regexp.reference.php</a> for futher details.'),
 		);
 
 		return
 			'<label>
-				<span>' . WT_I18N::translate('Search method') . '</span>
+				<span>' . KT_I18N::translate('Search method') . '</span>
 				<select name="method" onchange="this.form.submit();">
-					<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>
-					<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>
-					<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>
-					<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>
+					<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.KT_I18N::translate('Exact text')    .'</option>
+					<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.KT_I18N::translate('Whole words only')    .'</option>
+					<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.KT_I18N::translate('Wildcards').'</option>
+					<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.KT_I18N::translate('Regular expression')    .'</option>
 				</select>
 				<p><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</p>
 			</label>
 			<label>
-				<span>' . WT_I18N::translate('Case insensitive') . '</span>
+				<span>' . KT_I18N::translate('Case insensitive') . '</span>
 				<input type="checkbox" name="case" value="i" ' . ($this->case=='i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">
-				<p><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></p>
+				<p><em>' . KT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></p>
 			</label>' .
 			parent::getOptionsForm() . '
 			<hr>
 			<label>
-				<span>' . WT_I18N::translate('Search text/pattern') . '</span>
-				<input id="search" name="search" value="' . WT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
+				<span>' . KT_I18N::translate('Search text/pattern') . '</span>
+				<input id="search" name="search" value="' . KT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
 			</label>
 			<label>
-				<span>' . WT_I18N::translate('Replacement text') . '</span>
-				<input id="replace" name="replace" value="' . WT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
+				<span>' . KT_I18N::translate('Replacement text') . '</span>
+				<input id="replace" name="replace" value="' . KT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
 			</label>';
 	}
 }

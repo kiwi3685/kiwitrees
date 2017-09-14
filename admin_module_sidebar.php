@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_module_sidebar.php');
+define('KT_SCRIPT_NAME', 'admin_module_sidebar.php');
 require 'includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('Module administration'))
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('Module administration'))
 	->pageHeader()
 	->addInlineJavascript('
     jQuery("#sidebars_table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
@@ -43,20 +43,20 @@ $controller
 		});
 	');
 
-$modules=WT_Module::getActiveSidebars(WT_GED_ID, WT_PRIV_HIDE);
+$modules=KT_Module::getActiveSidebars(KT_GED_ID, KT_PRIV_HIDE);
 
 $action = safe_POST('action');
 
-if ($action=='update_mods' && WT_Filter::checkCsrf()) {
+if ($action=='update_mods' && KT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
-		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = safe_POST("access-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
-			WT_DB::prepare(
+		foreach (KT_Tree::getAll() as $tree) {
+			$access_level = safe_POST("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
+			KT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
 			)->execute(array($module_name, $tree->tree_id, $access_level));
 		}
 		$order = safe_POST('order-'.$module_name);
-		WT_DB::prepare(
+		KT_DB::prepare(
 			"UPDATE `##module` SET sidebar_order=? WHERE module_name=?"
 		)->execute(array($order, $module_name));
 		$module->order=$order; // Make the new order take effect immediately
@@ -66,16 +66,16 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 
 ?>
 <div id="sidebars">
-	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post" action="<?php echo KT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="action" value="update_mods">
-		<?php echo WT_Filter::getCsrf(); ?>
+		<?php echo KT_Filter::getCsrf(); ?>
 		<table id="sidebars_table" class="modules_table">
 			<thead>
 				<tr>
-					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
-					<th><?php echo WT_I18N::translate('Description'); ?></th>
-					<th><?php echo WT_I18N::translate('Order'); ?></th>
-					<th><?php echo WT_I18N::translate('Access level'); ?></th>
+					<th><?php echo KT_I18N::translate('Sidebar'); ?></th>
+					<th><?php echo KT_I18N::translate('Description'); ?></th>
+					<th><?php echo KT_I18N::translate('Order'); ?></th>
+					<th><?php echo KT_I18N::translate('Access level'); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -86,11 +86,11 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 					<tr class="sortme">
 						<td>
 							<?php
-							if ( $module instanceof WT_Module_Config ) {
+							if ( $module instanceof KT_Module_Config ) {
 								echo '<a href="', $module->getConfigLink(), '">';
 							}
 							echo $module->getTitle();
-							if ( $module instanceof WT_Module_Config && array_key_exists($module->getName(), WT_Module::getActiveModules() ) ) {
+							if ( $module instanceof KT_Module_Config && array_key_exists($module->getName(), KT_Module::getActiveModules() ) ) {
 								echo ' <i class="fa fa-cogs"></i></a>';
 							}
 							?>
@@ -103,14 +103,14 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 						</td>
 						<td>
 							<table class="modules_table2">
-								<?php foreach (WT_Tree::getAll() as $tree) { ?>
+								<?php foreach (KT_Tree::getAll() as $tree) { ?>
 									<tr>
 										<td>
 											<?php echo $tree->tree_title_html; ?>
 										</td>
 										<td>
 											<?php
-												$access_level = WT_DB::prepare(
+												$access_level = KT_DB::prepare(
 													"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
 												)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
 												if ($access_level === null) {
@@ -132,7 +132,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 		</table>
 		<button class="btn btn-primary show" type="submit">
 			<i class="fa fa-floppy-o"></i>
-			<?php echo WT_I18N::translate('save'); ?>
+			<?php echo KT_I18N::translate('save'); ?>
 		</button>
 	</form>
 </div>

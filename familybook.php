@@ -21,13 +21,13 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'familybook.php');
+define('KT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Familybook();
+$controller = new KT_Controller_Familybook();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -37,26 +37,26 @@ $controller
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Individual'); ?>
+					<?php echo KT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show Details'); ?>
+					<?php echo KT_I18N::translate('Show Details'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 					<input type="checkbox" value="<?php	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
 				</td>
 				<td rowspan="3" class="topbottombar vmiddle">
-					<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>">
+					<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ KT_I18N::translate('View'); ?>">
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Generations'); ?>
+					<?php echo KT_I18N::translate('Generations'); ?>
 				</td>
 				<td class="optionbox">
 					<select name="generations">
@@ -64,13 +64,13 @@ $controller
 						for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 							echo "<option value=\"".$i."\"" ;
 							if ($i == $controller->generations) echo " selected=\"selected\"";
-							echo ">".WT_I18N::number($i)."</option>";
+							echo ">".KT_I18N::number($i)."</option>";
 						}
 						?>
 					</select>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
+					<?php echo KT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="checkbox" value="1" name="show_spouse" <?php if ($controller->show_spouse) echo " checked=\"checked\""; ?>>
@@ -78,13 +78,13 @@ $controller
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
+					<?php echo KT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="text" size="3" name="descent" value="<?php echo $controller->descent; ?>">
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Box width'); ?>
+					<?php echo KT_I18N::translate('Box width'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>"> %

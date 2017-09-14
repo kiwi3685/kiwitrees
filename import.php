@@ -21,16 +21,16 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'import.php');
+define('KT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
+require_once KT_ROOT.'includes/functions/functions_import.php';
 
-if (!WT_USER_GEDCOM_ADMIN) {
+if (!KT_USER_GEDCOM_ADMIN) {
 	header('HTTP/1.1 403 Access Denied');
 	exit;
 }
 
-$controller = new WT_Controller_Ajax();
+$controller = new KT_Controller_Ajax();
 $controller
 	->pageHeader();
 
@@ -43,13 +43,13 @@ $gedcom_id=safe_GET('gedcom_id');
 ignore_user_abort(true);
 
 // Run in a transaction
-WT_DB::exec("START TRANSACTION");
+KT_DB::exec("START TRANSACTION");
 
 // Only allow one process to import each gedcom at a time
-WT_DB::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
+KT_DB::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
 
 // What is the current import status?
-$row=WT_DB::prepare(
+$row=KT_DB::prepare(
 	"SELECT".
 	" SUM(IF(imported, LENGTH(chunk_data), 0)) AS import_offset,".
 	" SUM(LENGTH(chunk_data))                  AS import_total".
@@ -59,7 +59,7 @@ $row=WT_DB::prepare(
 if ($row->import_offset==$row->import_total) {
 	set_gedcom_setting($gedcom_id, 'imported', true);
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
-	WT_DB::exec("COMMIT");
+	KT_DB::exec("COMMIT");
 	$controller->addInlineJavascript(
 		'jQuery("#import'. $gedcom_id.'").toggle();'.
 		'jQuery("#actions'.$gedcom_id.'").toggle();'
@@ -69,7 +69,7 @@ if ($row->import_offset==$row->import_total) {
 
 // Calculate progress so far
 $percent = 100*(($row->import_offset) / $row->import_total);
-$status = '<span class="error indent">' . WT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent) . '</span>';
+$status = '<span class="error indent">' . KT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent) . '</span>';
 
 echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
 $controller->addInlineJavascript(
@@ -79,7 +79,7 @@ $controller->addInlineJavascript(
 $first_time=($row->import_offset==0);
 // Run for one second.  This keeps the resource requirements low.
 for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
-	$data=WT_DB::prepare(
+	$data=KT_DB::prepare(
 		"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 		" FROM `##gedcom_chunk`".
 		" WHERE gedcom_id=? AND NOT imported".
@@ -93,20 +93,20 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		empty_database($gedcom_id, $keep_media);
 		set_gedcom_setting($gedcom_id, 'imported', false);
 		// Remove any byte-order-mark
-		WT_DB::prepare(
+		KT_DB::prepare(
 			"UPDATE `##gedcom_chunk`".
 			" SET chunk_data=TRIM(LEADING ? FROM chunk_data)".
 			" WHERE gedcom_chunk_id=?"
-		)->execute(array(WT_UTF8_BOM, $data->gedcom_chunk_id));
+		)->execute(array(KT_UTF8_BOM, $data->gedcom_chunk_id));
 		// Re-fetch the data, now that we have removed the BOM
-		$data=WT_DB::prepare(
+		$data=KT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 			" FROM `##gedcom_chunk`".
 			" WHERE gedcom_chunk_id=?"
 		)->execute(array($data->gedcom_chunk_id))->fetchOneRow();
 		if (substr($data->chunk_data, 0, 6)!='0 HEAD') {
-			WT_DB::exec("ROLLBACK");
-			echo WT_I18N::translate('Invalid GEDCOM file - no header record found.');
+			KT_DB::exec("ROLLBACK");
+			echo KT_I18N::translate('Invalid GEDCOM file - no header record found.');
 			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
 			exit;
 		}
@@ -120,7 +120,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		// have been encountered "in the wild".
 		switch ($charset) {
 		case 'ASCII':
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"UPDATE `##gedcom_chunk`".
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING ascii) USING utf8)".
 				" WHERE gedcom_id=?"
@@ -132,7 +132,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'CP437':
 		case 'CP850':
 			// CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"UPDATE `##gedcom_chunk`".
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING cp850) USING utf8)".
 				" WHERE gedcom_id=?"
@@ -140,7 +140,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			break;
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
 			$controller->addInlineJavascript(
-				'alert("'. /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'). '");'
+				'alert("'. /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ KT_I18N::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'). '");'
 			);
 		case 'WINDOWS':
 		case 'CP1252':
@@ -149,7 +149,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'LATIN1':
 		case 'LATIN-1':
 			// Convert from ISO-8859-1 (western european) to UTF8.
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"UPDATE `##gedcom_chunk`".
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)".
 				" WHERE gedcom_id=?"
@@ -161,7 +161,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'LATIN2':
 		case 'LATIN-2':
 			// Convert from ISO-8859-2 (eastern european) to UTF8.
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"UPDATE `##gedcom_chunk`".
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING latin2) USING utf8)".
 				" WHERE gedcom_id=?"
@@ -169,7 +169,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			break;
 		case 'MACINTOSH':
 			// Convert from MAC Roman to UTF8.
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"UPDATE `##gedcom_chunk`".
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING macroman) USING utf8)".
 				" WHERE gedcom_id=?"
@@ -182,15 +182,15 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'ANSEL':
 			// TODO: fisharebest has written a mysql stored procedure that converts ANSEL to UTF-8
 		default:
-			WT_DB::exec("ROLLBACK");
-			echo '<span class="error">',  WT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
+			KT_DB::exec("ROLLBACK");
+			echo '<span class="error">',  KT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
 			exit;
 		}
 		$first_time=false;
 
 		// Re-fetch the data, now that we have performed character set conversion.
-		$data=WT_DB::prepare(
+		$data=KT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 			" FROM `##gedcom_chunk`".
 			" WHERE gedcom_chunk_id=?"
@@ -206,11 +206,11 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			import_record($rec, $gedcom_id, false);
 		}
 		// Mark the chunk as imported
-		WT_DB::prepare(
+		KT_DB::prepare(
 			"UPDATE `##gedcom_chunk` SET imported=TRUE WHERE gedcom_chunk_id=?"
 		)->execute(array($data->gedcom_chunk_id));
 	} catch (PDOException $ex) {
-		WT_DB::exec("ROLLBACK");
+		KT_DB::exec("ROLLBACK");
 		if ($ex->getCode()=='40001') {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
 			// The documentation says that if you get this error, wait and try again.....
@@ -225,7 +225,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	}
 }
 
-WT_DB::exec("COMMIT");
+KT_DB::exec("COMMIT");
 
 // Reload.....
 // Use uniqid() to prevent jQuery caching the previous response.

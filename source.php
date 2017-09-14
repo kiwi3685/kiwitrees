@@ -21,47 +21,47 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'source.php');
+define('KT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Source();
+$controller = new KT_Controller_Source();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (KT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ KT_I18N::translate(
 					'This source has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (KT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This source has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				KT_I18N::translate('This source has been deleted.  The deletion will need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
-		if (WT_USER_CAN_ACCEPT) {
+	} elseif (find_updated_record($controller->record->getXref(), KT_GED_ID)!==null) {
+		if (KT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ KT_I18N::translate(
 					'This source has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (KT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This source has been edited.  The changes need to be reviewed by a moderator.'),
+				KT_I18N::translate('This source has been edited.  The changes need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -69,7 +69,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 } else {
 	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('This source does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', KT_I18N::translate('This source does not exist or you do not have permission to view it.'), '</p>';
 	exit;
 }
 
@@ -94,18 +94,18 @@ echo '<div id="source-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
 echo '<div id="source-tabs">
 	<ul>
-		<li><a href="#source-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
+		<li><a href="#source-edit"><span>', KT_I18N::translate('Details'), '</span></a></li>';
 		if ($linked_indi) {
-			echo '<li><a href="#indi-sources"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
+			echo '<li><a href="#indi-sources"><span id="indisource">', KT_I18N::translate('Individuals'), '</span></a></li>';
 		}
 		if ($linked_fam) {
-			echo '<li><a href="#fam-sources"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
+			echo '<li><a href="#fam-sources"><span id="famsource">', KT_I18N::translate('Families'), '</span></a></li>';
 		}
 		if ($linked_obje) {
-			echo '<li><a href="#media-sources"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>';
+			echo '<li><a href="#media-sources"><span id="mediasource">', KT_I18N::translate('Media objects'), '</span></a></li>';
 		}
 		if ($linked_note) {
-			echo '<li><a href="#note-sources"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';
+			echo '<li><a href="#note-sources"><span id="notesource">', KT_I18N::translate('Notes'), '</span></a></li>';
 		}
 		echo '</ul>';
 	// Edit this source
@@ -124,14 +124,14 @@ echo '<div id="source-tabs">
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $sourcefacts, 'SOUR');
 			// new media
-			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if (get_gedcom_setting(KT_GED_ID, 'MEDIA_UPLOAD') >= KT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
-				echo WT_Gedcom_Tag::getLabel('OBJE');
+				echo KT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
-				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a media object'), '</a>';
+				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', KT_I18N::translate('Add a media object'), '</a>';
 				echo help_link('OBJE');
 				echo '<br>';
-				echo '<a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=source" target="_blank">' . WT_I18N::translate('Link to an existing media object') . '</a>';
+				echo '<a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=source" target="_blank">' . KT_I18N::translate('Link to an existing media object') . '</a>';
 				echo '</td></tr>';
 			}
 		}

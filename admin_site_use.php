@@ -21,27 +21,27 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_site_use.php');
+define('KT_SCRIPT_NAME', 'admin_site_use.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('Server usage'))
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('Server usage'))
 	->pageHeader();
 
 function siteIndividuals() {
-	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals`")
+	$count = KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals`")
 		->execute()
 		->fetchOne();
-	return	WT_I18N::number($count);
+	return	KT_I18N::number($count);
 }
 
 function siteMedia() {
-	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%')")
+	$count = KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%')")
 		->execute()
 		->fetchOne();
-	return	WT_I18N::number($count);
+	return	KT_I18N::number($count);
 }
 
 // functions_db.php
@@ -52,22 +52,22 @@ $total_size		= format_size(db_size() + directory_size());
 ?>
 
 <div id="size">
-	<h3><?php echo WT_I18N::translate('All trees'); ?></h3>
+	<h3><?php echo KT_I18N::translate('All trees'); ?></h3>
 	<ul class="server_stats">
 		<li>
-			<?php echo WT_I18N::translate('%s Individuals', siteIndividuals()); ?>
+			<?php echo KT_I18N::translate('%s Individuals', siteIndividuals()); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('%s Media objects', siteMedia()); ?>
+			<?php echo KT_I18N::translate('%s Media objects', siteMedia()); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('Your database size is currently %s', $db_size); ?>
+			<?php echo KT_I18N::translate('Your database size is currently %s', $db_size); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('Your files including media items are currently using %s', $directory_size); ?>
+			<?php echo KT_I18N::translate('Your files including media items are currently using %s', $directory_size); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('Total server space used is therefore %s', $total_size); ?>
+			<?php echo KT_I18N::translate('Total server space used is therefore %s', $total_size); ?>
 		</li>
 	</ul>
 </div>

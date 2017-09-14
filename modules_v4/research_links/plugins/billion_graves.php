@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
     header('HTTP/1.0 403 Forbidden');
     exit;
 }

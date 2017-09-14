@@ -21,38 +21,38 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
-	// Extend WT_Module
+class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/tab on the individual page. */ WT_I18N::translate('Cousins');
+		return /* I18N: Name of a module/tab on the individual page. */ KT_I18N::translate('Cousins');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Facts and events" module */ WT_I18N::translate('A tab showing cousins of an individual.');
+		return /* I18N: Description of the "Facts and events" module */ KT_I18N::translate('A tab showing cousins of an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 80;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return false;
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $controller;
 		$list_f				= array();
@@ -72,7 +72,7 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		if ($person->getPrimaryChildFamily()) {
 			$parentFamily = $person->getPrimaryChildFamily();
 		} else {
-			$html .= '<h3>'.WT_I18N::translate('No family available').'</h3>';
+			$html .= '<h3>'.KT_I18N::translate('No family available').'</h3>';
 			return $html;
 			exit;
 		}
@@ -88,21 +88,21 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//Lookup father's siblings
-		$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyHusb, 0, strpos($grandparentFamilyHusb, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
+		$rows = KT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".KT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyHusb, 0, strpos($grandparentFamilyHusb, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			if ($row['xref'] != substr($parentFamily->getHusband(), 0, strpos($parentFamily->getHusband(), '@')))
 				$list_f[]=$row['xref'];
 		}
 		//Lookup Aunt & Uncle's families (father's family)
 		foreach ($list_f as $ids) {
-			$rows = WT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = KT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".KT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_f2[]=$row['xref'];
 			}
 		}
 		//Lookup cousins (father's family)
 		foreach ($list_f2 as $id2) {
-			$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = KT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".KT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_f3[]=$row['xref'];
 				$count_cousins_f ++;
@@ -110,21 +110,21 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//Lookup mother's siblings
-		$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyWife, 0, strpos($grandparentFamilyWife, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
+		$rows = KT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".KT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyWife, 0, strpos($grandparentFamilyWife, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			if ($row['xref'] != substr($parentFamily->getWife(), 0, strpos($parentFamily->getWife(), '@')))
 				$list_m[]=$row['xref'];
 		}
 		//Lookup Aunt & Uncle's families (mother's family)
 		foreach ($list_m as $ids) {
-			$rows = WT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = KT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".KT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_m2[]=$row['xref'];
 			}
 		}
 		//Lookup cousins (mother's family)
 		foreach ($list_m2 as $id2) {
-			$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = KT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".KT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_m3[] = $row['xref'];
 				$count_cousins_m ++;
@@ -136,35 +136,35 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		$myParentFamily = $parentFamily->getXref();
 
-		$html .= '<h3>' . WT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $count_cousins, $count_cousins, $fullname) . '</h3>';
+		$html .= '<h3>' . KT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $count_cousins, $count_cousins, $fullname) . '</h3>';
 		if ($count_duplicates > 0) {
-			$html .= '<p>' . /* I18N: a reference to cousins of siblings married to siblings */ WT_I18N::plural('%1$d is on both sides of the family', '%1$d are on both sides of the family', $count_duplicates, $count_duplicates) . '</p>';
+			$html .= '<p>' . /* I18N: a reference to cousins of siblings married to siblings */ KT_I18N::plural('%1$d is on both sides of the family', '%1$d are on both sides of the family', $count_duplicates, $count_duplicates) . '</p>';
 		}
 		$html .= '<div id="cousins_tab_content">';
 
 		//List Cousins (father's family)
 		$html .= '<div id="cousins_f">';
-		$html .= '<h4>'.WT_I18N::translate('Father\'s family (%s)', $count_cousins_f).'</h4>';
+		$html .= '<h4>'.KT_I18N::translate('Father\'s family (%s)', $count_cousins_f).'</h4>';
 		$i = 0;
 		$prev_fam_id = -1;
 		foreach ($list_f3 as $id3) {
 			$i++;
-			$record=WT_Person::getInstance($id3);
+			$record=KT_Person::getInstance($id3);
 			$cousinParentFamily = substr($record->getPrimaryChildFamily(), 0, strpos($record->getPrimaryChildFamily(), '@'));
  			if ( $cousinParentFamily == $myParentFamily )
 				continue; // cannot be cousin to self
-			$family=WT_Family::getInstance($cousinParentFamily);
+			$family=KT_Family::getInstance($cousinParentFamily);
 			$tmp=array('M'=>'', 'F'=>'F', 'U'=>'NN');
 			$isF=$tmp[$record->getSex()];
 			$label = '';
 			$famcrec = get_sub_record(1, '1 FAMC @'.$cousinParentFamily.'@', $record->getGedcomRecord());
 			$pedi = get_gedcom_value('PEDI', 2, $famcrec, '', false);
 			if ($pedi) {
-				$label = '<span class="cousins_pedi">'.WT_Gedcom_Code_Pedi::getValue($pedi, $record).'</span>';
+				$label = '<span class="cousins_pedi">'.KT_Gedcom_Code_Pedi::getValue($pedi, $record).'</span>';
 			}
 			if ($cousinParentFamily != $prev_fam_id) {
  				$prev_fam_id = $cousinParentFamily;
-				$html .= '<h5>'.WT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
+				$html .= '<h5>'.KT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
 				$i = 1;
 			}
 			$html .= '<div class="person_box'.$isF.'">';
@@ -179,28 +179,28 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		//List Cousins (mother's family)
 		$prev_fam_id = -1;
 		$html .= '<div id="cousins_m">';
-		$html .= '<h4>'.WT_I18N::translate('Mother\'s family (%s)', $count_cousins_m).'</h4>';
+		$html .= '<h4>'.KT_I18N::translate('Mother\'s family (%s)', $count_cousins_m).'</h4>';
 		$i = 0;
 		foreach ($list_m3 as $id3) {
 			$i++;
-			$record=WT_Person::getInstance($id3);
+			$record=KT_Person::getInstance($id3);
 			$cousinParentFamily = substr($record->getPrimaryChildFamily(), 0, strpos($record->getPrimaryChildFamily(), '@'));
  			if ( $cousinParentFamily == $myParentFamily )
  				continue; // cannot be cousin to self
-			$record=WT_Person::getInstance($id3);
+			$record=KT_Person::getInstance($id3);
 			$cousinParentFamily = substr($record->getPrimaryChildFamily(), 0, strpos($record->getPrimaryChildFamily(), '@'));
-			$family=WT_Family::getInstance($cousinParentFamily);
+			$family=KT_Family::getInstance($cousinParentFamily);
 			$tmp=array('M'=>'', 'F'=>'F', 'U'=>'NN');
 			$isF=$tmp[$record->getSex()];
 			$label = '';
 			$famcrec = get_sub_record(1, '1 FAMC @'.$cousinParentFamily.'@', $record->getGedcomRecord());
 			$pedi = get_gedcom_value('PEDI', 2, $famcrec, '', false);
 			if ($pedi) {
-				$label = WT_Gedcom_Code_Pedi::getValue($pedi, $record);
+				$label = KT_Gedcom_Code_Pedi::getValue($pedi, $record);
 			}
  			if ($cousinParentFamily != $prev_fam_id) {
  				$prev_fam_id = $cousinParentFamily;
-				$html .= '<h5>'.WT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
+				$html .= '<h5>'.KT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
 				$i = 1;
 			}
 			$html .= '<div class="person_box'.$isF.'">';
@@ -216,17 +216,17 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}

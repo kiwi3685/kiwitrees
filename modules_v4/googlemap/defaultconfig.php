@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
  header('HTTP/1.0 403 Forbidden');
  exit;
 }
 
 // Create GM tables, if not already present
 try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 5);
+	KT_DB::updateSchema(KT_ROOT.KT_MODULES_DIR.'/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 5);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);

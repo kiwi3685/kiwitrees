@@ -21,36 +21,36 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend WT_Module
+class descendancy_KT_Module extends KT_Module implements KT_Module_Sidebar {
+	// Extend KT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */
-			WT_I18N::translate('Descendants');
+			KT_I18N::translate('Descendants');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
 		return /* I18N: Description of the “Descendants” module */
-			WT_I18N::translate('A sidebar showing the descendants of an individual.');
+			KT_I18N::translate('A sidebar showing the descendants of an individual.');
 	}
 
-	// Implement WT_Module
+	// Implement KT_Module
 	public function modAction($modAction) {
 		Zend_Session::writeClose();
 		header('Content-Type: text/html; charset=UTF-8');
 
 		switch ($modAction) {
 		case 'search':
-			$search = WT_Filter::get('search');
+			$search = KT_Filter::get('search');
 			echo $this->search($search);
 			break;
 		case 'descendants':
-			$individual = WT_Person::getInstance(WT_Filter::get('xref', WT_REGEX_XREF));
+			$individual = KT_Person::getInstance(KT_Filter::get('xref', KT_REGEX_XREF));
 			if ($individual) {
 				echo $this->loadSpouses($individual, 1);
 			}
@@ -62,29 +62,29 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		exit;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 50;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarContent() {
 		global $controller;
 
@@ -97,7 +97,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 
 			jQuery("#sb_desc_name").focus(function(){this.select();});
-			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="' . WT_I18N::translate('Search') . '";});
+			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="' . KT_I18N::translate('Search') . '";});
 			var dtimerid = null;
 			jQuery("#sb_desc_name").keyup(function(e) {
 				if (dtimerid) window.clearTimeout(dtimerid);
@@ -130,14 +130,14 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		return
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=search" onsubmit="return false;">' .
-			'<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="' . WT_I18N::translate('Search') . '">' .
+			'<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="' . KT_I18N::translate('Search') . '">' .
 			'</form>' .
 			'<div id="sb_desc_content">' .
 			'<ul>' . $this->getPersonLi($controller->record, 1) . '</ul>' .
 			'</div>';
 	}
 
-	public function getPersonLi(WT_Person $person, $generations = 0) {
+	public function getPersonLi(KT_Person $person, $generations = 0) {
 		$icon = $generations > 0 ? 'icon-minus' : 'icon-plus';
 		$lifespan = $person->canDisplayDetails() ? '(' . $person->getLifeSpan() . ')' : '';
 		$spouses = $generations > 0 ? $this->loadSpouses($person, 0) : '';
@@ -149,7 +149,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		                </li>', $this->getName(), $person->getXref(), $icon, $person->getSexImage(), $person->getFullName(), $lifespan, $person->getHtmlUrl(), '', $spouses);
 	}
 
-	public function getFamilyLi(WT_Family $family, WT_Person $person, $generations = 0) {
+	public function getFamilyLi(KT_Family $family, KT_Person $person, $generations = 0) {
 		$marryear = $family->getMarriageYear();
 		$marr = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
 		$fam = '<a href="' . $family->getHtmlUrl() . '" class="icon-button_family"></a>';
@@ -166,19 +166,19 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if (strlen($query) < 2) {
 			return '';
 		}
-		$rows = WT_DB::prepare(
+		$rows = KT_DB::prepare(
 			"SELECT i_id AS xref" .
 			" FROM `##individuals`, `##name`" .
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
 			" AND i_id=n_id AND i_file=n_file AND i_file=?" .
 			" ORDER BY n_sort"
 		)
-			->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+			->execute(array("%{$query}%", "%{$query}%", KT_GED_ID))
 			->fetchAll();
 
 		$out = '';
 		foreach ($rows as $row) {
-			$person = WT_Person::getInstance($row->xref);
+			$person = KT_Person::getInstance($row->xref);
 			if ($person->canDisplayName()) {
 				$out .= $this->getPersonLi($person);
 			}
@@ -190,7 +190,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	public function loadSpouses(WT_Person $person, $generations) {
+	public function loadSpouses(KT_Person $person, $generations) {
 		$out = '';
 		if ($person && $person->canDisplayDetails()) {
 			foreach ($person->getSpouseFamilies() as $family) {
@@ -202,7 +202,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 			}
 			if (!$out) {
-				$out = '<li class="sb_desc_none">' . WT_I18N::translate('No children') . '</li>';
+				$out = '<li class="sb_desc_none">' . KT_I18N::translate('No children') . '</li>';
 			}
 		}
 		if ($out) {
@@ -212,7 +212,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	public function loadChildren(WT_Family $family, $generations) {
+	public function loadChildren(KT_Family $family, $generations) {
 		$out = '';
 		if ($family->canDisplayDetails()) {
 			$children = $family->getChildren();
@@ -221,7 +221,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$out .= $this->getPersonLi($child, $generations - 1);
 				}
 			} else {
-				$out .= '<li class="sb_desc_none">' . WT_I18N::translate('No children') . '</li>';
+				$out .= '<li class="sb_desc_none">' . KT_I18N::translate('No children') . '</li>';
 			}
 		}
 		if ($out) {

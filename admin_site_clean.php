@@ -21,20 +21,20 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_site_clean.php');
+define('KT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ WT_I18N::translate('Clean up data folder'))
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ KT_I18N::translate('Clean up data folder'))
 	->pageHeader();
 
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
 function full_rmdir($dir) {
 	if (!is_writable($dir)) {
-		if (!@chmod($dir, WT_PERM_EXE)) {
+		if (!@chmod($dir, KT_PERM_EXE)) {
 			return false;
 		}
 	}
@@ -69,7 +69,7 @@ $locked_by_context	= array('index.php', 'config.ini.php', 'language');
 // If we are storing the media in the data folder (this is the
 // default), then don’t delete it.
 // Need to consider the settings for all gedcoms
-foreach (WT_Tree::getAll() as $tree) {
+foreach (KT_Tree::getAll() as $tree) {
 	$MEDIA_DIRECTORY = $tree->preference('MEDIA_DIRECTORY');
 
 	if (substr($MEDIA_DIRECTORY, 0, 3) !='../') {
@@ -81,18 +81,18 @@ foreach (WT_Tree::getAll() as $tree) {
 ?>
 <h3><?php echo $controller->getPageTitle(); ?></h3>
 <p>
-	<?php echo WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="icon-resn-confidential"></i>'); ?>
+	<?php echo KT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="icon-resn-confidential"></i>'); ?>
 </p>
 
 <?php
 //post back
 if (isset($_REQUEST['to_delete'])) {
-	echo '<div class="error">', WT_I18N::translate('Deleted files:'), '</div>';
+	echo '<div class="error">', KT_I18N::translate('Deleted files:'), '</div>';
 	foreach ($_REQUEST['to_delete'] as $k=>$v) {
-		if (is_dir(WT_DATA_DIR.$v)) {
-			full_rmdir(WT_DATA_DIR.$v);
-		} elseif (file_exists(WT_DATA_DIR.$v)) {
-			unlink(WT_DATA_DIR.$v);
+		if (is_dir(KT_DATA_DIR.$v)) {
+			full_rmdir(KT_DATA_DIR.$v);
+		} elseif (file_exists(KT_DATA_DIR.$v)) {
+			unlink(KT_DATA_DIR.$v);
 		}
 		echo '<div class="error">', $v, '</div>';
 	}
@@ -103,7 +103,7 @@ if (isset($_REQUEST['to_delete'])) {
 		<div id="cleanup">
 			<ul>
 				<?php
-				$dir	 = dir(WT_DATA_DIR);
+				$dir	 = dir(KT_DATA_DIR);
 				$entries = array();
 				while (false !== ($entry = $dir->read())) {
 					$entries[] = $entry;
@@ -111,7 +111,7 @@ if (isset($_REQUEST['to_delete'])) {
 				sort($entries);
 				foreach ($entries as $entry) {
 					if ($entry[0] != '.') {
-						$file_path = WT_DATA_DIR . $entry;
+						$file_path = KT_DATA_DIR . $entry;
 						$icon = '<i class="fa ' . (is_dir($file_path)? 'fa-folder-open-o' : 'fa-file-o') . '"></i>';
 						if (in_array($entry, $locked_by_context)) { ?>
 							<li class="facts_value" name="<?php echo $entry; ?>" id="lock_<?php echo $entry; ?>" >
@@ -132,7 +132,7 @@ if (isset($_REQUEST['to_delete'])) {
 			</ul>
 			<button class="btn btn-primary delete" type="submit">
 				<i class="fa fa-trash-o"></i>
-				<?php echo WT_I18N::translate('Delete'); ?>
+				<?php echo KT_I18N::translate('Delete'); ?>
 			</button>
 		</div>
 	</form>

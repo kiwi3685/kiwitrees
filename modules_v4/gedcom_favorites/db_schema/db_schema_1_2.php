@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Add the new columns
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"ALTER TABLE `##favorites`".
 		" CHANGE fv_id    favorite_id   INTEGER AUTO_INCREMENT NOT NULL,".
 		" CHANGE fv_gid   xref          VARCHAR(20) NULL,".
@@ -47,7 +47,7 @@ try {
 
 // Migrate data from the old columns to the new ones
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"UPDATE `##favorites` f".
 		" LEFT JOIN `##gedcom` g ON (f.fv_file    =g.gedcom_name)".
 		" LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)".
@@ -59,7 +59,7 @@ try {
 
 // Delete orphaned rows
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"DELETE FROM `##favorites` WHERE user_id IS NULL AND gedcom_id IS NULL"
 	);
 } catch (PDOException $ex) {
@@ -68,7 +68,7 @@ try {
 
 // Delete the old column
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"ALTER TABLE `##favorites` DROP fv_username, DROP fv_file"
 	);
 } catch (PDOException $ex) {
@@ -77,7 +77,7 @@ try {
 
 // Rename the table
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"RENAME TABLE `##favorites` TO `##favorite`"
 	);
 } catch (PDOException $ex) {
@@ -85,4 +85,4 @@ try {
 }
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

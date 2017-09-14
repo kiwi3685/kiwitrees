@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -37,7 +37,7 @@ class TreeView {
 	 */
 	function __construct($name = 'tree') {
 		$this->name = $name;
-		$this->all_partners = WT_Filter::cookie('allPartners', 'true|false', 'true');
+		$this->all_partners = KT_Filter::cookie('allPartners', 'true|false', 'true');
 	}
 
 	/**
@@ -51,16 +51,16 @@ class TreeView {
 	 */
 	public function drawViewport($root_person, $generations) {
 		$html = '
-			<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
+			<h2 id="tree-title">' . KT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
 			<a name="tv_content"></a>
 			<div id="' . $this->name . '_out" class="tv_out">
 				<div id="tv_tools" class="noprint">
 					<ul>
 						<li id="tvbCompact" class="tv_button">
-							<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . WT_I18N::translate('Use compact layout') . '" title="' . WT_I18N::translate('Use compact layout') . '">
+							<img src="' . KT_STATIC_URL . KT_MODULES_DIR . 'tree/images/compact.png" alt="' . KT_I18N::translate('Use compact layout') . '" title="' . KT_I18N::translate('Use compact layout') . '">
 						</li>
 						<li id="tvbAllPartners" class="tv_button' . ($this->all_partners === 'true' ? ' tvPressed' : '') . '">
-							<a class="icon-sfamily" href="#" title="' . WT_I18N::translate('Show all spouses and ancestors') . '"></a>
+							<a class="icon-sfamily" href="#" title="' . KT_I18N::translate('Show all spouses and ancestors') . '"></a>
 						</li>
 						<li class="tv_button" id="' . $this->name . '_loading">
 							<i class="icon-loading-small"></i>
@@ -94,7 +94,7 @@ class TreeView {
 				$fidlist = explode(',', $jsonRequest);
 				$flist = array();
 				foreach ($fidlist as $fid) {
-					$flist[] = WT_Family::getInstance($fid);
+					$flist[] = KT_Family::getInstance($fid);
 				}
 				$r[] = $this->drawChildren($flist, 1, true);
 				break;
@@ -102,7 +102,7 @@ class TreeView {
 				$params = explode('@', $jsonRequest);
 				$fid = $params[0];
 				$order = $params[1];
-				$f = WT_Family::getInstance($fid);
+				$f = KT_Family::getInstance($fid);
 				if ($f->getHusband()) {
 					$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
 				}
@@ -139,18 +139,18 @@ class TreeView {
 		$html .= '
 			<div style="margin-left:40px;">
 				<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a>
-				<a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>
+				<a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . KT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>
 				<br>
-				<b>' . WT_Gedcom_Tag::getAbbreviation('BIRT') . '</b> ' . $individual->getBirthDate()->Display() . ' ' . $individual->getBirthPlace();
+				<b>' . KT_Gedcom_Tag::getAbbreviation('BIRT') . '</b> ' . $individual->getBirthDate()->Display() . ' ' . $individual->getBirthPlace();
 				if ($family) {
 					$html .= '
-						<br><b>' . WT_Gedcom_Tag::getAbbreviation('MARR') . '</b> ' . $family->getMarriageDate()->Display() . '
+						<br><b>' . KT_Gedcom_Tag::getAbbreviation('MARR') . '</b> ' . $family->getMarriageDate()->Display() . '
 						<a href="' . $family->getHtmlUrl() . '" class="icon-button_family tv_link tv_treelink" title="' . strip_tags($family->getFullName()) . '"></a>' . $family->getMarriagePlace() .
-						$family->format_first_major_fact(WT_EVENTS_DIV, 3);
+						$family->format_first_major_fact(KT_EVENTS_DIV, 3);
 				}
 				if ($individual->isDead()) {
 					$html .= '
-						<br><b>' . WT_Gedcom_Tag::getAbbreviation('DEAT') . '</b> ' . $individual->getDeathDate()->Display() . ' ' . $individual->getDeathPlace();
+						<br><b>' . KT_Gedcom_Tag::getAbbreviation('DEAT') . '</b> ' . $individual->getDeathDate()->Display() . ' ' . $individual->getDeathPlace();
 				}
 		$html .= '</div>';
 		
@@ -214,7 +214,7 @@ class TreeView {
 	 * @param $person The Person object to draw the box for
 	 * @param int           $gen    The number of generations up or down to print
 	 * @param int           $state  Whether we are going up or down the tree, -1 for descendents +1 for ancestors
-	 * @param WT_Family     $pfamily
+	 * @param KT_Family     $pfamily
 	 * @param string        $order  first (1), last(2), unique(0), or empty. Required for drawing lines between boxes
 	 * @param boolean       $isRoot
 	 *
@@ -334,19 +334,19 @@ class TreeView {
 				case 'M':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Son of [father name & mother name]” */
-						WT_I18N::translate('Son of %s', $family->getFullName())
+						KT_I18N::translate('Son of %s', $family->getFullName())
 					) . '"';
 					break;
 				case 'F':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Daughter of [father name & mother name]” */
-						WT_I18N::translate('Daughter of %s', $family->getFullName())
+						KT_I18N::translate('Daughter of %s', $family->getFullName())
 					) . '"';
 					break;
 				case 'U':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Child of [father name & mother name]” */
-						WT_I18N::translate('Child of %s', $family->getFullName())
+						KT_I18N::translate('Child of %s', $family->getFullName())
 					) . '"';
 					break;
 				}

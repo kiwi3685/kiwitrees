@@ -43,41 +43,41 @@
  * Other special characters are all listed at the bottom.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 $specialchar_languages = array(
-	"af" => Zend_Locale::getTranslation('af', 'language', WT_LOCALE),
-	"cs" => Zend_Locale::getTranslation('cs', 'language', WT_LOCALE),
-	"sk" => Zend_Locale::getTranslation('sk', 'language', WT_LOCALE),
-	"da" => Zend_Locale::getTranslation('da', 'language', WT_LOCALE),
-	"de" => Zend_Locale::getTranslation('de', 'language', WT_LOCALE),
-	"ge" => Zend_Locale::getTranslation('ka', 'language', WT_LOCALE),
-	"en_US" => Zend_Locale::getTranslation('en', 'language', WT_LOCALE),
-	"es" => Zend_Locale::getTranslation('es', 'language', WT_LOCALE),
-	"eu" => Zend_Locale::getTranslation('eu', 'language', WT_LOCALE),
-	"fr" => Zend_Locale::getTranslation('fr', 'language', WT_LOCALE),
-	"gd" => Zend_Locale::getTranslation('gd', 'language', WT_LOCALE),
-	"el" => Zend_Locale::getTranslation('el', 'language', WT_LOCALE),
-	"is" => Zend_Locale::getTranslation('is', 'language', WT_LOCALE),
-	"it" => Zend_Locale::getTranslation('it', 'language', WT_LOCALE),
-	"hu" => Zend_Locale::getTranslation('hu', 'language', WT_LOCALE),
-	"lt" => Zend_Locale::getTranslation('lt', 'language', WT_LOCALE),
-	"nl" => Zend_Locale::getTranslation('nl', 'language', WT_LOCALE),
-	"nn" => Zend_Locale::getTranslation('nn', 'language', WT_LOCALE),
-	"haw" => Zend_Locale::getTranslation('haw', 'language', WT_LOCALE),
-	"pl" => Zend_Locale::getTranslation('pl', 'language', WT_LOCALE),
-	"pt" => Zend_Locale::getTranslation('pt', 'language', WT_LOCALE),
-	"sl" => Zend_Locale::getTranslation('sl', 'language', WT_LOCALE),
-	"fi" => Zend_Locale::getTranslation('fi', 'language', WT_LOCALE),
-	"sv" => Zend_Locale::getTranslation('sv', 'language', WT_LOCALE),
-	"tr" => Zend_Locale::getTranslation('tr', 'language', WT_LOCALE),
-	"he" => Zend_Locale::getTranslation('he', 'language', WT_LOCALE),
-	"ar" => Zend_Locale::getTranslation('ar', 'language', WT_LOCALE),
-	"ru" => Zend_Locale::getTranslation('ru', 'language', WT_LOCALE),
-	"vi" => Zend_Locale::getTranslation('vi', 'language', WT_LOCALE),
+	"af" => Zend_Locale::getTranslation('af', 'language', KT_LOCALE),
+	"cs" => Zend_Locale::getTranslation('cs', 'language', KT_LOCALE),
+	"sk" => Zend_Locale::getTranslation('sk', 'language', KT_LOCALE),
+	"da" => Zend_Locale::getTranslation('da', 'language', KT_LOCALE),
+	"de" => Zend_Locale::getTranslation('de', 'language', KT_LOCALE),
+	"ge" => Zend_Locale::getTranslation('ka', 'language', KT_LOCALE),
+	"en_US" => Zend_Locale::getTranslation('en', 'language', KT_LOCALE),
+	"es" => Zend_Locale::getTranslation('es', 'language', KT_LOCALE),
+	"eu" => Zend_Locale::getTranslation('eu', 'language', KT_LOCALE),
+	"fr" => Zend_Locale::getTranslation('fr', 'language', KT_LOCALE),
+	"gd" => Zend_Locale::getTranslation('gd', 'language', KT_LOCALE),
+	"el" => Zend_Locale::getTranslation('el', 'language', KT_LOCALE),
+	"is" => Zend_Locale::getTranslation('is', 'language', KT_LOCALE),
+	"it" => Zend_Locale::getTranslation('it', 'language', KT_LOCALE),
+	"hu" => Zend_Locale::getTranslation('hu', 'language', KT_LOCALE),
+	"lt" => Zend_Locale::getTranslation('lt', 'language', KT_LOCALE),
+	"nl" => Zend_Locale::getTranslation('nl', 'language', KT_LOCALE),
+	"nn" => Zend_Locale::getTranslation('nn', 'language', KT_LOCALE),
+	"haw" => Zend_Locale::getTranslation('haw', 'language', KT_LOCALE),
+	"pl" => Zend_Locale::getTranslation('pl', 'language', KT_LOCALE),
+	"pt" => Zend_Locale::getTranslation('pt', 'language', KT_LOCALE),
+	"sl" => Zend_Locale::getTranslation('sl', 'language', KT_LOCALE),
+	"fi" => Zend_Locale::getTranslation('fi', 'language', KT_LOCALE),
+	"sv" => Zend_Locale::getTranslation('sv', 'language', KT_LOCALE),
+	"tr" => Zend_Locale::getTranslation('tr', 'language', KT_LOCALE),
+	"he" => Zend_Locale::getTranslation('he', 'language', KT_LOCALE),
+	"ar" => Zend_Locale::getTranslation('ar', 'language', KT_LOCALE),
+	"ru" => Zend_Locale::getTranslation('ru', 'language', KT_LOCALE),
+	"vi" => Zend_Locale::getTranslation('vi', 'language', KT_LOCALE),
 );
 
 switch ($language_filter) {

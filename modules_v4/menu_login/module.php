@@ -21,43 +21,43 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class menu_login_WT_Module extends WT_Module implements WT_Module_Menu {
-	// Extend WT_Module
+class menu_login_KT_Module extends KT_Module implements KT_Module_Menu {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/menu */ WT_I18N::translate('Login menu');
+		return /* I18N: Name of a module/menu */ KT_I18N::translate('Login menu');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the languages module */ WT_I18N::translate('The Login menu item (other menus)');
+		return /* I18N: Description of the languages module */ KT_I18N::translate('The Login menu item (other menus)');
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultMenuOrder() {
 		return 200;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function MenuType() {
 		return 'other';
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function getMenu() {
-		if (WT_USER_ID) {
-			$menu = WT_MenuBar::getMyAccountMenu();
+		if (KT_USER_ID) {
+			$menu = KT_MenuBar::getMyAccountMenu();
 		} else {
-			$menu = new WT_Menu(login_link());
+			$menu = new KT_Menu(login_link());
 		}
 		return $menu;
 	}

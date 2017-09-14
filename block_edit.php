@@ -21,27 +21,27 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'block_edit.php');
+define('KT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new KT_Controller_Ajax();
 $controller->pageHeader();
 
-if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-	ckeditor_WT_Module::enableEditor($controller);
+if (array_key_exists('ckeditor', KT_Module::getActiveModules())) {
+	ckeditor_KT_Module::enableEditor($controller);
 }
 
-$block_id	= WT_Filter::getInteger('block_id');
-$block		= WT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE block_id=?")->execute(array($block_id))->fetchOneRow();
+$block_id	= KT_Filter::getInteger('block_id');
+$block		= KT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE block_id=?")->execute(array($block_id))->fetchOneRow();
 
 // Check access.  (1) the block must exist, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
-$blocks = array_merge(WT_Module::getActiveBlocks(WT_GED_ID), WT_Module::getActiveWidgets(WT_GED_ID));
+$blocks = array_merge(KT_Module::getActiveBlocks(KT_GED_ID), KT_Module::getActiveWidgets(KT_GED_ID));
 if (
 	!$block ||
 	!array_key_exists($block->module_name, $blocks) ||
-	$block->gedcom_id && !userGedcomAdmin(WT_USER_ID, $block->gedcom_id) ||
-	$block->user_id && $block->user_id != WT_USER_ID && !WT_USER_IS_ADMIN
+	$block->gedcom_id && !userGedcomAdmin(KT_USER_ID, $block->gedcom_id) ||
+	$block->user_id && $block->user_id != KT_USER_ID && !KT_USER_IS_ADMIN
 ) {
 	exit;
 }
@@ -51,7 +51,7 @@ $block = $blocks[$block->module_name];
 ?>
 <form name="block" method="post" action="block_edit.php?block_id=<?php echo $block_id; ?>" onsubmit="return modalDialogSubmitAjax(this);" >
 	<input type="hidden" name="save" value="1">
-	<?php echo WT_Filter::getCsrf(); ?>
+	<?php echo KT_Filter::getCsrf(); ?>
 	<p>
 		<?php echo $block->getDescription(); ?>
 	</p>
@@ -61,7 +61,7 @@ $block = $blocks[$block->module_name];
 			<td colspan="2" class="topbottombar">
 				<button class="btn btn-primary show" type="submit">
 					<i class="fa fa-floppy-o"></i>
-					<?php echo WT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('save'); ?>
 				</button>
 			</td>
 		</tr>

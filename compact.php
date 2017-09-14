@@ -21,13 +21,13 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'compact.php');
+define('KT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Compact();
+$controller = new KT_Controller_Compact();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -37,20 +37,20 @@ $controller
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Individual'); ?>
+					<?php echo KT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox vmiddle">
 				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 					<td <?php echo $SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''; ?> class="facts_label03">
-						<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo KT_I18N::translate('View'); ?>">
 					</td>
 				</tr>
 				<?php if ($SHOW_HIGHLIGHT_IMAGES) { ?>
 				<tr>
 					<td class="descriptionbox">
-						<?php echo WT_I18N::translate('Show highlight images in people boxes'); ?>
+						<?php echo KT_I18N::translate('Show highlight images in people boxes'); ?>
 					</td>
 					<td class="optionbox">
 						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked="checked"' : ''; ?>>

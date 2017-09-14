@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class chart_statistics_WT_Module extends WT_Module implements WT_Module_Chart {
+class chart_statistics_KT_Module extends KT_Module implements KT_Module_Chart {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Statistics');
+		return /* I18N: Name of a module */ KT_I18N::translate('Statistics');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Statistics chart” module */ WT_I18N::translate('An individual\'s statistics chart');
+		return /* I18N: Description of “Statistics chart” module */ KT_I18N::translate('An individual\'s statistics chart');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,19 +49,19 @@ class chart_statistics_WT_Module extends WT_Module implements WT_Module_Chart {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Chart
+	// Implement KT_Module_Chart
 	public function getChartMenus() {
 		global $controller;
 		$indi_xref	= $controller->getSignificantIndividual()->getXref();
 		$menus		= array();
-		$menu		= new WT_Menu(
+		$menu		= new KT_Menu(
 			$this->getTitle(),
-			'statistics.php?ged=' . WT_GEDURL,
+			'statistics.php?ged=' . KT_GEDURL,
 			'menu-chart-statistics'
 		);
 		$menus[] = $menu;

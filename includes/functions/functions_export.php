@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -44,14 +44,14 @@ function reformat_record_export($rec) {
 		// The total length of a GEDCOM line, including level number, cross-reference number,
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
 		// Use quick strlen() check before using slower utf8_strlen() check
-		if (strlen($line)>WT_GEDCOM_LINE_LENGTH && utf8_strlen($line)>WT_GEDCOM_LINE_LENGTH) {
+		if (strlen($line)>KT_GEDCOM_LINE_LENGTH && utf8_strlen($line)>KT_GEDCOM_LINE_LENGTH) {
 			list($level, $tag)=explode(' ', $line, 3);
 			if ($tag!='CONT' && $tag!='CONC') {
 				$level++;
 			}
 			do {
 				// Split after $pos chars
-				$pos=WT_GEDCOM_LINE_LENGTH;
+				$pos=KT_GEDCOM_LINE_LENGTH;
 				if ($WORD_WRAPPED_NOTES) {
 					// Split on a space, and remove it (for compatibility with some desktop apps)
 					while ($pos && utf8_substr($line, $pos-1, 1)!=' ') {
@@ -61,7 +61,7 @@ function reformat_record_export($rec) {
 						// No spaces in the data! Can’t split it :-(
 						break;
 					} else {
-						$newrec.=utf8_substr($line, 0, $pos-1).WT_EOL;
+						$newrec.=utf8_substr($line, 0, $pos-1).KT_EOL;
 						$line=$level.' CONC '.utf8_substr($line, $pos);
 					}
 				} else {
@@ -73,12 +73,12 @@ function reformat_record_export($rec) {
 						// No non-spaces in the data! Can’t split it :-(
 						break;
 					}
-					$newrec.=utf8_substr($line, 0, $pos).WT_EOL;
+					$newrec.=utf8_substr($line, 0, $pos).KT_EOL;
 					$line=$level.' CONC '.utf8_substr($line, $pos);
 				}
-			} while (utf8_strlen($line)>WT_GEDCOM_LINE_LENGTH);
+			} while (utf8_strlen($line)>KT_GEDCOM_LINE_LENGTH);
 		}
-		$newrec.=$line.WT_EOL;
+		$newrec.=$line.KT_EOL;
 	}
 	return $newrec;
 }
@@ -89,7 +89,7 @@ function gedcom_header($gedfile) {
 
 	// Default values for a new header
 	$HEAD = "0 HEAD";
-	$SOUR = "\n1 SOUR ".WT_KIWITREES."\n2 NAME ".WT_KIWITREES."\n2 VERS ".WT_VERSION_TEXT;
+	$SOUR = "\n1 SOUR ".KT_KIWITREES."\n2 NAME ".KT_KIWITREES."\n2 VERS ".KT_VERSION_TEXT;
 	$DEST = "\n1 DEST DISKETTE";
 	$DATE = "\n1 DATE ".strtoupper(date("d M Y"))."\n2 TIME ".date("H:i:s");
 	$GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
@@ -98,7 +98,7 @@ function gedcom_header($gedfile) {
 	$LANG = "";
 	$COPR = "";
 	$SUBN = "";
-	$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME ".WT_USER_NAME; // The SUBM record is mandatory
+	$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME ".KT_USER_NAME; // The SUBM record is mandatory
 
 	// Preserve some values from the original header
 	if (get_gedcom_setting($ged_id, 'imported')) {
@@ -114,14 +114,14 @@ function gedcom_header($gedfile) {
 		}
 		// Link to SUBM/SUBN records, if they exist
 		$subn=
-			WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
+			KT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
 			->execute(array('SUBN', $ged_id))
 			->fetchOne();
 		if ($subn) {
 			$SUBN = "\n1 SUBN @{$subn}@";
 		}
 		$subm=
-			WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
+			KT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
 			->execute(array('SUBM', $ged_id))
 			->fetchOne();
 		if ($subm) {
@@ -175,16 +175,16 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 
 	switch($exportOptions['privatize']) {
 	case 'gedadmin':
-		$access_level=WT_PRIV_NONE;
+		$access_level=KT_PRIV_NONE;
 		break;
 	case 'user':
-		$access_level=WT_PRIV_USER;
+		$access_level=KT_PRIV_USER;
 		break;
 	case 'visitor':
-		$access_level=WT_PRIV_PUBLIC;
+		$access_level=KT_PRIV_PUBLIC;
 		break;
 	case 'none':
-		$access_level=WT_PRIV_HIDE;
+		$access_level=KT_PRIV_HIDE;
 		break;
 	}
 
@@ -197,12 +197,12 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	// Buffer the output.  Lots of small fwrite() calls can be very slow when writing large gedcoms.
 	$buffer = reformat_record_export($head);
 
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = WT_Person::getInstance($row)->privatizeGedcom($access_level);
+		list($rec) = KT_Person::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec = utf8_decode($rec);
 		}
@@ -213,12 +213,12 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		}
 	}
 
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
 		" FROM `##families` WHERE f_file=? ORDER BY f_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = WT_Family::getInstance($row)->privatizeGedcom($access_level);
+		list($rec) = KT_Family::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec = utf8_decode($rec);
 		}
@@ -229,12 +229,12 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		}
 	}
 
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
 		" FROM `##sources` WHERE s_file=? ORDER BY s_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = WT_Source::getInstance($row)->privatizeGedcom($access_level);
+		list($rec) = KT_Source::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI'] == "yes") {
 			$rec = utf8_decode($rec);
 		}
@@ -245,12 +245,12 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		}
 	}
 
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
 		" FROM `##other` WHERE o_file=? AND o_type!=? AND o_type!=? ORDER BY o_id"
 	)->execute(array($ged_id, 'HEAD', 'TRLR'))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = WT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
+		list($rec) = KT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI'] == "yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -261,12 +261,12 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		}
 	}
 
-	$rows = WT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
 		" FROM `##media` WHERE m_file=? ORDER BY m_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = WT_Media::getInstance($row)->privatizeGedcom($access_level);
+		list($rec) = KT_Media::getInstance($row)->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path']);
 		if ($exportOptions['toANSI'] == "yes") {
 			$rec=utf8_decode($rec);
@@ -278,7 +278,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		}
 	}
 
-	fwrite($gedout, $buffer."0 TRLR".WT_EOL);
+	fwrite($gedout, $buffer."0 TRLR".KT_EOL);
 
 	$GEDCOM = $oldGEDCOM;
 }

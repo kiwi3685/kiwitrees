@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'edit_changes.php');
+define('KT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireAcceptLogin()
-	->setPageTitle(WT_I18N::translate('Pending changes'))
+	->setPageTitle(KT_I18N::translate('Pending changes'))
 	->pageHeader()
 	->addInlineJavascript('
 		function show_diff(diffurl) {
@@ -44,10 +44,10 @@ $ged		= safe_GET('ged');
 
 switch ($action) {
 case 'undo':
-	$gedcom_id	= WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref		= WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id	= KT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref		= KT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Undo a change, and subsequent changes to the same record
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"UPDATE `##change`".
 		" SET   status     = 'rejected'".
 		" WHERE status     = 'pending'".
@@ -57,10 +57,10 @@ case 'undo':
 	)->execute(array($gedcom_id, $xref, $change_id));
 	break;
 case 'accept':
-	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id=KT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref     =KT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Accept a change, and all previous changes to the same record
-	$changes=WT_DB::prepare(
+	$changes=KT_DB::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
 		" FROM  `##change` c".
 		" JOIN  `##gedcom` g USING (gedcom_id)".
@@ -78,25 +78,25 @@ case 'accept':
 			// add/update
 			update_record($change->new_gedcom, $gedcom_id, false);
 		}
-		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+		KT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
 	}
 	break;
 case 'undoall':
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"UPDATE `##change`".
 		" SET status='rejected'".
 		" WHERE status='pending' AND gedcom_id=?"
-	)->execute(array(WT_GED_ID));
+	)->execute(array(KT_GED_ID));
 	break;
 case 'acceptall':
-	$changes=WT_DB::prepare(
+	$changes=KT_DB::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
 		" FROM `##change` c".
 		" JOIN `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status='pending' AND gedcom_id=?".
 		" ORDER BY change_id"
-	)->execute(array(WT_GED_ID))->fetchAll();
+	)->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
@@ -105,13 +105,13 @@ case 'acceptall':
 			// add/update
 			update_record($change->new_gedcom, $change->gedcom_id, false);
 		}
-		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+		KT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
 	}
 	break;
 }
 
-$changed_gedcoms=WT_DB::prepare(
+$changed_gedcoms=KT_DB::prepare(
 	"SELECT g.gedcom_name".
 	" FROM `##change` c".
 	" JOIN `##gedcom` g USING (gedcom_id)".
@@ -120,7 +120,7 @@ $changed_gedcoms=WT_DB::prepare(
 )->fetchOneColumn();
 
 if ($changed_gedcoms) {
-	$changes=WT_DB::prepare(
+	$changes=KT_DB::prepare(
 		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name, IF(new_gedcom='', old_gedcom, new_gedcom) AS gedcom".
 		" FROM `##change` c".
 		" JOIN `##user`   u USING (user_id)".
@@ -145,47 +145,47 @@ if ($changed_gedcoms) {
 					$prev_gedcom_id	 = $change->gedcom_id;
 					$output .= '<tr><td>';
 					$GEDCOM = $change->gedcom_name;
-					$record = WT_GedcomRecord::getInstance($change->xref);
+					$record = KT_GedcomRecord::getInstance($change->xref);
 					if (!$record) {
 						// When a record has been both added and deleted, then
 						// neither the original nor latest version will exist.
 						// This prevents us from displaying it...
 						// This generates a record of some sorts from the last-but-one
 						// version of the record.
-						$record = new WT_GedcomRecord($change->gedcom);
+						$record = new KT_GedcomRecord($change->gedcom);
 					}
 					$output .= '
 						<h3>' . $record->getFullName() . '</h3>
-						<a href="#" onclick="return show_diff(\'' . $record->getHtmlUrl() . '\');">' . WT_I18N::translate('View the changes') . '</a> |
-						<a href="gedrecord.php?fromfile=1&pid=' . $change->xref . '" target="_blank" rel="noopener noreferrer"> ' . WT_I18N::translate('View GEDCOM Record') . '</a> |
-						<a href="#" onclick="return edit_raw(\'' . $change->xref . '\');"> ' . WT_I18N::translate('Edit raw GEDCOM record') . '</a><br>' .
-						WT_I18N::translate('The following changes were made to this record:') . '<br>
+						<a href="#" onclick="return show_diff(\'' . $record->getHtmlUrl() . '\');">' . KT_I18N::translate('View the changes') . '</a> |
+						<a href="gedrecord.php?fromfile=1&pid=' . $change->xref . '" target="_blank" rel="noopener noreferrer"> ' . KT_I18N::translate('View GEDCOM Record') . '</a> |
+						<a href="#" onclick="return edit_raw(\'' . $change->xref . '\');"> ' . KT_I18N::translate('Edit raw GEDCOM record') . '</a><br>' .
+						KT_I18N::translate('The following changes were made to this record:') . '<br>
 						<table>
 							<tr>
-								<th>' . WT_I18N::translate('Accept') . '</th>
-								<th>' . WT_I18N::translate('Type') . '</th>
-								<th>' . WT_I18N::translate('User') . '</th>
-								<th>' . WT_I18N::translate('Date') . '</th>
-								<th>' . WT_I18N::translate('Family tree') . '</th>
-								<th>' . WT_I18N::translate('Undo') . '</th>
+								<th>' . KT_I18N::translate('Accept') . '</th>
+								<th>' . KT_I18N::translate('Type') . '</th>
+								<th>' . KT_I18N::translate('User') . '</th>
+								<th>' . KT_I18N::translate('Date') . '</th>
+								<th>' . KT_I18N::translate('Family tree') . '</th>
+								<th>' . KT_I18N::translate('Undo') . '</th>
 							</tr>';
 				}
 				$output .= '<td>
 									<a href="edit_changes.php?action=accept&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
-										WT_I18N::translate('Accept') . '
+										KT_I18N::translate('Accept') . '
 									</a>
 								</td>
 								<td><b>';
 									if ($change->old_gedcom == '') {
-										$output .= WT_I18N::translate('Append record');
+										$output .= KT_I18N::translate('Append record');
 									} elseif ($change->new_gedcom == '') {
-										$output .= WT_I18N::translate('Delete record');
+										$output .= KT_I18N::translate('Delete record');
 									} else {
-										$output .= WT_I18N::translate('Replace record');
+										$output .= KT_I18N::translate('Replace record');
 									}
 								$output .= '</b></td>
 								<td>
-									<a href="message.php?to=' . $change->user_name . '&amp;subject=' . WT_I18N::translate('Moderate pending changes') . '&amp;ged=' . WT_GEDCOM . '" target="_blank" rel="noopener noreferrer" title="' . WT_I18N::translate('Send Message') . '">' .
+									<a href="message.php?to=' . $change->user_name . '&amp;subject=' . KT_I18N::translate('Moderate pending changes') . '&amp;ged=' . KT_GEDCOM . '" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('Send Message') . '">' .
 										'<span>' . htmlspecialchars($change->real_name) . '</span>
 										&nbsp;-&nbsp;
 										<span>' . htmlspecialchars($change->user_name) . '</span>
@@ -196,7 +196,7 @@ if ($changed_gedcoms) {
 								<td>' . $change->gedcom_name . '</td>
 								<td>
 									<a href="edit_changes.php?action=undo&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
-										WT_I18N::translate('Undo') . '
+										KT_I18N::translate('Undo') . '
 									</a>
 								</td>
 				</tr>';
@@ -207,15 +207,15 @@ if ($changed_gedcoms) {
 		$output2 = '
 			<table>
 				<tr>
-					<th>' . WT_I18N::translate('Approve all changes') . '</th>
-					<th>' . WT_I18N::translate('Undo all changes') . '</th>
+					<th>' . KT_I18N::translate('Approve all changes') . '</th>
+					<th>' . KT_I18N::translate('Undo all changes') . '</th>
 				</tr>
 				<tr>
 					<td>';
 						$count = 0;
 						foreach ($changed_gedcoms as $gedcom_name) {
 							if ($count != 0) $output2 .= '<br>';
-							$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . $gedcom_name . ' - ' . WT_I18N::translate('Approve all changes') . '</a>';
+							$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . $gedcom_name . ' - ' . KT_I18N::translate('Approve all changes') . '</a>';
 							$count ++;
 						}
 					$output2 .= '</td>
@@ -226,8 +226,8 @@ if ($changed_gedcoms) {
 								$output2 .= '<br>';
 							}
 							$output2 .= '
-								<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name)."\" onclick=\"return confirm('" . WT_I18N::translate('Are you sure you want to undo all the changes to this family tree?')."');\">
-									$gedcom_name - " . WT_I18N::translate('Undo all changes') . '
+								<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name)."\" onclick=\"return confirm('" . KT_I18N::translate('Are you sure you want to undo all the changes to this family tree?')."');\">
+									$gedcom_name - " . KT_I18N::translate('Undo all changes') . '
 								</a>';
 							$count++;
 						}
@@ -240,7 +240,7 @@ if ($changed_gedcoms) {
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="button" onclick="window.close();">
 				<i class="fa fa-times"></i>
-				<?php echo WT_I18N::translate('close'); ?>
+				<?php echo KT_I18N::translate('close'); ?>
 			</button>
 		</p>
 		<?php

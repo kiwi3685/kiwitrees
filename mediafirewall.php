@@ -21,20 +21,20 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'mediafirewall.php');
+define('KT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 
 Zend_Session::writeClose();
 
-$mid   = WT_Filter::get('mid', WT_REGEX_XREF);
-$thumb = WT_Filter::getBool('thumb');
-$media = WT_Media::getInstance($mid, WT_GED_ID);
+$mid   = KT_Filter::get('mid', KT_REGEX_XREF);
+$thumb = KT_Filter::getBool('thumb');
+$media = KT_Media::getInstance($mid, KT_GED_ID);
 
 /**
  * Send a “Not found” error as an image
  */
 function send404AndExit() {
-	$error = WT_I18N::translate('The media file was not found in this family tree.');
+	$error = KT_I18N::translate('The media file was not found in this family tree.');
 
 	$width  = mb_strlen($error) * 6.5 + 50;
 	$height = 60;
@@ -42,7 +42,7 @@ function send404AndExit() {
 	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
 	imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
 
-	embedText($im, $error, 100, '255, 0, 0', WT_FONT_DEJAVU_SANS_TTF, 'top', 'left');
+	embedText($im, $error, 100, '255, 0, 0', KT_FONT_DEJAVU_SANS_TTF, 'top', 'left');
 
 	header('HTTP/1.0 404 Not Found');
 	header('Status: 404 Not Found');
@@ -57,19 +57,19 @@ function send404AndExit() {
  * before returning it back to the media firewall
  *
  * @param resource $im
- * @param Tree     WT_GED_ID
+ * @param Tree     KT_GED_ID
  *
  * @return resource
  */
 function applyWatermark($im) {
 	// text to watermark with
-	$word1_text   = WT_TREE_TITLE;
+	$word1_text   = KT_TREE_TITLE;
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
 	$word1_color = '0,0,0';
 	// ttf font file to use
-	$word1_font   = WT_FONT_DEJAVU_SANS_TTF;
+	$word1_font   = KT_FONT_DEJAVU_SANS_TTF;
 	// vertical position for the text to past; possible values are: top, middle or bottom, across
 	$word1_vpos = 'across';
 	// horizontal position for the text to past in media file; possible values are: left, right, top2bottom, bottom2top
@@ -79,7 +79,7 @@ function applyWatermark($im) {
 	$word2_text    = $_SERVER['HTTP_HOST'];
 	$word2_maxsize = 20;
 	$word2_color   = '0,0,0';
-	$word2_font   = WT_FONT_DEJAVU_SANS_TTF;
+	$word2_font   = KT_FONT_DEJAVU_SANS_TTF;
 	$word2_vpos    = 'top';
 	$word2_hpos    = 'top2bottom';
 
@@ -287,10 +287,10 @@ $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 
 $filetime = $media->getFiletime($which);
 $filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
-if (WT_Filter::get('cb')) {
+if (KT_Filter::get('cb')) {
 	$expireOffset = $expireOffset * 7;
 } // if cb parameter was sent, cache for 7 days
-$expireHeader = gmdate('D, d M Y H:i:s', WT_TIMESTAMP + $expireOffset) . ' GMT';
+$expireHeader = gmdate('D, d M Y H:i:s', KT_TIMESTAMP + $expireOffset) . ' GMT';
 
 $type = isImageTypeSupported($imgsize['ext']);
 $usewatermark = false;
@@ -299,7 +299,7 @@ if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
 	if (($which === 'main') || $WATERMARK_THUMB ) {
 		// if the user’s priv’s justify it...
-		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK ) {
+		if (KT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK ) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -319,9 +319,9 @@ $generatewatermark	= false;
 
 if ($usewatermark) {
 	if ($which == 'thumb') {
-		$watermarkfile = WT_DATA_DIR . 'media_watermarks_cache_' . WT_GEDCOM . '/thumb/' . $media->getFilename();
+		$watermarkfile = KT_DATA_DIR . 'media_watermarks_cache_' . KT_GEDCOM . '/thumb/' . $media->getFilename();
 	} else {
-		$watermarkfile = WT_DATA_DIR . 'media_watermarks_cache_' . WT_GEDCOM . '/main/' . $media->getFilename();
+		$watermarkfile = KT_DATA_DIR . 'media_watermarks_cache_' . KT_GEDCOM . '/main/' . $media->getFilename();
 	}
 
 	if (!file_exists($watermarkfile)) {
@@ -386,14 +386,14 @@ if ($generatewatermark) {
 		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the folder exists
 			if (!is_dir(dirname($watermarkfile))) {
-				WT_File::mkdir(dirname($watermarkfile), WT_PERM_EXE, true);
+				KT_File::mkdir(dirname($watermarkfile), KT_PERM_EXE, true);
 			}
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}
 		if ($which === 'thumb' && $SAVE_WATERMARK_THUMB || $which === 'main' && $SAVE_WATERMARK_IMAGE) {
 			// make sure the folder exists
-			WT_File::mkdir(dirname($watermarkfile));
+			KT_File::mkdir(dirname($watermarkfile));
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}
@@ -405,7 +405,7 @@ if ($generatewatermark) {
 		return;
 	} else {
 		// this image is defective.  log it
-		AddToLog('Media Firewall error: >' . WT_I18N::translate('This media file is broken and cannot be watermarked.') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage(), 'media');
+		AddToLog('Media Firewall error: >' . KT_I18N::translate('This media file is broken and cannot be watermarked.') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage(), 'media');
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

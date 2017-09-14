@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
-$theme_name = "_administration"; /* I18N: Name of a theme. */ WT_I18N::translate('_administration');
+$theme_name = "_administration"; /* I18N: Name of a theme. */ KT_I18N::translate('_administration');
 
-$headerfile = WT_THEME_DIR . 'header.php';
-$footerfile = WT_THEME_DIR . 'footer.php';
+$headerfile = KT_THEME_DIR . 'header.php';
+$footerfile = KT_THEME_DIR . 'footer.php';
 
 //- main icons
-$WT_IMAGES = array(
+$KT_IMAGES = array(
 	// lightbox module uses this in manage media links, and also admin_media.php for delete folder.
-	'remove' => WT_THEME_URL.'images/delete.png',
+	'remove' => KT_THEME_URL.'images/delete.png',
 
 	// need different sizes before moving to CSS
-	'default_image_F' => WT_THEME_URL . 'images/silhouette_female.png',
-	'default_image_M' => WT_THEME_URL . 'images/silhouette_male.png',
-	'default_image_U' => WT_THEME_URL . 'images/silhouette_unknown.png',
+	'default_image_F' => KT_THEME_URL . 'images/silhouette_female.png',
+	'default_image_M' => KT_THEME_URL . 'images/silhouette_male.png',
+	'default_image_U' => KT_THEME_URL . 'images/silhouette_unknown.png',
 );

@@ -21,22 +21,22 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 class death_y_bu_plugin extends base_plugin {
 	static function getName() {
-		return WT_I18N::translate('Add missing death records');
+		return KT_I18N::translate('Add missing death records');
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
+		return KT_I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {
-		return !preg_match('/\n1 ('.WT_EVENTS_DEAT.')/', $gedrec) && WT_Person::getInstance($xref)->isDead();
+		return !preg_match('/\n1 ('.KT_EVENTS_DEAT.')/', $gedrec) && KT_Person::getInstance($xref)->isDead();
 	}
 
 	static function updateRecord($xref, $gedrec) {

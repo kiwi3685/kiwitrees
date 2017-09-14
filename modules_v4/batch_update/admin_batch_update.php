@@ -21,17 +21,17 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=batch_update');
+if (!KT_USER_GEDCOM_ADMIN) {
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . 'module.php?mod=batch_update');
 	exit;
 }
 
-require WT_ROOT . 'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
 class batch_update {
 	var $plugin    = null; // Form parameter: chosen plugin
@@ -52,9 +52,9 @@ class batch_update {
 		$html=
 			self::getJavascript(). '
 			<div id="batch_update">
-				<h2>' .  WT_I18N::translate('Batch update') . '</h2>
+				<h2>' .  KT_I18N::translate('Batch update') . '</h2>
 				<div class="helpcontent">' .
-					/* I18N: Help text for Batch update tools. */ WT_I18N::translate('These tools can help fix common issues in GEDCOM data.<p  class="accepted">When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding.</p>') . '
+					/* I18N: Help text for Batch update tools. */ KT_I18N::translate('These tools can help fix common issues in GEDCOM data.<p  class="accepted">When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding.</p>') . '
 				</div>
 				<hr>
 				<form id="batch_update_form" action="module.php" method="get">
@@ -64,11 +64,11 @@ class batch_update {
 					<input type="hidden" name="action" value="">
 					<input type="hidden" name="data"   value="">
 					<label>
-						<span>' . WT_I18N::translate('Family tree') . '</span>' .
-						select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') . '
+						<span>' . KT_I18N::translate('Family tree') . '</span>' .
+						select_edit_control('ged', KT_Tree::getNameList(), '', KT_GEDCOM, 'onchange="reset_reload();"') . '
 					</label>
 					<label>
-						<span>' . WT_I18N::translate('Batch update tool') . '</span>
+						<span>' . KT_I18N::translate('Batch update tool') . '</span>
 						<select name="plugin" onchange="reset_reload();">';
 							if (!$this->plugin) {
 								$html.='<option value="" selected="selected"></option>';
@@ -81,8 +81,8 @@ class batch_update {
 					if ($this->PLUGIN) {
 						$html .= '<p><em>' . $this->PLUGIN->getDescription() . '</em></p>';
 					}
-					if (!get_user_setting(WT_USER_ID, 'auto_accept')){
-						$html.='<p class="warning">' . WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.') . '</p>';
+					if (!get_user_setting(KT_USER_ID, 'auto_accept')){
+						$html.='<p class="warning">' . KT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.') . '</p>';
 					}
 					// If a plugin is selected, display the details
 					if ($this->PLUGIN) {
@@ -94,19 +94,19 @@ class batch_update {
 						} else {
 							if ($this->curr_xref) {
 								// Create an object, so we can get the latest version of the name.
-								$object = WT_GedcomRecord::getInstance($this->curr_xref);
+								$object = KT_GedcomRecord::getInstance($this->curr_xref);
 								$object->setGedcomRecord($this->record);
 								$html .= '
 									<hr>' .
-									self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref) .
-									self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref) . '
+									self::createSubmitButton(KT_I18N::translate('previous'), $this->prev_xref) .
+									self::createSubmitButton(KT_I18N::translate('next'), $this->next_xref) . '
 									<div id="batch_update2" class="clearfloat">
 										<a href="' . $object->getHtmlUrl() . '"><span class="bu_name">' . $object->getFullName() . '</span></a>' .
 										$this->PLUGIN->getActionPreview($this->curr_xref, $this->record) . '
 										<p>';
-											if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+											if (get_user_setting(KT_USER_ID, 'auto_accept')) {
 												$html .= '<p class="help_content warning">' .
-													WT_I18N::translate('You should create a backup GEDCOM file before using the Update all option.') .
+													KT_I18N::translate('You should create a backup GEDCOM file before using the Update all option.') .
 												'</p>';
 											}
 											$html .= implode('' , $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)) . '
@@ -116,7 +116,7 @@ class batch_update {
 							} else {
 								$html .= '
 									<div id="batch_update2" class="accepted">' .
-										WT_I18N::translate('Nothing found') . '
+										KT_I18N::translate('Nothing found') . '
 									</div>
 								';
 							}
@@ -131,7 +131,7 @@ class batch_update {
 	function __construct() {
 		$this->plugins = self::getPluginList(); // List of available plugins
 		$this->plugin  = safe_GET('plugin', array_keys($this->plugins)); // User parameters
-		$this->xref    = safe_GET('xref', WT_REGEX_XREF);
+		$this->xref    = safe_GET('xref', KT_REGEX_XREF);
 		$this->action  = safe_GET('action');
 		$this->data    = safe_GET('data');
 
@@ -150,9 +150,9 @@ class batch_update {
 					$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
 					if ($newrecord != $record) {
 						if ($newrecord) {
-							replace_gedrec($this->xref, WT_GED_ID, $newrecord, $this->PLUGIN->chan);
+							replace_gedrec($this->xref, KT_GED_ID, $newrecord, $this->PLUGIN->chan);
 						} else {
-							delete_gedrec($this->xref, WT_GED_ID);
+							delete_gedrec($this->xref, KT_GED_ID);
 						}
 					}
 				}
@@ -165,9 +165,9 @@ class batch_update {
 						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
 						if ($newrecord != $record) {
 							if ($newrecord) {
-								replace_gedrec($xref, WT_GED_ID, $newrecord, $this->PLUGIN->chan);
+								replace_gedrec($xref, KT_GED_ID, $newrecord, $this->PLUGIN->chan);
 							} else {
-								delete_gedrec($xref, WT_GED_ID);
+								delete_gedrec($xref, KT_GED_ID);
 							}
 						}
 					}
@@ -177,7 +177,7 @@ class batch_update {
 			case 'delete':
 				$record = self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
 				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
-					delete_gedrec($this->xref, WT_GED_ID);
+					delete_gedrec($this->xref, KT_GED_ID);
 				}
 				$this->xref = $this->findNextXref($this->xref);
 				break;
@@ -185,7 +185,7 @@ class batch_update {
 				foreach ($this->all_xrefs as $xref=>$type) {
 					$record = self::getLatestRecord($xref, $type);
 					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
-						delete_gedrec($xref, WT_GED_ID);
+						delete_gedrec($xref, KT_GED_ID);
 					}
 				}
 				$xref->xref='';
@@ -253,30 +253,30 @@ class batch_update {
 			switch ($type) {
 			case 'INDI':
 				$sql[]="SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
-				$vars[]=WT_GED_ID;
+				$vars[]=KT_GED_ID;
 				break;
 			case 'FAM':
 				$sql[]="SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
-				$vars[]=WT_GED_ID;
+				$vars[]=KT_GED_ID;
 				break;
 			case 'SOUR':
 				$sql[]="SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
-				$vars[]=WT_GED_ID;
+				$vars[]=KT_GED_ID;
 				break;
 			case 'OBJE':
 				$sql[]="SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
-				$vars[]=WT_GED_ID;
+				$vars[]=KT_GED_ID;
 				break;
 			default:
 				$sql[]	= "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
 				$vars[]	= $type;
 				$vars[]	= $type;
-				$vars[]	= WT_GED_ID;
+				$vars[]	= KT_GED_ID;
 				break;
 			}
 		}
 		$this->all_xrefs =
-			WT_DB::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
+			KT_DB::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
 			->execute($vars)
 			->fetchAssoc();
 	}
@@ -330,9 +330,9 @@ class batch_update {
 		}
 		return
 			'<button type="submit" onclick="' .
-				'this.form.xref.value=\'' . WT_Filter::escapeHtml($xref) . '\';' .
-				'this.form.action.value=\'' . WT_Filter::escapeHtml($action) . '\';' .
-				'this.form.data.value=\'' . WT_Filter::escapeHtml($data) . '\';' .
+				'this.form.xref.value=\'' . KT_Filter::escapeHtml($xref) . '\';' .
+				'this.form.action.value=\'' . KT_Filter::escapeHtml($action) . '\';' .
+				'this.form.data.value=\'' . KT_Filter::escapeHtml($data) . '\';' .
 				'return true;"' .
 				($xref ? '' : ' disabled') . '>
 				<i class="fa ' . $button_icon . '"></i>' .
@@ -342,7 +342,7 @@ class batch_update {
 
 	// Get the current view of a record, allowing for pending changes
 	static function getLatestRecord($xref, $type) {
-		return find_gedcom_record($xref, WT_GED_ID, true);
+		return find_gedcom_record($xref, KT_GED_ID, true);
 	}
 }
 
@@ -368,24 +368,24 @@ class base_plugin {
 	// Default option is just the "don't update CHAN record"
 	function getOptionsForm() {
 		return
-			'<label><span>' . WT_I18N::translate('Update the CHAN record') . '</span>
+			'<label><span>' . KT_I18N::translate('Update the CHAN record') . '</span>
 				<select name="chan" onchange="this.form.submit();">
-					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>' .WT_I18N::translate('no') . '</option>
-					<option value="yes"' . ($this->chan ? ' selected="selected"' : '') . '>' .WT_I18N::translate('yes'). '</option>
+					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>' .KT_I18N::translate('no') . '</option>
+					<option value="yes"' . ($this->chan ? ' selected="selected"' : '') . '>' .KT_I18N::translate('yes'). '</option>
 				</select>
 			</label>';
 	}
 
 	// Default buttons are update and update_all
 	function getActionButtons($xref) {
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (get_user_setting(KT_USER_ID, 'auto_accept')) {
 			return array(
-				batch_update::createSubmitButton(WT_I18N::translate('Update'),     $xref, 'update'),
-				batch_update::createSubmitButton(WT_I18N::translate('Update all'), $xref, 'update_all')
+				batch_update::createSubmitButton(KT_I18N::translate('Update'),     $xref, 'update'),
+				batch_update::createSubmitButton(KT_I18N::translate('Update all'), $xref, 'update_all')
 			);
 		} else {
 			return array(
-				batch_update::createSubmitButton(WT_I18N::translate('Update'),     $xref, 'update')
+				batch_update::createSubmitButton(KT_I18N::translate('Update'),     $xref, 'update')
 			);
 		}
 	}

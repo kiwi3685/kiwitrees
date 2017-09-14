@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'save.php');
+define('KT_SCRIPT_NAME', 'save.php');
 require './includes/session.php';
 
 Zend_Session::writeClose();
@@ -40,7 +40,7 @@ function fail() {
 }
 
 // Do we have a valid CSRF token?
-if (!WT_Filter::checkCsrf()) {
+if (!KT_Filter::checkCsrf()) {
 	fail();
 }
 
@@ -52,19 +52,19 @@ $id=safe_POST('id', '[a-zA-Z0-9_-]+');
 list($table, $id1, $id2, $id3)=explode('-', $id.'---');
 
 // The replacement value.
-$value=safe_POST('value', WT_REGEX_UNSAFE);
+$value=safe_POST('value', KT_REGEX_UNSAFE);
 
 // Every switch must have a default case, and every case must end in ok() or fail()
 
 switch ($table) {
 case 'site_setting':
 	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_SITE_SETTING
+	// Table name: KT_SITE_SETTING
 	// ID format:  site_setting-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!WT_USER_IS_ADMIN) {
+	if (!KT_USER_IS_ADMIN) {
 		fail();
 	}
 
@@ -108,7 +108,7 @@ case 'site_setting':
 		break;
 	case 'WELCOME_TEXT_AUTH_MODE_4':
 		// Save a different version of this for each language.
-		$id1 = 'WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE;
+		$id1 = 'WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE;
 		break;
 	case 'LOGIN_URL':
 		if ($value && !preg_match('/^https?:\/\//', $value)) {
@@ -129,7 +129,7 @@ case 'site_setting':
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
 		if ($value) {
-			WT_Site::preference($id1, $value);
+			KT_Site::preference($id1, $value);
 		}
 		fail();
 	default:
@@ -138,24 +138,24 @@ case 'site_setting':
 	}
 
 	// Authorised and valid - make update
-	WT_Site::preference($id1, $value);
+	KT_Site::preference($id1, $value);
 	ok();
 
 case 'site_access_rule':
 	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_SITE_ACCESS_RULE
+	// Table name: KT_SITE_ACCESS_RULE
 	// ID format:  site_access_rule-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
-	if (!WT_USER_IS_ADMIN) {
+	if (!KT_USER_IS_ADMIN) {
 		fail();
 	}
 	switch ($id1) {
 	case 'ip_address_start':
 	case 'ip_address_end':
-		WT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=INET_ATON(?) WHERE site_access_rule_id=?")
+		KT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=INET_ATON(?) WHERE site_access_rule_id=?")
 			->execute(array($value, $id2));
-		$value=WT_DB::prepare(
+		$value=KT_DB::prepare(
 			"SELECT INET_NTOA({$id1}) FROM `##site_access_rule` WHERE site_access_rule_id=?"
 		)->execute(array($id2))->fetchOne();
 		ok();
@@ -163,7 +163,7 @@ case 'site_access_rule':
 	case 'user_agent_pattern':
 	case 'rule':
 	case 'comment':
-		WT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=? WHERE site_access_rule_id=?")
+		KT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=? WHERE site_access_rule_id=?")
 			->execute(array($value, $id2));
 		ok();
 	}
@@ -171,12 +171,12 @@ case 'site_access_rule':
 
 case 'user':
 	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_USER
+	// Table name: KT_USER
 	// ID format:  user-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && WT_USER_ID==$id2)) {
+	if (!(KT_USER_IS_ADMIN || KT_USER_ID && KT_USER_ID==$id2)) {
 		fail();
 	}
 
@@ -200,7 +200,7 @@ case 'user':
 
 	// Authorised and valid - make update
 	try {
-		WT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
+		KT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
 			->execute(array($value, $id2));
 		AddToLog('User ID: '.$id2. ' changed '.$id1.' to '.$value, 'auth');
 		ok();
@@ -211,12 +211,12 @@ case 'user':
 
 case 'user_gedcom_setting':
 	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_USER_GEDCOM_SETTING
+	// Table name: KT_USER_GEDCOM_SETTING
 	// ID format:  user_gedcom_setting-{user_id}-{gedcom_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || userGedcomAdmin($id2, $id3))) {
+	if (!(KT_USER_IS_ADMIN || userGedcomAdmin($id2, $id3))) {
 		fail();
 	}
 
@@ -233,17 +233,17 @@ case 'user_gedcom_setting':
 	}
 
 	// Authorised and valid - make update
-	WT_Tree::get($id2)->userPreference($id1, $id3, $value);
+	KT_Tree::get($id2)->userPreference($id1, $id3, $value);
 	ok();
 
 case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_USER_SETTING
+	// Table name: KT_USER_SETTING
 	// ID format:  user_setting-{user_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID) && in_array($id2, array('language','visible_online','contact_method'))) {
+	if (!(KT_USER_IS_ADMIN || KT_USER_ID) && in_array($id2, array('language','visible_online','contact_method'))) {
 		fail();
 	}
 
@@ -251,19 +251,19 @@ case 'user_setting':
 	switch ($id2) {
 	case 'canadmin':
 		// Cannot change our own admin status - either to add it or remove it
-		if (WT_USER_ID == $id1) {
+		if (KT_USER_ID == $id1) {
 			fail();
 		}
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
 		if ($value && get_user_setting($id1, $id2) != $value && get_user_setting($id1, 'sessiontime') == 0) {
-			WT_I18N::init(get_user_setting($id1, 'language'));
-			WT_Mail::systemMessage(
-				WT_TREE,
+			KT_I18N::init(get_user_setting($id1, 'language'));
+			KT_Mail::systemMessage(
+				KT_TREE,
 				$id1,
-				WT_I18N::translate(strip_tags(WT_TREE_TITLE) . ' Clippings cart'),
-				WT_I18N::translate('User %s has just downloaded a clippings cart file', WT_USER_NAME)
+				KT_I18N::translate(strip_tags(KT_TREE_TITLE) . ' Clippings cart'),
+				KT_I18N::translate('User %s has just downloaded a clippings cart file', KT_USER_NAME)
 			);
 		}
 		break;
@@ -289,12 +289,12 @@ case 'user_setting':
 
 case 'module':
 	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_MODULE
+	// Table name: KT_MODULE
 	// ID format:  module-{column}-{module_name}
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!WT_USER_IS_ADMIN) {
+	if (!KT_USER_IS_ADMIN) {
 		fail();
 	}
 
@@ -303,7 +303,7 @@ case 'module':
 	case 'tab_order':
 	case 'menu_order':
 	case 'sidebar_order':
-		WT_DB::prepare("UPDATE `##module` SET {$id1}=? WHERE module_name=?")
+		KT_DB::prepare("UPDATE `##module` SET {$id1}=? WHERE module_name=?")
 			->execute(array($value, $id2));
 		ok();
 	default:

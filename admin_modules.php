@@ -21,28 +21,28 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_modules.php');
+define('KT_SCRIPT_NAME', 'admin_modules.php');
 require 'includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('Module administration'));
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('Module administration'));
 
-$modules = WT_Module::getInstalledModules('disabled');
+$modules = KT_Module::getInstalledModules('disabled');
 
-$module_status = WT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+$module_status = KT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
 
-switch (WT_Filter::post('action')) {
+switch (KT_Filter::post('action')) {
 case 'update_mods':
-	if (WT_Filter::checkCsrf()) {
+	if (KT_Filter::checkCsrf()) {
 		foreach ($modules as $module_name=>$status) {
-			$new_status = WT_Filter::post("status-{$module_name}", '[01]');
+			$new_status = KT_Filter::post("status-{$module_name}", '[01]');
 			if ($new_status !== null) {
 				$new_status = $new_status ? 'enabled' : 'disabled';
 				if ($new_status != $status) {
-					WT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
+					KT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
 					$module_status[$module_name] = $new_status;
 				}
 			}
@@ -52,25 +52,25 @@ case 'update_mods':
 	break;
 }
 
-switch (WT_Filter::get('action')) {
+switch (KT_Filter::get('action')) {
 case 'delete_module':
-	$module_name = WT_Filter::get('module_name');
-	WT_DB::prepare(
+	$module_name = KT_Filter::get('module_name');
+	KT_DB::prepare(
 		"DELETE `##block_setting`".
 		" FROM `##block_setting`".
 		" JOIN `##block` USING (block_id)".
 		" JOIN `##module` USING (module_name)".
 		" WHERE module_name=?"
 	)->execute(array($module_name));
-	WT_DB::prepare(
+	KT_DB::prepare(
 		"DELETE `##block`".
 		" FROM `##block`".
 		" JOIN `##module` USING (module_name)".
 		" WHERE module_name=?"
 	)->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
+	KT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
+	KT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
+	KT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
 	unset($modules[$module_name]);
 	unset($module_status[$module_name]);
 	break;
@@ -78,9 +78,9 @@ case 'delete_module':
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-	->addExternalJavascript(WT_JQUERY_DT_HTML5)
-	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(KT_JQUERY_DT_HTML5)
+	->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 	->addInlineJavascript('
 	  function reindexMods(id) {
 			jQuery("#"+id+" input").each(
@@ -91,7 +91,7 @@ $controller
 
 		var oTable = jQuery("#installed_table").dataTable( {
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
+			'.KT_I18N::datatablesI18N().',
 			buttons: [{extend: "csv", exportOptions: {columns: [0,6,9,12,15,17] }}],
 			jQueryUI: true,
 			autoWidth: false,
@@ -122,24 +122,24 @@ $controller
 ?>
 <div id="module-admin-page">
 	<div id="tabs">
-		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+		<form method="post" action="<?php echo KT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods">
-			<?php echo WT_Filter::getCsrf(); ?>
+			<?php echo KT_Filter::getCsrf(); ?>
 			<table id="installed_table" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 					<tr>
-						<th><?php echo WT_I18N::translate('Enabled'); ?></th>
+						<th><?php echo KT_I18N::translate('Enabled'); ?></th>
 						<th>STATUS</th>
-						<th style="width: 120px;"><?php echo WT_I18N::translate('Module'); ?></th>
-						<th style="width: 400px;"><?php echo WT_I18N::translate('Description'); ?></th>
-						<th><?php echo WT_I18N::translate('Block'); ?></th>
-						<th><?php echo WT_I18N::translate('Chart'); ?></th>
-						<th><?php echo WT_I18N::translate('List'); ?></th>
-						<th><?php echo WT_I18N::translate('Menu'); ?></th>
-						<th><?php echo WT_I18N::translate('Report'); ?></th>
-						<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
-						<th><?php echo WT_I18N::translate('Tab'); ?></th>
-						<th><?php echo WT_I18N::translate('Widget'); ?></th>
+						<th style="width: 120px;"><?php echo KT_I18N::translate('Module'); ?></th>
+						<th style="width: 400px;"><?php echo KT_I18N::translate('Description'); ?></th>
+						<th><?php echo KT_I18N::translate('Block'); ?></th>
+						<th><?php echo KT_I18N::translate('Chart'); ?></th>
+						<th><?php echo KT_I18N::translate('List'); ?></th>
+						<th><?php echo KT_I18N::translate('Menu'); ?></th>
+						<th><?php echo KT_I18N::translate('Report'); ?></th>
+						<th><?php echo KT_I18N::translate('Sidebar'); ?></th>
+						<th><?php echo KT_I18N::translate('Tab'); ?></th>
+						<th><?php echo KT_I18N::translate('Widget'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -152,23 +152,23 @@ $controller
 									<td>', two_state_checkbox('status-' . $module_name, $status == 'enabled'), '</td>
 									<td>', $status, '</td>
 									<td>';
-										if ( $module instanceof WT_Module_Config ) {
+										if ( $module instanceof KT_Module_Config ) {
 											echo '<a href="', $module->getConfigLink(), '">';
 										}
 										echo $module->getTitle();
-										if ( $module instanceof WT_Module_Config && array_key_exists( $module_name, WT_Module::getActiveModules() ) ) {
+										if ( $module instanceof KT_Module_Config && array_key_exists( $module_name, KT_Module::getActiveModules() ) ) {
 											echo ' <i class="fa fa-cogs"></i></a>';
 										}
 									echo '</td>
 									<td>', $module->getDescription(), '</td>
-									<td>', $module instanceof WT_Module_Block   	? ($module->isGedcomBlock() ? WT_I18N::translate('Home') : WT_I18N::translate('Other')) : '-', '</td>
-									<td>', $module instanceof WT_Module_Chart   	? WT_I18N::translate('Chart') : '-', '</td>
-									<td>', $module instanceof WT_Module_List   		? WT_I18N::translate('List') : '-', '</td>
-									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
-									<td>', $module instanceof WT_Module_Report  	? WT_I18N::translate('Report') : '-', '</td>
-									<td>', $module instanceof WT_Module_Sidebar 	? WT_I18N::translate('Sidebar') : '-', '</td>
-									<td>', $module instanceof WT_Module_Tab     	? WT_I18N::translate('Tab') : '-', '</td>
-									<td>', $module instanceof WT_Module_Widget  	? WT_I18N::translate('Widget') : '-', '</td>
+									<td>', $module instanceof KT_Module_Block   	? ($module->isGedcomBlock() ? KT_I18N::translate('Home') : KT_I18N::translate('Other')) : '-', '</td>
+									<td>', $module instanceof KT_Module_Chart   	? KT_I18N::translate('Chart') : '-', '</td>
+									<td>', $module instanceof KT_Module_List   		? KT_I18N::translate('List') : '-', '</td>
+									<td>', $module instanceof KT_Module_Menu    	? KT_I18N::translate('Menu') : '-', '</td>
+									<td>', $module instanceof KT_Module_Report  	? KT_I18N::translate('Report') : '-', '</td>
+									<td>', $module instanceof KT_Module_Sidebar 	? KT_I18N::translate('Sidebar') : '-', '</td>
+									<td>', $module instanceof KT_Module_Tab     	? KT_I18N::translate('Tab') : '-', '</td>
+									<td>', $module instanceof KT_Module_Widget  	? KT_I18N::translate('Widget') : '-', '</td>
 								</tr>
 							';
 						} else {
@@ -180,8 +180,8 @@ $controller
 									<td>&nbsp;</td>
 									<td class="error">', $module_name, '</td>
 									<td>
-										<a class="error" href="'.WT_SCRIPT_NAME.'?action=delete_module&amp;module_name='.$module_name.'">',
-											WT_I18N::translate('This module cannot be found.  Delete its configuration settings.'),
+										<a class="error" href="'.KT_SCRIPT_NAME.'?action=delete_module&amp;module_name='.$module_name.'">',
+											KT_I18N::translate('This module cannot be found.  Delete its configuration settings.'),
 										'</a>
 									</td>
 									<td>&nbsp;</td>
@@ -200,7 +200,7 @@ $controller
 			</table>
 			<button class="btn btn-primary show" type="submit">
 				<i class="fa fa-floppy-o"></i>
-				<?php echo WT_I18N::translate('save'); ?>
+				<?php echo KT_I18N::translate('save'); ?>
 			</button>
 		</form>
 	</div>

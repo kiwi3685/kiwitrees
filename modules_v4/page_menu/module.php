@@ -21,38 +21,38 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
-	// Extend WT_Module
+class page_menu_KT_Module extends KT_Module implements KT_Module_Menu {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/menu */ WT_I18N::translate('Edit');
+		return /* I18N: Name of a module/menu */ KT_I18N::translate('Edit');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('An edit menu for individuals, families, sources, etc.');
+		return /* I18N: Description of the “Edit” module */ KT_I18N::translate('An edit menu for individuals, families, sources, etc.');
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultMenuOrder() {
 		return 20;
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function MenuType() {
 		return 'main';
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function getMenu() {
 		global $controller;
 
@@ -61,7 +61,7 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 			return null;
 		}
 
-		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
+		if (KT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
 			$menu = $controller->getEditMenu();
 		}
 		return $menu;

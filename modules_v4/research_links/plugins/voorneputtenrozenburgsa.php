@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -38,7 +38,7 @@ class voorneputtenrozenburgsa_plugin extends research_base_plugin {
 
 		foreach($collection as $key => $value) {
 			$link[] = array(
-				'title' => WT_I18N::translate($key),
+				'title' => KT_I18N::translate($key),
 				'link'  => $base_url . $value
 			);
 		}

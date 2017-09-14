@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -34,4 +34,4 @@ self::exec("DELETE FROM `##module_privacy` WHERE `module_name` = 'no_census' and
 self::exec("UPDATE `##module` SET `menu_order` = null WHERE `module_name` = 'no_census'");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

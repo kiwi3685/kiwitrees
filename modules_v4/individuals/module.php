@@ -21,23 +21,23 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend class WT_Module
+class individuals_KT_Module extends KT_Module implements KT_Module_Sidebar {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Individual list');
+		return /* I18N: Name of a module */ KT_I18N::translate('Individual list');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Individuals” module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the individuals in the family tree.');
+		return /* I18N: Description of “Individuals” module */ KT_I18N::translate('A sidebar showing an alphabetic list of all the individuals in the family tree.');
 	}
 
-	// Implement WT_Module
+	// Implement KT_Module
 	public function modAction($modAction) {
 		switch ($modAction) {
 		case 'ajax':
@@ -52,24 +52,24 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		exit;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 60;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		$alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "
@@ -86,12 +86,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller;
+		global $KT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = KT_Query_Name::surnameAlpha(true, false, KT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -123,7 +123,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					  success: function(html) {
 					    jQuery("#sb_indi_"+surname+" div").html(html);
 					    jQuery("#sb_indi_"+surname+" div").show("fast");
-					    jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					    jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$KT_IMAGES['minus'].')");
 					    loadedNames[surname]=2;
 					  }
 					});
@@ -131,26 +131,26 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (loadedNames[surname]==1) {
 					loadedNames[surname]=2;
 					jQuery("#sb_indi_"+surname+" div").show("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$KT_IMAGES['minus'].')");
 				}
 				else {
 					loadedNames[surname]=1;
 					jQuery("#sb_indi_"+surname+" div").hide("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus'].')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$KT_IMAGES['plus'].')");
 				}
 				return false;
 			});
 		');
 
 
-		$out='<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="'.WT_I18N::translate('Search').'"><p>';
+		$out='<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="'.KT_I18N::translate('Search').'"><p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
 				case '@':
 					$html=$UNKNOWN_NN;
 					break;
 				case ',':
-					$html=WT_I18N::translate('None');
+					$html=KT_I18N::translate('None');
 					break;
 				case ' ':
 					$html='&nbsp;';
@@ -170,7 +170,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getAlphaSurnames($alpha, $surname1='') {
-		$surns=WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
+		$surns=KT_Query_Name::surnames('', $alpha, true, false, KT_GED_ID);
 		$out = '<ul>';
 		foreach ($surns as $surname=>$surns) {
 			$out .= '<li id="sb_indi_'.$surname.'" class="sb_indi_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_indi_surname">'.$surname.'</a>';
@@ -188,7 +188,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getSurnameIndis($alpha, $surname) {
-		$indis=WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
+		$indis=KT_Query_Name::individuals($surname, $alpha, '', true, false, KT_GED_ID);
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canDisplayName()) {
@@ -211,20 +211,20 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			return '';
 		}
 		$rows=
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 				" FROM `##individuals`, `##name`".
 				" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 				" AND i_id=n_id AND i_file=n_file AND i_file=?".
-				" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'".
+				" ORDER BY n_sort COLLATE '".KT_I18N::$collation."'".
 				" LIMIT 50"
 			)
-			->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
+			->execute(array('INDI', "%{$query}%", "%{$query}%", KT_GED_ID))
 			->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
+			$person=KT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
 				if ($person->canDisplayDetails()) {

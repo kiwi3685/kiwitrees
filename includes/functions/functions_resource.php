@@ -21,22 +21,22 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Print a fact record, for the individual/family/source/repository/etc. pages.
 //
-// Although a WT_Event has a parent object, we also need to know
-// the WT_GedcomRecord for which we are printing it. For example,
+// Although a KT_Event has a parent object, we also need to know
+// the KT_GedcomRecord for which we are printing it. For example,
 // we can show the death of X on the page of Y, or the marriage
 // of X+Y on the page of Z. We need to know both records to
 // calculate ages, relationships, etc.
 //
 // This is a copy of function print_fact() (functions_print_facts.php) without date and place for different formatting purposes
 //
-function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
+function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS;
 	$SHOW_PARENTS_AGE = false; // not required on resource prints
 	$html = '';
@@ -57,18 +57,18 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		break;
 	case 'ASSO':
 		// include RELA if recorded
-		preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $fact->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
-		preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $fact->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
+		preg_match_all('/^1 ASSO @('.KT_REGEX_XREF.')@((\n[2-9].*)*)/', $fact->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
+		preg_match_all('/\n2 _?ASSO @('.KT_REGEX_XREF.')@((\n[3-9].*)*)/', $fact->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
 		// For each ASSO record
 		foreach (array_merge($amatches1, $amatches2) as $amatch) {
-			$person = WT_Person::getInstance($amatch[1]);
+			$person = KT_Person::getInstance($amatch[1]);
 			if (!$person) {
 				// If the target of the ASSO does not exist, create a dummy person, so
 				// the user can see that something is present.
-				$person = new WT_Person('');
+				$person = new KT_Person('');
 			}
 			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
-				$html .= '<span dir="auto">' . WT_Gedcom_Tag::getLabel('RELA') . ':&nbsp;' . WT_Gedcom_Code_Rela::getValue($rmatch[1], $person) . ':&nbsp;' . $person->getFullName() . '</span>';
+				$html .= '<span dir="auto">' . KT_Gedcom_Tag::getLabel('RELA') . ':&nbsp;' . KT_Gedcom_Code_Rela::getValue($rmatch[1], $person) . ':&nbsp;' . $person->getFullName() . '</span>';
 			} else {
 				$html .= '&nbsp;';
 			}
@@ -77,7 +77,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'BURI':
 		// include CEME if recorded
 		if (preg_match('/\n2 CEME (.+)/', $fact->getGedcomRecord(), $match)) {
-			$html .= WT_Gedcom_Tag::getLabelValue('CEME', $match[1]);
+			$html .= KT_Gedcom_Tag::getLabelValue('CEME', $match[1]);
 		} else {
 			$html .= '&nbsp;';
 		}
@@ -90,13 +90,13 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
 		// include AGNC if recorded
 		if (preg_match('/\n2 AGNC (.+)/', $fact->getGedcomRecord(), $match)) {
-			$html .= WT_Gedcom_Tag::getLabelValue($fact->getTag() . ':AGNC', $match[1], null, 'span');
+			$html .= KT_Gedcom_Tag::getLabelValue($fact->getTag() . ':AGNC', $match[1], null, 'span');
 		} else {
 			$html .= '&nbsp;';
 		}
 		// include ADDR if recorded
 		if (preg_match('/\n2 ADDR (.+)/', $fact->getGedcomRecord(), $match)) {
-			$html .= WT_Gedcom_Tag::getLabelValue('ADDR', $match[1]);
+			$html .= KT_Gedcom_Tag::getLabelValue('ADDR', $match[1]);
 		} else {
 			$html .= '&nbsp;';
 		}
@@ -107,7 +107,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		$html .= '<a href="mailto:' . htmlspecialchars($fact->getDetail()) . '">' . htmlspecialchars($fact->getDetail()) . '</a>';
 		break;
 	case 'FILE':
-		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		if (KT_USER_CAN_EDIT || KT_USER_CAN_ACCEPT) {
 			$html .= htmlspecialchars($fact->getDetail());
 		}
 		break;
@@ -117,16 +117,16 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom.
 			// However, kiwitrees privacy rules will interpret it as "show an otherwise private record to public".
-			$html .= '<i class="icon-resn-none"></i> ' . WT_I18N::translate('Show to visitors');
+			$html .= '<i class="icon-resn-none"></i> ' . KT_I18N::translate('Show to visitors');
 			break;
 		case 'privacy':
-			$html .= '<i class="icon-class-none"></i> ' . WT_I18N::translate('Show to members');
+			$html .= '<i class="icon-class-none"></i> ' . KT_I18N::translate('Show to members');
 			break;
 		case 'confidential':
-			$html .= '<i class="icon-confidential-none"></i> ' . WT_I18N::translate('Show to managers');
+			$html .= '<i class="icon-confidential-none"></i> ' . KT_I18N::translate('Show to managers');
 			break;
 		case 'locked':
-			$html .= '<i class="icon-locked-none"></i> ' . WT_I18N::translate('Only managers can edit');
+			$html .= '<i class="icon-locked-none"></i> ' . KT_I18N::translate('Only managers can edit');
 			break;
 		default:
 			$html .= htmlspecialchars($fact->getDetail());
@@ -138,7 +138,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		$html .= expand_urls(htmlspecialchars($fact->getDetail()));
 		break;
 	case 'REPO':
-		if (preg_match('/^@('.WT_REGEX_XREF.')@$/' . $fact->getDetail() . $match)) {
+		if (preg_match('/^@('.KT_REGEX_XREF.')@$/' . $fact->getDetail() . $match)) {
 			print_repository_record($match[1]);
 		} else {
 			$html .= '<div class="error">' . htmlspecialchars($fact->getDetail()) . '</div>';
@@ -162,14 +162,14 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 			break;
 		case 'N':
 			// Not valid GEDCOM
-			$html .= WT_I18N::translate('No');
+			$html .= KT_I18N::translate('No');
 			break;
 		case 'Y':
 			// Do not display "Yes".
 			break;
 		default:
-			if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
-				$target = WT_GedcomRecord::getInstance($match[1]);
+			if (preg_match('/^@('.KT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
+				$target = KT_GedcomRecord::getInstance($match[1]);
 				if ($target) {
 					$html .= '<div><a href="' . $target->getHtmlUrl() . '">' . $target->getFullName() . '</a></div>';
 				} else {
@@ -206,7 +206,7 @@ function report_images($person) {
 }
 
 // Print a row for the sources for an event or fact
-function report_sources(WT_Event $fact, $level, $short=false) {
+function report_sources(KT_Event $fact, $level, $short=false) {
 	$fact	= $fact->getGedcomRecord();
 	$data 		= array();
 	// -- find sources for each fact
@@ -219,14 +219,14 @@ function report_sources(WT_Event $fact, $level, $short=false) {
 		$spos2	= stripos($fact, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($fact);
 		$srec	= substr($fact, $spos1, $spos2-$spos1);
-		$source	= WT_Source::getInstance($sid);
+		$source	= KT_Source::getInstance($sid);
 		if ($source) {
 			// AUTH
 			$auth = htmlspecialchars($source->getAuth());
 			if (!empty($auth)) {
 				if (stripos($auth, "@") == 0 && substr($auth, -1) == '@') {
 					$pid = str_replace('@', '', $auth);
-					$details .= '<i>' . WT_Person::getInstance($pid)->getFullName() . '</i>, ';
+					$details .= '<i>' . KT_Person::getInstance($pid)->getFullName() . '</i>, ';
 				} else {
 					$details .= $auth . ', ';
 				}
@@ -260,7 +260,7 @@ function report_sources(WT_Event $fact, $level, $short=false) {
 	return $data;
 }
 
-function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
+function print_fact_label(KT_Event $fact, KT_GedcomRecord $record) {
 
 	if (!$fact->canShow()) {
 		return;
@@ -270,10 +270,10 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 	if ($fact->getSpouse()) {
 		// Event of close relative
 		$label_person = $fact->getSpouse();
-	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
+	} else if (preg_match('/2 _WTS @('.KT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
 		// Event of close relative
-		$label_person = WT_Person::getInstance($match[1]);
-	} else if ($fact->getParentObject() instanceof WT_Family) {
+		$label_person = KT_Person::getInstance($match[1]);
+	} else if ($fact->getParentObject() instanceof KT_Family) {
 		// Family event
 		$husb = $fact->getParentObject()->getHusband();
 		$wife = $fact->getParentObject()->getWife();
@@ -295,17 +295,17 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 	switch ($fact->getTag()) {
 	case 'EVEN':
 	case 'FACT':
-		if (WT_Gedcom_Tag::isTag($type)) {
+		if (KT_Gedcom_Tag::isTag($type)) {
 			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
-			$label = WT_Gedcom_Tag::getLabel($type, $label_person);
+			$label = KT_Gedcom_Tag::getLabel($type, $label_person);
 			$type=''; // Do not print this again
 		} elseif ($type) {
 			// We don't have a translation for $type - but a custom translation might exist.
-			$label = WT_I18N::translate(htmlspecialchars($type));
+			$label = KT_I18N::translate(htmlspecialchars($type));
 			$type=''; // Do not print this again
 		} else {
 			// An unspecified fact/event
-			$label = WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+			$label = KT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		}
 		break;
 	case 'MARR':
@@ -315,18 +315,18 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 		} else {
 			$marr_fact = 'MARR';
 		}
-		$label = WT_Gedcom_Tag::getLabel($marr_fact, $label_person);
+		$label = KT_Gedcom_Tag::getLabel($marr_fact, $label_person);
 		break;
 	default:
 		// Normal fact/event
-		$label = WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+		$label = KT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		break;
 	}
 
 	echo $label;
 }
 
-function print_resourcenotes(WT_Event $fact, $level, $textOnly = false, $return = false) {
+function print_resourcenotes(KT_Event $fact, $level, $textOnly = false, $return = false) {
 	global $GEDCOM;
 	$ged_id = get_id_from_gedcom($GEDCOM);
 	$fact	= $fact->getGedcomRecord();
@@ -350,7 +350,7 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly = false, $return 
 			$closeSpan = print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
 			$data .= $closeSpan;
 		} else {
-			$note = WT_Note::getInstance($nmatch[1]);
+			$note = KT_Note::getInstance($nmatch[1]);
 			if ($note) {
 				if ($note->canDisplayDetails()) {
 					$noterec = $note->getGedcomRecord();
@@ -360,13 +360,13 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly = false, $return 
 					$data .= $closeSpan;
 					if (!$textOnly) {
 						if (stripos($noterec, "1 SOUR") !== false) {
-							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+							require_once KT_ROOT.'includes/functions/functions_print_facts.php';
 							$data .= print_fact_sources($noterec, 1, true);
 						}
 					}
 				}
 			} else {
-				$data = '<div class="fact_NOTE"><span class="label">' . WT_I18N::translate('Note') . '</span>: <span class="field error">' . $nid . '</span></div>';
+				$data = '<div class="fact_NOTE"><span class="label">' . KT_I18N::translate('Note') . '</span>: <span class="field error">' . $nid . '</span></div>';
 			}
 		}
 		if (!$textOnly) {
@@ -391,9 +391,9 @@ function report_findfact($fact, $type='') {
 				" FROM `##individuals`" .
 				" WHERE `i_gedcom` REGEXP '(.*)\n1 " . $fact . "' AND i_file=?";
 	}
-	$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID))->fetchAll();
+	$rows = KT_DB::prepare($sql)->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
-		$person = WT_Person::getInstance($row->xref);
+		$person = KT_Person::getInstance($row->xref);
 		$indifacts = $person->getIndiFacts();
 		foreach ($indifacts as $item) {
 			if ($item->getTag() == $fact) {
@@ -495,7 +495,7 @@ function add_report_descendancy($i, $person, $parents = false, $generations = -1
 		if (!empty($spouse)) {
 			if ($parents) {
 				$i++;
-				$related_individuals[$i]['relationship']	= $marriage ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner');
+				$related_individuals[$i]['relationship']	= $marriage ? KT_I18N::translate('Spouse') : KT_I18N::translate('Partner');
 				$related_individuals[$i]['name']			= $spouse->getFullName();
 				$related_individuals[$i]['birth']			= $spouse->getBirthDate()->Display();
 				$related_individuals[$i]['bdate']			= $spouse->getBirthDate()->JD();
@@ -551,22 +551,22 @@ function marriageDetails($family) {
 			if ($details) {
 				$details .= ' — ';
 			}
-			$tmp = new WT_Place($place, WT_GED_ID);
+			$tmp = new KT_Place($place, KT_GED_ID);
 			$details .= $tmp->getShortName();
 		}
-		return WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
-	} else if (get_sub_record(1, "1 _NMR", find_family_record($family, WT_GED_ID))) {
+		return KT_Gedcom_Tag::getLabelValue($marr_fact, $details);
+	} else if (get_sub_record(1, "1 _NMR", find_family_record($family, KT_GED_ID))) {
 		$husb = $family->getHusband();
 		$wife = $family->getWife();
 		if (empty($wife) && !empty($husb)) {
-			return WT_Gedcom_Tag::getLabel('_NMR', $husb);
+			return KT_Gedcom_Tag::getLabel('_NMR', $husb);
 		} elseif (empty($husb) && !empty($wife)) {
-			return WT_Gedcom_Tag::getLabel('_NMR', $wife);
+			return KT_Gedcom_Tag::getLabel('_NMR', $wife);
 		} else {
-			return WT_Gedcom_Tag::getLabel('_NMR');
+			return KT_Gedcom_Tag::getLabel('_NMR');
 		}
 	} else {
-		return WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
+		return KT_Gedcom_Tag::getLabelValue($marr_fact, KT_I18N::translate('yes'));
 	}
 
 }
@@ -614,9 +614,9 @@ function report_vital_records ($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $d_
 	}
 
 	$list = array();
-	$rows = WT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
+	$rows = KT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
 	foreach ($rows as $row) {
-		$list[$row->xref] = WT_Person::getInstance($row->xref);
+		$list[$row->xref] = KT_Person::getInstance($row->xref);
 	}
 
 	return $list;
@@ -687,10 +687,10 @@ function report_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
 	}
 
 	$list = array();
-	$rows = WT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
+	$rows = KT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
 	foreach ($rows as $row) {
 		// Name filter - must be done here becasue family number not available earlier.
-		$family = WT_Family::getInstance($row->xref);
+		$family = KT_Family::getInstance($row->xref);
 		if (stristr($family->getFullName(), $name)) {
 			$list[] = $family;
 		}
@@ -708,14 +708,14 @@ function personDetails($person) {
 	$death = '';
 
 	if ($birth_date->isOK() || $birth_plac != '') {
-		$birth = WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
+		$birth = KT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
 			$birth_date->Display() . '&nbsp;' .
 			$birth_plac;
 	}
 
 	if ($death_date->isOK() || $death_plac != '') {
 		$death = ($birth == '' ? '' : '&nbsp;-&nbsp;') .
-			WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
+			KT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
 			$death_date->Display() . '&nbsp;' .
 			$death_plac;
 	}

@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Add new columns
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"ALTER TABLE `##news`".
 		" ADD user_id INTEGER NULL AFTER n_id,".
 		" ADD gedcom_id INTEGER NULL AFTER user_id,".
@@ -42,7 +42,7 @@ try {
 
 // Migrate data from the old columns to the new ones
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"UPDATE `##news` n".
 		" LEFT JOIN `##gedcom` g ON (n.n_username=g.gedcom_name)".
 		" LEFT JOIN `##user` u ON (n.n_username=u.user_name)".
@@ -54,7 +54,7 @@ try {
 
 // Delete orphaned rows
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"DELETE FROM `##news` WHERE user_id IS NULL AND gedcom_id IS NULL"
 	);
 } catch (PDOException $ex) {
@@ -63,7 +63,7 @@ try {
 
 // Delete/rename old columns
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"ALTER TABLE `##news`".
 		" DROP n_username, DROP n_date,".
 		" CHANGE n_id news_id INTEGER NOT NULL AUTO_INCREMENT,".
@@ -75,5 +75,5 @@ try {
 }
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);
 

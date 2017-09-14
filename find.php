@@ -21,20 +21,20 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'find.php');
+define('KT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Simple();
+$controller = new KT_Controller_Simple();
 
-$type		= safe_GET('type', WT_REGEX_ALPHA, 'indi');
+$type		= safe_GET('type', KT_REGEX_ALPHA, 'indi');
 $filter		= safe_GET('filter');
 $action		= safe_GET('action');
-$callback	= safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
+$callback	= safe_GET('callback', KT_REGEX_NOSCRIPT, 'paste_id');
 $media		= safe_GET('media');
 $all		= safe_GET_bool('all');
 $subclick	= safe_GET('subclick');
-$choose		= safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
+$choose		= safe_GET('choose', KT_REGEX_NOSCRIPT, '0all');
 $qs			= safe_GET('tags');
 
 // Retrives the currently selected tags in the opener window (reading curTags value of the query string)
@@ -46,7 +46,7 @@ function getPreselectedTags(&$preselDefault, &$preselCustom) {
 	$preselDefault = array();
 	$preselCustom = array();
 	foreach ($all as $one) {
-		if (WT_Gedcom_Tag::isTag($one)) {
+		if (KT_Gedcom_Tag::isTag($one)) {
 			$preselDefault[] = $one;
 		} else {
 			$preselCustom[] = $one;
@@ -68,43 +68,43 @@ if ($chooseType != "media" && $chooseType!="0file") {
 
 switch ($type) {
 case "indi":
-	$controller->setPageTitle(WT_I18N::translate('Find an individual'));
+	$controller->setPageTitle(KT_I18N::translate('Find an individual'));
 	break;
 case "fam":
-	$controller->setPageTitle(WT_I18N::translate('Find a family'));
+	$controller->setPageTitle(KT_I18N::translate('Find a family'));
 	break;
 case "media":
-	$controller->setPageTitle(WT_I18N::translate('Find a media object'));
+	$controller->setPageTitle(KT_I18N::translate('Find a media object'));
 	break;
 case "place":
-	$controller->setPageTitle(WT_I18N::translate('Find a place'));
+	$controller->setPageTitle(KT_I18N::translate('Find a place'));
 	break;
 case "repo":
-	$controller->setPageTitle(WT_I18N::translate('Find a repository'));
+	$controller->setPageTitle(KT_I18N::translate('Find a repository'));
 	break;
 case "note":
-	$controller->setPageTitle(WT_I18N::translate('Find a note'));
+	$controller->setPageTitle(KT_I18N::translate('Find a note'));
 	break;
 case "source":
-	$controller->setPageTitle(WT_I18N::translate('Find a source'));
+	$controller->setPageTitle(KT_I18N::translate('Find a source'));
 	break;
 case "specialchar":
-	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
+	$controller->setPageTitle(KT_I18N::translate('Find a special character'));
 	$language_filter = safe_GET('language_filter');
-	if (WT_USER_ID) {
+	if (KT_USER_ID) {
 		// Users will probably always want the same language, so remember their setting
 		if (!$language_filter) {
-			$language_filter=get_user_setting(WT_USER_ID, 'default_language_filter');
+			$language_filter=get_user_setting(KT_USER_ID, 'default_language_filter');
 		} else {
-			set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
+			set_user_setting(KT_USER_ID, 'default_language_filter', $language_filter);
 		}
 	}
-	require WT_ROOT.'includes/specialchars.php';
+	require KT_ROOT.'includes/specialchars.php';
 	$action = "filter";
 	break;
 case "facts":
 	$controller
-		->setPageTitle(WT_I18N::translate('Find a fact or event'))
+		->setPageTitle(KT_I18N::translate('Find a fact or event'))
 		->addInlineJavascript('initPickFact();');
 	break;
 }
@@ -130,7 +130,7 @@ $controller->pageHeader();
 		if (document.forms[0].subclick) button = document.forms[0].subclick.value;
 		else button = "";
 		if (frm.filter.value.length<2&button!="all") {
-			alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
+			alert("<?php echo KT_I18N::translate('Please enter more than one character'); ?>");
 			frm.filter.focus();
 			return false;
 		}
@@ -171,13 +171,13 @@ if ($type == "indi") {
 				<input type="hidden" name="callback" value="' . $callback . '">
 				<input type="hidden" name="action" value="filter">
 				<input type="hidden" name="type" value="indi">
-				<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
+				<span>', KT_I18N::translate('Name contains:'), '&nbsp;</span>
 				<input type="text" name="filter" value="';
 					if ($filter) {
 						echo $filter;
 					}
 					echo '" autofocus>
-				<input type="submit" value="', WT_I18N::translate('Filter'), '">
+				<input type="submit" value="', KT_I18N::translate('Filter'), '">
 			</form>
 		</div>
 	';
@@ -191,11 +191,11 @@ if ($type == "fam") {
 				<input type="hidden" name="callback" value="'.$callback.'">
 				<input type="hidden" name="action" value="filter">
 				<input type="hidden" name="type" value="fam">
-				<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
+				<span>', KT_I18N::translate('Name contains:'), '&nbsp;</span>
 				<input type="text" name="filter" value="';
 					if ($filter) echo $filter;
 					echo '">
-				<input type="submit" value="', WT_I18N::translate('Filter'), '">
+				<input type="submit" value="', KT_I18N::translate('Filter'), '">
 			</form>
 		</div>
 	';
@@ -211,14 +211,14 @@ if ($type == 'media') {
 				<input type="hidden" name="type" value="media">
 				<input type="hidden" name="callback" value="', $callback, '">
 				<input type="hidden" name="subclick">
-				<span>', WT_I18N::translate('Media contains:'), '</span>
+				<span>', KT_I18N::translate('Media contains:'), '</span>
 				<input type="text" name="filter" value="';
 					if ($filter) echo $filter;
 				echo '">',
 				help_link('simple_filter'), '
 					<p>
-						<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-						<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
+						<input type="submit" name="search" value="', KT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+						<input type="submit" name="all" value="', KT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
 					</p>
 			</form>
 		</div>
@@ -234,13 +234,13 @@ if ($type == "place") {
 				<input type="hidden" name="type" value="place">
 				<input type="hidden" name="callback" value="', $callback, '">
 				<input type="hidden" name="subclick">
-				<span>', WT_I18N::translate('Place contains:'), '</span>
+				<span>', KT_I18N::translate('Place contains:'), '</span>
 				<input type="text" name="filter" value="';
 					if ($filter) echo $filter;
 				echo '">
 				<p>
-					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+					<input type="submit" name="search" value="', KT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', KT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 				</p>
 			</form>
 		</div>
@@ -256,13 +256,13 @@ if ($type == "repo") {
 				<input type="hidden" name="type" value="repo">
 				<input type="hidden" name="callback" value="', $callback, '">
 				<input type="hidden" name="subclick">
-				<span>', WT_I18N::translate('Repository contains:'), '</span>
+				<span>', KT_I18N::translate('Repository contains:'), '</span>
 				<input type="text" name="filter" value="';
 					if ($filter) echo $filter;
 				echo '">
 				<p>
-					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+					<input type="submit" name="search" value="', KT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', KT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 				</p>
 			</form>
 		</div>
@@ -278,13 +278,13 @@ if ($type == "note") {
 				<input type="hidden" name="type" value="note">
 				<input type="hidden" name="callback" value="', $callback, '">
 				<input type="hidden" name="subclick">
-				<span>', WT_I18N::translate('Shared Note contains:'), '</span>
+				<span>', KT_I18N::translate('Shared Note contains:'), '</span>
 				<input type="text" name="filter" value="';
 					if ($filter) echo $filter;
 				echo '">
 				<p>
-					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+					<input type="submit" name="search" value="', KT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', KT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 				</p>
 			</form>
 		</div>
@@ -300,13 +300,13 @@ if ($type == "source") {
 				<input type="hidden" name="type" value="source">
 				<input type="hidden" name="callback" value="', $callback, '">
 				<input type="hidden" name="subclick">
-				<span>', WT_I18N::translate('Source contains:'), '</span>
+				<span>', KT_I18N::translate('Source contains:'), '</span>
 				<input type="text" name="filter" value="';
 					if ($filter) echo $filter;
 				echo '">
 				<p>
-					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+					<input type="submit" name="search" value="', KT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', KT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 				</p>
 			</form>
 		</div>
@@ -323,7 +323,7 @@ if ($type == 'specialchar') {
 				<input type="hidden" name="callback" value="'.$callback.'">
 				<p>
 					<select id="language_filter" name="language_filter" onchange="submit();">
-						<option value="">', WT_I18N::translate('Change language'), '</option>';
+						<option value="">', KT_I18N::translate('Change language'), '</option>';
 							$language_options = '';
 							foreach ($specialchar_languages as $key=>$value) {
 								$language_options.= '<option value="'.$key.'"';
@@ -441,7 +441,7 @@ if ($type == "facts") {
 
 		DefaultTags=[<?php
 		$firstFact=TRUE;
-		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
+		foreach (KT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
 			if ($firstFact) $firstFact=FALSE;
 			else echo ',';
 			echo 'new DefaultTag("'.addslashes($factId).'","'.addslashes($factName).'",preselectedDefaultTags.indexOf("\\x01'.addslashes($factId).'\\x01")>=0)';
@@ -481,25 +481,25 @@ if ($type == "facts") {
 	echo '<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th>&nbsp;</th>
-			<th>', WT_I18N::translate('Tag'), '</th>
-			<th>', WT_I18N::translate('Description'), '</th>
+			<th>', KT_I18N::translate('Tag'), '</th>
+			<th>', KT_I18N::translate('Description'), '</th>
 		</tr></thead>
 		<tbody id="tbDefinedTags">
 		</tbody>
 	</table></div>
 
 	<table id="tabDefinedTagsShow"><tbody><tr>
-		<td><a href="#" onclick="Lister.showSelected();return false">', WT_I18N::translate('Show only selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
-		<td><a href="#" onclick="Lister.refreshNow(true);return false">', WT_I18N::translate('Show all tags'), '</a></td>
+		<td><a href="#" onclick="Lister.showSelected();return false">', KT_I18N::translate('Show only selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.refreshNow(true);return false">', KT_I18N::translate('Show all tags'), '</a></td>
 	</tr></tbody></table>
 
 	<table id="tabFilterAndCustom"><tbody>
-		<tr><td>', WT_I18N::translate('Filter'), ':</td><td><input type="text" id="tbxFilter"></td></tr>
-		<tr><td>', WT_I18N::translate('Custom tags'), ':</td><td><input type="text" id="tbxCustom" value="', addslashes(implode(",", $preselCustom)), '"></td></tr>
+		<tr><td>', KT_I18N::translate('Filter'), ':</td><td><input type="text" id="tbxFilter"></td></tr>
+		<tr><td>', KT_I18N::translate('Custom tags'), ':</td><td><input type="text" id="tbxCustom" value="', addslashes(implode(",", $preselCustom)), '"></td></tr>
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', WT_I18N::translate('save'), '</button></td>
+		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', KT_I18N::translate('save'), '</button></td>
 	<tr></tbody></table>
 	</td></tr></table>
 	</form></div>';
@@ -512,17 +512,17 @@ if ($action == "filter") {
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+		$myindilist=search_indis_names($filter_array, array(KT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo '<ul>';
-			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+			usort($myindilist, array('KT_GedcomRecord', 'Compare'));
 			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
+			<p>', KT_I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
 		} else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -533,21 +533,21 @@ if ($action == "filter") {
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
-			search_fams_names($filter_array, array(WT_GED_ID), 'AND'),
-			search_fams($filter_array, array(WT_GED_ID), 'AND', true)
+			search_fams_names($filter_array, array(KT_GED_ID), 'AND'),
+			search_fams($filter_array, array(KT_GED_ID), 'AND', true)
 		));
 
 		if ($myfamlist) {
 			$curged = $GEDCOM;
 			echo '<ul>';
-			usort($myfamlist, array('WT_GedcomRecord', 'Compare'));
+			usort($myfamlist, array('KT_GedcomRecord', 'Compare'));
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Total families: %s', count($myfamlist)), '</p>';
+			<p>', KT_I18N::translate('Total families: %s', count($myfamlist)), '</p>';
 		} else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -556,7 +556,7 @@ if ($action == "filter") {
 	if ($type == "media") {
 		global $dirs;
 
-		$medialist = WT_Query_Media::mediaList('', 'include', 'title', $filter, '');
+		$medialist = KT_Query_Media::mediaList('', 'include', 'title', $filter, '');
 
 		echo '<div id="find-output">';
 
@@ -572,7 +572,7 @@ if ($action == "filter") {
 				}
 				if ($media->fileExists()) {
 					$imgsize = $media->getImageAttributes();
-					echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+					echo KT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 				}
 				echo '<ul>';
 				$found=false;
@@ -597,13 +597,13 @@ if ($action == "filter") {
 					$found=true;
 				}
 				if (!$found) {
-					echo '<li>', WT_I18N::translate('This media object is not linked to any other record.'), '</li>';
+					echo '<li>', KT_I18N::translate('This media object is not linked to any other record.'), '</li>';
 				}
 				echo '</ul>';
 				echo '</div>'; // close div="find-media-media"
 			}
 		} else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -612,9 +612,9 @@ if ($action == "filter") {
 	if ($type == "place") {
 		echo '<div id="find-output">';
 		if (!$filter || $all) {
-			$places=WT_Place::allPlaces(WT_GED_ID);
+			$places=KT_Place::allPlaces(KT_GED_ID);
 		} else {
-			$places=WT_Place::findPlaces($filter, WT_GED_ID);
+			$places=KT_Place::findPlaces($filter, KT_GED_ID);
 		}
 		if ($places) {
 			echo '<ul>';
@@ -628,10 +628,10 @@ if ($action == "filter") {
 				echo '</a></li>';
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
+			<p>', KT_I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
 		}
 		else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -640,21 +640,21 @@ if ($action == "filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND', true);
+			$repo_list = search_repos($filter_array, array(KT_GED_ID), 'AND', true);
 		} else {
-			$repo_list = get_repo_list(WT_GED_ID);
+			$repo_list = get_repo_list(KT_GED_ID);
 		}
 		if ($repo_list) {
-			usort($repo_list, array('WT_GedcomRecord', 'Compare'));
+			usort($repo_list, array('KT_GedcomRecord', 'Compare'));
 			echo '<ul>';
 			foreach ($repo_list as $repo) {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(),'</span></a></li>';
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
+			<p>', KT_I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
 		}
 		else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -663,21 +663,21 @@ if ($action == "filter") {
 	if ($type=="note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND', true);
+			$mynotelist = search_notes($filter_array, array(KT_GED_ID), 'AND', true);
 		} else {
-			$mynotelist = get_note_list(WT_GED_ID);
+			$mynotelist = get_note_list(KT_GED_ID);
 		}
 		if ($mynotelist) {
-			usort($mynotelist, array('WT_GedcomRecord', 'Compare'));
+			usort($mynotelist, array('KT_GedcomRecord', 'Compare'));
 			echo '<ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(),'</span></a></li>';
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</p>';
+			<p>', KT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</p>';
 		}
 		else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -686,23 +686,23 @@ if ($action == "filter") {
 	if ($type=="source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND', true);
+			$mysourcelist = search_sources($filter_array, array(KT_GED_ID), 'AND', true);
 		} else {
-			$mysourcelist = get_source_list(WT_GED_ID);
+			$mysourcelist = get_source_list(KT_GED_ID);
 		}
 		if ($mysourcelist) {
-			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
+			usort($mysourcelist, array('KT_GedcomRecord', 'Compare'));
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',
-					WT_Filter::escapeJs($source->getFullName()), '\');"><span class="list_item">',
+					KT_Filter::escapeJs($source->getFullName()), '\');"><span class="list_item">',
 					$source->getFullName(),'</span></a></li>';
 			}
 			echo '</ul>
-			<p>', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
+			<p>', KT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
 		}
 		else {
-			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -729,7 +729,7 @@ if ($action == "filter") {
 }
 echo '<button class="btn btn-primary show" onclick="window.close();">
 		<i class="fa fa-times"></i>' .
-		WT_I18N::translate('close') . '
+		KT_I18N::translate('close') . '
 	</button>';
 
 echo '</div>'; // Close div="find-page"

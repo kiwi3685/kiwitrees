@@ -21,30 +21,30 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+class top10_surnames_KT_Module extends KT_Module implements KT_Module_Block {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module.  Top=Most common */ WT_I18N::translate('Top surnames');
+		return /* I18N: Name of a module.  Top=Most common */ KT_I18N::translate('Top surnames');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Top surnames” module */ WT_I18N::translate('A list of the most popular surnames.');
+		return /* I18N: Description of the “Top surnames” module */ KT_I18N::translate('A list of the most popular surnames.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $SURNAME_LIST_STYLE;
 
-		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
+		require_once KT_ROOT . 'includes/functions/functions_print_lists.php';
 
-		$COMMON_NAMES_REMOVE	= get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
-		$COMMON_NAMES_THRESHOLD = get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
+		$COMMON_NAMES_REMOVE	= get_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_REMOVE');
+		$COMMON_NAMES_THRESHOLD = get_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_THRESHOLD');
 
 		$num		= get_block_setting($block_id, 'num', 10);
 		$infoStyle	= get_block_setting($block_id, 'infoStyle', 'table');
@@ -58,7 +58,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, $num);
+		$top_surnames = get_top_surnames(KT_GED_ID, $COMMON_NAMES_THRESHOLD, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
@@ -71,24 +71,24 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$all_surnames = array();
 		$i = 0;
 		foreach (array_keys($top_surnames) as $top_surname) {
-			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames($top_surname, '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, KT_Query_Name::surnames($top_surname, '', false, false, KT_GED_ID));
 			if (++$i == $num) break;
 		}
 		if ($i < $num) $num = $i;
 		$id		= $this->getName() . $block_id;
 		$class	= $this->getName() . '_block';
-		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && WT_USER_ID) {
-			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+		if ($ctype == 'gedcom' && KT_USER_GEDCOM_ADMIN || $ctype == 'user' && KT_USER_ID) {
+			$title = '<i class="icon-admin" title="' . KT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
 		}
 
 		if ($num == 1) {
 			// I18N: i.e. most popular surname.
-			$title .= WT_I18N::translate('Top surname');
+			$title .= KT_I18N::translate('Top surname');
 		} else {
 			// I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
-			$title .= WT_I18N::plural('Top %s surname', 'Top %s surnames', $num, WT_I18N::number($num));
+			$title .= KT_I18N::plural('Top %s surname', 'Top %s surnames', $num, KT_I18N::number($num));
 		}
 
 		switch ($infoStyle) {
@@ -97,73 +97,73 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':
-			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames,array('top10_surnames_KT_Module', 'top_surname_sort'));
 			$content = format_surname_list($all_surnames, '1', true, 'indilist.php');
 			break;
 		case 'array':
-			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames,array('top10_surnames_KT_Module', 'top_surname_sort'));
 			$content = format_surname_list($all_surnames, '2', true, 'indilist.php');
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_KT_Module', 'top_surname_sort'));
 			$content = format_surname_table($all_surnames, 'indilist.php', '2');
 			break;
 		}
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR . 'templates/block_small_temp.php';
+				require KT_THEME_DIR . 'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR . 'templates/block_main_temp.php';
+				require KT_THEME_DIR . 'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'num',       WT_Filter::postInteger('num', 1, 10000, 10));
-			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
-			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'num',       KT_Filter::postInteger('num', 1, 10000, 10));
+			set_block_setting($block_id, 'infoStyle', KT_Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
+			set_block_setting($block_id, 'block',     KT_Filter::postBool('block'));
 			exit;
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
+		require_once KT_ROOT . 'includes/functions/functions_edit.php';
 
 		echo '
 			<tr>
-				<td class="descriptionbox wrap width33">' . WT_I18N::translate('Number of items to show') . '</td>
+				<td class="descriptionbox wrap width33">' . KT_I18N::translate('Number of items to show') . '</td>
 				<td class="optionbox">
 					<input type="text" name="num" size="2" value="' . get_block_setting($block_id, 'num', 10) . '">
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width33">' . WT_I18N::translate('Presentation style') . '</td>
+				<td class="descriptionbox wrap width33">' . KT_I18N::translate('Presentation style') . '</td>
 				<td class="optionbox">' .
 					select_edit_control(
 						'infoStyle',
-						array('list' => WT_I18N::translate('bullet list'),
-						'array' => WT_I18N::translate('compact list'),
-						'table' => WT_I18N::translate('table'),
-						'tagcloud' => WT_I18N::translate('tag cloud')),
+						array('list' => KT_I18N::translate('bullet list'),
+						'array' => KT_I18N::translate('compact list'),
+						'table' => KT_I18N::translate('table'),
+						'tagcloud' => KT_I18N::translate('tag cloud')),
 						null,
 						get_block_setting($block_id, 'infoStyle', 'table'),
 						''
@@ -172,7 +172,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width33">' .
-					/* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow') . '
+					/* I18N: label for a yes/no option */ KT_I18N::translate('Add a scrollbar when block contents grow') . '
 				</td>
 				<td class="optionbox">' .
 					edit_field_yes_no('block', get_block_setting($block_id, 'block', false)) . '

@@ -23,30 +23,30 @@
 
 global $controller;
 
-/** @global Tree $WT_TREE */
-global $WT_TREE;
+/** @global Tree $KT_TREE */
+global $KT_TREE;
 
-if (!WT_Filter::checkCsrf()) {
-	require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census-edit.php';
+if (!KT_Filter::checkCsrf()) {
+	require KT_ROOT . KT_MODULES_DIR . 'census_assistant/census-edit.php';
 
 	return;
 }
 
 // We are creating a CENS/NOTE record linked to these individuals
-$pid_array = WT_Filter::post('pid_array');
+$pid_array = KT_Filter::post('pid_array');
 
 if (empty($pid_array)) {
 	$xref = '';
 } else {
-	$NOTE   = WT_Filter::post('NOTE');
+	$NOTE   = KT_Filter::post('NOTE');
 	$gedcom = '0 @XREF@ NOTE ' . preg_replace('/\r?\n/', "\n1 CONT ", trim($NOTE));
-	$xref   = $WT_TREE->createRecord($gedcom)->getXref();
+	$xref   = $KT_TREE->createRecord($gedcom)->getXref();
 }
 
 $controller
 	->addInlineJavascript('window.opener.set_pid_array("' . $pid_array . '");')
 	->addInlineJavascript('openerpasteid("' . $xref . '");')
-	->setPageTitle(WT_I18N::translate('Create a shared note using the census assistant'))
+	->setPageTitle(KT_I18N::translate('Create a shared note using the census assistant'))
 	->pageHeader();
 ?>
 

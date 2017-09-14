@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -30,7 +30,7 @@ $settings = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_SE
 if(!empty($settings)) {
 	foreach ($settings as $setting) {
 		if(!array_key_exists('LINK', $setting)) {
-			$setting['LINK'] = /* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of the %s family', $setting['SURNAME']);
+			$setting['LINK'] = /* I18N: %s is the surname of the root individual */ KT_I18N::translate('Descendants of the %s family', $setting['SURNAME']);
 			$new_settings[] = $setting;
 		}
 	}
@@ -40,7 +40,7 @@ if(!empty($settings)) {
 
 $options = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
 if(!empty($options)) {
-	foreach (WT_Tree::getAll() as $tree) {
+	foreach (KT_Tree::getAll() as $tree) {
 		$new_options[$tree->tree_id] = array(
 			'SHOW_PLACES' 	=> $options['SHOW_PLACES'],
 			'COUNTRY' 		=> $options['COUNTRY'],
@@ -52,4 +52,4 @@ if(!empty($options)) {
 }
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -31,10 +31,10 @@ if (!defined('WT_KIWITREES')) {
 // On success, store the user-id in the session and return it
 // On failure, return an error code
 function authenticateUser($user_name, $password) {
-	global $WT_SESSION;
+	global $KT_SESSION;
 
 	// If no cookies are available, then we cannot log in.
-	if (!isset($_COOKIE[WT_SESSION_NAME])) {
+	if (!isset($_COOKIE[KT_SESSION_NAME])) {
 		return -5;
 	}
 
@@ -46,7 +46,7 @@ function authenticateUser($user_name, $password) {
 			if ($verified && $approved || $is_admin) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();
-				$WT_SESSION->wt_user = $user_id;
+				$KT_SESSION->wt_user = $user_id;
 				AddToLog('Login successful ->'.$user_name.'<-', 'auth');
 				return $user_id;
 			} elseif (!$is_admin && !$verified) {
@@ -72,7 +72,7 @@ function authenticateUser($user_name, $password) {
 function userLogout($user_id) {
 	AddToLog('Logout '.getUserName($user_id), 'auth');
 	// If we are logging ourself out, then end our session too.
-	if (WT_USER_ID == $user_id) {
+	if (KT_USER_ID == $user_id) {
 		Zend_Session::destroy();
 	}
 }
@@ -89,9 +89,9 @@ function userLogout($user_id) {
  */
 
 function getUserId() {
-	global $WT_SESSION;
+	global $KT_SESSION;
 
-	return (int)($WT_SESSION->wt_user);
+	return (int)($KT_SESSION->wt_user);
 }
 
 function getUserName() {
@@ -105,7 +105,7 @@ function getUserName() {
 /**
  * check if given username is an admin
  */
-function userIsAdmin($user_id = WT_USER_ID) {
+function userIsAdmin($user_id = KT_USER_ID) {
 	if ($user_id) {
 		return get_user_setting($user_id, 'canadmin');
 	} else {
@@ -116,9 +116,9 @@ function userIsAdmin($user_id = WT_USER_ID) {
 /**
  * check if given username is an admin for the given gedcom
  */
-function userGedcomAdmin($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
+function userGedcomAdmin($user_id = KT_USER_ID, $ged_id = KT_GED_ID) {
 	if ($user_id) {
-		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit') == 'admin' || userIsAdmin($user_id);
+		return KT_Tree::get($ged_id)->userPreference($user_id, 'canedit') == 'admin' || userIsAdmin($user_id);
 	} else {
 		return false;
 	}
@@ -127,12 +127,12 @@ function userGedcomAdmin($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
 /**
  * check if the given user has access privileges on this gedcom
  */
-function userCanAccess($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
+function userCanAccess($user_id = KT_USER_ID, $ged_id = KT_GED_ID) {
 	if ($user_id) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
-			$tmp = WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
+			$tmp = KT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
 			return $tmp == 'admin' || $tmp == 'accept' || $tmp == 'edit' || $tmp == 'access';
 		}
 	} else {
@@ -143,13 +143,13 @@ function userCanAccess($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
 /**
  * check if the given user has write privileges for the given gedcom
  */
-function userCanEdit($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
+function userCanEdit($user_id = KT_USER_ID, $ged_id = KT_GED_ID) {
 
 	if ($user_id) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
-			$tmp = WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
+			$tmp = KT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
 			return $tmp == 'admin' || $tmp == 'accept' || $tmp == 'edit';
 		}
 	} else {
@@ -159,54 +159,54 @@ function userCanEdit($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
 
 // Get the full name for a user
 function getUserFullName($user_id) {
-	return WT_DB::prepare("SELECT SQL_CACHE real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return KT_DB::prepare("SELECT SQL_CACHE real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the full name for a user
 function setUserFullName($user_id, $real_name) {
-	return WT_DB::prepare("UPDATE `##user` SET real_name=? WHERE user_id=?")->execute(array($real_name, $user_id));
+	return KT_DB::prepare("UPDATE `##user` SET real_name=? WHERE user_id=?")->execute(array($real_name, $user_id));
 }
 
 // Get the email for a user
 function getUserEmail($user_id) {
-	return WT_DB::prepare("SELECT SQL_CACHE email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return KT_DB::prepare("SELECT SQL_CACHE email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the email for a user
 function setUserEmail($user_id, $email) {
-	return WT_DB::prepare("UPDATE `##user` SET email=? WHERE user_id=?")->execute(array($email, $user_id));
+	return KT_DB::prepare("UPDATE `##user` SET email=? WHERE user_id=?")->execute(array($email, $user_id));
 }
 
 // set user_name for a user
 function SetUserName($user_id, $username) {
-	return WT_DB::prepare("UPDATE `##user` SET user_name = ? WHERE user_id = ?")->execute(array($username, $user_id));
+	return KT_DB::prepare("UPDATE `##user` SET user_name = ? WHERE user_id = ?")->execute(array($username, $user_id));
 }
 
 // add a message into the log-file
 function AddToLog($log_message, $log_type = 'error') {
-	global $WT_REQUEST;
-	WT_DB::prepare(
+	global $KT_REQUEST;
+	KT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
 		$log_type,
 		$log_message,
-		$WT_REQUEST->getClientIp(),
-		defined('WT_USER_ID') && WT_USER_ID ? WT_USER_ID : null,
-		defined('WT_GED_ID') ? WT_GED_ID : null
+		$KT_REQUEST->getClientIp(),
+		defined('KT_USER_ID') && KT_USER_ID ? KT_USER_ID : null,
+		defined('KT_GED_ID') ? KT_GED_ID : null
 	));
 }
 
 //----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
 function AddToSearchLog($log_message, $geds) {
-	global $WT_REQUEST;
-	foreach (WT_Tree::getAll() as $tree) {
-		WT_DB::prepare(
+	global $KT_REQUEST;
+	foreach (KT_Tree::getAll() as $tree) {
+		KT_DB::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
-			(count(WT_Tree::getAll()) == count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
-			$WT_REQUEST->getClientIp(),
-			WT_USER_ID ? WT_USER_ID : null,
+			(count(KT_Tree::getAll()) == count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
+			$KT_REQUEST->getClientIp(),
+			KT_USER_ID ? KT_USER_ID : null,
 			$tree->tree_id
 		));
 	}
@@ -224,10 +224,10 @@ function AddToSearchLog($log_message, $geds) {
  */
 function addNews($news) {
 	if (array_key_exists('id', $news)) {
-		WT_DB::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")
+		KT_DB::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")
 		->execute(array($news['title'], $news['text'], $news['date'], $news['id']));
 	} else {
-		WT_DB::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?)")
+		KT_DB::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?)")
 		->execute(array($news['user_id'], $news['gedcom_id'],  $news['title'], $news['text']));
 	}
 }
@@ -235,7 +235,7 @@ function addNews($news) {
 // Gets the news items for the given user or gedcom
 function getUserNews($user_id) {
 	$rows=
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
+		KT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
 		->execute(array($user_id))
 		->fetchAll();
 
@@ -255,7 +255,7 @@ function getUserNews($user_id) {
 
 function getGedcomNews($gedcom_id) {
 	$rows=
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
+		KT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
 		->execute(array($gedcom_id))
 		->fetchAll();
 
@@ -280,7 +280,7 @@ function getGedcomNews($gedcom_id) {
  */
 function getNewsItem($news_id) {
 	$row=
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
+		KT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
 		->execute(array($news_id))
 		->fetchOneRow();
 

@@ -21,45 +21,45 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_check.php');
+define('KT_SCRIPT_NAME', 'admin_trees_check.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Check for errors'))
+	->setPageTitle(KT_I18N::translate('Check for errors'))
 	->pageHeader();
 ?>
 
 <div id="check_errors">
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?>
 		<i class="fa fa-comments-o"></i>
 	</a>
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="get" action="<?php echo KT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="go" value="1">
-		<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+		<?php echo select_edit_control('ged', KT_Tree::getNameList(), null, KT_GEDCOM); ?>
 		<button type="submit" class="btn btn-primary">
 			<i class="fa fa-search"></i>
 			<?php echo $controller->getPageTitle(); ?>
 		</button>
 	 </form>
 	 <fieldset>
-		 <legend><?php echo WT_I18N::translate('Types of error'); ?></legend>
-		 <p class="ui-state-error"><?php echo WT_I18N::translate('This may cause a problem for kiwitrees.'); ?></p>
-		 <p class="ui-state-highlight"><?php echo WT_I18N::translate('This may cause a problem for other applications.'); ?></p>
-		 <p class="warning-bad-data"><?php echo WT_I18N::translate('This may be a mistake in your data.'); ?></p>
+		 <legend><?php echo KT_I18N::translate('Types of error'); ?></legend>
+		 <p class="ui-state-error"><?php echo KT_I18N::translate('This may cause a problem for kiwitrees.'); ?></p>
+		 <p class="ui-state-highlight"><?php echo KT_I18N::translate('This may cause a problem for other applications.'); ?></p>
+		 <p class="warning-bad-data"><?php echo KT_I18N::translate('This may be a mistake in your data.'); ?></p>
 	 </fieldset>
 	<?php
 
 	$errors = false;
 
-	if (WT_Filter::get('go')) {
+	if (KT_Filter::get('go')) {
 		// We need to work with raw GEDCOM data, as we are looking for errors
-		// which may prevent the WT_GedcomRecord objects from working...
+		// which may prevent the KT_GedcomRecord objects from working...
 
-		$rows = WT_DB::prepare(
+		$rows = KT_DB::prepare(
 			"SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?".
 			" UNION ".
 			"SELECT f_id AS xref, 'FAM'  AS type, f_gedcom AS gedrec FROM `##families`    WHERE f_file=?".
@@ -69,7 +69,7 @@ $controller
 			"SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedrec FROM `##media`       WHERE m_file=?".
 			" UNION ".
 			"SELECT o_id AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
-		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
+		)->execute(array(KT_GED_ID, KT_GED_ID, KT_GED_ID, KT_GED_ID, KT_GED_ID))->fetchAll();
 
 		$records = array();
 		foreach ($rows as $row) {
@@ -78,7 +78,7 @@ $controller
 
 		// Need to merge pending new/changed/deleted records
 
-		$rows = WT_DB::prepare(
+		$rows = KT_DB::prepare(
 			" SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec".
 			" FROM (".
 			"  SELECT MAX(change_id) AS change_id".
@@ -87,7 +87,7 @@ $controller
 			"  GROUP BY xref".
 			" ) AS t1".
 			" JOIN `##change` t2 USING (change_id)"
-		)->execute(array(WT_GED_ID))->fetchAll();
+		)->execute(array(KT_GED_ID))->fetchAll();
 
 		foreach ($rows as $row) {
 			if ($row->gedrec) {
@@ -124,11 +124,11 @@ $controller
 			'AUTH'          => 'INDI', // A kiwitrees extension
 			'ANCI'          => 'SUBM',
 			'DESI'          => 'SUBM',
-			'_WT_OBJE_SORT' => 'OBJE',
+			'_KT_OBJE_SORT' => 'OBJE',
 		);
 
 		$RECORD_LINKS = array(
-			'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT', '_LOC'),
+			'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_KT_OBJE_SORT', '_LOC'),
 			'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'),
 			'SOUR'=>array('NOTE', 'OBJE', 'REPO', 'AUTH'),
 			'REPO'=>array('NOTE'),
@@ -145,7 +145,7 @@ $controller
 		foreach ($records as $record) {
 			$all_links[$record->xref] = array();
 			$upper_links[strtoupper($record->xref)] = $record->xref;
-			preg_match_all('/\n\d ('.WT_REGEX_TAG.') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
+			preg_match_all('/\n\d ('.KT_REGEX_TAG.') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
 			foreach ($matches as $match) {
 				$all_links[$record->xref][$match[2]] = $match[1];
 			}
@@ -159,33 +159,33 @@ $controller
 					if (array_key_exists(strtoupper($xref2), $upper_links)) {
 						echo warning(
 							link_message($type1, $xref1, $type2, $xref2).' '.
-							/* I18N: placeholders are GEDCOM IDs, such as R123 */ WT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
+							/* I18N: placeholders are GEDCOM IDs, such as R123 */ KT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
 						);
 					} else {
 						echo error(
 							link_message(
 								$type1, $xref1, $type2, $xref2).' '.
-								/* I18N: placeholders are GEDCOM IDs, such as R123 */ WT_I18N::translate('%1$s does not exist.', format_link($xref2))
+								/* I18N: placeholders are GEDCOM IDs, such as R123 */ KT_I18N::translate('%1$s does not exist.', format_link($xref2))
 						);
 					}
 				} elseif ($type2=='SOUR' && $type1=='NOTE') {
-					//echo warning(WT_I18N::translate('The note %1$s has a source %2$s. Notes are intended to add explanations and comments to other records.  They should not have their own sources.'), format_link($xref1), format_link($xref2));
+					//echo warning(KT_I18N::translate('The note %1$s has a source %2$s. Notes are intended to add explanations and comments to other records.  They should not have their own sources.'), format_link($xref1), format_link($xref2));
 				} elseif ($type2=='SOUR' && $type1=='OBJE') {
-					//echo warning(WT_I18N::translate('The media object %1$s has a source %2$s. Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.', format_link($xref1), format_link($xref2)));
+					//echo warning(KT_I18N::translate('The media object %1$s has a source %2$s. Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.', format_link($xref1), format_link($xref2)));
 				} elseif ($type2=='OBJE' && $type1=='REPO') {
 					echo warning(
-						link_message($type1, $xref1, $type2, $xref2) . ' ' .  WT_I18N::translate('This type of link is not allowed here.')
+						link_message($type1, $xref1, $type2, $xref2) . ' ' .  KT_I18N::translate('This type of link is not allowed here.')
 					);
 				} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
 					echo error(
 						link_message($type1, $xref1, $type2, $xref2).' '.
-						WT_I18N::translate('This type of link is not allowed here.')
+						KT_I18N::translate('This type of link is not allowed here.')
 					);
 				} elseif ($XREF_LINKS[$type2]!=$type3) {
 					// Target XREF does exist - but is invalid
 					echo error(
 						link_message($type1, $xref1, $type2, $xref2).' '.
-						/* I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR */ WT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
+						/* I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR */ KT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
 					);
 				} elseif (
 					$type2=='FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='CHIL') ||
@@ -196,13 +196,13 @@ $controller
 				) {
 					echo error(
 					link_message($type1, $xref1, $type2, $xref2).' '.
-						/* I18N: %1$s and %2$s are internal ID numbers such as R123 */ WT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
+						/* I18N: %1$s and %2$s are internal ID numbers such as R123 */ KT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
 					);
 				}
 			}
 		}
 		if (!$errors) {
-			echo '<p class="ui-state-highlight noresult">', WT_I18N::translate('No errors were found.'), '</p>';
+			echo '<p class="ui-state-highlight noresult">', KT_I18N::translate('No errors were found.'), '</p>';
 		}
 	}
 	?>
@@ -211,7 +211,7 @@ $controller
 
 function link_message($type1, $xref1, $type2, $xref2) {
 	return
-		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
+		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ KT_I18N::translate(
 			'%1$s %2$s has a %3$s link to %4$s.',
 			format_type($type1),
 			format_link($xref1),
@@ -225,7 +225,7 @@ function format_link($xref) {
 }
 
 function format_type($type) {
-	return '<b title="' . strip_tags(WT_Gedcom_Tag::getLabel($type)) . '">' . $type . '</b>';
+	return '<b title="' . strip_tags(KT_Gedcom_Tag::getLabel($type)) . '">' . $type . '</b>';
 }
 
 function error($message) {

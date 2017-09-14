@@ -21,15 +21,15 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'lifespan.php');
+define('KT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
 $zoomfactor=10;
 
-$controller = new WT_Controller_Lifespan();
+$controller = new KT_Controller_Lifespan();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		var timer;
@@ -248,7 +248,7 @@ $controller
 
 echo
 	'<div id="lifespan-page">
-	<h2>', WT_I18N::translate('Lifespans'), help_link('lifespan_chart'), '</h2>
+	<h2>', KT_I18N::translate('Lifespans'), help_link('lifespan_chart'), '</h2>
 	<table><tr><td>
 	<form name="people" action="lifespan.php">';
 
@@ -257,18 +257,18 @@ echo
 		echo
 			'<table>
 				<tr><td class="person', $col, '" style="padding: 5px" valign="top">',
-					WT_I18N::translate('Add another person to the chart'), '<br>
+					KT_I18N::translate('Add another person to the chart'), '<br>
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">',
 					print_findindi_link('newpid'),
 					'<br>
-					<div style="text-align: center">', WT_I18N::translate('Include the person\'s immediate family?'),
+					<div style="text-align: center">', KT_I18N::translate('Include the person\'s immediate family?'),
 					'<input type="checkbox" checked="checked" value="yes" name="addFamily"></div>
 					<br>
-					<div style="text-align: center"><input type="submit" value="', WT_I18N::translate('Add'), '"></div>
+					<div style="text-align: center"><input type="submit" value="', KT_I18N::translate('Add'), '"></div>
 				</td></tr>
 			</table>';
 		if (count($controller->pids)<11) {
-			echo '<br><a href="timeline.php"><b>', WT_I18N::translate('Show timeline'), '</b></a><br><br>';
+			echo '<br><a href="timeline.php"><b>', KT_I18N::translate('Show timeline'), '</b></a><br><br>';
 		}
 
 echo
@@ -277,10 +277,10 @@ echo
 	<form name="buttons" action="lifespan.php" method="get">
 		<table>
 			<tr>
-				<td align="center">', WT_I18N::translate('Speed'), '</td>
-					<td align="center">', WT_I18N::translate('Begin Year'), '</td>
-					<td align="center">', WT_I18N::translate('End Year'), '</td>
-					<td align="center">', WT_Gedcom_Tag::getLabel('PLAC'), '</td>
+				<td align="center">', KT_I18N::translate('Speed'), '</td>
+					<td align="center">', KT_I18N::translate('Begin Year'), '</td>
+					<td align="center">', KT_I18N::translate('End Year'), '</td>
+					<td align="center">', KT_Gedcom_Tag::getLabel('PLAC'), '</td>
 			</tr>
 			<tr>
 				<td><select name="speedMenu" size="1">
@@ -293,13 +293,13 @@ echo
 				<td><input type="text" name="beginYear" size="5" value="', $controller->beginYear==0 ? '' :$controller->beginYear, '"></td>
 				<td><input type="text" name="endYear" size="5" value="', $controller->endYear==0? '' :$controller->endYear, '"></td>
 
-				<td><input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="' ,WT_Filter::escapeHtml($controller->place), '"></td>
-				<td><input type="submit" name="search" value="', WT_I18N::translate('Search'), '"></td>
-			<td><input type="button" value="', WT_I18N::translate('Clear Chart'), '" onclick="window.location = \'lifespan.php?clear=1\';"></td>
+				<td><input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="' ,KT_Filter::escapeHtml($controller->place), '"></td>
+				<td><input type="submit" name="search" value="', KT_I18N::translate('Search'), '"></td>
+			<td><input type="button" value="', KT_I18N::translate('Clear Chart'), '" onclick="window.location = \'lifespan.php?clear=1\';"></td>
 			</tr>
 		</table>';
 		$people = count($controller->people);
-		echo '<br><b>', WT_I18N::plural('%d Individual', '%d Individuals', $people, $people), '</b>
+		echo '<br><b>', KT_I18N::plural('%d Individual', '%d Individuals', $people, $people), '</b>
 	</form>
 	</td></tr></table>
 	<div dir="ltr" id="lifespan_chart" class="lifespan_outer">

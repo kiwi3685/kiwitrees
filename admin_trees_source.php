@@ -21,31 +21,31 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_source.php');
+define('KT_SCRIPT_NAME', 'admin_trees_source.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
-require WT_ROOT.'includes/functions/functions_print_facts.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_print_facts.php';
 
-$sid	= WT_Filter::post('source');
-$stype	= WT_Filter::post('stype');
+$sid	= KT_Filter::post('source');
+$stype	= KT_Filter::post('stype');
 
 $options = array(
-	'facts'		=> WT_I18N::translate('Facts or events'),
-	'records'	=> WT_I18N::translate('Records')
+	'facts'		=> KT_I18N::translate('Facts or events'),
+	'records'	=> KT_I18N::translate('Records')
 );
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Review source'))
+	->setPageTitle(KT_I18N::translate('Review source'))
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 	')
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-	->addExternalJavascript(WT_JQUERY_DT_HTML5)
-	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(KT_JQUERY_DT_HTML5)
+	->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 	->addInlineJavascript('
 		jQuery("#source_list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
@@ -57,22 +57,22 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<div class="help_text">
 		<p class="help_content">
-			<?php echo WT_I18N::translate('Display a list of facts, events or records where the selected source is used. Facts or events are items like birth, marriage, death. Records are items like individuals, families, media.'); ?>
+			<?php echo KT_I18N::translate('Display a list of facts, events or records where the selected source is used. Facts or events are items like birth, marriage, death. Records are items like individuals, families, media.'); ?>
 		</p>
 	</div>
-	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post" action="<?php echo KT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="go" value="1">
 		<div id="admin_options">
 			<div class="input">
-				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
-				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+				<label><?php echo KT_I18N::translate('Family tree'); ?></label>
+				<?php echo select_edit_control('ged', KT_Tree::getNameList(), null, KT_GEDCOM); ?>
 			</div>
 			<div class="input">
-				<label><?php echo WT_I18N::translate('Source'); ?></label>
+				<label><?php echo KT_I18N::translate('Source'); ?></label>
 				<input type="text" id="source" name="source" value="<?php echo $sid ? $sid : ''; ?>" dir="ltr" class="" data-autocomplete-type="SOUR" autocomplete="off">
 			</div>
 			<div class="input">
-				<label><?php echo WT_I18N::translate('Source type'); ?></label>
+				<label><?php echo KT_I18N::translate('Source type'); ?></label>
 				<?php echo select_edit_control('stype', $options, null, $stype); ?>
 			</div>
 			<button type="submit" class="btn btn-primary">
@@ -83,14 +83,14 @@ $controller
 	</form>
 	<hr class="clearfloat">
 
-	<?php if (WT_Filter::post('go')) { 	?>
+	<?php if (KT_Filter::post('go')) { 	?>
 		<div id="source_list" style="visibility: hidden;">
 			<?php
-			$source	= WT_Source::getInstance($sid);
+			$source	= KT_Source::getInstance($sid);
 			$data	= facts($sid, $stype);
 			?>
 			<h3>
-				<span><?php echo WT_I18N::translate('Source'); ?></span>&nbsp;-&nbsp;<a href="<?php echo $source->getHtmlUrl(); ?>"><?php echo $source->getFullName(); ?></a>&nbsp;-&nbsp;<span><?php echo $options[$stype]; ?></span>
+				<span><?php echo KT_I18N::translate('Source'); ?></span>&nbsp;-&nbsp;<a href="<?php echo $source->getHtmlUrl(); ?>"><?php echo $source->getFullName(); ?></a>&nbsp;-&nbsp;<span><?php echo $options[$stype]; ?></span>
 			</h3>
 			<?php switch ($stype) {
 				case 'facts' :
@@ -98,7 +98,7 @@ $controller
 						->addInlineJavascript('
 							jQuery("#facts_table").dataTable({
 								dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-								' . WT_I18N::datatablesI18N() . ',
+								' . KT_I18N::datatablesI18N() . ',
 								buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 								autoWidth: false,
 								paging: true,
@@ -126,24 +126,24 @@ $controller
 					<table id="facts_table" style="width: 100%;">
 						<thead>
 							<tr>
-								<th style="min-width: 200px;"><?php echo WT_I18N::translate('Edit raw GEDCOM record'); ?></th>
-								<th><?php echo WT_I18N::translate('Record'); ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Birth'); ?></th>
+								<th style="min-width: 200px;"><?php echo KT_I18N::translate('Edit raw GEDCOM record'); ?></th>
+								<th><?php echo KT_I18N::translate('Record'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Birth'); ?></th>
 								<th><?php //SORT_BIRT ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Event'); ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Event date'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Event'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Event date'); ?></th>
 								<th><?php //SORT_EVENT ?></th>
-								<th><?php echo WT_I18N::translate('Citation text'); ?></th>
+								<th><?php echo KT_I18N::translate('Citation text'); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							foreach ($data as $row) {
-								$facts = WT_GedcomRecord::getInstance($row->xref)->getFacts();
+								$facts = KT_GedcomRecord::getInstance($row->xref)->getFacts();
 								foreach ($facts as $event) {
 									if (strpos($event->getGedComRecord(), 'SOUR @' . $sid . '@') !== false && $event->getTag() != 'SOUR') {
 										preg_match('/\n\d SOUR @' . $sid . '@(?:\n[3-9].*)*\n/i', $row->gedrec, $match);
-										$record = WT_Person::getInstance($row->xref) ? WT_Person::getInstance($row->xref) : WT_Family::getInstance($row->xref) ? WT_Family::getInstance($row->xref) : WT_Media::getInstance($row->xref);
+										$record = KT_Person::getInstance($row->xref) ? KT_Person::getInstance($row->xref) : KT_Family::getInstance($row->xref) ? KT_Family::getInstance($row->xref) : KT_Media::getInstance($row->xref);
 										?>
 										<tr>
 											<td>
@@ -152,15 +152,15 @@ $controller
 													switch ($record->getType()) {
 														case "INDI":
 															$icon = $record->getSexImage('small', '', '', false);
-															$type = WT_I18N::translate('Individual');
+															$type = KT_I18N::translate('Individual');
 															break;
 														case "FAM":
 															$icon = '<i class="icon-button_family"></i>';
-															$type = WT_I18N::translate('Family');
+															$type = KT_I18N::translate('Family');
 															break;
 														case "OBJE":
 															$icon = '<i class="icon-button_media"></i>';
-															$type = WT_I18N::translate('Media');
+															$type = KT_I18N::translate('Media');
 															break;
 														default:
 															$type = '&nbsp;';
@@ -185,7 +185,7 @@ $controller
 												<?php echo $record->getType() == "INDI" ? $record->getBirthDate()->JD() : ''; ?>
 											</td>
 											<td>
-												<?php echo WT_Gedcom_Tag::getLabel($event->getTag()); ?>
+												<?php echo KT_Gedcom_Tag::getLabel($event->getTag()); ?>
 											</td>
 											<td>
 												<?php echo $event->getDate()->Display(); ?>
@@ -214,7 +214,7 @@ $controller
 						->addInlineJavascript('
 							jQuery("#records_table").dataTable({
 								dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-								' . WT_I18N::datatablesI18N() . ',
+								' . KT_I18N::datatablesI18N() . ',
 								buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 								autoWidth: false,
 								paging: true,
@@ -243,22 +243,22 @@ $controller
 					<table id="records_table" style="width: 100%;">
 						<thead>
 							<tr>
-								<th style="min-width: 200px;"><?php echo WT_I18N::translate('Edit raw GEDCOM record'); ?></th>
-								<th><?php echo WT_I18N::translate('Record'); ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Birth'); ?></th>
+								<th style="min-width: 200px;"><?php echo KT_I18N::translate('Edit raw GEDCOM record'); ?></th>
+								<th><?php echo KT_I18N::translate('Record'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Birth'); ?></th>
 								<th><?php //SORT_BIRT ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Place'); ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Death'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Place'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Death'); ?></th>
 								<th><?php //SORT_DEAT ?></th>
-								<th style="min-width: 120px;"><?php echo WT_I18N::translate('Place'); ?></th>
-								<th><?php echo WT_I18N::translate('Citation text'); ?></th>
+								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Place'); ?></th>
+								<th><?php echo KT_I18N::translate('Citation text'); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							foreach ($data as $row) {
 								preg_match('/\n\d SOUR @' . $sid . '@(?:\n[2-9].*)*\n/i', $row->gedrec, $match);
-								$record = WT_Person::getInstance($row->xref) ? WT_Person::getInstance($row->xref) : WT_Family::getInstance($row->xref) ? WT_Family::getInstance($row->xref) : WT_Media::getInstance($row->xref);
+								$record = KT_Person::getInstance($row->xref) ? KT_Person::getInstance($row->xref) : KT_Family::getInstance($row->xref) ? KT_Family::getInstance($row->xref) : KT_Media::getInstance($row->xref);
 								?>
 								<tr>
 									<td>
@@ -267,15 +267,15 @@ $controller
 											switch ($record->getType()) {
 												case "INDI":
 													$icon = $record->getSexImage('small', '', '', false);
-													$type = WT_I18N::translate('Individual');
+													$type = KT_I18N::translate('Individual');
 													break;
 												case "FAM":
 													$icon = '<i class="icon-button_family"></i>';
-													$type = WT_I18N::translate('Family');
+													$type = KT_I18N::translate('Family');
 													break;
 												case "OBJE":
 													$icon = '<i class="icon-button_media"></i>';
-													$type = WT_I18N::translate('Media');
+													$type = KT_I18N::translate('Media');
 													break;
 												default:
 													$type = '&nbsp;';
@@ -339,7 +339,7 @@ function facts($sid, $stype = 'facts') {
 		$stype = 2;
 	};
 
-	$rows = WT_DB::prepare("
+	$rows = KT_DB::prepare("
 		SELECT i_id AS xref, i_gedcom AS gedrec
 		FROM `##individuals`
 		WHERE `i_file` = ?
@@ -357,7 +357,7 @@ function facts($sid, $stype = 'facts') {
 		WHERE `o_file` = ?
 		AND `o_gedcom`
 		REGEXP '2 SOUR @" . $sid . "@'
-	")->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
+	")->execute(array(KT_GED_ID, KT_GED_ID, KT_GED_ID))->fetchAll();
 
 	return $rows;
 }

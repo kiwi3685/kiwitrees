@@ -21,18 +21,18 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 class update_links_bu_plugin extends base_plugin {
 	static function getName() {
-		return WT_I18N::translate('Update missing links');
+		return KT_I18N::translate('Update missing links');
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('Occasionally the table of links between records needs to be synchronised with the GEDCOM data. This tools checks for missing links and inserts them into the table.');
+		return KT_I18N::translate('Occasionally the table of links between records needs to be synchronised with the GEDCOM data. This tools checks for missing links and inserts them into the table.');
 	}
 
 	// Default is to operate on INDI records
@@ -41,9 +41,9 @@ class update_links_bu_plugin extends base_plugin {
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {
-		preg_match_all('/^\d+ ('.WT_REGEX_TAG.') @('.WT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER);
+		preg_match_all('/^\d+ ('.KT_REGEX_TAG.') @('.KT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER);
 		// Try fast check first - no links in table at all
-		$record = WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from = ? AND l_file = ?")->execute(array($xref, WT_GED_ID))->fetchAll();
+		$record = KT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from = ? AND l_file = ?")->execute(array($xref, KT_GED_ID))->fetchAll();
 		if ($matches && !$record) {
 			return $matches;
 		}
@@ -54,10 +54,10 @@ class update_links_bu_plugin extends base_plugin {
 		// copy of function in functions_import
 		static $sql_insert_link = null;
 		if (!$sql_insert_link) {
-			$sql_insert_link = WT_DB::prepare("INSERT IGNORE INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
+			$sql_insert_link = KT_DB::prepare("INSERT IGNORE INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
 		}
 
-		if (preg_match_all('/^\d+ ('.WT_REGEX_TAG.') @('.WT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
+		if (preg_match_all('/^\d+ ('.KT_REGEX_TAG.') @('.KT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
 			$data = array();
 			foreach ($matches as $match) {
 				// Include each link once only.
@@ -65,7 +65,7 @@ class update_links_bu_plugin extends base_plugin {
 					$data[] = $match[1].$match[2];
 					// Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
 					try {
-						$sql_insert_link->execute(array($xref, $match[2], $match[1], WT_GED_ID));
+						$sql_insert_link->execute(array($xref, $match[2], $match[1], KT_GED_ID));
 					} catch (PDOException $e) {
 						// We could display a warning here....
 					}

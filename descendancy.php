@@ -21,69 +21,69 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'descendancy.php');
+define('KT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Descendancy();
+$controller = new KT_Controller_Descendancy();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 echo '<div id="descendancy-page"><h2>', $controller->getPageTitle(), '</h2>';
 echo '<form method="get" name="people" action="?">';
-echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
+echo '<input type="hidden" name="ged" value="', KT_GEDCOM, '">';
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '">';
 echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
-echo WT_I18N::translate('Individual'), '</td>';
+echo KT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox">';
 echo '<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="' .$controller->rootid. '">';
 echo print_findindi_link('rootid');
 echo '</td>';
 echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Box width'), '</td>';
+echo KT_I18N::translate('Box width'), '</td>';
 echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '">';
 echo '<b>%</b></td>';
 echo '<td rowspan="2" class="descriptionbox">';
-echo WT_I18N::translate('Layout');
+echo KT_I18N::translate('Layout');
 echo '</td><td rowspan="2" class="optionbox">';
 echo '<input type="radio" name="chart_style" value="0"';
 if ($controller->chart_style==0) {
 	echo ' checked="checked"';
 }
-echo '>', WT_I18N::translate('List');
+echo '>', KT_I18N::translate('List');
 echo '<br><input type="radio" name="chart_style" value="1"';
 if ($controller->chart_style==1) {
 	echo ' checked="checked"';
 }
-echo '>', WT_I18N::translate('Booklet');
+echo '>', KT_I18N::translate('Booklet');
 echo '<br><input type="radio" name="chart_style" value="2"';
 if ($controller->chart_style==2) {
 	echo ' checked="checked"';
 }
-echo '>', WT_I18N::translate('Individuals');
+echo '>', KT_I18N::translate('Individuals');
 echo '<br><input type="radio" name="chart_style" value="3"';
 if ($controller->chart_style==3) {
 	echo ' checked="checked"';
 }
-echo '>', WT_I18N::translate('Families');
+echo '>', KT_I18N::translate('Families');
 echo '</td><td rowspan="2" class="topbottombar">';
-echo '<input type="submit" value="', WT_I18N::translate('View'), '">';
+echo '<input type="submit" value="', KT_I18N::translate('View'), '">';
 echo '</td></tr>';
 echo '<tr><td class="descriptionbox">';
-echo WT_I18N::translate('Generations'), '</td>';
+echo KT_I18N::translate('Generations'), '</td>';
 echo '<td class="optionbox"><select name="generations">';
 for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	echo '<option value="', $i, '"';
 	if ($i==$controller->generations) {
 		echo ' selected="selected"';
 	}
-	echo '>', WT_I18N::number($i), '</option>';
+	echo '>', KT_I18N::number($i), '</option>';
 }
 echo '</select></td><td class="descriptionbox">';
-echo WT_I18N::translate('Show Details');
+echo KT_I18N::translate('Show Details');
 echo '</td><td class="optionbox"><input type="checkbox" value="';
 if ($controller->show_full) {
 	echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"';
@@ -112,13 +112,13 @@ case 1: //-- booklet
 case 2: //-- Individual list
 	$descendants=indi_desc($controller->root, $controller->generations, array());
 	echo '<div id="descendancy-list">';
-	echo format_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
+	echo format_indi_table($descendants, KT_I18N::translate('Descendants of %s', $controller->name));
 	echo '</div>';
 	break;
 case 3: //-- Family list
 	$descendants=fam_desc($controller->root, $controller->generations, array());
 	echo '<div id="descendancy-list">';
-	echo format_fam_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
+	echo format_fam_table($descendants, KT_I18N::translate('Descendants of %s', $controller->name));
 	echo '</div>';
 	break;
 }

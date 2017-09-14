@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -43,5 +43,5 @@ self::exec("INSERT IGNORE INTO `##block` (gedcom_id, location, block_order, modu
 self::exec("ALTER TABLE `##module_setting` CHANGE setting_value setting_value MEDIUMTEXT COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);
 

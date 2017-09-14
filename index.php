@@ -21,22 +21,22 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'index.php');
+define('KT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
 
 // The only option for action is "ajax"
 $action = safe_REQUEST($_REQUEST, 'action', 'ajax');
 
-$ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
+$ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), KT_USER_ID ? 'user' : 'gedcom');
 
 //-- get the blocks list
-$blocks = get_gedcom_blocks(WT_GED_ID);
+$blocks = get_gedcom_blocks(KT_GED_ID);
 
-$all_blocks = WT_Module::getActiveBlocks();
+$all_blocks = KT_Module::getActiveBlocks();
 
 // We generate individual blocks using AJAX
 if ($action == 'ajax') {
-	$controller = new WT_Controller_Ajax();
+	$controller = new KT_Controller_Ajax();
 	$controller->pageHeader();
 
 	// Check we're displaying an allowable block.
@@ -49,21 +49,21 @@ if ($action == 'ajax') {
 		exit;
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
-		$class_name = $module_name.'_WT_Module';
+		$class_name = $module_name.'_KT_Module';
 		$module = new $class_name;
 		$module->getBlock($block_id);
 	}
-	if (WT_DEBUG_SQL) {
-		echo WT_DB::getQueryLog();
+	if (KT_DEBUG_SQL) {
+		echo KT_DB::getQueryLog();
 	}
 	exit;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->setPageTitle(WT_I18N::translate('Home'))
+	->setPageTitle(KT_I18N::translate('Home'))
 	->setMetaRobots('index,follow')
-	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
+	->setCanonicalUrl(KT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . KT_GEDCOM)
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
@@ -76,7 +76,7 @@ echo '<div id="home-page">';
 			echo '<div id="index_full_blocks">';
 		}
 		foreach ($blocks['main'] as $block_id => $module_name) {
-			$class_name = $module_name.'_WT_Module';
+			$class_name = $module_name.'_KT_Module';
 			$module = new $class_name;
 			if ($SEARCH_SPIDER || !$module->loadAjax()) {
 				// Load the block directly
@@ -102,7 +102,7 @@ echo '<div id="home-page">';
 			echo '<div id="index_full_blocks">';
 		}
 		foreach ($blocks['side'] as $block_id => $module_name) {
-			$class_name = $module_name.'_WT_Module';
+			$class_name = $module_name.'_KT_Module';
 			$module = new $class_name;
 			if ($SEARCH_SPIDER || !$module->loadAjax()) {
 				// Load the block directly
@@ -123,10 +123,10 @@ echo '<div id="home-page">';
 	}
 
 	// link for changing blocks
-	if (WT_USER_ID || $SHOW_COUNTER) {
+	if (KT_USER_ID || $SHOW_COUNTER) {
 		echo '<div id="link_change_blocks">';
-			if (WT_USER_GEDCOM_ADMIN) echo '<a href="index_edit.php?gedcom_id=' . WT_GED_ID . '" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . WT_GED_ID . '\', \'' . WT_I18N::translate('Change the blocks on this page') . '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
-			if ($SHOW_COUNTER) {echo '<span>'.WT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
+			if (KT_USER_GEDCOM_ADMIN) echo '<a href="index_edit.php?gedcom_id=' . KT_GED_ID . '" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . KT_GED_ID . '\', \'' . KT_I18N::translate('Change the blocks on this page') . '\');">', KT_I18N::translate('Change the blocks on this page'), '</a>';
+			if ($SHOW_COUNTER) {echo '<span>'.KT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
 		echo '</div>'; // <div id="link_change_blocks">
 	} else {
 		echo '<div class="clearfloat"></div>';

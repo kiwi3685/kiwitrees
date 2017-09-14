@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -74,16 +74,16 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='', $personcount=1) {
-	global $pbwidth, $pbheight, $WT_IMAGES, $GEDCOM;
+	global $pbwidth, $pbheight, $KT_IMAGES, $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	$family = WT_Family::getInstance($famid);
+	$family = KT_Family::getInstance($famid);
 	if (is_null($family)) return;
 
 	$husb = $family->getHusband();
-	if (is_null($husb)) $husb = new WT_Person('');
+	if (is_null($husb)) $husb = new KT_Person('');
 	$wife = $family->getWife();
-	if (is_null($wife)) $wife = new WT_Person('');
+	if (is_null($wife)) $wife = new KT_Person('');
 
 	if (!is_null($husb)) {
 		$tempID = $husb->getXref();
@@ -97,7 +97,7 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 		echo '<p class="name_head">', $family->getFullName(), '</p>';
 	}
 	// -- get the new record and parents if in editing show changes mode
-	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
+	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, KT_USER_CAN_EDIT)) {
 		$newrec = find_gedcom_record($famid, $ged_id, true);
 		$newparents = find_parents_in_record($newrec);
 	}
@@ -114,7 +114,7 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 	else if ($sosa > 0) print_sosa_number($sosa * 2);
 	if (isset($newparents) && $husb->getXref() != $newparents["HUSB"]) {
 		echo "<td valign=\"top\" class=\"facts_valueblue\">";
-		print_pedigree_person(WT_Person::getInstance($newparents['HUSB']), 1, 2, $personcount);
+		print_pedigree_person(KT_Person::getInstance($newparents['HUSB']), 1, 2, $personcount);
 	} else {
 		echo "<td valign=\"top\">";
 		print_pedigree_person($husb, 1, 2, $personcount);
@@ -127,8 +127,8 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 	$upfamid = "";
 
 	if ($hfams || $sosa) {
-		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
-		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "<td rowspan=\"2\"><img src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$KT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
+		echo "<td><img class=\"line5\" src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		$hparents = false;
 		foreach ($hfams as $hfamily) {
 			$hparents = find_parents_in_record($hfamily->getGedcomRecord());
@@ -141,24 +141,24 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 			if ($sosa > 0) print_sosa_number($sosa * 4, $hparents['HUSB'], "down");
 			if (!empty($gparid) && $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo "<td valign=\"top\">";
-			print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 1, 4, $personcount);
+			print_pedigree_person(KT_Person::getInstance($hparents['HUSB']), 1, 4, $personcount);
 			echo "</td></tr></table>";
 		}
 		echo "</td>";
 	}
 	if (!empty($upfamid) && ($sosa!=-1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.WT_GEDURL : '#'.$upfamid), $upfamid, 1);
+		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.KT_GEDURL : '#'.$upfamid), $upfamid, 1);
 		echo '</td>';
 	}
 	if ($hparents || $sosa) {
 		// husband's mother
-		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "</tr><tr><td><img src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
 		if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hparents['WIFE'], "down");
 		if (!empty($gparid) && $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 		echo "<td valign=\"top\">";
-		print_pedigree_person(WT_Person::getInstance($hparents['WIFE']), 1, 5, $personcount);
+		print_pedigree_person(KT_Person::getInstance($hparents['WIFE']), 1, 5, $personcount);
 		echo "</td></tr></table>";
 		echo "</td>";
 	}
@@ -186,7 +186,7 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 	else if ($sosa > 0) print_sosa_number($sosa * 2 + 1);
 	if (isset($newparents) && $wife->getXref() != $newparents["WIFE"]) {
 		echo "<td valign=\"top\" class=\"facts_valueblue\">";
-		print_pedigree_person(WT_Person::getInstance($newparents['WIFE']), 1, 3, $personcount);
+		print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 1, 3, $personcount);
 	} else {
 		echo "<td valign=\"top\">";
 		print_pedigree_person($wife, 1, 3, $personcount);
@@ -199,8 +199,8 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 	$upfamid = "";
 
 	if ($hfams || $sosa) {
-		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
-		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "<td rowspan=\"2\"><img src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$KT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
+		echo "<td><img class=\"line5\" src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		$j = 0;
 		foreach ($hfams as $hfamily) {
 			$hparents = find_parents_in_record($hfamily->getGedcomRecord());
@@ -213,24 +213,24 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hparents['HUSB'], "down");
 			if (!empty($gparid) && $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo "<td valign=\"top\">";
-			print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 1, 6, $personcount);
+			print_pedigree_person(KT_Person::getInstance($hparents['HUSB']), 1, 6, $personcount);
 			echo "</td></tr></table>";
 		}
 		echo "</td>";
 	}
 	if (!empty($upfamid) && ($sosa!=-1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.WT_GEDURL : '#'.$upfamid), $upfamid, 1);
+		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.KT_GEDURL : '#'.$upfamid), $upfamid, 1);
 		echo '</td>';
 	}
 	if ($hparents || $sosa) {
 		// wife's mother
-		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "</tr><tr><td><img src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
 		if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hparents['WIFE'], "down");
 		if (!empty($gparid) && $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 		echo "<td valign=\"top\">";
-		print_pedigree_person(WT_Person::getInstance($hparents['WIFE']), 1, 7, $personcount);
+		print_pedigree_person(KT_Person::getInstance($hparents['WIFE']), 1, 7, $personcount);
 		echo "</td></tr></table>";
 		echo "</td>";
 	}
@@ -246,9 +246,9 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth, $show_cousins, $WT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
+	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth, $show_cousins, $KT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
 
-	$family=WT_Family::getInstance($famid);
+	$family=KT_Family::getInstance($famid);
 	$children=array();
 	foreach ($family->getChildren() as $child) {
 		$children[]=$child->getXref();
@@ -258,17 +258,17 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	if ($sosa>0) echo "<td></td>";
 	echo "<td><span class=\"subheaders\">";
 	if ($numchil==0) {
-		echo WT_I18N::translate('No children');
+		echo KT_I18N::translate('No children');
 	} else {
-		echo /* I18N: This is a title, so needs suitable capitalisation */ WT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
+		echo /* I18N: This is a title, so needs suitable capitalisation */ KT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
 	}
 	echo '</span>';
 
-	if ($sosa==0 && WT_USER_CAN_EDIT) {
+	if ($sosa==0 && KT_USER_CAN_EDIT) {
 		echo '<br>';
-		echo "<a href=\"#\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
-		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>';
-		echo ' <a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>';
+		echo "<a href=\"#\" onclick=\"return addnewchild('$famid','');\">" . KT_I18N::translate('Add a child to this family') . "</a>";
+		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',KT_I18N::translate('son'), '"></a>';
+		echo ' <a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',KT_I18N::translate('daughter'), '"></a>';
 		echo '<br><br>';
 	}
 	echo '</td>';
@@ -279,8 +279,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 
 	$newchildren = array();
 	$oldchildren = array();
-	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-		$newrec = find_gedcom_record($famid, WT_GED_ID, true);
+	if (KT_USER_CAN_EDIT || KT_USER_CAN_ACCEPT) {
+		$newrec = find_gedcom_record($famid, KT_GED_ID, true);
 		$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
 		if ($ct > 0) {
 			$oldchil = array();
@@ -315,12 +315,12 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 					}
 				}
 				echo "<td valign=\"middle\" >";
-				print_pedigree_person(WT_Person::getInstance($chil), 1, 8, $personcount);
+				print_pedigree_person(KT_Person::getInstance($chil), 1, 8, $personcount);
 				$personcount++;
 				echo "</td>";
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
-					$famids = WT_Person::getInstance($chil)->getSpouseFamilies();
+					$famids = KT_Person::getInstance($chil)->getSpouseFamilies();
 
 
 					$maxfam = count($famids)-1;
@@ -339,7 +339,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							//else echo "<img height=\"100%\"";
 
 							//find out how many cousins there are to establish vertical line on second families
-							$family=WT_Family::getInstance($famid_child);
+							$family=KT_Family::getInstance($famid_child);
 							$fchildren=$family->getChildren();
 							$kids = count($fchildren);
 							$PBheight = $bheight;
@@ -354,14 +354,14 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							if ($PBadj<0) $PBadj=0;
 							if ($f==$maxfam) echo "<img height=\"".( (($bheight/2))+$PBadj)."px\"";
 							else echo "<img height=\"".$pbheight."px\"";
-							echo " width=\"3\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\">";
+							echo " width=\"3\" src=\"".$KT_IMAGES["vline"]."\" alt=\"\">";
 							echo "</td>";
 						}
 						echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
-						$famrec = find_family_record($famid_child, WT_GED_ID);
+						$famrec = find_family_record($famid_child, KT_GED_ID);
 						$marrec = get_sub_record(1, "1 MARR", $famrec);
 						$divrec = get_sub_record(1, "1 DIV",  $famrec);
-						if (canDisplayFact($famid_child, WT_GED_ID, $marrec)) {
+						if (canDisplayFact($famid_child, KT_GED_ID, $marrec)) {
 							// marriage date
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $marrec, $match);
 							if ($ct>0) echo "<span class=\"date\">".trim($match[1])."</span>";
@@ -369,10 +369,10 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $divrec, $match);
 							if ($ct>0) echo "-<span class=\"date\">".trim($match[1])."</span>";
 						}
-						echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\">";
+						echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$KT_IMAGES["hline"]."\" alt=\"\">";
 						// family link
 						if ($famid_child) {
-							$family_child = WT_Family::getInstance($famid_child);
+							$family_child = KT_Family::getInstance($famid_child);
 							if ($family_child) {
 								echo "<br>";
 								echo '<a class="details1" href="', $family_child->getHtmlUrl(), '">';
@@ -385,7 +385,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						echo "<td style=\"vertical-align: center;";
 						if (!empty($divrec)) echo " filter:alpha(opacity=40);opacity:0.4;\">";
 						else echo "\">";
-						print_pedigree_person(WT_Person::getInstance($spouse), 1, 9, $personcount);
+						print_pedigree_person(KT_Person::getInstance($spouse), 1, 9, $personcount);
 						$personcount++;
 						echo "</td>";
 						// cousins
@@ -401,27 +401,27 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		foreach ($newchildren as $indexval => $chil) {
 			echo "<tr >";
 			echo "<td valign=\"top\" class=\"facts_valueblue\" style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\">";
-			print_pedigree_person(WT_Person::getInstance($chil), 1, 0, $personcount);
+			print_pedigree_person(KT_Person::getInstance($chil), 1, 0, $personcount);
 			$personcount++;
 			echo "</td></tr>";
 		}
 		foreach ($oldchildren as $indexval => $chil) {
 			echo "<tr >";
 			echo "<td valign=\"top\" class=\"facts_valuered\" style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\">";
-			print_pedigree_person(WT_Person::getInstance($chil), 1, 0, $personcount);
+			print_pedigree_person(KT_Person::getInstance($chil), 1, 0, $personcount);
 			$personcount++;
 			echo "</td></tr>";
 		}
 		// message 'no children' except for sosa
 	} elseif ($sosa<1) {
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
-			echo '<tr><td><i class="icon-childless"></i> '.WT_I18N::translate('This family remained childless').'</td></tr>';
+			echo '<tr><td><i class="icon-childless"></i> '.KT_I18N::translate('This family remained childless').'</td></tr>';
 		}
 	} else {
 		echo "<tr>";
-		print_sosa_number($sosa, WT_Person::getInstance($chil));
+		print_sosa_number($sosa, KT_Person::getInstance($chil));
 		echo "<td valign=\"top\">";
-		print_pedigree_person(WT_Person::getInstance($childid), 1, 0, $personcount);
+		print_pedigree_person(KT_Person::getInstance($childid), 1, 0, $personcount);
 		$personcount++;
 		echo "</td></tr>";
 	}
@@ -478,7 +478,7 @@ function ancestry_array($rootid, $maxgen=0) {
 		$treeid[($i * 2)] = false; // -- father
 		$treeid[($i * 2) + 1] = false; // -- mother
 		if (!empty($treeid[$i])) {
-			$person = WT_Person::getInstance($treeid[$i]);
+			$person = KT_Person::getInstance($treeid[$i]);
 			$family = $person->getPrimaryChildFamily();
 			if ($family) {
 				if ($family->getHusband()) {
@@ -545,10 +545,10 @@ function get_sosa_name($sosa) {
  * @param string $famid family ID
  */
 function print_cousins($famid, $personcount=1) {
-	global $show_full, $bheight, $bwidth, $cbheight, $cbwidth, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
+	global $show_full, $bheight, $bwidth, $cbheight, $cbwidth, $KT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
-	$family=WT_Family::getInstance($famid);
+	$family=KT_Family::getInstance($famid);
 	$fchildren=$family->getChildren();
 
 	$kids = count($fchildren);
@@ -564,7 +564,7 @@ function print_cousins($famid, $personcount=1) {
 	echo '<td valign="middle" height="100%">';
 	if ($kids) {
 		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr valign="middle">';
-		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+9)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt=""></td>';
+		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+9)*($kids-1)), 'px" src="', $KT_IMAGES["vline"], '" alt=""></td>';
 		$ctkids = count($fchildren);
 		$i = 1;
 		foreach ($fchildren as $fchil) {
@@ -575,7 +575,7 @@ function print_cousins($famid, $personcount=1) {
 		}
 			if ($TEXT_DIRECTION=='ltr') echo 'right';
 			else echo 'left';
-			echo ': 2px;" src="', $WT_IMAGES["hline"], '" alt=""></td><td>';
+			echo ': 2px;" src="', $KT_IMAGES["hline"], '" alt=""></td><td>';
 			print_pedigree_person($fchil, 1 , 0, $personcount);
 			$personcount++;
 			echo '</td></tr>';
@@ -588,7 +588,7 @@ function print_cousins($famid, $personcount=1) {
 	} else {
 		// If there is known that there are no children (as opposed to no known children)
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
-			echo ' <i class="icon-childless" title="', WT_I18N::translate('This family remained childless'), '"></i>';
+			echo ' <i class="icon-childless" title="', KT_I18N::translate('This family remained childless'), '"></i>';
 		}
 	}
 	$show_full = $save_show_full;
@@ -604,17 +604,17 @@ function print_cousins($famid, $personcount=1) {
 */
 function print_parents($famid, $personcount=1) {
 	global $GEDCOM, $pbwidth, $pbheight;
-	$controller = new WT_Controller_Family();
+	$controller = new KT_Controller_Family();
 	$ged_id=get_id_from_gedcom($GEDCOM);
-	$family = WT_Family::getInstance($famid);
+	$family = KT_Family::getInstance($famid);
 	if (is_null($family)) return;
 	$husb = $family->getHusband();
-	if (is_null($husb)) $husb = new WT_Person('');
+	if (is_null($husb)) $husb = new KT_Person('');
 	$wife = $family->getWife();
-	if (is_null($wife))	$wife = new WT_Person('');
+	if (is_null($wife))	$wife = new KT_Person('');
 
 	// -- get the new record and parents if in editing show_changes mode
-	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
+	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, KT_USER_CAN_EDIT)) {
 		$newrec = find_gedcom_record($famid, $ged_id, true);
 		$newparents = find_parents_in_record($newrec);
 	}
@@ -631,21 +631,21 @@ function print_parents($famid, $personcount=1) {
 				break;
 			}
 			echo '<div id="husb_parents">';
-				$husb_father = WT_Person::getInstance($hparents['HUSB']);
-				$husb_mother = WT_Person::getInstance($hparents['WIFE']);
+				$husb_father = KT_Person::getInstance($hparents['HUSB']);
+				$husb_mother = KT_Person::getInstance($hparents['WIFE']);
 
 				if (!empty($upfamid)) {
-					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
+					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. KT_GEDURL, $upfamid, 2), '</p>';
 				}
 				// husbants's father
 				if ($hparents && !empty($husb_father)) {
 					echo '<div class="fam_parent">';
-						print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 3, 4, $personcount);
+						print_pedigree_person(KT_Person::getInstance($hparents['HUSB']), 3, 4, $personcount);
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_mother, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_mother, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 				}
@@ -657,7 +657,7 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_father, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_father, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 				}
@@ -676,12 +676,12 @@ function print_parents($famid, $personcount=1) {
 					echo '<p></p>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 			echo '</div>';
@@ -699,21 +699,21 @@ function print_parents($famid, $personcount=1) {
 					break;
 				}
 			echo '<div id="wife_parents">';
-				$wife_father = WT_Person::getInstance($wparents['HUSB']);
-				$wife_mother = WT_Person::getInstance($wparents['WIFE']);
+				$wife_father = KT_Person::getInstance($wparents['HUSB']);
+				$wife_mother = KT_Person::getInstance($wparents['WIFE']);
 
 				if (!empty($upfamid)) {
-					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
+					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. KT_GEDURL, $upfamid, 2), '</p>';
 				}
 				// wife's father
 				if ($wparents && !empty($wife_father)) {
 					echo '<div class="fam_parent">';
-						print_pedigree_person(WT_Person::getInstance($wparents['HUSB']), 3, 4, $personcount);
+						print_pedigree_person(KT_Person::getInstance($wparents['HUSB']), 3, 4, $personcount);
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_father, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_father, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 				}
@@ -725,7 +725,7 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_mother, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_mother, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 				}
@@ -744,12 +744,12 @@ function print_parents($famid, $personcount=1) {
 					echo '<p></p>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';
 			echo '</div>';
@@ -763,7 +763,7 @@ function print_parents($famid, $personcount=1) {
 		if (isset($newparents) && $husb->getXref() != $newparents["HUSB"]) {
 			echo '<div class="facts_valueblue parent_husb">
 				<div id="family_lines2"></div>';
-			print_pedigree_person(WT_Person::getInstance($newparents['HUSB']), 3, 2, $personcount);
+			print_pedigree_person(KT_Person::getInstance($newparents['HUSB']), 3, 2, $personcount);
 		} elseif ($husb->getXref()) {
 			echo '<div class="parent_husb">
 				<div id="family_lines2"></div>';
@@ -772,7 +772,7 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="parent_husb">
 				<div id="family_lines2"></div>
 				<div class="person_box empty_parent">
-					<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+					<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
 				</div>';
 		}
 		echo '</div>';
@@ -781,7 +781,7 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="facts_valueblue parent_wife">
 				<div id="family_lines2"></div>';
 
-			print_pedigree_person(WT_Person::getInstance($newparents['WIFE']), 3, 3, $personcount);
+			print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 3, 3, $personcount);
 		} elseif ($wife->getXref()) {
 			echo '<div class="parent_wife">
 				<div id="family_lines2"></div>';
@@ -790,7 +790,7 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="parent_wife">
 				<div id="family_lines2"></div>
 				<div class="person_boxF empty_parent">
-					<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>';
+					<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>';
 		}
 		echo '</div>';
 		/* marriage details */
@@ -809,9 +809,9 @@ function print_parents($famid, $personcount=1) {
  * display children on family.php
 */
 function print_children($famid, $childid = "", $personcount="1") {
-	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth,$WT_IMAGES, $GEDCOM;
+	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth,$KT_IMAGES, $GEDCOM;
 
-	$family=WT_Family::getInstance($famid);
+	$family=KT_Family::getInstance($famid);
 	$children=array();
 	foreach ($family->getChildren() as $child) {
 		$children[]=$child->getXref();
@@ -820,24 +820,24 @@ function print_children($famid, $childid = "", $personcount="1") {
 	echo '<div>
 			<div class="subheaders">';
 				if ($numchil==0) {
-					echo WT_I18N::translate('No children');
+					echo KT_I18N::translate('No children');
 				} else {
-					echo /* I18N: This is a title, so needs suitable capitalisation */ WT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
+					echo /* I18N: This is a title, so needs suitable capitalisation */ KT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
 				}
 			echo '</div>';
-		if (WT_USER_CAN_EDIT) {
+		if (KT_USER_CAN_EDIT) {
 			echo '<div>
-				<a href="#" onclick="return addnewchild(\'',$famid,'\');">' . WT_I18N::translate('Add a child to this family') . '</a>
-				<a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>
-				<a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>
+				<a href="#" onclick="return addnewchild(\'',$famid,'\');">' . KT_I18N::translate('Add a child to this family') . '</a>
+				<a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',KT_I18N::translate('son'), '"></a>
+				<a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',KT_I18N::translate('daughter'), '"></a>
 			</div>';
 		}
 	echo '</div>';
 
 	$newchildren = array();
 	$oldchildren = array();
-	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-		$newrec = find_gedcom_record($famid, WT_GED_ID, true);
+	if (KT_USER_CAN_EDIT || KT_USER_CAN_ACCEPT) {
+		$newrec = find_gedcom_record($famid, KT_GED_ID, true);
 		$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
 		if ($ct > 0) {
 			$oldchil = array();
@@ -861,29 +861,29 @@ function print_children($famid, $childid = "", $personcount="1") {
 			foreach ($children as $indexval => $chil) {
 				if (!in_array($chil, $oldchildren)) {
 					echo '<div class="fam_child">';
-						print_pedigree_person(WT_Person::getInstance($chil), 3, 8, $personcount);
+						print_pedigree_person(KT_Person::getInstance($chil), 3, 8, $personcount);
 					echo '</div>';
 					$personcount++;
 				}
 			}
 			foreach ($newchildren as $indexval => $chil) {
 				echo '<div class="fam_child">';
-					print_pedigree_person(WT_Person::getInstance($chil), 3, 0, $personcount);
+					print_pedigree_person(KT_Person::getInstance($chil), 3, 0, $personcount);
 					$personcount++;
 				echo '</div>';
 			}
 			foreach ($oldchildren as $indexval => $chil) {
 				echo '<div class="fam_child">';
-					print_pedigree_person(WT_Person::getInstance($chil), 3, 0, $personcount);
+					print_pedigree_person(KT_Person::getInstance($chil), 3, 0, $personcount);
 					$personcount++;
 				echo '</div>';
 			}
 	// message 'no children'
 	} else {
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
-			echo '<div><i class="icon-childless"></i> '.WT_I18N::translate('This family remained childless').'</div>';
+			echo '<div><i class="icon-childless"></i> '.KT_I18N::translate('This family remained childless').'</div>';
 			echo '<div class="fam_child">';
-				print_pedigree_person(WT_Person::getInstance($childid), 3, 0, $personcount);
+				print_pedigree_person(KT_Person::getInstance($childid), 3, 0, $personcount);
 				$personcount++;
 			echo '</div>';
 		}

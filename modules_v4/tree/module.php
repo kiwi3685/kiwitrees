@@ -21,67 +21,67 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class tree_WT_Module extends WT_Module implements WT_Module_Tab {
+class tree_KT_Module extends KT_Module implements KT_Module_Tab {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 
-	// Extend WT_Module. This title should be normalized when this module will be added officially
+	// Extend KT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
+		return /* I18N: Name of a module */ KT_I18N::translate('Interactive tree');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
+		return /* I18N: Description of the “Interactive tree” module */ KT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 70;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $controller;
 
-		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
+		require_once KT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		$tv = new TreeView('tvTab');
 		list($html, $js) = $tv->drawViewport($controller->record, 3);
 		return
 			'<script src="' . $this->js() . '"></script>' .
-			'<script src="' . WT_JQUERYUI_TOUCH_PUNCH . '"></script>' .
+			'<script src="' . KT_JQUERYUI_TOUCH_PUNCH . '"></script>' .
 			'<script>' . $js . '</script>' .
 			$html;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		// We cannot use jQuery("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time
 		return
@@ -98,14 +98,14 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			</script>';
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	// We define here actions to proceed when called, either by Ajax or not
 	public function modAction($mod_action) {
-		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
+		require_once KT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		switch ($mod_action) {
 		case 'treeview':
 			global $controller;
-			$controller = new WT_Controller_Chart();
+			$controller = new KT_Controller_Chart();
 			$tv = new TreeView('tv');
 			ob_start();
 			$person = $controller->getSignificantIndividual();
@@ -113,10 +113,10 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			$html = '<div id="tree-page">' . $html . '</div>';
 
 			$controller
-				->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))
+				->setPageTitle(KT_I18N::translate('Interactive tree of %s', $person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript($this->js())
-				->addExternalJavascript(WT_JQUERYUI_TOUCH_PUNCH)
+				->addExternalJavascript(KT_JQUERYUI_TOUCH_PUNCH)
 				->addInlineJavascript($js)
 				->addInlineJavascript('
 					if (document.createStyleSheet) {
@@ -130,26 +130,26 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		case 'getDetails':
-			//$controller = new WT_Controller_Ajax();
+			//$controller = new KT_Controller_Ajax();
 			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$pid = WT_Filter::get('pid', WT_REGEX_XREF);
-			$i = WT_Filter::get('instance');
+			$pid = KT_Filter::get('pid', KT_REGEX_XREF);
+			$i = KT_Filter::get('instance');
 			$tv = new TreeView($i);
-			$individual = WT_Person::getInstance($pid);
+			$individual = KT_Person::getInstance($pid);
 			if ($individual) {
 				echo $tv->getDetails($individual);
 			}
 			break;
 
 		case 'getPersons':
-			//$controller = new WT_Controller_Ajax();
+			//$controller = new KT_Controller_Ajax();
 			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$q = WT_Filter::get('q');
-			$i = WT_Filter::get('instance');
+			$q = KT_Filter::get('q');
+			$i = KT_Filter::get('instance');
 			$tv = new TreeView($i);
 			echo $tv->getPersons($q);
 			break;
@@ -161,11 +161,11 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	public function css() {
-		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
+		return KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/css/treeview.css';
 	}
 
 	public function js() {
-		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
+		return KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
 
 }

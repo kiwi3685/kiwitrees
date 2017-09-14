@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -46,7 +46,7 @@ $punctuation = ',.:;?!';
  * @return string The input string, with &lrm; and &rlm; stripped
  */
 function stripLRMRLM($inputText) {
-	return str_replace(array(WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"), "", $inputText);
+	return str_replace(array(KT_UTF8_LRM, KT_UTF8_RLM, KT_UTF8_LRO, KT_UTF8_RLO, KT_UTF8_LRE, KT_UTF8_RLE, KT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"), "", $inputText);
 }
 
 /**
@@ -113,7 +113,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 				if ($numberState) {
 					$numberState = false;
 					if ($currentState == 'RTL') {
-						$waitingText .= WT_UTF8_PDF;
+						$waitingText .= KT_UTF8_PDF;
 					}
 				}
 				breakCurrentSpan($result);
@@ -144,7 +144,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					if ($numberState) {
 						$numberState = false;
 						if ($currentState == 'RTL') {
-							$waitingText .= WT_UTF8_PDF;
+							$waitingText .= KT_UTF8_PDF;
 						}
 					}
 					breakCurrentSpan($result);
@@ -195,9 +195,9 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 						$numberState = false;
 						if ($currentState == 'RTL') {
 							if (strpos($numberPrefix, $currentLetter) === false) {
-								$currentLetter = WT_UTF8_PDF . $currentLetter;
+								$currentLetter = KT_UTF8_PDF . $currentLetter;
 							} else {
-								$currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
+								$currentLetter = $currentLetter . KT_UTF8_PDF; // Include a trailing + or - in the run
 							}
 						}
 					}
@@ -211,13 +211,13 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					if (strpos($numbers, $nextChar) !== false) {
 						$numberState = true; // We found a digit: the lead-in is therefore numeric
 						if ($currentState == 'RTL') {
-							$currentLetter = WT_UTF8_LRE . $currentLetter;
+							$currentLetter = KT_UTF8_LRE . $currentLetter;
 						}
 					}
 				} else if (strpos($numbers, $currentLetter) !== false) {
 					$numberState = true; // The current letter is a digit
 					if ($currentState == 'RTL') {
-						$currentLetter = WT_UTF8_LRE . $currentLetter;
+						$currentLetter = KT_UTF8_LRE . $currentLetter;
 					}
 				}
 			}
@@ -258,7 +258,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 						}
 					}
 					// This is a solitary RTL letter : wrap it in UTF8 control codes to force LTR directionality
-					$currentLetter = WT_UTF8_LRO . $currentLetter . WT_UTF8_PDF;
+					$currentLetter = KT_UTF8_LRO . $currentLetter . KT_UTF8_PDF;
 					$newState = 'LTR';
 					break;
 				}
@@ -342,11 +342,11 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		$numberState = false;
 		if ($waitingText == '') {
 			if ($currentState == 'RTL') {
-				$result .= WT_UTF8_PDF;
+				$result .= KT_UTF8_PDF;
 			}
 		} else {
 			if ($currentState == 'RTL') {
-				$waitingText .= WT_UTF8_PDF;
+				$waitingText .= KT_UTF8_PDF;
 			}
 		}
 	}
@@ -370,7 +370,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 
 	// Move leading RTL numeric strings to following LTR text
 	// (this happens when the page direction is RTL and the original text begins with a number and is followed by LTR text)
-	while (substr($result, 0, $lenStart+3) == $startRTL.WT_UTF8_LRE) {
+	while (substr($result, 0, $lenStart+3) == $startRTL.KT_UTF8_LRE) {
 		$spanEnd = strpos($result, $endRTL.$startLTR);
 		if ($spanEnd === false) {
 			break;
@@ -386,7 +386,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 
 	// On RTL pages, put trailing "." in RTL numeric strings into its own RTL span
 	if ($TEXT_DIRECTION == 'rtl') {
-		$result = str_replace(WT_UTF8_PDF.'.'.$endRTL, WT_UTF8_PDF.$endRTL.$startRTL.'.'.$endRTL, $result);
+		$result = str_replace(KT_UTF8_PDF.'.'.$endRTL, KT_UTF8_PDF.$endRTL.$startRTL.'.'.$endRTL, $result);
 	}
 
 	// Trim trailing blanks preceding <br> in LTR text
@@ -588,9 +588,9 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 	while ($textSpan != '') {
 		$posColon = strpos($textSpan, ':');
 		if ($posColon === false) break; // No more possible time strings
-		$posLRE = strpos($textSpan, WT_UTF8_LRE);
+		$posLRE = strpos($textSpan, KT_UTF8_LRE);
 		if ($posLRE === false) break; // No more numeric strings
-		$posPDF = strpos($textSpan, WT_UTF8_PDF, $posLRE);
+		$posPDF = strpos($textSpan, KT_UTF8_PDF, $posLRE);
 		if ($posPDF === false) break; // No more numeric strings
 
 		$tempResult .= substr($textSpan, 0, $posLRE+3); // Copy everything preceding the numeric string
@@ -614,9 +614,9 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		if ($posColon > $posSeparator) {
 			// We have a time string preceded by a blank: Exclude that blank from the numeric string
 			$tempResult .= substr($numericString, 0, $posSeparator);
-			$tempResult .= WT_UTF8_PDF;
+			$tempResult .= KT_UTF8_PDF;
 			$tempResult .= substr($numericString, $posSeparator, $lengthSeparator);
-			$tempResult .= WT_UTF8_LRE;
+			$tempResult .= KT_UTF8_LRE;
 			$numericString = substr($numericString, $posSeparator+$lengthSeparator);
 		}
 
@@ -643,11 +643,11 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			$lengthSeparator = 6;
 		}
 		$tempResult .= substr($numericString, 0, $posSeparator);
-		$tempResult .= WT_UTF8_PDF;
+		$tempResult .= KT_UTF8_PDF;
 		$tempResult .= substr($numericString, $posSeparator, $lengthSeparator);
 		$posSeparator += $lengthSeparator;
 		$numericString = substr($numericString, $posSeparator);
-		$textSpan = WT_UTF8_LRE . $numericString . $textSpan;
+		$textSpan = KT_UTF8_LRE . $numericString . $textSpan;
 	}
 	$textSpan = $tempResult . $textSpan;
 	$trailingBlanks = '';
@@ -672,14 +672,14 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 					$textSpan = substr($textSpan, 0, -1);
 					continue;
 				}
-				if (substr($textSpan, -3) != WT_UTF8_PDF) {
+				if (substr($textSpan, -3) != KT_UTF8_PDF) {
 					// There is no trailing numeric string
 					$textSpan = $savedSpan;
 					break;
 				}
 
 				// We have a numeric string
-				$posStartNumber = strrpos($textSpan, WT_UTF8_LRE);
+				$posStartNumber = strrpos($textSpan, KT_UTF8_LRE);
 				if ($posStartNumber === false) $posStartNumber = 0;
 				$trailingString = substr($textSpan, $posStartNumber, strlen($textSpan)-$posStartNumber) . $trailingString;
 				$textSpan = substr($textSpan, 0, $posStartNumber);
@@ -916,14 +916,14 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 					$textSpan = substr($textSpan, 0, -1);
 					continue;
 				}
-				if (substr($textSpan, -3) != WT_UTF8_PDF) {
+				if (substr($textSpan, -3) != KT_UTF8_PDF) {
 					// There is no trailing numeric string
 					$textSpan = $savedSpan;
 					break;
 				}
 
 				// We have a numeric string
-				$posStartNumber = strrpos($textSpan, WT_UTF8_LRE);
+				$posStartNumber = strrpos($textSpan, KT_UTF8_LRE);
 				if ($posStartNumber === false) $posStartNumber = 0;
 				$trailingString = substr($textSpan, $posStartNumber, strlen($textSpan)-$posStartNumber) . $trailingString;
 				$textSpan = substr($textSpan, 0, $posStartNumber);
@@ -1051,7 +1051,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
  */
 function reverseText($text) {
 	$text = strip_tags(html_entity_decode($text,ENT_COMPAT,'UTF-8'));
-	$text = str_replace(array('&lrm;', '&rlm;', WT_UTF8_LRM, WT_UTF8_RLM), '', $text);
+	$text = str_replace(array('&lrm;', '&rlm;', KT_UTF8_LRM, KT_UTF8_RLM), '', $text);
 	$textLanguage = utf8_script($text);
 	if ($textLanguage!='Hebr' && $textLanguage!='Arab') return $text;
 
@@ -1066,13 +1066,13 @@ function reverseText($text) {
 
 		$letter = substr($text, 0, $charLen);
 		$text = substr($text, $charLen);
-		if (strpos(WT_UTF8_DIGITS, $letter)!==false) {
+		if (strpos(KT_UTF8_DIGITS, $letter)!==false) {
 			$numbers .= $letter; // accumulate numbers in LTR mode
 		} else {
 			$reversedText = $numbers.$reversedText; // emit any waiting LTR numbers now
 			$numbers = '';
-			if (strpos(WT_UTF8_PARENTHESES1, $letter)!==false) {
-				$reversedText = substr(WT_UTF8_PARENTHESES2, strpos(WT_UTF8_PARENTHESES1, $letter), strlen($letter)).$reversedText;
+			if (strpos(KT_UTF8_PARENTHESES1, $letter)!==false) {
+				$reversedText = substr(KT_UTF8_PARENTHESES2, strpos(KT_UTF8_PARENTHESES1, $letter), strlen($letter)).$reversedText;
 			} else {
 				$reversedText = $letter.$reversedText;
 			}

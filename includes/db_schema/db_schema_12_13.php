@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -38,5 +38,5 @@ self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_MEDIA_FI
 self::exec("DELETE FROM `##default_resn` WHERE tag_type IN ('_PRIM')");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);
 

@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -118,7 +118,7 @@ class bmd_nz_plugin extends research_base_plugin {
 		foreach($collection as $key => $value) {
 			$url = $url_1 . $key . $url_2;
 			$link[] = array(
-				'title' => WT_I18N::translate($key),
+				'title' => KT_I18N::translate($key),
 				'link'  => "postresearchform('" . $url . "'," . $value . ")"
 			);
 		}

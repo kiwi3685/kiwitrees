@@ -21,26 +21,26 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class widget_todays_events_WT_Module extends WT_Module implements WT_Module_Widget {
-	// Extend class WT_Module
+class widget_todays_events_KT_Module extends KT_Module implements KT_Module_Widget {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('On this day');
+		return /* I18N: Name of a module */ KT_I18N::translate('On this day');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public /* I18N: Description of the “On This Day” module */ function getDescription() {
-		return WT_I18N::translate('A list of the anniversaries that occur today.');
+		return KT_I18N::translate('A list of the anniversaries that occur today.');
 	}
 
-	// Implement class WT_Module_Widget
+	// Implement class KT_Module_Widget
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
 		$filter		= get_block_setting($widget_id, 'filter',   true);
 		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',  true);
@@ -54,12 +54,12 @@ class widget_todays_events_WT_Module extends WT_Module implements WT_Module_Widg
 			}
 		}
 
-		$todayjd	= WT_CLIENT_JD;
+		$todayjd	= KT_CLIENT_JD;
 		$id			= $this->getName();
 		$class		= $this->getName();
 
-		if (WT_USER_GEDCOM_ADMIN) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+		if (KT_USER_GEDCOM_ADMIN) {
+			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -80,67 +80,67 @@ class widget_todays_events_WT_Module extends WT_Module implements WT_Module_Widg
 		}
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Widget
+	// Implement class KT_Module_Widget
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement WT_Module_Widget
+	// Implement KT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 20;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement class WT_Module_Widget
+	// Implement class KT_Module_Widget
 	public function configureBlock($widget_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($widget_id, 'filter',    WT_Filter::postBool('filter'));
-			set_block_setting($widget_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
-			set_block_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($widget_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($widget_id, 'filter',    KT_Filter::postBool('filter'));
+			set_block_setting($widget_id, 'onlyBDM',   KT_Filter::postBool('onlyBDM'));
+			set_block_setting($widget_id, 'infoStyle', KT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($widget_id, 'sortStyle', KT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 		$filter = get_block_setting($widget_id, 'filter', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only events of living people?');
+		echo KT_I18N::translate('Show only events of living people?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
 		$onlyBDM = get_block_setting($widget_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
+		echo KT_I18N::translate('Show only Births, Deaths, and Marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		$infoStyle = get_block_setting($widget_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Presentation style');
+		echo KT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>KT_I18N::translate('list'), 'table'=>KT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$sortStyle = get_block_setting($widget_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Sort order');
+		echo KT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array(
-			/* I18N: An option in a list-box */ 'alpha'=>WT_I18N::translate('sort by name'),
-			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date'
+			/* I18N: An option in a list-box */ 'alpha'=>KT_I18N::translate('sort by name'),
+			/* I18N: An option in a list-box */ 'anniv'=>KT_I18N::translate('sort by date'
 		)), null, $sortStyle, '');
 		echo '</td></tr>';
 	}

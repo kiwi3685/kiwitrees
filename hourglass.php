@@ -21,13 +21,13 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'hourglass.php');
+define('KT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Hourglass();
+$controller = new KT_Controller_Hourglass();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		sizeLines();
@@ -35,7 +35,7 @@ $controller
 	->setupJavascript();
 
 echo '<div id="hourglass-page">';
-echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';
+echo '<h2>', KT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';
 
 $gencount=0;
 ?>
@@ -46,7 +46,7 @@ $gencount=0;
 
 		<!-- // NOTE: Root ID -->
 	<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Individual'); ?>
+	<?php echo KT_I18N::translate('Individual'); ?>
 	</td>
 	<td class="optionbox">
 	<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
@@ -55,7 +55,7 @@ $gencount=0;
 
 	<!-- // NOTE: Show Details -->
 	<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Show Details'); ?>
+	<?php echo KT_I18N::translate('Show Details'); ?>
 	</td>
 	<td class="optionbox">
 	<input type="checkbox" value="<?php
@@ -66,12 +66,12 @@ $gencount=0;
 
 	<!-- // NOTE: Submit button -->
 	<td rowspan="3" class="topbottombar vmiddle">
-	<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+	<input type="submit" value="<?php echo KT_I18N::translate('View'); ?>">
 	</td></tr>
 
 	<!-- // NOTE: Generations -->
 	<tr><td class="descriptionbox" >
-	<?php echo WT_I18N::translate('Generations'); ?>
+	<?php echo KT_I18N::translate('Generations'); ?>
 	</td>
 	<td class="optionbox">
 	<select name="generations">
@@ -79,7 +79,7 @@ $gencount=0;
 	for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 		echo "<option value=\"".$i."\"" ;
 		if ($i == $controller->generations) echo " selected=\"selected\"";
-		echo ">".WT_I18N::number($i)."</option>";
+		echo ">".KT_I18N::number($i)."</option>";
 	}
 	?>
 	</select>
@@ -87,7 +87,7 @@ $gencount=0;
 
 	<!-- // NOTE: Show spouses -->
 	<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
+	<?php echo KT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 	</td>
 	<td class="optionbox">
 	<input type="checkbox" value="1" name="show_spouse"
@@ -97,7 +97,7 @@ $gencount=0;
 
 	<!-- // NOTE: Box width -->
 	<tr><td class="descriptionbox">
-	<?php echo WT_I18N::translate('Box width'); ?>
+	<?php echo KT_I18N::translate('Box width'); ?>
 	</td>
 	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
 	<b>%</b>
@@ -116,12 +116,12 @@ $gencount=0;
 		<!-- // descendancy -->
 		<td valign="middle">
 		<?php
-		$controller->print_descendency(WT_Person::getInstance($controller->pid), 1); ?>
+		$controller->print_descendency(KT_Person::getInstance($controller->pid), 1); ?>
 		</td>
 		<!-- // pedigree -->
 		<td valign="middle">
 		<?php
-		$controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 1); ?>
+		$controller->print_person_pedigree(KT_Person::getInstance($controller->pid), 1); ?>
 		</td>
 		</tr></table>
 	</div><!-- close #hourglass_chart -->

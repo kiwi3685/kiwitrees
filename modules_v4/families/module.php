@@ -21,23 +21,23 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend class WT_Module
+class families_KT_Module extends KT_Module implements KT_Module_Sidebar {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family list');
+		return /* I18N: Name of a module/sidebar */ KT_I18N::translate('Family list');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
+		return /* I18N: Description of the “Families” module */ KT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
-	// Implement WT_Module
+	// Implement KT_Module
 	public function modAction($modAction) {
 		switch ($modAction) {
 		case 'ajax':
@@ -52,24 +52,24 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		exit;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 70;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		$alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "
@@ -86,12 +86,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller;
+		global $KT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = KT_Query_Name::surnameAlpha(true, false, KT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var famloadedNames = new Array();
@@ -123,7 +123,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					  success: function(html) {
 					    jQuery("#sb_fam_"+surname+" div").html(html);
 					    jQuery("#sb_fam_"+surname+" div").show();
-					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$KT_IMAGES['minus'].')");
 					    famloadedNames[surname]=2;
 					  }
 					});
@@ -131,19 +131,19 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
 					jQuery("#sb_fam_"+surname+" div").show();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$KT_IMAGES['minus'].')");
 				}
 				else {
 					famloadedNames[surname]=1;
 					jQuery("#sb_fam_"+surname+" div").hide();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$KT_IMAGES['plus'].')");
 				}
 				return false;
 			});
 		');
 		$out=
 			'<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;">'.
-			'<input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="'.WT_I18N::translate('Search').'">'.
+			'<input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="'.KT_I18N::translate('Search').'">'.
 			'<p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
@@ -151,7 +151,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$html=$UNKNOWN_NN;
 					break;
 				case ',':
-					$html=WT_I18N::translate('None');
+					$html=KT_I18N::translate('None');
 					break;
 				case ' ':
 					$html='&nbsp;';
@@ -171,7 +171,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getAlphaSurnames($alpha, $surname1='') {
-		$surns=WT_Query_Name::surnames('', $alpha, true, true, WT_GED_ID);
+		$surns=KT_Query_Name::surnames('', $alpha, true, true, KT_GED_ID);
 		$out = '<ul>';
 		foreach ($surns as $surname=>$surns) {
 			$out .= '<li id="sb_fam_'.$surname.'" class="sb_fam_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_fam_surname">'.$surname.'</a>';
@@ -189,7 +189,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getSurnameFams($alpha, $surname) {
-		$families=WT_Query_Name::families($surname, $alpha, '', true, WT_GED_ID);
+		$families=KT_Query_Name::families($surname, $alpha, '', true, KT_GED_ID);
 		$out = '<ul>';
 		foreach ($families as $family) {
 			if ($family->canDisplayName()) {
@@ -213,14 +213,14 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		//-- search for INDI names
-		$rows=WT_DB::prepare(
+		$rows=KT_DB::prepare(
 			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
 			" ORDER BY n_sort"
 		)
-		->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
+		->execute(array('INDI', "%{$query}%", "%{$query}%", KT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
 		$ids = array();
 		foreach ($rows as $row) {
@@ -239,14 +239,14 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$vars=array_merge($vars, $ids, $ids);
 		}
 
-		$vars[]=WT_GED_ID;
-		$rows=WT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` WHERE {$where} AND f_file=?")
+		$vars[]=KT_GED_ID;
+		$rows=KT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
 		->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$family=WT_Family::getInstance($row);
+			$family=KT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {

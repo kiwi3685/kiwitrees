@@ -21,16 +21,16 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_media.php');
+define('KT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
 // type of file/object to include
 $files = safe_GET('files', array('local', 'external', 'unused'), 'local');
 
 // family tree setting MEDIA_DIRECTORY
 $media_folders = all_media_folders();
-$media_folder  = safe_GET('media_folder', WT_REGEX_UNSAFE);
+$media_folder  = safe_GET('media_folder', KT_REGEX_UNSAFE);
 // User folders may contain special characters.  Restrict to actual folders.
 if (!array_key_exists($media_folder, $media_folders)) {
 	$media_folder = reset($media_folders);
@@ -38,7 +38,7 @@ if (!array_key_exists($media_folder, $media_folders)) {
 
 // prefix to filename
 $media_paths = media_paths($media_folder);
-$media_path  = safe_GET('media_path', WT_REGEX_UNSAFE);
+$media_path  = safe_GET('media_path', KT_REGEX_UNSAFE);
 // User paths may contain special characters.  Restrict to actual paths.
 if (!array_key_exists($media_path, $media_paths)) {
 	$media_path = reset($media_paths);
@@ -51,25 +51,25 @@ $action     = safe_GET('action');
 ////////////////////////////////////////////////////////////////////////////////
 // POST callback for file deletion
 ////////////////////////////////////////////////////////////////////////////////
-$delete_file = safe_POST('delete', WT_REGEX_UNSAFE);
+$delete_file = safe_POST('delete', KT_REGEX_UNSAFE);
 if ($delete_file) {
-	$controller = new WT_Controller_Ajax;
+	$controller = new KT_Controller_Ajax;
 	// Only delete valid (i.e. unused) media files
-	$media_folder = safe_POST('media_folder', WT_REGEX_UNSAFE);
+	$media_folder = safe_POST('media_folder', KT_REGEX_UNSAFE);
 	$disk_files = all_disk_files ($media_folder, '', 'include', '');
 	if (in_array($delete_file, $disk_files)) {
-		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
+		$tmp = KT_DATA_DIR . $media_folder . $delete_file;
 		if (@unlink($tmp)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was deleted.', $tmp));
+			KT_FlashMessages::addMessage(KT_I18N::translate('The file %s was deleted.', $tmp));
 		} else {
-			WT_FlashMessages::addMessage(WT_I18N::translate('The file %s could not be deleted.', $tmp));
+			KT_FlashMessages::addMessage(KT_I18N::translate('The file %s could not be deleted.', $tmp));
 		}
-		$tmp = WT_DATA_DIR . $media_folder . 'thumbs/' . $delete_file;
+		$tmp = KT_DATA_DIR . $media_folder . 'thumbs/' . $delete_file;
 		if (file_exists($tmp)) {
 			if (@unlink($tmp)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was deleted.', $tmp));
+				KT_FlashMessages::addMessage(KT_I18N::translate('The file %s was deleted.', $tmp));
 			} else {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s could not be deleted.', $tmp));
+				KT_FlashMessages::addMessage(KT_I18N::translate('The file %s could not be deleted.', $tmp));
 			}
 		}
 	} else {
@@ -150,20 +150,20 @@ case 'load_json':
 			$ORDER_BY = "1 ASC";
 		}
 
-		$rows = WT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = KT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
 		// Total filtered/unfiltered rows
-		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
+		$iTotalDisplayRecords = KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+		$iTotalRecords        = KT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
 
 		$aaData = array();
 		foreach ($rows as $row) {
-			$media = WT_Media::getInstance($row);
+			$media = KT_Media::getInstance($row);
 			switch ($media->isPrimary()) {
 			case 'Y':
-				$highlight = WT_I18N::translate('yes');
+				$highlight = KT_I18N::translate('yes');
 				break;
 			case 'N':
-				$highlight = WT_I18N::translate('no');
+				$highlight = KT_I18N::translate('no');
 				break;
 			default:
 				$highlight = '';
@@ -174,7 +174,7 @@ case 'load_json':
 				$media->displayImage(),
 				media_object_info($media),
 				$highlight,
-				WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
+				KT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
 			);
 		}
 		break;
@@ -221,38 +221,38 @@ case 'load_json':
 			$ORDER_BY="1 ASC";
 		}
 
-		$rows = WT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = KT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
 		// Total filtered/unfiltered rows
-		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
+		$iTotalDisplayRecords = KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+		$iTotalRecords        = KT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
 
 		$aaData = array();
 		foreach ($rows as $row) {
-			$media = WT_Media::getInstance($row);
+			$media = KT_Media::getInstance($row);
 			switch ($media->isPrimary()) {
 			case 'Y':
-				$highlight = WT_I18N::translate('yes');
+				$highlight = KT_I18N::translate('yes');
 				break;
 			case 'N':
-				$highlight = WT_I18N::translate('no');
+				$highlight = KT_I18N::translate('no');
 				break;
 			default:
 				$highlight = '';
 				break;
 			}
 			$aaData[] = array(
-			 	WT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
+			 	KT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
 				$media->displayImage(),
 				media_object_info($media),
 				$highlight,
-				WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
+				KT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
 			);
 		}
 		break;
 
 	case 'unused':
 		// Which trees use this media folder?
-		$media_trees = WT_DB::prepare(
+		$media_trees = KT_DB::prepare(
 			"SELECT gedcom_name, gedcom_name" .
 			" FROM `##gedcom`" .
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
@@ -283,8 +283,8 @@ case 'load_json':
 
 		$aaData = array();
 		foreach ($unused_files as $unused_file) {
-			$full_path  = WT_DATA_DIR . $media_folder . $media_path . $unused_file;
-			$thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
+			$full_path  = KT_DATA_DIR . $media_folder . $media_path . $unused_file;
+			$thumb_path = KT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
 			if (!file_exists($thumb_path)) {
 				$thumb_path = $full_path;
 			}
@@ -299,7 +299,7 @@ case 'load_json':
 			}
 
 			// Is there a pending record for this file?
-			$exists_pending = WT_DB::prepare(
+			$exists_pending = KT_DB::prepare(
 				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', ?, '\n%')"
 			)->execute(array($unused_file))->fetchOne();
 
@@ -310,20 +310,20 @@ case 'load_json':
 					$create_form .= '
 						<p>
 							<a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\'); return false;">' .
-								WT_I18N::translate('Create') . '
+								KT_I18N::translate('Create') . '
 							</a>
 							 — ' .
-							WT_Filter::escapeHtml($media_tree) . '
+							KT_Filter::escapeHtml($media_tree) . '
 						<p>
 					';
 				}
 			}
 
-			$conf        = WT_Filter::escapeJS(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file)));
+			$conf        = KT_Filter::escapeJS(KT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file)));
 			$delete_link = '
 				<p>
 					<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' .
-						WT_I18N::Translate('Delete') . '
+						KT_I18N::Translate('Delete') . '
 					</a>
 				</p>
 			';
@@ -355,17 +355,17 @@ case 'load_json':
 
 // A unique list of media folders, from all trees.
 function all_media_folders() {
-	return WT_DB::prepare(
+	return KT_DB::prepare(
 		"SELECT SQL_CACHE setting_value, setting_value" .
 		" FROM `##gedcom_setting`" .
 		" WHERE setting_name='MEDIA_DIRECTORY'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array(WT_GED_ID))->fetchAssoc();
+	)->execute(array(KT_GED_ID))->fetchAssoc();
 }
 
 function media_paths($media_folder) {
-	$media_paths = WT_DB::prepare(
+	$media_paths = KT_DB::prepare(
 		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -407,11 +407,11 @@ function scan_dirs($dir, $recursive, $filter) {
 
 // Fetch a list of all files on disk
 function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
-	return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
+	return scan_dirs(KT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
 }
 
 function externalMedia() {
-	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')")
+	$count = KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')")
 		->execute()
 		->fetchOne();
 	return	$count;
@@ -419,7 +419,7 @@ function externalMedia() {
 
 // Fetch a list of all files on in the database
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
-	return WT_DB::prepare(
+	return KT_DB::prepare(
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
@@ -436,48 +436,48 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 function media_file_info($media_folder, $media_path, $file) {
 	$html = '<b>' . htmlspecialchars($file). '</b>';
 
-	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
+	$full_path = KT_DATA_DIR . $media_folder . $media_path . $file;
 	if ($file && file_exists($full_path)) {
 		$size = @filesize($full_path);
 		if ($size!==false) {
 			$size = (int)(($size+1023)/1024); // Round up to next KB
-			$size = /* I18N: size of file in KB */ WT_I18N::translate('%s KB', WT_I18N::number($size));
-			$html .= WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $size);
+			$size = /* I18N: size of file in KB */ KT_I18N::translate('%s KB', KT_I18N::number($size));
+			$html .= KT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $size);
 			$imgsize = @getimagesize($full_path);
 			if (is_array($imgsize)) {
-				$imgsize = /* I18N: image dimensions, width × height */ WT_I18N::translate('%1$s × %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
-				$html .= WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize);
+				$imgsize = /* I18N: image dimensions, width × height */ KT_I18N::translate('%1$s × %2$s pixels', KT_I18N::number($imgsize['0']), KT_I18N::number($imgsize['1']));
+				$html .= KT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize);
 			}
 		} else {
-			$html .= '<div class="error">' . WT_I18N::translate('This media file exists, but cannot be accessed.') . '</div>' ;
+			$html .= '<div class="error">' . KT_I18N::translate('This media file exists, but cannot be accessed.') . '</div>' ;
 		}
 	} else {
-		$html .= '<div class="error">' . WT_I18N::translate('This media file does not exist.') . '</div>' ;
+		$html .= '<div class="error">' . KT_I18N::translate('This media file does not exist.') . '</div>' ;
 	}
 	return $html;
 }
 
-function media_object_info(WT_Media $media) {
+function media_object_info(KT_Media $media) {
 	$xref   = $media->getXref();
-	$gedcom = WT_Tree::getNameFromId($media->getGedId());
+	$gedcom = KT_Tree::getNameFromId($media->getGedId());
 	$name   = $media->getFullName();
-	$conf   = WT_Filter::escapeJS(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($name)));
+	$conf   = KT_Filter::escapeJS(KT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($name)));
 
 	$html   =
 		'<b>' . $name . '</b>' .
 		'<div><i>' . htmlspecialchars($media->getNote()) . '</i></div>' .
 		'<br>' .
-		'<a href="' . $media->getHtmlUrl() . '">' . WT_I18N::translate('View') . '</a>';
+		'<a href="' . $media->getHtmlUrl() . '">' . KT_I18N::translate('View') . '</a>';
 
 	$html .=
 		' - ' .
-		'<a href="addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . $gedcom . '" target="_blank" >' . WT_I18N::Translate('Edit') . '</a>' .
+		'<a href="addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . $gedcom . '" target="_blank" >' . KT_I18N::Translate('Edit') . '</a>' .
 		' - ' .
-		'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
+		'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . KT_I18N::Translate('Delete') . '</a>' .
 		' - ';
 
 
-	$html .= '<a href="inverselink.php?mediaid=' . $xref . '&amp;linkto=manage" target="_blank">' . WT_I18N::Translate('Manage links') . '</a>';
+	$html .= '<a href="inverselink.php?mediaid=' . $xref . '&amp;linkto=manage" target="_blank">' . KT_I18N::Translate('Manage links') . '</a>';
 	$html .= '<br><br>';
 
 	$linked = array();
@@ -506,7 +506,7 @@ function media_object_info(WT_Media $media) {
 		}
 		$html .= '</ul>';
 	} else {
-		$html .= '<div class="error">' . WT_I18N::translate('This media object is not linked to any other record.') . '</div>';
+		$html .= '<div class="error">' . KT_I18N::translate('This media object is not linked to any other record.') . '</div>';
 	}
 
 	return $html;
@@ -521,19 +521,19 @@ function media_object_info(WT_Media $media) {
 // selected folder.
 $table_id  = md5($files . $media_folder . $media_path . $subfolders);
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('Media'))
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('Media'))
+	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
 	->pageHeader()
 	->addInlineJavascript('
 		jQuery("#media-table-' . $table_id . '").dataTable({
 			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			processing: true,
 			serverSide: true,
-			ajaxSource: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
-			' . WT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
+			ajaxSource: "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+			' . KT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
 			jQueryUI: true,
 			autoWidth:false,
 			pageLength: 10,
@@ -551,24 +551,24 @@ $controller
 	');
 ?>
 
-<form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
+<form method="get" action="<?php echo KT_SCRIPT_NAME; ?>">
 	<table class="media_items">
 		<tr>
-			<th><?php echo WT_I18N::translate('Media files'); ?></th>
-			<th><?php echo WT_I18N::translate('Media folders'); ?></th>
+			<th><?php echo KT_I18N::translate('Media files'); ?></th>
+			<th><?php echo KT_I18N::translate('Media folders'); ?></th>
 		</tr>
 		<tr>
 			<td>
 				<input type="radio" name="files" value="local"<?php echo $files=='local' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-				<?php echo /* I18N: “Local files” are stored on this computer */ WT_I18N::translate('Local files'); ?>
+				<?php echo /* I18N: “Local files” are stored on this computer */ KT_I18N::translate('Local files'); ?>
 				<?php if (externalMedia() > 0){ ?>
 					<br>
 					<input type="radio" name="files" value="external"<?php echo $files=='external' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-					<?php echo /* I18N: “External files” are stored on other computers */ WT_I18N::translate('External files');
+					<?php echo /* I18N: “External files” are stored on other computers */ KT_I18N::translate('External files');
 				} ?>
 				<br>
 				<input type="radio" name="files" value="unused"<?php echo $files=='unused' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-				<?php echo WT_I18N::translate('Unused files'); ?>
+				<?php echo KT_I18N::translate('Unused files'); ?>
 			</td>
 			<td>
 				<?php
@@ -578,7 +578,7 @@ $controller
 						$extra = 'onchange="this.form.submit();"';
 						echo
 							'<span dir="ltr">', // The full path will be LTR or mixed LTR/RTL.  Force LTR.
-							WT_DATA_DIR;
+							KT_DATA_DIR;
 						// Don’t show a list of media folders if it just contains one folder
 						if (count($media_folders)>1) {
 							echo '&nbsp;', select_edit_control('media_folder', $media_folders, null, $media_folder, $extra);
@@ -595,14 +595,14 @@ $controller
 							'</span>',
 							'<div>',
 							'<input type="radio" name="subfolders" value="include"', ($subfolders=='include' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
-							WT_I18N::translate('Include subfolders'),
+							KT_I18N::translate('Include subfolders'),
 							'<br>',
 							'<input type="radio" name="subfolders" value="exclude"', ($subfolders=='exclude' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
-							WT_I18N::translate('Exclude subfolders'),
+							KT_I18N::translate('Exclude subfolders'),
 							'</div>';
 						break;
 					case 'external':
-						echo WT_I18N::translate('External media files have a URL instead of a filename.');
+						echo KT_I18N::translate('External media files have a URL instead of a filename.');
 						echo '<input type="hidden" name="media_folder" value="', htmlspecialchars($media_folder), '">';
 						echo '<input type="hidden" name="media_path" value="',   htmlspecialchars($media_path),   '">';
 						break;
@@ -617,11 +617,11 @@ $controller
 <table class="media_table" id="media-table-<?php echo $table_id ?>">
 	<thead>
 		<tr>
-			<th><?php echo WT_I18N::translate('Media file'); ?></th>
-			<th><?php echo WT_I18N::translate('Media'); ?></th>
-			<th><?php echo WT_I18N::translate('Media object'); ?></th>
-			<th><?php echo WT_I18N::translate('Highlight'); ?></th>
-			<th><?php echo WT_I18N::translate('Media type'); ?></th>
+			<th><?php echo KT_I18N::translate('Media file'); ?></th>
+			<th><?php echo KT_I18N::translate('Media'); ?></th>
+			<th><?php echo KT_I18N::translate('Media object'); ?></th>
+			<th><?php echo KT_I18N::translate('Highlight'); ?></th>
+			<th><?php echo KT_I18N::translate('Media type'); ?></th>
 		</tr>
 	</thead>
 	<tbody>

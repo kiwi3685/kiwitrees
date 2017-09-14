@@ -21,40 +21,40 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class menu_lists_WT_Module extends WT_Module implements WT_Module_Menu {
-	// Extend WT_Module
+class menu_lists_KT_Module extends KT_Module implements KT_Module_Menu {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/menu */ WT_I18N::translate('Lists menu');
+		return /* I18N: Name of a module/menu */ KT_I18N::translate('Lists menu');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('The Lists menu item');
+		return /* I18N: Description of the “Edit” module */ KT_I18N::translate('The Lists menu item');
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultMenuOrder() {
 		return 40;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function MenuType() {
 		return 'main';
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function getMenu() {
-		$menu = WT_MenuBar::getListsMenu();
+		$menu = KT_MenuBar::getListsMenu();
 		return $menu;
 	}
 }

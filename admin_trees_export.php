@@ -21,22 +21,22 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_export.php');
+define('KT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new KT_Controller_Ajax();
 $controller
 	->pageHeader()
 	->requireManagerLogin();
 
-$filename = WT_DATA_DIR . $WT_TREE->tree_name;
+$filename = KT_DATA_DIR . $KT_TREE->tree_name;
 // Force a ".ged" suffix
 if (strtolower(substr($filename, -4)) != '.ged') {
 	$filename .= '.ged';
 }
 
-if ($WT_TREE->exportGedcom($filename)) {
-	echo '<p>', /* I18N: %s is a filename */ WT_I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), '</p>';
+if ($KT_TREE->exportGedcom($filename)) {
+	echo '<p>', /* I18N: %s is a filename */ KT_I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), '</p>';
 } else {
-	echo '<p class="error">', /* I18N: %s is a filename */ WT_I18N::translate('Unable to create %s.  Check the permissions.', $filename), '</p>';
+	echo '<p class="error">', /* I18N: %s is a filename */ KT_I18N::translate('Unable to create %s.  Check the permissions.', $filename), '</p>';
 }

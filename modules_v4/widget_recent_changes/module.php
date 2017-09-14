@@ -21,29 +21,29 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Widget {
+class widget_recent_changes_KT_Module extends KT_Module implements KT_Module_Widget {
 	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Recent changes');
+		return /* I18N: Name of a module */ KT_I18N::translate('Recent changes');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Recent changes” module */ WT_I18N::translate('A list of records that have been updated recently.');
+		return /* I18N: Description of the “Recent changes” module */ KT_I18N::translate('A list of records that have been updated recently.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
 		$days		= get_block_setting($widget_id, 'days', self::DEFAULT_DAYS);
 		$infoStyle	= get_block_setting($widget_id, 'infoStyle', 'table');
@@ -57,7 +57,7 @@ class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Wid
 			}
 		}
 
-		$found_facts = get_recent_changes(WT_CLIENT_JD - $days);
+		$found_facts = get_recent_changes(KT_CLIENT_JD - $days);
 
 		if (!$found_facts && $hide_empty) {
 			return '';
@@ -66,17 +66,17 @@ class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Wid
 		$id = $this->getName();
 		$class = $this->getName();
 
-		if (WT_USER_GEDCOM_ADMIN) {
-			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+		if (KT_USER_GEDCOM_ADMIN) {
+			$title = '<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title = '';
 		}
-		$title .= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $days, WT_I18N::number($days));
+		$title .= /* I18N: title for list of recent changes */ KT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $days, KT_I18N::number($days));
 
 		$content = '';
 		// Print block content
 		if (count($found_facts) == 0) {
-      		$content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
+      		$content .= KT_I18N::translate('There have been no changes within the last %s days.', KT_I18N::number($days));
 		} else {
 			ob_start();
 			switch ($infoStyle) {
@@ -92,74 +92,74 @@ class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Wid
 		}
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
 
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement WT_Module_Widget
+	// Implement KT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 70;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($widget_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($widget_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
-			set_block_setting($widget_id, 'infoStyle',  WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($widget_id, 'sortStyle',  WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
-			set_block_setting($widget_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($widget_id, 'days',       KT_Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
+			set_block_setting($widget_id, 'infoStyle',  KT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($widget_id, 'sortStyle',  KT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
+			set_block_setting($widget_id, 'hide_empty', KT_Filter::postBool('hide_empty'));
 			exit;
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
+		require_once KT_ROOT . 'includes/functions/functions_edit.php';
 
 		$days = get_block_setting($widget_id, 'days', self::DEFAULT_DAYS);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of days to show');
+		echo KT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '">';
-		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', self::MAX_DAYS, self::MAX_DAYS), '</em>';
+		echo ' <em>', KT_I18N::plural('maximum %d day', 'maximum %d days', self::MAX_DAYS, self::MAX_DAYS), '</em>';
 		echo '</td></tr>';
 
 		$infoStyle = get_block_setting($widget_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Presentation style');
+		echo KT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => WT_I18N::translate('list'), 'table' => WT_I18N::translate('table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list' => KT_I18N::translate('list'), 'table' => KT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$sortStyle = get_block_setting($widget_id, 'sortStyle', 'date');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Sort order');
+		echo KT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array(
-			'name'      => /* I18N: An option in a list-box */ WT_I18N::translate('sort by name'),
-			'date_asc'  => /* I18N: An option in a list-box */ WT_I18N::translate('sort by date, oldest first'),
-			'date_desc' => /* I18N: An option in a list-box */ WT_I18N::translate('sort by date, newest first')
+			'name'      => /* I18N: An option in a list-box */ KT_I18N::translate('sort by name'),
+			'date_asc'  => /* I18N: An option in a list-box */ KT_I18N::translate('sort by date, oldest first'),
+			'date_desc' => /* I18N: An option in a list-box */ KT_I18N::translate('sort by date, newest first')
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$hide_empty = get_block_setting($widget_id, 'hide_empty', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Should this block be hidden when it is empty?');
+		echo KT_I18N::translate('Should this block be hidden when it is empty?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('hide_empty', $hide_empty);
 		echo '</td></tr>';
 		echo '<tr><td colspan="2" class="optionbox wrap">';
-		echo '<span class="error">', WT_I18N::translate('If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty.'), '</span>';
+		echo '<span class="error">', KT_I18N::translate('If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty.'), '</span>';
 		echo '</td></tr>';
 	}
 

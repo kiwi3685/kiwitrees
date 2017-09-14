@@ -21,29 +21,29 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class random_media_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+class random_media_KT_Module extends KT_Module implements KT_Module_Block {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */WT_I18N::translate('Slide show');
+		return /* I18N: Name of a module */KT_I18N::translate('Slide show');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Slide show” module */ WT_I18N::translate('Random images from the current family tree.');
+		return /* I18N: Description of the “Slide show” module */ KT_I18N::translate('Random images from the current family tree.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $foundlist;
 
 		$filter			=get_block_setting($block_id, 'filter',   'all');
 		$controls		=get_block_setting($block_id, 'controls', true);
-		$start			=get_block_setting($block_id, 'start',    false) || WT_Filter::getBool('start');
+		$start			=get_block_setting($block_id, 'start',    false) || KT_Filter::getBool('start');
 		if ($block_id == '') {
 			$start = 0;
 			$controls = 0;
@@ -77,13 +77,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
-		$all_media=WT_DB::prepare(
+		$all_media=KT_DB::prepare(
 			"SELECT m_id FROM `##media`" .
 			" WHERE m_file = ?" .
 			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')" .
 			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute(array(
-			WT_GED_ID,
+			KT_GED_ID,
 			get_block_setting($block_id, 'filter_avi',         false) ? 'avi'         : NULL,
 			get_block_setting($block_id, 'filter_bmp',         true ) ? 'bmp'         : NULL,
 			get_block_setting($block_id, 'filter_gif',         true ) ? 'gif'         : NULL,
@@ -120,7 +120,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$random_media = null;
 		while ($all_media) {
 			$n = array_rand($all_media);
-			$media = WT_Media::getInstance($all_media[$n]);
+			$media = KT_Media::getInstance($all_media[$n]);
 			if ($media->canDisplayDetails() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
@@ -138,17 +138,17 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			unset($all_media[$n]);
 		};
 
-		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		if ($ctype == 'gedcom' && KT_USER_GEDCOM_ADMIN || $ctype=='user' && KT_USER_ID) {
+			$title = '<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
 
 		if ($start) {
-			$title .= WT_I18N::translate('Slide Show');
+			$title .= KT_I18N::translate('Slide Show');
 			$content .= '<script>togglePlay();</script>';
 		} else {
-			$title .= WT_I18N::translate('Random image');
+			$title .= KT_I18N::translate('Random image');
 		}
 
 		if ($random_media) {
@@ -161,8 +161,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					}
 					$content .= '
 						<div dir="ltr" id="random_media_controls' . $block_id .'">
-							<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="'.$icon_class.'" title="' . WT_I18N::translate('Play') . '/' . WT_I18N::translate('Stop') . '"></a>
-							<a href="#" onclick="jQuery(\'#block_'. $block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>
+							<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="'.$icon_class.'" title="' . KT_I18N::translate('Play') . '/' . KT_I18N::translate('Stop') . '"></a>
+							<a href="#" onclick="jQuery(\'#block_'. $block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.KT_I18N::translate('Next image').'" class="icon-media-next"></a>
 						</div>';
 				}
 
@@ -173,67 +173,67 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					</div>
 			</div>';
 		} else {
-			$content = WT_I18N::translate('This family tree has no images to display.');
+			$content = KT_I18N::translate('This family tree has no images to display.');
 		}
 		$id = $this->getName().$block_id;
 		$class = $this->getName().'_block';
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
 
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter',					WT_Filter::post('filter', 'indi|event|all', 'all'));
-			set_block_setting($block_id, 'controls',				WT_Filter::postBool('controls'));
-			set_block_setting($block_id, 'start',					WT_Filter::postBool('start'));
-			set_block_setting($block_id, 'filter_avi',				WT_Filter::postBool('filter_avi'));
-			set_block_setting($block_id, 'filter_bmp',				WT_Filter::postBool('filter_bmp'));
-			set_block_setting($block_id, 'filter_gif',				WT_Filter::postBool('filter_gif'));
-			set_block_setting($block_id, 'filter_jpeg',				WT_Filter::postBool('filter_jpeg'));
-			set_block_setting($block_id, 'filter_mp3',				WT_Filter::postBool('filter_mp3'));
-			set_block_setting($block_id, 'filter_ole',				WT_Filter::postBool('filter_ole'));
-			set_block_setting($block_id, 'filter_pcx',				WT_Filter::postBool('filter_pcx'));
-			set_block_setting($block_id, 'filter_pdf',				WT_Filter::postBool('filter_pdf'));
-			set_block_setting($block_id, 'filter_png',				WT_Filter::postBool('filter_png'));
-			set_block_setting($block_id, 'filter_tiff',				WT_Filter::postBool('filter_tiff'));
-			set_block_setting($block_id, 'filter_wav',				WT_Filter::postBool('filter_wav'));
-			set_block_setting($block_id, 'filter_audio',			WT_Filter::postBool('filter_audio'));
-			set_block_setting($block_id, 'filter_book',				WT_Filter::postBool('filter_book'));
-			set_block_setting($block_id, 'filter_card',				WT_Filter::postBool('filter_card'));
-			set_block_setting($block_id, 'filter_certificate',		WT_Filter::postBool('filter_certificate'));
-			set_block_setting($block_id, 'filter_coat',				WT_Filter::postBool('filter_coat'));
-			set_block_setting($block_id, 'filter_document',			WT_Filter::postBool('filter_document'));
-			set_block_setting($block_id, 'filter_electronic',		WT_Filter::postBool('filter_electronic'));
-			set_block_setting($block_id, 'filter_fiche',			WT_Filter::postBool('filter_fiche'));
-			set_block_setting($block_id, 'filter_film',				WT_Filter::postBool('filter_film'));
-			set_block_setting($block_id, 'filter_magazine',			WT_Filter::postBool('filter_magazine'));
-			set_block_setting($block_id, 'filter_manuscript',		WT_Filter::postBool('filter_manuscript'));
-			set_block_setting($block_id, 'filter_map',				WT_Filter::postBool('filter_map'));
-			set_block_setting($block_id, 'filter_newspaper',		WT_Filter::postBool('filter_newspaper'));
-			set_block_setting($block_id, 'filter_other',			WT_Filter::postBool('filter_other'));
-			set_block_setting($block_id, 'filter_painting',			WT_Filter::postBool('filter_painting'));
-			set_block_setting($block_id, 'filter_photo',			WT_Filter::postBool('filter_photo'));
-			set_block_setting($block_id, 'filter_tombstone',		WT_Filter::postBool('filter_tombstone'));
-			set_block_setting($block_id, 'filter_video',			WT_Filter::postBool('filter_video'));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'filter',					KT_Filter::post('filter', 'indi|event|all', 'all'));
+			set_block_setting($block_id, 'controls',				KT_Filter::postBool('controls'));
+			set_block_setting($block_id, 'start',					KT_Filter::postBool('start'));
+			set_block_setting($block_id, 'filter_avi',				KT_Filter::postBool('filter_avi'));
+			set_block_setting($block_id, 'filter_bmp',				KT_Filter::postBool('filter_bmp'));
+			set_block_setting($block_id, 'filter_gif',				KT_Filter::postBool('filter_gif'));
+			set_block_setting($block_id, 'filter_jpeg',				KT_Filter::postBool('filter_jpeg'));
+			set_block_setting($block_id, 'filter_mp3',				KT_Filter::postBool('filter_mp3'));
+			set_block_setting($block_id, 'filter_ole',				KT_Filter::postBool('filter_ole'));
+			set_block_setting($block_id, 'filter_pcx',				KT_Filter::postBool('filter_pcx'));
+			set_block_setting($block_id, 'filter_pdf',				KT_Filter::postBool('filter_pdf'));
+			set_block_setting($block_id, 'filter_png',				KT_Filter::postBool('filter_png'));
+			set_block_setting($block_id, 'filter_tiff',				KT_Filter::postBool('filter_tiff'));
+			set_block_setting($block_id, 'filter_wav',				KT_Filter::postBool('filter_wav'));
+			set_block_setting($block_id, 'filter_audio',			KT_Filter::postBool('filter_audio'));
+			set_block_setting($block_id, 'filter_book',				KT_Filter::postBool('filter_book'));
+			set_block_setting($block_id, 'filter_card',				KT_Filter::postBool('filter_card'));
+			set_block_setting($block_id, 'filter_certificate',		KT_Filter::postBool('filter_certificate'));
+			set_block_setting($block_id, 'filter_coat',				KT_Filter::postBool('filter_coat'));
+			set_block_setting($block_id, 'filter_document',			KT_Filter::postBool('filter_document'));
+			set_block_setting($block_id, 'filter_electronic',		KT_Filter::postBool('filter_electronic'));
+			set_block_setting($block_id, 'filter_fiche',			KT_Filter::postBool('filter_fiche'));
+			set_block_setting($block_id, 'filter_film',				KT_Filter::postBool('filter_film'));
+			set_block_setting($block_id, 'filter_magazine',			KT_Filter::postBool('filter_magazine'));
+			set_block_setting($block_id, 'filter_manuscript',		KT_Filter::postBool('filter_manuscript'));
+			set_block_setting($block_id, 'filter_map',				KT_Filter::postBool('filter_map'));
+			set_block_setting($block_id, 'filter_newspaper',		KT_Filter::postBool('filter_newspaper'));
+			set_block_setting($block_id, 'filter_other',			KT_Filter::postBool('filter_other'));
+			set_block_setting($block_id, 'filter_painting',			KT_Filter::postBool('filter_painting'));
+			set_block_setting($block_id, 'filter_photo',			KT_Filter::postBool('filter_photo'));
+			set_block_setting($block_id, 'filter_tombstone',		KT_Filter::postBool('filter_tombstone'));
+			set_block_setting($block_id, 'filter_video',			KT_Filter::postBool('filter_video'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 		$filter		= get_block_setting($block_id, 'filter', 'all');
 		$controls	= get_block_setting($block_id, 'controls', true);
@@ -290,20 +290,20 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$html .= '
 			<tr>
 				<td class="descriptionbox wrap width33">'.
-					WT_I18N::translate('Show only individuals, events, or all?').
+					KT_I18N::translate('Show only individuals, events, or all?').
 				'</td>
 				<td class="optionbox">'.
-					select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Facts and events'), 'all'=>WT_I18N::translate('All')), null, $filter, '').
+					select_edit_control('filter', array('indi'=>KT_I18N::translate('Individuals'), 'event'=>KT_I18N::translate('Facts and events'), 'all'=>KT_I18N::translate('All')), null, $filter, '').
 				'</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width33">'. WT_I18N::translate('Filter'). '</td>
+				<td class="descriptionbox wrap width33">'. KT_I18N::translate('Filter'). '</td>
 				<td class="optionbox">
-					<h4 style="margin-bottom:0;">'. WT_Gedcom_Tag::getLabel('FORM'). '</h4>
+					<h4 style="margin-bottom:0;">'. KT_Gedcom_Tag::getLabel('FORM'). '</h4>
 					<table class="width100">
 						<tr>
 							<td colspan="3" class="center">
-								<input id="toggle1" type="checkbox" onClick="toggle(this)" >&nbsp;&nbsp;' .WT_I18N::translate('Select all').
+								<input id="toggle1" type="checkbox" onClick="toggle(this)" >&nbsp;&nbsp;' .KT_I18N::translate('Select all').
 							'</td>
 						</tr>
 						<tr>
@@ -349,17 +349,17 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 							<td class="width33">&nbsp;</td>
 						</tr>
 					</table>
-					<h4 style="margin-bottom:0;">'. WT_Gedcom_Tag::getLabel('TYPE'). '</h4>
+					<h4 style="margin-bottom:0;">'. KT_Gedcom_Tag::getLabel('TYPE'). '</h4>
 					<table class="width100" id="type_list">
 						<tr>
 							<td colspan="3" class="center">
-								<input type="checkbox" onClick="toggle2(this)" >&nbsp;&nbsp;' .WT_I18N::translate('Select all').
+								<input type="checkbox" onClick="toggle2(this)" >&nbsp;&nbsp;' .KT_I18N::translate('Select all').
 							'</td>
 						</tr>
 						<tr>';
 						//-- Build the list of checkboxes
 						$i = 0;
-						foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
+						foreach (KT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
 							$i++;
 							if ($i > 3) {
 								$i = 1;
@@ -375,7 +375,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width33">'.
-					WT_I18N::translate('Show slide show controls?').
+					KT_I18N::translate('Show slide show controls?').
 				'</td>
 				<td class="optionbox">'.
 					edit_field_yes_no('controls', $controls).
@@ -383,7 +383,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width33">'.
-					WT_I18N::translate('Start slide show on page load?').
+					KT_I18N::translate('Start slide show on page load?').
 				'</td><td class="optionbox">'.
 					edit_field_yes_no('start', $start).
 				'</td>

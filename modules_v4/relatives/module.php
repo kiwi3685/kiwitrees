@@ -21,55 +21,55 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
-	// Extend WT_Module
+class relatives_KT_Module extends KT_Module implements KT_Module_Tab {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Families');
+		return /* I18N: Name of a module */ KT_I18N::translate('Families');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A tab showing the close relatives of an individual.');
+		return /* I18N: Description of the “Families” module */ KT_I18N::translate('A tab showing the close relatives of an individual.');
 	}
 
-	// Extend class WT_Module_Tab
+	// Extend class KT_Module_Tab
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 20;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}
 
-	function printFamilyHeader(WT_Family $family, $type, $label, $people) { ?>
+	function printFamilyHeader(KT_Family $family, $type, $label, $people) { ?>
 		<table class="fam_relationship">
 			<tr>
 				<td>
@@ -77,14 +77,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td>
 					<span class="subheaders"><?php echo $label; ?></span>
-					<a href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'); ?></a>
+					<a href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family'); ?></a>
 				</td>
 				<td>
 					<?php if (
-						array_key_exists('chart_relationship', WT_Module::getActiveModules()) &&
-							WT_USER_ID && (
-							($type == 'FAMC' && get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS') > 0) ||
-							($type == 'FAMS' && get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE') > 0)
+						array_key_exists('chart_relationship', KT_Module::getActiveModules()) &&
+							KT_USER_ID && (
+							($type == 'FAMC' && get_gedcom_setting(KT_GED_ID, 'TAB_REL_OF_PARENTS') > 0) ||
+							($type == 'FAMS' && get_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_SPOUSE') > 0)
 						)
 					) { ?>
 						<div class="fam_rela"><?php echo printFamilyRelationship($type, $people); ?></div>
@@ -143,8 +143,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($controller->record->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add a father'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a father'); ?></a></td>
+					<td class="facts_label"><?php echo KT_I18N::translate('Add a father'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo KT_I18N::translate('Add a father'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -154,8 +154,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($controller->record->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $controller->record->getXref(); ?>', '<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
+					<td class="facts_label"><?php echo KT_I18N::translate('Add husband'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $controller->record->getXref(); ?>', '<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo KT_I18N::translate('Add a husband to this family'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -196,8 +196,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($controller->record->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add a mother'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a mother'); ?></a></td>
+					<td class="facts_label"><?php echo KT_I18N::translate('Add a mother'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo KT_I18N::translate('Add a mother'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -207,14 +207,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($controller->record->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $controller->record->getXref(); ?>','<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+					<td class="facts_label"><?php echo KT_I18N::translate('Add wife'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $controller->record->getXref(); ?>','<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo KT_I18N::translate('Add a wife to this family'); ?></a></td>
 				</tr>
 				<?php
 			}
 		}
 		//-- marriage row
-		if ($family->getMarriageRecord()!="" || WT_USER_CAN_EDIT) {
+		if ($family->getMarriageRecord()!="" || KT_USER_CAN_EDIT) {
 			?>
 			<tr>
 				<td class="facts_label">
@@ -238,24 +238,24 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 							if ($details) {
 								$details .= ' — ';
 							}
-							$tmp=new WT_Place($place, WT_GED_ID);
+							$tmp=new KT_Place($place, KT_GED_ID);
 							$details .= $tmp->getShortName();
 						}
-						echo WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
-					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
+						echo KT_Gedcom_Tag::getLabelValue($marr_fact, $details);
+					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, KT_GED_ID))) {
 						$husb = $family->getHusband();
 						$wife = $family->getWife();
 						if (empty($wife) && !empty($husb)) {
-							echo WT_Gedcom_Tag::getLabel('_NMR', $husb);
+							echo KT_Gedcom_Tag::getLabel('_NMR', $husb);
 						} elseif (empty($husb) && !empty($wife)) {
-							echo WT_Gedcom_Tag::getLabel('_NMR', $wife);
+							echo KT_Gedcom_Tag::getLabel('_NMR', $wife);
 						} else {
-							echo WT_Gedcom_Tag::getLabel('_NMR');
+							echo KT_Gedcom_Tag::getLabel('_NMR');
 						}
 					} else if ($family->getMarriageRecord()=="" && $controller->record->canEdit()) {
-						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".WT_I18N::translate('Add marriage details')."</a>";
+						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".KT_I18N::translate('Add marriage details')."</a>";
 					} else {
-						echo WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
+						echo KT_Gedcom_Tag::getLabelValue($marr_fact, KT_I18N::translate('yes'));
 					}
 					?>
 				</td>
@@ -337,19 +337,19 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		if (isset($family) && $controller->record->canEdit()) {
 			if ($type == "spouse") {
-				$child_u = WT_I18N::translate('Add a son or daughter');
-				$child_m = WT_I18N::translate('son');
-				$child_f = WT_I18N::translate('daughter');
+				$child_u = KT_I18N::translate('Add a son or daughter');
+				$child_m = KT_I18N::translate('son');
+				$child_f = KT_I18N::translate('daughter');
 			} else {
-				$child_u = WT_I18N::translate('Add a brother or sister');
-				$child_m = WT_I18N::translate('brother');
-				$child_f = WT_I18N::translate('sister');
+				$child_u = KT_I18N::translate('Add a brother or sister');
+				$child_m = KT_I18N::translate('brother');
+				$child_f = KT_I18N::translate('sister');
 			}
 		?>
 			<tr>
 				<td class="facts_label">
-					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
-					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');"><i class="icon-media-shuffle"></i> <?php echo WT_I18N::translate('Re-order children'); ?></a>
+					<?php if (KT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
+					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');"><i class="icon-media-shuffle"></i> <?php echo KT_I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
 				<td class="facts_value">
@@ -364,7 +364,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
 
@@ -380,9 +380,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="descriptionbox rela">
 					<input id="checkbox_elder" type="checkbox" checked>
-					<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
+					<label for="checkbox_elder"><?php echo KT_I18N::translate('Show date differences'); ?></label>
 					<input id="checkbox_rela" type="checkbox" checked>
-					<label for="checkbox_rela"><?php echo WT_I18N::translate('Show relationships'); ?></label>
+					<label for="checkbox_rela"><?php echo KT_I18N::translate('Show relationships'); ?></label>
 				</td>
 			</tr>
 		</table>
@@ -394,10 +394,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				?>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a father'); ?></td>
+						<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'HUSB');"><?php echo KT_I18N::translate('Add a father'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a mother'); ?></a></td>
+						<td class="facts_value"><a href="#" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'WIFE');"><?php echo KT_I18N::translate('Add a mother'); ?></a></td>
 					</tr>
 				</table>
 				<?php

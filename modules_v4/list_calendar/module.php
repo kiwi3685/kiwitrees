@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class list_calendar_WT_Module extends WT_Module implements WT_Module_List {
+class list_calendar_KT_Module extends KT_Module implements KT_Module_List {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Calendar');
+		return /* I18N: Name of a module */ KT_I18N::translate('Calendar');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the calendar module */ WT_I18N::translate('Calendar of events for day, month or year');
+		return /* I18N: Description of the calendar module */ KT_I18N::translate('Calendar of events for day, month or year');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,18 +49,18 @@ class list_calendar_WT_Module extends WT_Module implements WT_Module_List {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_List
+	// Implement KT_Module_List
 	public function getListMenus() {
 		global $controller;
 		$menus = array();
-		$menu  = new WT_Menu(
+		$menu  = new KT_Menu(
 			$this->getTitle(),
-			'calendar.php?ged=' . WT_GEDURL,
+			'calendar.php?ged=' . KT_GEDURL,
 			'menu-list-branches'
 		);
 		$menus[] = $menu;

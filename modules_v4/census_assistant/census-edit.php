@@ -24,32 +24,32 @@
 /** @var Controller/Page $controller */
 global $controller;
 
-/** @var Tree $WT_TREE */
-global $WT_TREE;
+/** @var Tree $KT_TREE */
+global $KT_TREE;
 
-$xref	= WT_Filter::get('xref', WT_REGEX_XREF);
-$census = WT_Filter::get('census');
-$head	= WT_Person::getInstance($xref, $WT_TREE);
+$xref	= KT_Filter::get('xref', KT_REGEX_XREF);
+$census = KT_Filter::get('census');
+$head	= KT_Person::getInstance($xref, $KT_TREE);
 $controller->restrictAccess(class_exists($census));
 
-/** @var WT_Census_CensusInterface */
+/** @var KT_Census_CensusInterface */
 $census = new $census;
-$controller->restrictAccess($census instanceof WT_Census_CensusInterface);
-$date = new WT_Date($census->censusDate());
+$controller->restrictAccess($census instanceof KT_Census_CensusInterface);
+$date = new KT_Date($census->censusDate());
 $year = $date->minimumDate()->format('%Y');
 
 $headImg = '<i class="icon-button_head"></i>';
 
 $controller
-	->setPageTitle(WT_I18N::translate('Create a shared note using the census assistant'))
+	->setPageTitle(KT_I18N::translate('Create a shared note using the census assistant'))
 	->addInlineJavascript('jQuery("#tblSample").on("click", ".icon-delete", function() { jQuery(this).closest("tr").remove(); });')
 	->pageHeader();
 ?>
 
 <div id="census_assist-page">
     <h2><?php echo $controller->getPageTitle(); ?>
-        <a class="faq_link" href="http://kiwitrees.net/faqs/modules/census-assistant/" alt="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>" target="_blank" rel="noopener noreferrer">
-            <?php echo WT_I18N::translate('View FAQ for this page.'); ?>
+        <a class="faq_link" href="http://kiwitrees.net/faqs/modules/census-assistant/" alt="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>" target="_blank" rel="noopener noreferrer">
+            <?php echo KT_I18N::translate('View FAQ for this page.'); ?>
             <i class="fa fa-comments-o"></i>
         </a>
     </h2>
@@ -59,29 +59,29 @@ $controller
 			<input id="pid_array" type="hidden" name="pid_array" value="none">
 			<input type="hidden" name="NOTE" id="NOTE">
 
-			<?php echo WT_Filter::getCsrf(); ?>
+			<?php echo KT_Filter::getCsrf(); ?>
 			<!-- Header of assistant window ===================================================== -->
 			<div class="cens_left">
 				<div class="cens_header">
 					<h3>
-						<?php echo WT_I18N::translate('Head of Household:') . '&nbsp;' . $head->getFullName(); ?>
+						<?php echo KT_I18N::translate('Head of Household:') . '&nbsp;' . $head->getFullName(); ?>
 					</h3>
 					<div class="head_summary">
-						<?php echo $head->format_first_major_fact(WT_EVENTS_BIRT, 2);
+						<?php echo $head->format_first_major_fact(KT_EVENTS_BIRT, 2);
 						if (!$head->isDead()) {
 							// If alive display age
 							$bdate = $head->getBirthDate();
-							$age = WT_Date::GetAgeGedcom($bdate);
+							$age = KT_Date::GetAgeGedcom($bdate);
 							if ($age != '') { ?>
 								<dl>
-									<dt class="label"><?php echo WT_I18N::translate('Age'); ?></dt>
+									<dt class="label"><?php echo KT_I18N::translate('Age'); ?></dt>
 									<dd class="field"><?php echo get_age_at_event($age, true); ?></dd>
 								</dl>
 							<?php }
 						}
-						echo $head->format_first_major_fact(WT_EVENTS_DEAT, 2); ?>
+						echo $head->format_first_major_fact(KT_EVENTS_DEAT, 2); ?>
 						<dl>
-							<dt class="label"><?php echo WT_I18N::translate('Census date'); ?></dt>
+							<dt class="label"><?php echo KT_I18N::translate('Census date'); ?></dt>
 							<dd class="field"><span class="date"><?php echo $date->display(); ?></span></dd>
 						</dl>
 					</div>
@@ -89,19 +89,19 @@ $controller
 				<!-- Census source -->
 				<div class="cens_container">
 					<div class="input_group">
-						<label for="Titl"><?php echo WT_I18N::translate('Title'); ?></label>
-						<input id="Titl" type="text" value="<?php echo $year . ' ' . $census->censusPlace() . ' - ' . WT_I18N::translate('Census transcript') . ' - ' . strip_tags($head->getFullName()) . ' - ' . WT_I18N::translate('Household'); ?>">
+						<label for="Titl"><?php echo KT_I18N::translate('Title'); ?></label>
+						<input id="Titl" type="text" value="<?php echo $year . ' ' . $census->censusPlace() . ' - ' . KT_I18N::translate('Census transcript') . ' - ' . strip_tags($head->getFullName()) . ' - ' . KT_I18N::translate('Household'); ?>">
 					</div>
 					<div class="input_group">
-						<label for="citation"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></label>
+						<label for="citation"><?php echo KT_Gedcom_Tag::getLabel('PAGE'); ?></label>
 						<input id="citation" type="text">
 					</div>
 					<div class="input_group">
-						<label for="locality"><?php echo WT_I18N::translate('Place'); ?></label>
+						<label for="locality"><?php echo KT_I18N::translate('Place'); ?></label>
 						<input id="locality" type="text">
 					</div>
 					<div class="input_group">
-						<label for="notes"><?php echo WT_I18N::translate('Notes'); ?></label>
+						<label for="notes"><?php echo KT_I18N::translate('Notes'); ?></label>
 						<input id="notes" type="text">
 					</div>
 				</div>
@@ -109,61 +109,61 @@ $controller
 				<div class="cens_data">
 					<table id="tblSample" class="table table-census-inputs">
 						<thead>
-							<?php echo census_assistant_WT_Module::censusTableHeader($census); ?>
+							<?php echo census_assistant_KT_Module::censusTableHeader($census); ?>
 						</thead>
 						<tbody>
-							<?php echo census_assistant_WT_Module::censusTableRow($census, $head, $head); ?>
+							<?php echo census_assistant_KT_Module::censusTableRow($census, $head, $head); ?>
 						</tbody>
 					</table>
 				</div>
 				<button class="btn btn-primary" type="submit" onclick="caSave();" >
 					<i class="fa fa-save"></i>
-					<?php echo WT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
-					<?php echo WT_I18N::translate('close'); ?>
+					<?php echo KT_I18N::translate('close'); ?>
 				</button>
 			</div>
 			<div class="cens_right">
 				<!-- Search  and Add Family Members Area ============================================ -->
 				<h3>
-					<?php echo WT_I18N::translate('Add individuals'); ?>
+					<?php echo KT_I18N::translate('Add individuals'); ?>
 				</h3>
 
 				<div class="census-assistant-search">
 					<table>
 						<tr>
 							<td colspan="3">
-								<input id="personid" type="text" placeholder="<?php echo /* I18N: Placeholder for census assistant search field */ WT_I18N::translate('Search for other people'); ?>">
+								<input id="personid" type="text" placeholder="<?php echo /* I18N: Placeholder for census assistant search field */ KT_I18N::translate('Search for other people'); ?>">
 								<button type="button" onclick="findindi()">
-									<i class="fa fa-search" title="<?php echo /* I18N: A button label. */ WT_I18N::translate('search'); ?>"></i>
+									<i class="fa fa-search" title="<?php echo /* I18N: A button label. */ KT_I18N::translate('search'); ?>"></i>
 								</button>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="3">
-								<button type="button" onclick="return appendCensusRow('<?php echo WT_Filter::escapeHtml(census_assistant_WT_Module::censusTableEmptyRow($census)); ?>');">
-									<?php echo WT_I18N::translate('Add a blank row'); ?>
+								<button type="button" onclick="return appendCensusRow('<?php echo KT_Filter::escapeHtml(census_assistant_KT_Module::censusTableEmptyRow($census)); ?>');">
+									<?php echo KT_I18N::translate('Add a blank row'); ?>
 								</button>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="3">
 								<?php $headImg  = '<i class="icon-button_head"></i>';
-								echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg); ?>
+								echo KT_I18N::translate('Click %s to choose person as Head of family.', $headImg); ?>
 							</td>
 						</tr>
 						<?php foreach ($head->getChildFamilies() as $family) {
-							census_assistant_WT_Module::censusNavigatorFamily($census, $family, $head);
+							census_assistant_KT_Module::censusNavigatorFamily($census, $family, $head);
 						}
 
 						foreach ($head->getChildStepFamilies() as $family) {
-							census_assistant_WT_Module::censusNavigatorFamily($census, $family, $head);
+							census_assistant_KT_Module::censusNavigatorFamily($census, $family, $head);
 						}
 
 						foreach ($head->getSpouseFamilies() as $family) {
-							census_assistant_WT_Module::censusNavigatorFamily($census, $family, $head);
+							census_assistant_KT_Module::censusNavigatorFamily($census, $family, $head);
 						}
 						?>
 					</table>
@@ -178,10 +178,10 @@ $controller
 		var findInput = document.getElementById('personid');
 		var txt = findInput.value;
 		if (txt === "") {
-			alert("<?php echo WT_I18N::translate('You must enter a name'); ?>");
+			alert("<?php echo KT_I18N::translate('You must enter a name'); ?>");
 		} else {
 			var win02 = window.open(
-				"module.php?mod=census_assistant&mod_action=census_find&callback=paste_id&census=<?php echo WT_Filter::escapeJs(get_class($census)); ?>&action=filter&filter=" + txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, height=500, width=450 ");
+				"module.php?mod=census_assistant&mod_action=census_find&callback=paste_id&census=<?php echo KT_Filter::escapeJs(get_class($census)); ?>&action=filter&filter=" + txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, height=500, width=450 ");
 			if (window.focus) {
 				win02.focus();
 			}

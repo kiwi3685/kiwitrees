@@ -21,40 +21,40 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend WT_Module
+class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family navigator');
+		return /* I18N: Name of a module/sidebar */ KT_I18N::translate('Family navigator');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Family navigator” module */ WT_I18N::translate('A sidebar showing an individual’s close families and relatives.');
+		return /* I18N: Description of the “Family navigator” module */ KT_I18N::translate('A sidebar showing an individual’s close families and relatives.');
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 40;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarContent() {
 		global $controller, $spouselinks, $parentlinks;
 		$controller->addInlineJavascript('
@@ -67,7 +67,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					return false;
 				});
 		');
-		$person = WT_Person::getInstance($controller->record->getXref());
+		$person = KT_Person::getInstance($controller->record->getXref());
 
 		ob_start();
 		?>
@@ -98,7 +98,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return ob_get_clean();
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
@@ -109,7 +109,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 * @param Family $family
 	 * @param string $title
 	 */
-	private function drawFamily(WT_Family $family, $title) {
+	private function drawFamily(KT_Family $family, $title) {
 		global $controller;
 		?>
 		<tr>
@@ -121,9 +121,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		</tr>
 		<?php
 		foreach ($family->getSpouses() as $spouse) {
-			$menu = new WT_Menu(getCloseRelationshipName($controller->record, $spouse));
+			$menu = new KT_Menu(getCloseRelationshipName($controller->record, $spouse));
 			$menu->addClass('', 'submenu flyout');
-			$menu->addSubmenu(new WT_Menu($this->getParents($spouse)));
+			$menu->addSubmenu(new KT_Menu($this->getParents($spouse)));
 			?>
 			<tr>
 				<td class="facts_label">
@@ -145,9 +145,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<?php
 		}
 		foreach ($family->getChildren() as $child) {
-			$menu = new WT_Menu(getCloseRelationshipName($controller->record, $child));
+			$menu = new KT_Menu(getCloseRelationshipName($controller->record, $child));
 			$menu->addClass('', 'submenu flyout');
-			$menu->addSubmenu(new WT_Menu($this->getFamily($child)));
+			$menu->addSubmenu(new KT_Menu($this->getFamily($child)));
 			?>
 			<tr>
 				<td class="facts_label">
@@ -173,14 +173,14 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	/**
 	 * Forat the parents of an individual.
 	 *
-	 * @param WT_Person $person
+	 * @param KT_Person $person
 	 *
 	 * @return string
 	 */
-	private function getParents(WT_Person $person) {
+	private function getParents(KT_Person $person) {
 		$father = null;
 		$mother = null;
-		$html   = '<div class="flyout2">' . WT_I18N::translate('Parents') . '</div>';
+		$html   = '<div class="flyout2">' . KT_I18N::translate('Parents') . '</div>';
 		$family = $person->getPrimaryChildFamily();
 		if ($person->canDisplayName() && $family !== null) {
 			$father = $family->getHusband();
@@ -189,24 +189,24 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					 $this->getHTML($mother);
 
 			// Can only have a step parent if one & only one parent found at this point
-			if ($father instanceof WT_Person xor $mother instanceof WT_Person) {
+			if ($father instanceof KT_Person xor $mother instanceof KT_Person) {
 				$stepParents = '';
 				foreach ($person->getChildStepFamilies() as $family) {
-					if (!$father instanceof WT_Person) {
+					if (!$father instanceof KT_Person) {
 						$stepParents .= $this->getHTML($family->getHusband());
 					} else {
 						$stepParents .= $this->getHTML($family->getWife());
 					}
 				}
 				if ($stepParents) {
-					$relationship = $father instanceof WT_Person ?
-						WT_I18N::translate_c("father’s wife", "step-mother") : WT_I18N::translate_c("mother’s husband", "step-father");
+					$relationship = $father instanceof KT_Person ?
+						KT_I18N::translate_c("father’s wife", "step-mother") : KT_I18N::translate_c("mother’s husband", "step-father");
 					$html .= '<div class="flyout2">' . $relationship . '</div>' . $stepParents;
 				}
 			}
 		}
-		if (!($father instanceof WT_Person || $mother instanceof WT_Person)) {
-			$html .= '<div class="flyout4">(' . WT_I18N::translate_c('unknown family', 'unknown') . ')</div>';
+		if (!($father instanceof KT_Person || $mother instanceof KT_Person)) {
+			$html .= '<div class="flyout4">(' . KT_I18N::translate_c('unknown family', 'unknown') . ')</div>';
 		}
 		return $html;
 	}
@@ -218,7 +218,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 *
 	 * @return string
 	 */
-	private function getFamily(WT_Person $person) {
+	private function getFamily(KT_Person $person) {
 		$html = '';
 		if ($person->canDisplayName()) {
 			foreach ($person->getSpouseFamilies() as $family) {
@@ -235,10 +235,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		if (!$html) {
-			$html = '<div class="flyout4">(' . WT_I18N::translate('none') . ')</div>';;
+			$html = '<div class="flyout4">(' . KT_I18N::translate('none') . ')</div>';;
 		}
 
-		return '<div class="flyout2">' . WT_I18N::translate('Family') . '</div>' . $html;
+		return '<div class="flyout2">' . KT_I18N::translate('Family') . '</div>' . $html;
 
 	}
 
@@ -251,10 +251,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 * @return string
 	 */
 	private function getHTML($person, $showUnknown = false) {
-		if ($person instanceof WT_Person) {
+		if ($person instanceof KT_Person) {
 			return '<div class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</div>';
 		} elseif ($showUnknown) {
-			return '<div class="flyout4">(' . WT_I18N::translate('unknown') . ')</div>';
+			return '<div class="flyout4">(' . KT_I18N::translate('unknown') . ')</div>';
 		} else {
 			return '';
 		}
@@ -274,9 +274,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		if ($person->canDisplayName() && !$SEARCH_SPIDER) {
 			//-- draw a box for the family flyout
-			$parentlinks      .= '<div class="flyout4">' . WT_I18N::translate('Parents') . '</div>';
-			$step_parentlinks .= '<div class="flyout4">' . WT_I18N::translate('Parents') . '</div>';
-			$spouselinks      .= '<div class="flyout4">' . WT_I18N::translate('Family' ) . '</div>';
+			$parentlinks      .= '<div class="flyout4">' . KT_I18N::translate('Parents') . '</div>';
+			$step_parentlinks .= '<div class="flyout4">' . KT_I18N::translate('Parents') . '</div>';
+			$spouselinks      .= '<div class="flyout4">' . KT_I18N::translate('Family' ) . '</div>';
 
 			//-- parent families --------------------------------------
 			$fams = $person->getChildFamilies();
@@ -360,13 +360,13 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 			}
 			if (!$persons) {
-				$spouselinks .= '(' . WT_I18N::translate('none') . ')';
+				$spouselinks .= '(' . KT_I18N::translate('none') . ')';
 			}
 			if (!$person_parent) {
-				$parentlinks .= '(' . WT_I18N::translate_c('unknown family', 'unknown') . ')';
+				$parentlinks .= '(' . KT_I18N::translate_c('unknown family', 'unknown') . ')';
 			}
 			if (!$person_step) {
-				$step_parentlinks .= '(' . WT_I18N::translate_c('unknown family', 'unknown') . ')';
+				$step_parentlinks .= '(' . KT_I18N::translate_c('unknown family', 'unknown') . ')';
 			}
 		}
 	}

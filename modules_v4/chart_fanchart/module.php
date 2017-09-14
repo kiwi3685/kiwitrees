@@ -21,31 +21,31 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
+class chart_fanchart_KT_Module extends KT_Module implements KT_Module_Chart {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Fanchart');
+		return /* I18N: Name of a module */ KT_I18N::translate('Fanchart');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Fanchart” module */ WT_I18N::translate('An individual\'s fanchart');
+		return /* I18N: Description of “Fanchart” module */ KT_I18N::translate('An individual\'s fanchart');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'update':
 			Zend_Session::writeClose();
-			$rootId	= WT_Filter::get('rootid', WT_REGEX_XREF);
-			$person	= WT_Person::getInstance($rootId, WT_GED_ID);
-			$controller	= new WT_Controller_Fanchart();
+			$rootId	= KT_Filter::get('rootid', KT_REGEX_XREF);
+			$person	= KT_Person::getInstance($rootId, KT_GED_ID);
+			$controller	= new KT_Controller_Fanchart();
 
 			header('Content-Type: application/json;charset=UTF-8');
 
@@ -59,14 +59,14 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
 	function show(){
 		global $controller;
-		$controller = new WT_Controller_Fanchart();
+		$controller = new KT_Controller_Fanchart();
 
         $chartParams = json_encode(
 	        array(
@@ -82,11 +82,11 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 	    );
 
 		$controller
-			->restrictAccess(WT_Module::isActiveChart(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
+			->restrictAccess(KT_Module::isActiveChart(KT_GED_ID, $this->getName(), KT_USER_ACCESS_LEVEL))
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-			->addExternalJavascript(WT_D3_JS)
-			->addExternalJavascript(WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/ancestral-fan-chart.js')
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_D3_JS)
+			->addExternalJavascript(KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/js/ancestral-fan-chart.js')
 			->addInlineJavascript('
 				autocomplete();
 
@@ -96,7 +96,7 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 				}
 		    ');
 
-		require WT_ROOT . 'includes/functions/functions_edit.php';
+		require KT_ROOT . 'includes/functions/functions_edit.php';
 
 		?>
 		<div id="fanchart-page">
@@ -104,28 +104,28 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 			<form name="people" id="people" method="get" action="?">
 				<input type="hidden" name="mod" value="chart_fanchart">
 				<input type="hidden" name="mod_action" value="show">
-				<input type="hidden" name="ged" value="<?php echo WT_GEDURL; ?>">
+				<input type="hidden" name="ged" value="<?php echo KT_GEDURL; ?>">
 				<div class="chart_options">
-					<label for="rootid"><?php echo WT_I18N::translate('Individual'); ?></label>
+					<label for="rootid"><?php echo KT_I18N::translate('Individual'); ?></label>
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" value="<?php echo $controller->root->getXref(); ?>">
 				</div>
 				<div class="chart_options">
-					<label for="generations"><?php echo WT_I18N::translate('Generations'); ?></label>
+					<label for="generations"><?php echo KT_I18N::translate('Generations'); ?></label>
 					<?php echo edit_field_integers('generations', $controller->generations, 2, 10); ?>
 				</div>
 				<div class="chart_options">
-					<label for="fanDegree"><?php echo WT_I18N::translate('Degrees'); ?></label>
+					<label for="fanDegree"><?php echo KT_I18N::translate('Degrees'); ?></label>
 					<?php echo select_edit_control('fanDegree', $controller->getFanDegrees(), null, $controller->fanDegree); ?>
 				</div>
 <!-- NOT USING THIS OPTION
 				<div class="chart_options">
-					<label for="fontScale"><?php //echo WT_I18N::translate('Font size'); ?></label>
+					<label for="fontScale"><?php //echo KT_I18N::translate('Font size'); ?></label>
 					<input class="fontScale" type="text" name="fontScale" id="fontScale" value="<?php //echo $controller->fontScale; ?>"> %
 				</div>
 -->
 				<button class="btn btn-primary show" type="submit">
 					<i class="fa fa-eye"></i>
-					<?php echo WT_I18N::translate('Show'); ?>
+					<?php echo KT_I18N::translate('Show'); ?>
 				</button>
 			</form>
 			<hr style="clear:both;">
@@ -143,14 +143,14 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 
 	}
 
-	// Implement WT_Module_Chart
+	// Implement KT_Module_Chart
 	public function getChartMenus() {
 		global $controller;
 		$person	= $controller->getSignificantIndividual();
 		$menus	= array();
-		$menu	= new WT_Menu(
+		$menu	= new KT_Menu(
 			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $person->getXref() . '&amp;ged=' . WT_GEDURL,
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $person->getXref() . '&amp;ged=' . KT_GEDURL,
 			'menu-chart-fanchart'
 		);
 		$menus[] = $menu;

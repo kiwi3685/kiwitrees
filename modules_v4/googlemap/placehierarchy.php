@@ -21,19 +21,19 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-require WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php')) {
-	require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+require KT_ROOT.KT_MODULES_DIR.'googlemap/googlemap.php';
+if (file_exists(KT_ROOT.KT_MODULES_DIR.'googlemap/defaultconfig.php')) {
+	require KT_ROOT.KT_MODULES_DIR.'googlemap/defaultconfig.php';
 }
 
 function place_id_to_hierarchy($id) {
 	$statement=
-		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
+		KT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
 	$arr=array();
 	while ($id!=0) {
 		$row=$statement->execute(array($id))->fetchOneRow();
@@ -53,7 +53,7 @@ function get_placeid($place) {
 		$placelist = create_possible_place_names($par[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				KT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $place_id, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;
@@ -73,8 +73,8 @@ function get_p_id($place) {
 		$placelist = create_possible_place_names($par[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
-				->execute(array($place_id, WT_GED_ID, $placename))
+				KT_DB::prepare("SELECT p_id FROM `##places` WHERE p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
+				->execute(array($place_id, KT_GED_ID, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;
 		}
@@ -128,12 +128,12 @@ function create_map($placelevels) {
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
-	$parent = safe_GET('parent', WT_REGEX_UNSAFE);
+	$parent = safe_GET('parent', KT_REGEX_UNSAFE);
 
 	// create the map
 	$levelm = set_levelm($level, $parent);
 	$latlng =
-		WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
+		KT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 		->execute(array($levelm))
 		->fetch(PDO::FETCH_ASSOC);
 	$plzoom	= $latlng['pl_zoom'];// Map zoom level
@@ -141,10 +141,10 @@ function create_map($placelevels) {
 	echo '
 		<div id="place_map">
 			<i class="icon-loading-large"></i>
-			<script src="', WT_GM_SCRIPT, '"></script>
+			<script src="', KT_GM_SCRIPT, '"></script>
 		</div>';
 
-	if (WT_USER_IS_ADMIN) {
+	if (KT_USER_IS_ADMIN) {
 		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
 		if ($parent && isset($parent[0]) ) {
 			$placecheck_url .= '&amp;country=' . $parent[0];
@@ -156,15 +156,15 @@ function create_map($placelevels) {
 		if ($latlng && isset($latlng['pl_id'])) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
-		$update_places_url = 'admin_trees_places.php?ged=' . WT_GEDCOM . '&amp;search=' . $parent[0];
+		$update_places_url = 'admin_trees_places.php?ged=' . KT_GEDCOM . '&amp;search=' . $parent[0];
 		echo '<p id="gm_links">
-			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', KT_I18N::translate('Google Maps™ preferences'), '</a>
 			&nbsp;|&nbsp;
-			<a href="' . $adminplaces_url . '">' . WT_I18N::translate('Geographic data') . '</a>
+			<a href="' . $adminplaces_url . '">' . KT_I18N::translate('Geographic data') . '</a>
 			&nbsp;|&nbsp;
-			<a href="' . $placecheck_url . '">' . WT_I18N::translate('Place Check') . '</a>
+			<a href="' . $placecheck_url . '">' . KT_I18N::translate('Place Check') . '</a>
 			&nbsp;|&nbsp;
-			<a href="' . $update_places_url . '">' . WT_I18N::translate('Update place names') . '</a>
+			<a href="' . $update_places_url . '">' . KT_I18N::translate('Update place names') . '</a>
 		</p>';
 	}
 
@@ -185,8 +185,8 @@ function create_map($placelevels) {
 			$parent = safe_GET('parent');
 			global $TBLPREFIX, $pl_lati, $pl_long;
 			if ($level>=1) {
-				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// WT_placelocation lati
-				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']);	// WT_placelocation long
+				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// KT_placelocation lati
+				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']);	// KT_placelocation long
 
 				// Check if Streetview location parameters are stored in database
 				$placeid	= $latlng['pl_id'];			// Placelocation place id
@@ -213,24 +213,24 @@ function create_map($placelevels) {
 				}
 				?>
 				<iframe src="module.php?mod=googlemap&amp;mod_action=wt_v3_street_view&amp;x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
-				<?php if (WT_USER_IS_ADMIN) { ?>
+				<?php if (KT_USER_IS_ADMIN) { ?>
 						<form method="post" action="">
 							<p>
-							<?php echo WT_Gedcom_Tag::getLabel('LATI'); ?>
+							<?php echo KT_Gedcom_Tag::getLabel('LATI'); ?>
 								<input name="sv_latiText" id="sv_latiText" type="text" value="<?php echo $sv_lat; ?>">
-							<?php echo WT_Gedcom_Tag::getLabel('LONG'); ?>
+							<?php echo KT_Gedcom_Tag::getLabel('LONG'); ?>
 								<input name="sv_longText" id="sv_longText" type="text" value="<?php echo $sv_lng; ?>">
-							<?php echo /* I18N: Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing'); ?>
+							<?php echo /* I18N: Compass bearing (in degrees), for street-view mapping */ KT_I18N::translate('Bearing'); ?>
 								<input name="sv_bearText" id="sv_bearText" type="text" value="<?php echo $sv_dir; ?>">
-							<?php echo /* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation'); ?>
+							<?php echo /* I18N: Angle of elevation (in degrees), for street-view mapping */ KT_I18N::translate('Elevation'); ?>
 								<input name="sv_elevText" id="sv_elevText" type="text" value="<?php echo $sv_pitch; ?>">
-							<?php echo WT_I18N::translate('Zoom'); ?>
+							<?php echo KT_I18N::translate('Zoom'); ?>
 								<input name="sv_zoomText" id="sv_zoomText" type="text" value="<?php echo $sv_zoom; ?>">
 							</p>
 								<p id="save-cancel">
 									<button class="btn btn-primary" type="submit" name="Submit" onclick="update_sv_params(<?php echo $placeid; ?>);">
 										<i class="fa fa-save"></i>
-										<?php echo WT_I18N::translate('save'); ?>
+										<?php echo KT_I18N::translate('save'); ?>
 									</button>
 								</p>
 						</form>
@@ -255,7 +255,7 @@ function check_were_am_i($numls, $levelm) {
 }
 
 function print_how_many_people($level, $parent) {
-	$stats = new WT_Stats(WT_GEDCOM);
+	$stats = new KT_Stats(KT_GEDCOM);
 
 	$place_count_indi = 0;
 	$place_count_fam = 0;
@@ -273,7 +273,7 @@ function print_how_many_people($level, $parent) {
 			$place_count_fam=$place['tot'];
 		}
 	}
-	echo "<br><br>", WT_I18N::translate('Individuals'), ": ", $place_count_indi, ", ", WT_I18N::translate('Families'), ": ", $place_count_fam;
+	echo "<br><br>", KT_I18N::translate('Individuals'), ": ", $place_count_indi, ", ", KT_I18N::translate('Families'), ": ", $place_count_fam;
 }
 
 function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false) {
@@ -281,8 +281,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
 		echo 'var icon_type = new google.maps.MarkerImage();';
-		echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-		echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
+		echo 'icon_type.image = "', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
+		echo 'icon_type.shadow = "', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/images/shadow50.png";';
 		echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 		echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 		echo 'var point = new google.maps.LatLng(0, 0);';
@@ -294,7 +294,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			else echo addslashes($place2['place']), "'><br>";
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != '')) {
-			echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
+			echo '<img src=\"', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -302,7 +302,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo WT_I18N::translate('unknown');
+					echo KT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -315,9 +315,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == 'Unknown') {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo addslashes(WT_I18N::translate('unknown').$placelevels);
+					echo addslashes(KT_I18N::translate('unknown').$placelevels);
 				} else {
-					echo WT_I18N::translate('unknown');
+					echo KT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -334,10 +334,10 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$parent[$level]=$place2['place'];
 			print_how_many_people($level+1, $parent);
 		}
-		echo '<br>', WT_I18N::translate('This place has no coordinates');
-		if (WT_USER_IS_ADMIN)
-			echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Geographic data'), "</a>";
-		echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
+		echo '<br>', KT_I18N::translate('This place has no coordinates');
+		if (KT_USER_IS_ADMIN)
+			echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", KT_I18N::translate('Geographic data'), "</a>";
+		echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(KT_UTF8_LRM, KT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
 		$long = str_replace(array('E', 'W', ','), array('', '-', '.'), $place2['long']);
@@ -358,8 +358,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			echo 'var icon_type = new google.maps.MarkerImage();';
 		} else {
 			echo 'var icon_type = new google.maps.MarkerImage();';
-			echo ' icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
-			echo ' icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
+			echo ' icon_type.image = "', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
+			echo ' icon_type.shadow = "', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
 			echo ' icon_type.iconSize = new google.maps.Size(25, 15);';
 			echo ' icon_type.shadowSize = new google.maps.Size(35, 45);';
 		}
@@ -375,7 +375,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
-			echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
+			echo '<img src=\"', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -383,7 +383,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo WT_I18N::translate('unknown');
+					echo KT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -396,9 +396,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == 'Unknown') {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo addslashes(WT_I18N::translate('unknown').$placelevels);
+					echo addslashes(KT_I18N::translate('unknown').$placelevels);
 				} else {
-					echo WT_I18N::translate('unknown');
+					echo KT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -416,7 +416,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			print_how_many_people($level+1, $parent);
 		}
 		$temp=addslashes($place2['place']);
-		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
+		$temp=str_replace(array('&lrm;', '&rlm;'), array(KT_UTF8_LRM, KT_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD) {
 			echo "<br><br></div>\", icon_type, \"", $temp, "\");";
 		} else {
@@ -429,7 +429,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	global $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_PH_MARKER, $plzoom, $controller;
 
 	$controller->addInlineJavascript('
-		jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/css/wt_v3_googlemap.css" />\');
+		jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/css/wt_v3_googlemap.css" />\');
 		var numMarkers = "'.$numfound.'";
 		var mapLevel   = "'.$level.   '";
 		var placezoom  = "'.$plzoom.  '";
@@ -479,12 +479,12 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		function createMarker(point, html, icon, name) {
 			// Choose icon and shadow ============
 			if (icon.image && '.$level.'<=3) {
-				if (icon.image!="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/marker_yellow.png") {
+				if (icon.image!="'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/images/marker_yellow.png") {
 					var iconImage = new google.maps.MarkerImage(icon.image,
 					new google.maps.Size(25, 15),
 					new google.maps.Point(0,0),
 					new google.maps.Point(12, 15));
-					var iconShadow = new google.maps.MarkerImage("'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/flag_shadow.png",
+					var iconShadow = new google.maps.MarkerImage("'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/images/flag_shadow.png",
 					new google.maps.Size(35, 45),
 					new google.maps.Point(0,0),
 					new google.maps.Point(12, 15));
@@ -579,7 +579,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 			// show the current place on the map
 
-			$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
+			$place = KT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
 			->execute(array($levelm))
 			->fetch(PDO::FETCH_ASSOC);
 
@@ -621,7 +621,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		$placeidlist=array_keys($placeidlist);
 		// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
 		$placelist =
-			WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
+			KT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
 			->execute($placeidlist)
 			->fetchAll(PDO::FETCH_ASSOC);
 

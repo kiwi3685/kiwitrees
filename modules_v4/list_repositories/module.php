@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class list_repositories_WT_Module extends WT_Module implements WT_Module_List {
+class list_repositories_KT_Module extends KT_Module implements KT_Module_List {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Repositories');
+		return /* I18N: Name of a module */ KT_I18N::translate('Repositories');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the repositories list module */ WT_I18N::translate('A list of repositories');
+		return /* I18N: Description of the repositories list module */ KT_I18N::translate('A list of repositories');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,26 +49,26 @@ class list_repositories_WT_Module extends WT_Module implements WT_Module_List {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_List
+	// Implement KT_Module_List
 	public function getListMenus() {
 		global $controller, $SEARCH_SPIDER;
 		if ($SEARCH_SPIDER) {
 			return null;
 		}
 		// Do not show empty lists
-		$row = WT_DB::prepare(
+		$row = KT_DB::prepare(
 			"SELECT SQL_CACHE EXISTS(SELECT 1 FROM `##other` WHERE o_file=? AND o_type='REPO')"
-		)->execute(array(WT_GED_ID))->fetchOneRow();
+		)->execute(array(KT_GED_ID))->fetchOneRow();
 		if ($row) {
 			$menus = array();
-			$menu  = new WT_Menu(
+			$menu  = new KT_Menu(
 				$this->getTitle(),
-				'repolist.php?ged=' . WT_GEDURL,
+				'repolist.php?ged=' . KT_GEDURL,
 				'menu-list-repo'
 			);
 			$menus[] = $menu;

@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -19,7 +19,7 @@ class wikipedia_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$language = substr(WT_LOCALE, 0, 2);
+		$language = substr(KT_LOCALE, 0, 2);
 		return $link = 'https://' . $language . '.wikipedia.org/wiki/' . $givn . '_' .$surname;
 	}
 

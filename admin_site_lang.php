@@ -21,43 +21,43 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_site_lang.php');
+define('KT_SCRIPT_NAME', 'admin_site_lang.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
-	->setPageTitle(WT_I18N::translate('Custom translation'))
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(KT_JQUERY_JEDITABLE_URL)
+	->setPageTitle(KT_I18N::translate('Custom translation'))
 	->pageHeader();
 
-$action				= WT_Filter::post('action');
-$language			= WT_Filter::post('language');
-$custom_text_edits	= WT_Filter::postArray('custom_text_edit');
-$new_standard_text	= WT_Filter::post('new_standard_text');
-$new_custom_text	= WT_Filter::post('new_custom_text');
+$action				= KT_Filter::post('action');
+$language			= KT_Filter::post('language');
+$custom_text_edits	= KT_Filter::postArray('custom_text_edit');
+$new_standard_text	= KT_Filter::post('new_standard_text');
+$new_custom_text	= KT_Filter::post('new_custom_text');
 $delete				= safe_GET('delete');
 
 if ($custom_text_edits) {
 	foreach ($custom_text_edits as $key => $value) {
-		WT_DB::exec("UPDATE `##custom_lang` SET `custom_text` = '{$value}' WHERE `custom_lang_id` = {$key}");
+		KT_DB::exec("UPDATE `##custom_lang` SET `custom_text` = '{$value}' WHERE `custom_lang_id` = {$key}");
 	}
 }
 
 if ($new_standard_text || $new_custom_text) {
-	WT_DB::exec("INSERT INTO `##custom_lang` (`language`, `standard_text`, `custom_text`) VALUES ('{$language}','{$new_standard_text}','{$new_custom_text}')");
+	KT_DB::exec("INSERT INTO `##custom_lang` (`language`, `standard_text`, `custom_text`) VALUES ('{$language}','{$new_standard_text}','{$new_custom_text}')");
 }
 
 if ($delete == 'delete_item') {
 	$custom_lang_id	= safe_GET('custom_lang_id');
 	$action			= safe_GET('action');
 	$language		= safe_GET('language');
-	WT_DB::exec("DELETE FROM `##custom_lang` WHERE `custom_lang_id` = {$custom_lang_id}");
+	KT_DB::exec("DELETE FROM `##custom_lang` WHERE `custom_lang_id` = {$custom_lang_id}");
 }
 
-$code_list = WT_Site::preference('LANGUAGES');
+$code_list = KT_Site::preference('LANGUAGES');
 if ($code_list) {
 	$languages = explode(',', $code_list);
 } else {
@@ -69,28 +69,28 @@ if ($code_list) {
 }
 
 function custom_texts($language) {
-	$texts = WT_DB::prepare("SELECT * FROM `##custom_lang` WHERE language = ?")
+	$texts = KT_DB::prepare("SELECT * FROM `##custom_lang` WHERE language = ?")
 		->execute(array($language))
 		->fetchAll();
 	return	$texts;
 }
 $custom_lang = custom_texts($language);
 
-if (WT_USER_IS_ADMIN) { ?>
+if (KT_USER_IS_ADMIN) { ?>
 	<div id="custom-language">
-		<h2><?php echo WT_I18N::translate('Manage custom translations'); ?></h2>
-		<a class="current faq_link" href="http://kiwitrees.net/kiwi-blog/custom-translations/" target="_blank" rel="noopener noreferrer" title="'. WT_I18N::translate('View FAQ for this page.'). '"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+		<h2><?php echo KT_I18N::translate('Manage custom translations'); ?></h2>
+		<a class="current faq_link" href="http://kiwitrees.net/kiwi-blog/custom-translations/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 		<!-- SELECT LANGUAGE -->
 		<form method="post" action="">
 			<input type="hidden" name="action" value="translate">
-			<?php echo WT_I18N::translate('Select language'); ?>
+			<?php echo KT_I18N::translate('Select language'); ?>
 			<select id="nav-select" name="language" onchange="this.form.submit();">
 				<option value=''></option>
 				<?php
-				foreach (WT_I18N::installed_languages() as $code=>$name) {
+				foreach (KT_I18N::installed_languages() as $code=>$name) {
 					$style = ($code == $language ? ' selected=selected ' : '');
 					if (in_array($code, $languages)) {
-						echo '<option' . $style . ' value="' . $code . '">' . WT_I18N::translate($name) . '</option>';
+						echo '<option' . $style . ' value="' . $code . '">' . KT_I18N::translate($name) . '</option>';
 					}
 				}
 				?>
@@ -101,23 +101,23 @@ if (WT_USER_IS_ADMIN) { ?>
 			<form method="post" action="">
 				<input type="hidden" name="action" value="translate">
 				<input type="hidden" name="language" value=<?php echo $language; ?>>
-				<h3><?php echo WT_I18N::translate('Add a new translation'); ?></h3>
+				<h3><?php echo KT_I18N::translate('Add a new translation'); ?></h3>
 				<div class="row">
-					<div class="text-header"><?php echo WT_I18N::translate('Standard text'); ?></div>
+					<div class="text-header"><?php echo KT_I18N::translate('Standard text'); ?></div>
 					<div class="symbol">=></div>
-					<div class="text-header"><?php echo WT_I18N::translate('Custom translation'); ?></div>
+					<div class="text-header"><?php echo KT_I18N::translate('Custom translation'); ?></div>
 					<div class="trash"><i class="fa fa-trash"></i></div>
 				</div>
 				<div class="row">
-					<textarea  name="new_standard_text" placeholder="<?php echo WT_I18N::translate('Paste the standard text (US  English) here'); ?>"></textarea>
+					<textarea  name="new_standard_text" placeholder="<?php echo KT_I18N::translate('Paste the standard text (US  English) here'); ?>"></textarea>
 					<div class="symbol">=></div>
-					<textarea  name="new_custom_text" placeholder="<?php echo WT_I18N::translate('Add your custom translation here'); ?>"></textarea>
+					<textarea  name="new_custom_text" placeholder="<?php echo KT_I18N::translate('Add your custom translation here'); ?>"></textarea>
 					<div class="trash"><i class="fa fa-trash"></i></div>
 				</div>
 				<p>
 					<button type="submit">
 						<i class="fa fa-save"></i>
-						<?php echo WT_I18N::translate('Save'); ?>
+						<?php echo KT_I18N::translate('Save'); ?>
 					</button>
 				</p>
 			</form>
@@ -126,26 +126,26 @@ if (WT_USER_IS_ADMIN) { ?>
 			<form method="post" action="">
 				<input type="hidden" name="action" value="translate">
 				<input type="hidden" name="language" value=<?php echo $language; ?>>
-				<h3><?php echo WT_I18N::translate('Edit existing translations'); ?></h3>
+				<h3><?php echo KT_I18N::translate('Edit existing translations'); ?></h3>
 				<div class="row">
-					<div class="text-header"><?php echo WT_I18N::translate('Standard text'); ?></div>
+					<div class="text-header"><?php echo KT_I18N::translate('Standard text'); ?></div>
 					<div class="symbol">=></div>
-					<div class="text-header"><?php echo WT_I18N::translate('Custom translation'); ?></div>
+					<div class="text-header"><?php echo KT_I18N::translate('Custom translation'); ?></div>
 					<div class="trash"><i class="fa fa-trash"></i></div>
 				</div>
 				<?php foreach ($custom_lang as $key => $value){ ?>
 					<div class="row">
-						<div class="update"><?php echo WT_I18N::translate('Last updated ') . htmlspecialchars($value->updated) ; ?></div>
+						<div class="update"><?php echo KT_I18N::translate('Last updated ') . htmlspecialchars($value->updated) ; ?></div>
 						<textarea readonly><?php echo htmlspecialchars($value->standard_text); ?></textarea>
 						<div class="symbol">=></div>
 						<textarea name="custom_text_edit[<?php echo $value->custom_lang_id; ?>]"><?php echo htmlspecialchars($value->custom_text); ?></textarea>
-						<div class="trash"><?php echo '<i class="fa fa-trash" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete this translation?')).'\')) { document.location=\''.WT_SCRIPT_NAME.'?delete=delete_item&amp;custom_lang_id='.$value->custom_lang_id.'&amp;action=translate&amp;language=' . $language . '\'; }"></i>'; ?></div>
+						<div class="trash"><?php echo '<i class="fa fa-trash" onclick="if (confirm(\''.htmlspecialchars(KT_I18N::translate('Are you sure you want to delete this translation?')).'\')) { document.location=\''.KT_SCRIPT_NAME.'?delete=delete_item&amp;custom_lang_id='.$value->custom_lang_id.'&amp;action=translate&amp;language=' . $language . '\'; }"></i>'; ?></div>
 					</div>
 				<?php } ?>
 				<p>
 					<button type="submit">
 						<i class="fa fa-save"></i>
-						<?php echo WT_I18N::translate('Save'); ?>
+						<?php echo KT_I18N::translate('Save'); ?>
 					</button>
 				</p>
 			</form>

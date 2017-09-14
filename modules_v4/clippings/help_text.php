@@ -21,19 +21,19 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
+if (!defined('KT_KIWITREES') || !defined('KT_SCRIPT_NAME') || KT_SCRIPT_NAME!='help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 switch ($help) {
 case 'add_by_id':
-	$title=WT_I18N::translate('Add by ID');
-	$text=WT_I18N::translate('This input box lets you enter an individual\'s ID number so he can be added to the Clippings Cart.  Once added you\'ll be offered options to link that individual\'s relations to your Clippings Cart.<br /><br />If you do not know an individual\'s ID number, you can perform a search by name by pressing the Person icon next to the Add button.');
+	$title=KT_I18N::translate('Add by ID');
+	$text=KT_I18N::translate('This input box lets you enter an individual\'s ID number so he can be added to the Clippings Cart.  Once added you\'ll be offered options to link that individual\'s relations to your Clippings Cart.<br /><br />If you do not know an individual\'s ID number, you can perform a search by name by pressing the Person icon next to the Add button.');
 	break;
 
 case 'empty_cart':
-	$title=WT_I18N::translate('Empty Cart');
-	$text=WT_I18N::translate('When you click this link your Clippings Cart will be totally emptied.<br /><br />If you don\'t want to remove all persons, families, etc. from the Clippings Cart, you can remove items individually by clicking the <b>Remove</b> link in the Name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately.');
+	$title=KT_I18N::translate('Empty Cart');
+	$text=KT_I18N::translate('When you click this link your Clippings Cart will be totally emptied.<br /><br />If you don\'t want to remove all persons, families, etc. from the Clippings Cart, you can remove items individually by clicking the <b>Remove</b> link in the Name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately.');
 	break;
 }

@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
+class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Facts and events');
+		return /* I18N: Name of a module. Tasks that need further research. */ KT_I18N::translate('Facts and events');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of Fact report module */ WT_I18N::translate('A report of individuals who have a selected fact or event in their record.');
+		return /* I18N: Description of Fact report module */ KT_I18N::translate('A report of individuals who have a selected fact or event in their record.');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,18 +49,18 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Report
+	// Implement KT_Module_Report
 	public function getReportMenus() {
 		global $controller;
 		$menus	= array();
-		$menu	= new WT_Menu(
+		$menu	= new KT_Menu(
 			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;ged=' . WT_GEDURL,
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;ged=' . KT_GEDURL,
 			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;
@@ -75,11 +75,11 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 	 * ignores punctuation and "ANN,ROACH" would sort after "ANNE,ROACH",
 	 * instead of before it.
 	 *
-	 * @param WT_Person $person
+	 * @param KT_Person $person
 	 *
 	 * @return string[]
 	 */
-	public function sortableNames(WT_Person $person) {
+	public function sortableNames(KT_Person $person) {
 		$names   = $person->getAllNames();
 		$primary = $person->getPrimaryName();
 
@@ -94,20 +94,20 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 		];
 	}
 
-	// Implement class WT_Module_Report
+	// Implement class KT_Module_Report
 	public function show() {
 		global $controller, $level2_tags;
-		require WT_ROOT . 'includes/functions/functions_resource.php';
+		require KT_ROOT . 'includes/functions/functions_resource.php';
 
 		$table_id = 'ID' . (int)(microtime(true)*1000000); // create a unique ID
 
 		//-- set list of all configured individual tags (level 1)
-		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-		$uniquefacts			= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts			= preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
 		$indifacts				= array_merge($indifacts, $uniquefacts);
 		$translated_indifacts	= array();
 		foreach ($indifacts as $addfact) {
-			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
+			$translated_indifacts[$addfact] = KT_Gedcom_Tag::getLabel($addfact);
 		}
 		uasort($translated_indifacts, 'factsort');
 
@@ -119,14 +119,14 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 		$typefacts = array_values(array_intersect(call_user_func_array('array_merge', $typefacts), $indifacts));
 
 		//-- variables
-		$fact		= WT_Filter::post('fact');
-		$year_from	= WT_Filter::post('year_from');
-		$year_to	= WT_Filter::post('year_to');
-		$place		= WT_Filter::post('place');
-		$type		= WT_Filter::post('type');
-		$detail		= WT_Filter::post('detail');
-		$go			= WT_Filter::post('go');
-		$reset		= WT_Filter::post('reset');
+		$fact		= KT_Filter::post('fact');
+		$year_from	= KT_Filter::post('year_from');
+		$year_to	= KT_Filter::post('year_to');
+		$place		= KT_Filter::post('place');
+		$type		= KT_Filter::post('type');
+		$detail		= KT_Filter::post('detail');
+		$go			= KT_Filter::post('go');
+		$reset		= KT_Filter::post('reset');
 
 		// reset all variables
 		if ($reset == 'reset') {
@@ -139,11 +139,11 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 			$go			= 0;
 		}
 
-		$controller = new WT_Controller_Individual();
+		$controller = new KT_Controller_Individual();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 
@@ -172,51 +172,51 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 						<h5><?php echo $this->getDescription(); ?></h5>
 						<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 						<div class="hidden">
-							<?php echo /* I18N: help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+							<?php echo /* I18N: help for resource facts and events module */ KT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
 						</div>
 					</div>
 				</div>
 				<!-- options form -->
-				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo WT_GEDURL; ?>">
+				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo KT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
-						<label for = "fact"><?php echo WT_I18N::translate('Fact or event'); ?></label>
+						<label for = "fact"><?php echo KT_I18N::translate('Fact or event'); ?></label>
 						<select name="fact" id="fact">
-							<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('Select'); ?></option>
+							<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ KT_I18N::translate('Select'); ?></option>
 							<?php foreach ($translated_indifacts as $key=>$fact_name) {
 								if ($key !== 'EVEN' && $key !== 'FACT') {
 									echo '<option value="' . $key . '"' . ($key == $fact ? ' selected ' : '') . '>' . $fact_name . '</option>';
 								}
 							}
-							echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . WT_I18N::translate('Custom event') . '</option>';
-							echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . WT_I18N::translate('Custom Fact') . '</option>';
+							echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . KT_I18N::translate('Custom event') . '</option>';
+							echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . KT_I18N::translate('Custom Fact') . '</option>';
 							?>
 						</select>
 					</div>
 						<div class="chart_options">
-							<label for="year_from"><?php echo WT_I18N::translate('Date'); ?></label>
-							<input type="text" id="year_from" name="year_from" placeholder="<?php echo WT_I18N::translate('Year from - 4 digits only'); ?>" value="<?php echo $year_from; ?>" pattern="\d{4}">
-							<input type="text" id="year_to" name="year_to" placeholder="<?php echo WT_I18N::translate('Year to - 4 digits only'); ?>" value="<?php echo $year_to; ?>" pattern="\d{4}">
+							<label for="year_from"><?php echo KT_I18N::translate('Date'); ?></label>
+							<input type="text" id="year_from" name="year_from" placeholder="<?php echo KT_I18N::translate('Year from - 4 digits only'); ?>" value="<?php echo $year_from; ?>" pattern="\d{4}">
+							<input type="text" id="year_to" name="year_to" placeholder="<?php echo KT_I18N::translate('Year to - 4 digits only'); ?>" value="<?php echo $year_to; ?>" pattern="\d{4}">
 						</div>
 						<div class="chart_options">
-							<label for="place"><?php echo WT_I18N::translate('Place'); ?></label>
+							<label for="place"><?php echo KT_I18N::translate('Place'); ?></label>
 							<input type="text" data-autocomplete-type="PLAC" id="place" name="place" value="<?php echo $place; ?>">
 						</div>
 						<div class="chart_options" id="disable_type">
-							<label for="type"><?php echo WT_I18N::translate('Type'); ?></label>
+							<label for="type"><?php echo KT_I18N::translate('Type'); ?></label>
 							<input type="text" data-autocomplete-type="EVEN_TYPE" id="type" name="type" value="<?php echo $type; ?>" <?php ($fact !== 'EVEN' || $fact !== 'FACT' ? '' : 'disabled'); ?>>
 						</div>
 						<div class="chart_options">
-							<label for="detail"><?php echo WT_I18N::translate('Details'); ?></label>
+							<label for="detail"><?php echo KT_I18N::translate('Details'); ?></label>
 							<input type="text" id="detail" name="detail" value="<?php echo $detail; ?>">
 						</div>
-		 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
+		 				<button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>">
 							<i class="fa fa-eye"></i>
-							<?php echo WT_I18N::translate('show'); ?>
+							<?php echo KT_I18N::translate('show'); ?>
 						</button>
 						<button class="btn btn-primary" type="submit" name="reset" value="reset">
 							<i class="fa fa-refresh"></i>
-							<?php echo WT_I18N::translate('Reset'); ?>
+							<?php echo KT_I18N::translate('Reset'); ?>
 						</button>
 				</form>
 				<hr style="clear:both;">
@@ -230,7 +230,7 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 				$count_type = false;
 				$count_details = false;
 				foreach ($rows as $row) {
-					$person = WT_Person::getInstance($row->xref);
+					$person = KT_Person::getInstance($row->xref);
 					if ($person->canDisplayDetails()) { ?>
 						<?php $indifacts = $person->getIndiFacts();
 						foreach ($indifacts as $item) {
@@ -239,20 +239,20 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 								if ($filtered_facts) {
 									$factrec = $item->getGedcomRecord();
 									if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
-										$date = new WT_Date($match[1]);
+										$date = new KT_Date($match[1]);
 									} else {
-										$date = new WT_Date('');
+										$date = new KT_Date('');
 									}
 									// Extract Given names and Surnames for sorting
 									list($surn_givn, $givn_surn) = $this->sortableNames($person);
-									$data[$x]['GIVN'] = WT_Filter::escapeHtml($givn_surn);
-									$data[$x]['SURN'] = WT_Filter::escapeHtml($surn_givn);
+									$data[$x]['GIVN'] = KT_Filter::escapeHtml($givn_surn);
+									$data[$x]['SURN'] = KT_Filter::escapeHtml($surn_givn);
 									$data[$x]['NAME'] = '';
 									foreach ($person->getAllNames() as $num => $name) {
 										if ($name['type'] == 'NAME') {
 											$title='';
 										} else {
-											$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
+											$title='title="'.strip_tags(KT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
 										}
 										if ($num == $person->getPrimaryName()) {
 											$class =' class="name2"';
@@ -291,13 +291,13 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 				}
 
 				$controller
-					->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-					->addExternalJavascript(WT_JQUERY_DT_HTML5)
-					->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+					->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+					->addExternalJavascript(KT_JQUERY_DT_HTML5)
+					->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 					->addInlineJavascript('
 						jQuery("#' .$table_id. '").dataTable( {
 							dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-							' . WT_I18N::datatablesI18N() . ',
+							' . KT_I18N::datatablesI18N() . ',
 							buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 							autoWidth: true,
 							paging: true,
@@ -326,19 +326,19 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 					jQuery(".loading-image").css("display", "none");
 				');
 
-				($fact) ? $filter1 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Fact or event: <span>%1s</span>', WT_Gedcom_Tag::getLabel($fact)) . '</p>' : $filter1 = '';
-				($year_from && !$year_to) ? $filter2 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Date from: <span>%1s</span>', $year_from) . '</p>' : $filter2 = '';
-				(!$year_from && $year_to) ? $filter3 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Date to <span>%1s</span>', $year_to) . '</p>' : $filter3 = '';
-				($year_from && $year_to) ? $filter4 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Dates between <span>%1s</span> and <span>%2s</span> ', $year_from, $year_to) . '</p>' : $filter4 = '';
-				($place) ? $filter5 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Place: <span>%1s</span>', $place) . '</p>' : $filter5 = '';
-				($type) ? $filter6 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Type: <span>%1s</span>', $type) . '</p>' : $filter6 = '';
-				($detail) ? $filter7 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Details: <span>%1s</span>', $detail) . '</p>' : $filter7 = '';
+				($fact) ? $filter1 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Fact or event: <span>%1s</span>', KT_Gedcom_Tag::getLabel($fact)) . '</p>' : $filter1 = '';
+				($year_from && !$year_to) ? $filter2 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Date from: <span>%1s</span>', $year_from) . '</p>' : $filter2 = '';
+				(!$year_from && $year_to) ? $filter3 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Date to <span>%1s</span>', $year_to) . '</p>' : $filter3 = '';
+				($year_from && $year_to) ? $filter4 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Dates between <span>%1s</span> and <span>%2s</span> ', $year_from, $year_to) . '</p>' : $filter4 = '';
+				($place) ? $filter5 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Place: <span>%1s</span>', $place) . '</p>' : $filter5 = '';
+				($type) ? $filter6 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Type: <span>%1s</span>', $type) . '</p>' : $filter6 = '';
+				($detail) ? $filter7 = '<p>' . /* I18N: A filter on the facts and events report page */ KT_I18N::translate('Details: <span>%1s</span>', $detail) . '</p>' : $filter7 = '';
 
 				$filter_list = $filter1 . $filter2 . $filter3 . $filter4 . $filter5 . $filter6 . $filter7;
 
 				 ?>
 				 <div id="report_header">
- 					<h4><?php echo WT_I18N::translate('Listing individuals based on these filters'); ?></h4>
+ 					<h4><?php echo KT_I18N::translate('Listing individuals based on these filters'); ?></h4>
  					<p><?php echo $filter_list; ?></p>
  				</div>
 				<div class="loading-image">&nbsp;</div>
@@ -350,13 +350,13 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 								<th>OTHER_DATE</th><!-- hidden cell for sorting -->
 								<th>GIVN</th><!-- hidden cell for sorting -->
 								<th>SURN</th><!-- hidden cell for sorting -->
-								<th><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></th>
-								<th><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></th>
-								<th><?php echo WT_Gedcom_Tag::getLabel('BIRT:DATE'); ?></th>
-								<th><?php echo WT_I18N::translate('Date'); ?></th>
-								<th><?php echo WT_I18N::translate('Place'); ?></th>
-								<th><?php echo WT_I18N::translate('Type'); ?></th>
-								<th><?php echo WT_I18N::translate('Details'); ?></th>
+								<th><?php echo KT_Gedcom_Tag::getLabel('GIVN'); ?></th>
+								<th><?php echo KT_Gedcom_Tag::getLabel('SURN'); ?></th>
+								<th><?php echo KT_Gedcom_Tag::getLabel('BIRT:DATE'); ?></th>
+								<th><?php echo KT_I18N::translate('Date'); ?></th>
+								<th><?php echo KT_I18N::translate('Place'); ?></th>
+								<th><?php echo KT_I18N::translate('Type'); ?></th>
+								<th><?php echo KT_I18N::translate('Details'); ?></th>
 							</tr>
 						</thead>
 						<tbody>

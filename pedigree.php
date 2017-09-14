@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'pedigree.php');
+define('KT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Pedigree();
+$controller = new KT_Controller_Pedigree();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -38,12 +38,12 @@ $controller
 		<form name="people" id="people" method="get" action="?">
 			<input type="hidden" name="show_full" value="'. $controller->show_full. '">
 			<div class="chart_options">
-				<label for = "rootid" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Individual'); ?></label>
+				<label for = "rootid" style="display:block; font-weight:900;"><?php echo KT_I18N::translate('Individual'); ?></label>
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 			</div>
 			<div class="chart_options">
-				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Generations'); ?></label>
+				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo KT_I18N::translate('Generations'); ?></label>
 				<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">
 					<?php
 						for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
@@ -55,13 +55,13 @@ $controller
 				</select>
 			</div>
 			<div class="chart_options">
-				<label for = "talloffset" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Layout'); ?></label>
+				<label for = "talloffset" style="display:block; font-weight:900;"><?php echo KT_I18N::translate('Layout'); ?></label>
 				<?php
-					echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset);
+					echo select_edit_control('talloffset', array(0=>KT_I18N::translate('Portrait'), 1=>KT_I18N::translate('Landscape'), 2=>KT_I18N::translate('Oldest at top'), 3=>KT_I18N::translate('Oldest at bottom')), null, $talloffset);
 				?>
 			</div>
 			<div class="chart_options">
-				<label for = "showfull" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Show Details'); ?></label>
+				<label for = "showfull" style="display:block; font-weight:900;"><?php echo KT_I18N::translate('Show Details'); ?></label>
 					<?php
 						echo '<input type="checkbox" id="showfull" value="';
 							if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
@@ -70,7 +70,7 @@ $controller
 					?>
 			</div>
  			<div class="btn btn-primary" style="display: inline-block;">
- 				<button type="submit" value="<?php echo WT_I18N::translate('View'); ?>"><?php echo WT_I18N::translate('View'); ?></button>
+ 				<button type="submit" value="<?php echo KT_I18N::translate('View'); ?>"><?php echo KT_I18N::translate('View'); ?></button>
  			</div>
 		</form>
 		<hr style="clear:both;">
@@ -120,7 +120,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		$iref = $i;
 	}
 	// Can we go back to an earlier generation?
-	$can_go_back = $curgen == 1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
+	$can_go_back = $curgen == 1 && KT_Person::getInstance($controller->treeid[$i]) && KT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
 
 	if ($talloffset == 2) { // oldest at top
 		echo '<div id="uparrow" dir="';
@@ -151,7 +151,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
 	echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";
 	if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}
-	print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);
+	print_pedigree_person(KT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);
 	if ($can_go_back) {
 		$did = 1;
 		if ($i > (int)($controller->treesize/2) + (int)($controller->treesize/4)) {
@@ -231,10 +231,10 @@ if (count($famids)>0) {
 		if ($family!=null) {
 			$children = $family->getChildren();
 			if (count($children)>2) {
-				echo '<span class="name1"><br>', WT_I18N::translate('Siblings'), '<br></span>';
+				echo '<span class="name1"><br>', KT_I18N::translate('Siblings'), '<br></span>';
 			}
 			if (count($children)==2) {
-				echo '<span class="name1"><br>', WT_I18N::translate('Sibling'), '<br></span>';
+				echo '<span class="name1"><br>', KT_I18N::translate('Sibling'), '<br></span>';
 			}
 			foreach ($children as $child) {
 				if (!$controller->root->equals($child) && !is_null($child)) {

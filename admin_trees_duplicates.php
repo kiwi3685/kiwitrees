@@ -21,17 +21,17 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_duplicates.php');
+define('KT_SCRIPT_NAME', 'admin_trees_duplicates.php');
 
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Find duplicate individuals'))
+	->setPageTitle(KT_I18N::translate('Find duplicate individuals'))
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 
@@ -90,9 +90,9 @@ $controller
 	');
 
 $action		= safe_get('action','go', '');
-$gedcom_id	= safe_get('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
-$surn		= WT_Filter::get('surname', '[^<>&%{};]*');
-$givn		= WT_Filter::get('given', '[^<>&%{};]*');
+$gedcom_id	= safe_get('gedcom_id', array_keys(KT_Tree::getAll()), KT_GED_ID);
+$surn		= KT_Filter::get('surname', '[^<>&%{};]*');
+$givn		= KT_Filter::get('given', '[^<>&%{};]*');
 $exact_givn	= safe_GET_bool('exact_givn');
 $exact_surn	= safe_GET_bool('exact_surn');
 $married	= safe_GET_bool('married');
@@ -124,18 +124,18 @@ $sql = '
 		)
 	ORDER BY n_sort ASC';
 
-$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
+$SHOW_EST_LIST_DATES=get_gedcom_setting(KT_GED_ID, 'SHOW_EST_LIST_DATES');
 
 echo '<div id="admin_dup">
 	<h2>' .$controller->getPageTitle(). '</h2>
-	<form method="get" name="duplicates_form" action="', WT_SCRIPT_NAME, '">
+	<form method="get" name="duplicates_form" action="', KT_SCRIPT_NAME, '">
 		<div class="gm_check">
 			<div id="famtree">
-				<label>', WT_I18N::translate('Family tree'), '</label>
+				<label>', KT_I18N::translate('Family tree'), '</label>
 				<select name="ged">';
-				foreach (WT_Tree::getAll() as $tree) {
+				foreach (KT_Tree::getAll() as $tree) {
 					echo '<option value="', $tree->tree_name_html, '"';
-					if (empty($ged) && $tree->tree_id == WT_GED_ID || !empty($ged) && $ged == $tree->tree_name) {
+					if (empty($ged) && $tree->tree_id == KT_GED_ID || !empty($ged) && $ged == $tree->tree_name) {
 						echo ' selected="selected"';
 					}
 					echo ' dir="auto">', $tree->tree_title_html, '</option>';
@@ -143,52 +143,52 @@ echo '<div id="admin_dup">
 				echo '</select>
 			</div>
 			<div id="surnm">
-				<label for="SURN">', WT_I18N::translate('Surname'), '</label>
-						<div class="exact" title="', WT_I18N::translate('Match exactly'), '">
+				<label for="SURN">', KT_I18N::translate('Surname'), '</label>
+						<div class="exact" title="', KT_I18N::translate('Match exactly'), '">
 							<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="', htmlspecialchars($surn), '" dir="auto">
 							<input type="checkbox" name="exact_surn" value="1"';
 								if ($exact_surn) {
 									echo ' checked="checked"';
 								}
 							echo '>',
-							WT_I18N::translate('Tick for exact match'), '
+							KT_I18N::translate('Tick for exact match'), '
 						</div>
 			</div>
 			<div id="givnm">
-				<label for="GIVN">', WT_I18N::translate('Given name'), '</label>
-					<div class="exact" title="', WT_I18N::translate('Match exactly'), '">
+				<label for="GIVN">', KT_I18N::translate('Given name'), '</label>
+					<div class="exact" title="', KT_I18N::translate('Match exactly'), '">
 						<input data-autocomplete-type="GIVN" type="text" name="given" id="GIVN" value="', htmlspecialchars($givn), '" dir="auto">
-						<input type="checkbox" name="exact_givn" value="1" title="', WT_I18N::translate('Match exactly'), '"';
+						<input type="checkbox" name="exact_givn" value="1" title="', KT_I18N::translate('Match exactly'), '"';
 							if ($exact_givn) {
 								echo ' checked="checked"';
 							}
 						echo '>',
-						WT_I18N::translate('Tick for exact match'), '
+						KT_I18N::translate('Tick for exact match'), '
 					</div>
 			</div>
 			<div id="gender">
-				<label>', WT_I18N::translate('Gender'), '</label>
+				<label>', KT_I18N::translate('Gender'), '</label>
 				<select name="gender">
 					<option value="A"';
 						if ($gender == 'A' || empty($gender)) echo ' selected="selected"';
-						echo '>', WT_I18N::translate('Any'), '
+						echo '>', KT_I18N::translate('Any'), '
 					</option>
 					<option value="M"';
 						if ($gender == 'M') echo ' selected="selected"';
-						echo '>', WT_I18N::translate('Male'), '
+						echo '>', KT_I18N::translate('Male'), '
 					</option>
 					<option value="F"';
 						if ($gender == 'F') echo ' selected="selected"';
-						echo '>', WT_I18N::translate('Female'), '
+						echo '>', KT_I18N::translate('Female'), '
 					</option>
 					<option value="U"';
 						if ($gender == 'U') echo ' selected="selected"';
-						echo '>', WT_I18N::translate_c('unknown gender', 'Unknown'), '
+						echo '>', KT_I18N::translate_c('unknown gender', 'Unknown'), '
 					</option>
 				</select>
 			</div>
 			<div id="marname">
-				<label>', WT_I18N::translate('Include married names: '), '</label>
+				<label>', KT_I18N::translate('Include married names: '), '</label>
 				<input type="checkbox" name="married" value="1"';
 				if ($married) {
 					echo ' checked="checked"';
@@ -197,13 +197,13 @@ echo '<div id="admin_dup">
 			</div>
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-eye"></i>' ,
-				WT_I18N::translate('show'), '
+				KT_I18N::translate('show'), '
 			</button>
 		</div>
 	</form>';
 	// START OUTPUT
 	if ($surn) {
-		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+		$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		if ($rows) {
 			$name1 = '';
 			$name2 = '';
@@ -212,20 +212,20 @@ echo '<div id="admin_dup">
 					<table id="duplicates_table">
 						<thead>
 							<tr>
-								<th rowspan="2"><div class="col1">',WT_I18N::translate('Name'),'</div></th>
-								<th colspan="2">',WT_I18N::translate('Birth'),'</th>
-								<th colspan="2">',WT_I18N::translate('Death'),'</th>
+								<th rowspan="2"><div class="col1">',KT_I18N::translate('Name'),'</div></th>
+								<th colspan="2">',KT_I18N::translate('Birth'),'</th>
+								<th colspan="2">',KT_I18N::translate('Death'),'</th>
 								<th rowspan="2">
 									<div class="col6">
-										<input type="button" value="',WT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();">
+										<input type="button" value="',KT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();">
 									</div>
 								</th>
 							</tr>
 							<tr>
-								<th><div class="col2">',WT_I18N::translate('Date'),'</div></th>
-								<th><div class="col3">',WT_I18N::translate('Place'),'</div></th>
-								<th><div class="col4">',WT_I18N::translate('Date'),'</div></th>
-								<th><div class="col5">',WT_I18N::translate('Place'),'</div></th>
+								<th><div class="col2">',KT_I18N::translate('Date'),'</div></th>
+								<th><div class="col3">',KT_I18N::translate('Place'),'</div></th>
+								<th><div class="col4">',KT_I18N::translate('Date'),'</div></th>
+								<th><div class="col5">',KT_I18N::translate('Place'),'</div></th>
 							</tr>
 						</thead>
 						<tbody>';
@@ -238,12 +238,12 @@ echo '<div id="admin_dup">
 								$dplace	= '';
 								$name1	= $row['n_full'];
 								if ($row['n_type'] == '_MARNM') {
-									$marr = '<span style="font-style:italic;font-size:80%;">('.WT_I18N::translate('Married name').')</span>';
+									$marr = '<span style="font-style:italic;font-size:80%;">('.KT_I18N::translate('Married name').')</span>';
 								} else {
 									$marr = '';
 								}
 								$id = $row['n_id'];
-								$person = WT_Person::getInstance($id);
+								$person = KT_Person::getInstance($id);
 								if ($person->getSex() == $gender || $gender == 'A') {
 									// find birth/death dates
 									if ($birth_dates=$person->getAllBirthDates()) {
@@ -259,12 +259,12 @@ echo '<div id="admin_dup">
 										} else {
 											$bdate .= '&nbsp;';
 										}
-										$birth_dates[0] = new WT_Date('');
+										$birth_dates[0] = new KT_Date('');
 									}
 
 									//find birth places
 									foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
-										$tmp = new WT_Place($birth_place, WT_GED_ID);
+										$tmp = new KT_Place($birth_place, KT_GED_ID);
 										if ($n) {$bplace .= '<br>';}
 										$bplace .= $tmp->getShortName();
 									}
@@ -281,16 +281,16 @@ echo '<div id="admin_dup">
 										if ($SHOW_EST_LIST_DATES) {
 											$ddate .= $death_date->Display();
 										} else if ($person->isDead()) {
-											$ddate .= WT_I18N::translate('yes');
+											$ddate .= KT_I18N::translate('yes');
 										} else {
 											$ddate .= '&nbsp;';
 										}
-										$death_dates[0]=new WT_Date('');
+										$death_dates[0]=new KT_Date('');
 									}
 
 									// find death places
 									foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
-										$tmp=new WT_Place($death_place, WT_GED_ID);
+										$tmp=new KT_Place($death_place, KT_GED_ID);
 										if ($n) {$dplace .= '<br>';}
 										$dplace .= $tmp->getShortName();
 									}
@@ -324,7 +324,7 @@ echo '<div id="admin_dup">
 				</div>
 			</div>';
 		} else {
-			echo '<h4>', WT_I18N::translate('No duplicates to display'), '</h4>';
+			echo '<h4>', KT_I18N::translate('No duplicates to display'), '</h4>';
 		}
 	}
 echo '</div>';

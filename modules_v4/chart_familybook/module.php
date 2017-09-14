@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class chart_familybook_WT_Module extends WT_Module implements WT_Module_Chart {
+class chart_familybook_KT_Module extends KT_Module implements KT_Module_Chart {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Family book');
+		return /* I18N: Name of a module */ KT_I18N::translate('Family book');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of Family book” module */ WT_I18N::translate('An individual\'s family book');
+		return /* I18N: Description of Family book” module */ KT_I18N::translate('An individual\'s family book');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,19 +49,19 @@ class chart_familybook_WT_Module extends WT_Module implements WT_Module_Chart {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Chart
+	// Implement KT_Module_Chart
 	public function getChartMenus() {
 		global $controller;
 		$indi_xref	= $controller->getSignificantIndividual()->getXref();
 		$menus		= array();
-		$menu = new WT_Menu(
+		$menu = new KT_Menu(
 			$this->getTitle(),
-			'familybook.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
+			'familybook.php?rootid=' . $indi_xref . '&amp;ged=' . KT_GEDURL,
 			'menu-chart-familybook'
 		);
 		$menus[] = $menu;

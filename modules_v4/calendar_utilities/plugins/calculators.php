@@ -22,12 +22,12 @@
  */
 
 // Plugin name - this needs double quotes, as file is scanned/parsed by script
-$plugin_name = "Calculators"; /* I18N: Name of a plugin. */ WT_I18N::translate('Calculators');
+$plugin_name = "Calculators"; /* I18N: Name of a plugin. */ KT_I18N::translate('Calculators');
 
 global $WEEK_START;
 $months = '';
 for ($i=0; $i<12; ++$i) {
-	$months .= '"' . WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false) . '",';
+	$months .= '"' . KT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false) . '",';
 }
 $months = rtrim($months, ",");
 $days_in_week = 7;
@@ -35,7 +35,7 @@ $days = '';
 // We use JD%7 = 0/Mon...6/Sun.  Config files use 0/Sun...6/Sat.  Add 6 to convert.
 $week_start=($WEEK_START+6)%$days_in_week;
 for ($week_day=0; $week_day<$days_in_week; ++$week_day) {
-	$days .= '"' . WT_Date_Gregorian::LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week) . '",';
+	$days .= '"' . KT_Date_Gregorian::LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week) . '",';
 }
 $days = rtrim($days, ",");
 // OVERALL DISPLAY
@@ -66,14 +66,14 @@ $html .= '
 //$d = '';
 $html .= '
 <div class="utility" id="days">
-	<h3 class="header"><span>' . WT_I18N::translate('Day of the Week Calculator') . '</span></h3>
+	<h3 class="header"><span>' . KT_I18N::translate('Day of the Week Calculator') . '</span></h3>
 	<form name="form">
 		<table>
 			<tbody>
 				<tr>
 					<td valign="top">
 						<p>
-							<label for="day">' . WT_I18N::translate('Day') . '</label>
+							<label for="day">' . KT_I18N::translate('Day') . '</label>
 							<select id="day" name="day" size="1">';
 								for ($d=0; $d<31; ++$d) {
 									$day = $d+1;
@@ -82,27 +82,27 @@ $html .= '
 									$html .= '>' . $day . '</option>';
 								}
 							$html .= '</select>
-							<label for="month">' . WT_I18N::translate('Month') . '</label>
+							<label for="month">' . KT_I18N::translate('Month') . '</label>
 							<select id="month" name="month" size="1">';
 								for ($m=0; $m<12; ++$m) {
-									$month = WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($m+1, false);
+									$month = KT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($m+1, false);
 									$html .= '<option value="' . $m . '"';
 									if ($m == 0) { $html .=' selected="selected"';}
 									$html .= '>' . $month . '</option>';
 								}
 							$html .= '</select>
-							<label for="year">' . WT_I18N::translate('Year') . '</label>
+							<label for="year">' . KT_I18N::translate('Year') . '</label>
 							<input id="year" name="year" size="4" type="text" />
 						</p>
 
 						<h3>
-							<input class="button" name="gdi" onclick="getDateInfo()" type="button" value="' . WT_I18N::translate('Get Date') . '" />
+							<input class="button" name="gdi" onclick="getDateInfo()" type="button" value="' . KT_I18N::translate('Get Date') . '" />
 						</h3>
 
 						<p>
-							<label for="dow">' . WT_I18N::translate('Day of the week') . '</label>
+							<label for="dow">' . KT_I18N::translate('Day of the week') . '</label>
 								<input class="result" id="dow" name="dw" size="12" type="text" />
-							<label for="time">' . WT_I18N::translate('Time') . '</label>
+							<label for="time">' . KT_I18N::translate('Time') . '</label>
 								<input class="result" id="time" name="time" size="10" type="text" />
 						</p>
 					</td>
@@ -122,7 +122,7 @@ $html .= '
 var months = new Array(<?php echo $months; ?>);
 var days = new Array(<?php echo $days; ?>);
 var mtend = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
-var opt = new Array("<?php echo WT_I18N::translate('Past'); ?>","<?php echo WT_I18N::translate('Future'); ?>");
+var opt = new Array("<?php echo KT_I18N::translate('Past'); ?>","<?php echo KT_I18N::translate('Future'); ?>");
 function getDateInfo() {
 	var y = document.form.year.value;
 	var m = document.form.month.options[document.form.month.options.selectedIndex].value;
@@ -141,7 +141,7 @@ function getDateInfo() {
 	   }
 	}
 	else {
-		alert("<?php echo WT_I18N::translate('That date is invalid'); ?>");
+		alert("<?php echo KT_I18N::translate('That date is invalid'); ?>");
    }
 }
 function setY() {
@@ -156,16 +156,16 @@ function setY() {
 // UTILITY 2 - RELATIONSHIP CALCULATOR
 $html .= '
 <div class="utility" id="relationships">
-	<h3 class="header"><span>' . WT_I18N::translate('Relationship Calculator') . '</span></h3>
+	<h3 class="header"><span>' . KT_I18N::translate('Relationship Calculator') . '</span></h3>
 
 	<form action="" method="post" name="generations">
 	<table>
 		<tbody>
 			<tr>
-				<td colspan="2">' . WT_I18N::translate('Given a common blood ancestor, <strong>X</strong>') . '</td>
+				<td colspan="2">' . KT_I18N::translate('Given a common blood ancestor, <strong>X</strong>') . '</td>
 			</tr>
 			<tr>
-				<td>' . WT_I18N::translate('The first relationship to <strong>X</strong> is') . '</td>
+				<td>' . KT_I18N::translate('The first relationship to <strong>X</strong> is') . '</td>
 				<td>
 					<input name="yores" type="text" value="" >
 					<input onclick="incGen(1)" type="button" value="+" >
@@ -173,7 +173,7 @@ $html .= '
 				</td>
 			</tr>
 			<tr>
-				<td>' . WT_I18N::translate('The relationship of <strong>D</strong> to <strong>X</strong> is') . '</td>
+				<td>' . KT_I18N::translate('The relationship of <strong>D</strong> to <strong>X</strong> is') . '</td>
 				<td>
 					<input name="thares" type="text" value="" >
 					<input onclick="incGen(2)" type="button" value="+" >
@@ -195,9 +195,9 @@ $html .= '
   generationsData.genYou = 0;
   generationsData.genD = 0;
   generationsData.genArray = new Array(3);
-  generationsData.genArray[0] = "<?php echo WT_I18N::translate('Child'); ?>";
-  generationsData.genArray[1] = "<?php echo WT_I18N::translate('Grandchild'); ?>";
-  generationsData.genArray[2] = "<?php echo WT_I18N::translate('Great grandchild'); ?>";
+  generationsData.genArray[0] = "<?php echo KT_I18N::translate('Child'); ?>";
+  generationsData.genArray[1] = "<?php echo KT_I18N::translate('Grandchild'); ?>";
+  generationsData.genArray[2] = "<?php echo KT_I18N::translate('Great grandchild'); ?>";
 
   function initialBuild()
   {
@@ -245,7 +245,7 @@ $html .= '
 
   function relationshipDisplay(genAsker, genComp)
   {
-    var theirrelation	= "<?php echo WT_I18N::translate('You and D are siblings'); ?>";
+    var theirrelation	= "<?php echo KT_I18N::translate('You and D are siblings'); ?>";
     var t1				= genAsker; // your generation
     var t2				= genComp;  // generation to compare
     ///
@@ -255,12 +255,12 @@ $html .= '
         {
                 if( t1 == 0 ) // both 1st gen
                 {
-		            theirrelation="<?php echo WT_I18N::translate('You and D are siblings'); ?>";
+		            theirrelation="<?php echo KT_I18N::translate('You and D are siblings'); ?>";
 		}
                 else
                 {
-                    theirrelation = "<?php echo WT_I18N::translate('You and D are '); ?>"
-                           + numSuffix(t1) + "<?php echo WT_I18N::translate(' Cousins'); ?>";
+                    theirrelation = "<?php echo KT_I18N::translate('You and D are '); ?>"
+                           + numSuffix(t1) + "<?php echo KT_I18N::translate(' Cousins'); ?>";
                 }
         }
         else if( t1 == 0 && t2 > 0 )
@@ -268,18 +268,18 @@ $html .= '
                 var grandind="";
                 if( t2 == 2 )
                 {
-                    grandind="<?php echo WT_I18N::translate('Grand'); ?>";
+                    grandind="<?php echo KT_I18N::translate('Grand'); ?>";
                 }
                 else if( t2 == 3 )
                 {
-                    grandind="<?php echo WT_I18N::translate('Great Grand'); ?>";
+                    grandind="<?php echo KT_I18N::translate('Great Grand'); ?>";
                 }
                 else if( t2 > 3 )
                 {
-                    grandind=  numSuffix(t2 - 2) + "<?php echo WT_I18N::translate(' Great Grand'); ?>";
+                    grandind=  numSuffix(t2 - 2) + "<?php echo KT_I18N::translate(' Great Grand'); ?>";
                 }
 
-                theirrelation="<?php echo WT_I18N::translate('D is your '); ?>'" + grandind + "<?php echo WT_I18N::translate(' niece/nephew'); ?>";
+                theirrelation="<?php echo KT_I18N::translate('D is your '); ?>'" + grandind + "<?php echo KT_I18N::translate(' niece/nephew'); ?>";
 
         }
         else if( t1 > 0 && t2 == 0 )
@@ -287,18 +287,18 @@ $html .= '
                 var grandind="";
                 if( t1 == 2 )
                 {
-                    grandind="<?php echo WT_I18N::translate('Grand'); ?>";
+                    grandind="<?php echo KT_I18N::translate('Grand'); ?>";
                 }
                 else if( t1 == 3 )
                 {
-                    grandind="<?php echo WT_I18N::translate('Great Grand'); ?>";
+                    grandind="<?php echo KT_I18N::translate('Great Grand'); ?>";
                 }
                 else if( t1 > 3 )
                 {
-                    grandind = numSuffix(t1 - 2) + "<?php echo WT_I18N::translate(' Great Grand'); ?>";
+                    grandind = numSuffix(t1 - 2) + "<?php echo KT_I18N::translate(' Great Grand'); ?>";
                 }
 
-                theirrelation="<?php echo WT_I18N::translate('You are the '); ?>" + grandind + "<?php echo WT_I18N::translate(' niece/nephew of D'); ?>";
+                theirrelation="<?php echo KT_I18N::translate('You are the '); ?>" + grandind + "<?php echo KT_I18N::translate(' niece/nephew of D'); ?>";
         }
         else
         {
@@ -317,17 +317,17 @@ $html .= '
 
             if( removed > 0 )
             {
-                theirrelation = "<?php echo WT_I18N::translate('You and D are '); ?>"
-                     + numSuffix(lesser) + "<?php echo WT_I18N::translate(' cousins '); ?>" + removed;
+                theirrelation = "<?php echo KT_I18N::translate('You and D are '); ?>"
+                     + numSuffix(lesser) + "<?php echo KT_I18N::translate(' cousins '); ?>" + removed;
 
                 if( removed == 1 )
-                    theirrelation += "<?php echo WT_I18N::translate(' time removed'); ?>";
+                    theirrelation += "<?php echo KT_I18N::translate(' time removed'); ?>";
                 else
-                    theirrelation += "<?php echo WT_I18N::translate(' times removed'); ?>";
+                    theirrelation += "<?php echo KT_I18N::translate(' times removed'); ?>";
             }
             else
-                theirrelation="<?php echo WT_I18N::translate('You and D are '); ?>" + numSuffix(lesser)
-                    + "<?php echo WT_I18N::translate(' cousins'); ?>";
+                theirrelation="<?php echo KT_I18N::translate('You and D are '); ?>" + numSuffix(lesser)
+                    + "<?php echo KT_I18N::translate(' cousins'); ?>";
         }
      return theirrelation;
   }
@@ -382,23 +382,23 @@ $html .= '
 // UTILITY 3 - DATE OF BIRTH CALCULATOR -->
 $html .= '
 <div class="utility" id="dob_calc">
-	<h3 class="header"><span>' . WT_I18N::translate('Birth Date Calculator') . '</span></h3>
+	<h3 class="header"><span>' . KT_I18N::translate('Birth Date Calculator') . '</span></h3>
 	<form name="theForm">
 		<p class="main">
-			<label for="eventDate" class="bold">' . WT_I18N::translate('Event Date') . '</label>
+			<label for="eventDate" class="bold">' . KT_I18N::translate('Event Date') . '</label>
 			<input id="eventDate" name="eventDate" onchange="setEventDateGui()" placeholder="31/12/1905" size="10" type="text" />
 		</p>
 		<p class="main">
-			<label class="bold">' . WT_I18N::translate('Age') . '</label>
+			<label class="bold">' . KT_I18N::translate('Age') . '</label>
 				<input class="age_part" id="ageYY" name="ageYY" onchange="setAgeYYGui()" placeholder="27" size="2" type="text" />
-			<label for="ageYY">' . WT_I18N::translate('years') . '</label>
+			<label for="ageYY">' . KT_I18N::translate('years') . '</label>
 				<input class="age_part" id="ageMM" name="ageMM" onchange="setAgeMMGui()" placeholder="0" size="2" type="text" />
-			<label for="ageMM">' . WT_I18N::translate('months') . '</label>
+			<label for="ageMM">' . KT_I18N::translate('months') . '</label>
 				<input class="age_part" id="ageDD" name="ageDD" onchange="setAgeDDGui()" placeholder="0" size="2" type="text" />
-			<label for="ageDD">' . WT_I18N::translate('days') . '</label>
+			<label for="ageDD">' . KT_I18N::translate('days') . '</label>
 		</p>
 		<p class="main">
-			<span class="bold">' . WT_I18N::translate('Estimated date of birth') . '</span>
+			<span class="bold">' . KT_I18N::translate('Estimated date of birth') . '</span>
 			<span id="showResult"></span>
 		</p>
 	</form>
@@ -454,7 +454,7 @@ $html .= '
 			}
 		}
 		if (i != 3) {
-			alert ("<?php echo WT_I18N::translate('Please enter a valid date.'); ?>");
+			alert ("<?php echo KT_I18N::translate('Please enter a valid date.'); ?>");
 		} else {
 			eventDate = newDate(dateFields[0], dateFields[1]-1, dateFields[2]);
 			theForm.eventDate.value = dateToStr(eventDate);

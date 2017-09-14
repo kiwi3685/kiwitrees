@@ -21,16 +21,16 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Unknown surname
-$UNKNOWN_NN = WT_I18N::translate_c('Unknown surname', '…');
+$UNKNOWN_NN = KT_I18N::translate_c('Unknown surname', '…');
 
 // Unknown given name
-$UNKNOWN_PN = WT_I18N::translate_c('Unknown given name', '…');
+$UNKNOWN_PN = KT_I18N::translate_c('Unknown given name', '…');
 
 // NPFX tags - name prefixes
 $NPFX_accept = array(
@@ -419,7 +419,7 @@ $level2_tags = array(
 	'EVEN' => array(
 		'DATA',
 	),
-	'_WT_USER' => array(
+	'_KT_USER' => array(
 		'_TODO',
 	),
 	'RELI' => array(
@@ -445,65 +445,65 @@ $STANDARD_NAME_FACTS = array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
 $REVERSED_NAME_FACTS = array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');
 
 //Make language names translatable (see http://www.omniglot.com/language/names.htm)
-/* I18N: language name - Afrikaans */			WT_I18N::translate('afrikaans');
-/* I18N: language name - Arabic */				WT_I18N::translate('العربية');
-/* I18N: language name - Bulgarian */			WT_I18N::translate('български');
-/* I18N: language name - Bosnian */				WT_I18N::translate('bosanski');
-/* I18N: language name - Catalan */				WT_I18N::translate('català');
-/* I18N: language name - Czech */				WT_I18N::translate('čeština');
-/* I18N: language name - Danish */				WT_I18N::translate('dansk');
-/* I18N: language name - German */				WT_I18N::translate('Deutsch');
-/* I18N: language name - Maldivian */			WT_I18N::translate('ދިވެހިބަސް');
-/* I18N: language name - Greek */				WT_I18N::translate('Ελληνικά');
-/* I18N: language name - English */				WT_I18N::translate('English');
-/* I18N: language name - Australian English */	WT_I18N::translate('Australian English');
-/* I18N: language name - British English */		WT_I18N::translate('British English');
-/* I18N: language name - U.S. English */		WT_I18N::translate('U.S. English');
-/* I18N: language name - Spanish */				WT_I18N::translate('español');
-/* I18N: language name - Estonian */			WT_I18N::translate('eesti');
-/* I18N: language name - Farsi */				WT_I18N::translate('فارسی');
-/* I18N: language name - Finnish */				WT_I18N::translate('suomi');
-/* I18N: language name - Faroese */				WT_I18N::translate('føroyskt');
-/* I18N: language name - French */				WT_I18N::translate('français');
-/* I18N: language name - French Canadian */		WT_I18N::translate('français Canadien');
-/* I18N: language name - Galician */			WT_I18N::translate('galego');
-/* I18N: language name - Hawaiian */			WT_I18N::translate('ʻŌlelo Hawaiʻi');
-/* I18N: language name - Hebrew */				WT_I18N::translate('עברית');
-/* I18N: language name - Croatian */			WT_I18N::translate('hrvatski');
-/* I18N: language name - Hungarian */			WT_I18N::translate('magyar');
-/* I18N: language name - Indonesian */			WT_I18N::translate('Bahasa Indonesia');
-/* I18N: language name - Icelandic */			WT_I18N::translate('íslenska');
-/* I18N: language name - Italian */				WT_I18N::translate('italiano');
-/* I18N: language name - Japanese */			WT_I18N::translate('日本語');
-/* I18N: language name - Georgian */			WT_I18N::translate('ქართული');
-/* I18N: language name - Korean */				WT_I18N::translate('한국어');
-/* I18N: language name - Lithuanian */			WT_I18N::translate('lietuvių');
-/* I18N: language name - Latvian */				WT_I18N::translate('latviešu');
-/* I18N: language name - Maori */				WT_I18N::translate('Māori');
-/* I18N: language name - Marathi */				WT_I18N::translate('मराठी');
-/* I18N: language name - Malay */				WT_I18N::translate('Bahasa Melayu');
-/* I18N: language name - Norwegian Bokmal */	WT_I18N::translate('norsk bokmål');
-/* I18N: language name - Nepali */				WT_I18N::translate('नेपाली');
-/* I18N: language name - Dutch */				WT_I18N::translate('Nederlands');
-/* I18N: language name - Norwegian Nynorsk */	WT_I18N::translate('nynorsk');
-/* I18N: language name - Occitan */				WT_I18N::translate('occitan');
-/* I18N: language name - Polish */				WT_I18N::translate('polski');
-/* I18N: language name - Portuguese */			WT_I18N::translate('português');
-/* I18N: language name - Portugese Brazilian*/	WT_I18N::translate('português do Brasil');
-/* I18N: language name - Romanian */			WT_I18N::translate('română');
-/* I18N: language name - Russian */				WT_I18N::translate('русский');
-/* I18N: language name - Slovak */				WT_I18N::translate('slovenčina');
-/* I18N: language name - Slovenian */			WT_I18N::translate('slovenščina');
-/* I18N: language name - Serbian */				WT_I18N::translate('Српски');
-/* I18N: language name - Serbian */				WT_I18N::translate('srpski');
-/* I18N: language name - Swedish */				WT_I18N::translate('svenska');
-/* I18N: language name - Tamil */				WT_I18N::translate('தமிழ்');
-/* I18N: language name - Tatar */				WT_I18N::translate('Татар');
-/* I18N: language name - Thai */				WT_I18N::translate('تايلند');
-/* I18N: language name - Turkish */				WT_I18N::translate('Türkçe');
-/* I18N: language name - Ukrainian */			WT_I18N::translate('українська');
-/* I18N: language name - Vietnamese */			WT_I18N::translate('Tiếng Việt');
-/* I18N: language name - Yiddish */				WT_I18N::translate('ייִדיש');
-/* I18N: language name - Chinese */				WT_I18N::translate('中文');
-/* I18N: language name - Chinese (Simplified) */  WT_I18N::translate('简体中文'); // Simplified Chinese
-/* I18N: language name - Chinese (Traditional) */ WT_I18N::translate('繁體中文'); // Traditional Chinese
+/* I18N: language name - Afrikaans */			KT_I18N::translate('afrikaans');
+/* I18N: language name - Arabic */				KT_I18N::translate('العربية');
+/* I18N: language name - Bulgarian */			KT_I18N::translate('български');
+/* I18N: language name - Bosnian */				KT_I18N::translate('bosanski');
+/* I18N: language name - Catalan */				KT_I18N::translate('català');
+/* I18N: language name - Czech */				KT_I18N::translate('čeština');
+/* I18N: language name - Danish */				KT_I18N::translate('dansk');
+/* I18N: language name - German */				KT_I18N::translate('Deutsch');
+/* I18N: language name - Maldivian */			KT_I18N::translate('ދިވެހިބަސް');
+/* I18N: language name - Greek */				KT_I18N::translate('Ελληνικά');
+/* I18N: language name - English */				KT_I18N::translate('English');
+/* I18N: language name - Australian English */	KT_I18N::translate('Australian English');
+/* I18N: language name - British English */		KT_I18N::translate('British English');
+/* I18N: language name - U.S. English */		KT_I18N::translate('U.S. English');
+/* I18N: language name - Spanish */				KT_I18N::translate('español');
+/* I18N: language name - Estonian */			KT_I18N::translate('eesti');
+/* I18N: language name - Farsi */				KT_I18N::translate('فارسی');
+/* I18N: language name - Finnish */				KT_I18N::translate('suomi');
+/* I18N: language name - Faroese */				KT_I18N::translate('føroyskt');
+/* I18N: language name - French */				KT_I18N::translate('français');
+/* I18N: language name - French Canadian */		KT_I18N::translate('français Canadien');
+/* I18N: language name - Galician */			KT_I18N::translate('galego');
+/* I18N: language name - Hawaiian */			KT_I18N::translate('ʻŌlelo Hawaiʻi');
+/* I18N: language name - Hebrew */				KT_I18N::translate('עברית');
+/* I18N: language name - Croatian */			KT_I18N::translate('hrvatski');
+/* I18N: language name - Hungarian */			KT_I18N::translate('magyar');
+/* I18N: language name - Indonesian */			KT_I18N::translate('Bahasa Indonesia');
+/* I18N: language name - Icelandic */			KT_I18N::translate('íslenska');
+/* I18N: language name - Italian */				KT_I18N::translate('italiano');
+/* I18N: language name - Japanese */			KT_I18N::translate('日本語');
+/* I18N: language name - Georgian */			KT_I18N::translate('ქართული');
+/* I18N: language name - Korean */				KT_I18N::translate('한국어');
+/* I18N: language name - Lithuanian */			KT_I18N::translate('lietuvių');
+/* I18N: language name - Latvian */				KT_I18N::translate('latviešu');
+/* I18N: language name - Maori */				KT_I18N::translate('Māori');
+/* I18N: language name - Marathi */				KT_I18N::translate('मराठी');
+/* I18N: language name - Malay */				KT_I18N::translate('Bahasa Melayu');
+/* I18N: language name - Norwegian Bokmal */	KT_I18N::translate('norsk bokmål');
+/* I18N: language name - Nepali */				KT_I18N::translate('नेपाली');
+/* I18N: language name - Dutch */				KT_I18N::translate('Nederlands');
+/* I18N: language name - Norwegian Nynorsk */	KT_I18N::translate('nynorsk');
+/* I18N: language name - Occitan */				KT_I18N::translate('occitan');
+/* I18N: language name - Polish */				KT_I18N::translate('polski');
+/* I18N: language name - Portuguese */			KT_I18N::translate('português');
+/* I18N: language name - Portugese Brazilian*/	KT_I18N::translate('português do Brasil');
+/* I18N: language name - Romanian */			KT_I18N::translate('română');
+/* I18N: language name - Russian */				KT_I18N::translate('русский');
+/* I18N: language name - Slovak */				KT_I18N::translate('slovenčina');
+/* I18N: language name - Slovenian */			KT_I18N::translate('slovenščina');
+/* I18N: language name - Serbian */				KT_I18N::translate('Српски');
+/* I18N: language name - Serbian */				KT_I18N::translate('srpski');
+/* I18N: language name - Swedish */				KT_I18N::translate('svenska');
+/* I18N: language name - Tamil */				KT_I18N::translate('தமிழ்');
+/* I18N: language name - Tatar */				KT_I18N::translate('Татар');
+/* I18N: language name - Thai */				KT_I18N::translate('تايلند');
+/* I18N: language name - Turkish */				KT_I18N::translate('Türkçe');
+/* I18N: language name - Ukrainian */			KT_I18N::translate('українська');
+/* I18N: language name - Vietnamese */			KT_I18N::translate('Tiếng Việt');
+/* I18N: language name - Yiddish */				KT_I18N::translate('ייִדיש');
+/* I18N: language name - Chinese */				KT_I18N::translate('中文');
+/* I18N: language name - Chinese (Simplified) */  KT_I18N::translate('简体中文'); // Simplified Chinese
+/* I18N: language name - Chinese (Traditional) */ KT_I18N::translate('繁體中文'); // Traditional Chinese

@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Create all of the tables needed for this module
 try {
-	WT_DB::exec(
+	KT_DB::exec(
 		"ALTER TABLE `##placelocation` ADD (".
 		" pl_media      VARCHAR(60)     NULL,".
 		" sv_long       FLOAT           NOT NULL DEFAULT 0,".
@@ -43,4 +43,4 @@ try {
 }
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+KT_Site::preference($schema_name, $next_version);

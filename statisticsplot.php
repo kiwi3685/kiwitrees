@@ -21,12 +21,12 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'statisticsplot.php');
+define('KT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new KT_Controller_Ajax();
 
-$stats = new WT_Stats($GEDCOM);
+$stats = new KT_Stats($GEDCOM);
 
 // Month of birth
 function bimo() {
@@ -663,11 +663,11 @@ function calc_axis($xas_grenzen) {
 	if ($x_as==21 && $hulpar[0]==1) {
 		$xdata[0] = 0;
 	} else if ($x_as==16 && $hulpar[0]==0) {
-		$xdata[0] = WT_I18N::translate('before');
+		$xdata[0] = KT_I18N::translate('before');
 	} else if ($x_as==16 && $hulpar[0]<0) {
-		$xdata[0] = WT_I18N::translate('over').' '.$hulpar[0];
+		$xdata[0] = KT_I18N::translate('over').' '.$hulpar[0];
 	} else {
-		$xdata[0] = WT_I18N::translate('less than').' '.$hulpar[0];
+		$xdata[0] = KT_I18N::translate('less than').' '.$hulpar[0];
 	}
 	$xgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
@@ -691,7 +691,7 @@ function calc_axis($xas_grenzen) {
 	} else {
 		$xmax = $i;
 	}
-	$xdata[$xmax] = WT_I18N::translate('over').' '.$hulpar[$i-1];
+	$xdata[$xmax] = KT_I18N::translate('over').' '.$hulpar[$i-1];
 	$xgrenzen[$xmax] = 10000;
 	$xmax = $xmax+1;
 	if ($xmax > 20) {
@@ -706,12 +706,12 @@ function calc_legend($grenzen_zas) {
 	$hulpar = explode(',', $grenzen_zas);
 	$i=1;
 	// I18N: %d is a year
-	$date = new WT_Date('BEF ' . $hulpar[0]);
+	$date = new KT_Date('BEF ' . $hulpar[0]);
 	$legend[0] = strip_tags($date->display());
 	$zgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
 		$i1 = $i-1;
-		$date = new WT_Date('BET ' . $hulpar[$i1] .' AND ' . ($hulpar[$i]-1));
+		$date = new KT_Date('BET ' . $hulpar[$i1] .' AND ' . ($hulpar[$i]-1));
 		$legend[$i] = strip_tags($date->display());
 		$zgrenzen[$i] = $hulpar[$i]-1;
 		$i++;
@@ -719,7 +719,7 @@ function calc_legend($grenzen_zas) {
 	$zmax = $i;
 	$zmax1 = $zmax-1;
 	// I18N: %d is a year
-	$date = new WT_Date('AFT ' . $hulpar[$zmax1]);
+	$date = new KT_Date('AFT ' . $hulpar[$zmax1]);
 	$legend[$zmax] = strip_tags($date->display());
 	$zgrenzen[$zmax] = 10000;
 	$zmax = $zmax+1;
@@ -735,13 +735,13 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 	global $stats;
 
 	if (!function_exists($myfunc)) {
-		echo WT_I18N::translate('%s not implemented', $myfunc);
+		echo KT_I18N::translate('%s not implemented', $myfunc);
 		exit;
 	}
 
 	$monthdata= array();
 	for ($i=0; $i<12; ++$i) {
-		$monthdata[$i]=WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false);
+		$monthdata[$i]=KT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false);
 	}
 
 	$months= array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC');
@@ -754,7 +754,7 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		$zgiven = $zg;
 		$title = $titstr;
 		$xtitle = $xt;
-		$ytitle = WT_I18N::translate('numbers');
+		$ytitle = KT_I18N::translate('numbers');
 		$grenzen_xas = $gx;
 		$grenzen_zas = $gz;
 		if ($xg == true) {
@@ -770,15 +770,15 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		if ($y_as == 201) {
 			$percentage = false;
 			if ($current == 13 || $current == 15 || $current == 16 || $current == 21) {
-				$ytitle = WT_I18N::translate('Families');
+				$ytitle = KT_I18N::translate('Families');
 			} else if ($current == 14) {
-				$ytitle = WT_I18N::translate('Children');
+				$ytitle = KT_I18N::translate('Children');
 			} else {
-				$ytitle = WT_I18N::translate('Individuals');
+				$ytitle = KT_I18N::translate('Individuals');
 			}
 		} else if ($y_as == 202) {
 			$percentage = true;
-			$ytitle = WT_I18N::translate('percentage');
+			$ytitle = KT_I18N::translate('percentage');
 		}
 		$male_female = false;
 		if ($z_as == 300) {
@@ -789,12 +789,12 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		} else if ($z_as == 301) {
 			$male_female = true;
 			$zgiven = true;
-			$legend[0] = WT_I18N::translate('Male');
-			$legend[1] = WT_I18N::translate('Female');
+			$legend[0] = KT_I18N::translate('Male');
+			$legend[1] = KT_I18N::translate('Female');
 			$zmax = 2;
-			$xtitle = $xtitle.WT_I18N::translate(' per gender');
+			$xtitle = $xtitle.KT_I18N::translate(' per gender');
 		} else if ($z_as == 302) {
-			$xtitle= $xtitle.WT_I18N::translate(' per time period');
+			$xtitle= $xtitle.KT_I18N::translate(' per time period');
 		}
 		//-- reset the data array
 		for ($i=0; $i<$zmax; $i++) {
@@ -804,18 +804,18 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		}
 		$myfunc();
 		if ($indfam == 'IND') {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalIndividuals();
+			$hstr = $title.'|' .KT_I18N::translate('Counts ').' '.KT_I18N::number($n1).' '.KT_I18N::translate('of').' '.$stats->totalIndividuals();
 		} else if ($x_as==21) {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalChildren();
+			$hstr = $title.'|' .KT_I18N::translate('Counts ').' '.KT_I18N::number($n1).' '.KT_I18N::translate('of').' '.$stats->totalChildren();
 		} else {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalFamilies();
+			$hstr = $title.'|' .KT_I18N::translate('Counts ').' '.KT_I18N::number($n1).' '.KT_I18N::translate('of').' '.$stats->totalFamilies();
 		}
 		myplot($hstr, $zmax, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
 }
 
 //-- ========= start of main program =========
-$action = safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
+$action = safe_REQUEST($_REQUEST, 'action', KT_REGEX_XREF);
 
 if ($action=='update') {
 	$x_as = $_POST['x-as'];
@@ -838,14 +838,14 @@ if ($action=='update') {
 	$chart_type  = $_POST['chart_type'];
 	$surname     = $_POST['SURN'];
 
-	$WT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden'] = $xgl;
-	$WT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden_m'] = $xglm;
-	$WT_SESSION->statTicks[$GEDCOM]['xasGrMaanden'] = $xgm;
-	$WT_SESSION->statTicks[$GEDCOM]['xasGrAantallen'] = $xga;
-	$WT_SESSION->statTicks[$GEDCOM]['zasGrPeriode'] = $zgp;
-	$WT_SESSION->statTicks[$GEDCOM]['chart_shows'] = $chart_shows;
-	$WT_SESSION->statTicks[$GEDCOM]['chart_type'] = $chart_type;
-	$WT_SESSION->statTicks[$GEDCOM]['SURN'] = $surname;
+	$KT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden'] = $xgl;
+	$KT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden_m'] = $xglm;
+	$KT_SESSION->statTicks[$GEDCOM]['xasGrMaanden'] = $xgm;
+	$KT_SESSION->statTicks[$GEDCOM]['xasGrAantallen'] = $xga;
+	$KT_SESSION->statTicks[$GEDCOM]['zasGrPeriode'] = $zgp;
+	$KT_SESSION->statTicks[$GEDCOM]['chart_shows'] = $chart_shows;
+	$KT_SESSION->statTicks[$GEDCOM]['chart_type'] = $chart_type;
+	$KT_SESSION->statTicks[$GEDCOM]['SURN'] = $surname;
 
 	// Save the input variables
 	$savedInput = array();
@@ -860,11 +860,11 @@ if ($action=='update') {
 	$savedInput['chart_shows'] = $chart_shows;
 	$savedInput['chart_type'] = $chart_type;
 	$savedInput['SURN'] = $surname;
-	$WT_SESSION->statisticsplot[$GEDCOM] = $savedInput;
+	$KT_SESSION->statisticsplot[$GEDCOM] = $savedInput;
 	unset($savedInput);
 } else {
 	// Recover the saved input variables
-	$savedInput = $WT_SESSION->statisticsplot[$GEDCOM];
+	$savedInput = $KT_SESSION->statisticsplot[$GEDCOM];
 	$x_as = $savedInput['x_as'];
 	$y_as = $savedInput['y_as'];
 	$z_as = $savedInput['z_as'];
@@ -880,7 +880,7 @@ if ($action=='update') {
 }
 Zend_Session::writeClose();
 
-echo '<div class="statistics_chart" title="', WT_I18N::translate('Statistics plot'), '">';
+echo '<div class="statistics_chart" title="', KT_I18N::translate('Statistics plot'), '">';
 
 //-- Set params for request out of the information for plot
 $g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for month
@@ -888,37 +888,37 @@ $g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for mont
 switch ($x_as) {
 case '11':
 	//--------- nr, type, xgiven, zgiven, title, xtitle, ytitle, boundaries_x, boundaries-z, function
-	set_params(11, 'IND', true, false, WT_I18N::translate('Month of birth'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'bimo');
+	set_params(11, 'IND', true, false, KT_I18N::translate('Month of birth'),  KT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'bimo');
 	break;
 case '12':
-	set_params(12, 'IND', true, false, WT_I18N::translate('Month of death'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'demo');
+	set_params(12, 'IND', true, false, KT_I18N::translate('Month of death'),  KT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'demo');
 	break;
 case '13':
-	set_params(13, 'FAM', true, false, WT_I18N::translate('Month of marriage'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'mamo');
+	set_params(13, 'FAM', true, false, KT_I18N::translate('Month of marriage'),  KT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'mamo');
 	break;
 case '14':
-	set_params(14, 'FAM', true, false, WT_I18N::translate('Month of birth of first child in a relation'), WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'bimo1');
+	set_params(14, 'FAM', true, false, KT_I18N::translate('Month of birth of first child in a relation'), KT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'bimo1');
 	break;
 case '15':
-	set_params(15, 'FAM', true, false, WT_I18N::translate('Month of first marriage'), WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'mamo1');
+	set_params(15, 'FAM', true, false, KT_I18N::translate('Month of first marriage'), KT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'mamo1');
 	break;
 case '16':
-	set_params(16, 'FAM', false, false, WT_I18N::translate('Months between marriage and first child'), WT_I18N::translate('Months between marriage and birth of first child'), $y_as, $xgm, $zgp, 'mamam');
+	set_params(16, 'FAM', false, false, KT_I18N::translate('Months between marriage and first child'), KT_I18N::translate('Months between marriage and birth of first child'), $y_as, $xgm, $zgp, 'mamam');
 	break;
 case '17':
-	set_params(17, 'IND', false, false, WT_I18N::translate('Age related to birth year'), WT_I18N::translate('age'), $y_as, $xgl, $zgp, 'agbi');
+	set_params(17, 'IND', false, false, KT_I18N::translate('Age related to birth year'), KT_I18N::translate('age'), $y_as, $xgl, $zgp, 'agbi');
 	break;
 case '18':
-	set_params(18, 'IND', false, false, WT_I18N::translate('Age related to death year'), WT_I18N::translate('age'), $y_as, $xgl, $zgp, 'agde');
+	set_params(18, 'IND', false, false, KT_I18N::translate('Age related to death year'), KT_I18N::translate('age'), $y_as, $xgl, $zgp, 'agde');
 	break;
 case '19':
-	set_params(19, 'IND', false, false, WT_I18N::translate('Age in year of marriage'), WT_I18N::translate('age'), $y_as, $xglm, $zgp, 'agma');
+	set_params(19, 'IND', false, false, KT_I18N::translate('Age in year of marriage'), KT_I18N::translate('age'), $y_as, $xglm, $zgp, 'agma');
 	break;
 case '20':
-	set_params(20, 'IND', false, false, WT_I18N::translate('Age in year of first marriage'), WT_I18N::translate('age'), $y_as, $xglm, $zgp, 'agma1');
+	set_params(20, 'IND', false, false, KT_I18N::translate('Age in year of first marriage'), KT_I18N::translate('age'), $y_as, $xglm, $zgp, 'agma1');
 	break;
 case '21':
-	set_params(21, 'FAM', false, false, WT_I18N::translate('Number of children'), WT_I18N::translate('children'), $y_as, $xga, $zgp, 'nuch');
+	set_params(21, 'FAM', false, false, KT_I18N::translate('Number of children'), KT_I18N::translate('children'), $y_as, $xga, $zgp, 'nuch');
 	break;
 case '1':
 	echo $stats->chartDistribution(array($chart_shows, $chart_type, $surname));

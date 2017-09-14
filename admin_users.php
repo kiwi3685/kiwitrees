@@ -21,54 +21,54 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_users.php');
+define('KT_SCRIPT_NAME', 'admin_users.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('User administration'));
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('User administration'));
 
-require_once WT_ROOT.'includes/functions/functions_edit.php';
+require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
 $ALL_EDIT_OPTIONS=array(
-	'none'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor'),
-	'access'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member'),
-	'edit'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor'),
-	'accept'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Moderator'),
-	'admin' => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager')
+	'none'  => /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Visitor'),
+	'access'=> /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Member'),
+	'edit'  => /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Editor'),
+	'accept'=> /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Moderator'),
+	'admin' => /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Manager')
 );
 
 // Form actions
-switch (WT_Filter::post('action')) {
+switch (KT_Filter::post('action')) {
 
 	case 'save':
-		if (WT_Filter::checkCsrf()) {
-			$user_id			= WT_Filter::postInteger('user_id');
-			$username			= WT_Filter::post('username');
-			$realname			= WT_Filter::post('real_name');
-			$email				= WT_Filter::postEmail('email');
-			$pass1				= WT_Filter::post('pass1', WT_REGEX_PASSWORD);
-			$pass2				= WT_Filter::post('pass2', WT_REGEX_PASSWORD);
-			$language			= WT_Filter::post('language');
-			$contact_method		= WT_Filter::post('contact_method');
-			$comment			= WT_Filter::post('comment');
-			$auto_accept		= WT_Filter::postBool('auto_accept');
-			$canadmin			= WT_Filter::postBool('canadmin');
-			$visible_online		= WT_Filter::postBool('visible_online');
-			$verified			= WT_Filter::postBool('verified');
-			$verified_by_admin	= WT_Filter::postBool('verified_by_admin');
-			$notify_clipping	= WT_Filter::postBool('notify_clipping');
+		if (KT_Filter::checkCsrf()) {
+			$user_id			= KT_Filter::postInteger('user_id');
+			$username			= KT_Filter::post('username');
+			$realname			= KT_Filter::post('real_name');
+			$email				= KT_Filter::postEmail('email');
+			$pass1				= KT_Filter::post('pass1', KT_REGEX_PASSWORD);
+			$pass2				= KT_Filter::post('pass2', KT_REGEX_PASSWORD);
+			$language			= KT_Filter::post('language');
+			$contact_method		= KT_Filter::post('contact_method');
+			$comment			= KT_Filter::post('comment');
+			$auto_accept		= KT_Filter::postBool('auto_accept');
+			$canadmin			= KT_Filter::postBool('canadmin');
+			$visible_online		= KT_Filter::postBool('visible_online');
+			$verified			= KT_Filter::postBool('verified');
+			$verified_by_admin	= KT_Filter::postBool('verified_by_admin');
+			$notify_clipping	= KT_Filter::postBool('notify_clipping');
 
 			if ($user_id === 0) {
 				// Create a new user
 				if (get_user_id($username)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
 				} elseif (findByEmail($email)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address. A user with that email already exists.'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('Duplicate email address. A user with that email already exists.'));
 				} elseif ($pass1 !== $pass2) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The passwords do not match.'));
+					KT_FlashMessages::addMessage(KT_I18N::translate('The passwords do not match.'));
 				} else {
 					$user_id = create_user($username, $realname, $email, $pass1);
 					set_user_setting($user_id, 'reg_timestamp', date('U'));
@@ -87,15 +87,15 @@ switch (WT_Filter::post('action')) {
 			}
 
 			if ($user_id > 0) {
-				$tree_link = '<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . '?ged=' . WT_GED_ID . '"><strong>' . strip_tags(WT_TREE_TITLE) . '</strong></a>';
+				$tree_link = '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GED_ID . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
 				// Approving for the first time? Send a confirmation email
 				if ($verified_by_admin && !get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'sessiontime') == 0) {
-					WT_I18N::init(get_user_setting($user_id, 'language'));
-					WT_Mail::systemMessage(
-						$WT_TREE,
+					KT_I18N::init(get_user_setting($user_id, 'language'));
+					KT_Mail::systemMessage(
+						$KT_TREE,
 						$user_id,
-						WT_I18N::translate('Approval of account at %s', strip_tags(WT_TREE_TITLE)),
-						WT_I18N::translate('The administrator at %s has approved your application for an account.<br><br>You may now login by accessing the following link: %s', $tree_link)
+						KT_I18N::translate('Approval of account at %s', strip_tags(KT_TREE_TITLE)),
+						KT_I18N::translate('The administrator at %s has approved your application for an account.<br><br>You may now login by accessing the following link: %s', $tree_link)
 					);
 				}
 
@@ -109,16 +109,16 @@ switch (WT_Filter::post('action')) {
 				set_user_setting($user_id, 'notify_clipping', $notify_clipping);
 
 				// We cannot change our own admin status. Another admin will need to do it.
-				if ($user_id !== WT_USER_ID) {
+				if ($user_id !== KT_USER_ID) {
 					set_user_setting($user_id, 'canadmin', $canadmin);
 				}
 
-				foreach (WT_Tree::getAll() as $tree) {
-					$tree->userPreference($user_id, 'rootid', WT_Filter::post('rootid' . $tree->tree_id, WT_REGEX_XREF));
-					$tree->userPreference($user_id, 'gedcomid', WT_Filter::post('gedcomid' . $tree->tree_id, WT_REGEX_XREF));
-					$tree->userPreference($user_id, 'canedit', WT_Filter::post('canedit' . $tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
-					if (WT_Filter::post('gedcomid' . $tree->tree_id, WT_REGEX_XREF)) {
-						$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->tree_id, 0, 10, 0));
+				foreach (KT_Tree::getAll() as $tree) {
+					$tree->userPreference($user_id, 'rootid', KT_Filter::post('rootid' . $tree->tree_id, KT_REGEX_XREF));
+					$tree->userPreference($user_id, 'gedcomid', KT_Filter::post('gedcomid' . $tree->tree_id, KT_REGEX_XREF));
+					$tree->userPreference($user_id, 'canedit', KT_Filter::post('canedit' . $tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
+					if (KT_Filter::post('gedcomid' . $tree->tree_id, KT_REGEX_XREF)) {
+						$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', KT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->tree_id, 0, 10, 0));
 					} else {
 						// Do not allow a path length to be set if the individual ID is not
 						$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', null);
@@ -126,34 +126,34 @@ switch (WT_Filter::post('action')) {
 				}
 			}
 		}
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH .  WT_SCRIPT_NAME);
+		header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH .  KT_SCRIPT_NAME);
 
 		return;
 }
 
-switch (WT_Filter::get('action')) {
+switch (KT_Filter::get('action')) {
 
 	case 'deleteuser':
 		// Delete a user - but don't delete ourselves!
-		$username	= WT_Filter::get('username');
+		$username	= KT_Filter::get('username');
 		$user_id	= get_user_id($username);
-		if ($user_id && $user_id != WT_USER_ID) {
+		if ($user_id && $user_id != KT_USER_ID) {
 			delete_user($user_id);
 			AddToLog("deleted user ->{$username}<-", 'auth');
 		}
 
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH .  WT_SCRIPT_NAME);
+		header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH .  KT_SCRIPT_NAME);
 
 		return;
 
 	case 'masquerade_user':
 		// Masquerade as a user.
-		$username	= WT_Filter::get('username');
+		$username	= KT_Filter::get('username');
 		$user_id	= get_user_id($username);
-		$WT_SESSION->wt_user = $user_id;
+		$KT_SESSION->wt_user = $user_id;
 		Zend_Session::regenerateId();
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php');
+		header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . 'index.php');
 		break;
 
 	case 'loadrows':
@@ -172,7 +172,7 @@ switch (WT_Filter::get('action')) {
 		}
 		$iDisplayStart =(int)safe_GET('iDisplayStart');
 		$iDisplayLength=(int)safe_GET('iDisplayLength');
-		set_user_setting(WT_USER_ID, 'admin_users_page_size', $iDisplayLength);
+		set_user_setting(KT_USER_ID, 'admin_users_page_size', $iDisplayLength);
 		if ($iDisplayLength>0) {
 			$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 		} else {
@@ -213,10 +213,10 @@ switch (WT_Filter::get('action')) {
 			$LIMIT;
 
 		// This becomes a JSON list, not array, so need to fetch with numeric keys.
-		$aaData = WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
+		$aaData = KT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
 		$installed_languages = array();
-		foreach (WT_I18N::used_languages() as $code=>$name) {
-			$installed_languages[$code] = WT_I18N::translate($name);
+		foreach (KT_I18N::used_languages() as $code=>$name) {
+			$installed_languages[$code] = KT_I18N::translate($name);
 		}
 
 		// Reformat various columns for display
@@ -224,15 +224,15 @@ switch (WT_Filter::get('action')) {
 			$user_id	= $aData[1];
 			$username	= $aData[2];
 
-			$aData[0]='<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.WT_I18N::translate('Edit user').'"><i class="icon-edit"></i></a>';
+			$aData[0]='<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><i class="icon-edit"></i></a>';
 			// $aData[1] is the user ID (not displayed)
 			// $aData[2] is the username
-			$aData[2] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.WT_I18N::translate('Edit user').'"><span dir="auto">' . WT_Filter::escapeHtml($aData[2]) . '</span></a>';
+			$aData[2] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[2]) . '</span></a>';
 			// $aData[3] is the real name
-			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.WT_I18N::translate('Edit user').'"><span dir="auto">' . WT_Filter::escapeHtml($aData[3]) . '</span></a>';
+			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[3]) . '</span></a>';
 			// $aData[4] is the email address
-			if ($user_id != WT_USER_ID) {
-				$aData[4] = '<a href="message.php?to=' . $username . '"  title="' . WT_I18N::translate('Send Message') . '" target="_blank">' . WT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
+			if ($user_id != KT_USER_ID) {
+				$aData[4] = '<a href="message.php?to=' . $username . '"  title="' . KT_I18N::translate('Send Message') . '" target="_blank">' . KT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
 			}
 			// $aData[5] is the langauge
 			if (array_key_exists($aData[5], $installed_languages)) {
@@ -245,22 +245,22 @@ switch (WT_Filter::get('action')) {
 			}
 			// $aData[8] is the sortable last-login timestamp
 			if ($aData[8]) {
-				$aData[9] = format_timestamp($aData[8]) . '<br>' . WT_I18N::time_ago(WT_TIMESTAMP - $aData[8]);
+				$aData[9] = format_timestamp($aData[8]) . '<br>' . KT_I18N::time_ago(KT_TIMESTAMP - $aData[8]);
 			} else {
-				$aData[9] = WT_I18N::translate('Never');
+				$aData[9] = KT_I18N::translate('Never');
 			}
-			$aData[10] = $aData[10] ? WT_I18N::translate('yes') : WT_I18N::translate('no');
-			$aData[11] = $aData[11] ? WT_I18N::translate('yes') : WT_I18N::translate('no');
+			$aData[10] = $aData[10] ? KT_I18N::translate('yes') : KT_I18N::translate('no');
+			$aData[11] = $aData[11] ? KT_I18N::translate('yes') : KT_I18N::translate('no');
 			// Add extra column for "delete" action
-			if ($user_id != WT_USER_ID) {
-				$aData[12]='<div class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $username)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=deleteuser&username='.htmlspecialchars($username).'\'; }"></div>';
+			if ($user_id != KT_USER_ID) {
+				$aData[12]='<div class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(KT_I18N::translate('Are you sure you want to delete “%s”?', $username)).'\')) { document.location=\''.KT_SCRIPT_NAME.'?action=deleteuser&username='.htmlspecialchars($username).'\'; }"></div>';
 			} else {
 				// Do not delete ourself!
 				$aData[12]='';
 			}
 			// Add extra column for "masquerade" action
-			if ($user_id != WT_USER_ID) {
-				$aData[13]='<div class="icon-mask" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to masquerade as “%s”?', $username)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=masquerade_user&username='.htmlspecialchars($username).'\'; }"></div>';
+			if ($user_id != KT_USER_ID) {
+				$aData[13]='<div class="icon-mask" onclick="if (confirm(\''.htmlspecialchars(KT_I18N::translate('Are you sure you want to masquerade as “%s”?', $username)).'\')) { document.location=\''.KT_SCRIPT_NAME.'?action=masquerade_user&username='.htmlspecialchars($username).'\'; }"></div>';
 			} else {
 				// Do not masquerade as ourself!
 				$aData[13]='';
@@ -268,8 +268,8 @@ switch (WT_Filter::get('action')) {
 		}
 
 		// Total filtered/unfiltered rows
-		$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-		$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
+		$iTotalDisplayRecords=KT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$iTotalRecords=KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
 		Zend_Session::writeClose();
 		header('Content-type: application/json');
@@ -282,24 +282,24 @@ switch (WT_Filter::get('action')) {
 		exit;
 
 	case 'edit':
-		$user_id	= WT_Filter::getInteger('user_id');
+		$user_id	= KT_Filter::getInteger('user_id');
 		$username	= get_user_name($user_id);
 		$realname	= getUserFullName($user_id);
 		$email		= getUserEmail($user_id);
 
 		if ($user_id === 0) {
-			$controller->setPageTitle(WT_I18N::translate('Add a new user'));
+			$controller->setPageTitle(KT_I18N::translate('Add a new user'));
 			$user_id	= '';
 			$username	= '';
 			$realname	= '';
 			$email		= '';
 		} else {
-			$controller->setPageTitle(WT_I18N::translate('Edit user') . ' - ' . $realname);
+			$controller->setPageTitle(KT_I18N::translate('Edit user') . ' - ' . $realname);
 		}
 
 		$controller
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addExternalJavascript(PASSWORDSCHECK)
 			->addInlineJavascript('
 				autocomplete();
@@ -308,7 +308,7 @@ switch (WT_Filter::get('action')) {
 					var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
 					var newIDx = "gedcomid"+idNum;
 					if (jQuery("#"+newIDx).val() === "" && jQuery("#".fieldIDx).val() !== "0") {
-						alert("' . WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
+						alert("' . KT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
 						jQuery(this).val("0");
 					}
 				});
@@ -327,47 +327,47 @@ switch (WT_Filter::get('action')) {
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 			<form name="newform" method="post" role="form" action="admin_users.php?action=edit" autocomplete="off">
-				<?php echo WT_Filter::getCsrf(); ?>
+				<?php echo KT_Filter::getCsrf(); ?>
 				<input type="hidden" name="action" value="save">
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 				<!-- REAL NAME -->
 				<div class="config_options">
 					<label for="real_name">
-						<?php echo WT_I18N::translate('Real name'); ?>
+						<?php echo KT_I18N::translate('Real name'); ?>
 					</label>
 					<div class="input_group">
-						<input type="text" id="real_name" name="real_name" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($realname); ?>" dir="auto">
+						<input type="text" id="real_name" name="real_name" required maxlength="64" value="<?php echo KT_Filter::escapeHtml($realname); ?>" dir="auto">
 						<div class="helpcontent">
-							<?php echo WT_I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
+							<?php echo KT_I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
 						</div>
 					</div>
 				</div>
 				<!-- USER NAME -->
 				<div class="config_options">
 					<label for="username">
-						<?php echo WT_I18N::translate('Username'); ?>
+						<?php echo KT_I18N::translate('Username'); ?>
 					</label>
 					<div class="input_group">
-						<input type="text" id="username" name="username" required maxlength="32" value="<?php echo WT_Filter::escapeHtml($username); ?>" dir="auto">
+						<input type="text" id="username" name="username" required maxlength="32" value="<?php echo KT_Filter::escapeHtml($username); ?>" dir="auto">
 						<div class="helpcontent">
-							<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
+							<?php echo KT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
 						</div>
 					</div>
 				</div>
 				<!-- PASSWORD -->
 				<div class="config_options">
 					<label for="pass1">
-						<?php echo WT_I18N::translate('Password'); ?>
+						<?php echo KT_I18N::translate('Password'); ?>
 					</label>
 					<div class="input_group">
-						<input type="password" id="pass1" name="pass1" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>" <?php echo $user_id ? '' : 'required'; ?> onchange="form.pass2.pattern = regex_quote(this.value);">
+						<input type="password" id="pass1" name="pass1" pattern = "<?php echo KT_REGEX_PASSWORD; ?>" placeholder="<?php echo KT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', KT_MINIMUM_PASSWORD_LENGTH, KT_I18N::number(KT_MINIMUM_PASSWORD_LENGTH)); ?>" <?php echo $user_id ? '' : 'required'; ?> onchange="form.pass2.pattern = regex_quote(this.value);">
 						<span id="result" class="input_label right">&nbsp;</span>
 						<div class="helpcontent">
 							<?php if ($user_id > 0) { ?>
-								<?php echo WT_I18N::translate('Leave password blank if you want to keep the current password.'); ?>
+								<?php echo KT_I18N::translate('Leave password blank if you want to keep the current password.'); ?>
 								<br>
 							<?php } ?>
-							<?php echo WT_I18N::translate('
+							<?php echo KT_I18N::translate('
 								Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.
 								<br>
 								Anything with 6 characters or more is acceptable, but mixed lower and uppercase characters, numbers, and special characters will increase the security of the password.
@@ -376,41 +376,41 @@ switch (WT_Filter::get('action')) {
 					</div>
 					<!-- CONFIRM PASSWORD -->
 					<label for="pass2">
-						<?php echo WT_I18N::translate('Confirm password'); ?>
+						<?php echo KT_I18N::translate('Confirm password'); ?>
 					</label>
 					<div class="input_group">
-						<input type="password" id="pass2" name="pass2" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo WT_I18N::translate('Type the password again.'); ?>" <?php echo $user_id ? '' : 'required'; ?>>
+						<input type="password" id="pass2" name="pass2" pattern = "<?php echo KT_REGEX_PASSWORD; ?>" placeholder="<?php echo KT_I18N::translate('Type the password again.'); ?>" <?php echo $user_id ? '' : 'required'; ?>>
 					</div>
 				</div>
 				<!-- EMAIL ADDRESS -->
 				<div class="config_options">
 					<label for="email">
-						<?php echo WT_I18N::translate('Email address'); ?>
+						<?php echo KT_I18N::translate('Email address'); ?>
 					</label>
 					<div class="input_group">
-						<input type="email" id="email" name="email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($email); ?>">
+						<input type="email" id="email" name="email" required maxlength="64" value="<?php echo KT_Filter::escapeHtml($email); ?>">
 						<div class="helpcontent">
-							<?php echo WT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
+							<?php echo KT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
 						</div>
 					</div>
 				</div>
 				<!-- EMAIL VERIFIED and ACCOUNT APPROVED -->
 				<div class="config_options">
 					<label for="verified">
-						<?php echo WT_I18N::translate('Account approval and email verification'); ?>
+						<?php echo KT_I18N::translate('Account approval and email verification'); ?>
 					</label>
 					<div class="input_group">
 						<div class="checkbox">
 							<label>
 								<input type="checkbox" name="verified" value="1" <?php echo get_user_setting($user_id, 'verified') ? 'checked' : ''; ?>>
-								<?php echo WT_I18N::translate('Email verified'); ?>
+								<?php echo KT_I18N::translate('Email verified'); ?>
 							</label>
 							<label>
 								<input type="checkbox" name="verified_by_admin" value="1" <?php echo get_user_setting($user_id, 'verified_by_admin') ? 'checked' : ''; ?>>
-								<?php echo WT_I18N::translate('Approved by administrator'); ?>
+								<?php echo KT_I18N::translate('Approved by administrator'); ?>
 							</label>
 							<div class="helpcontent">
-								<?php echo WT_I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically.
+								<?php echo KT_I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically.
 								<br>
 								If an administrator creates a user account, the verification email is not sent, and the email must be verified manually.
 								<br>
@@ -424,13 +424,13 @@ switch (WT_Filter::get('action')) {
 				<!-- LANGUAGE -->
 				<div class="config_options">
 					<label for="language">
-						<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Language'); ?>
+						<?php echo /* I18N: A configuration setting */ KT_I18N::translate('Language'); ?>
 					</label>
 					<div class="input_group">
 						<select id="language" name="language">
-							<?php foreach (WT_I18N::used_languages() as $code=>$name) { ?>
+							<?php foreach (KT_I18N::used_languages() as $code=>$name) { ?>
 								<option value="<?php echo $code; ?>" dir="auto" <?php echo get_user_setting($user_id, 'language') === $code ? 'selected' : ''; ?>>
-									<?php echo WT_I18N::translate($name); ?>
+									<?php echo KT_I18N::translate($name); ?>
 								</option>
 							<?php } ?>
 						</select>
@@ -439,16 +439,16 @@ switch (WT_Filter::get('action')) {
 				<!-- AUTO ACCEPT -->
 				<div class="config_options">
 					<label for="auto_accept">
-						<?php echo WT_I18N::translate('Changes'); ?>
+						<?php echo KT_I18N::translate('Changes'); ?>
 					</label>
 					<div class="input_group">
 						<div class="checkbox">
 							<label>
 								<input type="checkbox" name="auto_accept" value="1" <?php echo get_user_setting($user_id, 'auto_accept') ? 'checked' : ''; ?>>
-								<?php echo WT_I18N::translate('Automatically accept changes made by this user'); ?>
+								<?php echo KT_I18N::translate('Automatically accept changes made by this user'); ?>
 							</label>
 							<div class="helpcontent">
-								<?php echo WT_I18N::translate('Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator.'); ?>
+								<?php echo KT_I18N::translate('Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator.'); ?>
 							</div>
 						</div>
 					</div>
@@ -456,16 +456,16 @@ switch (WT_Filter::get('action')) {
 				<!-- VISIBLE ONLINE -->
 				<div class="config_options">
 					<label for="visible_online">
-						<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible online'); ?>
+						<?php echo /* I18N: A configuration setting */ KT_I18N::translate('Visible online'); ?>
 					</label>
 					<div class="input_group">
 						<div class="checkbox">
 							<label>
 								<input type="checkbox" id="visible_online" name="visible_online" value="1" <?php echo get_user_setting($user_id, 'visibleonline') ? 'checked' : ''; ?>>
-								<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible to other users when online'); ?>
+								<?php echo /* I18N: A configuration setting */ KT_I18N::translate('Visible to other users when online'); ?>
 							</label>
 							<div class="helpcontent">
-								<?php echo WT_I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.'); ?>
+								<?php echo KT_I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.'); ?>
 							</div>
 						</div>
 					</div>
@@ -473,39 +473,39 @@ switch (WT_Filter::get('action')) {
 				<!-- CONTACT METHOD -->
 				<div class="config_options">
 					<label for="contactmethod">
-						<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Preferred contact method'); ?>
+						<?php echo /* I18N: A configuration setting */ KT_I18N::translate('Preferred contact method'); ?>
 					</label>
 					<div class="input_group">
 						<?php echo edit_field_contact('contact_method', get_user_setting($user_id, 'contactmethod')); ?>
 						<div class="helpcontent">
 							<?php echo /* I18N: Help text for the “Preferred contact method” configuration setting */
-							WT_I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
+							KT_I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 						</div>
 					</div>
 				</div>
 				<!-- COMMENTS -->
 				<div class="config_options">
 					<label for="comment">
-						<?php echo WT_I18N::translate('Administrator comments on user'); ?>
+						<?php echo KT_I18N::translate('Administrator comments on user'); ?>
 					</label>
 					<div class="input_group">
-						<textarea id="comment" name="comment" rows="5" maxlength="255"><?php echo WT_Filter::escapeHtml(get_user_setting($user_id, 'comment')); ?></textarea>
+						<textarea id="comment" name="comment" rows="5" maxlength="255"><?php echo KT_Filter::escapeHtml(get_user_setting($user_id, 'comment')); ?></textarea>
 					</div>
 				</div>
 				<!-- ADMIN NOTIFICATION OPTIONS -->
-				<?php if (WT_USER_IS_ADMIN) { ?>
+				<?php if (KT_USER_IS_ADMIN) { ?>
 					<div class="config_options">
 						<label for="verified">
-							<?php echo WT_I18N::translate('Notification options'); ?>
+							<?php echo KT_I18N::translate('Notification options'); ?>
 						</label>
 						<div class="input_group">
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" name="notify_clipping" value="1" <?php echo get_user_setting($user_id, 'notify_clipping', 1) ? 'checked' : ''; ?>>
-									<?php echo WT_I18N::translate('Clippings cart downloads'); ?>
+									<?php echo KT_I18N::translate('Clippings cart downloads'); ?>
 								</label>
 								<div class="helpcontent">
-									<?php echo WT_I18N::translate('When a user downloads a GEDCOM file created in the Clippings cart the site administrator will be notified by mail if this option is selected.'); ?>
+									<?php echo KT_I18N::translate('When a user downloads a GEDCOM file created in the Clippings cart the site administrator will be notified by mail if this option is selected.'); ?>
 								</div>
 							</div>
 						</div>
@@ -513,78 +513,78 @@ switch (WT_Filter::get('action')) {
 				<?php } ?>
 				<!-- FAMILY TREEs - ACCESS and SETTINGS -->
 				<div id="access">
-					<h3><?php echo WT_I18N::translate('Family tree access and settings'); ?></h3>
+					<h3><?php echo KT_I18N::translate('Family tree access and settings'); ?></h3>
 					<div class="helpcontent">
-						<h4><?php echo WT_I18N::translate('Help for family tree access settings'); ?></h4>
+						<h4><?php echo KT_I18N::translate('Help for family tree access settings'); ?></h4>
 						<div class="help_label">
-							<label><?php echo WT_I18N::translate('Default individual'); ?></label>
+							<label><?php echo KT_I18N::translate('Default individual'); ?></label>
 							<span>
-								<?php echo WT_I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
+								<?php echo KT_I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
 							</span>
 						</div>
 						<div class="help_label">
-							<label><?php echo WT_I18N::translate('Individual record'); ?></label>
+							<label><?php echo KT_I18N::translate('Individual record'); ?></label>
 							<span>
-								<?php echo WT_I18N::translate('Link this user to an individual in the family tree.'); ?>
+								<?php echo KT_I18N::translate('Link this user to an individual in the family tree.'); ?>
 							</span>
 						</div>
 						<div class="help_label">
-							<label><?php echo WT_I18N::translate('Roles'); ?></label>
+							<label><?php echo KT_I18N::translate('Roles'); ?></label>
 							<span>
-								<?php echo WT_I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
+								<?php echo KT_I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
 							</span>
 						</div>
 						<div class="indent">
 							<div class="help_label">
-								<label><?php echo WT_I18N::translate('Visitor'); ?></label>
+								<label><?php echo KT_I18N::translate('Visitor'); ?></label>
 								<span>
-									<?php echo WT_I18N::translate('Everybody has this role, including visitors to the website and search engines.'); ?>
+									<?php echo KT_I18N::translate('Everybody has this role, including visitors to the website and search engines.'); ?>
 								</span>
 							</div>
 							<div class="help_label">
-								<label><?php echo WT_I18N::translate('Member'); ?></label>
+								<label><?php echo KT_I18N::translate('Member'); ?></label>
 								<span>
-									<?php echo WT_I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.'); ?>
+									<?php echo KT_I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.'); ?>
 								</span>
 							</div>
 							<div class="help_label">
-								<label><?php echo WT_I18N::translate('Editor'); ?></label>
+								<label><?php echo KT_I18N::translate('Editor'); ?></label>
 								<span>
-									<?php echo WT_I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
+									<?php echo KT_I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
 								</span>
 							</div>
 							<div class="help_label">
-								<label><?php echo WT_I18N::translate('Moderator'); ?></label>
+								<label><?php echo KT_I18N::translate('Moderator'); ?></label>
 								<span>
-									<?php echo WT_I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.'); ?>
+									<?php echo KT_I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.'); ?>
 								</span>
 							</div>
 							<div class="help_label">
-								<label><?php echo WT_I18N::translate('Manager'); ?></label>
+								<label><?php echo KT_I18N::translate('Manager'); ?></label>
 								<span>
-									<?php echo WT_I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.'); ?>
+									<?php echo KT_I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.'); ?>
 								</span>
 							</div>
 							<div class="help_label">
-								<label><?php echo WT_I18N::translate('Administrator'); ?></label>
+								<label><?php echo KT_I18N::translate('Administrator'); ?></label>
 								<span>
-									<?php echo WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.'); ?>
+									<?php echo KT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.'); ?>
 								</span>
 							</div>
 						</div>
 						<div class="help_label">
-							<label><?php echo WT_I18N::translate('Restrict to immediate family'); ?></label>
+							<label><?php echo KT_I18N::translate('Restrict to immediate family'); ?></label>
 							<span>
-								<?php echo WT_I18N::translate('Where a user is associated with an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.'); ?>
-								<?php echo WT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
-								<?php echo WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
+								<?php echo KT_I18N::translate('Where a user is associated with an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.'); ?>
+								<?php echo KT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
+								<?php echo KT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
 							</span>
 						</div>
 					</div>
 					<!-- ADMINISTRATOR -->
 					<div class="config_options">
 						<label for="admin">
-							<?php echo WT_I18N::translate('Administration role'); ?>
+							<?php echo KT_I18N::translate('Administration role'); ?>
 						</label>
 						<div class="input_group">
 							<div class="checkbox">
@@ -592,9 +592,9 @@ switch (WT_Filter::get('action')) {
 									<input
 										type="checkbox" id="admin" name="canadmin" value="1"
 										<?php echo get_user_setting($user_id, 'canadmin') ? 'checked' : ''; ?>
-										<?php echo $user_id === WT_USER_ID ? 'disabled' : ''; ?>
+										<?php echo $user_id === KT_USER_ID ? 'disabled' : ''; ?>
 									>
-									<?php echo WT_I18N::translate('Administrator'); ?>
+									<?php echo KT_I18N::translate('Administrator'); ?>
 								</label>
 							</div>
 						</div>
@@ -604,24 +604,24 @@ switch (WT_Filter::get('action')) {
 						<table>
 							<thead>
 								<tr>
-									<th><?php echo WT_I18N::translate('Family tree'); ?></th>
-									<th><?php echo WT_I18N::translate('Default individual'); ?></th>
-									<th><?php echo WT_I18N::translate('Individual record'); ?></th>
-									<th><?php echo WT_I18N::translate('Role'); ?></th>
-									<th><?php echo WT_I18N::translate('Restrict to immediate family'); ?></th>
+									<th><?php echo KT_I18N::translate('Family tree'); ?></th>
+									<th><?php echo KT_I18N::translate('Default individual'); ?></th>
+									<th><?php echo KT_I18N::translate('Individual record'); ?></th>
+									<th><?php echo KT_I18N::translate('Role'); ?></th>
+									<th><?php echo KT_I18N::translate('Restrict to immediate family'); ?></th>
 							</thead>
 							<tbody>
-								<?php foreach (WT_Tree::getAll() as $tree): ?>
+								<?php foreach (KT_Tree::getAll() as $tree): ?>
 									<tr>
 										<td><?php echo $tree->tree_title_html; ?></td>
 										<!-- PEDIGREE ROOT PERSON -->
 										<td>
 											<?php $varname = 'rootid' . $tree->tree_id; ?>
-											<input data-autocomplete-type="INDI" data-autocomplete-ged="<?php echo $tree->tree_name_html; ?>" type="text" size="12" name="<?php echo $varname; ?>" id="<?php echo $varname; ?>" value="<?php echo WT_Filter::escapeHtml($tree->userPreference($user_id, 'rootid')); ?>">
+											<input data-autocomplete-type="INDI" data-autocomplete-ged="<?php echo $tree->tree_name_html; ?>" type="text" size="12" name="<?php echo $varname; ?>" id="<?php echo $varname; ?>" value="<?php echo KT_Filter::escapeHtml($tree->userPreference($user_id, 'rootid')); ?>">
 										<!-- GEDCOM INDI Record ID -->
 										<td>
 											<?php $varname = 'gedcomid' . $tree->tree_id; ?>
-											<input data-autocomplete-type="INDI" data-autocomplete-ged="<?php echo $tree->tree_name_html; ?>" type="text" size="12" name="<?php echo $varname; ?>" id="<?php echo $varname; ?>" value="<?php echo WT_Filter::escapeHtml($tree->userPreference($user_id, 'gedcomid')); ?>">
+											<input data-autocomplete-type="INDI" data-autocomplete-ged="<?php echo $tree->tree_name_html; ?>" type="text" size="12" name="<?php echo $varname; ?>" id="<?php echo $varname; ?>" value="<?php echo KT_Filter::escapeHtml($tree->userPreference($user_id, 'gedcomid')); ?>">
 										</td>
 										<!-- ROLE -->
 										<td>
@@ -640,7 +640,7 @@ switch (WT_Filter::get('action')) {
 											<select name="<?php echo $varname; ?>" id="<?php echo $varname; ?>" class="relpath" style="width: 200px;">
 												<?php for ($n = 0; $n <= 10; ++$n): ?>
 													<option value="<?php echo $n; ?>" <?php echo $tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : ''; ?>>
-													<?php echo $n ? $n : WT_I18N::translate('No'); ?>
+													<?php echo $n ? $n : KT_I18N::translate('No'); ?>
 												</option>
 												<?php endfor; ?>
 											</select>
@@ -654,7 +654,7 @@ switch (WT_Filter::get('action')) {
 				<p class ="clearfloat">
 					<button class="btn btn-primary" type="submit">
 					<i class="fa fa-floppy-o"></i>
-						<?php echo WT_I18N::translate('save'); ?>
+						<?php echo KT_I18N::translate('save'); ?>
 					</button>
 				</p>
 
@@ -672,7 +672,7 @@ switch (WT_Filter::get('action')) {
 		// Check for idle users
 		//if (!isset($month)) $month = 1;
 		$month = safe_GET_integer('month', 1, 12, 6);
-		echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
+		echo "<tr><th>", KT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
 		echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
 		for ($i=1; $i<=12; $i++) {
 			echo "<option value=\"admin_users.php?action=cleanup&amp;month=$i\"";
@@ -681,7 +681,7 @@ switch (WT_Filter::get('action')) {
 		}
 		echo "</select></td></tr>";
 		?>
-		<tr><th colspan="2"><?php echo WT_I18N::translate('Options:'); ?></th></tr>
+		<tr><th colspan="2"><?php echo KT_I18N::translate('Options:'); ?></th></tr>
 		<?php
 		// Check users not logged in too long
 		$ucnt = 0;
@@ -692,7 +692,7 @@ switch (WT_Filter::get('action')) {
 			else
 				$datelogin = (int)get_user_setting($user_id, 'sessiontime');
 			if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
-				?><tr><td><?php echo $username, " - <p>", $userName, "</p>", WT_I18N::translate('User\'s account has been inactive too long: ');
+				?><tr><td><?php echo $username, " - <p>", $userName, "</p>", KT_I18N::translate('User\'s account has been inactive too long: ');
 				echo timestamp_to_gedcom_date($datelogin)->Display(false);
 				$ucnt++;
 				?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $username); ?>" value="1"></td></tr><?php
@@ -703,7 +703,7 @@ switch (WT_Filter::get('action')) {
 		foreach (get_all_users() as $user_id=>$username) {
 			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
 				$userName = getUserFullName($user_id);
-				?><tr><td><?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User didn\'t verify within 7 days.');
+				?><tr><td><?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::translate('User didn\'t verify within 7 days.');
 				$ucnt++;
 				?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $username); ?>" value="1"></td></tr><?php
 			}
@@ -713,20 +713,20 @@ switch (WT_Filter::get('action')) {
 		foreach (get_all_users() as $user_id=>$username) {
 			if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
 				$userName = getUserFullName($user_id);
-				?><tr><td><?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
+				?><tr><td><?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::translate('User not verified by administrator.');
 				?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $username); ?>" value="1"></td></tr><?php
 				$ucnt++;
 			}
 		}
 		if ($ucnt == 0) {
 			echo "<tr><td class=\"accepted\" colspan=\"2\">";
-			echo WT_I18N::translate('Nothing found to cleanup'), "</td></tr>";
+			echo KT_I18N::translate('Nothing found to cleanup'), "</td></tr>";
 		} ?>
 		</table>
 		<p>
 		<?php
 		if ($ucnt >0) {
-			?><input type="submit" value="<?php echo WT_I18N::translate('continue'); ?>">&nbsp;&nbsp;<?php
+			?><input type="submit" value="<?php echo KT_I18N::translate('continue'); ?>">&nbsp;&nbsp;<?php
 		} ?>
 		</p>
 		</form><?php
@@ -738,27 +738,27 @@ switch (WT_Filter::get('action')) {
 			if (safe_POST($var)=='1') {
 				delete_user($user_id);
 				AddToLog("deleted user ->{$username}<-", 'auth');
-				echo WT_I18N::translate('Deleted user: '); echo $username, "<br>";
+				echo KT_I18N::translate('Deleted user: '); echo $username, "<br>";
 			}
 		}
 		break;
 
 	default:
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-			->addExternalJavascript(WT_JQUERY_DT_HTML5)
-			->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+			->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(KT_JQUERY_DT_HTML5)
+			->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 			->addInlineJavascript('
 				jQuery("#list").dataTable({
 					dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-					' . WT_I18N::datatablesI18N() . ',
+					' . KT_I18N::datatablesI18N() . ',
 					buttons: [{extend: "csv", exportOptions: {columns: [1,2,3,5,7] }}],
 					jQueryUI: true,
 					stateSave: true,
 					stateDuration: -1,
 					processing: true,
 					serverSide: true,
-					"sAjaxSource" : " '. WT_SCRIPT_NAME . '?action=loadrows",
+					"sAjaxSource" : " '. KT_SCRIPT_NAME . '?action=loadrows",
 					autoWidth: false,
 					pagingType: "full_numbers",
 					sorting: [[2,"asc"]],
@@ -779,26 +779,26 @@ switch (WT_Filter::get('action')) {
 						/* 13 masquerade        */ { sortable:false, class:"center" }
 					],
 				})
-				.fnFilter("' . WT_Filter::get('filter') . '"); // View the details of a newly created user
+				.fnFilter("' . KT_Filter::get('filter') . '"); // View the details of a newly created user
 			')
 			->pageHeader();
 			?>
 		<table id="list">
 			<thead>
 				<tr>
-					<th><?php echo WT_I18N::translate('Edit'); ?></th>
+					<th><?php echo KT_I18N::translate('Edit'); ?></th>
 					<th>user-id </th>
-					<th><?php echo WT_I18N::translate('Username'); ?></th>
-					<th><?php echo WT_I18N::translate('Real name'); ?></th>
-					<th><?php echo WT_I18N::translate('Email'); ?></th>
-					<th><?php echo WT_I18N::translate('Language'); ?></th>
+					<th><?php echo KT_I18N::translate('Username'); ?></th>
+					<th><?php echo KT_I18N::translate('Real name'); ?></th>
+					<th><?php echo KT_I18N::translate('Email'); ?></th>
+					<th><?php echo KT_I18N::translate('Language'); ?></th>
 					<th>date_registered </th>
-					<th><?php echo WT_I18N::translate('Date registered'); ?></th>
+					<th><?php echo KT_I18N::translate('Date registered'); ?></th>
 					<th>last_login </th>
-					<th><?php echo WT_I18N::translate('Last logged in'); ?></th>
-					<th><?php echo WT_I18N::translate('Verified'); ?></th>
-					<th><?php echo WT_I18N::translate('Approved'); ?></th>
-					<th colspan="2"><?php echo WT_I18N::translate('Options'); ?></th>
+					<th><?php echo KT_I18N::translate('Last logged in'); ?></th>
+					<th><?php echo KT_I18N::translate('Verified'); ?></th>
+					<th><?php echo KT_I18N::translate('Approved'); ?></th>
+					<th colspan="2"><?php echo KT_I18N::translate('Options'); ?></th>
 				</tr>
 			</thead>
 			<tbody>

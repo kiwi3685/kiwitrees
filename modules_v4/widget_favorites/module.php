@@ -21,20 +21,20 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
-	// Extend class WT_Module
+class widget_favorites_KT_Module extends KT_Module implements KT_Module_Widget {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Favorites');
+		return /* I18N: Name of a module */ KT_I18N::translate('Favorites');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Favorites” module */ WT_I18N::translate('Display and manage a user’s favorite pages.');
+		return /* I18N: Description of the “Favorites” module */ KT_I18N::translate('Display and manage a user’s favorite pages.');
 	}
 
 	// Add a favorite to the user-favorites
@@ -44,10 +44,10 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		switch($modAction) {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record = WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
-			if (WT_USER_ID && $record->canDisplayName()) {
+			$record = KT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+			if (KT_USER_ID && $record->canDisplayName()) {
 				self::addFavorite(array(
-					'user_id'  =>WT_USER_ID,
+					'user_id'  =>KT_USER_ID,
 					'gedcom_id'=>$record->getGedId(),
 					'gid'      =>$record->getXref(),
 					'type'     =>$record->getType(),
@@ -55,13 +55,13 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 					'note'     =>null,
 					'title'    =>null,
 				));
-				WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
+				KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
 			}
 			break;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $controller;
 
@@ -81,15 +81,15 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		case 'addfav':
 			$gid      = safe_GET('gid');
 			$favnote  = safe_GET('favnote');
-			$url      = safe_GET('url', WT_REGEX_URL);
+			$url      = safe_GET('url', KT_REGEX_URL);
 			$favtitle = safe_GET('favtitle');
 
 			if ($gid) {
-				$record = WT_GedcomRecord::getInstance($gid);
+				$record = KT_GedcomRecord::getInstance($gid);
 				if ($record && $record->canDisplayDetails()) {
 					self::addFavorite(array(
-						'user_id'  =>WT_USER_ID,
-						'gedcom_id'=>WT_GED_ID,
+						'user_id'  =>KT_USER_ID,
+						'gedcom_id'=>KT_GED_ID,
 						'gid'      =>$record->getXref(),
 						'type'     =>$record->getType(),
 						'url'      =>null,
@@ -99,8 +99,8 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 				}
 			} elseif ($url) {
 				self::addFavorite(array(
-					'user_id'  =>WT_USER_ID,
-					'gedcom_id'=>WT_GED_ID,
+					'user_id'  =>KT_USER_ID,
+					'gedcom_id'=>KT_GED_ID,
 					'gid'      =>null,
 					'type'     =>'URL',
 					'url'      =>$url,
@@ -118,16 +118,16 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
 
-		$userfavs = $this->getFavorites(WT_USER_ID);
+		$userfavs = $this->getFavorites(KT_USER_ID);
 		if (!is_array($userfavs)) $userfavs = array();
 
 		$id		= $this->getName() . $widget_id;
 		$class	= $this->getName() . '_block';
 		$title	= $this->getTitle();
 
-		if (WT_USER_ID) {
+		if (KT_USER_ID) {
 			$controller
-				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+				->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 		}
 
@@ -136,15 +136,15 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$removeFavourite = '<a href="' . $url . '&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this?').'\');">'.WT_I18N::translate('Remove').'</a> ';
+				$removeFavourite = '<a href="' . $url . '&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.KT_I18N::translate('Are you sure you want to remove this?').'\');">'.KT_I18N::translate('Remove').'</a> ';
 				if ($favorite['type']=='URL') {
 					$content .= '<div id="boxurl'.$key.'.0" class="person_box">';
-					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
+					if ($ctype=='user' || KT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 					$content .= '<a href="'.$favorite['url'].'"><b>'.$favorite['title'].'</b></a>';
 					$content .= '<br>'.$favorite['note'];
 					$content .= '</div>';
 				} else {
-					$record=WT_GedcomRecord::getInstance($favorite['gid']);
+					$record=KT_GedcomRecord::getInstance($favorite['gid']);
 					if ($record && $record->canDisplayDetails()) {
 						if ($record->getType()=='INDI') {
 							$content .= '<div id="box'.$favorite["gid"].'.0" class="person_box action_header';
@@ -159,7 +159,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 									break;
 							}
 							$content .= '">';
-							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
+							if ($ctype=="user" || KT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 							ob_start();
 							print_pedigree_person($record, $style, 1, $key);
 							$content .= ob_get_clean();
@@ -167,7 +167,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 							$content .= '</div>';
 						} else {
 							$content .= '<div id="box'.$favorite['gid'].'.0" class="person_box">';
-							if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
+							if ($ctype=='user' || KT_USER_GEDCOM_ADMIN) {
 								$content .= $removeFavourite;
 							}
 							$content .= $record->format_list('span');
@@ -178,20 +178,20 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 				}
 			}
 		}
-		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
+		if ($ctype=='user' || KT_USER_GEDCOM_ADMIN) {
 			$uniqueID = (int)(microtime(true) * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
 			$content .= '
 				<div class="add_fav_head">
-					<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>
+					<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.KT_I18N::translate('Add a favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>
 				</div>
 				<div id="add_fav'.$uniqueID.'" style="display: none;">' . $url . '
 					<form name="addfavform" method="get" action="' . $url . '">
 						<input type="hidden" name="action" value="addfav">
 						<input type="hidden" name="ctype" value="'.$ctype.'">
-						<input type="hidden" name="ged" value="'.WT_GEDCOM.'">
+						<input type="hidden" name="ged" value="'.KT_GEDCOM.'">
 						<div class="add_fav_ref">
 							<input type="radio" name="fav_category" value="record" checked="checked" onclick="jQuery(\'#gid'.$uniqueID.'\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">
-							<label for="gid">'.WT_I18N::translate('Enter a Person, Family, or Source ID').'</label><br>
+							<label for="gid">'.KT_I18N::translate('Enter a Person, Family, or Source ID').'</label><br>
 							<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">'
 							. print_findindi_link('gid'.$uniqueID)
 							. print_findfamily_link('gid'.$uniqueID)
@@ -202,18 +202,18 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 						</div>
 						<div class="add_fav_url">
 							<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid'.$uniqueID.'\').attr(\'disabled\',\'disabled\').val(\'\');">
-							<input type="text" name="url" id="url" size="20" value="" placeholder="'.WT_Gedcom_Tag::getLabel('URL').'" disabled="disabled">
-							<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="'.WT_I18N::translate('Title').'" disabled="disabled">
-							<p>'.WT_I18N::translate('Enter an optional note about this favorite').'</p>
+							<input type="text" name="url" id="url" size="20" value="" placeholder="'.KT_Gedcom_Tag::getLabel('URL').'" disabled="disabled">
+							<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="'.KT_I18N::translate('Title').'" disabled="disabled">
+							<p>'.KT_I18N::translate('Enter an optional note about this favorite').'</p>
 							<textarea name="favnote" rows="6" cols="50"></textarea>
 						</div>
-						<input type="submit" value="'.WT_I18N::translate('Add').'">
+						<input type="submit" value="'.KT_I18N::translate('Add').'">
 					</form>
 				</div>';
 		}
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -224,32 +224,32 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return false;
 	}
 
-	// Implement WT_Module_Widget
+	// Implement KT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 80;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($widget_id) {
 		return false;
 	}
@@ -257,7 +257,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Delete a favorite from the database
 	public static function deleteFavorite($favorite_id) {
 		return (bool)
-			WT_DB::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
+			KT_DB::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
 			->execute(array($favorite_id));
 	}
 
@@ -286,13 +286,13 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 			$sql.=" AND user_id IS NULL";
 		}
 
-		if (WT_DB::prepare($sql)->execute($vars)->fetchOne()) {
+		if (KT_DB::prepare($sql)->execute($vars)->fetchOne()) {
 			return false;
 		}
 
 		//-- add the favorite to the database
 		return (bool)
-			WT_DB::prepare("INSERT INTO `##favorite` (user_id, gedcom_id, xref, favorite_type, url, title, note) VALUES (? ,? ,? ,? ,? ,? ,?)")
+			KT_DB::prepare("INSERT INTO `##favorite` (user_id, gedcom_id, xref, favorite_type, url, title, note) VALUES (? ,? ,? ,? ,? ,? ,?)")
 				->execute(array($favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']));
 	}
 
@@ -301,17 +301,17 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		self::updateSchema(); // make sure the favorites table has been created
 
 		return
-			WT_DB::prepare(
+			KT_DB::prepare(
 				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url".
 				" FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
-			->execute(array($user_id, WT_GED_ID))
+			->execute(array($user_id, KT_GED_ID))
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {
-			WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
+			KT_DB::updateSchema(KT_ROOT.KT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
 			die($ex);

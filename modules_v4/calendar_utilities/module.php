@@ -21,29 +21,29 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_List {
+class calendar_utilities_KT_Module extends KT_Module implements KT_Module_Config, KT_Module_List {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Calendar utilities');
+		return /* I18N: Name of a module */ KT_I18N::translate('Calendar utilities');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the calendar utilities module */ WT_I18N::translate('A selection of calendar utility tools');
+		return /* I18N: Description of the calendar utilities module */ KT_I18N::translate('A selection of calendar utility tools');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -55,7 +55,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 		}
 	}
 
-	// Implement WT_Module_List
+	// Implement KT_Module_List
 	public function getListMenus() {
 		global $controller;
 		$menus = array();
@@ -66,7 +66,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 			}
 		}
 		if ($i > 0) {
-			$menu  = new WT_Menu(
+			$menu  = new KT_Menu(
 				$this->getTitle(),
 				'module.php?mod=' . $this->getName() . '&amp;mod_action=show',
 				'menu-calendar_utilities'
@@ -76,16 +76,16 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 		return $menus;
 	}
 
-	// Implement WT_Module_Config
+	// Implement KT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
 	private function show() {
 		global $controller;
-		$controller = new WT_Controller_Page();
+		$controller = new KT_Controller_Page();
 		$controller
-			->restrictAccess(WT_Module::isActiveList(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
+			->restrictAccess(KT_Module::isActiveList(KT_GED_ID, $this->getName(), KT_USER_ACCESS_LEVEL))
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('jQuery("#calendar_tabs").tabs();');
@@ -97,9 +97,9 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 					<ul>';
 						foreach ($this->list_plugins() as $plugin_file) {
 							if ( get_module_setting($this->getName(), $plugin_file) == '1'){
-								$pluginfile = implode('', file(WT_MODULES_DIR.$this->getName() . '/plugins/' . $plugin_file . '.php'));
+								$pluginfile = implode('', file(KT_MODULES_DIR.$this->getName() . '/plugins/' . $plugin_file . '.php'));
 								if (preg_match('/plugin_name\s*=\s*"(.*)";/', $pluginfile, $match)) {
-									$plugin_title = WT_I18N::translate($match[1]);
+									$plugin_title = KT_I18N::translate($match[1]);
 								}
 								$html .=
 									'<li>'.
@@ -115,7 +115,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 						foreach ($this->list_plugins() as $plugin_file) {
 							if (get_module_setting($this->getName(), $plugin_file) == '1') {
 								$html .= '<div id="' . $plugin_file . '">';
-									include_once WT_MODULES_DIR . $this->getName() . '/plugins/' . $plugin_file . '.php';
+									include_once KT_MODULES_DIR . $this->getName() . '/plugins/' . $plugin_file . '.php';
 								$html .= '</div>';
 							}
 						}
@@ -128,18 +128,18 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 	}
 
 	private function config() {
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		$controller = new WT_Controller_Page();
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
+		$controller = new KT_Controller_Page();
 		$controller
-			->restrictAccess(WT_USER_IS_ADMIN)
+			->restrictAccess(KT_USER_IS_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
-		$action = WT_Filter::post('action');
+		$action = KT_Filter::post('action');
 
 		if ($action == 'update') {
 			foreach ($this->list_plugins() as $plugin_file) {
-				set_module_setting($this->getName(), $plugin_file, WT_Filter::post('NEW_'.$plugin_file));
+				set_module_setting($this->getName(), $plugin_file, KT_Filter::post('NEW_'.$plugin_file));
 			}
 			AddToLog('calendar_utilities config updated', 'config');
 		}
@@ -147,13 +147,13 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 		echo '
 			<div id="calendar_utilities">
 				<h2>', $controller->getPageTitle(), '</h2>
-				<h3>', WT_I18N::translate('Select the utilities you want to display'), '</h3>
+				<h3>', KT_I18N::translate('Select the utilities you want to display'), '</h3>
 				<form method="post" name="utilities" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">';
 					foreach ($this->list_plugins() as $plugin_file) {
-						$pluginfile = implode('', file(WT_MODULES_DIR . $this->getName() . '/plugins/' . $plugin_file.'.php'));
+						$pluginfile = implode('', file(KT_MODULES_DIR . $this->getName() . '/plugins/' . $plugin_file.'.php'));
 						if (preg_match('/plugin_name\s*=\s*"(.*)";/', $pluginfile, $match)) {
-							$plugin_title = WT_I18N::translate($match[1]);
+							$plugin_title = KT_I18N::translate($match[1]);
 						}
 						echo '
 						<div class="container">
@@ -164,7 +164,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 					echo '
 						<button class="btn btn-primary save" type="submit">
 							<i class="fa fa-floppy-o"></i>'.
-							WT_I18N::translate('Save').'
+							KT_I18N::translate('Save').'
 						</button>
 				</form>
 			</div >';

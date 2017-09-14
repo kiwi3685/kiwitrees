@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- if (!defined('WT_KIWITREES')) {
+ if (!defined('KT_KIWITREES')) {
  	header('HTTP/1.0 403 Forbidden');
  	exit;
  }
@@ -40,19 +40,19 @@
 ');
 
 //get the widgets list
-$widgets = WT_Module::getActiveWidgets();
+$widgets = KT_Module::getActiveWidgets();
 
 echo '<div id="widget-bar">';
 	foreach ($widgets as $module_name=>$module) {
-		$class_name = $module_name.'_WT_Module';
+		$class_name = $module_name.'_KT_Module';
 		$module = new $class_name;
-		$widget = WT_DB::prepare(
+		$widget = KT_DB::prepare(
 			"SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?"
 		)->execute(array($module_name))->fetchOneRow();
 		if (!$widget) {
-			WT_DB::prepare("INSERT INTO `##block` (module_name, block_order) VALUES (?, 0)")
+			KT_DB::prepare("INSERT INTO `##block` (module_name, block_order) VALUES (?, 0)")
 				->execute(array($module_name));
-			$widget = WT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?")
+			$widget = KT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?")
 				->execute(array($module_name))->fetchOneRow();
 		}
 

@@ -21,40 +21,40 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'ancestry.php');
+define('KT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Ancestry();
+$controller = new KT_Controller_Ancestry();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
 <div id="ancestry-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+		<input type="hidden" name="ged" value="<?php echo KT_GEDCOM; ?>">
 		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 		<input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>">
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Individual'); ?>
+					<?php echo KT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
 				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Box width'); ?>
+					<?php echo KT_I18N::translate('Box width'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>"> <b>%</b>
 				</td>
 				<td rowspan="2" class="descriptionbox">
-					<?php echo WT_I18N::translate('Layout'); ?>
+					<?php echo KT_I18N::translate('Layout'); ?>
 				</td>
 				<td rowspan="2" class="optionbox">
 					<input type="radio" name="chart_style" value="0"
@@ -63,13 +63,13 @@ $controller
 							echo ' checked="checked"';
 						}
 						echo ' onclick="statusDisable(\'cousins\');';
-						echo '">', WT_I18N::translate('List');
+						echo '">', KT_I18N::translate('List');
 						echo '<br><input type="radio" name="chart_style" value="1"';
 						if ($controller->chart_style==1) {
 							echo ' checked="checked"';
 						}
 						echo ' onclick="statusEnable(\'cousins\');';
-						echo '">', WT_I18N::translate('Booklet');
+						echo '">', KT_I18N::translate('Booklet');
 					?>
 					<br>
 					<?php
@@ -84,28 +84,28 @@ $controller
 							echo '0" onclick="document.people.show_cousins.value=\'1\';"';
 						}
 						echo '>';
-						echo WT_I18N::translate('Show cousins');
+						echo KT_I18N::translate('Show cousins');
 						echo '<br><input type="radio" name="chart_style" value="2"';
 						if ($controller->chart_style==2) {
 							echo ' checked="checked" ';
 						}
 						echo ' onclick="statusDisable(\'cousins\');"';
-						echo '>', WT_I18N::translate('Individuals');
+						echo '>', KT_I18N::translate('Individuals');
 						echo '<br><input type="radio" name="chart_style" value="3"';
 						echo ' onclick="statusDisable(\'cousins\');"';
 						if ($controller->chart_style==3) {
 							echo ' checked="checked" ';
 						}
-						echo '>', WT_I18N::translate('Families');
+						echo '>', KT_I18N::translate('Families');
 					?>
 				</td>
 				<td rowspan="2" class="facts_label03">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+					<input type="submit" value="<?php echo KT_I18N::translate('View'); ?>">
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Generations'); ?>
+					<?php echo KT_I18N::translate('Generations'); ?>
 				</td>
 				<td class="optionbox">
 					<select name="PEDIGREE_GENERATIONS">
@@ -115,13 +115,13 @@ $controller
 								if ($i==$OLD_PGENS) {
 									echo ' selected="selected"';
 								}
-									echo '>', WT_I18N::number($i), '</option>';
+									echo '>', KT_I18N::number($i), '</option>';
 								}
 						?>
 					</select>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show Details'); ?>
+					<?php echo KT_I18N::translate('Show Details'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';'; } else { echo '0" onclick="document.people.show_full.value=\'1\';'; } ?>">
@@ -156,7 +156,7 @@ case 1:
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	foreach ($treeid as $i=>$pid) {
 		if ($pid) {
-			$person=WT_Person::getInstance($pid);
+			$person=KT_Person::getInstance($pid);
 			if ($person) {
 				foreach ($person->getChildFamilies() as $family) {
 					print_sosa_family($family->getXref(), $pid, $i);
@@ -178,7 +178,7 @@ case 3:
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	$famlist=array();
 	foreach ($treeid as $pid) {
-		$person=WT_Person::getInstance($pid);
+		$person=KT_Person::getInstance($pid);
 		if (is_null($person)) {
 			continue;
 		}

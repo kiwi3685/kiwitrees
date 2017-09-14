@@ -21,35 +21,35 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
-	// Extend WT_Module
+class sources_tab_KT_Module extends KT_Module implements KT_Module_Tab {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Sources');
+		return /* I18N: Name of a module */ KT_I18N::translate('Sources');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Sources” module */ WT_I18N::translate('A tab showing the sources linked to an individual.');
+		return /* I18N: Description of the “Sources” module */ KT_I18N::translate('A tab showing the sources linked to an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
 		return 30;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
 	protected $sourceCount = null;
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getTabContent() {
 		global $NAV_SOURCES, $controller;
 
@@ -59,7 +59,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<input id="checkbox_sour2" type="checkbox">
-					<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
+					<label for="checkbox_sour2"><?php echo KT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 				</td>
 			</tr>
 			<?php
@@ -74,14 +74,14 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			foreach ($controller->getIndiFacts() as $event) {
 				print_main_sources($event, 2);
 			}
-			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Source citations for this individual.')."</td></tr>";
+			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".KT_I18N::translate('There are no Source citations for this individual.')."</td></tr>";
 			//-- New Source Link
 			if ($controller->record->canEdit()) {
 			?>
 				<tr>
-					<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('SOUR'); ?></td>
+					<td class="facts_label"><?php echo KT_Gedcom_Tag::getLabel('SOUR'); ?></td>
 					<td class="facts_value">
-					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;"><?php echo WT_I18N::translate('Add a source citation'); ?></a>
+					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;"><?php echo KT_I18N::translate('Add a source citation'); ?></a>
 					<?php echo help_link('add_source'); ?>
 					</td>
 				</tr>
@@ -109,22 +109,22 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $this->sourceCount;
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_source_count()>0;
+		return KT_USER_CAN_EDIT || $this->get_source_count()>0;
 	}
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function isGrayedOut() {
 		return $this->get_source_count()==0;
 	}
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}

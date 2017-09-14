@@ -21,28 +21,28 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'site-offline.php');
+define('KT_SCRIPT_NAME', 'site-offline.php');
 
 // This script does not load session.php.
 // session.php won't run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
-define('WT_KIWITREES', 'kiwitrees');
-define('WT_ROOT', '');
-define('WT_GED_ID', 0);
-define('WT_USER_ID', 0);
-define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
-$WT_SESSION=new stdClass();
-$WT_SESSION->locale='';
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
+define('KT_KIWITREES', 'kiwitrees');
+define('KT_ROOT', '');
+define('KT_GED_ID', 0);
+define('KT_USER_ID', 0);
+define('KT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
+$KT_SESSION=new stdClass();
+$KT_SESSION->locale='';
+// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and KT_XXXXX classes
+set_include_path(KT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
+Zend_Loader_Autoloader::getInstance()->registerNamespace('KT_');
 require 'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_utf-8.php';
-define('WT_LOCALE', WT_I18N::init());
+require KT_ROOT.'includes/functions/functions_utf-8.php';
+define('KT_LOCALE', KT_I18N::init());
 
-if (file_exists(WT_DATA_DIR.'offline.txt')) {
-	$offline_txt=file_get_contents(WT_DATA_DIR.'offline.txt');
+if (file_exists(KT_DATA_DIR.'offline.txt')) {
+	$offline_txt=file_get_contents(KT_DATA_DIR.'offline.txt');
 } else {
 	// offline.txt has gone - we're back online!
 	header('Location: index.php');
@@ -54,10 +54,10 @@ header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 
 echo
 	'<!DOCTYPE html>',
-	'<html ', WT_I18N::html_markup(), '>',
+	'<html ', KT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
-	'<title>', WT_KIWITREES, '</title>',
+	'<title>', KT_KIWITREES, '</title>',
 	'<meta name="robots" content="noindex,follow">',
 	'<style type="text/css">
 		body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
@@ -70,13 +70,13 @@ echo
 		.good {color: green;}
 	</style>',
 	'</head><body>',
-	'<h1>', WT_I18N::translate('This website is temporarily unavailable'), '</h1>',
+	'<h1>', KT_I18N::translate('This website is temporarily unavailable'), '</h1>',
 	'<div class="content"><p>';
 
 if ($offline_txt) {
 	echo $offline_txt;
 } else {
-	echo WT_I18N::translate('The site is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
+	echo KT_I18N::translate('The site is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
 }
 echo '</p>';
 echo '</div>';

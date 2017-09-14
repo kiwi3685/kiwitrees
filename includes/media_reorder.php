@@ -21,15 +21,15 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+require_once KT_ROOT.'includes/functions/functions_print_facts.php';
 
 function media_reorder_row($rowm) {
-	$media = WT_Media::getInstance($rowm['m_id']);
+	$media = KT_Media::getInstance($rowm['m_id']);
 
 	if (!$media->canDisplayDetails()) {
 		return false;
@@ -61,9 +61,9 @@ $controller->addInlineJavascript('
 	');
 ?>
 <div id="reordermedia-page">
-	<h2><?php echo WT_I18N::translate('Re-order media'); ?></h2>
+	<h2><?php echo KT_I18N::translate('Re-order media'); ?></h2>
 	<span class="help_content">
-		<?php echo WT_I18N::translate('Click a row then drag-and-drop to re-order media.'); ?>
+		<?php echo KT_I18N::translate('Click a row then drag-and-drop to re-order media.'); ?>
 	</span>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_media_update">
@@ -71,7 +71,7 @@ $controller->addInlineJavascript('
 
 		<ul id="reorder_media_list">
 			<?php
-			$person = WT_Person::getInstance($pid);
+			$person = KT_Person::getInstance($pid);
 
 			//-- find all of the related ids
 			$ids = array($person->getXref());
@@ -79,9 +79,9 @@ $controller->addInlineJavascript('
 				$ids[] = $family->getXref();
 			}
 
-			//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+			//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _KT_OBJE_SORT @xxx@ .... etc) ----------
 			$sort_current_objes = array();
-			$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+			$sort_ct = preg_match_all('/\n1 _KT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
 			for ($i=0; $i<$sort_ct; $i++) {
 				if (!isset($sort_current_objes[$sort_match[$i][1]])) {
 					$sort_current_objes[$sort_match[$i][1]] = 1;
@@ -120,7 +120,7 @@ $controller->addInlineJavascript('
 				" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
 				" WHERE m_file=? AND l_from IN (";
 			$i=0;
-			$vars=array(WT_GED_ID);
+			$vars=array(KT_GED_ID);
 			foreach ($ids as $media_id) {
 				if ($i>0) $sqlmm .= ",";
 				$sqlmm .= "?";
@@ -133,7 +133,7 @@ $controller->addInlineJavascript('
 				$sqlmm .= $orderbylist;
 			}
 
-			$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
+			$rows=KT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 
 			$foundObjs = array();
 			foreach ($rows as $rowm) {
@@ -158,11 +158,11 @@ $controller->addInlineJavascript('
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="submit">
 				<i class="fa fa-save"></i>
-				<?php echo WT_I18N::translate('save'); ?>
+				<?php echo KT_I18N::translate('save'); ?>
 			</button>
 			<button class="btn btn-primary" type="button" onclick="window.close();">
 				<i class="fa fa-times"></i>
-				<?php echo WT_I18N::translate('close'); ?>
+				<?php echo KT_I18N::translate('close'); ?>
 			</button>
 		</p>
 	</form>

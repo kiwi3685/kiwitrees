@@ -21,15 +21,15 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
+if (!defined('KT_KIWITREES') || !defined('KT_SCRIPT_NAME') || KT_SCRIPT_NAME!='help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 switch ($help) {
 case 'review_changes':
-	$title=WT_I18N::translate('Pending Changes block');
-	$text=WT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
+	$title=KT_I18N::translate('Pending Changes block');
+	$text=KT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
 
 	// TODO: Other options of this block
 

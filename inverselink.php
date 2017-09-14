@@ -21,36 +21,36 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'inverselink.php');
+define('KT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
 
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');
 $mediaid  = safe_GET_xref('mediaid');
 $linkto   = safe_GET     ('linkto', array('person', 'source', 'family', 'manage', 'repository', 'note'));
-$action   = safe_GET     ('action', WT_REGEX_ALPHA, 'choose');
+$action   = safe_GET     ('action', KT_REGEX_ALPHA, 'choose');
 
 //-- extra page parameters and checking
-$more_links  = WT_Filter::get('more_links');
-$exist_links = WT_Filter::get('exist_links');
-$gid         = WT_Filter::get('gid', WT_REGEX_XREF);
-$update_CHAN = WT_Filter::get('preserve_last_changed');
+$more_links  = KT_Filter::get('more_links');
+$exist_links = KT_Filter::get('exist_links');
+$gid         = KT_Filter::get('gid', KT_REGEX_XREF);
+$update_CHAN = KT_Filter::get('preserve_last_changed');
 
 $paramok =  true;
-if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+if (!empty($linktoid)) $paramok = KT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 
 //if ($linkto == "manage") {
-	$controller = new WT_Controller_Page();
+	$controller = new KT_Controller_Page();
 //} elseif ($linkto == "person") {
-//	$controller = new WT_Controller_Page();
+//	$controller = new KT_Controller_Page();
 //}
 
 $controller
 	->requireEditorLogin()
-	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
+	->setPageTitle(KT_I18N::translate('Link to an existing media object'))
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 	');
@@ -59,7 +59,7 @@ if ($action == 'choose' && $paramok) {
 	$record = ''; ?>
 	<script>
 		// Javascript variables
-		var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
+		var id_empty = "<?php echo KT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
 
 		function blankwin() {
 			if (document.getElementById('gid').value == "" || document.getElementById('gid').value.length<=1) {
@@ -72,7 +72,7 @@ if ($action == 'choose' && $paramok) {
 	</script>
 
 	<div id="inverselink-page">
-		<h2><?php echo WT_I18N::translate('Link to an existing media object'); ?></h2>
+		<h2><?php echo KT_I18N::translate('Link to an existing media object'); ?></h2>
 		<div class="inverselink-page-left">
 			<form class="medialink" name="link" method="get" action="inverselink.php">
 				<input type="hidden" name="action" value="update">
@@ -89,32 +89,32 @@ if ($action == 'choose' && $paramok) {
 				}
 				if ($linkto == "manage") { ?>
 					<div class="LINK_factdiv">
-						<label><?php echo WT_I18N::translate('Media'); ?></label>
+						<label><?php echo KT_I18N::translate('Media'); ?></label>
 						<div class="input">
 							<div>
-								<?php $filename = WT_DB::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
-									->execute(array($mediaid, WT_GED_ID))
+								<?php $filename = KT_DB::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
+									->execute(array($mediaid, KT_GED_ID))
 									->fetchOne();
-								$media = WT_Media::getInstance($mediaid);
+								$media = KT_Media::getInstance($mediaid);
 								echo $media->displayImage(); ?>
 							</div>
 							<div class="bold">
-								<?php $title = WT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")->execute(array($mediaid, WT_GED_ID))->fetchOne();
+								<?php $title = KT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")->execute(array($mediaid, KT_GED_ID))->fetchOne();
 								echo $title ? $title : $mediaid; ?>
 							</div>
 						</div>
 					</div>
 					<div class="LINK_factdiv">
-						<label><?php echo WT_I18N::translate('Links'); ?></label>
+						<label><?php echo KT_I18N::translate('Links'); ?></label>
 						<div class="input">
 							<table id="existLinkTbl">
 									<tr>
 										<th>#</th>
-										<th><?php echo WT_I18N::translate('Record'); ?></th>
-										<th><?php echo WT_I18N::translate('Name'); ?></th>
-										<th><?php echo WT_I18N::translate('Keep'); ?></th>
-										<th><?php echo WT_I18N::translate('Remove'); ?></th>
-										<th><?php echo WT_I18N::translate('Navigator'); ?></th>
+										<th><?php echo KT_I18N::translate('Record'); ?></th>
+										<th><?php echo KT_I18N::translate('Name'); ?></th>
+										<th><?php echo KT_I18N::translate('Keep'); ?></th>
+										<th><?php echo KT_I18N::translate('Remove'); ?></th>
+										<th><?php echo KT_I18N::translate('Navigator'); ?></th>
 									</tr>
 									<?php $links = array_merge(
 										$media->fetchLinkedIndividuals(),
@@ -134,16 +134,16 @@ if ($action == 'choose' && $paramok) {
 												<span><?php echo $record->getFullName(); ?></span>
 											</td>
 											<td class="center">
-												<input title="<?php echo WT_I18N::translate('Keep Link in list'); ?>" type="radio" id="<?php echo $record->getXref(); ?>_off" name="<?php echo $record->getXref(); ?>" checked>
+												<input title="<?php echo KT_I18N::translate('Keep Link in list'); ?>" type="radio" id="<?php echo $record->getXref(); ?>_off" name="<?php echo $record->getXref(); ?>" checked>
 											</td>
 											<td class="center">
-												<input  title="<?php echo WT_I18N::translate('Remove Link from list'); ?>" type="radio" id="<?php echo $record->getXref(); ?>_on" name="<?php echo $record->getXref(); ?>">
+												<input  title="<?php echo KT_I18N::translate('Remove Link from list'); ?>" type="radio" id="<?php echo $record->getXref(); ?>_on" name="<?php echo $record->getXref(); ?>">
 											</td>
-											<?php if ($record instanceof WT_Person) { ?>
+											<?php if ($record instanceof KT_Person) { ?>
 												<td class="center">
-													<a href="#" class="icon-button_indi" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a>
+													<a href="#" class="icon-button_indi" title="<?php echo KT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a>
 												</td>
-											<?php } elseif ($record instanceof WT_Family) {
+											<?php } elseif ($record instanceof KT_Family) {
 												if ($record->getHusband()) {
 													$head = $record->getHusband()->getXref();
 												} elseif ($record->getWife()) {
@@ -152,7 +152,7 @@ if ($action == 'choose' && $paramok) {
 													$head = '';
 												} ?>
 												<td class="center">
-													<a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a>
+													<a href="#" class="icon-button_family" title="<?php echo KT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a>
 												</td>
 											<?php } else { ?>
 												<td><!-- // Show No Icon --></td>
@@ -163,10 +163,10 @@ if ($action == 'choose' && $paramok) {
 						</div>
 					</div>
 					<div class="LINK_factdiv">
-						<label><?php echo WT_I18N::translate('Add links'); ?></label>
+						<label><?php echo KT_I18N::translate('Add links'); ?></label>
 						<div class="input">
 							<?php if ($linktoid !== "") {
-								$record = WT_Person::getInstance($linktoid);
+								$record = KT_Person::getInstance($linktoid);
 								echo $record->getFullName();
 							} ?>
 							<p>
@@ -174,21 +174,21 @@ if ($action == 'choose' && $paramok) {
 								<input type="hidden" name="idName" id="idName" value="Name of ID">
 								<button name="addLink" value="" type="button" onclick="blankwin(); return false;">
 									<i class="fa fa-plus"></i>
-									<?php echo WT_I18N::translate('Add'); ?>
+									<?php echo KT_I18N::translate('Add'); ?>
 								</button>
 							</p>
-							<p><?php echo WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?></p>
+							<p><?php echo KT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?></p>
 							<!-- Add new links area -->
 							<table id="addlinkQueue">
 								<thead>
 									<tr>
 										<th>#</td>
-										<th><?php echo WT_I18N::translate('Record'); ?></th>
+										<th><?php echo KT_I18N::translate('Record'); ?></th>
 										<th style="min-width: 300px; width: 60%">
-											<?php echo WT_I18N::translate('Name'); ?>
+											<?php echo KT_I18N::translate('Name'); ?>
 										</th>
-										<th><?php echo WT_I18N::translate('Remove'); ?></th>
-										<th><?php echo WT_I18N::translate('Navigator'); ?></th>
+										<th><?php echo KT_I18N::translate('Remove'); ?></th>
+										<th><?php echo KT_I18N::translate('Navigator'); ?></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -204,26 +204,26 @@ if ($action == 'choose' && $paramok) {
 					<p id="save-cancel">
 						<button class="btn btn-primary" type="submit" onclick="shiftlinks();">
 							<i class="fa fa-save"></i>
-							<?php echo WT_I18N::translate('save'); ?>
+							<?php echo KT_I18N::translate('save'); ?>
 						</button>
 						<button class="btn btn-primary" type="button"  onclick="window.close();">
 							<i class="fa fa-times"></i>
-							<?php echo WT_I18N::translate('close'); ?>
+							<?php echo KT_I18N::translate('close'); ?>
 						</button>
 					</p>
 				<?php } else { ?>
 					<div class="LINK_factdiv">
-						<label><?php echo WT_I18N::translate('Media'); ?></label>
+						<label><?php echo KT_I18N::translate('Media'); ?></label>
 						<div class="input">
 							<input data-autocomplete-type="OBJE" type="text" name="mediaid" id="mediaid">
 						</div>
 					</div>
 					<div class="LINK_factdiv">
 						<label>
-							<?php echo WT_I18N::translate('Individual'); ?>
+							<?php echo KT_I18N::translate('Individual'); ?>
 						</label>
 						<div class="input">
-							<?php $record = WT_Person::getInstance($linktoid);
+							<?php $record = KT_Person::getInstance($linktoid);
 							echo $record->format_list('span', false, $record->getFullName()); ?>
 						</div>
 					</div>
@@ -233,11 +233,11 @@ if ($action == 'choose' && $paramok) {
 					<p id="save-cancel">
 						<button class="btn btn-primary" type="submit">
 							<i class="fa fa-link"></i>
-							<?php echo WT_I18N::translate('Set link'); ?>
+							<?php echo KT_I18N::translate('Set link'); ?>
 						</button>
 						<button class="btn btn-primary" type="button" onclick="closePopupAndReloadParent();">
 							<i class="fa fa-times"></i>
-							<?php echo WT_I18N::translate('close'); ?>
+							<?php echo KT_I18N::translate('close'); ?>
 						</button>
 					</p>
 				<?php } ?>
@@ -290,8 +290,8 @@ if ($action == 'choose' && $paramok) {
 		jQuery('#fam_navigator').hide();
 	};
 
-	var ifamily = "<?php echo WT_I18N::translate('Family navigator'); ?>";
-	var remove = "<?php echo WT_I18N::translate('Remove'); ?>";
+	var ifamily = "<?php echo KT_I18N::translate('Family navigator'); ?>";
+	var remove = "<?php echo KT_I18N::translate('Remove'); ?>";
 	var INPUT_NAME_PREFIX	= 'InputCell_'; // this is being set via script
 	var RADIO_NAME			= "totallyrad"; // this is being set via script
 	var TABLE_NAME			= 'addlinkQueue'; // this should be named in the HTML
@@ -607,7 +607,7 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 	if (empty($level)) $level = 1;
 	if ($level != 1) return false; // Level 2 items get unlinked elsewhere (maybe ??)
 	// find Indi, Family, or Source record to unlink from
-	$gedrec = find_gedcom_record($linktoid, WT_GED_ID, true);
+	$gedrec = find_gedcom_record($linktoid, KT_GED_ID, true);
 	//-- when deleting/unlinking a media link
 	//-- $linenum comes as an OBJE and the $mediaid to delete should be set
 	if (!is_numeric($linenum)) {
@@ -615,5 +615,5 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 	} else {
 		$newged = remove_subline($gedrec, $linenum);
 	}
-	replace_gedrec($linktoid, WT_GED_ID, $newged, $chan);
+	replace_gedrec($linktoid, KT_GED_ID, $newged, $chan);
 }

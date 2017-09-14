@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -30,11 +30,11 @@ class married_names_bu_plugin extends base_plugin {
 	var $surname=null; // User option: add or replace husband's surname
 
 	static function getName() {
-		return WT_I18N::translate('Add missing married names');
+		return KT_I18N::translate('Add missing married names');
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('You can make it easier to search for married women by recording their married name.<br />However not all women take their husband\'s surname, so beware of introducing incorrect information into your database.');
+		return KT_I18N::translate('You can make it easier to search for married women by recording their married name.<br />However not all women take their husband\'s surname, so beware of introducing incorrect information into your database.');
 	}
 
 	function doesRecordNeedUpdate($xref, $gedrec) {
@@ -42,7 +42,7 @@ class married_names_bu_plugin extends base_plugin {
 	}
 
 	function updateRecord($xref, $gedrec) {
-		$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
+		$SURNAME_TRADITION=get_gedcom_setting(KT_GED_ID, 'SURNAME_TRADITION');
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
 		$wife_name=$match[1];
@@ -70,7 +70,7 @@ class married_names_bu_plugin extends base_plugin {
 		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
 		foreach ($fmatch[1] as $famid) {
 			$famrec=batch_update::getLatestRecord($famid, 'FAM');
-			if (preg_match('/^1 '.WT_EVENTS_MARR.'/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
+			if (preg_match('/^1 '.KT_EVENTS_MARR.'/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
 				$husbrec=batch_update::getLatestRecord($hmatch[1], 'INDI');
 				$husb_surnames=array_unique(array_merge($husb_surnames, self::_surnames($hmatch[1], $husbrec)));
 			}
@@ -100,15 +100,15 @@ class married_names_bu_plugin extends base_plugin {
 	function getOptionsForm() {
 		return
 			parent::getOptionsForm().
-			'<label><span>' . WT_I18N::translate('Surname Option') . '</span>
+			'<label><span>' . KT_I18N::translate('Surname Option') . '</span>
 				<select name="surname" onchange="reset_reload();">
 					<option value="replace"' .
 						($this->surname=='replace' ? ' selected="selected"' : '') .
-						'">' . WT_I18N::translate('Wife\'s surname replaced by husband\'s surname') . '
+						'">' . KT_I18N::translate('Wife\'s surname replaced by husband\'s surname') . '
 					</option>
 					<option value="add"' .
 						($this->surname=='add' ? ' selected="selected"' : '') .
-						'">' . WT_I18N::translate('Wife\'s maiden surname becomes new given name') . '
+						'">' . KT_I18N::translate('Wife\'s maiden surname becomes new given name') . '
 					</option>
 				</select>
 			</label>';

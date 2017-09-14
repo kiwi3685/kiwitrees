@@ -21,39 +21,39 @@
  * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class contact_WT_Module extends WT_Module implements WT_Module_Menu {
+class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Contact');
+		return /* I18N: Name of a module */ KT_I18N::translate('Contact');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “contact” module */ WT_I18N::translate('A contact page');
+		return /* I18N: Description of the “contact” module */ KT_I18N::translate('A contact page');
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultMenuOrder() {
 		return 160;
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function MenuType() {
 		return 'main';
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -62,15 +62,15 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		}
 	}
 
-	// Extend class WT_Module_Menu
+	// Extend class KT_Module_Menu
 	public function getMenuTitle() {
-		return WT_I18N::translate('Contact');
+		return KT_I18N::translate('Contact');
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function getMenu() {
 		global $controller, $SEARCH_SPIDER;
-		$ged_id	= WT_GED_ID;
+		$ged_id	= KT_GED_ID;
 
 		//-- main PAGES menu item
 		$contact_user_id	= get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
@@ -85,7 +85,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		if ((!$contact_user_id && !$webmaster_user_id) || (!$supportLink && !$contactLink)) {
 			return '';
 		} else {
-			$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
+			$menu = new KT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
 			$menu->addClass('menuitem', 'menuitem_hover', '');
 			return $menu;
 		}
@@ -93,41 +93,41 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	private function show() {
 		global $controller;
-		require_once WT_ROOT . 'includes/functions/functions_mail.php';
+		require_once KT_ROOT . 'includes/functions/functions_mail.php';
 
-		$controller = new WT_Controller_Page();
+		$controller = new KT_Controller_Page();
 		$controller->setPageTitle($this->getTitle());
 
-		if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
-			ckeditor_WT_Module::enableBasicEditor($controller);
+		if (array_key_exists('ckeditor', KT_Module::getActiveModules()) && KT_Site::preference('MAIL_FORMAT') == "1") {
+			ckeditor_KT_Module::enableBasicEditor($controller);
 		}
 
 		// Send the message.
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$to         = WT_Filter::post('to', null, '');
-			$from_name  = WT_Filter::post('from_name', null, '');
-			$from_email = WT_Filter::post('from_email');
-			$subject    = WT_Filter::post('subject', null, '');
-			$body       = WT_Filter::post('body', null, '');
-			$url        = WT_Filter::postUrl('url', 'index.php');
+			$to         = KT_Filter::post('to', null, '');
+			$from_name  = KT_Filter::post('from_name', null, '');
+			$from_email = KT_Filter::post('from_email');
+			$subject    = KT_Filter::post('subject', null, '');
+			$body       = KT_Filter::post('body', null, '');
+			$url        = KT_Filter::postUrl('url', 'index.php');
 
 			// Only an administration can use the distribution lists.
-			$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || WT_USER_IS_ADMIN);
+			$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || KT_USER_IS_ADMIN);
 
 			$recipients = recipients($to);
 
 			// Different validation for admin/user/visitor.
 			$errors = false;
-			if (WT_USER_ID) {
-				$from_name  = getUserFullName(WT_USER_ID);
-				$from_email = getUserEmail(WT_USER_ID);
+			if (KT_USER_ID) {
+				$from_name  = getUserFullName(KT_USER_ID);
+				$from_email = getUserEmail(KT_USER_ID);
 			} elseif ($from_name === '' || $from_email === '') {
 				$errors = true;
 			} elseif (!preg_match('/@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) {
-				WT_FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
+				KT_FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
 				$errors = true;
-			} elseif (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
-				WT_FlashMessages::addMessage(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
+			} elseif (preg_match('/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
+				KT_FlashMessages::addMessage(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
 				$errors = true;
 			} elseif (empty($recipients)) {
 				$errors = true;
@@ -159,9 +159,9 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 					$message['body']    = nl2br($body, false);
 					$message['url']     = $url;
 					if (addMessage($message)) {
-						WT_FlashMessages::addMessage(WT_I18N::translate('The message was successfully sent to %s.', WT_Filter::escapeHtml($to)), 'info');
+						KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)), 'info');
 					} else {
-						WT_FlashMessages::addMessage(WT_I18N::translate('The message was not sent.'), 'danger');
+						KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'), 'danger');
 						AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
 					}
 				}
@@ -172,18 +172,18 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			return;
 		}
 
-		$to         = WT_Filter::get('to', null, '');
-		$from_name  = WT_Filter::get('from_name', null, '');
-		$from_email = WT_Filter::get('from_email', '');
-		$subject    = WT_Filter::get('subject', null, '');
-		$body       = WT_Filter::get('body', null, '');
-		$url        = WT_Filter::getUrl('url', 'index.php');
+		$to         = KT_Filter::get('to', null, '');
+		$from_name  = KT_Filter::get('from_name', null, '');
+		$from_email = KT_Filter::get('from_email', '');
+		$subject    = KT_Filter::get('subject', null, '');
+		$body       = KT_Filter::get('body', null, '');
+		$url        = KT_Filter::getUrl('url', 'index.php');
 
 		// Only an administrator can use the distribution lists.
-		$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || WT_USER_IS_ADMIN);
+		$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || KT_USER_IS_ADMIN);
 		$controller->pageHeader();
 
-		$to_names = implode(WT_I18N::$list_separator, array_map(function($user) { return getUserFullName($user); }, recipients($to))); ?>
+		$to_names = implode(KT_I18N::$list_separator, array_map(function($user) { return getUserFullName($user); }, recipients($to))); ?>
 
 		<div id="contact_page">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>

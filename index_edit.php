@@ -21,10 +21,10 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'index_edit.php');
+define('KT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new KT_Controller_Ajax();
 
 // Only one of $user_id and $gedcom_id should be set
 $user_id = safe_REQUEST($_REQUEST, 'user_id');
@@ -37,9 +37,9 @@ if ($user_id) {
 // Only an admin can edit the "default" page
 // Only managers can edit the "home page"
 if (
-	$gedcom_id < 0 && !WT_USER_IS_ADMIN ||
-	$gedcom_id > 0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
-	$user_id && WT_USER_ID!= $user_id && !WT_USER_IS_ADMIN
+	$gedcom_id < 0 && !KT_USER_IS_ADMIN ||
+	$gedcom_id > 0 && !userGedcomAdmin(KT_USER_ID, $gedcom_id) ||
+	$user_id && KT_USER_ID!= $user_id && !KT_USER_IS_ADMIN
 ) {
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.location.reload();');
@@ -75,7 +75,7 @@ if($TEXT_DIRECTION == 'ltr') {
 }
 
 $all_blocks = array();
-foreach (WT_Module::getActiveBlocks() as $name=>$block) {
+foreach (KT_Module::getActiveBlocks() as $name=>$block) {
 	if ($user_id || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name] = $block;
 	}
@@ -94,23 +94,23 @@ if ($action == 'update') {
 		foreach ($new_blocks as $order=>$block_name) {
 			if (is_numeric($block_name)) {
 				// existing block
-				WT_DB::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
+				KT_DB::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
 				// existing block moved location
-				WT_DB::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute(array($location, $block_name));
+				KT_DB::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute(array($location, $block_name));
 			} else {
 				// new block
 				if ($user_id) {
-					WT_DB::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($user_id, $location, $order, $block_name));
+					KT_DB::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($user_id, $location, $order, $block_name));
 				} else {
-					WT_DB::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($gedcom_id, $location, $order, $block_name));
+					KT_DB::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($gedcom_id, $location, $order, $block_name));
 				}
 			}
 		}
 		// deleted blocks
 		foreach ($blocks[$location] as $block_id=>$block_name) {
 			if (!in_array($block_id, $main) && !in_array($block_id, $right)) {
-				WT_DB::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute(array($block_id));
-				WT_DB::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute(array($block_id));
+				KT_DB::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute(array($block_id));
+				KT_DB::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute(array($block_id));
 			}
 		}
 	}
@@ -240,7 +240,7 @@ $controller
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "' . WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
+		'block_descr["advice1"] = "' . KT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
 
 ?>
@@ -251,21 +251,21 @@ $controller
 		<!-- NOTE: Row 1: Column legends -->
 		<tr>
 			<td class="descriptionbox center vmiddle" colspan="2">
-				<b><?php echo WT_I18N::translate('Main Section Blocks'); ?></b>
+				<b><?php echo KT_I18N::translate('Main Section Blocks'); ?></b>
 			</td>
 			<td class="descriptionbox center vmiddle" colspan="3">
-				<b><?php echo WT_I18N::translate('Available Blocks'); ?></b>
+				<b><?php echo KT_I18N::translate('Available Blocks'); ?></b>
 			</td>
 			<td class="descriptionbox center vmiddle" colspan="2">
-				<b><?php echo WT_I18N::translate('Right Section Blocks'); ?></b>
+				<b><?php echo KT_I18N::translate('Right Section Blocks'); ?></b>
 			</td>
 		</tr>
 		<tr>
 			<!-- NOTE: Row 2 column 1: Up/Down buttons for left (main) block list -->
 			<td class="optionbox center vmiddle">
-				<a onclick="move_up_block('main_select');" title="<?php echo WT_I18N::translate('Move up'); ?>"class="<?php echo $IconUarrow; ?>"></a>
+				<a onclick="move_up_block('main_select');" title="<?php echo KT_I18N::translate('Move up'); ?>"class="<?php echo $IconUarrow; ?>"></a>
 				<br>
-				<a onclick="move_down_block('main_select');" title="<?php echo WT_I18N::translate('Move down'); ?>"class="<?php echo $IconDarrow; ?>"></a>
+				<a onclick="move_down_block('main_select');" title="<?php echo KT_I18N::translate('Move down'); ?>"class="<?php echo $IconDarrow; ?>"></a>
 				<br><br>
 				<?php echo help_link('block_move_up'); ?>
 			</td>
@@ -279,11 +279,11 @@ $controller
 			</td>
 			<!-- NOTE: Row 2 column 3: Left/Right buttons for left (main) block list -->
 			<td class="optionbox center vmiddle">
-				<a onclick="move_left_right_block('main_select', 'right_select');" title="<?php echo WT_I18N::translate('Move Right'); ?>"class="<?php echo $IconRDarrow; ?>"></a>
+				<a onclick="move_left_right_block('main_select', 'right_select');" title="<?php echo KT_I18N::translate('Move Right'); ?>"class="<?php echo $IconRDarrow; ?>"></a>
 				<br>
-				<a onclick="move_left_right_block('main_select', 'available_select');" title="<?php echo WT_I18N::translate('Remove'); ?>"class="<?php echo $IconRarrow; ?>"></a>
+				<a onclick="move_left_right_block('main_select', 'available_select');" title="<?php echo KT_I18N::translate('Remove'); ?>"class="<?php echo $IconRarrow; ?>"></a>
 				<br>
-				<a onclick="move_left_right_block('available_select', 'main_select');" title="<?php echo WT_I18N::translate('Add'); ?>"class="<?php echo $IconLarrow; ?>"></a>
+				<a onclick="move_left_right_block('available_select', 'main_select');" title="<?php echo KT_I18N::translate('Add'); ?>"class="<?php echo $IconLarrow; ?>"></a>
 				<br><br>
 				<?php echo help_link('block_move_right'); ?>
 			</td>
@@ -297,11 +297,11 @@ $controller
 			</td>
 			<!-- NOTE: Row 2 column 5: Left/Right buttons for right block list -->
 			<td class="optionbox center vmiddle">
-				<a onclick="move_left_right_block('right_select', 'main_select');" title="<?php echo WT_I18N::translate('Move Left'); ?>"class="<?php echo $IconLDarrow; ?>"></a>
+				<a onclick="move_left_right_block('right_select', 'main_select');" title="<?php echo KT_I18N::translate('Move Left'); ?>"class="<?php echo $IconLDarrow; ?>"></a>
 				<br>
-				<a onclick="move_left_right_block('right_select', 'available_select');" title="<?php echo WT_I18N::translate('Remove'); ?>"class="<?php echo $IconLarrow; ?>"></a>
+				<a onclick="move_left_right_block('right_select', 'available_select');" title="<?php echo KT_I18N::translate('Remove'); ?>"class="<?php echo $IconLarrow; ?>"></a>
 				<br>
-				<a onclick="move_left_right_block('available_select', 'right_select');" title="<?php echo WT_I18N::translate('Add'); ?>"class="<?php echo $IconRarrow; ?>"></a>
+				<a onclick="move_left_right_block('available_select', 'right_select');" title="<?php echo KT_I18N::translate('Add'); ?>"class="<?php echo $IconRarrow; ?>"></a>
 				<br><br>
 				<?php echo help_link('block_move_right'); ?>
 			</td>
@@ -315,9 +315,9 @@ $controller
 			</td>
 			<!-- NOTE: Row 2 column 7: Up/Down buttons for right block list -->
 			<td class="optionbox center vmiddle">
-				<a onclick="move_up_block('right_select');" title="<?php echo WT_I18N::translate('Move up'); ?>"class="<?php echo $IconUarrow; ?>"></a>
+				<a onclick="move_up_block('right_select');" title="<?php echo KT_I18N::translate('Move up'); ?>"class="<?php echo $IconUarrow; ?>"></a>
 				<br>
-				<a onclick="move_down_block('right_select');" title="<?php echo WT_I18N::translate('Move down'); ?>"class="<?php echo $IconDarrow; ?>"></a>
+				<a onclick="move_down_block('right_select');" title="<?php echo KT_I18N::translate('Move down'); ?>"class="<?php echo $IconDarrow; ?>"></a>
 				<br><br>
 				<?php echo help_link('block_move_up'); ?>
 			</td>
@@ -326,7 +326,7 @@ $controller
 		<tr>
 			<td class="descriptionbox wrap" colspan="7">
 				<div id="instructions">
-					<?php echo WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'); ?>
+					<?php echo KT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'); ?>
 				</div>
 			</td>
 		</tr>
@@ -334,7 +334,7 @@ $controller
 			<td class="topbottombar" colspan="7">
 				<button class="btn btn-primary show" type="submit">
 					<i class="fa fa-floppy-o"></i>
-					<?php echo WT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('save'); ?>
 				</button>
 			</td>
 		</tr>

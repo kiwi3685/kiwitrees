@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -30,17 +30,17 @@ if (!defined('WT_KIWITREES')) {
 
 <?php if ($view != 'simple') { ?>
 	<div id="footer">
-		<?php if (!array_key_exists('contact', WT_Module::getActiveModules())){ ?>
+		<?php if (!array_key_exists('contact', KT_Module::getActiveModules())){ ?>
 			<div class="contact_links">
-				<a href="message.php?url=<?php echo addslashes(urlencode(get_query_url())); ?>" target="_blank" title="<?php echo WT_I18N::translate('Send Message'); ?>">
-					<?php echo WT_I18N::translate('If you have any questions or comments please contact us'); ?>
+				<a href="message.php?url=<?php echo addslashes(urlencode(get_query_url())); ?>" target="_blank" title="<?php echo KT_I18N::translate('Send Message'); ?>">
+					<?php echo KT_I18N::translate('If you have any questions or comments please contact us'); ?>
 					<i class="fa-envelope-o"></i>
 				</a>
 			</div>
 		<?php } ?>
 		<p class="logo">
-			<a href="<?php echo WT_KIWITREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_KIWITREES_URL; ?>">
-				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_KIWITREES); ?><span>&trade;</span>
+			<a href="<?php echo KT_KIWITREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo KT_KIWITREES_URL; ?>">
+				<?php echo /*I18N: kiwitrees logo on page footer */ KT_I18N::translate('Powered by %s', KT_KIWITREES); ?><span>&trade;</span>
 			</a>
 		</p>
 	</div>

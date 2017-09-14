@@ -21,12 +21,12 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'editnews.php');
+define('KT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Simple();
+$controller = new KT_Controller_Simple();
 $controller
-	->setPageTitle(WT_I18N::translate('Add/edit journal/news entry'))
+	->setPageTitle(KT_I18N::translate('Add/edit journal/news entry'))
 	->requireMemberLogin()
 	->pageHeader();
 
@@ -34,16 +34,16 @@ $action   =safe_GET('action', array('compose', 'save', 'delete'), 'compose');
 $news_id  =safe_GET('news_id');
 $user_id  =safe_REQUEST($_REQUEST, 'user_id');
 $gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
-$date     =safe_POST('date', WT_REGEX_INTEGER, WT_TIMESTAMP);
-$title    =safe_POST('title', WT_REGEX_UNSAFE);
-$text     =safe_POST('text', WT_REGEX_UNSAFE);
+$date     =safe_POST('date', KT_REGEX_INTEGER, KT_TIMESTAMP);
+$title    =safe_POST('title', KT_REGEX_UNSAFE);
+$text     =safe_POST('text', KT_REGEX_UNSAFE);
 
 switch ($action) {
 case 'compose':
-	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-		ckeditor_WT_Module::enableEditor($controller);
+	if (array_key_exists('ckeditor', KT_Module::getActiveModules())) {
+		ckeditor_KT_Module::enableEditor($controller);
 	}
-	echo '<h3>'.WT_I18N::translate('Add/edit journal/news entry').'</h3>';
+	echo '<h3>'.KT_I18N::translate('Add/edit journal/news entry').'</h3>';
 	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id='.$news_id.'">';
 	if ($news_id) {
 		$news = getNewsItem($news_id);
@@ -51,7 +51,7 @@ case 'compose':
 		$news = array();
 		$news['user_id'] = $user_id;
 		$news['gedcom_id'] = $gedcom_id;
-		$news['date'] = WT_TIMESTAMP;
+		$news['date'] = KT_TIMESTAMP;
 		$news['title'] = '';
 		$news['text'] = '';
 	}
@@ -59,13 +59,13 @@ case 'compose':
 	echo '<input type="hidden" name="gedcom_id" value="'.$news['gedcom_id'].'">';
 	echo '<input type="hidden" name="date" value="'.$news['date'].'">';
 	echo '<table>';
-	echo '<tr><th style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Title:').'</th><tr>';
+	echo '<tr><th style="text-align:left;font-weight:900;" dir="auto;">'.KT_I18N::translate('Title:').'</th><tr>';
 	echo '<tr><td><input type="text" name="title" size="50" dir="auto" autofocus value="'.$news['title'].'"></td></tr>';
-	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">'.WT_I18N::translate('Entry Text:').'</th></tr>';
+	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">'.KT_I18N::translate('Entry Text:').'</th></tr>';
 	echo '<tr><td>';
-	echo '<textarea name="text" class="html-edit" cols="80" rows="10" dir="auto">'.WT_Filter::escapeHtml($news['text']).'</textarea>';
+	echo '<textarea name="text" class="html-edit" cols="80" rows="10" dir="auto">'.KT_Filter::escapeHtml($news['text']).'</textarea>';
 	echo '</td></tr>';
-	echo '<tr><td><input type="submit" value="'.WT_I18N::translate('save').'"></td></tr>';
+	echo '<tr><td><input type="submit" value="'.KT_I18N::translate('save').'"></td></tr>';
 	echo '</table>';
 	echo '</form>';
 	break;

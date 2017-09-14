@@ -21,17 +21,17 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'repolist.php');
+define('KT_SCRIPT_NAME', 'repolist.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_repositories', WT_USER_ACCESS_LEVEL))
-	->setPageTitle(WT_I18N::translate('Repositories'))
+	->restrictAccess(KT_Module::isActiveList(KT_GED_ID, 'list_repositories', KT_USER_ACCESS_LEVEL))
+	->setPageTitle(KT_I18N::translate('Repositories'))
 	->pageHeader();
 
 echo '<div id="repolist-page">',
-	'<h2>', WT_I18N::translate('Repositories'), '</h2>';
-	echo format_repo_table(get_repo_list(WT_GED_ID));
+	'<h2>', KT_I18N::translate('Repositories'), '</h2>';
+	echo format_repo_table(get_repo_list(KT_GED_ID));
 echo '</div>';

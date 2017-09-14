@@ -21,41 +21,41 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
+if (!defined('KT_KIWITREES') || !defined('KT_SCRIPT_NAME') || KT_SCRIPT_NAME!='help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 switch ($help) {
 case 'gallery_position':
-	$title=WT_I18N::translate('Gallery position');
-	$text=WT_I18N::translate('This field controls the order in which the galleries are displayed.').'<br><br>'.WT_I18N::translate('You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other albums later. For example, if you use the numbers 1, 6, 11, 16, you can later insert albums with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert albums in front of the first one.').'<br><br>'.WT_I18N::translate('When more than one gallery has the same position number, only one of these albums will be visible.');
+	$title=KT_I18N::translate('Gallery position');
+	$text=KT_I18N::translate('This field controls the order in which the galleries are displayed.').'<br><br>'.KT_I18N::translate('You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other albums later. For example, if you use the numbers 1, 6, 11, 16, you can later insert albums with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert albums in front of the first one.').'<br><br>'.KT_I18N::translate('When more than one gallery has the same position number, only one of these albums will be visible.');
 	break;
 
 case 'gallery_visibility':
-	$title=WT_I18N::translate('Gallery visibility');
-	$text=WT_I18N::translate('You can determine whether this album will be visible regardless of family tree, or whether it will be visible only to the current family tree.').
-	'<br><ul><li><b>'.WT_I18N::translate('All').'</b>&nbsp;&nbsp;&nbsp;'.WT_I18N::translate('The album will appear in all galleries, regardless of family tree.').'</li><li><b>'.get_gedcom_setting(WT_GED_ID, 'title').'</b>&nbsp;&nbsp;&nbsp;'.WT_I18N::translate('The album will appear only in the currently active family trees\'s gallery.').'</li></ul>';
+	$title=KT_I18N::translate('Gallery visibility');
+	$text=KT_I18N::translate('You can determine whether this album will be visible regardless of family tree, or whether it will be visible only to the current family tree.').
+	'<br><ul><li><b>'.KT_I18N::translate('All').'</b>&nbsp;&nbsp;&nbsp;'.KT_I18N::translate('The album will appear in all galleries, regardless of family tree.').'</li><li><b>'.get_gedcom_setting(KT_GED_ID, 'title').'</b>&nbsp;&nbsp;&nbsp;'.KT_I18N::translate('The album will appear only in the currently active family trees\'s gallery.').'</li></ul>';
 	break;
 
 case 'gallery_language':
-	$title=WT_I18N::translate('Gallery language');
-	$text=WT_I18N::translate('Either leave all languages un-ticked to display the gallery texts in every language, or tick the specific languages you want to display it for.<br><br>To create translated texts for different languages create multiple copies setting the appropriate language only for each version.');
+	$title=KT_I18N::translate('Gallery language');
+	$text=KT_I18N::translate('Either leave all languages un-ticked to display the gallery texts in every language, or tick the specific languages you want to display it for.<br><br>To create translated texts for different languages create multiple copies setting the appropriate language only for each version.');
 	break;
 
 case 'gallery_title':
-	$title=WT_I18N::translate('Summary page and Menu title');
-	$text=WT_I18N::translate('This is a brief title. It is displayed in two places.<ol><li> It is used as the main menu item name if your theme uses names, and you have more than one gallery. If you only have one gallery, then the title of that gallery is used. It should be kept short or it might break the menu display.</li><li>It is used as the main title on the display page, above the tabbed list of galleries.</li></ol>');
+	$title=KT_I18N::translate('Summary page and Menu title');
+	$text=KT_I18N::translate('This is a brief title. It is displayed in two places.<ol><li> It is used as the main menu item name if your theme uses names, and you have more than one gallery. If you only have one gallery, then the title of that gallery is used. It should be kept short or it might break the menu display.</li><li>It is used as the main title on the display page, above the tabbed list of galleries.</li></ol>');
 	break;
 
 case 'gallery_description':
-	$title=WT_I18N::translate('Gallery description');
-	$text=WT_I18N::translate('This is a sub-heading that will display below the Summary page title, above the tabbed list of galleries. It can contain HTML elements including an image if you wish. Simply ensure there is no content if you do not want to display it.');
+	$title=KT_I18N::translate('Gallery description');
+	$text=KT_I18N::translate('This is a sub-heading that will display below the Summary page title, above the tabbed list of galleries. It can contain HTML elements including an image if you wish. Simply ensure there is no content if you do not want to display it.');
 	break;
 
 case 'gallery_source':
-	$title=WT_I18N::translate('Gallery source');
-	$text=WT_I18N::translate('Here you can either select the kiwitrees media folder to display in this gallery page, or you can set a link to a Flickr or Picasa location for your group of images.'.
+	$title=KT_I18N::translate('Gallery source');
+	$text=KT_I18N::translate('Here you can either select the kiwitrees media folder to display in this gallery page, or you can set a link to a Flickr or Picasa location for your group of images.'.
 	'<br>'.
 	'<em>[Such external sources must be public or they will not be viewable in kiwitrees.]</em>'.
 	'<br><br>'.
@@ -67,8 +67,8 @@ case 'gallery_source':
 	break;
 
 case 'gallery_theme':
-	$title=WT_I18N::translate('Gallery themes');
-	$text=WT_I18N::translate('There are TWO types of theme in operation for this module.'.
+	$title=KT_I18N::translate('Gallery themes');
+	$text=KT_I18N::translate('There are TWO types of theme in operation for this module.'.
 	'<br><br>'.
 	'The first is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.'.
 	'<br><br>'.

@@ -21,25 +21,25 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_findunlinked.php');
+define('KT_SCRIPT_NAME', 'admin_trees_findunlinked.php');
 
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 global $NOTE_ID_PREFIX, $REPO_ID_PREFIX;
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Find unlinked records'))
+	->setPageTitle(KT_I18N::translate('Find unlinked records'))
 	->pageHeader()
 	->addInlineJavascript('
 		jQuery("#unlinked_accordion").accordion({heightStyle: "content", collapsible: true, active: 0, header: "h3.drop"});
 		jQuery("#unlinked_accordion").css("visibility", "visible");
 	');
 
-$action		= WT_Filter::post('action');
-$gedcom_id	= WT_Filter::post('gedcom_id', null, WT_GED_ID);
-$records	= WT_Filter::postArray('records');
+$action		= KT_Filter::post('action');
+$gedcom_id	= KT_Filter::post('gedcom_id', null, KT_GED_ID);
+$records	= KT_Filter::postArray('records');
 $list		= array(
 				'Individuals',
 				'Sources',
@@ -97,7 +97,7 @@ $sql_REPO = "
 <div id="admin_unlinked">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<div class="helpcontent">
-		<?php echo /* I18N: Help text for the Find unlinked records tool. */ WT_I18N::translate('List records that are not linked to any other records. It does not include Families as a family record cannot exist without at least one family member.<br>
+		<?php echo /* I18N: Help text for the Find unlinked records tool. */ KT_I18N::translate('List records that are not linked to any other records. It does not include Families as a family record cannot exist without at least one family member.<br>
 		The definition of unlinked for each type of record is:
 		<ul><li>Individuals: a person who is not linked to any family, as a child or a spouse.</li>
 		<li>Sources: a source record that is not used as a source for any record, fact, or event in the family tree.</li>
@@ -106,14 +106,14 @@ $sql_REPO = "
 		<li>Media: a media object that is registered in the family tree but not attached to any record, fact, or event.</li><ul>'); ?>
 	</div>
 	<hr>
-	<form method="post" name="unlinked_form" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post" name="unlinked_form" action="<?php echo KT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="action" value="view">
 		<div id="unlinked_config">
-			<label class="bold"><?php echo WT_I18N::translate('Family tree'); ?></label>
+			<label class="bold"><?php echo KT_I18N::translate('Family tree'); ?></label>
 			<select name="ged">
-				<?php foreach (WT_Tree::getAll() as $tree) { ?>
+				<?php foreach (KT_Tree::getAll() as $tree) { ?>
 					<option value="<?php echo $tree->tree_name_html; ?>"
-					<?php if (empty($ged) && $tree->tree_id == WT_GED_ID || !empty($ged) && $ged == $tree->tree_name) { ?>
+					<?php if (empty($ged) && $tree->tree_id == KT_GED_ID || !empty($ged) && $ged == $tree->tree_name) { ?>
 						 selected="selected"
 					<?php } ?>
 					 dir="auto"><?php echo $tree->tree_title_html; ?></option>
@@ -121,7 +121,7 @@ $sql_REPO = "
 			</select>
 			<div class="unlinked_type">
 				<span>
-					<label for "type" class="bold"><?php echo WT_I18N::translate('Select all'); ?></label>
+					<label for "type" class="bold"><?php echo KT_I18N::translate('Select all'); ?></label>
 					<input type="checkbox" id="type" onclick="toggle_select(this)" checked="checked">
 				</span>
 				<?php
@@ -132,14 +132,14 @@ $sql_REPO = "
 								echo ' checked="checked" ';
 							} ?>
 						value="<?php echo $selected; ?>">
-						<label for="record_'<?php echo $selected; ?>"><?php echo WT_I18N::translate($selected); ?></label>
+						<label for="record_'<?php echo $selected; ?>"><?php echo KT_I18N::translate($selected); ?></label>
 					</span>
 				<?php }	?>
 			</div>
 			<p>
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-eye"></i>
-					<?php echo WT_I18N::translate('View'); ?>
+					<?php echo KT_I18N::translate('View'); ?>
 				</button>
 			</p>
 		</div>
@@ -153,91 +153,91 @@ $sql_REPO = "
 			if ($records) {
 				// -- Individuals --
 				if (in_array('Individuals', $records)) {
-					$rows_INDI	= WT_DB::prepare($sql_INDI)->fetchAll(PDO::FETCH_ASSOC);
+					$rows_INDI	= KT_DB::prepare($sql_INDI)->fetchAll(PDO::FETCH_ASSOC);
 					if ($rows_INDI) { ?>
-						<h3 class="drop"><?php echo WT_I18N::plural('%s unlinked individual', '%s unlinked individuals', count($rows_INDI), count($rows_INDI)); ?></h3>
+						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked individual', '%s unlinked individuals', count($rows_INDI), count($rows_INDI)); ?></h3>
 						<div>
 							<?php foreach ($rows_INDI as $row) {
 								$id = $row['i_id'];
-								$record = WT_Person::getInstance($id);
+								$record = KT_Person::getInstance($id);
 								$fullname =  $record->getLifespanName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 							<?php } ?>
 						</div>
 					<?php } else { ?>
-						<h3 class="empty"><?php echo WT_I18N::translate('No unlinked individuals'); ?></h3>
+						<h3 class="empty"><?php echo KT_I18N::translate('No unlinked individuals'); ?></h3>
 					<?php }
 				}
 				// -- Sources --
 				if (in_array('Sources', $records)) {
-					$rows_SOUR	= WT_DB::prepare($sql_SOUR)->fetchAll(PDO::FETCH_ASSOC);
+					$rows_SOUR	= KT_DB::prepare($sql_SOUR)->fetchAll(PDO::FETCH_ASSOC);
 					if ($rows_SOUR) { ?>
-						<h3 class="drop"><?php echo WT_I18N::plural('%s unlinked source', '%s unlinked sources', count($rows_SOUR), count($rows_SOUR)); ?></h3>
+						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked source', '%s unlinked sources', count($rows_SOUR), count($rows_SOUR)); ?></h3>
 						<div>
 							<?php foreach ($rows_SOUR as $row) {
 								$id = $row['s_id'];
-								$record = WT_Source::getInstance($id);
+								$record = KT_Source::getInstance($id);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
 						</div>
 					<?php } else { ?>
-						<h3 class="empty"><?php echo WT_I18N::translate('No unlinked sources'); ?></h3>
+						<h3 class="empty"><?php echo KT_I18N::translate('No unlinked sources'); ?></h3>
 					<?php }
 				}
 				// -- Notes --
 				if (in_array('Notes', $records)) {
-					$rows_NOTE	= WT_DB::prepare($sql_NOTE)->fetchAll(PDO::FETCH_ASSOC);
+					$rows_NOTE	= KT_DB::prepare($sql_NOTE)->fetchAll(PDO::FETCH_ASSOC);
 					if ($rows_NOTE) { ?>
-						<h3 class="drop"><?php echo WT_I18N::plural('%s unlinked note', '%s unlinked notes', count($rows_NOTE), count($rows_NOTE)); ?></h3>
+						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked note', '%s unlinked notes', count($rows_NOTE), count($rows_NOTE)); ?></h3>
 						<div>
 							<?php foreach ($rows_NOTE as $row) {
 								$id = $row['o_id'];
-								$record = WT_Note::getInstance($id);
+								$record = KT_Note::getInstance($id);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
 						</div>
 					<?php } else { ?>
-						<h3 class="empty"><?php echo WT_I18N::translate('No unlinked notes'); ?></h3>
+						<h3 class="empty"><?php echo KT_I18N::translate('No unlinked notes'); ?></h3>
 					<?php }
 				}
 				// -- Repositories --
 				if (in_array('Repositories', $records)) {
-					$rows_REPO	= WT_DB::prepare($sql_REPO)->fetchAll(PDO::FETCH_ASSOC);
+					$rows_REPO	= KT_DB::prepare($sql_REPO)->fetchAll(PDO::FETCH_ASSOC);
 					if ($rows_REPO) { ?>
-						<h3 class="drop"><?php echo WT_I18N::plural('%s unlinked repository', '%s unlinked repositories', count($rows_REPO), count($rows_REPO)); ?></h3>
+						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked repository', '%s unlinked repositories', count($rows_REPO), count($rows_REPO)); ?></h3>
 						<div>
 							<?php foreach ($rows_REPO as $row) {
 								$id = $row['o_id'];
-								$record = WT_Repository::getInstance($id);
+								$record = KT_Repository::getInstance($id);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
 						</div>
 					<?php } else { ?>
-						<h3 class="empty"><?php echo WT_I18N::translate('No unlinked repositories'); ?></h3>
+						<h3 class="empty"><?php echo KT_I18N::translate('No unlinked repositories'); ?></h3>
 					<?php }
 				}
 				// -- Media --
 				if (in_array('Media', $records)) {
-					$rows_MEDIA	= WT_DB::prepare($sql_MEDIA)->fetchAll(PDO::FETCH_ASSOC);
+					$rows_MEDIA	= KT_DB::prepare($sql_MEDIA)->fetchAll(PDO::FETCH_ASSOC);
 					if ($rows_MEDIA) { ?>
-						<h3 class="drop"><?php echo WT_I18N::plural('%s unlinked media object', '%s unlinked media objects', count($rows_MEDIA), count($rows_MEDIA)); ?></h3>
+						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked media object', '%s unlinked media objects', count($rows_MEDIA), count($rows_MEDIA)); ?></h3>
 						<div>
 							<?php foreach ($rows_MEDIA as $row) {
 								$id = $row['m_id'];
-								$record = WT_Media::getInstance($id);
+								$record = KT_Media::getInstance($id);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
 						</div>
 					<?php } else { ?>
-						<h3 class="empty"><?php echo WT_I18N::translate('No unlinked media objects'); ?></h3>
+						<h3 class="empty"><?php echo KT_I18N::translate('No unlinked media objects'); ?></h3>
 					<?php }
 				}
 			} else { ?>
-				<h3 class="empty"><?php echo WT_I18N::translate('You must select at least one record type'); ?></h3>
+				<h3 class="empty"><?php echo KT_I18N::translate('You must select at least one record type'); ?></h3>
 			<?php } ?>
 		</div>
 	<?php } ?>

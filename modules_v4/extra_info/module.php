@@ -21,38 +21,38 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend WT_Module
+class extra_info_KT_Module extends KT_Module implements KT_Module_Sidebar {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Extra information');
+		return /* I18N: Name of a module/sidebar */ KT_I18N::translate('Extra information');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Extra information” module */ WT_I18N::translate('A sidebar showing non-genealogical information about an individual.');
+		return /* I18N: Description of the “Extra information” module */ KT_I18N::translate('A sidebar showing non-genealogical information about an individual.');
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 10;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function hasSidebarContent() {
 		return true;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarContent() {
 		global $SHOW_COUNTER, $controller;
 
@@ -67,34 +67,34 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		ob_start();
 		echo '
 			<div>' .
-				WT_I18N::translate('Internal reference ') . '
+				KT_I18N::translate('Internal reference ') . '
 				<span>' . $controller->record->getXref() . '</span>
 				<hr>
 			</div>
 		';
 		if (!$indifacts) {
-			echo WT_I18N::translate('There are no facts for this individual.');
+			echo KT_I18N::translate('There are no facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
 				echo '<hr>' . print_fact($fact, $controller->record);
 			}
 		}
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-			require WT_ROOT . 'includes/hitcount.php';
+			require KT_ROOT . 'includes/hitcount.php';
 			echo '<div id="hitcounter">';
-				echo WT_I18N::translate('Hit Count:') .  ' ' . $hitCount;
+				echo KT_I18N::translate('Hit Count:') .  ' ' . $hitCount;
 			echo '</div>';// close #hitcounter
 		}
 		return strip_tags(ob_get_clean(), '<a><div><span><hr>');
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
 
 	// Does this module display a particular fact
-	public static function showFact(WT_EVENT $fact) {
+	public static function showFact(KT_EVENT $fact) {
 		switch ($fact->getTag()) {
 		case 'AFN':
 		case 'IDNO':

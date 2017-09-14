@@ -21,51 +21,51 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Sidebar, WT_Module_List {
-	// Extend WT_Module
+class research_links_KT_Module extends KT_Module implements KT_Module_Config, KT_Module_Sidebar, KT_Module_List {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Research links');
+		return /* I18N: Name of a module/sidebar */ KT_I18N::translate('Research links');
 	}
 
 	public function getSidebarTitle() {
-		return /* Title used in the sidebar */ WT_I18N::translate('Research links');
+		return /* Title used in the sidebar */ KT_I18N::translate('Research links');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('A collection of links to popular research web sites.');
+		return /* I18N: Description of the module */ KT_I18N::translate('A collection of links to popular research web sites.');
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 30;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function hasSidebarContent() {
 		return true;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
 
-	// Implement WT_Module_List & WT_Module_Sidebar
+	// Implement KT_Module_List & KT_Module_Sidebar
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement WT_Module_List
+	// Implement KT_Module_List
 	public function getListMenus() {
 		global $controller;
 		$menus = array();
-		$menu  = new WT_Menu(
+		$menu  = new KT_Menu(
 			$this->getTitle(),
 			'module.php?mod=' . $this->getName() . '&amp;mod_action=show',
 			'menu-research_links'
@@ -74,7 +74,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return $menus;
 	}
 
-	// Extend WT_Module_Config
+	// Extend KT_Module_Config
 	public function modAction($mod_action) {
 		switch($mod_action) {
 			case 'show': // for list menu item
@@ -88,24 +88,24 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	// Implement WT_Module_Config
+	// Implement KT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
 	// Configuration page
 	private function config() {
-		require WT_ROOT.'includes/functions/functions_edit.php';
-		$controller = new WT_Controller_Page;
+		require KT_ROOT.'includes/functions/functions_edit.php';
+		$controller = new KT_Controller_Page;
 		$controller
-			->restrictAccess(WT_USER_IS_ADMIN)
+			->restrictAccess(KT_USER_IS_ADMIN)
 			->setPageTitle($this->getSidebarTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				var oTable = jQuery("#research_links_table").dataTable( {
 					"sDom": \'<"H"firl>t\',
-					'.WT_I18N::datatablesI18N().',
+					'.KT_I18N::datatablesI18N().',
 					"bJQueryUI" 		: true,
 					"bAutoWidth" 		: true,
 					"aaSorting" 		: [[ 2, "asc" ]],
@@ -123,9 +123,9 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 				});
 			');
 
-		if (WT_Filter::postBool('save')) {
-			set_module_setting($this->getName(), 'RESEARCH_PLUGINS', serialize(WT_Filter::post('NEW_RESEARCH_PLUGINS')));
-			set_module_setting($this->getName(), 'RESEARCH_PLUGINS_DEFAULT_AREA', WT_Filter::post('NEW_RESEARCH_PLUGINS_DEFAULT_AREA'));
+		if (KT_Filter::postBool('save')) {
+			set_module_setting($this->getName(), 'RESEARCH_PLUGINS', serialize(KT_Filter::post('NEW_RESEARCH_PLUGINS')));
+			set_module_setting($this->getName(), 'RESEARCH_PLUGINS_DEFAULT_AREA', KT_Filter::post('NEW_RESEARCH_PLUGINS_DEFAULT_AREA'));
 			AddToLog($this->getTitle().' config updated', 'config');
 		}
 
@@ -136,7 +136,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<h2>' . $controller->getPageTitle() . '</h2>
 				<form method="post" name="configform" action="' . $this->getConfigLink() . '">
 					<input type="hidden" name="save" value="1">
-					<h3>' . WT_I18N::translate('Select the research area to set as default. This area will open first in the sidebar.') . '</h3>';
+					<h3>' . KT_I18N::translate('Select the research area to set as default. This area will open first in the sidebar.') . '</h3>';
 					foreach ($all_plugins as $area => $plugins) {
 						// reset returns the first value in an array
 						// we take the area code from the first plugin in this area
@@ -148,23 +148,23 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 						$html .= '>
 						<span>' . $area . '</span>';
 					}
-					$html .= '<h3>' . WT_I18N::translate('Select the links you want to use in the sidebar') . '</h3>
-					<h4>' . WT_I18N::translate('Select all') .'
+					$html .= '<h3>' . KT_I18N::translate('Select the links you want to use in the sidebar') . '</h3>
+					<h4>' . KT_I18N::translate('Select all') .'
 						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
 					</h4>
 					<button class="btn btn-primary save" type="submit">
 						<i class="fa fa-floppy-o"></i>'.
-						WT_I18N::translate('save').'
+						KT_I18N::translate('save').'
 					</button>
 					<div class="clearfloat"></div>
 					<table id="research_links_table" style="width: 100%;">
 						<thead>
-							<th> ' . WT_I18N::translate('Enabled') . '</th>
+							<th> ' . KT_I18N::translate('Enabled') . '</th>
 							<th></th>
-							<th> ' . WT_I18N::translate('Name') . '</th>
-							<th> ' . WT_I18N::translate('Area') . '</th>
-							<th> ' . WT_I18N::translate('Pay to view') . '</th>
-							<th> ' . WT_I18N::translate('Links only') . '</th>
+							<th> ' . KT_I18N::translate('Name') . '</th>
+							<th> ' . KT_I18N::translate('Area') . '</th>
+							<th> ' . KT_I18N::translate('Pay to view') . '</th>
+							<th> ' . KT_I18N::translate('Links only') . '</th>
 						</thead>
 						<tbody>';
 							foreach ($all_plugins as $area => $plugins) {
@@ -194,7 +194,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 					</table>
 					<button class="btn btn-primary save" type="submit">
 						<i class="fa fa-floppy-o"></i>'.
-						WT_I18N::translate('save').'
+						KT_I18N::translate('save').'
 					</button>
 				</form>
 			</div>';
@@ -204,10 +204,10 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		echo $html;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function getSidebarContent() {
 		// code based on similar in function_print_list.php
-		global $controller, $WT_IMAGES, $SEARCH_SPIDER;
+		global $controller, $KT_IMAGES, $SEARCH_SPIDER;
 		if ($SEARCH_SPIDER) {
 			return false;
 		} else {
@@ -263,9 +263,9 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 												<a class="mainlink" href="'.htmlspecialchars($link).'">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 													$plugin->getName() . '
-													<span title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
+													<span title="' . KT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
 													if ($sublinks_only) {
-														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . WT_I18N::translate('Links only') . '"></i>) ';
+														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . KT_I18N::translate('Links only') . '"></i>) ';
 													}
 												$html .= '</a>
 												<ul class="sublinks">';
@@ -295,9 +295,9 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 												<a class="research_link" ' . $alink . ' target="_blank" rel="noopener noreferrer">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 													$plugin->getName() . '
-													<span  title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
+													<span  title="' . KT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
 													if ($link_only) {
-														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . WT_I18N::translate('Links only') . '"></i>) ';
+														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . KT_I18N::translate('Links only') . '"></i>) ';
 													}
 												$html .= '</a>
 											</li>';
@@ -316,24 +316,24 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 	private function show() {
 
 		$all_plugins 	= $this->getPluginList();
-		$action 		= WT_Filter::post('action');
-		$indi			= WT_Filter::post('indi', WT_REGEX_XREF, '');
-		$surn			= WT_Filter::post('surn', null, '');
-		$givn			= WT_Filter::post('givn', null, '');
-		$sdate			= WT_Filter::post('sdate', null, '');
-		$edate			= WT_Filter::post('edate', null, '');
-		$sel_area		= WT_Filter::postArray('area');
-		$links_array	= implode(",", WT_Filter::postArray('links_array'));
-		$reset 			= WT_Filter::post('reset');
+		$action 		= KT_Filter::post('action');
+		$indi			= KT_Filter::post('indi', KT_REGEX_XREF, '');
+		$surn			= KT_Filter::post('surn', null, '');
+		$givn			= KT_Filter::post('givn', null, '');
+		$sdate			= KT_Filter::post('sdate', null, '');
+		$edate			= KT_Filter::post('edate', null, '');
+		$sel_area		= KT_Filter::postArray('area');
+		$links_array	= implode(",", KT_Filter::postArray('links_array'));
+		$reset 			= KT_Filter::post('reset');
 		if ($reset) {unset($_POST);}
 
 		global $controller;
-		$controller = new WT_Controller_Page();
+		$controller = new KT_Controller_Page();
 		$controller
-			->restrictAccess(WT_Module::isActiveList(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
+			->restrictAccess(KT_Module::isActiveList(KT_GED_ID, $this->getName(), KT_USER_ACCESS_LEVEL))
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript(
 				$this->getJavaScript('inline-block') . '
 				autocomplete();
@@ -347,7 +347,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		<div id="research_links-page">
 			<h2>
 				<?php echo $controller->getPageTitle(); ?>
-				<?php if (WT_USER_IS_ADMIN) { ?>
+				<?php if (KT_USER_IS_ADMIN) { ?>
 					<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer" class="noprint">
 						<i class="fa fa-cog"></i>
 					</a>
@@ -358,40 +358,40 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 					<h5><?php echo $this->getDescription(); ?></h5>
 					<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 					<div class="hidden">
-						<?php echo /* I18N: help for resource links page */ WT_I18N::translate('You can use this page to search external databases for either an existing person in the family tree, or the names of any person you have not yet recorded.'); ?>
+						<?php echo /* I18N: help for resource links page */ KT_I18N::translate('You can use this page to search external databases for either an existing person in the family tree, or the names of any person you have not yet recorded.'); ?>
 					</div>
 				</div>
 			</div>
-			<form name="research_options" id="research_options" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo WT_GEDURL; ?>">
+			<form name="research_options" id="research_options" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo KT_GEDURL; ?>">
 				<input type="hidden" name="action" value="1">
 				<div class="chart_options">
-					<label for="indi"><?php echo WT_I18N::translate('Existing person'); ?></label>
-					<input data-autocomplete-type="INDI" type="text" name="indi" id="indi" value="<?php echo WT_Filter::escapeHtml($indi); ?>" dir="auto">
+					<label for="indi"><?php echo KT_I18N::translate('Existing person'); ?></label>
+					<input data-autocomplete-type="INDI" type="text" name="indi" id="indi" value="<?php echo KT_Filter::escapeHtml($indi); ?>" dir="auto">
 				</div>
 
-				<h4><?php echo WT_I18N::translate('A person not already added to this family tree'); ?></h4>
+				<h4><?php echo KT_I18N::translate('A person not already added to this family tree'); ?></h4>
 				<div class="chart_options">
-					<label for="givn"><?php echo WT_I18N::translate('Given name or names'); ?></label>
-					<input type="text" name="givn" id="givn" value="<?php echo WT_Filter::escapeHtml($givn); ?>" dir="auto">
+					<label for="givn"><?php echo KT_I18N::translate('Given name or names'); ?></label>
+					<input type="text" name="givn" id="givn" value="<?php echo KT_Filter::escapeHtml($givn); ?>" dir="auto">
 				</div>
 				<div class="chart_options">
-					<label for="surn"><?php echo WT_I18N::translate('Surname'); ?></label>
-					<input type="text" name="surn" id="surn" value="<?php echo WT_Filter::escapeHtml($surn); ?>" dir="auto">
+					<label for="surn"><?php echo KT_I18N::translate('Surname'); ?></label>
+					<input type="text" name="surn" id="surn" value="<?php echo KT_Filter::escapeHtml($surn); ?>" dir="auto">
 				</div>
 				<div class="chart_options">
-					<label for="sdate"><?php echo WT_I18N::translate('Start date'); ?></label>
-					<input type="text" name="sdate" id="sdate" value="<?php echo WT_Filter::escapeHtml($sdate); ?>" dir="auto">
+					<label for="sdate"><?php echo KT_I18N::translate('Start date'); ?></label>
+					<input type="text" name="sdate" id="sdate" value="<?php echo KT_Filter::escapeHtml($sdate); ?>" dir="auto">
 				</div>
 				<div class="chart_options">
-					<label for="edate"><?php echo WT_I18N::translate('End date'); ?></label>
-					<input type="text" name="edate" id="edate" value="<?php echo WT_Filter::escapeHtml($edate); ?>" dir="auto">
+					<label for="edate"><?php echo KT_I18N::translate('End date'); ?></label>
+					<input type="text" name="edate" id="edate" value="<?php echo KT_Filter::escapeHtml($edate); ?>" dir="auto">
 				</div>
 
-				<h4><?php echo WT_I18N::translate('Select research areas to use'); ?></h4>
+				<h4><?php echo KT_I18N::translate('Select research areas to use'); ?></h4>
 				<div class="chart_options check-boxes">
 					<span>
 						<input id="select-all" type="checkbox" onclick="toggle_select(this)">
-						<label for="select-all" ><?php echo WT_I18N::translate('Select all'); ?></label>
+						<label for="select-all" ><?php echo KT_I18N::translate('Select all'); ?></label>
 					</span>
 					<?php foreach ($all_plugins as $area => $plugins) {
 						// reset returns the first value in an array
@@ -410,21 +410,21 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<div class="clearfloat"></div>
 				<button class="btn btn-primary show" type="submit">
 					<i class="fa fa-link"></i>
-					<?php echo WT_I18N::translate('Show links'); ?>
+					<?php echo KT_I18N::translate('Show links'); ?>
 				</button>
 			</form>
 			<form method="post" name="rela_form" action="#">
 				<input type="hidden" name="reset" value="1">
 				<button class="btn btn-primary reset" type="submit">
 					<i class="fa fa-refresh"></i>
-					<?php echo WT_I18N::translate('Reset'); ?>
+					<?php echo KT_I18N::translate('Reset'); ?>
 				</button>
 			</form>
 			<hr style="clear:both;">
 
 			<?php if ($action) { ?>
 				<div id="research_links_config">
-					<h3><?php echo WT_I18N::translate('Links'); ?></h3>
+					<h3><?php echo KT_I18N::translate('Links'); ?></h3>
 					<ul id="research_status">
 						<?php
 						$i = 0;
@@ -456,7 +456,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 												if ($value == 1) {
 													if ($indi) {
 														$name			= false; // only use the first fact with a NAME tag.
-														$record   		= WT_Person::getInstance($indi, WT_GED_ID);
+														$record   		= KT_Person::getInstance($indi, KT_GED_ID);
 														$globalfacts	= $record->getGlobalFacts();
 														foreach ($globalfacts as $key=>$value) {
 															$fact = $value->getTag();
@@ -480,7 +480,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 															<a class="mainlink" href="<?php echo htmlspecialchars($link); ?>">
 																<span class="ui-icon ui-icon-triangle-1-e left"></span>
 																<?php echo $plugin->getName(); ?>
-																<span title="<?php echo WT_I18N::translate('Pay to view'); ?>"><?php echo $this->getCurrency($plugin); ?></span>
+																<span title="<?php echo KT_I18N::translate('Pay to view'); ?>"><?php echo $this->getCurrency($plugin); ?></span>
 															</a>
 
 															<ul class="sublinks">
@@ -509,7 +509,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 															<a class="research_link" <?php echo $alink; ?> target="_blank" rel="noopener noreferrer">
 																<span class="ui-icon ui-icon-triangle-1-e left"></span>
 																<?php echo $plugin->getName(); ?>
-																<span  title="<?php echo WT_I18N::translate('Pay to view'); ?>"><?php echo $this->getCurrency($plugin); ?></span>
+																<span  title="<?php echo KT_I18N::translate('Pay to view'); ?>"><?php echo $this->getCurrency($plugin); ?></span>
 															</a>
 														</li>
 													<?php }
@@ -547,38 +547,38 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 			}
 		}
 		closedir($dir_handle);
-		$int		 = WT_I18N::translate("International");
+		$int		 = KT_I18N::translate("International");
 		$pluginlist	 = array_merge(array($int => $plugins[$int]), $plugins);
 		return $pluginlist;
 	}
 
 
 	// Based on function print_name_record() in /library/WT/Controller/Individual.php
-	private function getPrimaryName(WT_Event $event) {
+	private function getPrimaryName(KT_Event $event) {
 		if (!$event->canShow()) {
 			return false;
 		}
 		$factrec	= $event->getGedComRecord();
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
-		$dummy		= new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
+		$dummy		= new KT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
 		$all_names	= $dummy->getAllNames();
 		return $all_names[0];
 	}
 
 	private function getSearchAreaName($area) {
-		$stats		 = new WT_Stats(WT_GEDCOM);
+		$stats		 = new KT_Stats(KT_GEDCOM);
 		$countries	 = $stats->get_all_countries();
 		if (array_key_exists($area, $countries)) {
 			$area = $countries[$area];
 		} else {
-			$area = WT_I18N::translate("International");
+			$area = KT_I18N::translate("International");
 		}
 		return $area;
 	}
 
 	private function getCurrency($plugin) {
 		if ($plugin->getPaySymbol()) {
-			$symbol = ' (' . /* Currency symbol from http://character-code.com/currency-html-codes.php */ WT_I18N::translate('&#36;') . ') ';
+			$symbol = ' (' . /* Currency symbol from http://character-code.com/currency-html-codes.php */ KT_I18N::translate('&#36;') . ') ';
 		} else {
 			$symbol = '';
 		}
@@ -606,7 +606,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		global $controller;
 
 		if ($indi) {
-			$record		= WT_Person::getInstance($indi, WT_GED_ID);
+			$record		= KT_Person::getInstance($indi, KT_GED_ID);
 			$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
 			$given		= explode(" ", $primary['givn']);
 			$first		= $given[0]; // first given name
@@ -616,7 +616,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$fullname 	= $plugin->encode_plus() ? $givn . '+' .$surname : $givn . '%20' . $surname; // full name
 			$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
 			if (is_string($indi)) {
-				$record		= WT_Person::getInstance($indi, WT_GED_ID);
+				$record		= KT_Person::getInstance($indi, KT_GED_ID);
 				$record->getBirthYear() ? $birth_year = $record->getBirthYear() : $birth_year = '';
 				$record->getDeathYear() ? $death_year = $record->getDeathYear() : $death_year = '';
 				$record->getSex() 		? $gender	  = $record->getSex() : $gender = '';
@@ -653,11 +653,11 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 					check1 = check1 + jQuery(this).val().length;
 				});
 				if (check1 === 0) {
-					check.push("' . WT_I18N::translate('You must enter details of a person to search for.') . '\n\n");
+					check.push("' . KT_I18N::translate('You must enter details of a person to search for.') . '\n\n");
 				}
 				var check2 = jQuery("div.check-boxes :checkbox:checked").length;
 				if (!check2) {
-					check.push("' . WT_I18N::translate('You must select at least one research area to use.') . '\n\n");
+					check.push("' . KT_I18N::translate('You must select at least one research area to use.') . '\n\n");
 				}
 				if (check.length > 0 ) {
 					alert(check.join(""));

@@ -21,15 +21,15 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'expand_view.php');
+define('KT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
 
 Zend_Session::writeClose();
 
 header('Content-Type: text/html; charset=UTF-8');
-$person = WT_Person::getInstance(safe_GET_xref('pid'));
+$person = KT_Person::getInstance(safe_GET_xref('pid'));
 if (!$person || !$person->canDisplayDetails()) {
-	return WT_I18N::translate('Private');
+	return KT_I18N::translate('Private');
 }
 
 $person->add_family_facts(false);
@@ -64,7 +64,7 @@ foreach ($events as $event) {
 		case 'RESN':
 		case '_UID':
 		case '_TODO':
-		case '_WT_OBJE_SORT':
+		case '_KT_OBJE_SORT':
 			// Do not show these
 			break;
 		case 'ASSO':
@@ -86,8 +86,8 @@ foreach ($events as $event) {
 			if ($spouse) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
-			if ($event->getParentObject() instanceof WT_Family) {
-				echo '<a href="', $event->getParentObject()->getHtmlUrl(), '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), ' - </a>';
+			if ($event->getParentObject() instanceof KT_Family) {
+				echo '<a href="', $event->getParentObject()->getHtmlUrl(), '">', KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family'), ' - </a>';
 			}
 			echo ' ',format_fact_place($event, true, true);
 			echo '</div>';

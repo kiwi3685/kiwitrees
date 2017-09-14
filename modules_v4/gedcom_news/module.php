@@ -21,31 +21,31 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Create tables, if not already present
 try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 3);
+	KT_DB::updateSchema(KT_ROOT.KT_MODULES_DIR.'gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
 }
 
-class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+class gedcom_news_KT_Module extends KT_Module implements KT_Module_Block {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('News');
+		return /* I18N: Name of a module */ KT_I18N::translate('News');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “GEDCOM News” module */ WT_I18N::translate('Family news and site announcements.');
+		return /* I18N: Description of the “GEDCOM News” module */ KT_I18N::translate('Family news and site announcements.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype;
 
@@ -53,7 +53,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		case 'deletenews':
 			$news_id = safe_GET('news_id');
 			if ($news_id) {
-				WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
+				KT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
 			}
 			break;
 		}
@@ -77,12 +77,12 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 		}
-		$usernews = getGedcomNews(WT_GED_ID);
+		$usernews = getGedcomNews(KT_GED_ID);
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		if ($ctype=='gedcom' && KT_USER_GEDCOM_ADMIN || $ctype=='user' && KT_USER_ID) {
+			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -90,7 +90,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content = '';
 		if (count($usernews)==0) {
-			$content .= WT_I18N::translate('No News articles have been submitted.').'<br>';
+			$content .= KT_I18N::translate('No News articles have been submitted.').'<br>';
 		}
 		$c = 0;
 		foreach ($usernews as $news) {
@@ -101,7 +101,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				$c++;
 			}
 			if ($limit=='date') {
-				if ((int)((WT_TIMESTAMP - $news['date']) / 86400) > $flag) {
+				if ((int)((KT_TIMESTAMP - $news['date']) / 86400) > $flag) {
 					break;
 				}
 			}
@@ -115,67 +115,67 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$content .= $news["text"];
 			// Print Admin options for this News item
-			if (WT_USER_GEDCOM_ADMIN) {
+			if (KT_USER_GEDCOM_ADMIN) {
 				$content .= '<hr>'
-				."<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$news['id'].", '_blank', news_window_specs); return false;\">".WT_I18N::translate('Edit')."</a> | "
-				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
+				."<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$news['id'].", '_blank', news_window_specs); return false;\">".KT_I18N::translate('Edit')."</a> | "
+				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".KT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".KT_I18N::translate('Delete')."</a><br>";
 			}
 			$content .= "</div>";
 		}
 		$printedAddLink = false;
-		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', news_window_specs); return false;\">".WT_I18N::translate('Add a News article')."</a>";
+		if (KT_USER_GEDCOM_ADMIN) {
+			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+KT_GED_ID, '_blank', news_window_specs); return false;\">".KT_I18N::translate('Add a News article')."</a>";
 			$printedAddLink = true;
 		}
 		if ($limit=='date' || $limit=='count') {
 			if ($printedAddLink) $content .= "&nbsp;&nbsp;|&nbsp;&nbsp;";
-			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">".WT_I18N::translate('View archive')."</a>";
+			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">".KT_I18N::translate('View archive')."</a>";
 			$content .= help_link('gedcom_news_archive').'<br>';
 		}
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'limit', WT_Filter::post('limit'));
-			set_block_setting($block_id, 'flag',  WT_Filter::post('flag'));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'limit', KT_Filter::post('limit'));
+			set_block_setting($block_id, 'flag',  KT_Filter::post('flag'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 		// Limit Type
 		$limit=get_block_setting($block_id, 'limit', 'nolimit');
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
-			WT_I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
+			KT_I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
 			'</td><td class="optionbox"><select name="limit"><option value="nolimit"',
 			($limit == 'nolimit'?' selected="selected"':'').">",
-			WT_I18N::translate('No limit')."</option>",
-			'<option value="date"'.($limit == 'date'?' selected="selected"':'').">".WT_I18N::translate('Age of item')."</option>",
-			'<option value="count"'.($limit == 'count'?' selected="selected"':'').">".WT_I18N::translate('Number of items')."</option>",
+			KT_I18N::translate('No limit')."</option>",
+			'<option value="date"'.($limit == 'date'?' selected="selected"':'').">".KT_I18N::translate('Age of item')."</option>",
+			'<option value="count"'.($limit == 'count'?' selected="selected"':'').">".KT_I18N::translate('Number of items')."</option>",
 			'</select></td></tr>';
 
 		// Flag to look for
 		$flag=get_block_setting($block_id, 'flag', 0);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Limit:'), help_link('gedcom_news_flag');
+		echo KT_I18N::translate('Limit:'), help_link('gedcom_news_flag');
 		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$flag.'"></td></tr>';
 	}
 }

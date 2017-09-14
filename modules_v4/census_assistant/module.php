@@ -21,23 +21,23 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class census_assistant_WT_Module extends WT_Module {
-	// Extend WT_Module
+class census_assistant_KT_Module extends KT_Module {
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Census assistant');
+		return /* I18N: Name of a module */ KT_I18N::translate('Census assistant');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Census assistant” module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
+		return /* I18N: Description of the “Census assistant” module */ KT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 			case 'census_find':
@@ -53,22 +53,22 @@ class census_assistant_WT_Module extends WT_Module {
 	 * Find an individual.
 	 */
 	function censusFind() {
-		global $WT_TREE;
+		global $KT_TREE;
 
-		$controller = new WT_Controller_Simple();
-		$filter     = WT_Filter::get('filter');
-		$action     = WT_Filter::get('action');
-		$census     = WT_Filter::get('census');
+		$controller = new KT_Controller_Simple();
+		$filter     = KT_Filter::get('filter');
+		$action     = KT_Filter::get('action');
+		$census     = KT_Filter::get('census');
 		$census     = new $census;
 
 		$controller
-			->restrictAccess($census instanceof WT_Census_CensusInterface)
-			->setPageTitle(WT_I18N::translate('Find an individual'))
+			->restrictAccess($census instanceof KT_Census_CensusInterface)
+			->setPageTitle(KT_I18N::translate('Find an individual'))
 			->pageHeader();
 		?>
 
 		<div id="census-search">
-			<h2><?php echo WT_I18N::translate('Find an individual'); ?></h2>
+			<h2><?php echo KT_I18N::translate('Find an individual'); ?></h2>
 			<hr>
 
 			<?php if ($action == 'filter') {
@@ -77,27 +77,27 @@ class census_assistant_WT_Module extends WT_Module {
 
 				// Output Individual for census assistant search ====================== ?>
 				<div>
-					<?php $myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+					<?php $myindilist = search_indis_names($filter_array, array(KT_GED_ID), 'AND');
 					if ($myindilist) { ?>
 						<ul>
-							<?php usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+							<?php usort($myindilist, array('KT_GedcomRecord', 'Compare'));
 							foreach ($myindilist as $indi) { ?>
 								<li>
-									<a href="#" onclick="window.opener.appendCensusRow('<?php echo WT_Filter::escapeJs(census_assistant_WT_Module::censusTableRow($census, $indi, null)); ?>'); window.close();" >
+									<a href="#" onclick="window.opener.appendCensusRow('<?php echo KT_Filter::escapeJs(census_assistant_KT_Module::censusTableRow($census, $indi, null)); ?>'); window.close();" >
 										<b><?php echo $indi->getFullName(); ?></b>
 									</a>
-									<?php echo $indi->format_first_major_fact(WT_EVENTS_BIRT, 1);
-									echo $indi->format_first_major_fact(WT_EVENTS_DEAT, 1); ?>
+									<?php echo $indi->format_first_major_fact(KT_EVENTS_BIRT, 1);
+									echo $indi->format_first_major_fact(KT_EVENTS_DEAT, 1); ?>
 									<hr>
 								</li>
 							<?php } ?>
 						</ul>
 					<?php } else { ?>
-						<p> <?php echo WT_I18N::translate('No results found.'); ?> </p>
+						<p> <?php echo KT_I18N::translate('No results found.'); ?> </p>
 					<?php } ?>
 					<button onclick="window.close();">
 						<i class="fa fa-close"></i>
-						<?php echo WT_I18N::translate('close'); ?>
+						<?php echo KT_I18N::translate('close'); ?>
 					</button>
 				</div>
 			<?php } ?>
@@ -112,16 +112,16 @@ class census_assistant_WT_Module extends WT_Module {
 	 *
 	 * @return string
 	 */
-	public static function formatCensusNote(WT_Note $note) {
-		global $WT_TREE;
+	public static function formatCensusNote(KT_Note $note) {
+		global $KT_TREE;
 
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
-			$title     = WT_Filter::escapeHtml($match[1]);
-			$preamble  = WT_Filter::escapeHtml($match[2]);
-			$header    = WT_Filter::escapeHtml($match[3]);
-			$data      = WT_Filter::escapeHtml($match[4]);
-			$postamble = WT_Filter::escapeHtml($match[5]);
+			$title     = KT_Filter::escapeHtml($match[1]);
+			$preamble  = KT_Filter::escapeHtml($match[2]);
+			$header    = KT_Filter::escapeHtml($match[3]);
+			$data      = KT_Filter::escapeHtml($match[4]);
+			$postamble = KT_Filter::escapeHtml($match[5]);
 
 			// Get the column headers for the census to which this note refers
 			// requires the fact place & date to match the specific census
@@ -141,21 +141,21 @@ class census_assistant_WT_Module extends WT_Module {
 						$date_exp[0] = sprintf("%02d", explode(" ", $fact->getAttribute('DATE'))[0]);
 						$date = implode(" ", $date_exp);
 						// get country code from census place
-						$wt_place	 = new WT_Place($fact->getPlace(), WT_GED_ID);
+						$wt_place	 = new KT_Place($fact->getPlace(), KT_GED_ID);
 						$place       = explode(',', strip_tags($wt_place->getFullName()));
-						$countryCode = WT_Soundex::soundex_dm(array_pop($place));
+						$countryCode = KT_Soundex::soundex_dm(array_pop($place));
 						break;
 					}
 				}
 
-				foreach (WT_Census_Census::allCensusPlaces() as $censusPlace) {
-					if (WT_Soundex::compare($countryCode, WT_Soundex::soundex_dm($censusPlace->censusPlace()))) {
+				foreach (KT_Census_Census::allCensusPlaces() as $censusPlace) {
+					if (KT_Soundex::compare($countryCode, KT_Soundex::soundex_dm($censusPlace->censusPlace()))) {
 						foreach ($censusPlace->allCensusDates() as $census) {
 							if ($census->censusDate() == $date) {
 								foreach ($census->columns() as $column) {
 									$abbrev = $column->abbreviation();
 									if ($abbrev) {
-										$description          = $column->title() ? $column->title() : WT_I18N::translate('Description unavailable');
+										$description          = $column->title() ? $column->title() : KT_I18N::translate('Description unavailable');
 										$fmt_headers[$abbrev] = '<span title="' . $description . '">' . $abbrev . '</span>';
 									}
 								}
@@ -190,7 +190,7 @@ class census_assistant_WT_Module extends WT_Module {
 				</div>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
-			return WT_Filter::formatText($note->getNote(), $WT_TREE);
+			return KT_Filter::formatText($note->getNote(), $KT_TREE);
 		}
 	}
 
@@ -208,7 +208,7 @@ class census_assistant_WT_Module extends WT_Module {
 	public static function censusTableHeader($census) {
 		$html = '';
 		foreach ($census->columns() as $column) {
-			$column->title() ? $title = ' title="' . $column->title() . '"' : $title = ' title="' . WT_I18N::translate('Description unavailable') . '"';
+			$column->title() ? $title = ' title="' . $column->title() . '"' : $title = ' title="' . KT_I18N::translate('Description unavailable') . '"';
 			$html .= '<th' . $title . ' style="' . $column->style() . '">' . $column->abbreviation() . '</th>';
 		}
 
@@ -225,8 +225,8 @@ class census_assistant_WT_Module extends WT_Module {
 	 *
 	 * @return string
 	 */
-	public static function censusTableEmptyRow(WT_Census_CensusInterface $census) {
-		return '<tr><td style="display:none;"></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '<td class="delete"><a class="icon-delete" href="#" title="' . WT_I18N::translate('Remove') . '"></a></td></tr>';
+	public static function censusTableEmptyRow(KT_Census_CensusInterface $census) {
+		return '<tr><td style="display:none;"></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '<td class="delete"><a class="icon-delete" href="#" title="' . KT_I18N::translate('Remove') . '"></a></td></tr>';
 	}
 
 	/**
@@ -241,12 +241,12 @@ class census_assistant_WT_Module extends WT_Module {
 	 *
 	 * @return string
 	 */
-	public static function censusTableRow($census, WT_Person $individual, WT_Person $head = null) {
+	public static function censusTableRow($census, KT_Person $individual, KT_Person $head = null) {
 		$html = '';
 		foreach ($census->columns() as $column) {
 			$html .= '<td><input type="text" value="' . $column->generate($individual, $head) . '"></td>';
 		}
-		return '<tr><td style="display:none;">' . $individual->getXref() . '</td>' . $html . '<td class="delete"><a class="icon-delete" href="#" title="' . WT_I18N::translate('Remove') . '"></a></td></tr>';
+		return '<tr><td style="display:none;">' . $individual->getXref() . '</td>' . $html . '<td class="delete"><a class="icon-delete" href="#" title="' . KT_I18N::translate('Remove') . '"></a></td></tr>';
 	}
 
 	/**
@@ -258,18 +258,18 @@ class census_assistant_WT_Module extends WT_Module {
 	 *
 	 * @return string
 	 */
-	public static function censusNavigatorFamily(WT_Census_CensusInterface $census, WT_Family $family, WT_Person $head) {
-		$headImg2 = '<i class="icon-button_head" title="' . WT_I18N::translate('Click to choose person as Head of family.') . '"></i>';
+	public static function censusNavigatorFamily(KT_Census_CensusInterface $census, KT_Family $family, KT_Person $head) {
+		$headImg2 = '<i class="icon-button_head" title="' . KT_I18N::translate('Click to choose person as Head of family.') . '"></i>';
 
 		foreach ($family->getSpouses() as $spouse) {
-			$menu = new WT_Menu(getCloseRelationshipName($head, $spouse));
+			$menu = new KT_Menu(getCloseRelationshipName($head, $spouse));
 			foreach ($spouse->getChildFamilies() as $grandparents) {
 				foreach ($grandparents->getSpouses() as $grandparent) {
-					$submenu = new WT_Menu(
+					$submenu = new KT_Menu(
 						getCloseRelationshipName($head, $grandparent) . ' - ' . $grandparent->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . WT_Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");')
+						array('onclick' => 'return appendCensusRow("' . KT_Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");')
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -283,13 +283,13 @@ class census_assistant_WT_Module extends WT_Module {
 					<?php echo $menu->getMenu(); ?>
 				</td>
 				<td class="nowrap">
-					<a href="#" onclick="return appendCensusRow('<?php echo WT_Filter::escapeJs(self::censusTableRow($census, $spouse, $head)); ?>');">
+					<a href="#" onclick="return appendCensusRow('<?php echo KT_Filter::escapeJs(self::censusTableRow($census, $spouse, $head)); ?>');">
 						<?php echo $spouse->getFullName(); ?>
 					</a>
 				</td>
 				<td>
 					<?php if ($head !== $spouse): ?>
-						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo WT_GEDURL; ?>&amp;census=<?php echo get_class($census); ?>">
+						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo KT_GEDURL; ?>&amp;census=<?php echo get_class($census); ?>">
 							<?php echo $headImg2; ?>
 						</a>
 					<?php endif; ?>
@@ -299,15 +299,15 @@ class census_assistant_WT_Module extends WT_Module {
 		}
 
 		foreach ($family->getChildren() as $child) {
-			$menu = new WT_Menu(getCloseRelationshipName($head, $child));
+			$menu = new KT_Menu(getCloseRelationshipName($head, $child));
 			foreach ($child->getSpouseFamilies() as $spouse_family) {
 				foreach ($spouse_family->getSpouses() as $spouse_family_spouse) {
 					if ($spouse_family_spouse != $child) {
-						$submenu = new WT_Menu(
+						$submenu = new KT_Menu(
 							getCloseRelationshipName($head, $spouse_family_spouse) . ' - ' . $spouse_family_spouse->getFullName(),
 							'#',
 							'',
-							array('onclick' => 'return appendCensusRow("' . WT_Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
+							array('onclick' => 'return appendCensusRow("' . KT_Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
 						);
 						$submenu->addClass('submenuitem', '');
 						$menu->addSubmenu($submenu);
@@ -315,11 +315,11 @@ class census_assistant_WT_Module extends WT_Module {
 					}
 				}
 				foreach ($spouse_family->getChildren() as $spouse_family_child) {
-					$submenu = new WT_Menu(
+					$submenu = new KT_Menu(
 						getCloseRelationshipName($head, $spouse_family_child) . ' - ' . $spouse_family_child->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . WT_Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");')
+						array('onclick' => 'return appendCensusRow("' . KT_Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");')
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -333,13 +333,13 @@ class census_assistant_WT_Module extends WT_Module {
 					<?php echo $menu->getMenu(); ?>
 				</td>
 				<td>
-					<a href="#" onclick="return appendCensusRow('<?php echo WT_Filter::escapeJs(self::censusTableRow($census, $child, $head)); ?>');">
+					<a href="#" onclick="return appendCensusRow('<?php echo KT_Filter::escapeJs(self::censusTableRow($census, $child, $head)); ?>');">
 						<?php echo $child->getFullName(); ?>
 					</a>
 				</td>
 				<td>
 					<?php if ($head !== $child): ?>
-						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo WT_GEDURL; ?>&amp;census=<?php echo get_class($census); ?>">
+						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo KT_GEDURL; ?>&amp;census=<?php echo get_class($census); ?>">
 							<?php echo $headImg2; ?>
 						</a>
 					<?php endif; ?>

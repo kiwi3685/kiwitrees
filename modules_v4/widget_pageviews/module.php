@@ -21,23 +21,23 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
-	// Extend class WT_Module
+class widget_pageviews_KT_Module extends KT_Module implements KT_Module_Widget {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Most viewed pages');
+		return /* I18N: Name of a module */ KT_I18N::translate('Most viewed pages');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Most visited pages” module */ WT_I18N::translate('A list of the pages that have been viewed the most number of times.');
+		return /* I18N: Description of the “Most visited pages” module */ KT_I18N::translate('A list of the pages that have been viewed the most number of times.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		global $SHOW_COUNTER;
 
@@ -52,8 +52,8 @@ class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		$id = $this->getName();
 		$class = $this->getName();
-		if (WT_USER_GEDCOM_ADMIN) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+		if (KT_USER_GEDCOM_ADMIN) {
+			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title = '';
 		}
@@ -61,17 +61,17 @@ class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		$content = "";
 		// load the lines from the file
-		$top10 = WT_DB::prepare(
+		$top10 = KT_DB::prepare(
 			"SELECT page_parameter, page_count".
 			" FROM `##hit_counter`".
 			" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
 			" ORDER BY page_count DESC LIMIT ".$num
-		)->execute(array(WT_GED_ID))->FetchAssoc();
+		)->execute(array(KT_GED_ID))->FetchAssoc();
 
 		$content .= '<ul>';
 
 		foreach ($top10 as $id=>$count) {
-			$record=WT_GedcomRecord::getInstance($id);
+			$record=KT_GedcomRecord::getInstance($id);
 			if ($record && $record->canDisplayDetails()) {
 				$content.='
 					<li>
@@ -85,38 +85,38 @@ class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
 		$content .= '</ul>';
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement WT_Module_Widget
+	// Implement KT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 120;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($widget_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($widget_id, 'num',             WT_Filter::postInteger('num', 1, 10000, 10));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($widget_id, 'num',             KT_Filter::postInteger('num', 1, 10000, 10));
 			exit;
 		}
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 		$num=get_block_setting($widget_id, 'num', 10);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of items to show');
+		echo KT_I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';

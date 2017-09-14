@@ -21,68 +21,68 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_missing.php');
+define('KT_SCRIPT_NAME', 'admin_trees_missing.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
-require WT_ROOT.'includes/functions/functions_print_facts.php';
+require KT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT.'includes/functions/functions_print_facts.php';
 global $DEFAULT_PEDIGREE_GENERATIONS;
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Missing data'))
+	->setPageTitle(KT_I18N::translate('Missing data'))
 	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 //-- set list of all configured individual tags (level 1)
-$indifacts		= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-$uniqueIndfacts	= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+$indifacts		= preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+$uniqueIndfacts	= preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
 $indifacts		= array_merge($indifacts, $uniqueIndfacts);
 
-$famfacts   	= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'),     -1, PREG_SPLIT_NO_EMPTY);
-$uniqueFamfacts	= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'),  -1, PREG_SPLIT_NO_EMPTY);
+$famfacts   	= preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'FAM_FACTS_ADD'),     -1, PREG_SPLIT_NO_EMPTY);
+$uniqueFamfacts	= preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'FAM_FACTS_UNIQUE'),  -1, PREG_SPLIT_NO_EMPTY);
 $famfacts		= array_merge($famfacts, $uniqueFamfacts);
 
 $facts =  array_merge($indifacts, $famfacts);
 
 $translated_facts	= array();
 foreach ($facts as $addfact) {
-	$translated_facts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
+	$translated_facts[$addfact] = KT_Gedcom_Tag::getLabel($addfact);
 }
 uasort($translated_facts, 'factsort');
 
 //-- variables
-$fact				= WT_Filter::post('fact');
-$go 				= WT_Filter::post('go');
-$rootid 			= WT_Filter::get('rootid');
-$root_id			= WT_Filter::post('root_id');
+$fact				= KT_Filter::post('fact');
+$go 				= KT_Filter::post('go');
+$rootid 			= KT_Filter::get('rootid');
+$root_id			= KT_Filter::post('root_id');
 $rootid				= empty($root_id) ? $rootid : $root_id;
-$choose_relatives	= WT_Filter::post('choose_relatives') ? WT_Filter::post('choose_relatives') : 'child-family';
-$ged				= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
-$maxgen				= WT_Filter::post('generations', WT_REGEX_INTEGER, $DEFAULT_PEDIGREE_GENERATIONS);
+$choose_relatives	= KT_Filter::post('choose_relatives') ? KT_Filter::post('choose_relatives') : 'child-family';
+$ged				= KT_Filter::post('ged') ? KT_Filter::post('ged') : $GEDCOM;
+$maxgen				= KT_Filter::post('generations', KT_REGEX_INTEGER, $DEFAULT_PEDIGREE_GENERATIONS);
 
 $select = array(
-	'child-family'		=> WT_I18N::translate('Parents and siblings'),
-	'spouse-family'		=> WT_I18N::translate('Spouses and children'),
-	'direct-ancestors'	=> WT_I18N::translate('Direct line ancestors'),
-	'ancestors'			=> WT_I18N::translate('Direct line ancestors and their families'),
-	'descendants'		=> WT_I18N::translate('Descendants'),
-	'all'				=> WT_I18N::translate('All relatives')
+	'child-family'		=> KT_I18N::translate('Parents and siblings'),
+	'spouse-family'		=> KT_I18N::translate('Spouses and children'),
+	'direct-ancestors'	=> KT_I18N::translate('Direct line ancestors'),
+	'ancestors'			=> KT_I18N::translate('Direct line ancestors and their families'),
+	'descendants'		=> KT_I18N::translate('Descendants'),
+	'all'				=> KT_I18N::translate('All relatives')
 );
 
 $generations = array(
-	1	=> WT_I18N::number(1),
-	2	=> WT_I18N::number(2),
-	3	=> WT_I18N::number(3),
-	4	=> WT_I18N::number(4),
-	5	=> WT_I18N::number(5),
-	6	=> WT_I18N::number(6),
-	7	=> WT_I18N::number(7),
-	8	=> WT_I18N::number(8),
-	9	=> WT_I18N::number(9),
-	10	=> WT_I18N::number(10),
-	-1	=> WT_I18N::translate('All')
+	1	=> KT_I18N::number(1),
+	2	=> KT_I18N::number(2),
+	3	=> KT_I18N::number(3),
+	4	=> KT_I18N::number(4),
+	5	=> KT_I18N::number(5),
+	6	=> KT_I18N::number(6),
+	7	=> KT_I18N::number(7),
+	8	=> KT_I18N::number(8),
+	9	=> KT_I18N::number(9),
+	10	=> KT_I18N::number(10),
+	-1	=> KT_I18N::translate('All')
 );
 
 $false	= '<i class="error fa fa-times"></i>';
@@ -94,45 +94,45 @@ $true	= '<i class="accepted fa fa-check"></i>';
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<div class="help_text">
 			<p class="helpcontent">
-				<?php echo /* I18N: Sub-title for missing data admin page */ WT_I18N::translate('A list of information missing from an individual and their relatives.'); ?>
+				<?php echo /* I18N: Sub-title for missing data admin page */ KT_I18N::translate('A list of information missing from an individual and their relatives.'); ?>
 				<br>
-				<?php echo /* I18N: Help content for missing data admin page */ WT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.'); ?>
+				<?php echo /* I18N: Help content for missing data admin page */ KT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.'); ?>
 			</p>
 		</div>
-		<form name="resource" id="resource" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+		<form name="resource" id="resource" method="post" action="<?php echo KT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="go" value="1">
 			<div id="admin_options">
 				<div class="input">
-					<label><?php echo WT_I18N::translate('Family tree'); ?></label>
-					<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+					<label><?php echo KT_I18N::translate('Family tree'); ?></label>
+					<?php echo select_edit_control('ged', KT_Tree::getNameList(), null, KT_GEDCOM); ?>
 				</div>
 				<div class="input">
-					<label for = "fact"><?php echo WT_I18N::translate('Fact or event'); ?></label>
+					<label for = "fact"><?php echo KT_I18N::translate('Fact or event'); ?></label>
 					<select name="fact" id="fact">
-						<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('Select'); ?></option>
+						<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ KT_I18N::translate('Select'); ?></option>
 						<?php foreach ($translated_facts as $key=>$fact_name) {
 							if ($key !== 'EVEN' && $key !== 'FACT') {
 								echo '<option value="' . $key . '"' . ($key == $fact ? ' selected ' : '') . '>' . $fact_name . '</option>';
 							}
 						}
-						echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . WT_I18N::translate('Custom event') . '</option>';
-						echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . WT_I18N::translate('Custom Fact') . '</option>';
+						echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . KT_I18N::translate('Custom event') . '</option>';
+						echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . KT_I18N::translate('Custom Fact') . '</option>';
 						?>
 					</select>
 				</div>
 				<div class="input">
-					<label for = "rootid"><?php echo WT_I18N::translate('Individual'); ?></label>
+					<label for = "rootid"><?php echo KT_I18N::translate('Individual'); ?></label>
 					<input data-autocomplete-type="INDI" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>" required>
 				</div>
 				<div class="input">
-					<label for = "choose_relatives"><?php echo WT_I18N::translate('Choose relatives'); ?></label>
+					<label for = "choose_relatives"><?php echo KT_I18N::translate('Choose relatives'); ?></label>
 					<?php echo select_edit_control('choose_relatives', $select,	null, $choose_relatives); ?>
 				</div>
 				<div class="input">
-					<label for = "generations"><?php echo WT_I18N::translate('Generations'); ?></label>
+					<label for = "generations"><?php echo KT_I18N::translate('Generations'); ?></label>
 					<?php echo select_edit_control('generations', $generations, null, $maxgen); ?>
 				</div>
-				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
+				<button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>">
 					<i class="fa fa-check"></i>
 					<?php echo $controller->getPageTitle(); ?>
 				</button>
@@ -143,15 +143,15 @@ $true	= '<i class="accepted fa fa-check"></i>';
 	<!-- end of form -->
 	<?php if ($go == 1) {
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-			->addExternalJavascript(WT_JQUERY_DT_HTML5)
-			->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+			->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(KT_JQUERY_DT_HTML5)
+			->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery("#missing_data").dataTable({
 					dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-					' . WT_I18N::datatablesI18N() . ',
+					' . KT_I18N::datatablesI18N() . ',
 					buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 					autoWidth: false,
 					paging: true,
@@ -169,7 +169,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 				jQuery(".loading-image").css("display", "none");
 			');
 
-		$person = WT_Person::getInstance($rootid);
+		$person = KT_Person::getInstance($rootid);
 		if ($person && $person->canDisplayDetails()) {
 			$list = getRelatives($rootid, $person, $choose_relatives, $maxgen);
 		}
@@ -192,7 +192,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 				foreach ($matches as $match) {
 					if (!in_array($match[1], $check)) {
 						$check[] = $match[1]; // avoid duplicate data from both spouses
-						$fam_record[] = WT_Family::getInstance($match[1]);
+						$fam_record[] = KT_Family::getInstance($match[1]);
 					}
 				}
 				foreach ($fam_record as $family) {
@@ -248,21 +248,21 @@ $true	= '<i class="accepted fa fa-check"></i>';
 		}
 		// output results as table
 		?>
-		<h2><?php echo /* I18N: heading for report on missing data */ WT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
-		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ WT_I18N::translate('Missing <u>%s</u> data', strtolower(WT_Gedcom_Tag::getLabel($fact))); ?></h3>
-		<?php echo ($n > 0) ? '<p>' . WT_I18N::plural('<b>Note: </b>%s person excluded as they are, or are believed to be, still living', '<b>Note: </b>%s people excluded as they are, or are believed to be, still living', $n, $n) . '</p>' : ''; ?>
+		<h2><?php echo /* I18N: heading for report on missing data */ KT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
+		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ KT_I18N::translate('Missing <u>%s</u> data', strtolower(KT_Gedcom_Tag::getLabel($fact))); ?></h3>
+		<?php echo ($n > 0) ? '<p>' . KT_I18N::plural('<b>Note: </b>%s person excluded as they are, or are believed to be, still living', '<b>Note: </b>%s people excluded as they are, or are believed to be, still living', $n, $n) . '</p>' : ''; ?>
 
 		<div class="loading-image">&nbsp;</div>
 		<table id="missing_data">
 			<thead>
 				<tr>
-					<th><span title="<?php echo WT_I18N::translate('Generation'); ?>"><?php echo /* I18N: Short abbrevisation for "Generation" */ WT_I18N::translate('Gen'); ?></span></th>
-					<th><?php echo WT_I18N::translate('Name'); ?></th>
-					<th><?php echo WT_Gedcom_Tag::getLabel($fact); ?></th>
-					<th><?php echo WT_I18N::translate('Date'); ?></th>
-					<th><?php echo WT_I18N::translate('Place'); ?></th>
-					<th><?php echo WT_I18N::translate('Source'); ?></th>
-					<th><?php echo WT_I18N::translate('Media'); ?></th>
+					<th><span title="<?php echo KT_I18N::translate('Generation'); ?>"><?php echo /* I18N: Short abbrevisation for "Generation" */ KT_I18N::translate('Gen'); ?></span></th>
+					<th><?php echo KT_I18N::translate('Name'); ?></th>
+					<th><?php echo KT_Gedcom_Tag::getLabel($fact); ?></th>
+					<th><?php echo KT_I18N::translate('Date'); ?></th>
+					<th><?php echo KT_I18N::translate('Place'); ?></th>
+					<th><?php echo KT_I18N::translate('Source'); ?></th>
+					<th><?php echo KT_I18N::translate('Media'); ?></th>
 				</tr>
 			</thead>
 			<tbody>

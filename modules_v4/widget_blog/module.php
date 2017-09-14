@@ -21,40 +21,40 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Create tables, if not already present
 try {
-	WT_DB::updateSchema(WT_MODULES_DIR, 'widget_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
+	KT_DB::updateSchema(KT_MODULES_DIR, 'widget_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
 }
 
-class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
-	// Extend class WT_Module
+class widget_blog_KT_Module extends KT_Module implements KT_Module_Widget {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Journal');
+		return /* I18N: Name of a module */ KT_I18N::translate('Journal');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Journal” module */ WT_I18N::translate('A private area to record notes or keep a journal.');
+		return /* I18N: Description of the “Journal” module */ KT_I18N::translate('A private area to record notes or keep a journal.');
 	}
 
 	private function deleteNews($news_id) {
-		return WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
+		return KT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		global $ctype, $controller;
 
 		$url = $_SERVER['REQUEST_URI'];
-		$usernews = getUserNews(WT_USER_ID);
+		$usernews = getUserNews(KT_USER_ID);
 		$id=$this->getName();
 		$class=$this->getName();
 		$title='';
@@ -62,7 +62,7 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 		$content = '';
 
 		if (count($usernews)==0) {
-			$content .= WT_I18N::translate('You have not created any Journal items.');
+			$content .= KT_I18N::translate('You have not created any Journal items.');
 		}
 
 		foreach ($usernews as $news) {
@@ -79,43 +79,43 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 						$news["text"]=nl2br($news["text"], false);
 					}
 			$content .= $news["text"] . '<br><br>
-					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news['id'] . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a>
-					<a href="#" onclick="if (confirm(\'' . WT_I18N::translate('Are you sure you want to delete this Journal entry?') . '\')) {
+					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news['id'] . ', \'_blank\', news_window_specs); return false;">' . KT_I18N::translate('Edit') . '</a>
+					<a href="#" onclick="if (confirm(\'' . KT_I18N::translate('Are you sure you want to delete this Journal entry?') . '\')) {
 						jQuery.post(\'action.php\',{action:\'deleteNews\',newsId:\''. $news['id'] .'\'},function(){location.reload();})
-					}">' . WT_I18N::translate('Delete') . '</a>
+					}">' . KT_I18N::translate('Delete') . '</a>
 				</div>';
 		}
-		if (WT_USER_ID) {
+		if (KT_USER_ID) {
 			$content .= '
 				<p>
-					<a href="#" onclick="window.open(\'editnews.php?user_id=\'+' . WT_USER_ID . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Add a Journal entry') . '</a>
+					<a href="#" onclick="window.open(\'editnews.php?user_id=\'+' . KT_USER_ID . ', \'_blank\', news_window_specs); return false;">' . KT_I18N::translate('Add a Journal entry') . '</a>
 				</p>';
 		}
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
 
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement WT_Module_Sidebar
+	// Implement KT_Module_Sidebar
 	public function defaultWidgetOrder() {
 		return 90;
 	}
 
-	// Implement WT_Module_Menu
+	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($widget_id) {
 	}
 }

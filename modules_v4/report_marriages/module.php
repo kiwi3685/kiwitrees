@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
+class report_marriages_KT_Module extends KT_Module implements KT_Module_Report {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. */ WT_I18N::translate('Marriages');
+		return /* I18N: Name of a module. */ KT_I18N::translate('Marriages');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Marriages” module */ WT_I18N::translate('A report of individuals who were married in a given time or place.');
+		return /* I18N: Description of “Marriages” module */ KT_I18N::translate('A report of individuals who were married in a given time or place.');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,21 +49,21 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement WT_Module_Report
+	// Implement KT_Module_Report
 	public function getReportMenus() {
 		global $controller;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
 
 		$menus	= array();
-		$menu	= new WT_Menu(
+		$menu	= new KT_Menu(
 			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;ged=' . WT_GEDURL,
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;ged=' . KT_GEDURL,
 			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;
@@ -71,17 +71,17 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 		return $menus;
 	}
 
-	// Implement class WT_Module_Report
+	// Implement class KT_Module_Report
 	public function show() {
 		global $controller;
-		require WT_ROOT.'includes/functions/functions_resource.php';
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		require KT_ROOT.'includes/functions/functions_resource.php';
+		require KT_ROOT.'includes/functions/functions_edit.php';
 
-		$controller = new WT_Controller_Individual();
+		$controller = new KT_Controller_Individual();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 				// check that at least one filter has been used
@@ -92,7 +92,7 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 						document.resource.m_from.value == "" &&
 						document.resource.m_to.value == ""
 					) {
-						if (confirm("' . WT_I18N::translate('You have not set any filters. Kiwitrees will try to list records for every individual in your tree. Is this what you want to do?') . '")){
+						if (confirm("' . KT_I18N::translate('You have not set any filters. Kiwitrees will try to list records for every individual in your tree. Is this what you want to do?') . '")){
 						    document.resource.submit(); // OK
 						} else {
 						    return false; // Cancel
@@ -102,16 +102,16 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 			');
 
 		//Configuration settings ===== //
-	    $action	= WT_Filter::post('action');
-		$reset	= WT_Filter::post('reset');
-		$name	= WT_Filter::post('name', '');
-	    $m_from	= WT_Filter::post('m_from', '');
-	    $m_to	= WT_Filter::post('m_to', '');
-		$place	= WT_Filter::post('place', '');
+	    $action	= KT_Filter::post('action');
+		$reset	= KT_Filter::post('reset');
+		$name	= KT_Filter::post('name', '');
+	    $m_from	= KT_Filter::post('m_from', '');
+	    $m_to	= KT_Filter::post('m_to', '');
+		$place	= KT_Filter::post('place', '');
 
 		// dates for calculations
-		$m_fromJD = (new WT_Date($m_from))->minJD();
-		$m_toJD = (new WT_Date($m_to))->minJD();
+		$m_fromJD = (new KT_Date($m_from))->minJD();
+		$m_toJD = (new KT_Date($m_to))->minJD();
 
 		// reset all variables
 	    if ($reset == 'reset') {
@@ -127,31 +127,31 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="noprint">
 				<h5><?php echo $this->getDescription(); ?></h5>
-				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo WT_GEDURL; ?>">
+				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo KT_GEDURL; ?>">
 					<input type="hidden" name="action" value="go">
 					<div class="chart_options">
-						<label for = "NAME"><?php echo WT_Gedcom_Tag::getLabel('NAME'); ?></label>
-						<input type="text" name="name" id="NAME" value="<?php echo WT_Filter::escapeHtml($name); ?>" dir="auto" required>
+						<label for = "NAME"><?php echo KT_Gedcom_Tag::getLabel('NAME'); ?></label>
+						<input type="text" name="name" id="NAME" value="<?php echo KT_Filter::escapeHtml($name); ?>" dir="auto" required>
 					</div>
 					<div class="chart_options">
-						<label for = "PLAC"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></label>
-						<input data-autocomplete-type="PLAC" type="text" name="place" id="PLAC" value="<?php echo WT_Filter::escapeHtml($place); ?>" dir="auto">
+						<label for = "PLAC"><?php echo KT_Gedcom_Tag::getLabel('PLAC'); ?></label>
+						<input data-autocomplete-type="PLAC" type="text" name="place" id="PLAC" value="<?php echo KT_Filter::escapeHtml($place); ?>" dir="auto">
 					</div>
 					<div class="chart_options">
-		              <label for = "DATE1"><?php echo WT_I18N::translate('Marriage date - from'); ?></label>
+		              <label for = "DATE1"><?php echo KT_I18N::translate('Marriage date - from'); ?></label>
 		              <input type="text" name="m_from" id="DATE1" value="<?php echo $m_from; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE1"); ?>
 		            </div>
 		            <div class="chart_options">
-		              <label for = "DATE2"><?php echo WT_I18N::translate('Marriage date - to'); ?></label>
+		              <label for = "DATE2"><?php echo KT_I18N::translate('Marriage date - to'); ?></label>
 		              <input type="text" name="m_to" id="DATE2" value="<?php echo $m_to; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE2"); ?>
 		            </div>
-	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>" onclick="return checkform()">
+	 				<button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>" onclick="return checkform()">
 						<i class="fa fa-eye"></i>
-						<?php echo WT_I18N::translate('show'); ?>
+						<?php echo KT_I18N::translate('show'); ?>
 					</button>
 					<button class="btn btn-primary" type="submit" name="reset" value="reset">
 		                <i class="fa fa-refresh"></i>
-						<?php echo WT_I18N::translate('reset'); ?>
+						<?php echo KT_I18N::translate('reset'); ?>
 		            </button>
 				</form>
 			</div>
@@ -159,15 +159,15 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 			<!-- end of form -->
 			<?php if ($action == 'go') {
 				$controller
-					->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-					->addExternalJavascript(WT_JQUERY_DT_HTML5)
-					->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+					->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+					->addExternalJavascript(KT_JQUERY_DT_HTML5)
+					->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 					->addInlineJavascript('
 						jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 						jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 						jQuery("#marriages").dataTable({
 							dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-							' . WT_I18N::datatablesI18N() . ',
+							' . KT_I18N::datatablesI18N() . ',
 							buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 							autoWidth: false,
 							paging: true,
@@ -190,31 +190,31 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 						jQuery(".loading-image").css("display", "none");
 					');
 
-				($name) ? $filter1 = '<p>' . /* I18N: A filter on the Marriages report page */ WT_I18N::translate('Names containing <span>%1s</span>', $name) . '</p>' : $filter1 = '';
-				($place) ? $filter2 = '<p>' . /* I18N: A filter on the Marriages report page */ WT_I18N::translate('Place names containing <span>%1s</span>', $place) . '</p>' : $filter2 = '';
-				($m_from && !$m_to) ? $filter3 = '<p>' . /* I18N: A filter on the Marriages report page */ WT_I18N::translate('Marriages from <span>%1s</span>', $m_from) . '</p>' : $filter3 = '';
-				(!$m_from && $m_to) ? $filter4 = '<p>' . /* I18N: A filter on the Marriages report page */ WT_I18N::translate('Marriages to <span>%1s</span>', $m_to) . '</p>' : $filter4 = '';
-				($m_from && $m_to) ? $filter5 = '<p>' . /* I18N: A filter on the Marriages report page */ WT_I18N::translate('Marriages between <span>%1s</span> and <span>%2s</span> ', $m_from, $m_to) . '</p>' : $filter5 = '';
+				($name) ? $filter1 = '<p>' . /* I18N: A filter on the Marriages report page */ KT_I18N::translate('Names containing <span>%1s</span>', $name) . '</p>' : $filter1 = '';
+				($place) ? $filter2 = '<p>' . /* I18N: A filter on the Marriages report page */ KT_I18N::translate('Place names containing <span>%1s</span>', $place) . '</p>' : $filter2 = '';
+				($m_from && !$m_to) ? $filter3 = '<p>' . /* I18N: A filter on the Marriages report page */ KT_I18N::translate('Marriages from <span>%1s</span>', $m_from) . '</p>' : $filter3 = '';
+				(!$m_from && $m_to) ? $filter4 = '<p>' . /* I18N: A filter on the Marriages report page */ KT_I18N::translate('Marriages to <span>%1s</span>', $m_to) . '</p>' : $filter4 = '';
+				($m_from && $m_to) ? $filter5 = '<p>' . /* I18N: A filter on the Marriages report page */ KT_I18N::translate('Marriages between <span>%1s</span> and <span>%2s</span> ', $m_from, $m_to) . '</p>' : $filter5 = '';
 
 				$filter_list = $filter1 . $filter2 . $filter3 . $filter4 . $filter5;
 
-				$list = report_marriages($name, $place, $m_fromJD, $m_toJD, WT_GED_ID);
+				$list = report_marriages($name, $place, $m_fromJD, $m_toJD, KT_GED_ID);
 
 				// output display
 				?>
 				<div id="report_header">
-					<h4><?php echo WT_I18N::translate('Listing individuals based on these filters'); ?></h4>
+					<h4><?php echo KT_I18N::translate('Listing individuals based on these filters'); ?></h4>
 					<p><?php echo $filter_list; ?></p>
 				</div>
 				<div class="loading-image">&nbsp;</div>
 				<table id="marriages" class="width100" <style="visibility:hidden;">
 					<thead>
 						<tr>
-							<th><?php echo WT_I18N::translate('Name'); ?></th>
-							<th><?php echo WT_I18N::translate('Date'); ?></th>
+							<th><?php echo KT_I18N::translate('Name'); ?></th>
+							<th><?php echo KT_I18N::translate('Date'); ?></th>
 							<th><?php //SORT_MARR ?></th>
-							<th><?php echo WT_I18N::translate('Place'); ?></th>
-							<th><?php echo WT_I18N::translate('Source'); ?></th>
+							<th><?php echo KT_I18N::translate('Place'); ?></th>
+							<th><?php echo KT_I18N::translate('Source'); ?></th>
 						</tr>
 					</thead>
 					<tbody>

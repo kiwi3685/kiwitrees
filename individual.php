@@ -21,13 +21,13 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'individual.php');
+define('KT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-if (get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0) {
+if (get_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0) {
 	include_once './includes/functions/functions_print_relations.php';
 }
 
-$controller = new WT_Controller_Individual();
+$controller = new KT_Controller_Individual();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action') == 'ajax') {
@@ -40,38 +40,38 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 
 	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (KT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ KT_I18N::translate(
 					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (KT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				KT_I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
-		if (WT_USER_CAN_ACCEPT) {
+	} elseif (find_updated_record($controller->record->getXref(), KT_GED_ID)!==null) {
+		if (KT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ KT_I18N::translate(
 					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (KT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
+				KT_I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -80,19 +80,19 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	// Just show the name.
 	$controller->pageHeader();
 	echo '<h2>', $controller->record->getFullName(), '</h2>';
-	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
+	echo '<p class="ui-state-highlight">', KT_I18N::translate('The details of this individual are private.'), '</p>';
 	exit;
 } else {
 	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', KT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
 	exit;
 }
 
 $linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
 // Get tab IDs
-$tab_ids = WT_DB::prepare("SELECT module_name, tab_order FROM `##module` WHERE tab_order IS NOT NULL AND status = 'enabled'")->fetchAssoc();
+$tab_ids = KT_DB::prepare("SELECT module_name, tab_order FROM `##module` WHERE tab_order IS NOT NULL AND status = 'enabled'")->fetchAssoc();
 
 $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
@@ -199,10 +199,10 @@ if ($controller->record->canDisplayDetails()) {
 		echo '<span class="header_age">';
 		if ($bdate->isOK() && !$controller->record->isDead()) {
 			// If living display age
-			echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), '', 'span');
+			echo KT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(KT_Date::GetAgeGedcom($bdate), true), '', 'span');
 		} elseif ($bdate->isOK() && $ddate->isOK()) {
 			// If dead, show age at death
-			echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), '', 'span');
+			echo KT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(KT_Date::GetAgeGedcom($bdate, $ddate), false), '', 'span');
 		}
 		echo '</span>';
 		// Display summary birth/death info.
@@ -220,9 +220,9 @@ if ($controller->record->canDisplayDetails()) {
 	}
 	//Display relationship to default individual
 	if (
-		array_key_exists('chart_relationship', WT_Module::getActiveModules()) &&
-		WT_USER_ID &&
-		get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0
+		array_key_exists('chart_relationship', KT_Module::getActiveModules()) &&
+		KT_USER_ID &&
+		get_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0
 	) {
 		echo '<div id="indi_relationship" class="fam_rela">', printIndiRelationship(), '</div>';
 	}
@@ -280,10 +280,10 @@ echo '
 	echo '</div>', // close #tabs
 '</div>'; //close indi_left
 
-if (WT_Module::getActiveSidebars()) {
+if (KT_Module::getActiveSidebars()) {
 	echo $sidebar_html,
 	//clickable element to open/close sidebar
-	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '">
+	'<a href="#" id="separator" title="', KT_I18N::translate('Click here to open or close the sidebar'), '">
 		<i class="icon-sidebar-close"></i>
 	</a>';
 } else {

@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class report_census_WT_Module extends WT_Module implements WT_Module_Report {
+class report_census_KT_Module extends KT_Module implements KT_Module_Report {
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Census check');
+		return /* I18N: Name of a module */ KT_I18N::translate('Census check');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “UK Census check” module */ WT_I18N::translate('A list of missing census data');
+		return /* I18N: Description of the “UK Census check” module */ KT_I18N::translate('A list of missing census data');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,15 +49,15 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Report
+	// Implement KT_Module_Report
 	public function getReportMenus() {
 		$menus	= array();
-		$menu	= new WT_Menu(
+		$menu	= new KT_Menu(
 			$this->getTitle(),
 			'module.php?mod=' . $this->getName() . '&mod_action=show',
 			'menu-report-' . $this->getName()
@@ -67,27 +67,27 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 		return $menus;
 	}
 
-	// Implement class WT_Module_Report
+	// Implement class KT_Module_Report
 	public function show() {
 		global $controller, $GEDCOM;
 
 		//-- args
-		$go 	= WT_Filter::post('go');
-		$surn	= WT_Filter::post('surn', '[^<>&%{};]*');
-		$plac	= WT_Filter::post('plac', '[^<>&%{};]*');
-		$dat	= WT_Filter::post('dat', '[^<>&%{};]*');
-		$ged	= WT_Filter::post('ged');
+		$go 	= KT_Filter::post('go');
+		$surn	= KT_Filter::post('surn', '[^<>&%{};]*');
+		$plac	= KT_Filter::post('plac', '[^<>&%{};]*');
+		$dat	= KT_Filter::post('dat', '[^<>&%{};]*');
+		$ged	= KT_Filter::post('ged');
 		if (empty($ged)) {
 			$ged = $GEDCOM;
 		}
 
-		foreach (WT_Census_Census::allCensusPlaces() as $census_place) {
+		foreach (KT_Census_Census::allCensusPlaces() as $census_place) {
 			//List of Places
 			$census_places[] = $census_place->censusPlace();
 			//List of Dates
 			foreach ($census_place->allCensusDates() as $census) {
 				$census_dates[]	= $census->censusDate();
-				$date			= new WT_Date($census->censusDate());
+				$date			= new KT_Date($census->censusDate());
 				$jd				= $date->JD();
 				$data_sources[]	= array('event'=>'CENS', 'date'=>$census->censusDate(), 'place'=>$census_place->censusPlace(), 'jd'=>$jd);
 			}
@@ -95,11 +95,11 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 
 		$dat ? $opt = str_replace(" ", "", $plac) : $opt = 'xyz';
 
-		$controller = new WT_Controller_Page();
+		$controller = new KT_Controller_Page();
 		$controller
-			->setPageTitle(WT_I18N::translate(WT_I18N::translate('Missing Census Data')))
+			->setPageTitle(KT_I18N::translate(KT_I18N::translate('Missing Census Data')))
 			->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 
@@ -118,21 +118,21 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 		// Start Page -----------------------------------------------------------------------
 		?>
 			<div id="page" class="nocensus">
-				<h2><?php echo WT_I18N::translate('Individuals with missing census data'); ?></h2>
+				<h2><?php echo KT_I18N::translate('Individuals with missing census data'); ?></h2>
 				<h5><?php echo $this->getDescription(); ?></h5>
 				<div class="noprint">
-					<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
+					<h4><?php echo KT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
 					<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">
 						<input type="hidden" name="go" value="1">
 						<div class="chart_options nocensus">
-							<label for "cens_plac"><?php echo WT_I18N::translate('Census Place'); ?></label>
+							<label for "cens_plac"><?php echo KT_I18N::translate('Census Place'); ?></label>
 							<select name="plac" id="cens_plac">
 								<?php
-								echo '<option value="' . WT_I18N::translate('all') . '"';
-									if ($plac == WT_I18N::translate('all')) {
+								echo '<option value="' . KT_I18N::translate('all') . '"';
+									if ($plac == KT_I18N::translate('all')) {
 										echo ' selected = "selected"';
 									}
-									echo WT_I18N::translate('all') . '
+									echo KT_I18N::translate('all') . '
 								</option>';
 								foreach ($census_places as $census_place) {
 									echo '<option value="' . $census_place. '"';
@@ -146,15 +146,15 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 							</select>
 						</div>
 						<div class="chart_options">
-							<label for "cens_dat"><?php echo WT_I18N::translate('Census date'); ?></label>
+							<label for "cens_dat"><?php echo KT_I18N::translate('Census date'); ?></label>
 							<select name="dat"  id="cens_dat">
-								<?php echo '<option value="' . WT_I18N::translate('all') . '"';
-									if ($dat == WT_I18N::translate('all')) {
+								<?php echo '<option value="' . KT_I18N::translate('all') . '"';
+									if ($dat == KT_I18N::translate('all')) {
 										echo ' selected = "selected"';
 									}
-									echo '>' . WT_I18N::translate('all') . '
+									echo '>' . KT_I18N::translate('all') . '
 								</option>';
-								foreach (WT_Census_Census::allCensusPlaces() as $census_place) {
+								foreach (KT_Census_Census::allCensusPlaces() as $census_place) {
 									echo '<optgroup id="' . str_replace(" ", "", $census_place->censusPlace()) . '" label="' . $census_place->censusPlace() . '">';
 										foreach ($census_place->allCensusDates() as $census) {
 											echo '<option value="' . $census->censusDate() . '"';
@@ -169,18 +169,18 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 							</select>
 						</div>
 						<div class="chart_options">
-							<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
+							<label for "SURN"><?php echo KT_Gedcom_Tag::getLabel('SURN'); ?></label>
 							<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="<?php echo $surn; ?>">
 							<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" >
 							<div class="help_content">
 								<p>
-									<?php echo WT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors'); ?>
+									<?php echo KT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors'); ?>
 								</p>
 							</div>
 						</div>
 						<button class="btn btn-primary show" type="submit">
 							<i class="fa fa-eye"></i>
-							<?php echo WT_I18N::translate('show'); ?>
+							<?php echo KT_I18N::translate('show'); ?>
 						</button>
 					</form>
 				</div>
@@ -203,34 +203,34 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 			}
 		}
 
-		if ($surn == WT_I18N::translate('All') || $surn == WT_I18N::translate('all')) {
-			$indis = array_unique(WT_Query_Name::individuals('', '', '', false, false, WT_GED_ID));
+		if ($surn == KT_I18N::translate('All') || $surn == KT_I18N::translate('all')) {
+			$indis = array_unique(KT_Query_Name::individuals('', '', '', false, false, KT_GED_ID));
 		} elseif ($surn) {
-			$indis = array_unique(WT_Query_Name::individuals($surn, '', '', false, false, WT_GED_ID));
+			$indis = array_unique(KT_Query_Name::individuals($surn, '', '', false, false, KT_GED_ID));
 		} else {
-			$id = WT_Tree::get(WT_GED_ID)->userPreference(WT_USER_ID, 'gedcomid');
+			$id = KT_Tree::get(KT_GED_ID)->userPreference(KT_USER_ID, 'gedcomid');
 			if (!$id) {
-				$id = WT_Tree::get(WT_GED_ID)->userPreference(WT_USER_ID, 'rootid');
+				$id = KT_Tree::get(KT_GED_ID)->userPreference(KT_USER_ID, 'rootid');
 			}
 			if (!$id) {
 				$id = 'I1';
 			}
 			$indis = array();
-			add_parents($indis, WT_Person::getInstance($id));
+			add_parents($indis, KT_Person::getInstance($id));
 		}
 
 
 		// Show sources to user
 		if ($go == 1) {
 			// Notes about the register
-			if (in_array($plac, array('England', 'Wales')) && ($dat === '29 SEP 1939' || $dat === WT_I18N::translate('all'))) { ?>
-				<h4 style="margin: 0 auto;"><?php echo WT_I18N::translate('Notes:'); ?></h4>
+			if (in_array($plac, array('England', 'Wales')) && ($dat === '29 SEP 1939' || $dat === KT_I18N::translate('all'))) { ?>
+				<h4 style="margin: 0 auto;"><?php echo KT_I18N::translate('Notes:'); ?></h4>
 				<ol id="register_notes" style="margin: 0 -20px;">
 					<li><strong>1939 Register (England & Wales)</strong>
 						<ol>
-							<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('This list assumes entries relating to the 1939 Register are recorded using the <b>census</b> GEDCOM tag (CENS))'); ?></li>
-							<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('In general anyone who died after 1991, or is still alive, will be redacted (hidden) on the Register. They are listed here, but with a note indicating they are likely to be redacted. However, the Register is incomplete in this regard, so many people who died <u>before</u> 1991 are still redacted.'); ?></li>
-							<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('Anyone serving in the military on 29 September 1939 is excluded from the Register. They are included in these lists but with a note that they may be in the military. This list assumes their military service is recorded with either the _MILI or _MILT GEDCOM tags'); ?></li>
+							<li><?php echo /* I18N: Note about UK 1939 Register check */ KT_I18N::translate('This list assumes entries relating to the 1939 Register are recorded using the <b>census</b> GEDCOM tag (CENS))'); ?></li>
+							<li><?php echo /* I18N: Note about UK 1939 Register check */ KT_I18N::translate('In general anyone who died after 1991, or is still alive, will be redacted (hidden) on the Register. They are listed here, but with a note indicating they are likely to be redacted. However, the Register is incomplete in this regard, so many people who died <u>before</u> 1991 are still redacted.'); ?></li>
+							<li><?php echo /* I18N: Note about UK 1939 Register check */ KT_I18N::translate('Anyone serving in the military on 29 September 1939 is excluded from the Register. They are included in these lists but with a note that they may be in the military. This list assumes their military service is recorded with either the _MILI or _MILT GEDCOM tags'); ?></li>
 						</ol>
 					</li>
 				</ol>
@@ -260,8 +260,8 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 					foreach ($data_sources as $data_source) {
 					$check1 = $data_source['place'];
 					$check2 = $data_source['date'];
-						if($check1 == $plac || $plac == WT_I18N::translate('all')) {
-							if($check2 == $dat || $dat == WT_I18N::translate('all')) {
+						if($check1 == $plac || $plac == KT_I18N::translate('all')) {
+							if($check2 == $dat || $dat == KT_I18N::translate('all')) {
 								// Person not alive - skip
 								if ($data_source['jd'] < $birt_jd || $data_source['jd'] > $deat_jd)
 									continue;
@@ -290,19 +290,19 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 								// If we were in the right place before/after the missing event, show it
 								if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
 									$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
-									$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
+									$desc_event = KT_Gedcom_Tag::getLabel($data_source['event']);
 									$missing_text .= '
 										<li>' . $data_source['place'] . '&nbsp;' . $desc_event . ' for ' . $data_source['date'] . '</li>
-										<li><i>' . WT_I18N::translate('Age') . ' ' . $age_at_census . '</i></li>
+										<li><i>' . KT_I18N::translate('Age') . ' ' . $age_at_census . '</i></li>
 									';
 									if (substr($check2,7,4) === '1939') {
 										// Person died after 1991 - make note
 										if ($indi->getEstimatedDeathDate()->gregorianYear() > '1991') {
-											$missing_text .= '<li><i>' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
+											$missing_text .= '<li><i>' . KT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
 										}
 										// Check if person in military
 										if ($bef_fact == '_MILI' || $bef_fact == '_MILT') {
-											$missing_text .= '<li><i>' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
+											$missing_text .= '<li><i>' . KT_I18N::translate('Probably excluded - military service') . '</i></li>';
 										}
 									}
 								}
@@ -330,9 +330,9 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 					}
 				}
 				if ($n == 0 && $surn) {
-					echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
+					echo '<div class="center error">' . KT_I18N::translate('No missing records found') . '</div>';
 				} else {
-					echo '<div class="center">' . WT_I18N::plural('%s record found', '%s records found', $n, $n) . '</div>';
+					echo '<div class="center">' . KT_I18N::plural('%s record found', '%s records found', $n, $n) . '</div>';
 				}
 			echo '</ul>';
 		}

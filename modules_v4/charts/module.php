@@ -21,31 +21,31 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class charts_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+class charts_KT_Module extends KT_Module implements KT_Module_Block {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/block */ WT_I18N::translate('Charts');
+		return /* I18N: Name of a module/block */ KT_I18N::translate('Charts');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Charts” module */ WT_I18N::translate('An alternative way to display charts.');
+		return /* I18N: Description of the “Charts” module */ KT_I18N::translate('An alternative way to display charts.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID=get_gedcom_setting(KT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		$details=get_block_setting($block_id, 'details', false);
 		$type   =get_block_setting($block_id, 'type', 'pedigree');
-		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$pid    =get_block_setting($block_id, 'pid', KT_USER_ID ? (KT_USER_GEDCOM_ID ? KT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 		$block  =get_block_setting($block_id, 'block');
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
@@ -70,22 +70,22 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$PEDIGREE_FULL_DETAILS = $show_full;
 
-		$person = WT_Person::getInstance($pid);
+		$person = KT_Person::getInstance($pid);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
-			$person = WT_Person::getInstance($pid);
+			$person = KT_Person::getInstance($pid);
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller = new WT_Controller_Hourglass($person->getXref(),0,3);
+			$controller = new KT_Controller_Hourglass($person->getXref(),0,3);
 			$controller->setupJavascript();
 		}
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		if ($ctype=='gedcom' && KT_USER_GEDCOM_ADMIN || $ctype=='user' && KT_USER_ID) {
+			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -93,16 +93,16 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($person) {
 			switch($type) {
 				case 'pedigree':
-					$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
+					$title .= KT_I18N::translate('Pedigree of %s', $person->getFullName());
 					break;
 				case 'descendants':
-					$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
+					$title .= KT_I18N::translate('Descendants of %s', $person->getFullName());
 					break;
 				case 'hourglass':
-					$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
+					$title .= KT_I18N::translate('Hourglass chart of %s', $person->getFullName());
 					break;
 				case 'treenav':
-					$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
+					$title .= KT_I18N::translate('Interactive tree of %s', $person->getFullName());
 					break;
 			}
 			$title .= help_link('index_charts', $this->getName());
@@ -130,9 +130,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td>";
 			}
 			if ($type=='treenav') {
-				require_once WT_MODULES_DIR.'tree/module.php';
-				require_once WT_MODULES_DIR.'tree/class_treeview.php';
-				$mod=new tree_WT_Module;
+				require_once KT_MODULES_DIR.'tree/module.php';
+				require_once KT_MODULES_DIR.'tree/class_treeview.php';
+				$mod=new tree_KT_Module;
 				$tv=new TreeView;
 				$content .= '<td>';
 
@@ -144,14 +144,14 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$content .= "</tr></table>";
 		} else {
-			$content=WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
+			$content=KT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
+				require KT_THEME_DIR.'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				require KT_THEME_DIR.'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;
@@ -163,75 +163,75 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
 		global $ctype, $controller;
 
-		$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = get_gedcom_setting(KT_GED_ID, 'PEDIGREE_ROOT_ID');
 
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
-			set_block_setting($block_id, 'type',    WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-			set_block_setting($block_id, 'pid',     WT_Filter::post('pid', WT_REGEX_XREF));
+		if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
+			set_block_setting($block_id, 'details', KT_Filter::postBool('details'));
+			set_block_setting($block_id, 'type',    KT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
+			set_block_setting($block_id, 'pid',     KT_Filter::post('pid', KT_REGEX_XREF));
 			exit;
 		}
 
 		$details= get_block_setting($block_id, 'details', false);
 		$type   = get_block_setting($block_id, 'type',    'pedigree');
-		$pid    = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$pid    = get_block_setting($block_id, 'pid', KT_USER_ID ? (KT_USER_GEDCOM_ID ? KT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 	?>
-		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
+		<tr><td class="descriptionbox wrap width33"><?php echo KT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">
 			<select name="type">
-				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Pedigree'); ?></option>
-				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Descendants'); ?></option>
-				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hourglass chart'); ?></option>
-				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Interactive tree'); ?></option>
+				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Pedigree'); ?></option>
+				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Descendants'); ?></option>
+				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Hourglass chart'); ?></option>
+				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Interactive tree'); ?></option>
 			</select>
 		</td></tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show Details'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo KT_I18N::translate('Show Details'); ?></td>
 		<td class="optionbox">
 			<select name="details">
-					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('no'); ?></option>
-					<option value="yes" <?php if ($details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('yes'); ?></option>
+					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('no'); ?></option>
+					<option value="yes" <?php if ($details) echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('yes'); ?></option>
 			</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Individual'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo KT_I18N::translate('Individual'); ?></td>
 			<td class="optionbox">
 			<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root=WT_Person::getInstance($pid);
+				$root=KT_Person::getInstance($pid);
 				if ($root) {
-					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
+					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(KT_EVENTS_BIRT, 1), '</span>';
 				}
 				?>
 			</td>
 		</tr>
 		<?php
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 		$block=get_block_setting($block_id, 'block', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ KT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

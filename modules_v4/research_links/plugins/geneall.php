@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -31,8 +31,8 @@ class geneall_plugin extends research_base_plugin {
 			'pt_BR'	 => 'pt',
 		);
 
-		if (isset($languages[WT_LOCALE])) {
-			$language = $languages[WT_LOCALE];
+		if (isset($languages[KT_LOCALE])) {
+			$language = $languages[KT_LOCALE];
 		} else {
 			$language = $languages['en_US'];
 		}

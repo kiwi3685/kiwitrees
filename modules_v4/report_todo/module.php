@@ -21,24 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
+class report_todo_KT_Module extends KT_Module implements KT_Module_Report {
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Research tasks');
+		return /* I18N: Name of a module. Tasks that need further research. */ KT_I18N::translate('Research tasks');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Research tasks” module */ WT_I18N::translate('A list of tasks and activities that are linked to the family tree.');
+		return /* I18N: Description of “Research tasks” module */ KT_I18N::translate('A list of tasks and activities that are linked to the family tree.');
 	}
 
-	// Extend WT_Module
+	// Extend KT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
@@ -49,17 +49,17 @@ class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
 		}
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return KT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Report
+	// Implement KT_Module_Report
 	public function getReportMenus() {
 		global $controller;
 
 		$menus	= array();
-		$menu	= new WT_Menu(
+		$menu	= new KT_Menu(
 			$this->getTitle(),
 			'module.php?mod=' . $this->getName() . '&mod_action=show',
 			'menu-report-' . $this->getName()
@@ -69,27 +69,27 @@ class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
 		return $menus;
 	}
 
-	// Implement class WT_Module_Report
+	// Implement class KT_Module_Report
 	public function show() {
 		global $controller, $GEDCOM;
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		$controller = new WT_Controller_Page();
+		require_once KT_ROOT.'includes/functions/functions_edit.php';
+		$controller = new KT_Controller_Page();
 
 		// Configuration settings ===== //
-		$action				= WT_Filter::post('action');
-		$show_unassigned	= WT_Filter::post('show_unassigned', '', 1);
-		$show_other			= WT_Filter::post('show_other', '', 1);
-		$show_future		= WT_Filter::post('show_future', '', 1);
+		$action				= KT_Filter::post('action');
+		$show_unassigned	= KT_Filter::post('show_unassigned', '', 1);
+		$show_other			= KT_Filter::post('show_other', '', 1);
+		$show_future		= KT_Filter::post('show_future', '', 1);
 
 		$table_id = 'ID'.(int)(microtime(true)*1000000); // create a unique ID
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#' .$table_id. '").dataTable( {
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-					' . WT_I18N::datatablesI18N() . ',
+					' . KT_I18N::datatablesI18N() . ',
 					autoWidth: false,
 					paging: true,
 					pagingType: "full_numbers",
@@ -118,34 +118,34 @@ class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
 					<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
 						<input type="hidden" name="action" value="?">
 						<div class="chart_options">
-							<label>' . WT_I18N::translate('Show tasks not assigned to any user') . '</label>' .
+							<label>' . KT_I18N::translate('Show tasks not assigned to any user') . '</label>' .
 							edit_field_yes_no('show_unassigned', $show_unassigned) .'
 						</div>
 						<div class="chart_options">
-							<label>' . WT_I18N::translate('Show tasks assigned to other users') . '</label>' .
+							<label>' . KT_I18N::translate('Show tasks assigned to other users') . '</label>' .
 							edit_field_yes_no('show_other', $show_other) .'
 						</div>
 						<div class="chart_options">
-							<label>' . WT_I18N::translate('Show tasks that have a date in the future') . '</label>' .
+							<label>' . KT_I18N::translate('Show tasks that have a date in the future') . '</label>' .
 							edit_field_yes_no('show_future', $show_future) .'
 						</div>
 						<button class="btn btn-primary show" type="submit">
-							<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
+							<i class="fa fa-eye"></i>' . KT_I18N::translate('show') . '
 						</button>
 					</form>
 				</div>
 				<hr style="clear:both;">
 		';
-			($show_unassigned) ? $filter1 = '<p>' . /* I18N: A filter on the research tasks report page */ WT_I18N::translate('Show tasks not assigned to any user') . '</p>' : $filter1 = '';
-			($show_other) ? $filter2 = '<p>' . /* I18N: A filter on the research tasks report page */ WT_I18N::translate('Show tasks assigned to other users') . '</p>' : $filter2 = '';
-			($show_other) ? $filter3 = '<p>' . /* I18N: A filter on the research tasks report page */ WT_I18N::translate('Show tasks that have a date in the future') . '</p>' : $filter3 = '';
+			($show_unassigned) ? $filter1 = '<p>' . /* I18N: A filter on the research tasks report page */ KT_I18N::translate('Show tasks not assigned to any user') . '</p>' : $filter1 = '';
+			($show_other) ? $filter2 = '<p>' . /* I18N: A filter on the research tasks report page */ KT_I18N::translate('Show tasks assigned to other users') . '</p>' : $filter2 = '';
+			($show_other) ? $filter3 = '<p>' . /* I18N: A filter on the research tasks report page */ KT_I18N::translate('Show tasks that have a date in the future') . '</p>' : $filter3 = '';
 
 			$filter_list = $filter1 . $filter2 . $filter3;
 
 			// Display results
 			if ($action){
 				$content .= '<div id="report_header">
-					<h4>' . WT_I18N::translate('Listing research tasks based on these filters') . '</h4>
+					<h4>' . KT_I18N::translate('Listing research tasks based on these filters') . '</h4>
 					<p>' .  $filter_list . '</p>
 				</div>
 				<div class="loading-image">&nbsp;</div>
@@ -153,23 +153,23 @@ class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
 					<thead>
 						<tr>
 							<th>DATE</th>
-							<th>' . WT_Gedcom_Tag::getLabel('DATE') . '</th>
-							<th>' . WT_I18N::translate('Record') . '</th>';
-							$content .= '<th>' . WT_Gedcom_Tag::getLabel('TEXT').'</th>';
+							<th>' . KT_Gedcom_Tag::getLabel('DATE') . '</th>
+							<th>' . KT_I18N::translate('Record') . '</th>';
+							$content .= '<th>' . KT_Gedcom_Tag::getLabel('TEXT').'</th>';
 							if ($show_unassigned || $show_other) {
-								$content .= '<th>' . WT_I18N::translate('Username') . '</th>';
+								$content .= '<th>' . KT_I18N::translate('Username') . '</th>';
 							}
 						$content .= '</tr>
 					</thead>
 					<tbody>';
 						$found	= false;
-						$end_jd	= $show_future ? 99999999 : WT_CLIENT_JD;
-						foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
-							$record = WT_GedcomRecord::getInstance($todo['id']);
+						$end_jd	= $show_future ? 99999999 : KT_CLIENT_JD;
+						foreach (get_calendar_events(0, $end_jd, '_TODO', KT_GED_ID) as $todo) {
+							$record = KT_GedcomRecord::getInstance($todo['id']);
 							if ($record && $record->canDisplayDetails()) {
-								$user_name = preg_match('/\n2 _WT_USER (.+)/', $todo['factrec'], $match) ? $match[1] : '';
+								$user_name = preg_match('/\n2 _KT_USER (.+)/', $todo['factrec'], $match) ? $match[1] : '';
 								$type = $record->getType();
-								if ($user_name == WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
+								if ($user_name == KT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
 									$content .= '<tr>
 										<td>' . $todo['date']->JD() . '</td>
 										<td class="wrap">' . $todo['date']->Display(empty($SEARCH_SPIDER)) . '</td>
@@ -191,7 +191,7 @@ class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
 					$content .= '</tbody>
 				</table>';
 				if (!$found) {
-					$content .= '<p>'.WT_I18N::translate('There are no research tasks in this family tree.').'</p>';
+					$content .= '<p>'.KT_I18N::translate('There are no research tasks in this family tree.').'</p>';
 				}
 			}
 			$content .= '</div>

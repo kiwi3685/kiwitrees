@@ -21,17 +21,17 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'downloadbackup.php');
+define('KT_SCRIPT_NAME', 'downloadbackup.php');
 require './includes/session.php';
 
 $fname=safe_GET('fname');
 
-if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
-	$controller = new WT_Controller_Page();
+if (!KT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
+	$controller = new KT_Controller_Page();
 	$controller
-		->setPageTitle(WT_I18N::translate('Error'))
+		->setPageTitle(KT_I18N::translate('Error'))
 		->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
+	echo '<p class="ui-state-error">', KT_I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
 
@@ -41,6 +41,6 @@ header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: private',false); // required for certain browsers
 header('Content-Type: application/zip');
 header('Content-Disposition: attachment; filename="'.$fname.'"');
-header('Content-length: '.filesize(WT_DATA_DIR.$fname));
+header('Content-length: '.filesize(KT_DATA_DIR.$fname));
 header('Content-Transfer-Encoding: binary');
-readfile(WT_DATA_DIR.$fname);
+readfile(KT_DATA_DIR.$fname);

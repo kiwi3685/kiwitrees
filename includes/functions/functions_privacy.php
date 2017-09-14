@@ -21,14 +21,14 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 // Can we display a level 1 record?
 // Assume we have already called canDisplayRecord() to check the parent level 0 object
-function canDisplayFact($xref, $ged_id, $gedrec, $access_level=WT_USER_ACCESS_LEVEL) {
+function canDisplayFact($xref, $ged_id, $gedrec, $access_level=KT_USER_ACCESS_LEVEL) {
 	// TODO - use the privacy settings for $ged_id, not the default gedcom.
 	global $HIDE_LIVE_PEOPLE, $person_facts, $global_facts;
 
@@ -37,23 +37,23 @@ function canDisplayFact($xref, $ged_id, $gedrec, $access_level=WT_USER_ACCESS_LE
 		return true;
 	}
 	// We should always be able to see details of our own record (unless an admin is applying download restrictions)
-	if ($xref==WT_USER_GEDCOM_ID && $ged_id==WT_GED_ID && $access_level==WT_USER_ACCESS_LEVEL) {
+	if ($xref==KT_USER_GEDCOM_ID && $ged_id==KT_GED_ID && $access_level==KT_USER_ACCESS_LEVEL) {
 		return true;
 	}
 
 	// Does this record have a RESN?
 	if (strpos($gedrec, "\n2 RESN confidential")) {
-		return WT_PRIV_NONE>=$access_level;
+		return KT_PRIV_NONE>=$access_level;
 	}
 	if (strpos($gedrec, "\n2 RESN privacy")) {
-		return WT_PRIV_USER>=$access_level;
+		return KT_PRIV_USER>=$access_level;
 	}
 	if (strpos($gedrec, "\n2 RESN none")) {
 		return true;
 	}
 
 	// Does this record have a default RESN?
-	if (preg_match('/^\n?1 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+	if (preg_match('/^\n?1 ('.KT_REGEX_TAG.')/', $gedrec, $match)) {
 		$tag=$match[1];
 		if (isset($person_facts[$xref][$tag])) {
 			return $person_facts[$xref][$tag]>=$access_level;

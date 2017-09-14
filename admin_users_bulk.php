@@ -21,30 +21,30 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_users_bulk.php');
+define('KT_SCRIPT_NAME', 'admin_users_bulk.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 $controller
-	->restrictAccess(WT_USER_IS_ADMIN)
-	->setPageTitle(WT_I18N::translate('Send broadcast messages'))
+	->restrictAccess(KT_USER_IS_ADMIN)
+	->setPageTitle(KT_I18N::translate('Send broadcast messages'))
 	->pageHeader();
 
 ?>
 <div id="users_bulk">
 	<p>
 		<a href="message.php?to=all&amp;method=messaging" target="_blank">
-			<?php echo WT_I18N::translate('Send message to all users'); ?>
+			<?php echo KT_I18N::translate('Send message to all users'); ?>
 		</a>
 	</p>
 	<p>
 		<a href="message.php?to=never_logged&amp;method=messaging" target="_blank">
-			<?php echo WT_I18N::translate('Send message to users who have never logged in'); ?>
+			<?php echo KT_I18N::translate('Send message to users who have never logged in'); ?>
 		</a>
 	</p>
 	<p>
 		<a href="message.php?to=last_6mo&amp;method=messaging" target="_blank">
-			<?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?>
+			<?php echo KT_I18N::translate('Send message to users who have not logged in for 6 months'); ?>
 		</a>
 	</p>
 </div>

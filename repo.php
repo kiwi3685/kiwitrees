@@ -21,47 +21,47 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'repo.php');
+define('KT_SCRIPT_NAME', 'repo.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Repository();
+$controller = new KT_Controller_Repository();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (KT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ KT_I18N::translate(
 					'This repository has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (KT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This repository has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				KT_I18N::translate('This repository has been deleted.  The deletion will need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
-		if (WT_USER_CAN_ACCEPT) {
+	} elseif (find_updated_record($controller->record->getXref(), KT_GED_ID)!==null) {
+		if (KT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ KT_I18N::translate(
 					'This repository has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . KT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (KT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This repository has been edited.  The changes need to be reviewed by a moderator.'),
+				KT_I18N::translate('This repository has been edited.  The changes need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -69,7 +69,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 } else {
 	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('This repository does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', KT_I18N::translate('This repository does not exist or you do not have permission to view it.'), '</p>';
 	exit;
 }
 
@@ -92,9 +92,9 @@ echo '<div id="repo-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
 echo '<div id="repo-tabs">
 	<ul>
-		<li><a href="#repo-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
+		<li><a href="#repo-edit"><span>', KT_I18N::translate('Details'), '</span></a></li>';
 		if ($linked_sour) {
-			echo '<li><a href="#source-repo"><span id="reposource">', WT_I18N::translate('Sources'), '</span></a></li>';
+			echo '<li><a href="#source-repo"><span id="reposource">', KT_I18N::translate('Sources'), '</span></a></li>';
 		}
 		echo '</ul>';
 

@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -118,7 +118,7 @@ function get_lati_long_placelocation ($place) {
 		$placelist = create_possible_place_names($parent[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				KT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $place_id, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;
@@ -128,8 +128,8 @@ function get_lati_long_placelocation ($place) {
 	}
 
 	$row=
-		// WT_DB::prepare("SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
-		WT_DB::prepare("SELECT pl_media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
+		// KT_DB::prepare("SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
+		KT_DB::prepare("SELECT pl_media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
 		->execute(array($place_id))
 		->fetchOneRow();
 	if ($row) {
@@ -143,7 +143,7 @@ function setup_map() {
 	global $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM;
 
 	?>
-	<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
+	<script src="<?php echo KT_GM_SCRIPT; ?>"></script>
 	<script>
 		var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
 		var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
@@ -193,7 +193,7 @@ function build_indiv_map($indifacts, $famids) {
 					'tabindex'   => '',
 					'placed'     => 'no',
 					'fact'       => $fact,
-					'fact_label' => WT_Gedcom_Tag::getLabel($fact),
+					'fact_label' => KT_Gedcom_Tag::getLabel($fact),
 					'info'       => $fact_data=='Y' ? '' : $fact_data,
 					'placerec'   => $placerec,
 					'lati'       => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
@@ -228,7 +228,7 @@ function build_indiv_map($indifacts, $famids) {
 							'tabindex'   => '',
 							'placed'     => 'no',
 							'fact'       => $fact,
-							'fact_label' => WT_Gedcom_Tag::getLabel($fact),
+							'fact_label' => KT_Gedcom_Tag::getLabel($fact),
 							'info'       => $fact_data=='Y' ? '' : $fact_data,
 							'placerec'   => $placerec,
 						);
@@ -265,16 +265,16 @@ function build_indiv_map($indifacts, $famids) {
 		$hparents=false;
 		for ($f=0; $f<count($famids); $f++) {
 			if (!empty($famids[$f])) {
-				$famrec = find_gedcom_record($famids[$f], WT_GED_ID, true);
+				$famrec = find_gedcom_record($famids[$f], KT_GED_ID, true);
 				if ($famrec) {
 					$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
 					for ($j=0; $j<$num; $j++) {
-						$person = WT_Person::getInstance($smatch[$j][1]);
+						$person = KT_Person::getInstance($smatch[$j][1]);
 						if ($person->canDisplayDetails()) {
-							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
+							$srec = find_person_record($smatch[$j][1], KT_GED_ID);
 							$birthrec = '';
 							$placerec = '';
-							foreach ($person->getAllFactsByType(explode('|', WT_EVENTS_BIRT)) as $sEvent) {
+							foreach ($person->getAllFactsByType(explode('|', KT_EVENTS_BIRT)) as $sEvent) {
 								$birthrec = $sEvent->getGedcomRecord();
 								$placerec = get_sub_record(2, '2 PLAC', $birthrec);
 								if (!empty($placerec)) {
@@ -286,16 +286,16 @@ function build_indiv_map($indifacts, $famids) {
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 										if (strpos($srec, "\n1 SEX F")!==false) {
 											$markers[$i]['fact']       = 'BIRT';
-											$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
+											$markers[$i]['fact_label'] = KT_I18N::translate('daughter');
 											$markers[$i]['class']      = 'person_boxF';
 										} else {
 											if (strpos($srec, "\n1 SEX M")!==false) {
 												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('son');
+												$markers[$i]['fact_label'] = KT_I18N::translate('son');
 												$markers[$i]['class']      = 'person_box';
 											} else {
 												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('child');
+												$markers[$i]['fact_label'] = KT_I18N::translate('child');
 												$markers[$i]['class']      = 'person_boxNN';
 											}
 										}
@@ -322,16 +322,16 @@ function build_indiv_map($indifacts, $famids) {
 											$i++;
 											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 											$markers[$i]['fact']		= 'BIRT';
-											$markers[$i]['fact_label']	= WT_I18N::translate('child');
+											$markers[$i]['fact_label']	= KT_I18N::translate('child');
 											$markers[$i]['class']		= 'option_boxNN';
 											if (strpos($srec, "\n1 SEX F")!==false) {
 												$markers[$i]['fact']		= 'BIRT';
-												$markers[$i]['fact_label']	= WT_I18N::translate('daughter');
+												$markers[$i]['fact_label']	= KT_I18N::translate('daughter');
 												$markers[$i]['class']		= 'person_boxF';
 											}
 											if (strpos($srec, "\n1 SEX M")!==false) {
 												$markers[$i]['fact']		= 'BIRT';
-												$markers[$i]['fact_label']	= WT_I18N::translate('son');
+												$markers[$i]['fact_label']	= KT_I18N::translate('son');
 												$markers[$i]['class']		= 'person_box';
 											}
 											$markers[$i]['icon'] = $latlongval['icon'];
@@ -413,7 +413,7 @@ function build_indiv_map($indifacts, $famids) {
 		// add $gmarks array to the required wt_v3_googlemap.js.php
 		$gmarks = $markers;
 		$pid	= $controller->record->getXref();
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
+		require_once KT_ROOT.KT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
 		// Create the normal googlemap sidebar of events and children
 		echo '
 			<div  id="map_content" style="border:1px solid; overflow-x: hidden; overflow-y: auto; margin-top: 10px;">
@@ -427,14 +427,14 @@ function build_indiv_map($indifacts, $famids) {
 							$z++;
 							echo '<td class="', $marker['class'], '" style="white-space:normal;">';
 								if (!empty($marker['name'])) {
-									$person = WT_Person::getInstance($marker['name']);
+									$person = KT_Person::getInstance($marker['name']);
 									if ($person) {
 										echo '<span style="margin:0 10px; display:inline-block;"><a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a></span>';
 									}
 								}
 								echo '<span  style="margin:0 10px; display:inline-block;">', print_fact_place_map($marker['placerec']), '</span>';
 								if (!empty($marker['date'])) {
-									$date = new WT_Date($marker['date']);
+									$date = new KT_Date($marker['date']);
 									echo '<span style="margin:0 10px; display:inline-block;">', $date->Display(true), '</span>';
 								}
 

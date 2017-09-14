@@ -21,28 +21,28 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('KT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+class logged_in_KT_Module extends KT_Module implements KT_Module_Block {
+	// Extend class KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. (A list of users who are online now) */ WT_I18N::translate('Who is online');
+		return /* I18N: Name of a module. (A list of users who are online now) */ KT_I18N::translate('Who is online');
 	}
 
-	// Extend class WT_Module
+	// Extend class KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Who is online” module */ WT_I18N::translate('A list of users and visitors who are currently online.');
+		return /* I18N: Description of the “Who is online” module */ KT_I18N::translate('A list of users and visitors who are currently online.');
 	}
 
-	// Extend class WT_Module_Block
+	// Extend class KT_Module_Block
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return KT_PRIV_PUBLIC;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
@@ -50,23 +50,23 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '<div>' . whoisonline() . '</div>';
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class KT_Module_Block
 	public function configureBlock($block_id) {
 	}
 }

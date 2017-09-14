@@ -21,22 +21,22 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'gedrecord.php');
+define('KT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new KT_Controller_Page();
 
-$obj=WT_GedcomRecord::getInstance(safe_GET_xref('pid'));
+$obj=KT_GedcomRecord::getInstance(safe_GET_xref('pid'));
 
 if (
-	$obj instanceof WT_Person ||
-	$obj instanceof WT_Family ||
-	$obj instanceof WT_Source ||
-	$obj instanceof WT_Repository ||
-	$obj instanceof WT_Note ||
-	$obj instanceof WT_Media
+	$obj instanceof KT_Person ||
+	$obj instanceof KT_Family ||
+	$obj instanceof KT_Source ||
+	$obj instanceof KT_Repository ||
+	$obj instanceof KT_Note ||
+	$obj instanceof KT_Media
 ) {
-	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$obj->getRawUrl());
+	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canDisplayDetails()) {
 	$controller->pageHeader();
@@ -46,7 +46,7 @@ if (
 	echo
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 		preg_replace(
-			'/@('.WT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
+			'/@('.KT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
 			htmlspecialchars($obj->getGedcomRecord())
 		),
 		'</pre>';
