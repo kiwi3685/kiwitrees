@@ -1601,6 +1601,9 @@ function old_paths() {
 		WT_ROOT . 'js/jquery.autosize.js',
 		WT_ROOT . 'includes/old_messages.php',
 		WT_ROOT . 'library/phpmailer',
+		// Removed in kiwitrees 3.3.2
+		WT_ROOT . 'admin_trees_unlinked.php',
+
 	);
 }
 
