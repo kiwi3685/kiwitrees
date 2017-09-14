@@ -28,7 +28,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_KIWITREES',		'Kiwitrees');
-define('WT_VERSION',		'3.3.1');
+define('WT_VERSION',		'3.3.2');
 define('WT_VERSION_TEXT',	trim(WT_VERSION));
 
 // External URLs
