@@ -1403,7 +1403,9 @@ function get_user_count() {
  * @return User|null
  */
 function find($user_id) {
-	return KT_DB::prepare("SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?")->execute([$user_id])->fetchOneRow();
+	return KT_DB::prepare(
+		"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?")
+	->execute([$user_id])->fetchOneRow();
 }
 
 /**
@@ -1415,7 +1417,7 @@ function find($user_id) {
  */
 function findByUserName($user_name) {
 	$user_id = KT_DB::prepare(
-		"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = ?"
+		"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = '?'"
 	)->execute([$user_name])->fetchOne();
 
 	return find($user_id);

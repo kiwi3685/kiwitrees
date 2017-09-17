@@ -233,18 +233,22 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 	switch ($form_count) {
 		case 0:
 			$form_title	= $form_title_1;
-			$to			= get_user_name(getUserID());
-			$to_name	= getUserFullName(getUserID());
+			if (!$to) {
+				$to			= get_user_name(getUserID());
+				$to_names	= getUserFullName(getUserID());
+			} else {
+				$to_names	= $to;
+			}
 		break;
 		case 1:
 			$form_title	= $form_title_1;
 			$to			= get_user_name(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
-			$to_name	= getUserFullName(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
+			$to_names	= getUserFullName(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
 		break;
 		case 2:
 			$form_title	= $form_title_2;
 			$to			= get_user_name(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
-			$to_name	= getUserFullName(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
+			$to_names	= getUserFullName(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
 		break;
 	} ?>
 
@@ -257,8 +261,6 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 						<?php echo KT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'); ?>
 					</small>
 				</p>
-			<?php } ?>
-			<?php if (!KT_USER_ID) { ?>
 				<div class="option">
 					<label for="from_name"><?php echo KT_I18N::translate('Your name'); ?></label>
 					<input type="text" name="from_name" id="from_name" value="<?php echo KT_Filter::escapeHtml($from_name); ?>" required>
@@ -281,7 +283,7 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 					<?php echo $form_title; ?>
 					<div class="option">
 						<label for="to_name"><?php echo KT_I18N::translate('To'); ?></label>
-						<input type="text" name="to_name" id="to_name" value="<?php echo $to_name; ?>">
+						<input type="text" name="to_name" id="to_name" value="<?php echo $to_names; ?>">
 						<input type="hidden" name="to" value="<?php echo KT_Filter::escapeHtml($to); ?>">
 					</div>
 					<div class="option">
