@@ -1085,7 +1085,7 @@ p.branches {display:inline;}
 [dir=rtl] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 
 /* Main menu icons */
-#menu-tree      {background-position:center    0;}
+#menu-tree      {background-position:center    	 0;}
 #menu-mymenu    {background-position:center  -70px;}
 #menu-chart     {background-position:center -140px;}
 #menu-list      {background-position:center -210px;}
@@ -1101,7 +1101,8 @@ p.branches {display:inline;}
 #menu-note      {background-position:center -910px;}
 #menu-repo      {background-position:center -980px;}
 #menu-story     {background-position:center -1050px;}
-#menu-report {background-position:center -1120px;}
+#menu-report	{background-position:center -1120px;}
+#menu-contact	{background-position:center -1187px;}
 
 /* Sub-menu icons */
 #menu-admin                 {background-position:left       0;} [dir=rtl] #menu-admin                 {background-position:right       0;}
