@@ -417,12 +417,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		if (KT_Module::getModuleByName('census_assistant')) {
 			$html = census_assistant_KT_Module::formatCensusNote($note);
 		} else {
-			$html = KT_Filter::formatText($note->getNote(), $KT_TREE);
+			$html = KT_Filter::formatText($note->getNote());
 		}
 	} else {
 		$note	= null;
 		$label	= 'NOTE';
-		$html	= KT_Filter::formatText($text, $KT_TREE);
+		$html	= KT_Filter::formatText($text);
 	}
 	if ($textOnly) {
 		return strip_tags($text);
@@ -625,7 +625,7 @@ function print_asso_rela_record(KT_Event $event, KT_GedcomRecord $record) {
 					if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 						$note = census_assistant_KT_Module::formatCensusNote($note);
 					} else {
-						$note = KT_Filter::formatText($note->getNote(), $KT_TREE);
+						$note = KT_Filter::formatText($note->getNote());
 					}
 				} else {
 					$note = '<span class="error">' . htmlspecialchars($nid) . '</span>';

@@ -190,7 +190,7 @@ class census_assistant_KT_Module extends KT_Module {
 				</div>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
-			return KT_Filter::formatText($note->getNote(), $KT_TREE);
+			return KT_Filter::formatText($note->getNote());
 		}
 	}
 
@@ -209,7 +209,8 @@ class census_assistant_KT_Module extends KT_Module {
 		$html = '';
 		foreach ($census->columns() as $column) {
 			$column->title() ? $title = ' title="' . $column->title() . '"' : $title = ' title="' . KT_I18N::translate('Description unavailable') . '"';
-			$html .= '<th' . $title . ' style="' . $column->style() . '">' . $column->abbreviation() . '</th>';
+			$column->style() ? $style = ' style="' . $column->style() . '"' : $style = '';
+			$html .= '<th' . $title . $style . '">' . $column->abbreviation() . '</th>';
 		}
 
 		return '<tr><th style="display:none;"></th>' . $html . '<th class="delete"></th></tr>';

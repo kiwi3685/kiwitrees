@@ -975,7 +975,7 @@ function print_main_notes(KT_Event $fact, $level) {
 				if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 					$text = census_assistant_KT_Module::formatCensusNote($note);
 				} else {
-					$text = KT_Filter::formatText($note->getNote(), $fact->getParent()->getTree());
+					$text = KT_Filter::formatText($note->getNote());
 				}
 			} else {
 				$text = '<span class="error">' . htmlspecialchars($nid) . '</span>';
