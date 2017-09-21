@@ -197,7 +197,7 @@ echo '<div id="place-hierarchy">';
 			}
 
 			if ($use_googlemap) {
-				echo '<link type="text/css" href="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
+				echo '<link type="text/css" href="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/googlemap.css" rel="stylesheet">';
 				map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 			}
 		break;

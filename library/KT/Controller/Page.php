@@ -150,7 +150,7 @@ class KT_Controller_Page extends KT_Controller_Base {
 		// Maintenance mode
 		// Note: $maintenance is 'true' on login.php so admin can always log in.
 		if (KT_Site::preference('MAINTENANCE') == 1 && !KT_USER_IS_ADMIN && $maintenance != true) {
-			header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH.'site-maintenance.php');
+			header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH .'site-maintenance.php');
 			exit;
 		}
 

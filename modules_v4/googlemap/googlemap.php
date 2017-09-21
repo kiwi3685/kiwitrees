@@ -410,10 +410,10 @@ function build_indiv_map($indifacts, $famids) {
 				}
 			}
 		}
-		// add $gmarks array to the required wt_v3_googlemap.js.php
+		// add $gmarks array to the required googlemap.js.php
 		$gmarks = $markers;
 		$pid	= $controller->record->getXref();
-		require_once KT_ROOT.KT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
+		require_once KT_ROOT.KT_MODULES_DIR.'googlemap/googlemap.js.php';
 		// Create the normal googlemap sidebar of events and children
 		echo '
 			<div  id="map_content" style="border:1px solid; overflow-x: hidden; overflow-y: auto; margin-top: 10px;">

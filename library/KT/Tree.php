@@ -42,8 +42,8 @@ class KT_Tree {
 	private static $trees   = null;
 
 	// Tree settings
-	private $preference     = null;    // wt_gedcom_setting table
-	private $user_preference = array(); // wt_user_gedcom_setting table
+	private $preference     = null;    // _gedcom_setting table
+	private $user_preference = array(); // _user_gedcom_setting table
 
 	// Create a tree object.  This is a private constructor - it can only
 	// be called from KT_Tree::getAll() to ensure proper initialisation.

@@ -1421,8 +1421,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		}
 
 		if ($fact === 'CENS' && $value === 'Y') {
-			echo censusDateSelector(KT_LOCALE, $pid);
 			if (KT_Module::getModuleByName('census_assistant') && KT_GedcomRecord::getInstance($pid) instanceof KT_Person) {
+				echo censusDateSelector(KT_LOCALE, $pid);
 				echo '
 					<div>
 						<a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .

@@ -46,7 +46,7 @@ function authenticateUser($user_name, $password) {
 			if ($verified && $approved || $is_admin) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();
-				$KT_SESSION->wt_user = $user_id;
+				$KT_SESSION->kt_user = $user_id;
 				AddToLog('Login successful ->'.$user_name.'<-', 'auth');
 				return $user_id;
 			} elseif (!$is_admin && !$verified) {
@@ -88,10 +88,10 @@ function userLogout($user_id) {
  *
  */
 
-function getUserId() {
+function getUserID() {
 	global $KT_SESSION;
 
-	return (int)($KT_SESSION->wt_user);
+	return (int)($KT_SESSION->kt_user);
 }
 
 function getUserName() {

@@ -100,10 +100,10 @@ class KT_Controller_Lifespan extends KT_Controller_Page {
 			$this->pids=$pids;
 		} elseif ($place) {
 			// All records found in a place
-			$wt_place=new KT_Place($place, KT_GED_ID);
+			$kt_place=new KT_Place($place, KT_GED_ID);
 			$this->pids=
 				KT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-				->execute(array($wt_place->getPlaceId(), KT_GED_ID))
+				->execute(array($kt_place->getPlaceId(), KT_GED_ID))
 				->fetchOneColumn();
 			$this->place=$place;
 		} else {

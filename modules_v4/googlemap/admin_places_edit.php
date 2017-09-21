@@ -38,7 +38,7 @@ $controller
 		->setPageTitle(KT_I18N::translate('Geographic data'))
 		->pageHeader();
 
-echo '<link type="text/css" href ="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
+echo '<link type="text/css" href ="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/googlemap.css" rel="stylesheet">';
 
 // Take a place id and find its place in the hierarchy
 // Input: place ID
@@ -227,7 +227,7 @@ if ($action == 'add') {
 	echo '</h3>';
 }
 
-include_once 'wt_v3_places_edit.js.php';
+include_once 'places_edit.js.php';
 $api='v3';
 
 ?>

@@ -29,8 +29,8 @@ if (!defined('KT_KIWITREES')) {
 
 <head>
 	<script src="<?php echo KT_GM_SCRIPT; ?>"></script>
-	<script src="<?php echo KT_STATIC_URL, KT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<link type="text/css" href="<?php echo KT_STATIC_URL, KT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
+	<script src="<?php echo KT_STATIC_URL, KT_MODULES_DIR; ?>googlemap/places_edit_overlays.js.php"></script>
+	<link type="text/css" href="<?php echo KT_STATIC_URL, KT_MODULES_DIR; ?>googlemap/css/googlemap.css" rel="stylesheet">
 
 	<script>
 	var map;
@@ -214,7 +214,7 @@ if (!defined('KT_KIWITREES')) {
 
 		// *** === NOTE *** This function creates the UK country overlays ==========================
 		overlays();
-		// === Above function is located in KT_MODULES_DIR/googlemap/wt_v3_placeOverlays.js.php ====
+		// === Above function is located in KT_MODULES_DIR/googlemap/placeOverlays.js.php ====
 
 
 		// Close any infowindow when map is clicked

@@ -699,7 +699,7 @@ function import_record($gedrec, $ged_id, $update) {
 		update_places($xref, $ged_id, $gedrec);
 		update_dates ($xref, $ged_id, $gedrec);
 		update_links ($xref, $ged_id, $gedrec);
-		//update_names ($xref, $ged_id, $record); We do not store family names in wt_names
+		//update_names ($xref, $ged_id, $record); We do not store family names in ##names
 		break;
 	case 'SOUR':
 		$record=new KT_Source($gedrec);

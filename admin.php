@@ -1603,7 +1603,10 @@ function old_paths() {
 		KT_ROOT . 'library/phpmailer',
 		// Removed in kiwitrees 3.3.2
 		KT_ROOT . 'admin_trees_unlinked.php',
-
+		KT_ROOT . 'modules_v4/googlemap/wt_v3_places_edit.js.php',
+		KT_ROOT . 'modules_v4/googlemap/wt_v3_places_edit_overlays.js.php',
+		KT_ROOT . 'modules_v4/googlemap/wt_v3_googlemap.js.php',
+		KT_ROOT . 'modules_v4/googlemap/css/wt_v3_googlemap.css',
 	);
 }
 

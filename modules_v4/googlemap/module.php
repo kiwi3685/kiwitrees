@@ -78,8 +78,8 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			require KT_ROOT . KT_MODULES_DIR . 'googlemap/defaultconfig.php';
 			require KT_ROOT . KT_MODULES_DIR . $this->getName() . '/' . $mod_action . '.php';
 			break;
-		case 'wt_v3_street_view':
-			$this->wt_v3_street_view();
+		case 'street_view':
+			$this->street_view();
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -134,7 +134,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			ob_start();
 			require_once KT_ROOT.KT_MODULES_DIR.'googlemap/googlemap.php';
 			require_once KT_ROOT.KT_MODULES_DIR.'googlemap/defaultconfig.php';
-			echo '<link type="text/css" href ="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
+			echo '<link type="text/css" href ="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/googlemap.css" rel="stylesheet">';
 			if (KT_USER_IS_ADMIN) {
 				echo '
 					<p style="margin:-10px 0 0 0; padding-bottom:2px;">
@@ -716,7 +716,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 
-		echo '<link type="text/css" href ="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
+		echo '<link type="text/css" href ="', KT_STATIC_URL, KT_MODULES_DIR, 'googlemap/css/googlemap.css" rel="stylesheet">';
 		echo '<div id="pedigreemap-page">
 				<h2>', $controller->getPageTitle(), '</h2>';
 
@@ -1741,7 +1741,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			->execute(array(KT_GED_ID))
 			->fetchOne();
 	}
-	private function wt_v3_street_view() {
+	private function street_view() {
 	header('Content-type: text/html; charset=UTF-8');
 
 		?>

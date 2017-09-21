@@ -1396,34 +1396,6 @@ function get_user_count() {
 }
 
 /**
- * Find the user with a specified user_id.
- *
- * @param int|null $user_id
- *
- * @return User|null
- */
-function find($user_id) {
-	return KT_DB::prepare(
-		"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?")
-	->execute([$user_id])->fetchOneRow();
-}
-
-/**
- * Find the user with a specified user_name.
- *
- * @param string $user_name
- *
- * @return User|null
- */
-function findByUserName($user_name) {
-	$user_id = KT_DB::prepare(
-		"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = '?'"
-	)->execute([$user_name])->fetchOne();
-
-	return find($user_id);
-}
-
-/**
  * Find the user with a specified email address.
  *
  * @param string $email

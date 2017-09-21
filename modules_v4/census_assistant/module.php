@@ -141,8 +141,8 @@ class census_assistant_KT_Module extends KT_Module {
 						$date_exp[0] = sprintf("%02d", explode(" ", $fact->getAttribute('DATE'))[0]);
 						$date = implode(" ", $date_exp);
 						// get country code from census place
-						$wt_place	 = new KT_Place($fact->getPlace(), KT_GED_ID);
-						$place       = explode(',', strip_tags($wt_place->getFullName()));
+						$kt_place	 = new KT_Place($fact->getPlace(), KT_GED_ID);
+						$place       = explode(',', strip_tags($kt_place->getFullName()));
 						$countryCode = KT_Soundex::soundex_dm(array_pop($place));
 						break;
 					}

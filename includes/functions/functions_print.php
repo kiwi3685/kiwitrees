@@ -886,7 +886,7 @@ function format_fact_place(KT_Event $event, $anchor=false, $sub=false, $lds=fals
 
 	$factrec = $event->getGedcomRecord();
 
-	$wt_place = new KT_Place($event->getPlace(), KT_GED_ID);
+	$kt_place = new KT_Place($event->getPlace(), KT_GED_ID);
 
 	$name_parts = explode(', ', $event->getPlace());
 	$ct=count($name_parts);
@@ -894,13 +894,13 @@ function format_fact_place(KT_Event $event, $anchor=false, $sub=false, $lds=fals
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
 		if ($SEARCH_SPIDER) {
-			$html = $wt_place->getFullName();
+			$html = $kt_place->getFullName();
 		} else {
-			$html = '<a href="' . $wt_place->getURL() . '">' . $wt_place->getFullName() . '</a>';
+			$html = '<a href="' . $kt_place->getURL() . '">' . $kt_place->getFullName() . '</a>';
 		}
 	} else {
 		// Abbreviate the place name, for chart boxes
-		return ' - ' . $wt_place->getShortName();
+		return ' - ' . $kt_place->getShortName();
 	}
 
 	$ctn=0;
@@ -909,8 +909,8 @@ function format_fact_place(KT_Event $event, $anchor=false, $sub=false, $lds=fals
 		if (!empty($placerec)) {
 			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 				foreach ($matches[1] as $match) {
-					$wt_place = new KT_Place($match, KT_GED_ID);
-					$html .= ' - ' . $wt_place->getFullName();
+					$kt_place = new KT_Place($match, KT_GED_ID);
+					$html .= ' - ' . $kt_place->getFullName();
 				}
 			}
 			$map_lati = "";

@@ -416,7 +416,7 @@ if (!$SEARCH_SPIDER && !$KT_SESSION->initiated) {
 }
 
 // Who are we?
-define('KT_USER_ID',       getUserId());
+define('KT_USER_ID',       getUserID());
 define('KT_USER_NAME',     getUserName());
 define('KT_USER_IS_ADMIN', userIsAdmin(KT_USER_ID));
 
