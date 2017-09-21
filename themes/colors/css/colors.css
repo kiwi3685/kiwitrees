@@ -31,16 +31,6 @@ html {overflow-y:scroll;}
 body {
     font:12px tahoma, arial, helvetica, sans-serif;
     margin: 0;
-    /* flex box settings */
-    height: 100vh;
-    min-height: 100vh;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-direction: column;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
 }
 
 legend,.details_label {font-weight:700;}
@@ -277,11 +267,8 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
     clear:both;
     position: relative;
     padding:10px 10px 0 10px;
-    flex: 1 0 auto;
-    -ms-flex: 1;
-    -webkit-flex: 1 0 auto;
+    overflow: hidden;
     top: auto;
-
 }
 #content .center a {font-size:13px;}
 #content .center a.warning,#login-box span.error,#calendar-page span.error {color:#ff5500;}
@@ -299,7 +286,6 @@ div.error {color:#dd0000;font-weight:600;}
     clear:both;
 	margin-top: 20px;
 	overflow: hidden;
-    width:99%;
 }
 
 #index .user_messages td {border:1px #999 solid;padding:2px;}
