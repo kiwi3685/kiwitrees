@@ -51,45 +51,36 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 	}
 
 	if ((!$contact_user_id && !$webmaster_user_id) || (!$supportLink && !$contactLink) || $to) {
-		$form_count = 0;
+		$style = 0;
 		$form_title_1 = '';
 		$form_title_2 = '';
-		$to_user_id = '';
-	} elseif (($supportLink == $contactLink) || ($contact_user_id == '') || ($webmaster_user_id == '') || !$to) {
-		$form_count = 1;
-		$to_user_id = KT_I18N::translate('Support');
+		$to_user_id_1 = get_user_id($to);
+		$to_user_id_2 = '';
+		$to_user_name_1 = $to;
+		$to_user_name_2 = '';
+		$to_user_fullname_1 = getUserFullName(get_user_id($to));
+		$to_user_fullname_2 = '';
+	} elseif (($supportLink == $contactLink) || ($contact_user_id == '') || ($webmaster_user_id == '')) {
+		$style = 1;
 		$form_title_1 = '<h3>' . KT_I18N::translate('For further information') . '</h3>';
 		$form_title_2 = '';
-		$to_user_id_1 = '';
+		$to_user_id_1 = get_user_id($to);
 		$to_user_id_2 = '';
+		$to_user_name_1 = $to;
+		$to_user_name_2 = '';
+		$to_user_fullname_1 = KT_I18N::translate('Support');
+		$to_user_fullname_2 = '';
 	} else {
-		$form_count = 2;
-		$to_user_id = '';
+		$style = 2;
+		$to_user_name = '';
 		$form_title_1 = '<h3>' . KT_I18N::translate('For technical support and information') . '</h3>';
-		$to_user_id_1 = KT_I18N::translate('Technical help');
 		$form_title_2 = '<h3>' . KT_I18N::translate('For help with genealogy questions') . '</h3>';
-		$to_user_id_2 = KT_I18N::translate('Genealogy help');
-	}
-	switch ($form_count) {
-		case 0:
-			$form_title	= $form_title_1;
-			if ($to) {
-				$to_name	= getUserFullName(get_user_id($to));
-			} else {
-				$to			= get_user_name(getUserID());
-				$to_name	= getUserFullName(getUserID());
-			}
-		break;
-		case 1:
-			$form_title	= $form_title_1;
-			$to			= get_user_name(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
-			$to_name	= getUserFullName(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
-		break;
-		case 2:
-			$form_title	= $form_title_2;
-			$to			= get_user_name(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
-			$to_name	= getUserFullName(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
-		break;
+		$to_user_id_1 = get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID');
+		$to_user_id_2 = get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID');
+		$to_user_name_1 = get_user_name(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
+		$to_user_name_2 = get_user_name(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
+		$to_user_fullname_1 = KT_I18N::translate('Technical help');
+		$to_user_fullname_2 = KT_I18N::translate('Genealogy help');
 	} ?>
 
 	<form name="messageform" method="post">
@@ -101,8 +92,6 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 						<?php echo KT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'); ?>
 					</small>
 				</p>
-			<?php } ?>
-			<?php if (!KT_USER_ID) { ?>
 				<div class="option">
 					<label for="from_name"><?php echo KT_I18N::translate('Your name'); ?></label>
 					<input type="text" name="from_name" id="from_name" value="<?php echo KT_Filter::escapeHtml($from_name); ?>" required>
@@ -120,13 +109,13 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 		</div>
 		<hr>
 		<div id="contact_forms">
-			<?php for ($i = 0; $i <= $form_count; $i++) { ?>
+			<?php for ($i = 1; $i <= 2; $i++) { ?>
 				<div class="contact_form">
-					<?php echo $form_title; ?>
+					<?php echo ${'form_title_' . $i}; ?>
 					<div class="option">
 						<label for="to_name"><?php echo KT_I18N::translate('To'); ?></label>
-						<input type="text" name="to_name" id="to_name" value="<?php echo $to_name; ?>">
-						<input type="hidden" name="to" value="<?php echo KT_Filter::escapeHtml($to); ?>">
+						<input type="text" name="to_name" id="to_name" value="<?php echo ${'to_user_fullname_' . $i}; ?>">
+						<input type="hidden" name="to" value="<?php echo KT_Filter::escapeHtml(${'to_user_name_' . $i}); ?>">
 					</div>
 					<div class="option">
 						<label for="from_name"><?php echo KT_I18N::translate('Subject'); ?></label>
@@ -147,7 +136,7 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 						</button>
 					</p>
 				</div>
-				<?php if ($form_count == 1) {
+				<?php if ($style <= 1) {
 					exit;
 				}
 			} ?>
@@ -253,7 +242,7 @@ function addMessage($message) {
 		$copy_email .=
 			KT_Mail::EOL .
 			KT_Mail::EOL .
-			$bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $sender_real_name . ' (' . $sender_email . ')' . KT_Mail::EOL . 
+			$bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $sender_real_name . ' (' . $sender_email . ')' . KT_Mail::EOL .
 			$bold_on . KT_I18N::translate('Subject') . ':  ' . $bold_off . $message['subject'] . KT_Mail::EOL .
 			$bold_on . KT_I18N::translate('Content') . ':  ' . $bold_off . KT_Mail::EOL .
 			$message['body'] . KT_Mail::EOL .
@@ -297,7 +286,7 @@ function addMessage($message) {
 		if ($sender) {
 			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . getUserFullName($sender) . ' (' . $message['from_email'] . ')' . KT_Mail::EOL;
 		} else {
-			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $message['from_email'] . KT_Mail::EOL;				
+			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $message['from_email'] . KT_Mail::EOL;
 		}
 		$original_email .=
 			$bold_on . KT_I18N::translate('Subject') . ':  ' . $bold_off . $message['subject'] . KT_Mail::EOL .
