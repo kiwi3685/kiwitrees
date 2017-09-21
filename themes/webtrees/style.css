@@ -1327,6 +1327,7 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
 .ui-accordion .ui-accordion-content {margin-top: 1px;overflow:visible;padding:0 5px;position:relative;}
 .ui-accordion .ui-accordion-header {text-align:center;margin-top:0;}
+#widget-bar.ui-accordion .ui-accordion-header {overflow:hidden; text-align: left;}
 .ui-accordion .ui-accordion-header a {padding:2px;}
 .ui-helper-reset {line-height:1.5;}
 .ui-state-highlight a {color:#ff0000;}
@@ -1339,6 +1340,7 @@ dd .editlink, dd .deletelink {float:right;}
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 [dir=rtl] .ui-dialog-title {float:right;}
 [dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
+[dir=rtl] #widget-bar.ui-accordion .ui-accordion-header {text-align: right;}
 
 /* jQuery.datatable styling general over-rides */
 .odd {background-color:#E7EEF3 ;}
@@ -2395,6 +2397,7 @@ div.widget {
 /* Styling for Contacts module */
 #contact_page {
 	margin: 20px;
+	overflow:hidden;
 }
 
 #contact_page h3 {

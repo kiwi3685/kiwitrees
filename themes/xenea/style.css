@@ -1477,6 +1477,7 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-helper-reset {line-height:1.6;}
 .ui-state-highlight a {color:#ff0000;}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 4px 8px;}
+#widget-bar.ui-accordion .ui-accordion-header {text-align: left;}
 
 [dir=rtl] .ui-tabs {direction:rtl;}
 [dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-active,
@@ -1484,6 +1485,7 @@ dd .editlink, dd .deletelink {float:right;}
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 [dir=rtl] .ui-dialog-title {float:right;}
 [dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
+[dir=rtl] #widget-bar.ui-accordion .ui-accordion-header {text-align: right;}
 
 /* ========= jQuery.datatable styling over-rides ============ */
 .odd {background-color:#dcdcdc;}
@@ -2641,6 +2643,7 @@ div.widget {
 /* Styling for Contacts module */
 #contact_page {
 	margin: 20px;
+	overflow:hidden;
 }
 
 #contact_page h3 {
