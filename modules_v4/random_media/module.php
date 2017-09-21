@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,13 +41,13 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $foundlist;
 
-		$filter			=get_block_setting($block_id, 'filter',   'all');
-		$controls		=get_block_setting($block_id, 'controls', true);
-		$start			=get_block_setting($block_id, 'start',    false) || KT_Filter::getBool('start');
+		$filter			= get_block_setting($block_id, 'filter',   'all');
+		$controls		= get_block_setting($block_id, 'controls', true);
+		$start			= get_block_setting($block_id, 'start',    false) || KT_Filter::getBool('start');
 		if ($block_id == '') {
-			$start = 0;
-			$controls = 0;
-			$content = '';
+			$start		= 0;
+			$controls	= 0;
+			$content	= '';
 		} else {
 			$content = '
 				<script>
@@ -69,7 +69,7 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 					};
 					function reload_image() {
 						if (play) {
-							jQuery("#block_'. $block_id .'").load("index.php?ctype='. $ctype .'&action=ajax&block_id='. $block_id .'&start=1");
+							jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype .'&action=ajax&block_id=' . $block_id . '&start=1");
 						}
 					};
 				</script>
@@ -77,7 +77,7 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 		}
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
-		$all_media=KT_DB::prepare(
+		$all_media = KT_DB::prepare(
 			"SELECT m_id FROM `##media`" .
 			" WHERE m_file = ?" .
 			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')" .
@@ -125,9 +125,9 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 				// Check if it is linked to a suitable individual
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
 					if (
-						$filter=='all' ||
-						$filter=='indi'  && strpos($indi->getGedcomRecord(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
-						$filter=='event' && strpos($indi->getGedcomRecord(), "\n2 OBJE @" . $media->getXref() . '@') !==false
+						$filter == 'all' ||
+						$filter == 'indi'  && strpos($indi->getGedcomRecord(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
+						$filter == 'event' && strpos($indi->getGedcomRecord(), "\n2 OBJE @" . $media->getXref() . '@') !==false
 					) {
 						// Found one :-)
 						$random_media = $media;
@@ -138,10 +138,10 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 			unset($all_media[$n]);
 		};
 
-		if ($ctype == 'gedcom' && KT_USER_GEDCOM_ADMIN || $ctype=='user' && KT_USER_ID) {
-			$title = '<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		if ($ctype == 'gedcom' && KT_USER_GEDCOM_ADMIN || $ctype == 'user' && KT_USER_ID) {
+			$title = '<i class="icon-admin" title="' . KT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
 
 		if ($start) {
@@ -160,25 +160,25 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 						$icon_class = 'icon-media-play';
 					}
 					$content .= '
-						<div dir="ltr" id="random_media_controls' . $block_id .'">
-							<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="'.$icon_class.'" title="' . KT_I18N::translate('Play') . '/' . KT_I18N::translate('Stop') . '"></a>
-							<a href="#" onclick="jQuery(\'#block_'. $block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.KT_I18N::translate('Next image').'" class="icon-media-next"></a>
+						<div dir="ltr" id="random_media_controls' . $block_id . '">
+							<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="' . $icon_class . '" title="' . KT_I18N::translate('Play') . '/' . KT_I18N::translate('Stop') . '"></a>
+							<a href="#" onclick="jQuery(\'#block_'. $block_id . '\').load(\'index.php?ctype=' . $ctype . '&amp;action=ajax&amp;block_id=' . $block_id . '\');return false;" title="' . KT_I18N::translate('Next image') . '" class="icon-media-next"></a>
 						</div>';
 				}
 
 				$content .= '
 					<div class="random_media_content">
-						<div class="random_media_title"><a href="'.$random_media->getHtmlUrl().'" title="'. strip_tags($random_media->getFullName()) .'">'. $random_media->getFullName() .'</a></div>
-						' .$random_media->displayImage(). '
+						<div class="random_media_title"><a href="' . $random_media->getHtmlUrl() . '" title="' . strip_tags($random_media->getFullName()) . '">' . $random_media->getFullName() . '</a></div>
+						' . $random_media->displayImage() . '
 					</div>
 			</div>';
 		} else {
 			$content = KT_I18N::translate('This family tree has no images to display.');
 		}
-		$id = $this->getName().$block_id;
-		$class = $this->getName().'_block';
+		$id = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
 		if ($template) {
-			require KT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR . 'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
@@ -233,7 +233,7 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 			exit;
 		}
 
-		require_once KT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT . 'includes/functions/functions_edit.php';
 
 		$filter		= get_block_setting($block_id, 'filter', 'all');
 		$controls	= get_block_setting($block_id, 'controls', true);
@@ -297,17 +297,18 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 				'</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap width33">'. KT_I18N::translate('Filter'). '</td>
+				<td class="descriptionbox wrap width33">' . KT_I18N::translate('Filter') . '</td>
 				<td class="optionbox">
-					<h4 style="margin-bottom:0;">'. KT_Gedcom_Tag::getLabel('FORM'). '</h4>
+					<h4 style="margin-bottom:0;">' . KT_Gedcom_Tag::getLabel('FORM') . '</h4>
 					<table class="width100">
 						<tr>
 							<td colspan="3" class="center">
-								<input id="toggle1" type="checkbox" onClick="toggle(this)" >&nbsp;&nbsp;' .KT_I18N::translate('Select all').
+								<input id="toggle1" type="checkbox" onClick="toggle(this)" >&nbsp;&nbsp;' . KT_I18N::translate('Select all').
 							'</td>
 						</tr>
 						<tr>
-							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_avi"';
+							<td class="width33">
+							<input class="check" type="checkbox" value="yes" name="filter_avi"';
 								if ($filters['avi']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;avi&nbsp;&nbsp;
 							</td>
 							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_bmp"';
@@ -349,11 +350,11 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 							<td class="width33">&nbsp;</td>
 						</tr>
 					</table>
-					<h4 style="margin-bottom:0;">'. KT_Gedcom_Tag::getLabel('TYPE'). '</h4>
+					<h4 style="margin-bottom:0;">' . KT_Gedcom_Tag::getLabel('TYPE') . '</h4>
 					<table class="width100" id="type_list">
 						<tr>
 							<td colspan="3" class="center">
-								<input type="checkbox" onClick="toggle2(this)" >&nbsp;&nbsp;' .KT_I18N::translate('Select all').
+								<input type="checkbox" onClick="toggle2(this)" >&nbsp;&nbsp;' . KT_I18N::translate('Select all') .
 							'</td>
 						</tr>
 						<tr>';
@@ -365,9 +366,9 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 								$i = 1;
 								$html .= '</tr><tr>';
 							}
-							$html .= '<td class="width33"><input class="check2" type="checkbox" value="yes" name="filter_'. $typeName .'"';
+							$html .= '<td class="width33"><input class="check2" type="checkbox" value="yes" name="filter_' . $typeName . '"';
 							if ($filters[$typeName]) $html .= ' checked="checked" ';
-							$html .= '>&nbsp;&nbsp;'. $typeValue .'&nbsp;&nbsp;</td>';
+							$html .= '>&nbsp;&nbsp;' . $typeValue . '&nbsp;&nbsp;</td>';
 						}
 						$html .= '</tr>
 					</table>
@@ -384,7 +385,8 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 			<tr>
 				<td class="descriptionbox wrap width33">'.
 					KT_I18N::translate('Start slide show on page load?').
-				'</td><td class="optionbox">'.
+				'</td>
+				<td class="optionbox">'.
 					edit_field_yes_no('start', $start).
 				'</td>
 			</tr>';
