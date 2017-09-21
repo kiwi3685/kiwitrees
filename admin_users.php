@@ -150,7 +150,7 @@ switch (KT_Filter::get('action')) {
 		// Masquerade as a user.
 		$username	= KT_Filter::get('username');
 		$user_id	= get_user_id($username);
-		$KT_SESSION->wt_user = $user_id;
+		$KT_SESSION->kt_user = $user_id;
 		Zend_Session::regenerateId();
 		Zend_Session::writeClose();
 		header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . 'index.php');
@@ -232,7 +232,8 @@ switch (KT_Filter::get('action')) {
 			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[3]) . '</span></a>';
 			// $aData[4] is the email address
 			if ($user_id != KT_USER_ID) {
-				$aData[4] = '<a href="message.php?to=' . $username . '"  title="' . KT_I18N::translate('Send Message') . '" target="_blank">' . KT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
+				$url = KT_SERVER_NAME . KT_SCRIPT_PATH . 'admin_users.php';
+				$aData[4] = '<a href="message.php?to=' . $username . '&amp;url=' . $url . '"  title="' . KT_I18N::translate('Send Message') . '">' . KT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
 			}
 			// $aData[5] is the langauge
 			if (array_key_exists($aData[5], $installed_languages)) {
