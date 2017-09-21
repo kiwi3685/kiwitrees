@@ -32,7 +32,7 @@ if (!defined('KT_KIWITREES')) {
 	<div id="footer">
 		<?php if (!array_key_exists('contact', KT_Module::getActiveModules())){ ?>
 			<div class="contact_links">
-				<a href="message.php?url=<?php echo addslashes(urlencode(get_query_url())); ?>" target="_blank" title="<?php echo KT_I18N::translate('Send Message'); ?>">
+				<a href="message.php?url=<?php echo KT_SERVER_NAME . KT_SCRIPT_PATH . addslashes(rawurlencode(get_query_url())); ?>" title="<?php echo KT_I18N::translate('Send Message'); ?>">
 					<?php echo KT_I18N::translate('If you have any questions or comments please contact us'); ?>
 					<i class="fa-envelope-o"></i>
 				</a>

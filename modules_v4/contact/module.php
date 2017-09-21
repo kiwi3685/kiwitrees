@@ -85,7 +85,7 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 		if ((!$contact_user_id && !$webmaster_user_id) || (!$supportLink && !$contactLink)) {
 			return '';
 		} else {
-			$menu = new KT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
+			$menu = new KT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . KT_SERVER_NAME . KT_SCRIPT_PATH . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
 			$menu->addClass('menuitem', 'menuitem_hover', '');
 			return $menu;
 		}
@@ -104,12 +104,12 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
 		// Send the message.
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$to         = KT_Filter::post('to', null, '');
-			$from_name  = KT_Filter::post('from_name', null, '');
+			$to         = KT_Filter::post('to', null, KT_Filter::get('to'));
+			$from_name  = KT_Filter::post('from_name');
 			$from_email = KT_Filter::post('from_email');
-			$subject    = KT_Filter::post('subject', null, '');
-			$body       = KT_Filter::post('body', null, '');
-			$url        = KT_Filter::postUrl('url', 'index.php');
+			$subject    = KT_Filter::post('subject', null, KT_Filter::get('subject'));
+			$body       = KT_Filter::post('body');
+			$url        = KT_Filter::postUrl('url', KT_Filter::getUrl('url'));
 
 			// Only an administration can use the distribution lists.
 			$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || KT_USER_IS_ADMIN);
@@ -124,10 +124,10 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 			} elseif ($from_name === '' || $from_email === '') {
 				$errors = true;
 			} elseif (!preg_match('/@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) {
-				KT_FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
+				KT_FlashMessages::addMessage(KT_I18N::translate('Please enter a valid email address.'));
 				$errors = true;
 			} elseif (preg_match('/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
-				KT_FlashMessages::addMessage(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
+				KT_FlashMessages::addMessage(KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ KT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]));
 				$errors = true;
 			} elseif (empty($recipients)) {
 				$errors = true;
@@ -142,8 +142,7 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 					'&from_email=' . rawurlencode($from_email) .
 					'&subject=' . rawurlencode($subject) .
 					'&body=' . rawurlencode($body) .
-					'&url=' . rawurlencode($url) .
-					'&method=' . rawurlencode($method)
+					'&url=' . rawurlencode($url)
 				);
 			} else {
 				// No errors.  Send the message.
@@ -158,10 +157,11 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 					$message['subject'] = $subject;
 					$message['body']    = nl2br($body, false);
 					$message['url']     = $url;
+
 					if (addMessage($message)) {
-						KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)), 'info');
+						KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));
 					} else {
-						KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'), 'danger');
+						KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'));
 						AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
 					}
 				}
@@ -172,12 +172,12 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 			return;
 		}
 
-		$to         = KT_Filter::get('to', null, '');
-		$from_name  = KT_Filter::get('from_name', null, '');
-		$from_email = KT_Filter::get('from_email', '');
-		$subject    = KT_Filter::get('subject', null, '');
-		$body       = KT_Filter::get('body', null, '');
-		$url        = KT_Filter::getUrl('url', 'index.php');
+		$to			= KT_Filter::post('to', null, KT_Filter::get('to'));
+		$from_name 	= KT_Filter::post('from_name');
+		$from_email	= KT_Filter::post('from_email');
+		$subject	= KT_Filter::post('subject', null, KT_Filter::get('subject'));
+		$body		= KT_Filter::post('body');
+		$url		= KT_Filter::postUrl('url', KT_Filter::getUrl('url'));
 
 		// Only an administrator can use the distribution lists.
 		$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || KT_USER_IS_ADMIN);
