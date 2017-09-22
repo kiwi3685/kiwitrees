@@ -1235,6 +1235,12 @@ table#story_table {width: 99%;}
 .ui-autocomplete li:nth-child(odd) {background-color:#ddd;}
 .ui-autocomplete a.ui-state-focus {color:#ff0000;}
 
+.loading-image {
+	background: transparent url(images/indicator.gif) 50% 50% no-repeat;
+	height: 50px;
+	margin: 50px;
+}
+
 /* font-awesome icons */
 .icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-trash-o */
 .icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px; } /* fa-question-circle */

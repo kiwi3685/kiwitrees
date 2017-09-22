@@ -1531,6 +1531,22 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 
 		switch ($action) {
 		case 'go':
+			$table_id = 'gm_check_details';
+			$controller
+				->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+				->addExternalJavascript(KT_JQUERY_DT_HTML5)
+				->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
+				->addInlineJavascript('
+					jQuery("#' . $table_id . '").dataTable({
+						dom: \'<"H"<"filtersH_' . $table_id . '">T<"dt-clear">pBf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id.'">>\',
+						' . KT_I18N::datatablesI18N() . ',
+						buttons: [{extend: "csv"}],
+						jQueryUI: true,
+						autoWidth: false
+					});
+					jQuery("#gm_check_details").css("visibility", "visible");
+					jQuery(".loading-image").css("display", "none");
+				');
 			//Identify gedcom file
 			$trees=KT_Tree::getAll();
 			echo '<div id="gm_check_title">', $trees[$gedcom_id]->tree_title_html, '</div>';
@@ -1601,131 +1617,142 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			//start to produce the display table
 			$cols=0;
 			$span=$max*3+3;
-			echo '<div class="gm_check_details">';
-			echo '<table class="gm_check_details"><tr>';
-			echo '<th rowspan="3">', KT_I18N::translate('Place'), '</th>';
-			echo '<th colspan="', $span, '">', KT_I18N::translate('Geographic data'), '</th></tr>';
-			echo '<tr>';
-			while ($cols<$max) {
-				if ($cols == 0) {
-					echo '<th colspan="3">', KT_I18N::translate('Country'), '</th>';
-				} else {
-					echo '<th colspan="3">', KT_I18N::translate('Level'), '&nbsp;', $cols+1, '</th>';
-				}
-				$cols++;
-			}
-			echo '</tr><tr>';
-			$cols=0;
-			while ($cols<$max) {
-				echo '<th>', KT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', KT_I18N::translate('Latitude'), '</th><th>', KT_I18N::translate('Longitude'), '</th>';
-				$cols++;
-			}
-			echo '</tr>';
-			$countrows=0;
-			while ($x<$i) {
-				$placestr 	= '';
-				$levels 	= explode(', ', $place_list[$x]);
-				$parts		= count($levels);
-				$levels		= array_reverse($levels);
-				$placestr	.= '<a href="placelist.php?action=show';
-				foreach ($levels as $pindex=>$ppart) {
-					$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
-				}
-				$placestr		.= '">' . $place_list[$x] . "</a>";
-				$gedplace		= '<tr><td>' . $placestr . '</td>';
-				$z				= 0;
-				$y				= 0;
-				$id				= 0;
-				$level			= 0;
-				$matched[$x]	= 0;// used to exclude places where the gedcom place is matched at all levels
-				$mapstr_edit	= '<a href="#" dir="auto" onclick="edit_place_location(\'';
-				$mapstr_add		= '<a href="#" dir="auto" onclick="add_place_location(\'';
-				$mapstr3		= '';
-				$mapstr4   		= '';
-				$mapstr5		= '\')" title=\'';
-				$mapstr6		= '\' >';
-				$mapstr7		= '\')">';
-				$mapstr8		= '</a>';
- 				while ($z<$parts) {
-					if ($levels[$z] == ' ' || $levels[$z] == '')
-						$levels[$z]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
+			echo '<div class="loading-image">&nbsp;</div>
+			<div class="gm_check_details">
+				<table id="gm_check_details" style="width: 100%; visibility: hidden;">
+					<thead>
+						<tr>
+							<th rowspan="3">', KT_I18N::translate('Family tree place'), '</th>
+							<th colspan="', $span, '">', KT_I18N::translate('Google Maps location data'), '</th>
+						</tr>
+						<tr>';
+							while ($cols<$max) {
+								if ($cols == 0) {
+									echo '<th colspan="3">', KT_I18N::translate('Country'), '</th>';
+								} else {
+									echo '<th colspan="3">', KT_I18N::translate('Level'), '&nbsp;', $cols+1, '</th>';
+								}
+								$cols++;
+							}
+						echo '</tr>
+						<tr>';
+							$cols=0;
+							while ($cols<$max) {
+								echo '<th>', KT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', KT_I18N::translate('Latitude'), '</th><th>', KT_I18N::translate('Longitude'), '</th>';
+								$cols++;
+							}
+						echo '</tr>
+					</thead>
+					<tbody>';
+						$countrows=0;
+						while ($x<$i) {
+							$placestr 	= '';
+							$levels 	= explode(', ', $place_list[$x]);
+							$parts		= count($levels);
+							$levels		= array_reverse($levels);
+							$placestr	.= '<a href="placelist.php?action=show';
+							foreach ($levels as $pindex=>$ppart) {
+								$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
+							}
+							$placestr		.= '">' . $place_list[$x] . "</a>";
+							$gedplace		= '<tr><td>' . $placestr . '</td>';
+							$z				= 0;
+							$y				= 0;
+							$id				= 0;
+							$level			= 0;
+							$matched[$x]	= 0;// used to exclude places where the gedcom place is matched at all levels
+							$mapstr_edit	= '<a href="#" dir="auto" onclick="edit_place_location(\'';
+							$mapstr_add		= '<a href="#" dir="auto" onclick="add_place_location(\'';
+							$mapstr3		= '';
+							$mapstr4   		= '';
+							$mapstr5		= '\')" title=\'';
+							$mapstr6		= '\' >';
+							$mapstr7		= '\')">';
+							$mapstr8		= '</a>';
+			 				while ($z<$parts) {
+								if ($levels[$z] == ' ' || $levels[$z] == '')
+									$levels[$z] = "unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
 
-					$levels[$z]=rtrim(ltrim($levels[$z]));
+								$levels[$z] = rtrim(ltrim($levels[$z]));
+								$placelist	= create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
+								foreach ($placelist as $key=>$placename) {
+									$row =
+										KT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+										->execute(array($z, $id, $placename))
+										->fetchOneRow(PDO::FETCH_ASSOC);
+									if (!empty($row['pl_id'])) {
+										$row['pl_placerequested'] = $levels[$z]; // keep the actual place name that was requested so we can display that instead of what is in the db
+										break;
+									}
+								}
 
-					$placelist=create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
-					foreach ($placelist as $key=>$placename) {
-						$row=
-							KT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
-							->execute(array($z, $id, $placename))
-							->fetchOneRow(PDO::FETCH_ASSOC);
-						if (!empty($row['pl_id'])) {
-							$row['pl_placerequested']=$levels[$z]; // keep the actual place name that was requested so we can display that instead of what is in the db
-							break;
-						}
-					}
-					if ($row['pl_id']!='') {
-						$id=$row['pl_id'];
-					}
+								if ($row['pl_id'] != '') {
+									$id = $row['pl_id'];
+								}
 
-					if ($row['pl_place']!='') {
-						$placestr2=$mapstr_edit.$id."&amp;level=".$level.$mapstr3.$mapstr5.KT_I18N::translate('Zoom=').$row['pl_zoom'].$mapstr6.$row['pl_placerequested'].$mapstr8;
-						if ($row['pl_place'] == 'unknown')
-							$matched[$x]++;
-					} else {
-						if ($levels[$z] == "unknown") {
-							$placestr2 = $mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(KT_I18N::translate('unknown')))."</strong>".$mapstr8;$matched[$x]++;
-						} else {
-							$placestr2 = $mapstr_add.$id."&amp;place_name=".urlencode($levels[$z])."&amp;level=".$level.$mapstr3.$mapstr7.'<span class="error">'.rtrim(ltrim($levels[$z])).'</span>'.$mapstr8;$matched[$x]++;
+								if ($row['pl_place']!='') {
+									$placestr2=$mapstr_edit.$id."&amp;level=" . $level . $mapstr3 . $mapstr5 . KT_I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
+									if ($row['pl_place'] == 'unknown')
+										$matched[$x]++;
+								} else {
+									if ($levels[$z] == "unknown") {
+										$placestr2 = $mapstr_add . $id ."&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . rtrim(ltrim(KT_I18N::translate('unknown'))) . "</strong>" . $mapstr8;
+										$matched[$x]++;
+									} else {
+										$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="error">' . rtrim(ltrim($levels[$z])) . '</span>' . $mapstr8;
+										$matched[$x]++;
+									}
+								}
+
+								$plac[$z] = "<td>" . $placestr2 . "</td>\n";
+
+								if ($row['pl_lati'] == '0') {
+									$lati[$z] = "<td class='error'><strong>" . $row['pl_lati'] . "</strong></td>";
+								} elseif ($row['pl_lati'] != '') {
+									$lati[$z] = "<td>" . $row['pl_lati'] . "</td>";
+								} else {
+									$lati[$z] = "<td class='error center'><strong>X</strong></td>";
+									$matched[$x]++;
+								}
+								if ($row['pl_long'] == '0') {
+									$long[$z] = "<td class='error'><strong>" . $row['pl_long'] . "</strong></td>";
+								} elseif ($row['pl_long']!='') {
+									$long[$z] = "<td>" . $row['pl_long'] . "</td>";
+								} else {
+									$long[$z] = "<td class='error center'><strong>X</strong></td>";
+									$matched[$x]++;
+								}
+								$level++;
+								$mapstr3 = $mapstr3 . "&amp;parent[" . $z . "]=" . addslashes($row['pl_placerequested']);
+								$mapstr4 = $mapstr4 . "&amp;parent[" . $z . "]=" . addslashes(rtrim(ltrim($levels[$z])));
+								$z++;
+							}
+							if ($matching) {
+								$matched[$x] = 1;
+							}
+							if ($matched[$x] != 0) {
+								echo $gedplace;
+								$z = 0;
+								while ($z < $max) {
+									if ($z < $parts) {
+										echo $plac[$z];
+										echo $lati[$z];
+										echo $long[$z];
+									} else {
+										echo '<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>';
+									}
+									$z++;
+								}
+								echo '</tr>';
+								$countrows++;
+							}
+							$x++;
 						}
-					}
-					$plac[$z]="<td>".$placestr2."</td>\n";
-					if ($row['pl_lati'] == '0') {
-						$lati[$z]="<td class='error'><strong>".$row['pl_lati']."</strong></td>";
-					} elseif ($row['pl_lati']!='') {
-						$lati[$z]="<td>".$row['pl_lati']."</td>";
-					} else {
-						$lati[$z]="<td class='error center'><strong>X</strong></td>";$matched[$x]++;
-					}
-					if ($row['pl_long'] == '0') {
-						$long[$z]="<td class='error'><strong>".$row['pl_long']."</strong></td>";
-					} elseif ($row['pl_long']!='') {
-						$long[$z]="<td>".$row['pl_long']."</td>";
-					} else {
-						$long[$z]="<td class='error center'><strong>X</strong></td>";$matched[$x]++;
-					}
-					$level++;
-					$mapstr3=$mapstr3."&amp;parent[".$z."]=".addslashes($row['pl_placerequested']);
-					$mapstr4=$mapstr4."&amp;parent[".$z."]=".addslashes(rtrim(ltrim($levels[$z])));
-					$z++;
-				}
-				if ($matching) {
-					$matched[$x]=1;
-				}
-				if ($matched[$x]!=0) {
-					echo $gedplace;
-					$z=0;
-					while ($z<$max) {
-						if ($z<$parts) {
-							echo $plac[$z];
-							echo $lati[$z];
-							echo $long[$z];
-						} else {
-							echo '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>';
-						}
-						$z++;
-					}
-					echo '</tr>';
-					$countrows++;
-				}
-				$x++;
-			}
-			// echo final row of table
-			echo '<tr><td colspan="2" class="accepted">', /* I18N: A count of places */ KT_I18N::translate('Total places: %s', KT_I18N::number($countrows)), '</td></tr></table></div>';
-			break;
-		default:
-			// Do not run until user selects a gedcom/place/etc.
-			// Instead, show some useful help info.
-			echo '<div class="gm_check_top accepted">', KT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), '</div>';
+					echo '</tbody>
+				</table>
+			</div>';
 			break;
 		}
 	}
