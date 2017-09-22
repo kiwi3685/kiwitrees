@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 if (!defined('KT_KIWITREES')) {
@@ -29,12 +29,12 @@ if (!defined('KT_KIWITREES')) {
 class ckeditor_KT_Module extends KT_Module {
 	// Extend KT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ KT_I18N::translate('CKEditor™');
+		return /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */ KT_I18N::translate('CKEditor™');
 	}
 
 	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ KT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
+		return /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */ KT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 
 	// Convert <textarea class="html-edit"> fields to CKEditor fields
