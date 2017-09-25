@@ -3270,7 +3270,7 @@ span.link_text {
 #family-table .fact_NOTE,
 #family-table .fact_SOUR {
 	margin: 5px 3px 5px 0;
-	clear: both;
+/*	clear: both;*/
 }
 
 #personal_facts_content .facts_table .descriptionbox .editfacts a {
@@ -6642,6 +6642,7 @@ div.widget {
 .census-assistant-search table {
 	border-collapse: collapse;
 	font-size: 95%;
+	width: 100%;
 }
 .census-assistant-search table td {
 	border: 1px solid #aaa;

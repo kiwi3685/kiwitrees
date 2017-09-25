@@ -3126,6 +3126,7 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 .census-assistant-search table {
 	border-collapse: collapse;
 	font-size: 95%;
+	width: 100%;
 }
 .census-assistant-search table td {
 	border: 1px solid #aaa;
