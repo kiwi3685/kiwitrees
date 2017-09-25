@@ -44,7 +44,7 @@ class KT_Census_CensusOfUnitedStates1940 extends KT_Census_CensusOfUnitedStates 
 			new KT_Census_CensusColumnNull($this, 'Race', 'Color or race'),
 			new KT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new KT_Census_CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
-			new KT_Census_CensusColumnMarried($this, 'AM', 'Age at first marriage'),
+			new KT_Census_CensusColumnAgeMarried($this, 'AM', 'Age at first marriage'),
 			new KT_Census_CensusColumnNull($this, 'School', 'Attended school since Sept. 1, 1929'),
 			new KT_Census_CensusColumnNull($this, 'R/W', 'Whether able to read and write'),
 			new KT_Census_CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),

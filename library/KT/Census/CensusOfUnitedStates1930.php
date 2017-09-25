@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ class KT_Census_CensusOfUnitedStates1930 extends KT_Census_CensusOfUnitedStates 
 			new KT_Census_CensusColumnNull($this, 'Race', 'Color or race'),
 			new KT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new KT_Census_CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
-			new KT_Census_CensusColumnMarried($this, 'AM', 'Age at first marriage'),
+			new KT_Census_CensusColumnAgeMarried($this, 'AM', 'Age at first marriage'),
 			new KT_Census_CensusColumnNull($this, 'School', 'Attended school since Sept. 1, 1929'),
 			new KT_Census_CensusColumnNull($this, 'R/W', 'Whether able to read and write'),
 			new KT_Census_CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),

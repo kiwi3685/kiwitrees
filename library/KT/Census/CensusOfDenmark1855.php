@@ -41,7 +41,7 @@ class KT_Census_CensusOfDenmark1855 extends KT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new KT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new KT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn', 'width: 200px;'),
 			new KT_Census_CensusColumnAge($this, 'Alder', 'Beregnet alder fra fødselsåret ved folketællingen'),
 			new KT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
 			new KT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),

@@ -41,7 +41,7 @@ class KT_Census_CensusOfDenmark1940 extends KT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new KT_Census_CensusColumnFullName($this, 'Navn', ''),
+			new KT_Census_CensusColumnFullName($this, 'Navn', 'Navn', 'width: 200px;'),
 			new KT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', 'Dato og måned'),
 			new KT_Census_CensusColumnBirthYear($this, 'Fødselsår', 'Fødselsåret'),
 			new KT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),

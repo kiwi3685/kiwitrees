@@ -3117,7 +3117,7 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 	border: none;
 	font-size: 90%;
 	padding: 5px 2px;
-	width: 90%;
+	width: 98%;
 }
 .cens_data table td.delete,
 .census-assistant-search table td[colspan] {
@@ -3129,6 +3129,7 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 	width: 100%;
 }
 .census-assistant-search table td {
+	background: #fff;
 	border: 1px solid #aaa;
 	padding: 5px;
 }
