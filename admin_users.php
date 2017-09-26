@@ -95,7 +95,7 @@ switch (KT_Filter::post('action')) {
 						$KT_TREE,
 						$user_id,
 						KT_I18N::translate('Approval of account at %s', strip_tags(KT_TREE_TITLE)),
-						KT_I18N::translate('The administrator at %s has approved your application for an account.<br><br>You may now login by accessing the following link: %s', $tree_link)
+						KT_I18N::translate('The administrator at %1s has approved your application for an account.<br><br>You may now login by accessing the following link: %2s', strip_tags(KT_TREE_TITLE), $tree_link)
 					);
 				}
 
