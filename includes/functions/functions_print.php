@@ -458,8 +458,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 					' . KT_Gedcom_Tag::getLabel($label) . ':&nbsp;
 				</span>
 				<span id="' . $element_id . '-alt">' . $first_line . $expand1 . '</span>
+				<div class="note_details" id="' . $element_id . '"' . $expand2 . '>' . $html . '</div>
 			</div>
-			<div class="note_details" id="' . $element_id . '"' . $expand2 . '>' . $html . '</div>
 		';
 	}
 }
@@ -504,7 +504,10 @@ function print_fact_notes($factrec, $level, $textOnly = false, $return = false) 
 					}
 				}
 			} else {
-				$data = '<div class="fact_NOTE"><span class="label">' . KT_I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
+				$data = '<div class="fact_NOTE">
+					<span class="label">' . KT_I18N::translate('Note') . '</span>:&nbsp;
+					<span class="field error">' . $nmatch[1] . '</span>
+				</div>';
 			}
 		}
 

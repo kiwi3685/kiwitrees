@@ -435,7 +435,7 @@ function print_fact(KT_Event $fact, KT_GedcomRecord $record) {
 	// -- find source for each fact
 	print_fact_sources($fact->getGedcomRecord(), 2);
 	// -- find notes for each fact
-	echo print_fact_notes($fact->getGedcomRecord(), 2);
+	print_fact_notes($fact->getGedcomRecord(), 2);
 	//-- find media objects
 	print_media_links($fact->getGedcomRecord(), 2, $pid);
 	echo '</td></tr>';
@@ -467,83 +467,91 @@ function print_repository_record($xref) {
  * @param int $level The level to look for sources at
  * @param boolean $return whether to return the data or print the data
  */
-function print_fact_sources($factrec, $level, $return=false) {
+function print_fact_sources($factrec, $level, $return = false) {
 	global $EXPAND_SOURCES;
 
-	$data = '';
-	$nlevel = $level+1;
+	$data	= '';
+	$nlevel	= $level + 1;
 
 	// -- Systems not using source records [ 1046971 ]
 	$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
-		if (strpos($match[$j][1], '@')===false) {
-			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j+1);
+		if (strpos($match[$j][1], '@') === false) {
+			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j + 1);
 			$srec = substr($srec, 6); // remove "2 SOUR"
 			$srec = str_replace("\n".($level+1)." CONT ", '<br>', $srec); // remove n+1 CONT
-			$data .= '<div="fact_SOUR"><span class="label">'.KT_I18N::translate('Source').':</span> <span class="field" dir="auto">'.htmlspecialchars($srec).'</span></div>';
+			$data .= '<div="fact_SOUR">
+				<span class="label">' . KT_I18N::translate('Source') . ':&nbsp;</span>
+				<span class="field" dir="auto">' . htmlspecialchars($srec) . '</span>
+			</div>';
 		}
 	}
 	// -- find source for each fact
 	$ct = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
 	for ($j=0; $j<$ct; $j++) {
-		$sid = $match[$j][1];
-		$source=KT_Source::getInstance($sid);
+		$sid	= $match[$j][1];
+		$source	= KT_Source::getInstance($sid);
 		if ($source) {
 			if ($source->canDisplayDetails()) {
-				$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
+				$spos1 = strpos($factrec, "$level SOUR @" . $sid . "@", $spos2);
 				$spos2 = strpos($factrec, "\n$level", $spos1);
 				if (!$spos2) {
 					$spos2 = strlen($factrec);
 				}
-				$srec = substr($factrec, $spos1, $spos2-$spos1);
-				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
-				$data .= '<div class="fact_SOUR">';
-				$data .= '<span class="label">';
-				$elementID = $sid."-".(int)(microtime(true)*1000000);
-				$src_media = trim(get_gedcom_value('OBJE', '1', $source->getGedcomRecord()), '@');
-				$data .= KT_I18N::translate('Source').':</span> <span class="field">';
-				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
-				if ($EXPAND_SOURCES) {
-					$plusminus='icon-minus';
-				} else {
-					$plusminus='icon-plus';
-				}
-				if ($lt>0 || $src_media) {
-					$data .= '<a href="#" onclick="return expand_layer(\''.$elementID.'\');"><i id="'.$elementID.'_img" class="'.$plusminus.'"></i></a> ';
-				}
-				$data .= '</span>';
-				$data .= '</div>';
-				$data .= "<div id=\"$elementID\"";
-				if ($EXPAND_SOURCES) {
-					$data .= ' style="display:block"';
-				}
-				$data .= ' class="source_citations">';
-				// OBJE
-				if (!empty($src_media) && $nlevel > 2) {
-					$data .= print_source_media($src_media);
-				}
-				// PUBL
-				$text = get_gedcom_value('PUBL', '1', $source->getGedcomRecord());
-				if (!empty($text)) {
-					$data .= '<span class="label">'.KT_Gedcom_Tag::getLabel('PUBL').': </span>';
-					$data .= $text;
-				}
-				$data .= printSourceStructure(getSourceStructure($srec));
-				$data .= '<div class="indent">';
-				ob_start();
-				print_media_links($srec, $nlevel);
-				$data .= ob_get_clean();
-				$data .= print_fact_notes($srec, $nlevel, false);
-				$data .= '</div>';
-				$data .= '</div>';
+				$srec	= substr($factrec, $spos1, $spos2-$spos1);
+				$lt		= preg_match_all("/$nlevel \w+/", $srec, $matches);
+				$data	.= '<div class="fact_SOUR">
+					<span class="label">';
+						$elementID = $sid . '-' . (int)(microtime(true)*1000000);
+						$src_media = trim(get_gedcom_value('OBJE', '1', $source->getGedcomRecord()), '@');
+						$data .= KT_I18N::translate('Source').':&nbsp;
+					</span>
+					<span class="field">
+						<a href="' . $source->getHtmlUrl() . '">' . $source->getFullName() . '</a>';
+						if ($EXPAND_SOURCES) {
+							$plusminus='icon-minus';
+						} else {
+							$plusminus='icon-plus';
+						}
+						if ($lt > 0 || $src_media) {
+							$data .= '<a href="#" onclick="return expand_layer(\'' . $elementID . '\');">
+								<i id="' . $elementID . '_img" class="' . $plusminus . '"></i>
+							</a>';
+						}
+					$data .= '</span>
+					<div id="' . $elementID . '"';
+						if ($EXPAND_SOURCES) {
+							$data .= ' style="display:block"';
+						}
+						$data .= ' class="source_citations"
+						>';
+						// OBJE
+						if (!empty($src_media) && $nlevel > 2) {
+							$data .= print_source_media($src_media);
+						}
+						// PUBL
+						$text = get_gedcom_value('PUBL', '1', $source->getGedcomRecord());
+						if (!empty($text)) {
+							$data .= '<span class="label">' . KT_Gedcom_Tag::getLabel('PUBL') . ':&nbsp;</span>';
+							$data .= $text;
+						}
+						$data .= printSourceStructure(getSourceStructure($srec));
+						$data .= '<div class="indent">';
+							$data .= print_fact_notes($srec, $nlevel, false, true);
+							ob_start();
+							print_media_links($srec, $nlevel);
+							$data .= ob_get_clean();
+						$data .= '</div>
+					</div>
+				</div>';
 			} else {
 				// Show that we do actually have sources for this data.
 				// Commented out for now, based on pre-kiwitrees user feedback.
 				//$data .= KT_Gedcom_Tag::getLabelValue('SOUR', KT_I18N::translate('yes'));
 			}
 		} else {
-			$data .= KT_Gedcom_Tag::getLabelValue('SOUR', '<span class="error">'.$sid.'</span>');
+			$data .= KT_Gedcom_Tag::getLabelValue('SOUR', '<span class="error">' . $sid . '</span>');
 		}
 	}
 
@@ -908,10 +916,10 @@ function print_main_notes(KT_Event $fact, $level) {
 
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
-		if ($level>=2) echo '<tr class="row_note2">';
+		if ($level >= 2) echo '<tr class="row_note2">';
 		else echo '<tr>';
 		echo '<td valign="top" class="descriptionbox';
-		if ($level>=2) echo ' rela';
+		if ($level >= 2) echo ' rela';
 		echo ' ', $styleadd, ' width20">';
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', ', $linenum, ');" href="#" title="', KT_I18N::translate('Edit'), '">';
@@ -932,7 +940,7 @@ function print_main_notes(KT_Event $fact, $level) {
 				echo '</div>';
 			}
 		} else {
-			if ($level<2) {
+			if ($level < 2) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}
@@ -942,10 +950,10 @@ function print_main_notes(KT_Event $fact, $level) {
 					echo KT_Gedcom_Tag::getLabel('NOTE');
 				}
 			}
-			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
-			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
-			$factname = $factwords[1]; // BIRT
-			$parent=KT_GedcomRecord::getInstance($pid);
+			$factlines	= explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
+			$factwords	= explode(" ", $factlines[0]); // 1 BIRT Y
+			$factname	= $factwords[1]; // BIRT
+			$parent		= KT_GedcomRecord::getInstance($pid);
 			if ($factname == 'EVEN' || $factname=='FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
