@@ -77,6 +77,7 @@ class tab_census_KT_Module extends KT_Module implements KT_Module_Tab {
 		');
 		?>
 		<style>
+			#tab_census_content {overflow-y: auto;}
 			#tab_census_content div.descriptionbox {border: 1px solid #555; border-radius: 5px; line-height: 18px; margin-bottom: 2px;}
 			#tab_census_content div.descriptionbox span {display: inline-block;}
 			#tab_census_content table {border-collapse: collapse; width: 100%;}
