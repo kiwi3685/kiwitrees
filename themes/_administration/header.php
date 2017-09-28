@@ -106,7 +106,7 @@ if ($view != 'simple') {
 			</span>
 			<?php if (KT_USER_CAN_ACCEPT && exists_pending_change()) { ?>
 				 |
-				 <p><a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;"><?php echo KT_I18N::translate('Pending changes'); ?></a></p>
+				 <span><a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;"><?php echo KT_I18N::translate('Pending changes'); ?></a></span>
 			<?php } ?>
 			 |
 			<div class="header_search">

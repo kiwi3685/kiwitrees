@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,7 @@ require './includes/session.php';
 
 $controller = new KT_Controller_Page();
 
-$obj=KT_GedcomRecord::getInstance(safe_GET_xref('pid'));
+$obj = KT_GedcomRecord::getInstance(safe_GET_xref('pid'));
 
 if (
 	$obj instanceof KT_Person ||
@@ -36,7 +36,7 @@ if (
 	$obj instanceof KT_Note ||
 	$obj instanceof KT_Media
 ) {
-	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$obj->getRawUrl());
+	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canDisplayDetails()) {
 	$controller->pageHeader();
@@ -47,7 +47,8 @@ if (
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 		preg_replace(
 			'/@('.KT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-			htmlspecialchars($obj->getGedcomRecord())
+			htmlspecialchars($obj->getGedcomRecord()
+		)
 		),
 		'</pre>';
 }

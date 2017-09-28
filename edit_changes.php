@@ -29,13 +29,7 @@ $controller = new KT_Controller_Page();
 $controller
 	->requireAcceptLogin()
 	->setPageTitle(KT_I18N::translate('Pending changes'))
-	->pageHeader()
-	->addInlineJavascript('
-		function show_diff(diffurl) {
-			window.opener.location = diffurl;
-			return false;
-		}
-	');
+	->pageHeader();
 
 $action		= safe_GET('action');
 $change_id	= safe_GET('change_id');
@@ -47,29 +41,30 @@ case 'undo':
 	$gedcom_id	= KT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	$xref		= KT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Undo a change, and subsequent changes to the same record
-	KT_DB::prepare(
-		"UPDATE `##change`".
-		" SET   status     = 'rejected'".
-		" WHERE status     = 'pending'".
-		" AND   gedcom_id  = ?".
-		" AND   xref       = ?".
-		" AND   change_id >= ?"
-	)->execute(array($gedcom_id, $xref, $change_id));
+	KT_DB::prepare("
+		UPDATE `##change`
+		 SET   status     = 'rejected'
+		 WHERE status     = 'pending'
+		 AND   gedcom_id  = ?
+		 AND   xref       = ?
+		 AND   change_id >= ?
+	")->execute(array($gedcom_id, $xref, $change_id));
 	break;
 case 'accept':
-	$gedcom_id=KT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =KT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id	= KT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref		= KT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Accept a change, and all previous changes to the same record
-	$changes=KT_DB::prepare(
-		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
-		" FROM  `##change` c".
-		" JOIN  `##gedcom` g USING (gedcom_id)".
-		" WHERE c.status   = 'pending'".
-		" AND   gedcom_id  = ?".
-		" AND   xref       = ?".
-		" AND   change_id <= ?".
-		" ORDER BY change_id"
-	)->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
+	$changes = KT_DB::prepare("
+		SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom
+		 FROM  `##change` c
+		 JOIN  `##gedcom` g USING (gedcom_id)
+		 WHERE c.status   = 'pending'
+		 AND   gedcom_id  = ?
+		 AND   xref       = ?
+		 AND   change_id <= ?
+		 ORDER BY change_id
+	")->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
+
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
@@ -83,20 +78,20 @@ case 'accept':
 	}
 	break;
 case 'undoall':
-	KT_DB::prepare(
-		"UPDATE `##change`".
-		" SET status='rejected'".
-		" WHERE status='pending' AND gedcom_id=?"
-	)->execute(array(KT_GED_ID));
+	KT_DB::prepare("
+		UPDATE `##change`
+		 SET status='rejected'
+		 WHERE status='pending' AND gedcom_id=?
+	")->execute(array(KT_GED_ID));
 	break;
 case 'acceptall':
-	$changes=KT_DB::prepare(
-		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
-		" FROM `##change` c".
-		" JOIN `##gedcom` g USING (gedcom_id)".
-		" WHERE c.status='pending' AND gedcom_id=?".
-		" ORDER BY change_id"
-	)->execute(array(KT_GED_ID))->fetchAll();
+	$changes = KT_DB::prepare("
+		SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom
+		 FROM `##change` c
+		 JOIN `##gedcom` g USING (gedcom_id)
+		 WHERE c.status='pending' AND gedcom_id=?
+		 ORDER BY change_id
+	")->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
@@ -111,23 +106,23 @@ case 'acceptall':
 	break;
 }
 
-$changed_gedcoms=KT_DB::prepare(
-	"SELECT g.gedcom_name".
-	" FROM `##change` c".
-	" JOIN `##gedcom` g USING (gedcom_id)".
-	" WHERE c.status='pending'".
-	" GROUP BY g.gedcom_name"
-)->fetchOneColumn();
+$changed_gedcoms = KT_DB::prepare("
+	SELECT g.gedcom_name
+	 FROM `##change` c
+	 JOIN `##gedcom` g USING (gedcom_id)
+	 WHERE c.status='pending'
+	 GROUP BY g.gedcom_name
+")->fetchOneColumn();
 
 if ($changed_gedcoms) {
-	$changes=KT_DB::prepare(
-		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name, IF(new_gedcom='', old_gedcom, new_gedcom) AS gedcom".
-		" FROM `##change` c".
-		" JOIN `##user`   u USING (user_id)".
-		" JOIN `##gedcom` g USING (gedcom_id)".
-		" WHERE c.status='pending'".
-		" ORDER BY gedcom_id, c.xref, c.change_id"
-	)->fetchAll();
+	$changes = KT_DB::prepare("
+		SELECT c.*, u.user_name, u.real_name, g.gedcom_name, IF(new_gedcom='', old_gedcom, new_gedcom) AS gedcom
+		 FROM `##change` c
+		 JOIN `##user`   u USING (user_id)
+		 JOIN `##gedcom` g USING (gedcom_id)
+		 WHERE c.status='pending'
+		 ORDER BY gedcom_id, c.xref, c.change_id
+	")->fetchAll();
 	?>
 	<div id="edit_changes-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -155,10 +150,13 @@ if ($changed_gedcoms) {
 						$record = new KT_GedcomRecord($change->gedcom);
 					}
 					$output .= '
-						<h3>' . $record->getFullName() . '</h3>
-						<a href="#" onclick="return show_diff(\'' . $record->getHtmlUrl() . '\');">' . KT_I18N::translate('View the changes') . '</a> |
-						<a href="gedrecord.php?fromfile=1&pid=' . $change->xref . '" target="_blank" rel="noopener noreferrer"> ' . KT_I18N::translate('View GEDCOM Record') . '</a> |
-						<a href="#" onclick="return edit_raw(\'' . $change->xref . '\');"> ' . KT_I18N::translate('Edit raw GEDCOM record') . '</a><br>' .
+						<h3>' . $record->getFullName() . '</h3>';
+						if (KT_USER_GEDCOM_ADMIN) {
+							$output .= '<a href="admin_trees_change.php?action=show&type=pending&xref=' . $change->xref . '" target="_blank" rel="noopener noreferrer"> ' . KT_I18N::translate('View the changes') . '</a> |';
+						}
+						$output .= '
+							<a href="gedrecord.php?fromfile=1&pid=' . $change->xref . '" target="_blank" rel="noopener noreferrer"> ' . KT_I18N::translate('View GEDCOM Record') . '</a> |
+							<a href="#" onclick="return edit_raw(\'' . $change->xref . '\');"> ' . KT_I18N::translate('Edit raw GEDCOM record') . '</a><br>' .
 						KT_I18N::translate('The following changes were made to this record:') . '<br>
 						<table>
 							<tr>
@@ -171,34 +169,34 @@ if ($changed_gedcoms) {
 							</tr>';
 				}
 				$output .= '<td>
-									<a href="edit_changes.php?action=accept&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
-										KT_I18N::translate('Accept') . '
-									</a>
-								</td>
-								<td><b>';
-									if ($change->old_gedcom == '') {
-										$output .= KT_I18N::translate('Append record');
-									} elseif ($change->new_gedcom == '') {
-										$output .= KT_I18N::translate('Delete record');
-									} else {
-										$output .= KT_I18N::translate('Replace record');
-									}
-								$output .= '</b></td>
-								<td>
-									<a href="message.php?to=' . $change->user_name . '&amp;subject=' . KT_I18N::translate('Moderate pending changes') . '&amp;ged=' . KT_GEDCOM . '" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('Send Message') . '">' .
-										'<span>' . htmlspecialchars($change->real_name) . '</span>
-										&nbsp;-&nbsp;
-										<span>' . htmlspecialchars($change->user_name) . '</span>
-										<i class="fa-envelope-o"></i>
-									</a>
-								</td>
-								<td>' . $change->change_time . '</td>
-								<td>' . $change->gedcom_name . '</td>
-								<td>
-									<a href="edit_changes.php?action=undo&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
-										KT_I18N::translate('Undo') . '
-									</a>
-								</td>
+								<a href="edit_changes.php?action=accept&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
+									KT_I18N::translate('Accept') . '
+								</a>
+							</td>
+							<td><b>';
+								if ($change->old_gedcom == '') {
+									$output .= KT_I18N::translate('Append record');
+								} elseif ($change->new_gedcom == '') {
+									$output .= KT_I18N::translate('Delete record');
+								} else {
+									$output .= KT_I18N::translate('Replace record');
+								}
+							$output .= '</b></td>
+							<td>
+								<a href="message.php?to=' . $change->user_name . '&amp;subject=' . KT_I18N::translate('Moderate pending changes') . '&amp;ged=' . KT_GEDCOM . '" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('Send Message') . '">' .
+									'<span>' . htmlspecialchars($change->real_name) . '</span>
+									&nbsp;-&nbsp;
+									<span>' . htmlspecialchars($change->user_name) . '</span>
+									<i class="fa-envelope-o"></i>
+								</a>
+							</td>
+							<td>' . $change->change_time . '</td>
+							<td>' . $change->gedcom_name . '</td>
+							<td>
+								<a href="edit_changes.php?action=undo&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
+									KT_I18N::translate('Undo') . '
+								</a>
+							</td>
 				</tr>';
 			}
 		$output .= '</table></td></tr></td></tr></table>';
