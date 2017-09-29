@@ -560,19 +560,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	KT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##message` (".
-		" message_id INTEGER AUTO_INCREMENT NOT NULL,".
-		" sender     VARCHAR(64)            NOT NULL,". // username or email address
-		" ip_address VARCHAR(40)            NOT NULL,". // long enough for IPv6
-		" user_id    INTEGER                NOT NULL,".
-		" subject    VARCHAR(255)           NOT NULL,".
-		" body       TEXT                   NOT NULL,".
-		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
-		" PRIMARY KEY                 (message_id),".
-		" FOREIGN KEY `##message_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##default_resn` (".
 		" default_resn_id INTEGER AUTO_INCREMENT                             NOT NULL,".
 		" gedcom_id       INTEGER                                            NOT NULL,".
