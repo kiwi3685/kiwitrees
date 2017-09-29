@@ -1365,7 +1365,6 @@ function delete_user($user_id) {
 	KT_DB::prepare("DELETE FROM `##block`               WHERE user_id=?"    )->execute(array($user_id));
 	KT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?"    )->execute(array($user_id));
 	KT_DB::prepare("DELETE FROM `##user_setting`        WHERE user_id=?"    )->execute(array($user_id));
-	KT_DB::prepare("DELETE FROM `##message`             WHERE user_id=?"    )->execute(array($user_id));
 	KT_DB::prepare("DELETE FROM `##user`                WHERE user_id=?"    )->execute(array($user_id));
 }
 
