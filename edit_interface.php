@@ -50,6 +50,9 @@ $fact				= safe_REQUEST($_REQUEST, 'fact',    KT_REGEX_UNSAFE);
 $option				= safe_REQUEST($_REQUEST, 'option',  KT_REGEX_UNSAFE);
 $assist				= safe_REQUEST($_REQUEST, 'assist',  KT_REGEX_UNSAFE);
 $noteid				= safe_REQUEST($_REQUEST, 'noteid',  KT_REGEX_UNSAFE);
+$pid_array			= safe_REQUEST($_REQUEST, 'pid_array', KT_REGEX_XREF);
+$pids_array_add		= safe_REQUEST($_REQUEST, 'pids_array_add', KT_REGEX_XREF);
+$pids_array_edit	= safe_REQUEST($_REQUEST, 'pids_array_edit', KT_REGEX_XREF);
 $update_CHAN		= !safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
@@ -275,8 +278,8 @@ case 'edit':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'add':
-	$pid    = safe_GET('pid',  KT_REGEX_XREF);
-	$fact   = safe_GET('fact', KT_REGEX_TAG);
+	$pid    = KT_Filter::get('pid',  KT_REGEX_XREF);
+	$fact   = KT_Filter::get('fact', KT_REGEX_TAG);
 	$record = KT_GedcomRecord::getInstance($pid);
 
 	$controller
@@ -969,101 +972,6 @@ case 'addnoteaction_assisted':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-/*case 'addnoteaction_assisted':
-	$controller
-		->setPageTitle(KT_I18N::translate('Create a new Shared Note using Assistant'))
-		->pageHeader();
-	?>
-
-	<div id="edit_interface-page">
-		<h2><?php echo $controller->getPageTitle(); ?></h2>
-		<?php
-		$newgedrec  = "0 @XREF@ NOTE\n";
-
-		if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
-		if (!empty($EVEN) && count($EVEN)>0) {
-			$newgedrec .= "1 DATA\n";
-			$newgedrec .= "2 EVEN ".implode(",", $EVEN)."\n";
-			if (!empty($EVEN_DATE)) $newgedrec .= "3 DATE ".$EVEN_DATE."\n";
-			if (!empty($EVEN_PLAC)) $newgedrec .= "3 PLAC ".$EVEN_PLAC."\n";
-			if (!empty($AGNC))      $newgedrec .= "2 AGNC ".$AGNC."\n";
-		}
-		if (isset($_REQUEST['ABBR'])) $ABBR = $_REQUEST['ABBR'];
-		if (isset($_REQUEST['TITL'])) $TITL = $_REQUEST['TITL'];
-		if (isset($_REQUEST['DATE'])) $DATE = $_REQUEST['DATE'];
-		if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
-		if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
-		if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
-		if (isset($_REQUEST['AUTH'])) $AUTH = $_REQUEST['AUTH'];
-		if (isset($_REQUEST['PUBL'])) $PUBL = $_REQUEST['PUBL'];
-		if (isset($_REQUEST['REPO'])) $REPO = $_REQUEST['REPO'];
-		if (isset($_REQUEST['CALN'])) $CALN = $_REQUEST['CALN'];
-
-		if (isset($_REQUEST['pid_array'])) $pid_array = $_REQUEST['pid_array'];
-		if (isset($_REQUEST['pid']))  $pid = $_REQUEST['pid'];
-
-		global $pid;
-
-		if (!empty($NOTE)) {
-			$newlines = preg_split("/\r?\n/", $NOTE, -1);
-			for ($k = 0; $k < count($newlines); $k++) {
-				if ($k == 0 && count($newlines) > 1) {
-					$newgedrec = '0 @XREF@ NOTE ' . $newlines[$k] . '\n';
-				} else if ($k==0) {
-					$newgedrec = '0 @XREF@ NOTE ' . $newlines[$k] . '\n1 CONT\n';
-				} else {
-					$newgedrec .= '1 CONT ' . $newlines[$k] . '\n';
-				}
-			}
-		}
-
-		if (!empty($ABBR)) $newgedrec .= '1 ABBR ' . $ABBR . '\n';
-		if (!empty($TITL)) {
-			if (!empty($_HEB)) $newgedrec .= '2 _HEB ' . $_HEB . '\n';
-			if (!empty($ROMN)) $newgedrec .= '2 ROMN ' . $ROMN . '\n';
-		}
-		if (!empty($AUTH)) $newgedrec .= '1 AUTH ' . $AUTH . '\n';
-		if (!empty($PUBL)) {
-			$newlines = preg_split("/\r?\n/", $PUBL, -1, PREG_SPLIT_NO_EMPTY);
-			foreach ($newlines as $k => $line) {
-				if ($k == 0) {
-					$newgedrec .= '1 PUBL ' . $line . '\n';
-				} else {
-					$newgedrec .= '2 CONT ' . $line . '\n';
-				}
-			}
-		}
-		if (!empty($NOTE)) {
-			if (!empty($CALN)) $newgedrec .= '2 CALN ' . $CALN . '\n';
-		}
-
-		if ($pid_array != '') {
-			$xref = append_gedrec($newgedrec, KT_GED_ID);
-		} else {
-			$xref = '';
-			echo '<div class="indent">' . KT_I18N::translate('No individuals entered, close and try again') . '</div>';
-		}
-
-		if ($xref) {
-			$controller->addInlineJavascript('
-				if (parent.opener.document.getElementById("pids_array_edit") == null || parent.opener.document.getElementById("pids_array_edit") == "undefined") {
-				} else {
-					parent.opener.document.editform.pids_array_edit.value="' . $pid_array .'";
-				}
-				if (parent.opener.document.getElementById("pids_array_add") == null || parent.opener.document.getElementById("pids_array_add") == "undefined") {
-				} else {
-					parent.opener.document.addform.pids_array_add.value="' . $pid_array . '";
-				}
-				openerpasteid("' . $xref . '")
-			');
-		}
-		?>
-	</div> <!-- id="edit_interface-page" -->
-
-	<?php
-	break;
-
-////////////////////////////////////////////////////////////////////////////////*/
 case 'addmedia_links':
 	?>
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
@@ -1444,8 +1352,10 @@ case 'update':
 	 * If $cens_pids is not set, then the array created is just the current $pid.
 	 * -----------------------------------------------------------------------------
 	 */
+	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
+ 	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
+ 	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
 
-	$pid_array = KT_Filter::post('pid_array');
 	if (isset($pid_array) && $pid_array !== "no_array") {
 		$cens_pids = explode(',', $pid_array);
 		$cens_pids = array_diff($cens_pids, array("add"));
@@ -1459,80 +1369,141 @@ case 'update':
 		$idnums = "multi";
 	}
 
-	if (isset($_REQUEST['num_note_lines'])) {
-		$num_note_lines = $_REQUEST['num_note_lines'];
-	}
-
 	$success = true;
 
 	// Cycle through each individual concerned defined by $cens_pids array.
 	foreach ($cens_pids as $pid) {
-		if ($pid != '') {
-			if (isset($pid)) {
-				$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
-			} elseif (isset($famid)) {
-				$gedrec = find_gedcom_record($famid, KT_GED_ID, true);
-			}
+		if (isset($pid)) {
+			$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
+		} elseif (isset($famid)) {
+			$gedrec = find_gedcom_record($famid, KT_GED_ID, true);
+		}
 
-			// Retrieve the private data
-			$tmp = new KT_GedcomRecord($gedrec);
-			list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+		// Retrieve the private data
+		$tmp = new KT_GedcomRecord($gedrec);
+		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
-			// If the fact has a DATE or PLAC, then delete any value of Y
-			if ($text[0] == 'Y') {
-				for ($n=1; $n<count($tag); ++$n) {
-					if ($glevels[$n] == 2 && ($tag[$n] == 'DATE' || $tag[$n] == 'PLAC') && $text[$n]) {
-						$text[0] = '';
-						break;
-					}
+		// If the fact has a DATE or PLAC, then delete any value of Y
+		if ($text[0] == 'Y') {
+			for ($n=1; $n<count($tag); ++$n) {
+				if ($glevels[$n] == 2 && ($tag[$n] == 'DATE' || $tag[$n] == 'PLAC') && $text[$n]) {
+					$text[0] = '';
+					break;
 				}
 			}
+		}
 
-			//-- check for photo update
-			if (count($_FILES) > 0) {
-				if (isset($_REQUEST['folder'])) $folder = $_REQUEST['folder'];
-				$uploaded_files = array();
-				if (substr($folder, 0, 1) == "/") $folder = substr($folder, 1);
-				if (substr($folder, -1, 1) != "/") $folder .= "/";
-				foreach ($_FILES as $upload) {
-					if (!empty($upload['tmp_name'])) {
-						if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder . basename($upload['name']))) {
-							$error .= "<br>" . KT_I18N::translate('There was an error uploading your file.') . "<br>" . file_upload_error_text($upload['error']);
-							$uploaded_files[] = "";
-						} else {
-							$filename = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
-							$uploaded_files[] = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
-							if (!is_dir($MEDIA_DIRECTORY."thumbs/".$folder)) mkdir($MEDIA_DIRECTORY."thumbs/".$folder);
-							$thumbnail = $MEDIA_DIRECTORY."thumbs/".$folder.basename($upload['name']);
-							generate_thumbnail($filename, $thumbnail);
-							if (!empty($error)) {
-								echo "<span class=\"error\">", $error, "</span>";
-							}
-						}
-					} else {
+		//-- check for photo update
+		if (count($_FILES) > 0) {
+			if (isset($_REQUEST['folder'])) $folder = $_REQUEST['folder'];
+			$uploaded_files = array();
+			if (substr($folder, 0, 1) == "/") $folder = substr($folder, 1);
+			if (substr($folder, -1, 1) != "/") $folder .= "/";
+			foreach ($_FILES as $upload) {
+				if (!empty($upload['tmp_name'])) {
+					if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder . basename($upload['name']))) {
+						$error .= "<br>" . KT_I18N::translate('There was an error uploading your file.') . "<br>" . file_upload_error_text($upload['error']);
 						$uploaded_files[] = "";
+					} else {
+						$filename			= $MEDIA_DIRECTORY.$folder . basename($upload['name']);
+						$uploaded_files[]	= $MEDIA_DIRECTORY . $folder . basename($upload['name']);
+						if (!is_dir($MEDIA_DIRECTORY . "thumbs/" . $folder)) mkdir($MEDIA_DIRECTORY . "thumbs/" . $folder);
+						$thumbnail = $MEDIA_DIRECTORY . "thumbs/" . $folder . basename($upload['name']);
+						generate_thumbnail($filename, $thumbnail);
+						if (!empty($error)) {
+							echo "<span class=\"error\">", $error, "</span>";
+						}
 					}
+				} else {
+					$uploaded_files[] = "";
+				}
+			}
+		}
+
+		$gedlines = explode("\n", trim($gedrec));
+		//-- for new facts set linenum to number of lines
+		if (!is_array($linenum)) {
+			if ($linenum == "new" || $idnums == "multi") {
+				$linenum = count($gedlines);
+			}
+			$newged = "";
+			for ($i = 0; $i < $linenum; $i++) {
+				$newged .= $gedlines[$i] . "\n";
+			}
+			//-- for edits get the level from the line
+			if (isset($gedlines[$linenum])) {
+				$fields = explode(' ', $gedlines[$linenum]);
+				$glevel = $fields[0];
+				$i++;
+				while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) {
+					$i++;
 				}
 			}
 
-			$gedlines = explode("\n", trim($gedrec));
-			//-- for new facts set linenum to number of lines
-			if (!is_array($linenum)) {
-				if ($linenum == "new" || $idnums == "multi") {
-					$linenum = count($gedlines);
+			if (!isset($glevels)) $glevels = array();
+			if (isset($_REQUEST['NAME'])) $NAME = $_REQUEST['NAME'];
+			if (isset($_REQUEST['TYPE'])) $TYPE = $_REQUEST['TYPE'];
+			if (isset($_REQUEST['NPFX'])) $NPFX = $_REQUEST['NPFX'];
+			if (isset($_REQUEST['GIVN'])) $GIVN = $_REQUEST['GIVN'];
+			if (isset($_REQUEST['NICK'])) $NICK = $_REQUEST['NICK'];
+			if (isset($_REQUEST['SPFX'])) $SPFX = $_REQUEST['SPFX'];
+			if (isset($_REQUEST['SURN'])) $SURN = $_REQUEST['SURN'];
+			if (isset($_REQUEST['NSFX'])) $NSFX = $_REQUEST['NSFX'];
+			if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
+			if (isset($_REQUEST['FONE'])) $FONE = $_REQUEST['FONE'];
+			if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
+			if (isset($_REQUEST['_AKA'])) $_AKA = $_REQUEST['_AKA'];
+			if (isset($_REQUEST['_MARNM'])) $_MARNM = $_REQUEST['_MARNM'];
+			if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
+
+			if (!empty($NAME)) $newged .= "\n1 NAME $NAME";
+			if (!empty($TYPE)) $newged .= "\n2 TYPE $TYPE";
+			if (!empty($NPFX)) $newged .= "\n2 NPFX $NPFX";
+			if (!empty($GIVN)) $newged .= "\n2 GIVN $GIVN";
+			if (!empty($NICK)) $newged .= "\n2 NICK $NICK";
+			if (!empty($SPFX)) $newged .= "\n2 SPFX $SPFX";
+			if (!empty($SURN)) $newged .= "\n2 SURN $SURN";
+			if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
+
+			if (!empty($NOTE)) {
+				$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
+				$gedlines = array_filter($gedlines, $cmpfunc);
+				$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
+				$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
+				foreach($tempnote as &$line) {
+    				$line = trim("1 CONT " . $line,' ');
 				}
-				$newged = "";
-				for ($i = 0; $i < $linenum; $i++) {
-					$newged .= $gedlines[$i] . "\n";
+				$gedlines = array_merge($title,$tempnote,$gedlines);
+			}
+
+			//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
+			//-- _HEB/ROMN/FONE have to be before _AKA, even if _AKA exists in input and the others are now added
+			if (!empty($ROMN)) $newged .= "\n2 ROMN $ROMN";
+			if (!empty($FONE)) $newged .= "\n2 FONE $FONE";
+			if (!empty($_HEB)) $newged .= "\n2 _HEB $_HEB";
+
+			$newged = handle_updates($newged);
+
+			if (!empty($_AKA)) $newged .= "\n2 _AKA $_AKA";
+			if (!empty($_MARNM)) $newged .= "\n2 _MARNM $_MARNM";
+
+			while ($i<count($gedlines)) {
+				$newged .= "\n".$gedlines[$i];
+				$i++;
+			}
+		} else {
+			$newged = "";
+			$current = 0;
+			foreach ($linenum as $editline) {
+				for ($i=$current; $i<$editline; $i++) {
+					$newged .= "\n".$gedlines[$i];
 				}
 				//-- for edits get the level from the line
-				if (isset($gedlines[$linenum])) {
-					$fields = explode(' ', $gedlines[$linenum]);
+				if (isset($gedlines[$editline])) {
+					$fields = explode(' ', $gedlines[$editline]);
 					$glevel = $fields[0];
 					$i++;
-					while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) {
-						$i++;
-					}
+					while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) $i++;
 				}
 
 				if (!isset($glevels)) $glevels = array();
@@ -1561,12 +1532,12 @@ case 'update':
 				if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
 
 				if (!empty($NOTE)) {
-					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
+					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !== 0;');
 					$gedlines = array_filter($gedlines, $cmpfunc);
 					$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 					$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
 					foreach($tempnote as &$line) {
-	    				$line = trim("1 CONT " . $line,' ');
+    					$line = trim("1 CONT " . $line,' ');
 					}
 					$gedlines = array_merge($title,$tempnote,$gedlines);
 				}
@@ -1577,83 +1548,16 @@ case 'update':
 				if (!empty($FONE)) $newged .= "\n2 FONE $FONE";
 				if (!empty($_HEB)) $newged .= "\n2 _HEB $_HEB";
 
-				$newged = handle_updates($newged);
-
 				if (!empty($_AKA)) $newged .= "\n2 _AKA $_AKA";
 				if (!empty($_MARNM)) $newged .= "\n2 _MARNM $_MARNM";
 
-				while ($i<count($gedlines)) {
-					$newged .= "\n".$gedlines[$i];
-					$i++;
-				}
-			} else {
-				$newged = "";
-				$current = 0;
-				foreach ($linenum as $editline) {
-					for ($i=$current; $i<$editline; $i++) {
-						$newged .= "\n".$gedlines[$i];
-					}
-					//-- for edits get the level from the line
-					if (isset($gedlines[$editline])) {
-						$fields = explode(' ', $gedlines[$editline]);
-						$glevel = $fields[0];
-						$i++;
-						while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) $i++;
-					}
-
-					if (!isset($glevels)) $glevels = array();
-					if (isset($_REQUEST['NAME'])) $NAME = $_REQUEST['NAME'];
-					if (isset($_REQUEST['TYPE'])) $TYPE = $_REQUEST['TYPE'];
-					if (isset($_REQUEST['NPFX'])) $NPFX = $_REQUEST['NPFX'];
-					if (isset($_REQUEST['GIVN'])) $GIVN = $_REQUEST['GIVN'];
-					if (isset($_REQUEST['NICK'])) $NICK = $_REQUEST['NICK'];
-					if (isset($_REQUEST['SPFX'])) $SPFX = $_REQUEST['SPFX'];
-					if (isset($_REQUEST['SURN'])) $SURN = $_REQUEST['SURN'];
-					if (isset($_REQUEST['NSFX'])) $NSFX = $_REQUEST['NSFX'];
-					if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
-					if (isset($_REQUEST['FONE'])) $FONE = $_REQUEST['FONE'];
-					if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
-					if (isset($_REQUEST['_AKA'])) $_AKA = $_REQUEST['_AKA'];
-					if (isset($_REQUEST['_MARNM'])) $_MARNM = $_REQUEST['_MARNM'];
-					if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
-
-					if (!empty($NAME)) $newged .= "\n1 NAME $NAME";
-					if (!empty($TYPE)) $newged .= "\n2 TYPE $TYPE";
-					if (!empty($NPFX)) $newged .= "\n2 NPFX $NPFX";
-					if (!empty($GIVN)) $newged .= "\n2 GIVN $GIVN";
-					if (!empty($NICK)) $newged .= "\n2 NICK $NICK";
-					if (!empty($SPFX)) $newged .= "\n2 SPFX $SPFX";
-					if (!empty($SURN)) $newged .= "\n2 SURN $SURN";
-					if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
-
-					if (!empty($NOTE)) {
-						$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !== 0;');
-						$gedlines = array_filter($gedlines, $cmpfunc);
-						$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
-						$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
-						foreach($tempnote as &$line) {
-	    					$line = trim("1 CONT " . $line,' ');
-						}
-						$gedlines = array_merge($title,$tempnote,$gedlines);
-					}
-
-					//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
-					//-- _HEB/ROMN/FONE have to be before _AKA, even if _AKA exists in input and the others are now added
-					if (!empty($ROMN)) $newged .= "\n2 ROMN $ROMN";
-					if (!empty($FONE)) $newged .= "\n2 FONE $FONE";
-					if (!empty($_HEB)) $newged .= "\n2 _HEB $_HEB";
-
-					if (!empty($_AKA)) $newged .= "\n2 _AKA $_AKA";
-					if (!empty($_MARNM)) $newged .= "\n2 _MARNM $_MARNM";
-
-					$newged = handle_updates($newged);
-					$current = $editline;
-					break;
-				}
-
+				$newged = handle_updates($newged);
+				$current = $editline;
+				break;
 			}
-			$success = $success && replace_gedrec($pid, KT_GED_ID, $newged . $private_gedrec, $update_CHAN);
+
 		}
+		$success = $success && replace_gedrec($pid, KT_GED_ID, $newged . $private_gedrec, $update_CHAN);
 	} // end foreach $cens_pids  -------------
 
 	if ($success && !KT_DEBUG) {
