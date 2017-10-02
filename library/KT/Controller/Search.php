@@ -731,10 +731,10 @@ class KT_Controller_Search extends KT_Controller_Page {
 		usort($this->myfamlist, array('KT_GedcomRecord', 'Compare'));
 	}
 
-	function AdvancedSearch ($justSql = false, $table = "individuals") {
+	function AdvancedSearch ($table = "individuals") {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
-		if ($fct == 0) {
+		if (!array_filter($this->values)) {
 			return;
 		}
 
@@ -808,7 +808,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 			$sql .= " JOIN `##placelinks`   i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid =ind.i_id)";
 			$sql .= " JOIN (".
 					"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file".
-					" FROM      `##places` AS p1".
+					" FROM `##places` AS p1".
 					" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
 					" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)".
 					" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)".
@@ -820,7 +820,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 					") AS i_p ON (i_p.file  =ind.i_file AND i_pl.pl_p_id= i_p.id)";
 		}
 		if ($fam_plac) {
-			$sql .= " JOIN `##placelinks`   f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid =fam.f_id)";
+			$sql .= " JOIN `##placelinks` f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid=fam.f_id)";
 			$sql .= " JOIN (".
 					"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file".
 					" FROM      `##places` AS p1".
@@ -832,7 +832,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 					" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)".
 					" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
 					" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
-					") AS f_p ON (f_p.file  =ind.i_file AND f_pl.pl_p_id= f_p.id)";
+					") AS f_p ON (f_p.file=ind.i_file AND f_pl.pl_p_id=f_p.id)";
 		}
 		// Add the where clause
 		$sql	.= " WHERE ind.i_file=?";
@@ -840,11 +840,14 @@ class KT_Controller_Search extends KT_Controller_Page {
 		$dfct = 0; // count date values entered
 		$pfct = 0; // count place values entered
 
-		for ($i = 0; $i<$fct; $i++) {
+		for ($i = 0; $i < $fct; $i++) {
 			$field = $this->fields[$i];
 			$value = $this->values[$i];
-			if ($value === '') continue;
+			if ($value === '') {
+				continue;
+			}
 			$parts = preg_split("/:/", $field . '::::');
+
 			if ($dfct > 0 && $parts[1] == 'DATE' && $value != '') {
 				$sql .= " AND i_d.d_gid IN (
 				   SELECT i_d.d_gid
@@ -857,19 +860,19 @@ class KT_Controller_Search extends KT_Controller_Page {
 			if ($pfct > 0 && $parts[1] == 'PLAC' && $value != '') {
 				$sql .= " AND i_pl.pl_gid IN (
 					SELECT i_pl.pl_gid
-					FROM `kt_individuals` ind
-					JOIN `kt_placelinks` i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid=ind.i_id)
+					FROM `##individuals` ind
+					JOIN `##placelinks` i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid=ind.i_id)
 					JOIN (
 						SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file
-						FROM `kt_places` AS p1
-						LEFT JOIN `kt_places` AS p2 ON (p1.p_parent_id=p2.p_id)
-						LEFT JOIN `kt_places` AS p3 ON (p2.p_parent_id=p3.p_id)
-						LEFT JOIN `kt_places` AS p4 ON (p3.p_parent_id=p4.p_id)
-						LEFT JOIN `kt_places` AS p5 ON (p4.p_parent_id=p5.p_id)
-						LEFT JOIN `kt_places` AS p6 ON (p5.p_parent_id=p6.p_id)
-						LEFT JOIN `kt_places` AS p7 ON (p6.p_parent_id=p7.p_id)
-						LEFT JOIN `kt_places` AS p8 ON (p7.p_parent_id=p8.p_id)
-						LEFT JOIN `kt_places` AS p9 ON (p8.p_parent_id=p9.p_id)
+						FROM `##places` AS p1
+						LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)
+						LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)
+						LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)
+						LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)
+						LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)
+						LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)
+						LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)
+						LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)
 					) AS i_p ON (i_p.file =ind.i_file AND i_pl.pl_p_id= i_p.id)
 					WHERE ind.i_file=?";
 				   $bind[] = KT_GED_ID;
@@ -881,33 +884,47 @@ class KT_Controller_Search extends KT_Controller_Page {
 				case 'GIVN':
 					switch ($parts[2]) {
 					case 'EXACT':
-						$sql .= " AND i_n.n_givn=?";
-						$bind[]=$value;
+						$sql	.= " AND i_n.n_givn=?";
+						$bind[]	= $value;
 						break;
 					case 'BEGINS':
-						$sql .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
-						$bind[]=$value;
+						$sql	.= " AND i_n.n_givn LIKE CONCAT(?, '%')";
+						$bind[]	= $value;
 						break;
 					case 'CONTAINS':
-						$sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-						$bind[]=$value;
+						$sql	.= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+						$bind[]	= $value;
 						break;
 					case 'SDX_STD':
-						$sdx = explode(':', KT_Soundex::soundex_std($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_std($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', KT_Soundex::soundex_std($value));
+							foreach ($sdx as $k=>$v) {
+								$sdx[$k]	= "i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
+								$bind[]		= $v;
+							}
+							$sql .=' AND (' . implode(' OR ', $sdx) . ')';
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = explode(':', KT_Soundex::soundex_dm($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_dm($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
 						break;
 					}
 					break;
@@ -926,22 +943,36 @@ class KT_Controller_Search extends KT_Controller_Page {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = explode(':', KT_Soundex::soundex_std($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_std($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= " AND (" . implode(' OR ', $sdx) . ")";
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql .= " AND (".implode(' OR ', $sdx).")";
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = explode(':', KT_Soundex::soundex_dm($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_dm($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= " AND (" . implode(' OR ', $sdx) . ")";
+							break;
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql .= " AND (".implode(' OR ', $sdx).")";
-						break;
 					}
 					break;
 				case 'NICK':
@@ -952,6 +983,8 @@ class KT_Controller_Search extends KT_Controller_Page {
 					$bind[]=$parts[1];
 					$bind[]=$value;
 					break;
+				default:
+				break;
 				}
 			} elseif ($parts[1] == 'DATE') {
 				$dfct ++;
@@ -976,9 +1009,9 @@ class KT_Controller_Search extends KT_Controller_Page {
 					} else {
 						$sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
 					}
-					$bind[]=$parts[0];
-					$bind[]=$jd1;
-					$bind[]=$jd2;
+					$bind[] = $parts[0];
+					$bind[] = $jd1;
+					$bind[] = $jd2;
 				}
 			} elseif ($parts[0] == 'FAMS' && $parts[2] == 'DATE') {
 				$dfct ++;
@@ -1002,104 +1035,132 @@ class KT_Controller_Search extends KT_Controller_Page {
 				$pfct ++;
 				// *:PLAC
 				// SQL can only link a place to a person/family, not to an event.
-				$sql .= " AND i_p.place LIKE CONCAT('%', ?, '%')";
-				$bind[]=$value;
+				$sql	.= " AND i_p.place LIKE CONCAT('%', ?, '%')";
+				$bind[]	= $value;
 			} elseif ($parts[0] == 'FAMS' && $parts[2] == 'PLAC') {
 				$pfct ++;
 				// FAMS:*:PLAC
 				// SQL can only link a place to a person/family, not to an event.
-				$sql .= " AND f_p.place LIKE CONCAT('%', ?, '%')";
-				$bind[]=$value;
+				$sql	.= " AND f_p.place LIKE CONCAT('%', ?, '%')";
+				$bind[]	= $value;
 			} elseif ($parts[0] == 'FAMC' && $parts[2] == 'NAME') {
-				$table=$parts[1] == 'HUSB' ? 'f_n' : 'm_n';
+				$table = $parts[1] == 'HUSB' ? 'f_n' : 'm_n';
 				// NAME:*
 				switch ($parts[3]) {
 				case 'GIVN':
 					switch ($parts[4]) {
 					case 'EXACT':
-						$sql .= " AND {$table}.n_givn=?";
-						$bind[]=$value;
+						$sql	.= " AND {$table}.n_givn=?";
+						$bind[]	= $value;
 						break;
 					case 'BEGINS':
-						$sql .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
-						$bind[]=$value;
+						$sql	.= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
+						$bind[]	= $value;
 						break;
 					case 'CONTAINS':
-						$sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
-						$bind[]=$value;
+						$sql	.= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+						$bind[]	= $value;
 						break;
 					case 'SDX_STD':
-						$sdx = explode(':', KT_Soundex::soundex_std($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_std($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = explode(':', KT_Soundex::soundex_dm($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_dm($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+							break;
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
-						break;
 					}
 					break;
 				case 'SURN':
 					switch ($parts[4]) {
 					case 'EXACT':
-						$sql .= " AND {$table}.n_surname=?";
-						$bind[]=$value;
+						$sql	.= " AND {$table}.n_surname=?";
+						$bind[]	= $value;
 						break;
 					case 'BEGINS':
-						$sql .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
-						$bind[]=$value;
+						$sql	.= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
+						$bind[]	= $value;
 						break;
 					case 'CONTAINS':
-						$sql .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
-						$bind[]=$value;
+						$sql	.= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
+						$bind[]	= $value;
 						break;
 					case 'SDX_STD':
-						$sdx = explode(':', KT_Soundex::soundex_std($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_std($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = explode(':', KT_Soundex::soundex_dm($value));
-						foreach ($sdx as $k=>$v) {
-							$sdx[$k]="{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-							$bind[]=$v;
+						$sdx = KT_Soundex::soundex_dm($value);
+						if ($sdx !== null) {
+							$sdx = explode(':', $sdx);
+							foreach ($sdx as $k => $v) {
+								$sdx[$k] = "{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
+								$bind[]  = $v;
+							}
+							$sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+						} else {
+							// No phonetic content? Use a substring match
+							$sql .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
+							$bind[] = $value;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
 						break;
 					}
 					break;
 				}
 			} elseif ($parts[0] === 'FAMS') {
 				// e.g. searches for occupation, religion, note, etc.
-				$sql .= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
-				$bind[]=$parts[1];
-				$bind[]=$value;
+				$sql	.= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]	= $parts[1];
+				$bind[]	= $value;
 			} elseif ($parts[1] === 'TYPE') {
  				// e.g. FACT:TYPE or EVEN:TYPE
- 				$sql .= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
+ 				$sql	.= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
  				$bind[] = $parts[0];
  				$bind[] = $value;
   			} else {
 				// e.g. searches for occupation, religion, note, etc.
-				$sql .= " AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
-				$bind[]=$parts[0];
-				$bind[]=$value;
+				$sql	.= " AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]	= $parts[0];
+				$bind[]	= $value;
 			}
 
-			if ($dfct > 1 || $pfct > 1) {
-				$sql .= " )";
+			if ($pfct > 2 || $dfct > 1) {
+				$sql .= ")";
 			}
 		}
 
@@ -1108,15 +1169,14 @@ class KT_Controller_Search extends KT_Controller_Page {
 			$person = KT_Person::getInstance($row);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
 			foreach ($this->fields as $n=>$field) {
-				if ($this->values[$n] && preg_match('/^('.KT_REGEX_TAG.'):PLAC$/', $field, $match)) {
-					if (!preg_match('/\n1 '.$match[1].'(\n[2-9].*)*\n2 PLAC .*'.preg_quote($this->values[$n], '/').'/i', $person->getGedcomRecord())) {
+				if ($this->values[$n] && preg_match('/^(' . KT_REGEX_TAG . '):PLAC$/', $field, $match)) {
+					if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($this->values[$n], '/').'/i', $person->getGedcomRecord())) {
 						continue 2;
-				 }
+					}
 				}
 			}
 			$this->myindilist[]= $person;
 		}
-		return $this->myindilist;
 
 	}
 
