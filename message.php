@@ -78,16 +78,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	} else {
 		// No errors.  Send the message.
 		foreach ($recipients as $recipient) {
-			$message         = array();
-			$message['to']   = $to;
-			$message['from'] = $from_email;
-			if (!empty($from_name)) {
-				$message['from_name']  = $from_name;
-				$message['from_email'] = $from_email;
-			}
-			$message['subject'] = $subject;
-			$message['body']    = nl2br($body, false);
-			$message['url']     = $url;
+			$message         		= array();
+			$message['to']			= $to;
+			$message['from_name']	= $from_name;
+			$message['from_email']	= $from_email;
+			$message['subject']		= $subject;
+			$message['body']		= nl2br($body, false);
+			$message['url']			= $url;
 
 			if (addMessage($message)) {
 				KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));

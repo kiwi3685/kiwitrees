@@ -118,8 +118,8 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 						<input type="hidden" name="to" value="<?php echo KT_Filter::escapeHtml(${'to_user_name_' . $i}); ?>">
 					</div>
 					<div class="option">
-						<label for="from_name"><?php echo KT_I18N::translate('Subject'); ?></label>
-						<input type="text" name="subject" value="<?php echo KT_Filter::escapeHtml($subject); ?>">
+						<label for="subject"><?php echo KT_I18N::translate('Subject'); ?></label>
+						<input type="text" name="subject" id="subject" value="<?php echo KT_Filter::escapeHtml($subject); ?>">
 					</div>
 					<div class="option">
 						<label for="body"><?php echo KT_I18N::translate('Body'); ?></label>
@@ -216,24 +216,23 @@ function addMessage($message) {
 
 	$success = true;
 
-	$sender    = get_user_id($message['from']);
 	$recipient = get_user_id($message['to']);
 
 	// Sender may not be a Kiwitrees user
-	if ($sender) {
-		$sender_email     = getUserEmail($sender);
-		$sender_real_name = getUserFullName($sender);
+	if (KT_USER_ID) {
+		$sender_email     = getUserEmail(KT_USER_ID);
+		$sender_real_name = getUserFullName(KT_USER_ID);
 	} else {
-		$sender_email     = $message['from'];
+		$sender_email     = $message['from_email'];
 		$sender_real_name = $message['from_name'];
 	}
 
 	// Send a copy of the message back to the sender.
-		if ($sender) {
+		if (KT_USER_ID) {
 			// Switch to the sender’s language.
-			KT_I18N::init(get_user_setting($sender, 'language'));
+			KT_I18N::init(get_user_setting(KT_USER_ID, 'language'));
 			// Message from a signed-in user
-			$copy_email = KT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(KT_TREE_TITLE)) . ' ' . getUserFullName($recipient);
+			$copy_email = KT_I18N::translate('You sent the following message to <b>%1$s</b> at %2$s:', getUserFullName($recipient), strip_tags(KT_TREE_TITLE));
 		} else {
 			// Message from a visitor
 			$copy_email = KT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(KT_TREE_TITLE));
@@ -270,21 +269,17 @@ function addMessage($message) {
 	// Send the message to the recipient.
 		// Switch to the recipient’s language.
 		KT_I18N::init(get_user_setting($recipient, 'language'));
-		if ($sender) {
+		if (KT_USER_ID) {
 			$original_email = /* I18N: %s is the family tree title */ KT_I18N::translate('%s sent you the following message.', $sender_real_name);
 		} else {
-			if (!empty($message['from_name'])) {
-				$original_email = /* I18N: %s is a person's name */ KT_I18N::translate('%s sent you the following message.', $message['from_name']);
-			} else {
-				$original_email = /* I18N: %s is a person's name */ KT_I18N::translate('%s sent you the following message.', $message['from']);
-			}
+			$original_email = /* I18N: %s is a person's name */ KT_I18N::translate('%s sent you the following message.', $message['from_name']);
 		}
 
 		$original_email .=
 			KT_Mail::EOL .
 			KT_Mail::EOL;
-		if ($sender) {
-			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . getUserFullName($sender) . ' (' . $message['from_email'] . ')' . KT_Mail::EOL;
+		if (KT_USER_ID) {
+			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $sender_real_name . ' (' . $message['from_email'] . ')' . KT_Mail::EOL;
 		} else {
 			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $message['from_email'] . KT_Mail::EOL;
 		}
