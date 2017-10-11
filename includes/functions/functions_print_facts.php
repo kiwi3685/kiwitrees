@@ -647,12 +647,14 @@ function print_media_links($factrec, $level, $pid='') {
  */
 function print_address_structure($factrec, $level, $format='') {
 	if (preg_match("/$level ADDR (.*)/", $factrec, $omatch)) {
-		$arec = get_sub_record($level, "$level ADDR", $factrec, 1);
-		$cont = get_cont($level+1, $arec);
-		$resultText = $omatch[1] . get_cont($level+1, $arec);
+		$arec		= get_sub_record($level, "$level ADDR", $factrec, 1);
+		$cont		= str_replace("\n", "<br>", get_cont($level+1, $arec));
+
+		$resultText = $omatch[1] . $cont;
 		if ($level > 1) {
 			switch ($format) {
 				case 'inline' :
+					$resultText = str_replace("<br>", "", $resultText);
 					$resultText;
 				break;
 				case 'simple' :
@@ -664,7 +666,9 @@ function print_address_structure($factrec, $level, $format='') {
 				break;
 			}
 		}
+
 		return $resultText;
+
 	}
 }
 
