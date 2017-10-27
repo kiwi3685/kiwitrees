@@ -174,7 +174,22 @@ class census_assistant_KT_Module extends KT_Module {
 			foreach (explode("\n", $data) as $row) {
 				$tbody .= '<tr>';
 				foreach (explode('|', $row) as $column) {
-					$tbody .= '<td>' . $column . '</td>';
+					// allow some markup-type code
+					$class = '';
+					/* 1 - highlight */
+					strstr($column, '.h.') ? $class .= ' high' : $class .= '';
+					$column = str_replace('.h.', '', $column);
+					/* 2 - strikout */
+					strstr($column, '.s.') ? $class .= ' strike' : $class .= '';
+					$column = str_replace('.s.', '', $column);
+					/* 3 - strikout */
+					strstr($column, '.u.') ? $class .= ' under' : $class .= '';
+					$column = str_replace('.u.', '', $column);
+					/* 4 - bold */
+					strstr($column, '.b.') ? $class .= ' bold' : $class .= '';
+					$column = str_replace('.b.', '', $column);
+
+					$tbody .= '<td class="' . $class . '">' . $column . '</td>';
 				}
 				$tbody .= '</tr>';
 			}

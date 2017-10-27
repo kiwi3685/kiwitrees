@@ -6693,6 +6693,23 @@ div.census_text p {
 .census-assistant-selector {
 	margin: 0 10px;
 }
+/* For .b. */
+table.ca td.bold {
+	font-weight: 700;
+}
+/* For .h. */
+table.ca td.high {
+	background: #ffff66;
+}
+/* For .s. */
+table.ca td.strike {
+	text-decoration: line-through;
+}
+/* For .u. */
+table.ca td.under {
+	text-decoration: underline;
+}
+
 /* ------------------ */
 
 /* Styles for media link page */
