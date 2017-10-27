@@ -919,7 +919,7 @@ function print_main_notes(KT_Event $fact, $level) {
 	}
 
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
-	for ($j=0; $j<$ct; $j++) {
+	for ($j = 0; $j < $ct; $j ++) {
 		if ($level >= 2) echo '<tr class="row_note2">';
 		else echo '<tr>';
 		echo '<td valign="top" class="descriptionbox';
@@ -984,7 +984,7 @@ function print_main_notes(KT_Event $fact, $level) {
 				$line1	 = $n1match[1];
 				$text	 = get_cont(1, $noterec);
 				// If Census assistant installed,
-				if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
+				if (array_key_exists('census_assistant', KT_Module::getActiveModules()) && strstr($factrec, "1 NOTE @" )) {
 					$text = census_assistant_KT_Module::formatCensusNote($note);
 				} else {
 					$text = KT_Filter::formatText($note->getNote());
@@ -994,7 +994,7 @@ function print_main_notes(KT_Event $fact, $level) {
 			}
 		} else {
 			//-- print embedded note records
-			$text = $match[$j][1] . get_cont($level+1, $nrec);
+			$text = $match[$j][1] . get_cont($level + 1, $nrec);
 			$text = expand_urls($text);
 		}
 

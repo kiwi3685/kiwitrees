@@ -559,7 +559,7 @@ function get_cont($nlevel, $nrec) {
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
 		if ($subrecordType === 'CONT') {
-			$text .= "\n" . substr($thisSubrecord, 7);
+			$text .= '<br>' . substr($thisSubrecord, 7);
 		}
 	}
 
