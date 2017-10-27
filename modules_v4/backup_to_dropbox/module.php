@@ -124,13 +124,13 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 					<div class="config_options odd">
 						<label><?php echo /* I18N: Dropbox secure access token */ KT_I18N::translate('Dropbox folder'); ?></label>
 						<div class="input_group">
-							<input type="text" name="NEW_DB_FOLDER" value="<?php echo $DB_FOLDER; ?>">
+							<input type="text" name="NEW_DB_FOLDER" value="<?php echo $DB_FOLDER; ?>" required autocomplete="off">
 						</div>
 					</div>
 					<div class="config_options even">
 						<label><?php echo /* I18N: Dropbox secure access token */ KT_I18N::translate('Dropbox token'); ?></label>
 						<div class="input_group">
-							<input type="password" name="NEW_DB_TOKEN" value="<?php echo $DB_TOKEN; ?>">
+							<input type="password" name="NEW_DB_TOKEN" value="<?php echo $DB_TOKEN; ?>" pattern=".{56,}"   required title="<?php echo KT_I18N::translate('Not a valid Dropbox token'); ?>" autocomplete="off">
 						</div>
 					</div>
 					<?php if ($DB_FOLDER && $DB_FOLDER) { ?>
