@@ -138,7 +138,7 @@ class charts_KT_Module extends KT_Module implements KT_Module_Block {
 
 				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
 				$content .= '<script src="'.$mod->js().'"></script>';
-		    list($html, $js) = $tv->drawViewport($person->getXref(), 2);
+		    	list($html, $js) = $tv->drawViewport($person, 2);
 				$content .= $html.'<script>'.$js.'</script>';
 				$content .= '</td>';
 			}
