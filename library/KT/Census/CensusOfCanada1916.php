@@ -51,7 +51,7 @@ class KT_Census_CensusOfCanada1916 extends KT_Census_CensusOfCanada implements K
 			new KT_Census_CensusColumnReligion($this, 'Religion', 'Religion'),
 			new KT_Census_CensusColumnNull($this, 'Immigration', 'Year of immigration to Canada'),
 			new KT_Census_CensusColumnNull($this, 'Naturalization', 'Year of naturalization'),
-			new KT_Census_ColumnNationality($this, 'Nationality', ''),
+			new KT_Census_CensusColumnNationality($this, 'Nationality', ''),
 			new KT_Census_CensusColumnNull($this, 'Race', ''),
 			new KT_Census_CensusColumnNull($this, 'English', 'Can speak English'),
 			new KT_Census_CensusColumnNull($this, 'French', 'Can speak French'),
