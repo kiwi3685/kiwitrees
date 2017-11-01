@@ -44,7 +44,7 @@ class KT_Census_CensusOfCanada1891 extends KT_Census_CensusOfCanada implements K
 			new KT_Census_CensusColumnFullName($this, 'Names', 'Name of each person in family or household', 'width: 200px;'),
 			new KT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new KT_Census_CensusColumnSexMF($this, 'Sex', 'Sex (M = Male; F = Female)'),
-			new KT_Census_CensusColumnAge($this, 'Age'),
+			new KT_Census_CensusColumnAge($this, 'Age', ''),
 			new KT_Census_CensusColumnConditionCan($this, 'Marital Status', 'Single, Married, Widowed, or Divorced'),
 			new KT_Census_CensusColumnBirthPlaceSimple($this, 'French Canadian', 'Whether French Canadian'),
 			new KT_Census_CensusColumnNull($this, 'Infirm', 'Infirmities – (1) deaf and dumb, (2) blind, (3) unsound mind'),
