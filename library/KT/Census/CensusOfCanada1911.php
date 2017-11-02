@@ -42,9 +42,8 @@ class KT_Census_CensusOfCanada1911 extends KT_Census_CensusOfCanada implements K
 	public function columns() {
 		return array(
 			new KT_Census_CensusColumnFullName($this, 'Names', 'Name of each person whose place of abode was in the household', 'width: 200px;'),
-			new KT_Census_CensusColumnNull($this, 'Habitation', 'Place of habitation or address'),
-			new KT_Census_CensusColumnSexMF($this, 'Sex', 'Sex (M = Male; F = Female)'),
-			new KT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+		    new KT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),	
+            new KT_Census_CensusColumnSexMF($this, 'Sex', 'Sex (M = Male; F = Female)'),
 			new KT_Census_CensusColumnConditionCan($this, 'Marital Status', 'Single, Married, Widowed, Divorced, or Legally Separated'),
 			new KT_Census_CensusColumnBirthMonth($this, 'Month of Birth', ''),
 			new KT_Census_CensusColumnBirthYear($this, 'Year of Birth', ''),
@@ -55,8 +54,9 @@ class KT_Census_CensusOfCanada1911 extends KT_Census_CensusOfCanada implements K
 			new KT_Census_CensusColumnNull($this, 'Race', 'Racial or tribal origin'),
 			new KT_Census_CensusColumnNationality($this, 'Nationality', 'Racial or tribal origin'),
 			new KT_Census_CensusColumnReligion($this, 'Religion', 'Religion'),
-			new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Chief occupation, or trade'),
-			new KT_Census_CensusColumnNull($this, 'Employment', 'Employer, Worker, or Own Account'),
+            new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Chief occupation, or trade'),
+            new KT_Census_CensusColumnNull($this, 'Employment', 'Employer, Worker, or Own Account'),
+            new KT_Census_CensusColumnNull($this, 'Infirm', 'Infirmities � (1) deaf and dumb, (2) blind, (3) unsound mind'),
 		);
 	}
 }
