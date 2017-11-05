@@ -44,20 +44,16 @@ class KT_Census_CensusOfCanada1891 extends KT_Census_CensusOfCanada implements K
 			new KT_Census_CensusColumnFullName($this, 'Names', 'Name of each person in family or household', 'width: 200px;'),
 			new KT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new KT_Census_CensusColumnSexMF($this, 'Sex', 'Sex (M = Male; F = Female)'),
-			new KT_Census_CensusColumnAge($this, 'Age', ''),
+			new KT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new KT_Census_CensusColumnConditionCan($this, 'Marital Status', 'Single, Married, Widowed, or Divorced'),
 			new KT_Census_CensusColumnBirthPlaceSimple($this, 'French Canadian', 'Whether French Canadian'),
-			new KT_Census_CensusColumnNull($this, 'Infirm', 'Infirmities – (1) deaf and dumb, (2) blind, (3) unsound mind'),
 			new KT_Census_CensusColumnFatherBirthPlaceSimple($this, 'BPF', 'Birthplace of father'),
 			new KT_Census_CensusColumnMotherBirthPlaceSimple($this, 'BPM', 'Birthplace of mother'),
 			new KT_Census_CensusColumnReligion($this, 'Religion', 'Religion'),
 			new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
-			new KT_Census_CensusColumnNull($this, 'Employer', 'Whether an employer - Y/N'),
-			new KT_Census_CensusColumnNull($this, 'Wage Earner', 'Whether a wage earner - Y/N'),
-			new KT_Census_CensusColumnNull($this, 'Unemployed', 'Whether unemployed during the week preceding the census'),
-			new KT_Census_CensusColumnNull($this, 'Employees', 'If an employer, state the average number of hands employed during the year'),
+			new KT_Census_CensusColumnNull($this, 'Employment Status', 'Employer, Wage Earner, or Unemployed'),
 			new KT_Census_CensusColumnNull($this, 'Read / Write', 'Whether able to read and write'),
-			new KT_Census_CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, or of an unsound mind'),
+            new KT_Census_CensusColumnNull($this, 'Infirm', 'Infirmities – (1) deaf and dumb, (2) blind, (3) unsound mind'),
 		);
 	}
 }

@@ -49,7 +49,6 @@ class KT_Census_CensusOfCanada1901 extends KT_Census_CensusOfCanada implements K
             new KT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new KT_Census_CensusColumnBirthPlaceSimple($this, 'Place of Birth', 'Country of Origin'),
             new KT_Census_CensusColumnNull($this, 'Immigration', 'Year of immigration to Canada'),
-			new KT_Census_CensusColumnNull($this, 'Naturalization', 'Year of naturalization, if formerly an alien'),
             new KT_Census_CensusColumnNull($this, 'Race', 'Racial or tribal origin'),
             new KT_Census_CensusColumnReligion($this, 'Religion', 'Religion'),
     		new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
