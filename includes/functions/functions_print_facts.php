@@ -648,7 +648,7 @@ function print_media_links($factrec, $level, $pid='') {
 function print_address_structure($factrec, $level, $format='') {
 	if (preg_match("/$level ADDR (.*)/", $factrec, $omatch)) {
 		$arec		= get_sub_record($level, "$level ADDR", $factrec, 1);
-		$cont		= str_replace("\n", "<br>", get_cont($level+1, $arec));
+		$cont		= str_replace("\n", "<br>", get_cont($level + 1, $arec));
 
 		$resultText = $omatch[1] . $cont;
 		if ($level > 1) {
@@ -984,7 +984,7 @@ function print_main_notes(KT_Event $fact, $level) {
 				$line1	 = $n1match[1];
 				$text	 = get_cont(1, $noterec);
 				// If Census assistant installed,
-				if (array_key_exists('census_assistant', KT_Module::getActiveModules()) && strstr($factrec, "1 NOTE @" )) {
+				if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 					$text = census_assistant_KT_Module::formatCensusNote($note);
 				} else {
 					$text = KT_Filter::formatText($note->getNote());

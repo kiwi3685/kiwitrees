@@ -422,7 +422,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	} else {
 		$note	= null;
 		$label	= 'NOTE';
-		$html	= KT_Filter::formatText($text);
+		$html	= KT_Filter::formatText($text, $KT_TREE);
 	}
 	if ($textOnly) {
 		return strip_tags($text);
