@@ -1607,6 +1607,9 @@ function old_paths() {
 		KT_ROOT . 'modules_v4/googlemap/wt_v3_places_edit_overlays.js.php',
 		KT_ROOT . 'modules_v4/googlemap/wt_v3_googlemap.js.php',
 		KT_ROOT . 'modules_v4/googlemap/css/wt_v3_googlemap.css',
+		KT_ROOT . 'modules_v4/backup_to_dropbox/backup.php',
+		KT_ROOT . 'modules_v4/backup_to_dropbox/dropbox-sdk',
+
 	);
 }
 
