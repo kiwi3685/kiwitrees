@@ -407,7 +407,7 @@ input.log-date {text-align:center;}
 #log_list th {min-width:80px;white-space:nowrap;}
 #log_list th:nth-child(3), #change_list th:nth-child(4) {width:50%;}
 #change_list th {vertical-align: top; white-space:nowrap;}
-#log_list td, #change_list td {vertical-align:top;}
+#log_list td, #change_list td {vertical-align:top;white-space:pre-wrap;word-wrap:break-word;-ms-word-break:break-all;word-break:break-all;-webkit-hyphens:auto;-moz-hyphens:auto; hyphens:auto;}
 #log_list pre, #change_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap:break-word;-ms-word-break:break-all;word-break:break-all;-webkit-hyphens:auto;-moz-hyphens:auto; hyphens:auto;}
 #log_list a, #change_list a {color:#0000ff;}
 #log_list a:hover, #log_list a:visited, #change_list a:hover, #change_list a:visited {color:#ff0000;}
