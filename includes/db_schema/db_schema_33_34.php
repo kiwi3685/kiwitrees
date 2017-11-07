@@ -41,6 +41,12 @@ try {
 	// Perhaps we have already deleted this data?
 }
 
+// tidy up module_privacy table
+try {
+	self::exec("DELETE FROM `##module_privacy` WHERE `component` = ''");
+} catch (PDOException $ex) {
+	// Perhaps we have already deleted this data?
+}
 
 // Update the version to indicate success
 KT_Site::preference($schema_name, $next_version);
