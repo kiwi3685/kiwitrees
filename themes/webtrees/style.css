@@ -495,7 +495,10 @@ a.showit:hover > span {display:block;position:absolute;top:22px;left:0;width:225
 /* End of Autocomplete styles*/
 
 .nowrap {white-space:nowrap;}
-.wrap {white-space:normal;}
+.wrap {
+	white-space: normal;
+	word-break: break-all;
+}
 ul.clist {list-style-image:none;text-decoration:none;margin:0;}
 
 .statistics-page {text-align:center;}

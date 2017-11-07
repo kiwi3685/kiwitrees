@@ -700,7 +700,10 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .nowrap,.tag_cloud a {white-space:nowrap;}
 .place {padding-top:5px;}
 .statistics-page {text-align:center;}
-.wrap {white-space:normal;}
+.wrap {
+	white-space: normal;
+	word-break: break-all;
+}
 
 #pending h2 {margin-bottom:20px;text-align:center;}
 #pending h3 {margin-top:20px;text-align:center;}
