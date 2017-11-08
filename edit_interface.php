@@ -1352,6 +1352,8 @@ case 'update':
 	 * If $cens_pids is not set, then the array created is just the current $pid.
 	 * -----------------------------------------------------------------------------
 	 */
+
+	$pid_array = KT_Filter::post('pid_array');
 	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
  	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
  	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
