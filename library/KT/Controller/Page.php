@@ -207,8 +207,6 @@ class KT_Controller_Page extends KT_Controller_Base {
 			});
 		');
 
-
-
 		header('Content-Type: text/html; charset=UTF-8');
 		require KT_ROOT . $headerfile;
 
