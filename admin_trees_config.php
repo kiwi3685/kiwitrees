@@ -205,8 +205,8 @@ case 'update':
 	set_gedcom_setting(KT_GED_ID, 'WATERMARK_THUMB',				KT_Filter::postBool('NEW_WATERMARK_THUMB'));
 	set_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID',				KT_Filter::post('NEW_WEBMASTER_USER_ID'));
 	set_gedcom_setting(KT_GED_ID, 'subtitle',						KT_Filter::post('new_subtitle', KT_REGEX_UNSAFE));
-	if (KT_Filter::post('gedcom_title', KT_REGEX_UNSAFE)) {
-		set_gedcom_setting(KT_GED_ID, 'title', KT_Filter::post('gedcom_title', KT_REGEX_UNSAFE));
+	if (KT_Filter::post('gedcom_title')) {
+		set_gedcom_setting(KT_GED_ID, 'title', KT_Filter::post('gedcom_title'));
 	}
 
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
