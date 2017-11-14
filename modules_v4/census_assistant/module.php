@@ -134,12 +134,10 @@ class census_assistant_KT_Module extends KT_Module {
 			if ($firstRecord) {
 				$countryCode	= '';
 				$date			= '';
+
 				foreach ($firstRecord->getFacts('CENS') as $fact) {
 					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
-						// make sure date is in correct format dd mmm yyy
-						$date_exp = explode(" ", $fact->getAttribute('DATE'));
-						$date_exp[0] = sprintf("%02d", explode(" ", $fact->getAttribute('DATE'))[0]);
-						$date = implode(" ", $date_exp);
+						$date        = $fact->getAttribute('DATE');
 						// get country code from census place
 						$kt_place	 = new KT_Place($fact->getPlace(), KT_GED_ID);
 						$place       = explode(',', strip_tags($kt_place->getFullName()));
