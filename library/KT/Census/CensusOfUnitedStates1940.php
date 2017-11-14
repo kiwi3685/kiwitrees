@@ -35,33 +35,20 @@ class KT_Census_CensusOfUnitedStates1940 extends KT_Census_CensusOfUnitedStates 
 	 */
 	public function columns() {
 		return array(
-			new KT_Census_CensusColumnFullName($this, 'Name', 'Name'),
-			new KT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
-			new KT_Census_CensusColumnNull($this, 'Home', 'Home owned or rented'),
-			new KT_Census_CensusColumnNull($this, 'V/R', 'Value of house, if owned, or monthly rental if rented'),
-			new KT_Census_CensusColumnNull($this, 'Farm', 'Does this family live on a farm'),
+			new KT_Census_CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name', 'width: 200px;'),
+			new KT_Census_CensusColumnRelationToHead($this, 'Rel', 'Relationship of each person to the head of the family'),
 			new KT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new KT_Census_CensusColumnNull($this, 'Race', 'Color or race'),
 			new KT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new KT_Census_CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
-			new KT_Census_CensusColumnAgeMarried($this, 'AM', 'Age at first marriage'),
-			new KT_Census_CensusColumnNull($this, 'School', 'Attended school since Sept. 1, 1929'),
-			new KT_Census_CensusColumnNull($this, 'R/W', 'Whether able to read and write'),
+			new KT_Census_CensusColumnNull($this, 'School', 'Attended school since March 1, 1940'),
+			new KT_Census_CensusColumnNull($this, 'Grade', 'Highest school grade completed'),
 			new KT_Census_CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),
-			new KT_Census_CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),
-			new KT_Census_CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother'),
-			new KT_Census_CensusColumnNull($this, 'Lang', 'Language spoken in home before coming to the United States'),
-			new KT_Census_CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
-			new KT_Census_CensusColumnNull($this, 'Nat', 'Naturalization'),
-			new KT_Census_CensusColumnNull($this, 'Eng', 'Whether able to speak English'),
 			new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Trade, profession, or particular kind of work done'),
 			new KT_Census_CensusColumnNull($this, 'Industry', 'Industry, business of establishment in which at work'),
-			new KT_Census_CensusColumnNull($this, 'Code', 'Industry code'),
-			new KT_Census_CensusColumnNull($this, 'Emp', 'Class of worker'),
-			new KT_Census_CensusColumnNull($this, 'Work', 'Whether normally at work yesterday or the last regular working day'),
-			new KT_Census_CensusColumnNull($this, 'Unemp', 'If not, …'),
-			new KT_Census_CensusColumnNull($this, 'Vet', 'Whether a veteran of U.S. military or …'),
-			new KT_Census_CensusColumnNull($this, 'War', 'What war or …'),
+			new KT_Census_CensusColumnNull($this, 'Work', 'W: Worker, S: Seeking work, E: Employer, H: Housework, U: Unable to work'),
+			new KT_Census_CensusColumnNull($this, 'Income', 'Amount of money, wages, or salary'),
+
 		);
 	}
 }
