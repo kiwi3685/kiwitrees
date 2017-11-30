@@ -373,8 +373,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 									if (!$block_id) {
 										echo '<div class="indi_find">
 											<p class="add_indi">
-												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" value="' . $xref . '">',
-												print_findindi_link('pid'),'
+												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" value="' . $xref . '" placeholder="' . KT_I18N::translate('Enter name or part of name') . '">
 											</p>';
 											if ($xref) {
 												$person = KT_Person::getInstance($xref);
@@ -393,8 +392,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 										for ($x = 0; $x < $count_xref; $x++) {
 											echo '<div class="indi_find">
 												<p class="add_indi">
-													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" value="' . $xref[$x] . '">',
-													print_findindi_link('pid' . $x),'
+													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" value="' . $xref[$x] . '" placeholder="' . KT_I18N::translate('Enter name or part of name') . '">
 												</p>';
 												if ($xref) {
 													$person = KT_Person::getInstance($xref[$x]);
@@ -411,7 +409,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 											}
 										echo '</div>';
 									}
-									echo '<p><a href="#" id="newField" class="current">', KT_I18N::translate('Add another individual'), '</a></p>
+									echo '<p><a href="#" id="newField" class="current">' . KT_I18N::translate('Add another individual') . '</a></p>
 								</td>';
 								$languages = get_block_setting($block_id, 'languages');
 								echo '<td class="optionbox">',
