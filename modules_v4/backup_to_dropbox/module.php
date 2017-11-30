@@ -16,7 +16,7 @@
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY; without the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
@@ -71,8 +71,13 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 			AddToLog('Backup to Dropbox settings updated', 'config');
 		}
 
+		if (KT_Filter::post('action') == 'backup') {
+			set_module_setting($this->getName(), 'DB_DATE', KT_Filter::post('NEW_DB_DATE'));
+		}
+
 		$DB_FOLDER	= get_module_setting($this->getName(), 'DB_FOLDER', '');
 		$DB_TOKEN	= get_module_setting($this->getName(), 'DB_TOKEN', '');
+		$DB_DATE	= get_module_setting($this->getName(), 'DB_DATE', '');
 		$db_exclude = get_module_setting($this->getName(), 'DB_EXCLUDE', '');
 		$DB_EXCLUDE = explode(',', $db_exclude);
 		$response = '';
@@ -111,20 +116,20 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 				<h3><?php echo KT_I18N::translate('Settings'); ?></h3>
 				<form method="post">
 					<input type="hidden" name="action" value="update">
-					<div class="config_options odd">
+					<div class="config_options">
 						<label><?php echo /* I18N: Dropbox App folder name */ KT_I18N::translate('Dropbox App folder'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DB_FOLDER" value="<?php echo $DB_FOLDER; ?>" required autocomplete="off">
 						</div>
 					</div>
-					<div class="config_options even">
+					<div class="config_options">
 						<label><?php echo /* I18N: Dropbox App secure access token */ KT_I18N::translate('Dropbox App token'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DB_TOKEN" value="<?php echo $DB_TOKEN; ?>" pattern=".{56,}"   required title="<?php echo KT_I18N::translate('Not a valid Dropbox token'); ?>" autocomplete="off">
 						</div>
 					</div>
 					<?php if ($DB_FOLDER) { ?>
-						<div class="config_options odd">
+						<div class="config_options">
 							<label><?php echo KT_I18N::translate('These files and folders are always excluded from the backup.'); ?></label>
 							<div class="input_group">
 								<?php
@@ -137,16 +142,22 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 								<input type="text" value="<?php echo $html; ?>">
 							</div>
 						</div>
-					<?php } ?>
-					<div class="config_options even">
-						<label><?php echo KT_I18N::translate('Also exclude these files and folders'); ?></label>
-						<div class="input_group">
-							<input type="text" name="NEW_DB_EXCLUDE" value="<?php echo $db_exclude; ?>">
-							<span class="help_content">
-								<?php echo KT_I18N::translate('Separate each item by a comma'); ?>
-							</span>
+						<div class="config_options">
+							<label><?php echo KT_I18N::translate('Also exclude these files and folders'); ?></label>
+							<div class="input_group">
+								<input type="text" name="NEW_DB_EXCLUDE" value="<?php echo $db_exclude; ?>">
+								<span class="help_content">
+									<?php echo KT_I18N::translate('Separate each item by a comma'); ?>
+								</span>
+							</div>
 						</div>
-					</div>
+						<div class="config_options">
+							<label><?php echo KT_I18N::translate('Date of last backup'); ?></label>
+							<div class="input_group">
+								<input type="text" value="<?php echo $DB_DATE; ?>">
+							</div>
+						</div>
+					<?php } ?>
 					<button class="btn btn-primary update" type="submit">
 						<i class="fa fa-save"></i>
 						<?php echo KT_I18N::translate('update'); ?>
@@ -154,55 +165,70 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 				</form>
 			</div>
 			<hr class="clearfloat">
-				<div id="backup_list" style="margin: 20px auto;">
+			<?php
+			if ($DB_TOKEN && $DB_FOLDER) { ?>
+				<style>
+					td, th {padding: 5px 10px;}
+				</style>
+				<div id="backup_list" style="margin: 20px; float: left;">
 					<h3><?php echo KT_I18N::translate('These are the files and folders that will be sent to Dropbox.'); ?></h3>
 					<h4><?php echo /* I18N: Explanation of files included in backup to Dropbox */ KT_I18N::translate('Where a folder is shown, the entire contents will be sent.'); ?></h4>
 					<ul style="list-style:none;">
-						<?php
-						foreach ($iterator as $pathname => $fileInfo) {
-							$file	= str_replace(KT_DATA_DIR, "", $fileInfo);
-							$file	= str_replace("\\", "/", $file);
-							$facts	= preg_split('/\//', $file);
-							if (count($facts) < 2) {
-								echo '
-									<li>
-										<i class="fa ' . (is_dir($fileInfo) ? 'fa-folder-open-o' : 'fa fa-file-o') . '"></i>' . $fileInfo->getFilename() . '
-									</li>
-								';
-							}
-						}
-						?>
+						<table>
+							<tr>
+								<th><?php echo KT_I18N::translate('File or folder name'); ?></th>
+								<th><?php echo KT_I18N::translate('Date last modified'); ?></th>
+							</tr>
+							<?php foreach ($iterator as $pathname => $fileInfo) {
+								$file	= str_replace(KT_DATA_DIR, "", $fileInfo);
+								$file	= str_replace("\\", "/", $file);
+								$facts	= preg_split('/\//', $file);
+								if (count($facts) < 2) { ?>
+									<tr>
+										<td>
+											<i class="fa <?php echo (is_dir($fileInfo) ? 'fa-folder-open-o' : 'fa fa-file-o'); ?>"></i>
+											<?php echo $fileInfo->getFilename(); ?>
+										</td>
+										<td>
+											<?php if (!is_dir($fileInfo)){
+												echo date ("F d Y H:i:s.", filemtime($fileInfo));
+											} ?>
+										</td>
+									</tr>
+								<?php }
+							} ?>
+						</table>
 					</ul>
-					<form method="post" action="<?php echo $this->getConfigLink(); ?>">
-						<input type="hidden" name="action" value="backup">
-						<button class="btn btn-primary delete" type="submit">
-							<i class="fa fa-dropbox"></i>
-							<?php echo KT_I18N::translate('backup'); ?>
-						</button>
-					</form>
-					<div style="clear: both; font-size: 90%; font-style: italic;"><?php echo /* I18N: Dropbox copyright statement */ KT_I18N::translate('Dropbox and the Dropbox logo are trademarks of Dropbox, Inc.'); ?></div>
 				</div>
+				<?php if(KT_Filter::post('action') == 'backup') { ?>
+					<div id="results_list" style="margin: 20px 50px; float: right;">
+						<h3><?php echo KT_I18N::translate('Results'); ?></h3>
+						<h4></h4>
+						<table id="dropbox" style="margin-top: 40px;">
+							<tr>
+								<th><?php echo KT_I18N::translate('File name'); ?></th>
+								<th><?php echo KT_I18N::translate('Size'); ?></th>
+								<th><?php echo KT_I18N::translate('Last modified date'); ?></th>
+							</tr>
+							<?php
+								$dir = str_replace(KT_ROOT, "", KT_DATA_DIR);
+								$this->upload($dir, $db_exclude, $DB_TOKEN);
+							?>
+						</table>
+					</div>
+				<?php } ?>
+				<form  class="clearfloat" method="post" action="<?php echo $this->getConfigLink(); ?>">
+					<input type="hidden" name="action" value="backup">
+					<input type="hidden" name="NEW_DB_DATE" value="<?php echo date('Y/m/d H:i:s'); ?>">
+					<button class="btn btn-primary delete" type="submit">
+						<i class="fa fa-dropbox"></i>
+						<?php echo KT_I18N::translate('backup'); ?>
+					</button>
+				</form>
+				<div class="clearfloat" style="font-size: 90%; font-style: italic;"><?php echo /* I18N: Dropbox copyright statement */ KT_I18N::translate('Dropbox and the Dropbox logo are trademarks of Dropbox, Inc.'); ?></div>
+			<?php } ?>
 		</div>
-		<?php if(KT_Filter::post('action') == 'backup') { ?>
-			<style>
-				td, th {border: 1px solid; padding: 5px;}
-			</style>
-			<div>
-				<h3><?php echo KT_I18N::translate('Results'); ?></h3>
-				<table id="dropbox">
-					<tr>
-						<th><?php echo KT_I18N::translate('File name'); ?></th>
-						<th><?php echo KT_I18N::translate('Size'); ?></th>
-						<th><?php echo KT_I18N::translate('Last modified date'); ?></th>
-					</tr>
-					<?php
-						$dir = str_replace(KT_ROOT, "", KT_DATA_DIR);
-						$this->upload($dir, $db_exclude, $DB_TOKEN);
-					?>
-				</table>
-			</div>
-		<?php }
-	}
+	<?php }
 
 	/**
      * upload set the file or directory to upload
