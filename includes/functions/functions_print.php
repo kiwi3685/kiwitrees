@@ -884,55 +884,53 @@ function format_fact_date(KT_Event $event, KT_GedcomRecord $record, $anchor = fa
 * @param boolean $sub option to print place subrecords
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
-function format_fact_place(KT_Event $event, $anchor=false, $sub=false, $lds=false) {
+function format_fact_place(KT_Event $event, $anchor = false, $sub = false, $lds = false) {
 	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX, $SEARCH_SPIDER;
 
-	$factrec = $event->getGedcomRecord();
-
-	$kt_place = new KT_Place($event->getPlace(), KT_GED_ID);
-
+	$factrec	= $event->getGedcomRecord();
 	$name_parts = explode(', ', $event->getPlace());
-	$ct=count($name_parts);
+	$ct			= count($name_parts);
+	$kt_place	= new KT_Place($event->getPlace(), KT_GED_ID);
 
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
 		if ($SEARCH_SPIDER) {
-			$html = $kt_place->getFullName();
+			$html = '&nbsp;' . $kt_place->getFullName();
 		} else {
-			$html = '<a href="' . $kt_place->getURL() . '">' . $kt_place->getFullName() . '</a>';
+			$html = '&nbsp;<a href="' . $kt_place->getURL() . '">' . $kt_place->getFullName() . '</a>';
 		}
 	} else {
 		// Abbreviate the place name, for chart boxes
-		return ' - ' . $kt_place->getShortName();
+		return '&nbsp;' . $kt_place->getShortName();
 	}
 
-	$ctn=0;
+	$ctn = 0;
 	if ($sub) {
 		$placerec = get_sub_record(2, '2 PLAC', $factrec);
 		if (!empty($placerec)) {
 			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 				foreach ($matches[1] as $match) {
-					$kt_place = new KT_Place($match, KT_GED_ID);
-					$html .= ' - ' . $kt_place->getFullName();
+					$kt_place	= new KT_Place($match, KT_GED_ID);
+					$html		.= '&nbsp;' . $kt_place->getFullName();
 				}
 			}
-			$map_lati = "";
-			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);
-			if ($cts>0) {
-				$map_lati = $match[1];
-				$html .= '<br><span class="label">'.KT_Gedcom_Tag::getLabel('LATI').': </span>'.$map_lati;
+			$map_lati	= "";
+			$cts		= preg_match('/\d LATI (.*)/', $placerec, $match);
+			if ($cts > 0) {
+				$map_lati	= $match[1];
+				$html		.= '<br><span>' . KT_Gedcom_Tag::getLabel('LATI') . ': </span>' . $map_lati;
 			}
-			$map_long = "";
-			$cts = preg_match('/\d LONG (.*)/', $placerec, $match);
-			if ($cts>0) {
-				$map_long = $match[1];
-				$html .= ' <span class="label">'.KT_Gedcom_Tag::getLabel('LONG').': </span>'.$map_long;
+			$map_long	= "";
+			$cts		= preg_match('/\d LONG (.*)/', $placerec, $match);
+			if ($cts > 0) {
+				$map_long	= $match[1];
+				$html		.= ' <span>' . KT_Gedcom_Tag::getLabel('LONG') . ': </span>' . $map_long;
 			}
 			if ($map_lati && $map_long && empty($SEARCH_SPIDER)) {
 				$map_lati = trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
 				$map_long = trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
 				if ($name_parts) {
-					$place=$name_parts[0];
+					$place = $name_parts[0];
 				} else {
 					$place = '';
 				}
@@ -943,21 +941,21 @@ function format_fact_place(KT_Event $event, $anchor=false, $sub=false, $lds=fals
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				ob_start();
 				print_fact_notes($placerec, 3);
-				$html .= '<br>'.ob_get_contents();
+				$html .= '<br>' . ob_get_contents();
 				ob_end_clean();
 			}
 		}
 	}
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $factrec, $match)) {
-			$tcode=trim($match[1]);
-			$html.='<br>'.KT_I18N::translate('LDS Temple').': '.KT_Gedcom_Code_Temp::templeName($match[1]);
+			$tcode = trim($match[1]);
+			$html .= '<br>' . KT_I18N::translate('LDS Temple') . ': ' . KT_Gedcom_Code_Temp::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $factrec, $match)) {
-			$html.='<br>'.KT_I18N::translate('Status').': '.KT_Gedcom_Code_Stat::statusName($match[1]);
+			$html .= '<br>' . KT_I18N::translate('Status') . ': ' . KT_Gedcom_Code_Stat::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
-				$date=new KT_Date($match[1]);
-				$html.=', '.KT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->Display(false);
+				$date = new KT_Date($match[1]);
+				$html .= ', ' . KT_Gedcom_Tag::getLabel('STAT:DATE') . ': ' . $date->Display(false);
 			}
 		}
 	}
