@@ -3300,8 +3300,10 @@ div[id^="caldiv"] td {
 }
 
 .media-display-title {
-	font-style: italic;
-	margin: 10px;
+    font-size: 90%;
+    font-style: italic;
+    margin: 10px 2px;
+    word-break: keep-all;
 }
 
 .media-display-image {
