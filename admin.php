@@ -1609,6 +1609,7 @@ function old_paths() {
 		KT_ROOT . 'modules_v4/googlemap/css/wt_v3_googlemap.css',
 		KT_ROOT . 'modules_v4/backup_to_dropbox/backup.php',
 		KT_ROOT . 'modules_v4/backup_to_dropbox/dropbox-sdk',
+		KT_ROOT . 'modules_v4/research_links/plugins/rotterdamds.php',
 
 	);
 }
