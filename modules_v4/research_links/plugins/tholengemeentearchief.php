@@ -23,7 +23,7 @@ class tholengemeentearchief_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'http://www.delpher.nl/';
+		$base_url = 'http://www.archieftholen.nl/';
 
 		$collection = array(
 			"Begraafakte"		    => "onze-bronnen/voorouders/trefwoord/akte_type/begraafakte/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",

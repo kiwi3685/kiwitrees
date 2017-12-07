@@ -23,7 +23,7 @@ class langstraatheusdenaltenasa_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'ttp://salha.nl/';
+		$base_url = 'http://salha.nl/';
 
 		$collection = array(
 			"Genealogie"				=> "archieven-en-collecties/voorouders/genealogie/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn",

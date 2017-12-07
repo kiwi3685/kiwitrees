@@ -5,9 +5,9 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
-class cbgstambomen_plugin extends research_base_plugin {
+class hetarchiefbe_plugin extends research_base_plugin {
 	static function getName() {
-		return 'CBG Stambomen';
+		return 'Het Archief';
 	}
 
 	static function getPaySymbol() {
@@ -15,11 +15,11 @@ class cbgstambomen_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'NLD';
+		return 'BEL';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return false;
+		return 'https://hetarchief.be/nl/zoeken/%22' . $givn . '%20' . $surname . '%22';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
@@ -27,7 +27,7 @@ class cbgstambomen_plugin extends research_base_plugin {
 	}
 
 	static function createLinkOnly() {
-		return 'https://www.stamboomnederland.nl/start';
+		return false;
 	}
 
 	static function createSubLinksOnly() {
