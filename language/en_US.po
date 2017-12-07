@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-12-03 09:33+1300\n"
-"PO-Revision-Date: 2017-12-03 09:34+1300\n"
+"POT-Creation-Date: 2017-12-08 09:52+1300\n"
+"PO-Revision-Date: 2017-12-08 09:52+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -96,7 +96,7 @@ msgstr "No media file was provided."
 msgid "The file %s already exists.  Use another filename."
 msgstr "The file %s already exists.  Use another filename."
 
-#: addmedia.php:183 admin_media_upload.php:141 edit_interface.php:1407
+#: addmedia.php:183 admin_media_upload.php:141 edit_interface.php:1406
 msgid "There was an error uploading your file."
 msgstr "There was an error uploading your file."
 
@@ -104,8 +104,8 @@ msgstr "There was an error uploading your file."
 #: edit_interface.php:170 edit_interface.php:271 edit_interface.php:331
 #: edit_interface.php:490 edit_interface.php:561 edit_interface.php:822
 #: edit_interface.php:930 edit_interface.php:1067 edit_interface.php:1143
-#: edit_interface.php:1270 edit_interface.php:2167 edit_interface.php:2321
-#: edit_interface.php:2588 edit_interface.php:2689 find.php:732
+#: edit_interface.php:1270 edit_interface.php:2166 edit_interface.php:2320
+#: edit_interface.php:2587 edit_interface.php:2688 find.php:732
 #: includes/functions/functions_edit.php:981 includes/media_reorder.php:165
 #: inverselink.php:211 inverselink.php:240 modules_v4/album/module.php:338
 #: modules_v4/census_assistant/census-edit.php:125
@@ -255,8 +255,8 @@ msgstr ""
 #: block_edit.php:64 edit_interface.php:166 edit_interface.php:267
 #: edit_interface.php:327 edit_interface.php:486 edit_interface.php:557
 #: edit_interface.php:818 edit_interface.php:926 edit_interface.php:1063
-#: edit_interface.php:1139 edit_interface.php:1266 edit_interface.php:2159
-#: edit_interface.php:2317 edit_interface.php:2580 editnews.php:68
+#: edit_interface.php:1139 edit_interface.php:1266 edit_interface.php:2158
+#: edit_interface.php:2316 edit_interface.php:2579 editnews.php:68
 #: edituser.php:191 find.php:502 includes/functions/functions_edit.php:35
 #: includes/functions/functions_edit.php:49
 #: includes/functions/functions_edit.php:103
@@ -538,7 +538,7 @@ msgstr "The file %s could not be deleted."
 #: includes/functions/functions_print_lists.php:424
 #: includes/functions/functions_print_lists.php:925
 #: includes/functions/functions_resource.php:569 library/KT/Stats.php:3563
-#: medialist.php:263 modules_v4/batch_update/admin_batch_update.php:374
+#: medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375
 #: modules_v4/charts/module.php:211 modules_v4/relatives/module.php:258
 msgid "yes"
 msgstr "yes"
@@ -551,7 +551,7 @@ msgstr "yes"
 #: includes/functions/functions_print_facts.php:1280
 #: includes/functions/functions_print_lists.php:927
 #: library/KT/Controller/FancyTreeView.php:624 library/KT/Stats.php:3564
-#: medialist.php:266 modules_v4/batch_update/admin_batch_update.php:373
+#: medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374
 #: modules_v4/charts/module.php:210
 msgid "no"
 msgstr "no"
@@ -3428,7 +3428,7 @@ msgstr "Include married names: "
 
 #. I18N: gedcom tag NAME
 #: admin_trees_duplicates.php:215 admin_trees_missing.php:260
-#: admin_trees_sanity.php:217 edit_interface.php:2659 inverselink.php:114
+#: admin_trees_sanity.php:217 edit_interface.php:2658 inverselink.php:114
 #: inverselink.php:188 library/KT/Controller/Individual.php:173
 #: library/KT/Gedcom/Tag.php:275 library/KT/Stats.php:3372
 #: modules_v4/report_marriages/module.php:213
@@ -4460,7 +4460,7 @@ msgstr ""
 
 #: admin_trees_source.php:129 admin_trees_source.php:246
 #: admin_trees_sourcecite.php:119 edit_changes.php:159 edit_interface.php:143
-#: edit_interface.php:1322 edit_interface.php:2332 help_text.php:478
+#: edit_interface.php:1322 edit_interface.php:2331 help_text.php:478
 #: library/KT/Controller/Family.php:141
 #: library/KT/Controller/Individual.php:381 library/KT/Controller/Media.php:94
 #: library/KT/Controller/Note.php:88 library/KT/Controller/Repository.php:88
@@ -4553,9 +4553,6 @@ msgstr "Approval of account at %s"
 
 #: admin_users.php:98
 #, php-format
-#| msgid ""
-#| "The administrator at %s has approved your application for an account."
-#| "<br><br>You may now login by accessing the following link: %s"
 msgid ""
 "The administrator at %1s has approved your application for an account."
 "<br><br>You may now login by accessing the following link: %2s"
@@ -5291,7 +5288,7 @@ msgstr "Are you sure you want to undo all the changes to this family tree?"
 msgid "Add new fact"
 msgstr "Add new fact"
 
-#: edit_interface.php:347 edit_interface.php:2311
+#: edit_interface.php:347 edit_interface.php:2310
 msgid "Add a child"
 msgstr "Add a child"
 
@@ -5312,7 +5309,7 @@ msgstr "Add a husband"
 msgid "Add a mother"
 msgstr "Add a mother"
 
-#: edit_interface.php:398 edit_interface.php:1806
+#: edit_interface.php:398 edit_interface.php:1805
 #: modules_v4/relatives/module.php:146 modules_v4/relatives/module.php:147
 #: modules_v4/relatives/module.php:397
 msgid "Add a father"
@@ -5407,42 +5404,42 @@ msgstr "You must provide a repository name"
 msgid "Repository name"
 msgstr "Repository name"
 
-#: edit_interface.php:1573 edit_interface.php:1744 edit_interface.php:1896
+#: edit_interface.php:1572 edit_interface.php:1743 edit_interface.php:1895
 msgid "Add child"
 msgstr "Add child"
 
-#: edit_interface.php:1651
+#: edit_interface.php:1650
 msgid "Add a spouse"
 msgstr "Add a spouse"
 
-#: edit_interface.php:1954 includes/functions/functions_edit.php:1496
+#: edit_interface.php:1953 includes/functions/functions_edit.php:1496
 #: library/KT/Controller/Individual.php:187
 msgid "Edit name"
 msgstr "Edit name"
 
-#: edit_interface.php:1980 library/KT/Controller/Individual.php:323
+#: edit_interface.php:1979 library/KT/Controller/Individual.php:323
 msgid "Add new Name"
 msgstr "Add new Name"
 
-#: edit_interface.php:1998 help_text.php:424
+#: edit_interface.php:1997 help_text.php:424
 #: includes/functions/functions_print.php:1010
 #: includes/functions/functions_print.php:1114
 msgid "Add from clipboard"
 msgstr "Add from clipboard"
 
 #. I18N: gedcom tag _KT_OBJE_SORT
-#: edit_interface.php:2012 edit_interface.php:2023 edit_interface.php:2047
-#: edit_interface.php:2067 includes/media_reorder.php:64
+#: edit_interface.php:2011 edit_interface.php:2022 edit_interface.php:2046
+#: edit_interface.php:2066 includes/media_reorder.php:64
 #: library/KT/Gedcom/Tag.php:839 modules_v4/album/module.php:102
 msgid "Re-order media"
 msgstr "Re-order media"
 
-#: edit_interface.php:2103 edit_interface.php:2520
+#: edit_interface.php:2102 edit_interface.php:2519
 #: library/KT/Controller/Family.php:133 modules_v4/relatives/module.php:352
 msgid "Re-order children"
 msgstr "Re-order children"
 
-#: edit_interface.php:2110 edit_interface.php:2553
+#: edit_interface.php:2109 edit_interface.php:2552
 msgid ""
 "Either click the \"sort by date\" button or click a row then drag-and-drop "
 "to re-order."
@@ -5453,7 +5450,7 @@ msgstr ""
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: edit_interface.php:2163 edit_interface.php:2584
+#: edit_interface.php:2162 edit_interface.php:2583
 #: modules_v4/todays_events/module.php:155
 #: modules_v4/upcoming_events/module.php:157
 #: modules_v4/widget_todays_events/module.php:143
@@ -5461,22 +5458,22 @@ msgstr ""
 msgid "sort by date"
 msgstr "sort by date"
 
-#: edit_interface.php:2181 library/KT/Controller/Family.php:122
+#: edit_interface.php:2180 library/KT/Controller/Family.php:122
 msgid "Change Family Members"
 msgstr "Change Family Members"
 
-#: edit_interface.php:2187 edit_interface.php:2290
+#: edit_interface.php:2186 edit_interface.php:2289
 #: includes/functions/functions.php:1228 modules_v4/googlemap/googlemap.php:298
 #: modules_v4/googlemap/googlemap.php:325
 msgid "child"
 msgstr "child"
 
-#: edit_interface.php:2187 edit_interface.php:2243 edit_interface.php:2276
-#: edit_interface.php:2302
+#: edit_interface.php:2186 edit_interface.php:2242 edit_interface.php:2275
+#: edit_interface.php:2301
 msgid "Select person"
 msgstr "Select person"
 
-#: edit_interface.php:2202
+#: edit_interface.php:2201
 msgid ""
 "For family member you can use the \"Select person\" field to choose a "
 "different person from your tree to fill that role or add someone if the role "
@@ -5488,11 +5485,11 @@ msgstr ""
 "is empty. Tick the Remove option to delete that person from the family. "
 "Click \"Add a child\" to create fields for more children."
 
-#: edit_interface.php:2212
+#: edit_interface.php:2211
 msgid "Existing"
 msgstr "Existing"
 
-#: edit_interface.php:2213 index_edit.php:284 index_edit.php:302
+#: edit_interface.php:2212 index_edit.php:284 index_edit.php:302
 #: inverselink.php:116 inverselink.php:190 inverselink.php:294
 #: modules_v4/census_assistant/module.php:243
 #: modules_v4/census_assistant/module.php:263
@@ -5504,26 +5501,26 @@ msgstr "Existing"
 msgid "Remove"
 msgstr "Remove"
 
-#: edit_interface.php:2214
+#: edit_interface.php:2213
 msgid "Change or add"
 msgstr "Change or add"
 
-#: edit_interface.php:2222 edit_interface.php:2254
+#: edit_interface.php:2221 edit_interface.php:2253
 #: includes/functions/functions.php:1199
 msgid "husband"
 msgstr "husband"
 
-#: edit_interface.php:2223 edit_interface.php:2255
+#: edit_interface.php:2222 edit_interface.php:2254
 #: includes/functions/functions.php:1212
 msgid "wife"
 msgstr "wife"
 
-#: edit_interface.php:2224 edit_interface.php:2232 edit_interface.php:2256
-#: edit_interface.php:2265 includes/functions/functions.php:1225
+#: edit_interface.php:2223 edit_interface.php:2231 edit_interface.php:2255
+#: edit_interface.php:2264 includes/functions/functions.php:1225
 msgid "spouse"
 msgstr "spouse"
 
-#: edit_interface.php:2288 includes/functions/functions.php:1226
+#: edit_interface.php:2287 includes/functions/functions.php:1226
 #: includes/functions/functions_charts.php:270
 #: includes/functions/functions_charts.php:831
 #: modules_v4/googlemap/googlemap.php:294
@@ -5531,7 +5528,7 @@ msgstr "spouse"
 msgid "son"
 msgstr "son"
 
-#: edit_interface.php:2289 includes/functions/functions.php:1227
+#: edit_interface.php:2288 includes/functions/functions.php:1227
 #: includes/functions/functions_charts.php:271
 #: includes/functions/functions_charts.php:832
 #: modules_v4/googlemap/googlemap.php:289
@@ -5539,16 +5536,16 @@ msgstr "son"
 msgid "daughter"
 msgstr "daughter"
 
-#: edit_interface.php:2547 edit_interface.php:2599
+#: edit_interface.php:2546 edit_interface.php:2598
 #: library/KT/Controller/Individual.php:338
 msgid "Re-order families"
 msgstr "Re-order families"
 
-#: edit_interface.php:2644
+#: edit_interface.php:2643
 msgid "Possible duplicates"
 msgstr "Possible duplicates"
 
-#: edit_interface.php:2654
+#: edit_interface.php:2653
 msgid ""
 "These individuals might be duplicates of your new entry. Click on a name to "
 "open a new tab at their page to view more details. <br><br>Close this window "
@@ -5560,20 +5557,20 @@ msgstr ""
 "and the <strong>Add new individual</strong> window if you do not want to "
 "complete this addition."
 
-#: edit_interface.php:2655
+#: edit_interface.php:2654
 #, php-format
 msgid "Found %s possible duplicates"
 msgstr "Found %s possible duplicates"
 
-#: edit_interface.php:2660
+#: edit_interface.php:2659
 msgid "Birth year"
 msgstr "Birth year"
 
-#: edit_interface.php:2661
+#: edit_interface.php:2660
 msgid "Birth place"
 msgstr "Birth place"
 
-#: edit_interface.php:2682
+#: edit_interface.php:2681
 msgid "No duplicates found"
 msgstr "No duplicates found"
 
@@ -10993,7 +10990,6 @@ msgstr ""
 
 #: includes/functions/functions_mail.php:235
 #, php-format
-#| msgid "You sent the following message to a user at %1$s:"
 msgid "You sent the following message to <b>%1$s</b> at %2$s:"
 msgstr "You sent the following message to <b>%1$s</b> at %2$s:"
 
@@ -17968,6 +17964,7 @@ msgid "Reports"
 msgstr "Reports"
 
 #: library/KT/MenuBar.php:156 lifespan.php:297 medialist.php:139
+#: modules_v4/batch_update/plugins/search_replace.php:126
 #: modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133
 #: modules_v4/families/module.php:146 modules_v4/individuals/module.php:146
 #: search.php:31 search.php:251 search.php:542 themes/colors/header.php:105
@@ -20058,18 +20055,15 @@ msgstr "ID settings"
 
 #. I18N: Dropbox App folder name
 #: modules_v4/backup_to_dropbox/module.php:120
-#| msgid "Dropbox folder"
 msgid "Dropbox App folder"
 msgstr "Dropbox App folder"
 
 #. I18N: Dropbox App secure access token
 #: modules_v4/backup_to_dropbox/module.php:126
-#| msgid "Dropbox token"
 msgid "Dropbox App token"
 msgstr "Dropbox App token"
 
 #: modules_v4/backup_to_dropbox/module.php:128
-#| msgid "Dropbox token"
 msgid "Not a valid Dropbox token"
 msgstr "Not a valid Dropbox token"
 
@@ -20086,7 +20080,6 @@ msgid "Separate each item by a comma"
 msgstr "Separate each item by a comma"
 
 #: modules_v4/backup_to_dropbox/module.php:155
-#| msgid "Date of last change"
 msgid "Date of last backup"
 msgstr "Date of last backup"
 
@@ -20100,7 +20093,6 @@ msgid "Where a folder is shown, the entire contents will be sent."
 msgstr "Where a folder is shown, the entire contents will be sent."
 
 #: modules_v4/backup_to_dropbox/module.php:179
-#| msgid "File name"
 msgid "File or folder name"
 msgstr "File or folder name"
 
@@ -20166,16 +20158,16 @@ msgstr ""
 msgid "Nothing found"
 msgstr "Nothing found"
 
-#: modules_v4/batch_update/admin_batch_update.php:371
+#: modules_v4/batch_update/admin_batch_update.php:372
 msgid "Update the CHAN record"
 msgstr "Update the CHAN record"
 
-#: modules_v4/batch_update/admin_batch_update.php:383
-#: modules_v4/batch_update/admin_batch_update.php:388
+#: modules_v4/batch_update/admin_batch_update.php:384
+#: modules_v4/batch_update/admin_batch_update.php:389
 msgid "Update"
 msgstr "Update"
 
-#: modules_v4/batch_update/admin_batch_update.php:384
+#: modules_v4/batch_update/admin_batch_update.php:385
 msgid "Update all"
 msgstr "Update all"
 
@@ -26023,7 +26015,6 @@ msgid "Include fully matched places: "
 msgstr "Include fully matched places: "
 
 #: modules_v4/googlemap/module.php:1625
-#| msgid "Family tree title"
 msgid "Family tree place"
 msgstr "Family tree place"
 
@@ -27504,7 +27495,6 @@ msgid "Story"
 msgstr "Story"
 
 #: modules_v4/stories/module.php:376 modules_v4/stories/module.php:395
-#| msgid "Given name or names"
 msgid "Enter name or part of name"
 msgstr "Enter name or part of name"
 
@@ -27823,7 +27813,6 @@ msgstr "An alternative way to select a new theme."
 
 #. I18N: Name of a module
 #: modules_v4/widget_user_contacts/module.php:32
-#| msgid "No contact"
 msgid "User contacts"
 msgstr "User contacts"
 
@@ -27833,7 +27822,6 @@ msgid "Links for contacting any user direct via email"
 msgstr "Links for contacting any user direct via email"
 
 #: modules_v4/widget_user_contacts/module.php:83
-#| msgid "Kiwitrees Message"
 msgid "Write message"
 msgstr "Write message"
 
