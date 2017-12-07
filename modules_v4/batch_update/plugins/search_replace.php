@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -59,21 +59,21 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptions() {
 		parent::getOptions();
-		$this->search  = safe_GET('search', KT_REGEX_UNSAFE);
-		$this->replace = safe_GET('replace', KT_REGEX_UNSAFE);
-		$this->method  = safe_GET('method', array('exact', 'words', 'wildcards', 'regex'), 'exact');
-		$this->case    = safe_GET('case', 'i');
+		$this->search  = KT_Filter::get('search', KT_REGEX_UNSAFE);
+		$this->replace = KT_Filter::get('replace', KT_REGEX_UNSAFE);
+		$this->method  = KT_Filter::get('method', 'exact|words|wildcards|regex', 'exact');
+		$this->case    = KT_Filter::get('case', 'i');
 
-		$this->error='';
+		$this->error = '';
 		switch ($this->method) {
 		case 'exact':
 			$this->regex = preg_quote($this->search, '/');
 			break;
 		case 'words':
-			$this->regex = '\b'.preg_quote($this->search, '/').'\b';
+			$this->regex = '\b' . preg_quote($this->search, '/') . '\b';
 			break;
 		case 'wildcards':
-			$this->regex = '\b'.str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')).'\b';
+			$this->regex = '\b' . str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')) . '\b';
 			break;
 		case 'regex':
 			$this->regex=$this->search;
@@ -81,7 +81,7 @@ class search_replace_bu_plugin extends base_plugin {
 			// A valid regex on a null string returns zero.
 			// An invalid regex on a null string returns false (and throws a warning).
 			if (@preg_match('/'.$this->search.'/', null) === false) {
-				$this->error = '<br><span class="error">'.KT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
+				$this->error = '<br><span class="error">' . KT_I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</span>';
 			}
 			break;
 		}
@@ -99,27 +99,31 @@ class search_replace_bu_plugin extends base_plugin {
 			'<label>
 				<span>' . KT_I18N::translate('Search method') . '</span>
 				<select name="method" onchange="this.form.submit();">
-					<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.KT_I18N::translate('Exact text')    .'</option>
-					<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.KT_I18N::translate('Whole words only')    .'</option>
-					<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.KT_I18N::translate('Wildcards').'</option>
-					<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.KT_I18N::translate('Regular expression')    .'</option>
+					<option value="exact"'    . ($this->method == 'exact'     ? ' selected="selected"' : '').'>' . KT_I18N::translate('Exact text') . '</option>
+					<option value="words"'    . ($this->method == 'words'     ? ' selected="selected"' : '').'>' . KT_I18N::translate('Whole words only') . '</option>
+					<option value="wildcards"'. ($this->method == 'wildcards' ? ' selected="selected"' : '').'>' . KT_I18N::translate('Wildcards') . '</option>
+					<option value="regex"'    . ($this->method == 'regex'     ? ' selected="selected"' : '').'>' . KT_I18N::translate('Regular expression') . '</option>
 				</select>
 				<p><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</p>
 			</label>
 			<label>
 				<span>' . KT_I18N::translate('Case insensitive') . '</span>
-				<input type="checkbox" name="case" value="i" ' . ($this->case=='i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">
+				<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">
 				<p><em>' . KT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></p>
 			</label>' .
 			parent::getOptionsForm() . '
 			<hr>
 			<label>
 				<span>' . KT_I18N::translate('Search text/pattern') . '</span>
-				<input id="search" name="search" value="' . KT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
+				<input id="search" name="search" value="' . KT_Filter::escapeHtml($this->search) . '">' . print_specialchar_link('search') . '
 			</label>
 			<label>
 				<span>' . KT_I18N::translate('Replacement text') . '</span>
-				<input id="replace" name="replace" value="' . KT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
-			</label>';
+				<input id="replace" name="replace" value="' . KT_Filter::escapeHtml($this->replace) . '">' . print_specialchar_link('replace') . '
+			</label>
+			<button class="button" onchange="this.form.submit();">
+				<i class="fa fa-play-circle"></i>' .
+				KT_I18N::translate('Search') . '
+			</button>';
 	}
 }

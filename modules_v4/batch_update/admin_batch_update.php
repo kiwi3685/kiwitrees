@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 if (!defined('KT_KIWITREES')) {
@@ -97,7 +97,7 @@ class batch_update {
 								$object = KT_GedcomRecord::getInstance($this->curr_xref);
 								$object->setGedcomRecord($this->record);
 								$html .= '
-									<hr>' .
+									<hr class="clearfloat">' .
 									self::createSubmitButton(KT_I18N::translate('previous'), $this->prev_xref) .
 									self::createSubmitButton(KT_I18N::translate('next'), $this->next_xref) . '
 									<div id="batch_update2" class="clearfloat">
@@ -130,13 +130,13 @@ class batch_update {
 	// Constructor - initialise variables and validate user-input
 	function __construct() {
 		$this->plugins = self::getPluginList(); // List of available plugins
-		$this->plugin  = safe_GET('plugin', array_keys($this->plugins)); // User parameters
-		$this->xref    = safe_GET('xref', KT_REGEX_XREF);
-		$this->action  = safe_GET('action');
-		$this->data    = safe_GET('data');
+		$this->plugin  = KT_Filter::get('plugin'); // User parameters
+		$this->xref    = KT_Filter::get('xref', KT_REGEX_XREF);
+		$this->action  = KT_Filter::get('action');
+		$this->data    = KT_Filter::get('data');
 
 		// Don't do any processing until a plugin is chosen.
-		if ($this->plugin) {
+		if ($this->plugin && array_key_exists($this->plugin, $this->plugins)) {
 			$this->PLUGIN = new $this->plugin;
 			$this->PLUGIN->getOptions();
 			$this->getAllXrefs();
@@ -299,16 +299,17 @@ class batch_update {
 
 	// Javascript that gets included on every page
 	static function getJavascript() {
-		return
-			'<script>'.
-			'function reset_reload() {'.
-			' var bu_form=document.getElementById("batch_update_form");'.
-			' bu_form.xref.value="";'.
-			' bu_form.action.value="";'.
-			' bu_form.data.value="";'.
-			' bu_form.submit();'.
-			'}</script>'
-		;
+		return '
+			<script>
+				function reset_reload() {
+					var bu_form=document.getElementById("batch_update_form");
+					bu_form.xref.value="";
+					bu_form.action.value="";
+					bu_form.data.value="";
+					bu_form.submit();
+				}
+			</script>
+		';
 	}
 
 	// Create a submit button for our form
@@ -328,12 +329,12 @@ class batch_update {
 				$button_icon = "fa-floppy-o";
 				break;
 		}
-		return
-			'<button type="submit" onclick="' .
-				'this.form.xref.value=\'' . KT_Filter::escapeHtml($xref) . '\';' .
-				'this.form.action.value=\'' . KT_Filter::escapeHtml($action) . '\';' .
-				'this.form.data.value=\'' . KT_Filter::escapeHtml($data) . '\';' .
-				'return true;"' .
+		return '
+			<button class="button" type="submit" onclick="
+				this.form.xref.value=\'' . KT_Filter::escapeHtml($xref) . '\';
+				this.form.action.value=\'' . KT_Filter::escapeHtml($action) . '\';
+				this.form.data.value=\'' . KT_Filter::escapeHtml($data) . '\';
+				return true;"' .
 				($xref ? '' : ' disabled') . '>
 				<i class="fa ' . $button_icon . '"></i>' .
 				$text . '
@@ -362,7 +363,7 @@ class base_plugin {
 
 	// Default option is just the "don't update CHAN record"
 	function getOptions() {
-		$this->chan = safe_GET_bool('chan');
+		$this->chan = KT_Filter::getBool('chan');
 	}
 
 	// Default option is just the "don't update CHAN record"
@@ -370,8 +371,8 @@ class base_plugin {
 		return
 			'<label><span>' . KT_I18N::translate('Update the CHAN record') . '</span>
 				<select name="chan" onchange="this.form.submit();">
-					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>' .KT_I18N::translate('no') . '</option>
-					<option value="yes"' . ($this->chan ? ' selected="selected"' : '') . '>' .KT_I18N::translate('yes'). '</option>
+					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>' . KT_I18N::translate('no') . '</option>
+					<option value="yes"' . ($this->chan ? ' selected="selected"' : '') . '>' . KT_I18N::translate('yes'). '</option>
 				</select>
 			</label>';
 	}
