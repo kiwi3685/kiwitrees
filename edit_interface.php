@@ -1353,13 +1353,12 @@ case 'update':
 	 * -----------------------------------------------------------------------------
 	 */
 
-	$pid_array = KT_Filter::post('pid_array');
 	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
  	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
  	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
 
-	if (isset($pid_array) && $pid_array !== "no_array") {
-		$cens_pids = explode(',', $pid_array);
+	if (isset($pids_array) && $pids_array != "no_array") {
+		$cens_pids = explode(', ', $pids_array);
 		$cens_pids = array_diff($cens_pids, array("add"));
 	}
 
@@ -1383,7 +1382,7 @@ case 'update':
 
 		// Retrieve the private data
 		$tmp = new KT_GedcomRecord($gedrec);
-		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+		list($gedrec, $private_gedrec) = $tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
 		if ($text[0] == 'Y') {
