@@ -413,7 +413,7 @@ class chart_relationship_KT_Module extends KT_Module implements KT_Module_Chart,
 				</div>
 				<button class="btn btn-primary save" type="submit">
 					<i class="fa fa-floppy-o"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 			</form>
 			<form method="post" name="rela_form" action="<?php echo $this->getConfigLink(); ?>">

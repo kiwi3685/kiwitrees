@@ -193,7 +193,7 @@ if ($action != 'choose') {
 							<p>
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-floppy-o"></i>
-									<?php echo KT_I18N::translate('save'); ?>
+									<?php echo KT_I18N::translate('Save'); ?>
 								</button>
 							</p>
 						</form>

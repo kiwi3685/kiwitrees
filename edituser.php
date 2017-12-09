@@ -188,7 +188,7 @@ function checkform(frm) {
 				<span id="edituser_contact_meth_short" class="help_text"></span>
 			</div>
 			<div id="edituser_submit" class="btn btn-primary">
-				<button type="submit" value="<?php echo KT_I18N::translate('save') ?>"><?php echo KT_I18N::translate('save'); ?></button>
+				<button type="submit" value="<?php echo KT_I18N::translate('save') ?>"><?php echo KT_I18N::translate('Save'); ?></button>
 			</div>
 		</form>
 		<?php if (!KT_USER_IS_ADMIN) { ?>

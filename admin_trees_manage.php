@@ -353,7 +353,7 @@ if (KT_USER_IS_ADMIN) {
 				<div class="input-group">
 					<button class="btn btn-primary" type="submit">
 					<i class="fa fa-floppy-o"></i>
-						<?php echo KT_I18N::translate('save'); ?>
+						<?php echo KT_I18N::translate('Save'); ?>
 					</button>
 				</div>
 			</form>

@@ -452,7 +452,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			<p>
 				<button class="btn btn-primary" type="submit">
 				<i class="fa fa-floppy-o"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 			</p>
 		</form>
@@ -617,7 +617,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							<p id="save-cancel">
 								<button class="btn btn-primary" type="submit">
 									<i class="fa fa-save"></i>
-									<?php echo KT_I18N::translate('save'); ?>
+									<?php echo KT_I18N::translate('Save'); ?>
 								</button>
 								<button class="btn btn-primary" type="button" onclick="window.close();">
 									<i class="fa fa-times"></i>
@@ -685,7 +685,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 				<p id="save-cancel">
 					<button class="btn btn-primary" type="submit">
 						<i class="fa fa-save"></i>
-						<?php echo KT_I18N::translate('save'); ?>
+						<?php echo KT_I18N::translate('Save'); ?>
 					</button>
 					<button class="btn btn-primary" type="button" onclick="window.close();">
 						<i class="fa fa-times"></i>

@@ -199,7 +199,7 @@ class extra_menus_KT_Module extends KT_Module implements KT_Module_Menu, KT_Modu
 						<p class="save">
 							<button class="btn btn-primary save" type="submit"  tabindex="7">
 								<i class="fa fa-floppy-o"></i>
-								<?php echo KT_I18N::translate('save'); ?>
+								<?php echo KT_I18N::translate('Save'); ?>
 							</button>
 							<button class="btn btn-primary cancel" type="button" onclick="window.location='<?php echo $this->getConfigLink(); ?>';" tabindex="8">
 								<i class="fa fa-times"></i>
@@ -331,7 +331,7 @@ class extra_menus_KT_Module extends KT_Module implements KT_Module_Menu, KT_Modu
 						<div class="save">
 							<button class="btn btn-primary save" type="submit">
 								<i class="fa fa-floppy-o"></i>
-								<?php echo KT_I18N::translate('save'); ?>
+								<?php echo KT_I18N::translate('Save'); ?>
 							</button>
 						</div>
 					</form>

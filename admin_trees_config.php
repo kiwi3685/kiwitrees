@@ -1405,7 +1405,7 @@ $controller
 		<p>
 			<button class="btn btn-primary" type="submit">
 			<i class="fa fa-floppy-o"></i>
-				<?php echo KT_I18N::translate('save'); ?>
+				<?php echo KT_I18N::translate('Save'); ?>
 			</button>
 		</p>
 	</form>

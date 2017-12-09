@@ -163,7 +163,7 @@ case 'editraw':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -264,7 +264,7 @@ case 'edit':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -324,7 +324,7 @@ case 'add':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -483,7 +483,7 @@ case 'addfamlink':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -554,7 +554,7 @@ case 'linkspouse':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -815,7 +815,7 @@ case 'addnewsource':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -923,7 +923,7 @@ case 'addnewnote':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -1060,7 +1060,7 @@ case 'editsource':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -1136,7 +1136,7 @@ case 'editnote':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -1263,7 +1263,7 @@ case 'addnewrepository':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button"  onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -2155,7 +2155,7 @@ case 'reorder_children':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button type="submit" class="btn btn-primary" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();">
 					<i class="fa fa-arrows"></i>
@@ -2313,7 +2313,7 @@ case 'changefamily':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -2576,7 +2576,7 @@ case 'reorder_fams':
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 				<button type="submit" class="btn btn-primary" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
 					<i class="fa fa-arrows"></i>

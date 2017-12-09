@@ -968,7 +968,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="submit">
 				<i class="fa fa-save"></i>
-				<?php echo KT_I18N::translate('save'); ?>
+				<?php echo KT_I18N::translate('Save'); ?>
 			</button>
 			<?php if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) { ?>
 				<button class="btn btn-primary" type="submit" onclick="document.addchildform.goto.value='new';">

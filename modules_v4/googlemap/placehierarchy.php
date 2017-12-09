@@ -230,7 +230,7 @@ function create_map($placelevels) {
 								<p id="save-cancel">
 									<button class="btn btn-primary" type="submit" name="Submit" onclick="update_sv_params(<?php echo $placeid; ?>);">
 										<i class="fa fa-save"></i>
-										<?php echo KT_I18N::translate('save'); ?>
+										<?php echo KT_I18N::translate('Save'); ?>
 									</button>
 								</p>
 						</form>

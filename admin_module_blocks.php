@@ -1,6 +1,6 @@
 <?php
 /**
- * Kiwitrees-nova: Web based Family History software
+ * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
  * 
  * Derived from webtrees (www.webtrees.net)
@@ -106,7 +106,7 @@ if ($action=='update_mods' && KT_Filter::checkCsrf()) {
 		</table>
 		<button class="btn btn-primary show" type="submit">
 			<i class="fa fa-floppy-o"></i>
-			<?php echo KT_I18N::translate('save'); ?>
+			<?php echo KT_I18N::translate('Save'); ?>
 		</button>
 	</form>
 </div>

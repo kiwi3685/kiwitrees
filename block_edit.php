@@ -61,7 +61,7 @@ $block = $blocks[$block->module_name];
 			<td colspan="2" class="topbottombar">
 				<button class="btn btn-primary show" type="submit">
 					<i class="fa fa-floppy-o"></i>
-					<?php echo KT_I18N::translate('save'); ?>
+					<?php echo KT_I18N::translate('Save'); ?>
 				</button>
 			</td>
 		</tr>
