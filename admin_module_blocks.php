@@ -1,6 +1,6 @@
 <?php
 /**
- * Kiwitrees: Web based Family History software
+ * Kiwitrees-nova: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
  * 
  * Derived from webtrees (www.webtrees.net)
@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 define('KT_SCRIPT_NAME', 'admin_module_blocks.php');

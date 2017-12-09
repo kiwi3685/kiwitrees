@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 define('KT_SCRIPT_NAME', 'admin.php');
@@ -478,7 +478,7 @@ function old_paths() {
 		KT_ROOT . 'themes/webtrees/images/zoomout.gif',
 		// Removed in 1.1.2
 		KT_ROOT . 'js/treenav.js',
-		KT_ROOT . 'library/WT/TreeNav.php',
+		KT_ROOT . 'library/KT/TreeNav.php',
 		KT_ROOT . 'themes/clouds/images/background.jpg',
 		KT_ROOT . 'themes/clouds/images/buttons/refresh.gif',
 		KT_ROOT . 'themes/clouds/images/buttons/view_all.gif',
@@ -1238,7 +1238,7 @@ function old_paths() {
 		KT_ROOT . 'js/scriptaculous',
 		KT_ROOT . 'js/scriptaculous.js.htm',
 		KT_ROOT . 'js/sorttable.js.htm',
-		KT_ROOT . 'library/WT/JS.php',
+		KT_ROOT . 'library/KT/JS.php',
 		KT_ROOT . 'modules_v3/clippings/index.php',
 		KT_ROOT . 'modules_v3/googlemap/css/googlemap_style.css',
 		KT_ROOT . 'modules_v3/googlemap/css/wt_v3_places_edit.css',
@@ -1487,7 +1487,7 @@ function old_paths() {
 		KT_ROOT . 'modules_v3/media',
 		KT_ROOT . 'modules_v3/lightbox',
 		// Removed in kiwitrees 3.0.0
-		KT_ROOT . 'library/WT/Debug.php',
+		KT_ROOT . 'library/KT/Debug.php',
 		KT_ROOT . 'modules_v3/simpl_duplicates',
 		KT_ROOT . 'modules_v3/simpl_unlinked',
 		KT_ROOT . 'modules_v3/gallery/galleria/galleria-1.3.5.js',
@@ -1528,7 +1528,7 @@ function old_paths() {
 		KT_ROOT . 'search-advanced.php',
 		KT_ROOT . 'admin_pgv_to_wt.php',
 		KT_ROOT . 'library/framework/Foundation',
-		KT_ROOT . 'library/WT/Controller/AdvancedSearch.php',
+		KT_ROOT . 'library/KT/Controller/AdvancedSearch.php',
 		KT_ROOT . 'modules_v3/birth_report',
 		KT_ROOT . 'modules_v3/death_report',
 		KT_ROOT . 'modules_v3/cemetery_report',
