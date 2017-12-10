@@ -73,7 +73,7 @@ switch (KT_Filter::post('action')) {
 					$user_id = create_user($username, $realname, $email, $pass1);
 					set_user_setting($user_id, 'reg_timestamp', date('U'));
 					set_user_setting($user_id, 'sessiontime', '0');
-					AddToLog('User ->' . $username . '<- created');
+					AddToLog('User ->' . $username . '<- created', , 'auth');
 				}
 			} else {
 				if ($user_id && $username && $realname) {
