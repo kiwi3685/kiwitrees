@@ -51,6 +51,7 @@ function reformat_record_import($rec) {
 		switch ($tag) {
 		// Convert PGV tags to WT
 		case '_PGVU':
+		case '_WT_USER':
 			$tag='_KT_USER';
 			break;
 		case '_PGV_OBJS':
