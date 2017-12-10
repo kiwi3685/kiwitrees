@@ -1435,11 +1435,13 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 		require_once KT_ROOT.KT_MODULES_DIR.'googlemap/googlemap.php';
 		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
-		$action    = safe_GET('action', '','go');
-		$gedcom_id = safe_GET('gedcom_id', array_keys(KT_Tree::getAll()), KT_GED_ID);
-		$country   = safe_GET('country', KT_REGEX_UNSAFE, 'XYZ');
-		$state     = safe_GET('state', KT_REGEX_UNSAFE, 'XYZ');
-		$matching  = safe_GET_bool('matching');
+		$action		= safe_GET('action', '','go');
+		$gedcom_id	= safe_GET('gedcom_id', array_keys(KT_Tree::getAll()), KT_GED_ID);
+		$country	= safe_GET('country', KT_REGEX_UNSAFE, 'XYZ');
+		$state		= safe_GET('state', KT_REGEX_UNSAFE, 'XYZ');
+		$matching	= safe_GET_bool('matching');
+
+		$par_id		= array();
 
 		if (!empty($KT_SESSION['placecheck_gedcom_id'])) {
 			$gedcom_id = $KT_SESSION['placecheck_gedcom_id'];
