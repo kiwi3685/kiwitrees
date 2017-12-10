@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,11 +27,19 @@ if (!defined('KT_KIWITREES')) {
 }
 
 // add resource to module_privacy components
-self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget', 'resource')");
+try {
+	self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget', 'resource')");
+} catch (PDOException $ex) {
+	// Perhaps we have already deleted this data?
+}
 
 // Delete old menu settings
-self::exec("DELETE FROM `##module_privacy` WHERE `module_name` = 'no_census' and `component` = 'menu'");
-self::exec("UPDATE `##module` SET `menu_order` = null WHERE `module_name` = 'no_census'");
+ try {
+	 self::exec("DELETE FROM `##module_privacy` WHERE `module_name` = 'no_census' and `component` = 'menu'");
+	 self::exec("UPDATE `##module` SET `menu_order` = null WHERE `module_name` = 'no_census'");
+ } catch (PDOException $ex) {
+ 	// Perhaps we have already deleted this data?
+ }
 
 // Update the version to indicate success
 KT_Site::preference($schema_name, $next_version);
