@@ -48,5 +48,16 @@ try {
 	// Perhaps we have already deleted this data?
 }
 
+// change _WT_ to _KT_ in datbase (missed on 3.3.2 upgrade)
+try {
+	self::exec("UPDATE `##individuals` SET `i_gedcom` = replace(`i_gedcom`, '_WT_', '_KT_')");
+	self::exec("UPDATE `##families` SET `f_gedcom` = replace(`f_gedcom`, '_WT_', '_KT_')");
+	self::exec("UPDATE `##media` SET `m_gedcom` = replace(`m_gedcom`, '_WT_', '_KT_')");
+	self::exec("UPDATE `##other` SET `o_gedcom` = replace(`o_gedcom`, '_WT_', '_KT_')");
+	self::exec("UPDATE `##sources` SET `s_gedcom` = replace(`s_gedcom`, '_WT_', '_KT_')");
+} catch (PDOException $ex) {
+	// Perhaps we have already deleted this data?
+}
+
 // Update the version to indicate success
 KT_Site::preference($schema_name, $next_version);
