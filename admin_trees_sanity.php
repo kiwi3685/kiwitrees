@@ -252,6 +252,12 @@ $controller
 					>
 					<?php echo KT_I18N::translate('Empty individual fact or event'); ?><span class="error">**</span>
 				</li>
+				<li class="facts_value" name="child_order" id="child_order" >
+					<input type="checkbox" name="child_order" value="child_order"
+						<?php if (KT_Filter::post('child_order')) echo ' checked="checked"'?>
+					>
+					<?php echo KT_I18N::translate('Children not sorted by age'); ?>
+				</li>
 			</ul>
 		</div>
 		<button type="submit" class="btn btn-primary clearfloat" >
@@ -432,6 +438,13 @@ $controller
 			if (KT_Filter::post('empty_tag')) {
 				$data = empty_tag();
 				echo '<h5>' . KT_I18N::translate('%s individuals with empty fact or event tags', $data['count']) . '
+					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			if (KT_Filter::post('child_order')) {
+				$data = child_order();
+				echo '<h5>' . KT_I18N::translate('%s families with children not sorted by birth date', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
@@ -991,5 +1004,43 @@ function query_age($tag_array, $age) {
 		$html .= '</ul>';
 		$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	}
+	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
+}
+
+function child_order() {
+	$html	= '<ul>';
+	$count	= 0;
+	$start	= microtime(true);
+	$dates = array();
+	// Families (HUSB, WIFE)
+ 	$rows	= KT_DB::prepare(
+		"SELECT f_id AS xref, f_gedcom AS gedrec FROM `##families` WHERE `f_file` = ? AND `f_numchil` > 1"
+	)->execute(array(KT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$family	= KT_Family::getInstance($row->xref);
+		$children = $family->getChildren();
+		$dates_original	= array();
+		$dates_sorted	= array();
+		foreach ($children as $child) {
+			$bdate = $child->getBirthDate();
+			if ($bdate->isOK()) {
+				$date = $bdate->MinJD();
+			} else {
+				$date = 1e8; // birth date missing => sort last
+			}
+			$dates_original[]	= $date;
+			$dates_sorted[]		= $date;
+		}
+		sort($dates_sorted);
+		if ($dates_original !== $dates_sorted) {
+			$html .= '
+				<p>
+					<div><a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a></div>
+				</p>';
+			$count ++;
+		}
+	}
+	$html .= '</ul>';
+	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
