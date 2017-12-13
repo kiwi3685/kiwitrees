@@ -80,7 +80,7 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 		$DB_DATE	= get_module_setting($this->getName(), 'DB_DATE', '');
 		$db_exclude = get_module_setting($this->getName(), 'DB_EXCLUDE', '');
 		$DB_EXCLUDE = explode(',', $db_exclude);
-		$response = '';
+		$response	= array();
 
 		// List of folders
 		if ($DB_TOKEN && $DB_FOLDER) {
@@ -202,7 +202,7 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 				</div>
 				<?php if(KT_Filter::post('action') == 'backup') { ?>
 					<div id="results_list" style="margin: 20px 50px; float: right;">
-						<h3><?php echo KT_I18N::translate('Results'); ?></h3>
+						<h3><?php echo KT_I18N::translate('Files uploaded to Dropbox'); ?></h3>
 						<h4></h4>
 						<table id="dropbox" style="margin-top: 40px;">
 							<tr>
@@ -219,13 +219,15 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 				<?php } ?>
 				<form  class="clearfloat" method="post" action="<?php echo $this->getConfigLink(); ?>">
 					<input type="hidden" name="action" value="backup">
-					<input type="hidden" name="NEW_DB_DATE" value="<?php echo date('Y/m/d H:i:s'); ?>">
+					<input type="hidden" name="NEW_DB_DATE" value="<?php echo isset($response['error_summary']) ? $DB_DATE : date('Y/m/d H:i:s'); ?>">
 					<button class="btn btn-primary delete" type="submit">
 						<i class="fa fa-dropbox"></i>
 						<?php echo KT_I18N::translate('backup'); ?>
 					</button>
 				</form>
-				<div class="clearfloat" style="font-size: 90%; font-style: italic;"><?php echo /* I18N: Dropbox copyright statement */ KT_I18N::translate('Dropbox and the Dropbox logo are trademarks of Dropbox, Inc.'); ?></div>
+				<div class="clearfloat" style="font-size: 90%; font-style: italic;">
+					<?php echo /* I18N: Dropbox copyright statement */ KT_I18N::translate('Dropbox and the Dropbox logo are trademarks of Dropbox, Inc.'); ?>
+				</div>
 			<?php } ?>
 		</div>
 	<?php }
@@ -276,6 +278,10 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
      * @param  string $file path to file
     */
     public function uploadFile($file, $db_token){
+        $path		= $file;
+        $fp			= fopen($path, 'rb');
+        $filesize	= filesize($path);
+
 		$api_url	= 'https://content.dropboxapi.com/2/files/upload'; //dropbox api url
         $headers	= array(
 			'Authorization: Bearer '. $db_token,
@@ -295,23 +301,33 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
         $ch = curl_init($api_url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_POST, true);
-        $path		= $file;
-        $fp			= fopen($path, 'rb');
-        $filesize	= filesize($path);
         curl_setopt($ch, CURLOPT_POSTFIELDS, fread($fp, $filesize));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response	= json_decode(curl_exec($ch), true);
         $http_code	= curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 		fclose($fp);
 
-		echo '
-			<tr>
-				<td>' . $response['name'] . '</td>
-				<td>' . $response['size'] . '</td>
-				<td>' . $response['client_modified'] . '</td>
-			</tr>';
+		if (isset($response['error_summary'])) {
+			echo '
+				<tr>
+					<td colspan="3">' . /* I18N Dropbox error message */ KT_I18N::translate('No files uploaded') . '</td>
+				</tr>
+				<tr>
+					<td colspan="3">' . /* I18N Dropbox error message */ KT_I18N::translate('Dropbox error message: <span class="error">%s</span>', $response['error_summary']) . '</td>
+				</tr>
+			';
+		} else {
+			echo '
+				<tr>
+					<td>' . $response['name'] . '</td>
+					<td>' . $response['size'] . '</td>
+					<td>' . $response['client_modified'] . '</td>
+				</tr>
+			';
+		}
+
+		curl_close($ch);
 
     }
 
