@@ -50,9 +50,9 @@ $fact				= safe_REQUEST($_REQUEST, 'fact',    KT_REGEX_UNSAFE);
 $option				= safe_REQUEST($_REQUEST, 'option',  KT_REGEX_UNSAFE);
 $assist				= safe_REQUEST($_REQUEST, 'assist',  KT_REGEX_UNSAFE);
 $noteid				= safe_REQUEST($_REQUEST, 'noteid',  KT_REGEX_UNSAFE);
-$pid_array			= safe_REQUEST($_REQUEST, 'pid_array', KT_REGEX_XREF);
-$pids_array_add		= safe_REQUEST($_REQUEST, 'pids_array_add', KT_REGEX_XREF);
-$pids_array_edit	= safe_REQUEST($_REQUEST, 'pids_array_edit', KT_REGEX_XREF);
+//$pid_array			= safe_REQUEST($_REQUEST, 'pid_array', KT_REGEX_XREF);
+//$pids_array_add		= safe_REQUEST($_REQUEST, 'pids_array_add', KT_REGEX_XREF);
+//$pids_array_edit	= safe_REQUEST($_REQUEST, 'pids_array_edit', KT_REGEX_XREF);
 $update_CHAN		= !safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
@@ -194,7 +194,6 @@ case 'edit':
 			<input type="hidden" name="action" value="update">
 			<input type="hidden" name="linenum" value="<?php echo $linenum; ?>">
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-			<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array">
 			<div id="add_facts">
 				<?php $level1type = create_edit_form($gedrec, $linenum, $level0type);
 				if (KT_USER_IS_ADMIN) { ?>
@@ -293,7 +292,6 @@ case 'add':
 			<input type="hidden" name="action" value="update">
 			<input type="hidden" name="linenum" value="new">
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-			<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">
 			<div id="add_facts">
 				<?php
 				echo create_add_form($fact);
@@ -1353,25 +1351,17 @@ case 'update':
 	 * -----------------------------------------------------------------------------
 	 */
 
-	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
- 	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
- 	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
+	$cens_pids	= explode(',', KT_Filter::post('pid_array'));
+	$pid		= KT_Filter::post('pid');
 
-	if (isset($pids_array) && $pids_array != "no_array") {
-		$cens_pids = explode(', ', $pids_array);
-		$cens_pids = array_diff($cens_pids, array("add"));
-	}
-
-	if (!isset($cens_pids)) {
-		$cens_pids = array($pid);
-		$idnums = "";
+	if ($cens_pids && count($cens_pids) > 1) {
+		$idnums="multi";
 	} else {
-		$cens_pids = $cens_pids;
-		$idnums = "multi";
+		$cens_pids = array($pid);
+		$idnums="";
 	}
 
 	$success = true;
-
 	// Cycle through each individual concerned defined by $cens_pids array.
 	foreach ($cens_pids as $pid) {
 		if (isset($pid)) {
@@ -1386,7 +1376,7 @@ case 'update':
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
 		if ($text[0] == 'Y') {
-			for ($n=1; $n<count($tag); ++$n) {
+			for ($n = 1; $n < count($tag); ++ $n) {
 				if ($glevels[$n] == 2 && ($tag[$n] == 'DATE' || $tag[$n] == 'PLAC') && $text[$n]) {
 					$text[0] = '';
 					break;
