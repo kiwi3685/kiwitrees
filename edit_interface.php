@@ -1364,10 +1364,12 @@ case 'update':
 	$success = true;
 	// Cycle through each individual concerned defined by $cens_pids array.
 	foreach ($cens_pids as $pid) {
-		if (isset($pid)) {
+		if (!empty($pid)) {
 			$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
-		} elseif (isset($famid)) {
+		} elseif (!empty($famid)) {
 			$gedrec = find_gedcom_record($famid, KT_GED_ID, true);
+		} else {
+			break;
 		}
 
 		// Retrieve the private data
