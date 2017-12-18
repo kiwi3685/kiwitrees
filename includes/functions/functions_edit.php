@@ -1681,7 +1681,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 						if ($type_pid->getType() == 'INDI' ) {
 							echo '
 								<div>
-									<a href="#" id="assistant-link" onclick="return activateCensusAssistant();">' .
+									<a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
 										KT_I18N::translate('Create a shared note using the census assistant') . '
 									</a>
 								</div>
