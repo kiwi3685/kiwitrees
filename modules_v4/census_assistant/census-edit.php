@@ -45,7 +45,7 @@ $controller
 	->addInlineJavascript('jQuery("#tblSample").on("click", ".icon-delete", function() { jQuery(this).closest("tr").remove(); });')
 	->pageHeader();
 
-$modules = WT_Module::getActiveModules(); // necessary to avoid error if no favorites menu and no favorites.
+$modules = KT_Module::getActiveModules(); // necessary to avoid error if no favorites menu and no favorites.
 ?>
 
 <div id="census_assist-page">
