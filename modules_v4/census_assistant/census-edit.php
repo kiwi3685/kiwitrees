@@ -44,6 +44,8 @@ $controller
 	->setPageTitle(KT_I18N::translate('Create a shared note using the census assistant'))
 	->addInlineJavascript('jQuery("#tblSample").on("click", ".icon-delete", function() { jQuery(this).closest("tr").remove(); });')
 	->pageHeader();
+
+$modules = WT_Module::getActiveModules(); // necessary to avoid error if no favorites menu and no favorites.
 ?>
 
 <div id="census_assist-page">
