@@ -2168,10 +2168,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	// Split the relationship into sub-relationships, e.g., third-cousin’s great-uncle.
 	// Try splitting at every point, and choose the path with the shorted translated name.
 	// But before starting to recursively go through all combinations, do a cache look-up
-	if (isset($relationshipsCache) && array_key_exists($path, $relationshipsCache)) {
-		return $relationshipsCache[$path];
-	} else {
-		$relationshipsCache = array();
+	if (array_key_exists($path, Functions::$relationshipsCache)) {
+		return Functions::$relationshipsCache[$path];
 	}
 
 	$relationship = null;
@@ -2191,10 +2189,16 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		$path2 = substr($path2, 3);
 	}
 	// and store the result in the cache
-	$relationshipsCache[$path] = $relationship;
+	Functions::$relationshipsCache[$path] = $relationship;
 
 	return $relationship;
 }
+
+class Functions {
+	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
+	public static $relationshipsCache = array();
+}
+
 
 /**
  * get theme names
