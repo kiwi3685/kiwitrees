@@ -655,6 +655,7 @@ input, textarea {padding:5px;}
 .change_new,.nameblue {border:solid #00f 2px !important;}
 .change_old,.namered {color:#000 !important;text-decoration:line-through !important;}
 
+a.showit > span {display:none;}
 a.showit {color:#000;position:relative;text-decoration:none;z-index:24;}
 a.showit:hover {background:#ffff99;cursor:crosshair;z-index:25;}
 a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-left:15px outset #000;border-right:2px solid #000;border-style:outset;border-top:2px solid #000;color:#fff;display:block;font-size:15px;left:0;opacity:.85;padding:3px;position:absolute;text-align:left;top:22px;white-space:normal;width:225px;z-index:5;}
@@ -696,7 +697,6 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .messagebox {background:#dfeeff;border-radius:3px;}
 .nam a:hover {color:#ff0000;}
 .nav_content {padding:0;width:100%;}
-.note_details,a.showit > span {display:none;}
 .nowrap,.tag_cloud a {white-space:nowrap;}
 .place {padding-top:5px;}
 .statistics-page {text-align:center;}

@@ -868,8 +868,6 @@ h4 { color:#000066; font-weight:bold;font-size:12px;}
 
 .change_old { border:solid #ff0000 2px; text-decoration: line-through;}
 
-.note_details { display:none;}
-
 a.showit { position:relative; z-index:24; color:#000; text-decoration:none;}
 
 a.showit:hover { z-index:25; background-color:#ffff9b; cursor:crosshair;}
