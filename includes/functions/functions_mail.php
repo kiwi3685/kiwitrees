@@ -62,11 +62,12 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 		$to_user_fullname_2 = '';
 	} elseif (($supportLink == $contactLink) || ($contact_user_id == '') || ($webmaster_user_id == '')) {
 		$style = 1;
+		$to = ($contact_user_id == '' ? $webmaster_user_id : $contact_user_id);
 		$form_title_1 = '<h3>' . KT_I18N::translate('For further information') . '</h3>';
 		$form_title_2 = '';
-		$to_user_id_1 = get_user_id($to);
+		$to_user_id_1 = $to;
 		$to_user_id_2 = '';
-		$to_user_name_1 = $to;
+		$to_user_name_1 = get_user_name($to);
 		$to_user_name_2 = '';
 		$to_user_fullname_1 = KT_I18N::translate('Support');
 		$to_user_fullname_2 = '';
@@ -75,10 +76,10 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 		$to_user_name = '';
 		$form_title_1 = '<h3>' . KT_I18N::translate('For technical support and information') . '</h3>';
 		$form_title_2 = '<h3>' . KT_I18N::translate('For help with genealogy questions') . '</h3>';
-		$to_user_id_1 = get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID');
-		$to_user_id_2 = get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID');
+		$to_user_id_1 = $webmaster_user_id;
+		$to_user_id_2 = $contact_user_id;
 		$to_user_name_1 = get_user_name(get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID'));
-		$to_user_name_2 = get_user_name(get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID'));
+		$to_user_name_2 = get_user_name($contact_user_id);
 		$to_user_fullname_1 = KT_I18N::translate('Technical help');
 		$to_user_fullname_2 = KT_I18N::translate('Genealogy help');
 	} ?>
