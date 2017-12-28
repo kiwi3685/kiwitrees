@@ -407,6 +407,11 @@ function contact_links($ged_id = KT_GED_ID) {
  */
 function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	global $KT_TREE, $EXPAND_NOTES;
+	if (strpos($text, "\n")) {
+		$returnChar = "\n";
+	} else {
+		$returnChar = "<br>";
+	}
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
@@ -422,12 +427,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	} else {
 		$note	= null;
 		$label	= 'NOTE';
-		$html	= KT_Filter::formatText($text, $KT_TREE);
+		$html	= $text;
 	}
 	if ($textOnly) {
 		return strip_tags($text);
 	}
-	if (strpos($text, "\n") === false) {
+	if (strpos($text, $returnChar) === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
 		return KT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
 	} elseif ($EXPAND_NOTES) {
@@ -439,7 +444,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
-			list($text) = explode("\n", strip_tags($html));
+			list($text) = explode($returnChar, strip_tags($html));
 			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . KT_I18N::translate('…') : $text;
 		}
 		if (KT_SCRIPT_NAME === 'note.php') {

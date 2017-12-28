@@ -575,13 +575,18 @@ function print_media_links($factrec, $level, $pid='') {
 	else $size=25;
 	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
 	$objectNum = 0;
+	$mediaWidth = '';
+	if (count($omatch) > 1) {
+		$mediaWidth = ' style="width: ' . 90 / min(count($omatch), 4) . '%;"';
+	}
+
 	while ($objectNum < count($omatch)) {
 		$media_id = $omatch[$objectNum][1];
 		$media=KT_Media::getInstance($media_id);
 		if ($media) {
 			if ($media->canDisplayDetails()) {
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
-				echo '<div class="media-display">
+				echo '<div class="media-display"' . $mediaWidth . '>
 					<div class="media-display-image">';
 						echo $media->displayImage();
 					echo '</div>'; // close div "media-display-image"
