@@ -663,8 +663,8 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 	return array($sup, $source_list, $number, $resourcefact);
 }
 
-// list marrge records
-function report_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
+// list marriage records
+function report_marriages ($name = '', $place, $m_fromJD, $m_toJD, $ged){
 	$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families` ";
 	$sql_join     = "";
 	$sql_where    = " WHERE f_file = " . $ged . " AND f_gedcom LIKE '%1 MARR%'";
@@ -686,13 +686,18 @@ function report_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
 		}
 	}
 
-	$list = array();
 	$rows = KT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
+
+	$list = array();
 	foreach ($rows as $row) {
-		// Name filter - must be done here becasue family number not available earlier.
-		$family = KT_Family::getInstance($row->xref);
-		if (stristr($family->getFullName(), $name)) {
-			$list[] = $family;
+		if ($name) {
+			// Name filter - must be done here because family number not available earlier.
+			$family = KT_Family::getInstance($row->xref);
+			if (stristr($family->getFullName(), $name)) {
+				$list[] = $family;
+			}
+		} else {
+			$list[] = KT_Family::getInstance($row->xref);
 		}
 	}
 

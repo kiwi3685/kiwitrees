@@ -126,16 +126,24 @@ class report_marriages_KT_Module extends KT_Module implements KT_Module_Report {
 		<div id="page" class="marriages">
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="noprint">
-				<h5><?php echo $this->getDescription(); ?></h5>
+				<div class="help_text">
+					<div class="help_content">
+						<h5><?php echo $this->getDescription(); ?></h5>
+						<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+						<div class="hidden">
+							<?php echo /* I18N: help for report facts and events module */ KT_I18N::translate('Date filters can be full (04 APR 1842) or 4-digit year only (1823). Name and place can be any string of characters you expect to find in those data fields. Autocomplete will find any given or surname that contains the characters you enter. To include all names or all places leave those fields empty.'); ?>
+						</div>
+					</div>
+				</div>
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo KT_GEDURL; ?>">
 					<input type="hidden" name="action" value="go">
 					<div class="chart_options">
-						<label for = "NAME"><?php echo KT_Gedcom_Tag::getLabel('NAME'); ?></label>
-						<input type="text" name="name" id="NAME" value="<?php echo KT_Filter::escapeHtml($name); ?>" dir="auto" required>
+						<label for="NAME"><?php echo KT_Gedcom_Tag::getLabel('NAME'); ?></label>
+						<input data-autocomplete-type="NAME" type="text" name="name" id="NAME" value="<?php echo KT_Filter::escapeHtml($name); ?>" dir="auto" placeholder="<?php echo /*I18N:placeholder for a name selection field */ KT_I18N::translate('Enter all or part of any name'); ?>">
 					</div>
 					<div class="chart_options">
 						<label for = "PLAC"><?php echo KT_Gedcom_Tag::getLabel('PLAC'); ?></label>
-						<input data-autocomplete-type="PLAC" type="text" name="place" id="PLAC" value="<?php echo KT_Filter::escapeHtml($place); ?>" dir="auto">
+						<input data-autocomplete-type="PLAC" type="text" name="place" id="PLAC" value="<?php echo KT_Filter::escapeHtml($place); ?>" dir="auto" placeholder="<?php echo /*I18N:placeholder for a place selection field */ KT_I18N::translate('Enter all or part of any place'); ?>">
 					</div>
 					<div class="chart_options">
 		              <label for = "DATE1"><?php echo KT_I18N::translate('Marriage date - from'); ?></label>

@@ -210,6 +210,46 @@ switch ($type) {
 		);
 	exit;
 
+	case 'NAME': // Any type of names, that include the search term
+		// select by surname
+		$rows1 =
+			KT_DB::prepare("
+				SELECT SQL_CACHE DISTINCT n_surn AS name, n_id AS xref
+				 FROM `##name`
+				 WHERE n_surn LIKE CONCAT('%', ?, '%')
+				 AND n_type= 'NAME'
+				 AND n_file=?
+				 ORDER BY n_full COLLATE '" . KT_I18N::$collation . "'
+			")
+			->execute(array($term, KT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+		// select by given names
+		$rows2 =
+			KT_DB::prepare("
+				SELECT SQL_CACHE DISTINCT n_id AS xref, n_givn AS name
+				 FROM `##name`
+				 WHERE n_givn LIKE CONCAT('%', ?, '%')
+				 AND n_type= 'NAME'
+				 AND n_file=?
+				 ORDER BY n_full COLLATE '" . KT_I18N::$collation . "'
+			")
+			->execute(array($term, KT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+		// combine surnames and given names in a single list
+		$rows = array_merge($rows1, $rows2);
+		// Filter for privacy
+		foreach ($rows as $row) {
+			$person = KT_Person::getInstance($row['xref']);
+			if ($person->canDisplayName()) {
+				$names[] = $row['name'];
+			}
+		}
+		//remove duplicate results
+		$data = array_unique($names);
+
+		echo json_encode($data);
+	exit;
+
 	case 'INDI': // Individuals, whose name contains the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
