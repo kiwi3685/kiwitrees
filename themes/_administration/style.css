@@ -83,6 +83,7 @@ button {
 .input-group {margin:20px 0;}
 .alert {
 	background-color: #d9edf7;
+	border: 1px solid #3383bb;
 	font-size: 90%;
 	font-style: italic;
 	padding: 10px;

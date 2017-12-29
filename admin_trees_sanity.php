@@ -77,13 +77,62 @@ $controller
 	$child_y	= get_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_Y');
 	$child_o	= get_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_O');
 
+	/**
+	 * Array of sanity check groupings
+	 * Single item - title of group
+	 */
+	$checkGroups = array (
+		KT_I18N::translate('Date discrepancies'),
+		KT_I18N::translate('Age related queries'),
+		KT_I18N::translate('Duplicated individual data'),
+		KT_I18N::translate('Duplicated family data'),
+		KT_I18N::translate('Missing or invalid data'),
+	);
+
+	/**
+	 * Array of items for sanity $checks
+	 *  1st = the group this item is listed under
+	 *  2nd = The id, name of the li tag, and the name and value of the input tag
+	 *  3rd = The label for the items
+	 *  4th = Any additional html required, such as asterixs for exceptionally slow options
+	 */
+	$checks = array (
+		array (1, 'baptised',		KT_I18N::translate('Birth after baptism or christening')),
+		array (1, 'died',			KT_I18N::translate('Birth after death or burial')),
+		array (1, 'birt_marr',		KT_I18N::translate('Birth after marriage')),
+		array (1, 'birt_chil',		KT_I18N::translate('Birth after their children') . '<span class="error">**</span>'),
+		array (1, 'buri',			KT_I18N::translate('Burial before death')),
+		array (2, 'bap_late',		KT_I18N::translate('Baptised after a certain age'), 'NEW_SANITY_BAPTISM', 'bap_age', $bap_age),
+		array (2, 'old_age',		KT_I18N::translate('Alive after a certain age'), 'NEW_SANITY_OLDAGE', 'oldage', $oldage),
+		array (2, 'marr_yng',		KT_I18N::translate('Married before a certain age') . '<span class="error">**</span>', 'NEW_SANITY_MARRIAGE', 'marr_age', $marr_age),
+		array (2, 'spouse_age',		KT_I18N::translate('Being much older than spouse'), 'NEW_SANITY_SPOUSE_AGE',	'spouseage', $spouseage),
+		array (2, 'child_yng',		KT_I18N::translate('Mothers having children before a certain age'), 'NEW_SANITY_BAPTISM', 'child_y', $child_y),
+		array (2, 'child_old',		KT_I18N::translate('Mothers having children past a certain age'), 'NEW_SANITY_CHILD_O', 'child_o', $child_o),
+		array (3, 'dupe_birt',		KT_I18N::translate('Birth')),
+		array (3, 'dupe_bapm',		KT_I18N::translate('Baptism or christening')),
+		array (3, 'dupe_deat',		KT_I18N::translate('Death')),
+		array (3, 'dupe_crem',		KT_I18N::translate('Cremation')),
+		array (3, 'dupe_buri',		KT_I18N::translate('Burial')),
+		array (3, 'dupe_sex',		KT_I18N::translate('Gender')),
+		array (3, 'dupe_name',		KT_I18N::translate('Name')),
+		array (4, 'dupe_marr',		KT_I18N::translate('Marriage')),
+		array (4, 'dupe_child',		KT_I18N::translate('Families with duplicately named children')),
+		array (5, 'sex',			KT_I18N::translate('No gender recorded')),
+		array (5, 'age',			KT_I18N::translate('Invalid age recorded')),
+		array (5, 'empty_tag',		KT_I18N::translate('Empty individual fact or event') . '<span class="error">**</span>'),
+		array (5, 'child_order',	KT_I18N::translate('Children not sorted by birth date')),
+		array (5, 'fam_order',		KT_I18N::translate('Families not sorted by marriage date')),
+	);
+
+
 ?>
 
 <div id="sanity_check">
 	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/sanity-check/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<p class="warning">
-		<?php echo KT_I18N::translate('This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.<br>Options marked <span color"#ff0000">**</span> are often very slow.'); ?>
+	<h4><?php echo KT_I18N::translate('%s checks to help you monitor the quality of your family history data', count($checks)); ?></h3>
+	<p class="alert">
+		<?php echo KT_I18N::translate('This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.<br><br>Options marked <span class="warning">**</span> are often very slow.'); ?>
 	</p>
 	<form method="post" action="<?php echo KT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="save" value="1">
@@ -94,171 +143,24 @@ $controller
 			</div>
 		</div>
 		<div id="sanity_options">
-			<ul>
-				<h3><?php echo KT_I18N::translate('Date discrepancies'); ?></h3>
-				<li class="facts_value" name="baptised" id="baptised">
-					<input type="checkbox" name="baptised" value="baptised"
-						<?php if (KT_Filter::post('baptised')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Birth after baptism or christening'); ?>
-				</li>
-				<li class="facts_value" name="died" id="died">
-					<input type="checkbox" name="died" value="died"
-						<?php if (KT_Filter::post('died')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Birth after death or burial'); ?>
-				</li>
-				<li class="facts_value" name="birt_marr" id="birt_marr">
-					<input type="checkbox" name="birt_marr" value="birt_marr"
-						<?php if (KT_Filter::post('birt_marr')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Birth after marriage'); ?>
-				</li>
-				<li class="facts_value" name="birt_chil" id="birt_chil">
-					<input type="checkbox" name="birt_chil" value="birt_chil"
-						<?php if (KT_Filter::post('birt_chil')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Birth after their children'); ?>
-				</li>
-				<li class="facts_value" name="buri" id="buri">
-					<input type="checkbox" name="buri" value="buri"
-						<?php if (KT_Filter::post('buri')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Burial before death'); ?>
-				</li>
-			</ul>
-			<ul>
-				<h3><?php echo KT_I18N::translate('Age related queries'); ?></h3>
-				<li class="facts_value" name="bap_late" id="bap_late">
-					<input type="checkbox" name="bap_late" value="bap_late"
-						<?php if (KT_Filter::post('bap_late')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Baptised after a certain age'); ?>
-					<input name="NEW_SANITY_BAPTISM" id="bap_age" type="text" value="<?php echo $bap_age; ?>" >
-				</li>
-				<li class="facts_value" name="old_age" id="old_age">
-					<input type="checkbox" name="old_age" value="old_age"
-						<?php if (KT_Filter::post('old_age')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Alive after a certain age'); ?>
-					<input name="NEW_SANITY_OLDAGE" id="oldage" type="text" value="<?php echo $oldage; ?>">
-				</li>
-				<li class="facts_value" name="marr_yng" id="marr_yng">
-					<input type="checkbox" name="marr_yng" value="marr_yng"
-						<?php if (KT_Filter::post('marr_yng')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Married before a certain age'); ?><span class="error">**</span>
-					<input name="NEW_SANITY_MARRIAGE" id="marr_age" type="text" value="<?php echo $marr_age; ?>">
-				</li>
-				<li class="facts_value" name="spouse_age" id="spouse_age">
-					<input type="checkbox" name="spouse_age" value="spouse_age"
-						<?php if (KT_Filter::post('spouse_age')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Being much older than spouse'); ?>
-					<input name="NEW_SANITY_SPOUSE_AGE" id="spouseage" type="text" value="<?php echo $spouseage; ?>">
-				</li>
-				<li class="facts_value" name="child_yng" id="child_yng">
-					<input type="checkbox" name="child_yng" value="child_yng"
-						<?php if (KT_Filter::post('child_yng')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Mothers having children before a certain age'); ?>
-					<input name="NEW_SANITY_CHILD_Y" id="child_y" type="text" value="<?php echo $child_y; ?>">
-				</li>
-				<li class="facts_value" name="child_old" id="child_old">
-					<input type="checkbox" name="child_old" value="child_old"
-						<?php if (KT_Filter::post('child_old')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Mothers having children past a certain age'); ?>
-					<input name="NEW_SANITY_CHILD_O" id="child_o" type="text" value="<?php echo $child_o; ?>">
-				</li>
-			</ul>
-			<ul>
-				<h3><?php echo KT_I18N::translate('Duplicated individual data'); ?></h3>
-				<li class="facts_value" name="dupe_birt" id="dupe_birt" >
-					<input type="checkbox" name="dupe_birt" value="dupe_birt"
-						<?php if (KT_Filter::post('dupe_birt')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Birth'); ?>
-				</li>
-				<li class="facts_value" name="dupe_bapm" id="dupe_bapm" >
-					<input type="checkbox" name="dupe_bapm" value="dupe_bapm"
-						<?php if (KT_Filter::post('dupe_bapm')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Baptism or christening'); ?>
-				</li>
-				<li class="facts_value" name="dupe_deat" id="dupe_deat" >
-					<input type="checkbox" name="dupe_deat" value="dupe_deat"
-						<?php if (KT_Filter::post('dupe_deat')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Death'); ?>
-				</li>
-				<li class="facts_value" name="dupe_crem" id="dupe_crem" >
-					<input type="checkbox" name="dupe_crem" value="dupe_crem"
-						<?php if (KT_Filter::post('dupe_crem')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Cremation'); ?>
-				</li>
-				<li class="facts_value" name="dupe_buri" id="dupe_buri" >
-					<input type="checkbox" name="dupe_buri" value="dupe_buri"
-						<?php if (KT_Filter::post('dupe_buri')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Burial'); ?>
-				</li>
-				<li class="facts_value" name="dupe_sex" id="dupe_sex" >
-					<input type="checkbox" name="dupe_sex" value="dupe_sex"
-						<?php if (KT_Filter::post('dupe_sex')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Gender'); ?>
-				</li>
-				<li class="facts_value" name="dupe_name" id="dupe_name" >
-					<input type="checkbox" name="dupe_name" value="dupe_name"
-						<?php if (KT_Filter::post('dupe_name')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Name'); ?>
-				</li>
-			</ul>
-			<ul>
-				<h3><?php echo KT_I18N::translate('Duplicated family data'); ?></h3>
-				<li class="facts_value" name="dupe_marr" id="dupe_marr" >
-					<input type="checkbox" name="dupe_marr" value="dupe_marr"
-						<?php if (KT_Filter::post('dupe_marr')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Marriage'); ?>
-				</li>
-				<li class="facts_value" name="dupe_child" id="dupe_child" >
-					<input type="checkbox" name="dupe_child" value="dupe_child"
-						<?php if (KT_Filter::post('dupe_child')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Families with duplicately named children'); ?>
-				</li>
-			</ul>
-			<ul>
-				<h3><?php echo KT_I18N::translate('Missing or invalid data'); ?></h3>
-				<li class="facts_value" name="sex" id="sex" >
-					<input type="checkbox" name="sex" value="sex"
-						<?php if (KT_Filter::post('sex')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('No gender recorded'); ?>
-				</li>
-				<li class="facts_value" name="age" id="age" >
-					<input type="checkbox" name="age" value="age"
-						<?php if (KT_Filter::post('age')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Invalid age recorded'); ?>
-				</li>
-				<li class="facts_value" name="empty_tag" id="empty_tag" >
-					<input type="checkbox" name="empty_tag" value="empty_tag"
-						<?php if (KT_Filter::post('empty_tag')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Empty individual fact or event'); ?><span class="error">**</span>
-				</li>
-				<li class="facts_value" name="child_order" id="child_order" >
-					<input type="checkbox" name="child_order" value="child_order"
-						<?php if (KT_Filter::post('child_order')) echo ' checked="checked"'?>
-					>
-					<?php echo KT_I18N::translate('Children not sorted by age'); ?>
-				</li>
-			</ul>
+			<?php for ($i = 1; $i < count($checkGroups) + 1; $i ++) { ?>
+				<ul>
+					<h3><?php echo $checkGroups[$i-1]; ?></h3>
+					<?php for ($row = 0; $row < count($checks); $row ++) {
+						if ($checks[$row][0] == $i) { ?>
+							<li class="facts_value" name="<?php echo $checks[$row][1]; ?>" id="<?php echo $checks[$row][1]; ?>">
+								<input type="checkbox" name="<?php echo $checks[$row][1]; ?>" value="<?php echo $checks[$row][1]; ?>"
+									<?php if (KT_Filter::post($checks[$row][1])) echo ' checked="checked"'?>
+								>
+								<?php echo $checks[$row][2];
+								if (isset($checks[$row][3])) { ?>
+									<input name="<?php echo $checks[$row][3]; ?>" id="<?php echo $checks[$row][4]; ?>" type="text" value="<?php echo $checks[$row][5]; ?>" >
+								<?php } ?>
+						 	</li>
+						<?php }
+					} ?>
+				</ul>
+			<?php } ?>
 		</div>
 		<button type="submit" class="btn btn-primary clearfloat" >
 			<i class="fa fa-check"></i>
@@ -273,11 +175,8 @@ $controller
 		</button>
 	</form>
 	<hr class="clearfloat">
-
-	<?php if (KT_Filter::post('save')) { ?>
-
+	<?php if (KT_Filter::post('save')) {?>
 		<div class="loading-image"></div>
-
 		<div id="sanity_accordion" style="visibility: hidden;">
 			<h3><?php echo KT_I18N::translate('Results'); ?></h3>
 			<?php
@@ -443,14 +342,21 @@ $controller
 				<div>' . $data['html'] . '</div>';
 			}
 			if (KT_Filter::post('child_order')) {
-				$data = child_order();
+				$data = empty_tag();
 				echo '<h5>' . KT_I18N::translate('%s families with children not sorted by birth date', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
-		?>
-	</div>
+			if (KT_Filter::post('fam_order')) {
+				$data = empty_tag();
+				echo '<h5>' . KT_I18N::translate('%s families with children not sorted by birth date', $data['count']) . '
+					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			?>
+		</div>
 	<?php } ?>
 </div> <!-- close sanity_check page div -->
 
@@ -693,7 +599,7 @@ function duplicate_child() {
 			$single_names = array_diff($names, array_diff_assoc($names, array_unique($names)));
 			$html .= '<li><a href="' . $family->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a>';
 			foreach ($new_children as $xref => $name) {
-			    if (!in_array($name, $single_names)) {
+				if (!in_array($name, $single_names)) {
 					$person	= KT_Person::getInstance($xref);
 					$html	.= '<ul class="indent"><li>' . $person->getSexImage('small') . ' - ' . $person->getLifespanName() . '</li></ul>';
 				}
@@ -749,7 +655,7 @@ function identical_name() {
 	$count	= 0;
 	$start	= microtime(true);
 	$rows	= KT_DB::prepare(
-		"SELECT n_id AS xref, COUNT(*) as count  FROM `##name` WHERE `n_file`= ? AND `n_type`= 'NAME' GROUP BY `n_id`, `n_sort` HAVING COUNT(*) > 1 "
+		"SELECT n_id AS xref, COUNT(*) as count FROM `##name` WHERE `n_file`= ? AND `n_type`= 'NAME' GROUP BY `n_id`, `n_sort` HAVING COUNT(*) > 1 "
  	)->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person	= KT_Person::getInstance($row->xref);
@@ -948,7 +854,7 @@ function query_age($tag_array, $age) {
 					if ($family) {
 						$link_url	= $family->getHtmlUrl();
 						$link_name	= $family->getFullName();
-						$result 	= KT_I18N::translate('Age difference =  %1s years', $row->age);
+						$result 	= KT_I18N::translate('Age difference = %1s years', $row->age);
 					}
 					break;
 				case 'CHIL_1';
@@ -1012,7 +918,7 @@ function child_order() {
 	$count	= 0;
 	$start	= microtime(true);
 	$dates = array();
-	// Families (HUSB, WIFE)
+	// Families
  	$rows	= KT_DB::prepare(
 		"SELECT f_id AS xref, f_gedcom AS gedrec FROM `##families` WHERE `f_file` = ? AND `f_numchil` > 1"
 	)->execute(array(KT_GED_ID))->fetchAll();
@@ -1038,6 +944,45 @@ function child_order() {
 					<div><a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a></div>
 				</p>';
 			$count ++;
+		}
+	}
+	$html .= '</ul>';
+	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
+	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
+}
+
+function fam_order() {
+	$html	= '<ul>';
+	$count	= 0;
+	$start	= microtime(true);
+	$dates = array();
+	// Individuals with FAMS records
+	$rows	= KT_DB::prepare(
+		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` LIKE '%1 FAMS @%'"
+	)->execute(array(KT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$person = KT_Person::getInstance($row->xref);
+		if (count($person->getSpouseFamilies()) > 1) {
+			$dates_original	= array();
+			$dates_sorted	= array();
+			foreach ($person->getSpouseFamilies() as $family) {
+				$mdate	= $family->getMarriageDate();
+				if ($mdate->isOK()) {
+					$date = $mdate->MinJD();
+				} else {
+					$date = 1e8; // birth date missing => sort last
+				}
+				$dates_original[]	= $date;
+				$dates_sorted[]		= $date;
+			}
+			sort($dates_sorted);
+			if ($dates_original !== $dates_sorted) {
+				$html .= '
+					<p>
+						<div><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a></div>
+					</p>';
+				$count ++;
+			}
 		}
 	}
 	$html .= '</ul>';
