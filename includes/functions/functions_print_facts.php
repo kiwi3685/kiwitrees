@@ -575,9 +575,9 @@ function print_media_links($factrec, $level, $pid='') {
 	else $size=25;
 	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
 	$objectNum = 0;
-	$mediaWidth = '';
+	$mediaWidth = 'auto';
 	if (count($omatch) > 1) {
-		$mediaWidth = ' style="width: ' . 90 / min(count($omatch), 4) . '%;"';
+		$mediaWidth = 90 / min(count($omatch), 4) . '%';
 	}
 
 	while ($objectNum < count($omatch)) {
@@ -586,7 +586,7 @@ function print_media_links($factrec, $level, $pid='') {
 		if ($media) {
 			if ($media->canDisplayDetails()) {
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
-				echo '<div class="media-display"' . $mediaWidth . '>
+				echo '<div class="media-display" style=" width: ' . $mediaWidth . ';"">
 					<div class="media-display-image">';
 						echo $media->displayImage();
 					echo '</div>'; // close div "media-display-image"
