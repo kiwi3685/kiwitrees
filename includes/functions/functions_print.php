@@ -34,7 +34,7 @@ if (!defined('KT_KIWITREES')) {
 * @param int $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
-function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
+function print_pedigree_person($person, $style = 1, $count = 0, $personcount = "1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
@@ -43,12 +43,22 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
 
-	if (empty($show_full)) $show_full = 0;
-	if ($style == 3) $show_full = 1;
-	if (empty($PEDIGREE_FULL_DETAILS)) $PEDIGREE_FULL_DETAILS = 0;
+	if (empty($show_full)) {
+		$show_full = 0;
+	}
+	if ($style == 3) {
+		$show_full = 1;
+	}
+	if (empty($PEDIGREE_FULL_DETAILS)) {
+		$PEDIGREE_FULL_DETAILS = 0;
+	}
 
-	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
-	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
+	if (!isset($OLD_PGENS)) {
+		$OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
+	}
+	if (!isset($talloffset)) {
+		$talloffset = $PEDIGREE_LAYOUT;
+	}
 	// NOTE: Start div out-rand()
 	if (!$person) {
 		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
@@ -57,27 +67,34 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		return false;
 	}
 	$pid=$person->getXref();
-	if ($count==0) $count = rand();
+		if ($count == 0) {
+			$count = rand();
+		}
 	$lbwidth = $bwidth*.75;
-	if ($lbwidth < 150) $lbwidth = 150;
 
-	$tmp=array('M'=>'', 'F'=>'F', 'U'=>'NN');
-	$isF=$tmp[$person->getSex()];
+		$lbwidth = $bwidth * .75;
+		if ($lbwidth < 150) {
+			$lbwidth = 150;
+		}
 
-	$icons = '';
-	$classfacts = '';
-	$genderImage = '';
-	$BirthDeath = '';
-	$birthplace = '';
-	$outBoxAdd = '';
-	$showid = '';
-	$iconsStyleAdd = 'float:right;';
-	if ($TEXT_DIRECTION=='rtl') $iconsStyleAdd='float:left;';
+		$tmp			= array('M'=>'M', 'F'=>'F', 'U'=>'U');
+		$isF			= $tmp[$person->getSex()];
+		$icons			= '';
+		$classfacts		= '';
+		$genderImage	= '';
+		$BirthDeath		= '';
+		$birthplace		= '';
+		$outBoxAdd		= '';
+		$showid			= '';
+		$iconsStyleAdd	= 'float:right;';
+		if ($TEXT_DIRECTION == 'rtl') {
+			$iconsStyleAdd = 'float:left;';
+		}
 
-	$disp=$person->canDisplayDetails();
-	$uniqueID = (int)(microtime(true) * 1000000);
-	$boxID = $pid.'.'.$personcount.'.'.$count.'.'.$uniqueID;
-	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
+		$disp			= $person->canDisplayDetails();
+		$uniqueID		= (int)(microtime(true) * 1000000);
+		$boxID			= $pid . '.' . $personcount . '.' . $count . '.' . $uniqueID;
+		$mouseAction4	= ' onclick="expandbox(\'' . $boxID . '\'' . $style . '); return false;"';
 	if ($person->canDisplayName()) {
 		if (empty($SEARCH_SPIDER)) {
 			$personlinks = getPersonLinks($person);
@@ -118,101 +135,102 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			$outBoxAdd .= "class=\"person_box$isF person_box_template style0\"";
 		}
 	}
-	//-- find the name
-	$name = $person->getFullName();
-	$shortname = $person->getShortName();
+		//-- find the name
+		$name		= $person->getFullName();
+		$shortname	= $person->getShortName();
 
-	if ($SHOW_HIGHLIGHT_IMAGES) {
-		$thumbnail = $person->displayImage();
-	} else {
-		$thumbnail = '';
-	}
+		if ($SHOW_HIGHLIGHT_IMAGES) {
+			$thumbnail = $person->displayImage();
+		} else {
+			$thumbnail = '';
+		}
 
-	//-- find additional name, e.g. Hebrew
-	$addname=$person->getAddName();
+		//-- find additional name, e.g. Hebrew
+		$addname = $person->getAddName();
 
-	// add optional CSS style for each fact
-	$indirec = $person->getGedcomRecord();
-	$cssfacts = array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
-	"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
-	foreach ($cssfacts as $indexval => $fact) {
-		if (strpos($indirec, "1 $fact") !== false) $classfacts .= " $fact";
-	}
+		// add optional CSS style for each fact
+		$indirec	= $person->getGedcomRecord();
+		$cssfacts	= array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
+		"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
+		foreach ($cssfacts as $indexval => $fact) {
+			if (strpos($indirec, "1 $fact") !== false) $classfacts .= " $fact";
+		}
 
-	if ($PEDIGREE_SHOW_GENDER && $show_full) {
-		$genderImage = " ".$person->getSexImage('small', "box-$boxID-gender");
-	}
+		if ($PEDIGREE_SHOW_GENDER && $show_full) {
+			$genderImage = " " . $person->getSexImage('small', "box-$boxID-gender");
+		}
 
-	// Here for alternate name2
-	if ($addname) {
-		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name1\"> ".$addname."</span>";
-	}
+		// Here for alternate name2
+		if ($addname) {
+			$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name1\"> ".$addname."</span>";
+		}
 
-	if ($SHOW_LDS_AT_GLANCE && $show_full) {
-		$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
-	}
+		if ($SHOW_LDS_AT_GLANCE && $show_full) {
+			$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
+		}
 
-	// Show BIRT or equivalent event
-	$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
-	if ($show_full) {
+		// Show BIRT or equivalent event
+		$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
+		if ($show_full) {
+			foreach (explode('|', KT_EVENTS_BIRT) as $birttag) {
+				if (!in_array($birttag, $opt_tags)) {
+					$event = $person->getFactByType($birttag);
+					if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
+						$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
+						break;
+					}
+				}
+			}
+		}
+			// Show optional events (before death)
+			foreach ($opt_tags as $key=>$tag) {
+				if (!preg_match('/^('.KT_EVENTS_DEAT.')$/', $tag)) {
+					$event = $person->getFactByType($tag);
+					if (!is_null($event) && $event->canShow()) {
+						$BirthDeath .= '<p>' . $event->print_simple_fact(true, true);
+						unset ($opt_tags[$key]);
+					}
+				}
+			}
+		// Show DEAT or equivalent event
+		if ($show_full) {
+			foreach (explode('|', KT_EVENTS_DEAT) as $deattag) {
+				$event = $person->getFactByType($deattag);
+				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getDetail()=='Y') && $event->canShow()) {
+					$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
+					if (in_array($deattag, $opt_tags)) {
+						unset ($opt_tags[array_search($deattag, $opt_tags)]);
+					}
+					break;
+				}
+			}
+		}
+		// Show remaining optional events (after death)
+		foreach ($opt_tags as $tag) {
+			$event = $person->getFactByType($tag);
+			if (!is_null($event) && $event->canShow()) {
+				$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
+			}
+		}
+		// Find the short birth place for compact chart
+		$opt_tags = preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
 		foreach (explode('|', KT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFactByType($birttag);
 				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
-					$BirthDeath .= $event->print_simple_fact(true, true);
+					$tmp = new KT_Place($event->getPlace(), KT_GED_ID);
+					$birthplace .= $tmp->getShortName();
 					break;
 				}
 			}
 		}
 	}
-		// Show optional events (before death)
-		foreach ($opt_tags as $key=>$tag) {
-			if (!preg_match('/^('.KT_EVENTS_DEAT.')$/', $tag)) {
-				$event = $person->getFactByType($tag);
-				if (!is_null($event) && $event->canShow()) {
-					$BirthDeath .= $event->print_simple_fact(true, true);
-					unset ($opt_tags[$key]);
-				}
-			}
-		}
-	// Show DEAT or equivalent event
-	if ($show_full) {
-		foreach (explode('|', KT_EVENTS_DEAT) as $deattag) {
-			$event = $person->getFactByType($deattag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getDetail()=='Y') && $event->canShow()) {
-				$BirthDeath .= $event->print_simple_fact(true, true);
-				if (in_array($deattag, $opt_tags)) {
-					unset ($opt_tags[array_search($deattag, $opt_tags)]);
-				}
-				break;
-			}
-		}
-	}
-	// Show remaining optional events (after death)
-	foreach ($opt_tags as $tag) {
-		$event = $person->getFactByType($tag);
-		if (!is_null($event) && $event->canShow()) {
-			$BirthDeath .= $event->print_simple_fact(true, true);
-		}
-	}
-	// Find the short birth place for compact chart
-	$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
-	foreach (explode('|', KT_EVENTS_BIRT) as $birttag) {
-		if (!in_array($birttag, $opt_tags)) {
-			$event = $person->getFactByType($birttag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
-				$tmp=new KT_Place($event->getPlace(), KT_GED_ID);
-				$birthplace .= $tmp->getShortName();
-				break;
-			}
-		}
-	}
 	// Output to template
 	if ($style == 3) {
-	   require KT_THEME_DIR.'templates/verticalbox_template.php';
+	   require KT_THEME_DIR . 'templates/verticalbox_template.php';
 	} else {
 		if ($show_full) {
-		   require KT_THEME_DIR.'templates/personbox_template.php';
+		   require KT_THEME_DIR . 'templates/personbox_template.php';
 		} else {
 		   require KT_THEME_DIR.'templates/compactbox_template.php';
 		}
@@ -286,9 +304,10 @@ function logout_link() {
 
 //generate Who is online list
 function whoisonline() {
-	$NumAnonymous = 0;
-	$loggedusers = array ();
-	$content='';
+	$NumAnonymous	= 0;
+	$loggedusers	= array ();
+	$content		= '';
+
 	foreach (get_logged_in_users() as $user_id=>$user_name) {
 		if (KT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {
 			$loggedusers[$user_id]=$user_name;
@@ -296,8 +315,9 @@ function whoisonline() {
 			$NumAnonymous++;
 		}
 	}
-	$LoginUsers=count($loggedusers);
-	$content .= '<div class="logged_in_count">';
+
+	$LoginUsers	= count($loggedusers);
+	$content	.= '<div class="logged_in_count">';
 	if ($NumAnonymous) {
 		$content .= KT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous);
 		if ($LoginUsers) {
@@ -309,29 +329,30 @@ function whoisonline() {
 	}
 	$content .= '</div>';
 	$content .= '<div class="logged_in_list">';
-	if (KT_USER_ID) {
-		$i=0;
-		foreach ($loggedusers as $user_id=>$user_name) {
-			$content .= '<div class="logged_in_name">';
+		if (KT_USER_ID) {
+			$i=0;
+			foreach ($loggedusers as $user_id=>$user_name) {
+				$content .= '<div class="logged_in_name">';
 
-				$individual = KT_Person::getInstance(KT_USER_GEDCOM_ID);
-				if ($individual) {
-					$content .= '<a href="individual.php?pid='. KT_USER_GEDCOM_ID . '&amp;ged='. KT_GEDURL . '">' . htmlspecialchars(getUserFullName($user_id)) . '</a>';
-				} else {
-					$content .= htmlspecialchars(getUserFullName($user_id));
-				}
-				$content .= ' - ' . htmlspecialchars($user_name);
+					$individual = KT_Person::getInstance(KT_USER_GEDCOM_ID);
+					if ($individual) {
+						$content .= '<a href="individual.php?pid='. KT_USER_GEDCOM_ID . '&amp;ged='. KT_GEDURL . '">' . htmlspecialchars(getUserFullName($user_id)) . '</a>';
+					} else {
+						$content .= htmlspecialchars(getUserFullName($user_id));
+					}
+					$content .= ' - ' . htmlspecialchars($user_name);
 
-				if (KT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-					$content .= '<a class="fa-envelope-o" href="message.php?to=' . $user_name . '&amp;url=' . addslashes(urlencode(get_query_url())) . '"  title="' . KT_I18N::translate('Send Message') . '"></a>';
-				}
+					if (KT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod')!="none") {
+						$content .= '<a class="fa-envelope-o" href="message.php?to=' . $user_name . '&amp;url=' . addslashes(urlencode(get_query_url())) . '"  title="' . KT_I18N::translate('Send Message') . '"></a>';
+					}
 
-				$i++;
+					$i++;
 
-			$content .= '</div>';
+				$content .= '</div>';
+			}
 		}
-	}
 	$content .= '</div>';
+
 	return $content;
 }
 
@@ -339,7 +360,7 @@ function whoisonline() {
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
-	$method		= get_user_setting($user_id, 'contactmethod');
+	$method	= get_user_setting($user_id, 'contactmethod');
 
 	switch ($method) {
 	case 'none':
@@ -356,7 +377,7 @@ function user_contact_link($user_id) {
 // this function will print appropriate links based on the preferred contact methods for the genealogy
 // contact user and the technical support contact user
 function contact_links($ged_id = KT_GED_ID) {
-	$contact_user_id	=  get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
+	$contact_user_id	= get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	$webmaster_user_id	= get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
 	$supportLink		= user_contact_link($webmaster_user_id);
 	if ($webmaster_user_id == $contact_user_id) {
@@ -574,12 +595,12 @@ function highlight_search_hits($string) {
 		// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
 		// However, we only highlight the original search string, not the search terms.
 		// The controller needs to provide its "query_terms" array.
-		$regex=array();
+		$regex = array();
 		foreach (array($controller->query) as $search_term) {
-			$regex[]=preg_quote($search_term, '/');
+			$regex[] = preg_quote($search_term, '/');
 		}
 		// Match these strings, provided they do not occur inside HTML tags
-		$regex='('.implode('|', $regex).')(?![^<]*>)';
+		$regex = '('.implode('|', $regex).')(?![^<]*>)';
 		return preg_replace('/'.$regex.'/i', '<span class="search_hit">$1</span>', $string);
 	} else {
 		return $string;
@@ -633,7 +654,7 @@ function print_asso_rela_record(KT_Event $event, KT_GedcomRecord $record) {
 					if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 						$note = census_assistant_KT_Module::formatCensusNote($note);
 					} else {
-						$note = KT_Filter::formatText($note->getNote());
+						$note = KT_Filter::formatText($note->getNote(), $KT_TREE);
 					}
 				} else {
 					$note = '<span class="error">' . htmlspecialchars($nid) . '</span>';
@@ -1007,8 +1028,8 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	// -- Add from clipboard
 	if ($KT_SESSION->clipboard) {
 		$newRow = true;
-		foreach (array_reverse($KT_SESSION->clipboard, true) as $key=>$fact) {
-			if ($fact["type"]==$type || $fact["type"]=='all') {
+		foreach (array_reverse($KT_SESSION->clipboard, true) as $key => $fact) {
+			if ($fact["type"] == $type || $fact["type"] == 'all') {
 				if ($newRow) {
 					$newRow = false;
 					echo '<tr><td class="descriptionbox">';

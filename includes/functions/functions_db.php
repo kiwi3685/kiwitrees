@@ -284,14 +284,14 @@ function exists_pending_change($user_id=KT_USER_ID, $ged_id=KT_GED_ID) {
 
 // get a list of all the sources
 function get_source_list($ged_id) {
-	$rows=
+	$rows =
 		KT_DB::prepare("SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec FROM `##sources` s WHERE s_file=?")
 		->execute(array($ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
 
-	$list=array();
+	$list = array();
 	foreach ($rows as $row) {
-		$list[]=KT_Source::getInstance($row);
+		$list[] = KT_Source::getInstance($row);
 	}
 	usort($list, array('KT_GedcomRecord', 'Compare'));
 	return $list;
@@ -1196,8 +1196,8 @@ function get_calendar_events($jd1, $jd2, $facts = '', $ged_id = KT_GED_ID) {
 
 	// Now fetch these events
 	// Using "DISTINCT" allows multiple _TODO events in a single INDI or FAM record without duplicating the output.
-	$ind_sql = "SELECT DISTINCT d_gid, i_gedcom, 'INDI', d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid = i_id AND d_file=i_file";
-	$fam_sql = "SELECT DISTINCT d_gid, f_gedcom, 'FAM',  d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid = f_id AND d_file=f_file";
+	$ind_sql = "SELECT DISTINCT d_gid, i_gedcom, 'INDI', d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid = i_id AND d_file = i_file";
+	$fam_sql = "SELECT DISTINCT d_gid, f_gedcom, 'FAM',  d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid = f_id AND d_file = f_file";
 	foreach (array($ind_sql, $fam_sql) as $sql) {
 		$rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_NUM);
 		foreach ($rows as $row) {
@@ -1545,59 +1545,40 @@ function get_gedcomid($user_id, $gedcom_id) {
 // Functions to access the ##BLOCK table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_user_blocks($user_id) {
-	$blocks=array('main'=>array(), 'side'=>array());
-	$rows=KT_DB::prepare(
-		"SELECT SQL_CACHE location, block_id, module_name".
-		" FROM  `##block`".
-		" JOIN  `##module` USING (module_name)".
-		" JOIN  `##module_privacy` USING (module_name)".
-		" WHERE user_id=?".
-		" AND   status='enabled'".
-		" AND   `##module_privacy`.gedcom_id=?".
-		" AND   access_level>=?".
-		" ORDER BY location, block_order"
-	)->execute(array($user_id, KT_GED_ID, KT_USER_ACCESS_LEVEL))->fetchAll();
-	foreach ($rows as $row) {
-		$blocks[$row->location][$row->block_id]=$row->module_name;
-	}
-	return $blocks;
-}
-
 // NOTE - this function is only correct when $gedcom_id==KT_GED_ID
 // since the privacy depends on KT_USER_ACCESS_LEVEL, which depends
 // on KT_GED_ID		"SELECT SQL_CACHE location, block_id, module_name".
 function get_gedcom_blocks($gedcom_id) {
-	$blocks=array('main'=>array(), 'side'=>array());
-	$rows=KT_DB::prepare(
-		"SELECT SQL_CACHE location, block_id, module_name".
-		" FROM  `##block`".
-		" JOIN  `##module` USING (module_name)".
-		" JOIN  `##module_privacy` USING (module_name, gedcom_id)".
-		" WHERE gedcom_id=?".
-		" AND   status='enabled'".
-		" AND   access_level>=?".
-		" ORDER BY location, block_order"
+	$blocks	= array('main' => array(), 'side' => array());
+	$rows	= KT_DB::prepare("
+		SELECT SQL_CACHE location, block_id, module_name
+		 FROM  `##block`
+		 JOIN  `##module` USING (module_name)
+		 JOIN  `##module_privacy` USING (module_name, gedcom_id)
+		 WHERE gedcom_id=?
+		 AND   status='enabled'
+		 AND   access_level>=?
+		 ORDER BY location, block_order"
 	)->execute(array($gedcom_id, KT_USER_ACCESS_LEVEL))->fetchAll();
 	foreach ($rows as $row) {
-		$blocks[$row->location][$row->block_id]=$row->module_name;
+		$blocks[$row->location][$row->block_id] = $row->module_name;
 	}
 	return $blocks;
 }
 
 function get_block_setting($block_id, $setting_name, $default_value=null) {
 	static $statement;
-	if ($statement===null) {
+	if ($statement === null) {
 		$statement = KT_DB::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		);
 	}
-	$setting_value=$statement->execute(array($block_id, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
+	$setting_value = $statement->execute(array($block_id, $setting_name))->fetchOne();
+	return $setting_value === null ? $default_value : $setting_value;
 }
 
 function set_block_setting($block_id, $setting_name, $setting_value) {
-	if ($setting_value===null) {
+	if ($setting_value === null) {
 		KT_DB::prepare("DELETE FROM `##block_setting` WHERE block_id=? AND setting_name=?")
 			->execute(array($block_id, $setting_name));
 	} else {
@@ -1608,13 +1589,13 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	static $statement;
-	if ($statement===null) {
+	if ($statement === null) {
 		$statement = KT_DB::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
 		);
 	}
-	$setting_value=$statement->execute(array($module_name, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
+	$setting_value = $statement->execute(array($module_name, $setting_name))->fetchOne();
+	return $setting_value === null ? $default_value : $setting_value;
 }
 
 function set_module_setting($module_name, $setting_name, $setting_value) {

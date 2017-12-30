@@ -35,7 +35,7 @@ if (!defined('KT_KIWITREES')) {
 // calculate ages, relationships, etc.
 function print_fact(KT_Event $fact, KT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
-	static $n_chil=0, $n_gchi=0;
+	static $n_chil = 0, $n_gchi = 0;
 
 	if (!$fact->canShow()) {
 		return;
@@ -467,17 +467,17 @@ function print_repository_record($xref) {
  * @param int $level The level to look for sources at
  * @param boolean $return whether to return the data or print the data
  */
-function print_fact_sources($factrec, $level, $return = false) {
+function print_fact_sources($factrec, $level, $return=false) {
 	global $EXPAND_SOURCES;
 
-	$data	= '';
-	$nlevel	= $level + 1;
+	$data = '';
+	$nlevel = $level+1;
 
 	// -- Systems not using source records [ 1046971 ]
 	$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
-		if (strpos($match[$j][1], '@') === false) {
-			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j + 1);
+		if (strpos($match[$j][1], '@')===false) {
+			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j+1);
 			$srec = substr($srec, 6); // remove "2 SOUR"
 			$srec = str_replace("\n".($level+1)." CONT ", '<br>', $srec); // remove n+1 CONT
 			$data .= '<div="fact_SOUR">

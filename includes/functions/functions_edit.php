@@ -137,13 +137,6 @@ function edit_field_yes_no($name, $selected=false, $extra='class="radio_inline"'
 	);
 }
 
-// An inline-editing version of edit_field_yes_no()
-function edit_field_yes_no_inline($name, $selected=false, $controller=null) {
-	return select_edit_control_inline(
-		$name, array(true=>KT_I18N::translate('yes'), false=>KT_I18N::translate('no')), null, (int)$selected, $controller
-	);
-}
-
 // Print an edit control for a checkbox
 function checkbox($name, $is_checked=false, $extra='') {
 	return '<input type="checkbox" name="' . $name . '" value="1" ' . ($is_checked ? 'checked="checked" ' : '') . $extra.'>';
@@ -188,19 +181,19 @@ function edit_language_checkboxes($field_prefix, $languages) {
 }
 
 // Print an edit control for access level
-function edit_field_access_level($name, $selected='', $extra='', $priv=false) {
+function edit_field_access_level($name, $selected = '', $extra = '', $priv = false) {
 	if ($priv == false) {
-		$ACCESS_LEVEL=array(
-			KT_PRIV_PUBLIC=>KT_I18N::translate('Show to visitors'),
-			KT_PRIV_USER  =>KT_I18N::translate('Show to members'),
-			KT_PRIV_NONE  =>KT_I18N::translate('Show to managers'),
-			KT_PRIV_HIDE  =>KT_I18N::translate('Hide from everyone')
+		$ACCESS_LEVEL = array(
+			KT_PRIV_PUBLIC => KT_I18N::translate('Show to visitors'),
+			KT_PRIV_USER   => KT_I18N::translate('Show to members'),
+			KT_PRIV_NONE   => KT_I18N::translate('Show to managers'),
+			KT_PRIV_HIDE   => KT_I18N::translate('Hide from everyone')
 		);
 	} else {
-		$ACCESS_LEVEL=array(
-			KT_PRIV_USER  =>KT_I18N::translate('Show to members'),
-			KT_PRIV_NONE  =>KT_I18N::translate('Show to managers'),
-			KT_PRIV_HIDE  =>KT_I18N::translate('Hide from everyone')
+		$ACCESS_LEVEL = array(
+			KT_PRIV_USER  => KT_I18N::translate('Show to members'),
+			KT_PRIV_NONE  => KT_I18N::translate('Show to managers'),
+			KT_PRIV_HIDE  => KT_I18N::translate('Hide from everyone')
 		);
 
 	}
@@ -208,13 +201,13 @@ function edit_field_access_level($name, $selected='', $extra='', $priv=false) {
 }
 
 // Print an edit control for a RESN field
-function edit_field_resn($name, $selected='', $extra='') {
-	$RESN=array(
-		''            =>'',
-		'none'        =>KT_I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
-		'privacy'     =>KT_I18N::translate('Show to members'),
-		'confidential'=>KT_I18N::translate('Show to managers'),
-		'locked'      =>KT_I18N::translate('Only managers can edit')
+function edit_field_resn($name, $selected = '', $extra = '') {
+	$RESN = array(
+		''            => '',
+		'none'        => KT_I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
+		'privacy'     => KT_I18N::translate('Show to members'),
+		'confidential'=> KT_I18N::translate('Show to managers'),
+		'locked'      => KT_I18N::translate('Only managers can edit')
 	);
 	return select_edit_control($name, $RESN, null, $selected, $extra);
 }

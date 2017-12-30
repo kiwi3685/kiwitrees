@@ -54,46 +54,46 @@ if (!defined('KT_KIWITREES')) {
 // $export = safe_GET('export', preg_quote_array($gedcoms));
 ////////////////////////////////////////////////////////////////////////////////
 
-function safe_POST($var, $regex=KT_REGEX_NOSCRIPT, $default=null) {
+function safe_POST($var, $regex = KT_REGEX_NOSCRIPT, $default = null) {
 	return safe_REQUEST($_POST, $var, $regex, $default);
 }
-function safe_GET($var, $regex=KT_REGEX_NOSCRIPT, $default=null) {
+function safe_GET($var, $regex = KT_REGEX_NOSCRIPT, $default = null) {
 	return safe_REQUEST($_GET, $var, $regex, $default);
 }
-function safe_COOKIE($var, $regex=KT_REGEX_NOSCRIPT, $default=null) {
+function safe_COOKIE($var, $regex = KT_REGEX_NOSCRIPT, $default = null) {
 	return safe_REQUEST($_COOKIE, $var, $regex, $default);
 }
 
 function safe_GET_integer($var, $min, $max, $default) {
-	$num=safe_GET($var, KT_REGEX_INTEGER, $default);
-	$num=max($num, $min);
-	$num=min($num, $max);
+	$num = safe_GET($var, KT_REGEX_INTEGER, $default);
+	$num = max($num, $min);
+	$num = min($num, $max);
 	return (int)$num;
 }
 function safe_POST_integer($var, $min, $max, $default) {
-	$num=safe_POST($var, KT_REGEX_INTEGER, $default);
-	$num=max($num, $min);
-	$num=min($num, $max);
+	$num = safe_POST($var, KT_REGEX_INTEGER, $default);
+	$num = max($num, $min);
+	$num = min($num, $max);
 	return (int)$num;
 }
 
-function safe_GET_bool($var, $true='(y|Y|1|yes|YES|Yes|true|TRUE|True|on)') {
+function safe_GET_bool($var, $true = '(y|Y|1|yes|YES|Yes|true|TRUE|True|on)') {
 	return !is_null(safe_GET($var, $true));
 }
-function safe_POST_bool($var, $true='(y|Y|1|yes|YES|Yes|true|TRUE|True|on)') {
+function safe_POST_bool($var, $true = '(y|Y|1|yes|YES|Yes|true|TRUE|True|on)') {
 	return !is_null(safe_POST($var, $true));
 }
 
-function safe_GET_xref($var, $default=null) {
+function safe_GET_xref($var, $default = null) {
 	return safe_GET($var, KT_REGEX_XREF, $default);
 }
-function safe_POST_xref($var, $default=null) {
+function safe_POST_xref($var, $default = null) {
 	return safe_POST($var, KT_REGEX_XREF, $default);
 }
 
-function safe_REQUEST($arr, $var, $regex=KT_REGEX_NOSCRIPT, $default=null) {
+function safe_REQUEST($arr, $var, $regex = KT_REGEX_NOSCRIPT, $default = null) {
 	if (is_array($regex)) {
-		$regex='(?:'.join('|', $regex).')';
+		$regex = '(?:'.join('|', $regex).')';
 	}
 	if (array_key_exists($var, $arr) && preg_match_recursive('~^'.addcslashes($regex, '~').'$~', $arr[$var])) {
 		return $arr[$var];
@@ -123,7 +123,7 @@ function preg_match_recursive($regex, $var) {
 		return preg_match($regex, $var);
 	} else {
 		if (is_array($var)) {
-			foreach ($var as $k=>$v) {
+			foreach ($var as $k => $v) {
 				if (!preg_match_recursive($regex, $v)) {
 					return false;
 				}
@@ -138,7 +138,7 @@ function preg_match_recursive($regex, $var) {
 
 // Fetch a remote file.  Stream wrappers are disabled on
 // many hosts, and do not allow the detection of timeout.
-function fetch_remote_file($host, $path, $timeout=3) {
+function fetch_remote_file($host, $path, $timeout = 3) {
 	$fp = @fsockopen($host, '80', $errno, $errstr, $timeout );
 	if (!$fp) {
 		return null;
@@ -146,7 +146,7 @@ function fetch_remote_file($host, $path, $timeout=3) {
 
 	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
-	$response='';
+	$response = '';
 	while ($data = fread($fp, 65536)) {
 		$response .= $data;
 	}
@@ -269,26 +269,26 @@ function load_gedcom_settings($ged_id =  KT_GED_ID) {
 	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = get_gedcom_setting($ged_id, 'USE_SILHOUETTE');
 	global $WATERMARK_THUMB;              $WATERMARK_THUMB              = get_gedcom_setting($ged_id, 'WATERMARK_THUMB');
 	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            = get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	global $KIWITREES_EMAIL;               $KIWITREES_EMAIL               = get_gedcom_setting($ged_id, 'KIWITREES_EMAIL');
+	global $KIWITREES_EMAIL;              $KIWITREES_EMAIL              = get_gedcom_setting($ged_id, 'KIWITREES_EMAIL');
 	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = get_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES');
 
-	global $person_privacy; $person_privacy=array();
-	global $person_facts;   $person_facts  =array();
-	global $global_facts;   $global_facts  =array();
+	global $person_privacy; $person_privacy = array();
+	global $person_facts;   $person_facts   = array();
+	global $global_facts;   $global_facts   = array();
 
-	$rows=KT_DB::prepare(
+	$rows = KT_DB::prepare(
 		"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN ? WHEN 'privacy' THEN ? WHEN 'confidential' THEN ? WHEN 'hidden' THEN ? END AS resn FROM `##default_resn` WHERE gedcom_id=?"
 	)->execute(array(KT_PRIV_PUBLIC, KT_PRIV_USER, KT_PRIV_NONE, KT_PRIV_HIDE, $ged_id))->fetchAll();
 
 	foreach ($rows as $row) {
-		if ($row->xref!==null) {
-			if ($row->tag_type!==null) {
-				$person_facts[$row->xref][$row->tag_type]=(int)$row->resn;
+		if ($row->xref !== null) {
+			if ($row->tag_type !== null) {
+				$person_facts[$row->xref][$row->tag_type] = (int)$row->resn;
 			} else {
-				$person_privacy[$row->xref]=(int)$row->resn;
+				$person_privacy[$row->xref] = (int)$row->resn;
 			}
 		} else {
-			$global_facts[$row->tag_type]=(int)$row->resn;
+			$global_facts[$row->tag_type] = (int)$row->resn;
 		}
 	}
 }
@@ -302,43 +302,43 @@ function load_gedcom_settings($ged_id =  KT_GED_ID) {
  */
 function kt_error_handler($errno, $errstr, $errfile, $errline) {
 	if ((error_reporting() > 0)&&($errno<2048)) {
-		if (KT_ERROR_LEVEL==0) {
+		if (KT_ERROR_LEVEL == 0) {
 			return;
 		}
-		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
-		$log_msg="ERROR {$errno}: {$errstr};";
+		$fmt_msg = "<br>ERROR {$errno}: {$errstr}<br>";
+		$log_msg = "ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
 		// Possibly calling it generates an error, which causes infinite recursion??
-		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by")===false) {
-			$backtrace=debug_backtrace();
-			$num=count($backtrace);
-			if (KT_ERROR_LEVEL==1) {
-				$num=1;
+		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by") === false) {
+			$backtrace = debug_backtrace();
+			$num = count($backtrace);
+			if (KT_ERROR_LEVEL == 1) {
+				$num = 1;
 			}
-			for ($i=0; $i<$num; $i++) {
-				if ($i==0) {
-					$fmt_msg.="0 Error occurred on ";
-					$log_msg.="\n0 Error occurred on ";
+			for ($i = 0; $i<$num; $i++) {
+				if ($i == 0) {
+					$fmt_msg .= "0 Error occurred on ";
+					$log_msg .= "\n0 Error occurred on ";
 				} else {
-					$fmt_msg.="{$i} called from ";
-					$log_msg.="\n{$i} called from ";
+					$fmt_msg .= "{$i} called from ";
+					$log_msg .= "\n{$i} called from ";
 				}
 				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
-					$fmt_msg.="line <b>{$backtrace[$i]['line']}</b> of file <b>".basename($backtrace[$i]['file'])."</b>";
-					$log_msg.="line {$backtrace[$i]['line']} of file ".basename($backtrace[$i]['file']);
+					$fmt_msg .= "line <b>{$backtrace[$i]['line']}</b> of file <b>" . basename($backtrace[$i]['file']) . "</b>";
+					$log_msg .= "line {$backtrace[$i]['line']} of file " . basename($backtrace[$i]['file']);
 				}
 				if ($i<$num-1) {
-					$fmt_msg.=" in function <b>".$backtrace[$i+1]['function']."</b>";
-					$log_msg.=" in function ".$backtrace[$i+1]['function'];
+					$fmt_msg .= " in function <b>" . $backtrace[$i+1]['function'] . "</b>";
+					$log_msg .= " in function " . $backtrace[$i+1]['function'];
 				}
-				$fmt_msg.="<br>";
+				$fmt_msg .= "<br>";
 			}
 		}
 		echo $fmt_msg;
 		if (function_exists('AddToLog')) {
 			AddToLog($log_msg, 'error');
 		}
-		if ($errno==1) {
+		if ($errno == 1) {
 			die();
 		}
 	}
@@ -354,10 +354,10 @@ function kt_error_handler($errno, $errstr, $errfile, $errline) {
  * and then returns the first tag.
  *
  */
-function get_first_tag($level, $tag, $gedrec, $num=1) {
-	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
+function get_first_tag($level, $tag, $gedrec, $num = 1) {
+	$temp = get_sub_record($level, $level . " " . $tag, $gedrec, $num) . "\n";
 	$length = strpos($temp, "\n");
-	if ($length===false) {
+	if ($length === false) {
 		$length = strlen($temp);
 	}
 	return substr($temp, 2, $length-2);
@@ -381,25 +381,25 @@ function get_first_tag($level, $tag, $gedrec, $num=1) {
  * @param string $gedrec the parent gedcom record to search in
  * @param int $num this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
  * gedcom record will have more that 1 of the same type of subrecord.  An individual may have
- * multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
+ * multiple events for example.  Passing $num = 1 would get the first 1.  Passing $num = 2 would get the
  * second one, etc.
  * @return string the subrecord that was found or an empty string "" if not found.
  */
-function get_sub_record($level, $tag, $gedrec, $num=1) {
+function get_sub_record($level, $tag, $gedrec, $num = 1) {
 	if (empty($gedrec)) {
 		return "";
 	}
 	// -- adding \n before and after gedrec
-	$gedrec = "\n".$gedrec."\n";
-	$pos1=0;
-	$subrec = "";
-	$tag = trim($tag);
-	$searchTarget = "~[\n]".$tag."[\s]~";
-	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-	if ($ct==0) {
+	$gedrec			= "\n" . $gedrec . "\n";
+	$pos1			= 0;
+	$subrec 		= "";
+	$tag 			= trim($tag);
+	$searchTarget	= "~[\n]" . $tag . "[\s]~";
+	$ct 			= preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+	if ($ct == 0) {
 		$tag = preg_replace('/(\w+)/', "_$1", $tag);
 		$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-		if ($ct==0) {
+		if ($ct == 0) {
 			return "";
 		}
 	}
@@ -431,16 +431,16 @@ function get_sub_record($level, $tag, $gedrec, $num=1) {
  * @param int $truncate Should the value be truncated to a certain number of characters
  * @return string
  */
-function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
+function get_gedcom_value($tag, $level, $gedrec, $truncate = '') {
 	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
+	$ged_id = get_id_from_gedcom($GEDCOM);
 
 	if (empty($gedrec)) {
 		return "";
 	}
 	$tags = explode(':', $tag);
 	$origlevel = $level;
-	if ($level==0) {
+	if ($level == 0) {
 		$level = $gedrec{0} + 1;
 	}
 
@@ -448,12 +448,12 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 	foreach ($tags as $indexval => $t) {
 		$lastsubrec = $subrec;
 		$subrec = get_sub_record($level, "$level $t", $subrec);
-		if (empty($subrec) && $origlevel==0) {
+		if (empty($subrec) && $origlevel == 0) {
 			$level--;
 			$subrec = get_sub_record($level, "$level $t", $lastsubrec);
 		}
 		if (empty($subrec)) {
-			if ($t=="TITL") {
+			if ($t == "TITL") {
 				$subrec = get_sub_record($level, "$level ABBR", $lastsubrec);
 				if (!empty($subrec)) {
 					$t = "ABBR";
@@ -473,19 +473,19 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 	}
 	$level--;
 	$ct = preg_match("/$level $t(.*)/", $subrec, $match);
-	if ($ct==0) {
+	if ($ct == 0) {
 		$ct = preg_match("/$level @.+@ (.+)/", $subrec, $match);
 	}
-	if ($ct==0) {
+	if ($ct == 0) {
 		$ct = preg_match("/@ $t (.+)/", $subrec, $match);
 	}
 	if ($ct > 0) {
 		$value = trim($match[1]);
-		if ($t=='NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
+		if ($t == 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
 			$oldsub = $subrec;
 			$subrec = find_other_record($match[1], $ged_id);
 			if ($subrec) {
-				$value=$match[1];
+				$value = $match[1];
 				$ct = preg_match("/0 @$match[1]@ $t (.+)/", $subrec, $match);
 				if ($ct>0) {
 					$value = $match[1];
@@ -530,11 +530,11 @@ function breakConts($newline) {
 
 	$newged = "";
 	$newlines = preg_split("/\n/", rtrim($newline));
-	for ($k=0; $k<count($newlines); $k++) {
+	for ($k = 0; $k<count($newlines); $k++) {
 		if ($k>0) {
-			$newlines[$k] = "{$level} CONT ".$newlines[$k];
+			$newlines[$k] = "{$level} CONT " . $newlines[$k];
 		}
-		$newged .= trim($newlines[$k])."\n";
+		$newged .= trim($newlines[$k]) . "\n";
 	}
 	return $newged;
 }
@@ -547,7 +547,7 @@ function breakConts($newline) {
  * @param string $nrec the gedcom subrecord to search in
  * @return string a string with all CONT or CONC lines merged
  */
-function get_cont($nlevel, $nrec, $tobr=true) {
+function get_cont($nlevel, $nrec, $tobr = true) {
 	global $WORD_WRAPPED_NOTES;
 	$text = "";
 	if ($tobr) {
@@ -558,17 +558,17 @@ function get_cont($nlevel, $nrec, $tobr=true) {
 
 	$subrecords = explode("\n", $nrec);
 	foreach ($subrecords as $thisSubrecord) {
-		if (substr($thisSubrecord, 0, 2)!=$nlevel." ") {
+		if (substr($thisSubrecord, 0, 2) !== $nlevel . ' ') {
 			continue;
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
-		if ($subrecordType=="CONT") {
+		if ($subrecordType == "CONT") {
 			$text .= $newline;
 		}
-		if ($subrecordType=="CONC" && $WORD_WRAPPED_NOTES) {
+		if ($subrecordType == "CONC" && $WORD_WRAPPED_NOTES) {
 			$text .= " ";
 		}
-		if ($subrecordType=="CONT" || $subrecordType=="CONC") {
+		if ($subrecordType == "CONT" || $subrecordType == "CONC") {
 			$text .= rtrim(substr($thisSubrecord, 7));
 		}
 	}
@@ -605,17 +605,17 @@ function find_parents_in_record($famrec) {
 		return false;
 	}
 	$parents = array();
-	$ct = preg_match('/1 HUSB @('.KT_REGEX_XREF.')@/', $famrec, $match);
+	$ct = preg_match('/1 HUSB @(' . KT_REGEX_XREF . ')@/', $famrec, $match);
 	if ($ct>0) {
-		$parents["HUSB"]=$match[1];
+		$parents["HUSB"] = $match[1];
 	} else {
-		$parents["HUSB"]="";
+		$parents["HUSB"] = "";
 	}
-	$ct = preg_match('/1 WIFE @('.KT_REGEX_XREF.')@/', $famrec, $match);
+	$ct = preg_match('/1 WIFE @(' . KT_REGEX_XREF . ')@/', $famrec, $match);
 	if ($ct>0) {
-		$parents["WIFE"]=$match[1];
+		$parents["WIFE"] = $match[1];
 	} else {
-		$parents["WIFE"]="";
+		$parents["WIFE"] = "";
 	}
 	return $parents;
 }
@@ -630,8 +630,8 @@ function factsort($a, $b) {
 // Sort a list events for the today/upcoming blocks
 ////////////////////////////////////////////////////////////////////////////////
 function event_sort($a, $b) {
-	if ($a['jd']==$b['jd']) {
-		if ($a['anniv']==$b['anniv']) {
+	if ($a['jd'] == $b['jd']) {
+		if ($a['anniv'] == $b['anniv']) {
 			return utf8_strcasecmp($a['fact'], $b['fact']);
 		}
 		else {
@@ -643,7 +643,7 @@ function event_sort($a, $b) {
 }
 
 function event_sort_name($a, $b) {
-	if ($a['jd']==$b['jd']) {
+	if ($a['jd'] == $b['jd']) {
 		return KT_GedcomRecord::compare($a['record'], $b['record']);
 	} else {
 		return $a['jd']-$b['jd'];
@@ -676,25 +676,25 @@ function compare_facts_date($arec, $brec) {
 	}
 
 	// Remember that dates can be ranges and overlapping ranges sort equally.
-	$amin=$adate->MinJD();
-	$bmin=$bdate->MinJD();
-	$amax=$adate->MaxJD();
-	$bmax=$bdate->MaxJD();
+	$amin = $adate->MinJD();
+	$bmin = $bdate->MinJD();
+	$amax = $adate->MaxJD();
+	$bmax = $bdate->MaxJD();
 
 	// BEF/AFT XXX sort as the day before/after XXX
-	if ($adate->qual1=='BEF') {
-		$amin=$amin-1;
-		$amax=$amin;
-	} elseif ($adate->qual1=='AFT') {
-		$amax=$amax+1;
-		$amin=$amax;
+	if ($adate->qual1 == 'BEF') {
+		$amin = $amin-1;
+		$amax = $amin;
+	} elseif ($adate->qual1 == 'AFT') {
+		$amax = $amax+1;
+		$amin = $amax;
 	}
-	if ($bdate->qual1=='BEF') {
-		$bmin=$bmin-1;
-		$bmax=$bmin;
-	} elseif ($bdate->qual1=='AFT') {
-		$bmax=$bmax+1;
-		$bmin=$bmax;
+	if ($bdate->qual1 == 'BEF') {
+		$bmin = $bmin-1;
+		$bmax = $bmin;
+	} elseif ($bdate->qual1 == 'AFT') {
+		$bmax = $bmax+1;
+		$bmin = $bmax;
 	}
 
 	if ($amax<$bmin) {
@@ -752,7 +752,7 @@ function sort_facts(&$arr) {
 	foreach ($arr as $event) {
 		$event->sortOrder = $order;
 		$order++;
-		if ($event->getValue("DATE")==NULL || !$event->getDate()->isOk()) $nondated[] = $event;
+		if ($event->getValue("DATE") == NULL || !$event->getDate()->isOk()) $nondated[] = $event;
 		else $dated[] = $event;
 	}
 
@@ -798,7 +798,7 @@ function sort_facts(&$arr) {
  * @param int $maxlength - the maximum length of path
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
-function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
+function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse = true, $maxlength = 0, $path_to_find = 0) {
 	if (!$person1 || !$person2 || $person1->equals($person2)) {
 		return false;
 	}
@@ -823,7 +823,7 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 	while (!$found) {
 		//-- search the node list for the shortest path length
 		$shortest = -1;
-		foreach ($p1nodes as $index=>$node) {
+		foreach ($p1nodes as $index => $node) {
 			if ($shortest == -1) {
 				$shortest = $index;
 			} else {
@@ -833,10 +833,10 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 				}
 			}
 		}
-		if ($shortest==-1)
+		if ($shortest == -1)
 			return false;
 		$node = $p1nodes[$shortest];
-		if ($maxlength==0 || count($node['path'])<=$maxlength) {
+		if ($maxlength == 0 || count($node['path']) <= $maxlength) {
 			$indi = $node['indi'];
 			//-- check all parents and siblings of this node
 			foreach ($indi->getChildFamilies(KT_PRIV_HIDE) as $family) {
@@ -844,16 +844,16 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 				foreach ($family->getSpouses(KT_PRIV_HIDE) as $spouse) {
 					if (!isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
-						$node1['length']++;
+						$node1['length'] ++;
 						$node1['path'][] = $spouse;
 						$node1['indi'] = $spouse;
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
 						if ($spouse->equals($person2)) {
 							if ($path_to_find>0) {
-								$path_to_find--;
+								$path_to_find --;
 							} else {
-								$found=true;
+								$found = true;
 								$resnode = $node1;
 							}
 						} else {
@@ -864,16 +864,16 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 				foreach ($family->getChildren(KT_PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
-						$node1['length']++;
+						$node1['length'] ++;
 						$node1['path'][] = $child;
 						$node1['indi'] = $child;
 						$node1['relations'][] = 'sibling';
 						$p1nodes[] = $node1;
 						if ($child->equals($person2)) {
 							if ($path_to_find>0) {
-								$path_to_find--;
+								$path_to_find --;
 							} else {
-								$found=true;
+								$found = true;
 								$resnode = $node1;
 							}
 						} else {
@@ -889,16 +889,16 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 					foreach ($family->getSpouses(KT_PRIV_HIDE) as $spouse) {
 						if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 							$node1 = $node;
-							$node1['length']++;
+							$node1['length'] ++;
 							$node1['path'][] = $spouse;
 							$node1['indi'] = $spouse;
 							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
 							if ($spouse->equals($person2)) {
 								if ($path_to_find>0) {
-									$path_to_find--;
+									$path_to_find --;
 								} else {
-									$found=true;
+									$found = true;
 									$resnode = $node1;
 								}
 							} else {
@@ -917,9 +917,9 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 						$p1nodes[] = $node1;
 						if ($child->equals($person2)) {
 							if ($path_to_find>0) {
-								$path_to_find--;
+								$path_to_find --;
 							} else {
-								$found=true;
+								$found = true;
 								$resnode = $node1;
 							}
 						} else {
@@ -933,30 +933,30 @@ function get_relationship(KT_Person $person1, KT_Person $person2, $followspouse=
 	}
 
 	// Convert generic relationships into sex-specific ones.
-	foreach ($resnode['path'] as $n=>$indi) {
+	foreach ($resnode['path'] as $n => $indi) {
 		switch ($resnode['relations'][$n]) {
 		case 'parent':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='father'; break;
-			case 'F': $resnode['relations'][$n]='mother'; break;
+			case 'M': $resnode['relations'][$n] = 'father'; break;
+			case 'F': $resnode['relations'][$n] = 'mother'; break;
 			}
 			break;
 		case 'child':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='son'; break;
-			case 'F': $resnode['relations'][$n]='daughter'; break;
+			case 'M': $resnode['relations'][$n] = 'son'; break;
+			case 'F': $resnode['relations'][$n] = 'daughter'; break;
 			}
 			break;
 		case 'spouse':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='husband'; break;
-			case 'F': $resnode['relations'][$n]='wife'; break;
+			case 'M': $resnode['relations'][$n] = 'husband'; break;
+			case 'F': $resnode['relations'][$n] = 'wife'; break;
 			}
 			break;
 		case 'sibling':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='brother'; break;
-			case 'F': $resnode['relations'][$n]='sister'; break;
+			case 'M': $resnode['relations'][$n] = 'brother'; break;
+			case 'F': $resnode['relations'][$n] = 'sister'; break;
 			}
 			break;
 		}
@@ -1167,10 +1167,10 @@ function cousin_name2($n, $sex, $relation) {
 	}
 }
 
-function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Person $person2=null) {
+function get_relationship_name_from_path($path, KT_Person $person1 = null, KT_Person $person2 = null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
-		return '<span class="error">'.$path.'</span>';
+		return '<span class="error">' . $path . '</span>';
 	}
 	// The path does not include the starting person.  In some languages, the
 	// translation for a man’s (relative) is different to a woman’s (relative),
@@ -1180,11 +1180,11 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	// The sex of the last person in the relationship determines the name in
 	// many cases.  e.g. great-aunt / great-uncle
 	if (preg_match('/(fat|hus|son|bro)$/', $path)) {
-		$sex2='M';
+		$sex2 = 'M';
 	} elseif (preg_match('/(mot|wif|dau|sis)$/', $path)) {
-		$sex2='F';
+		$sex2 = 'F';
 	} else {
-		$sex2='U';
+		$sex2 = 'U';
 	}
 
 	switch ($path) {
@@ -1238,8 +1238,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	case 'chi': return KT_I18N::translate('child');
 	case 'bro':
 		if ($person1 && $person2) {
-			$dob1=$person1->getBirthDate();
-			$dob2=$person2->getBirthDate();
+			$dob1 = $person1->getBirthDate();
+			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
 				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
 					return KT_I18N::translate('twin brother');
@@ -1253,8 +1253,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		return KT_I18N::translate('brother');
 	case 'sis':
 		if ($person1 && $person2) {
-			$dob1=$person1->getBirthDate();
-			$dob2=$person2->getBirthDate();
+			$dob1 = $person1->getBirthDate();
+			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
 				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
 					return KT_I18N::translate('twin sister');
@@ -1268,8 +1268,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		return KT_I18N::translate('sister');
 	case 'sib':
 		if ($person1 && $person2) {
-			$dob1=$person1->getBirthDate();
-			$dob2=$person2->getBirthDate();
+			$dob1 = $person1->getBirthDate();
+			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
 				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
 					return KT_I18N::translate('twin sibling');
@@ -1368,24 +1368,24 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	// Level Three relationships
 	// I have commented out some of the unknown-sex relationships that are unlikely to to occur.
 	// Feel free to add them in, if you think they might be needed
-	case 'brochichi': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s child',       'great-nephew/niece');
+	case 'brochichi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s child',       'great-nephew/niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s child',     'great-nephew/niece');
-	case 'brochidau': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s daughter',    'great-niece');
+	case 'brochidau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s daughter',    'great-niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s daughter',  'great-niece');
-	case 'brochison': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s son',         'great-nephew');
+	case 'brochison': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s son',         'great-nephew');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s son',       'great-nephew');
-	case 'brodauchi': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s child',    'great-nephew/niece');
+	case 'brodauchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s child',    'great-nephew/niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s child',  'great-nephew/niece');
-	case 'brodaudau': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s daughter', 'great-niece');
+	case 'brodaudau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s daughter', 'great-niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s daughter', 'great-niece');
 	case 'brodauhus': return KT_I18N::translate_c('brother\'s daughter\'s husband',   'nephew-in-law');
-	case 'brodauson': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s son',      'great-nephew');
+	case 'brodauson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s son',      'great-nephew');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s son',    'great-nephew');
-	case 'brosonchi': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s child',         'great-nephew/niece');
+	case 'brosonchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s child',         'great-nephew/niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s child',       'great-nephew/niece');
-	case 'brosondau': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s daughter',      'great-niece');
+	case 'brosondau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s daughter',      'great-niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s daughter',    'great-niece');
-	case 'brosonson': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s son',           'great-nephew');
+	case 'brosonson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s son',           'great-nephew');
 	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s son',         'great-nephew');
 	case 'brosonwif': return KT_I18N::translate_c('brother\'s son\'s wife',           'niece-in-law');
 	case 'browifbro': return KT_I18N::translate_c('brother\'s wife\'s brother',       'brother-in-law');
@@ -1510,27 +1510,27 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	case 'sibsondau': return KT_I18N::translate_c('sibling\'s son\'s daughter',       'great-niece');
 	case 'sibsonson': return KT_I18N::translate_c('sibling\'s son\'s son',            'great-nephew');
 	case 'sibsonwif': return KT_I18N::translate_c('sibling\'s son\'s wife',           'niece-in-law');
-	case 'sischichi': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s child',          'great-nephew/niece');
+	case 'sischichi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s child',          'great-nephew/niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s child',        'great-nephew/niece');
-	case 'sischidau': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s daughter',       'great-niece');
+	case 'sischidau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s daughter',       'great-niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s daughter',     'great-niece');
-	case 'sischison': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s son',            'great-nephew');
+	case 'sischison': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s son',            'great-nephew');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s son',          'great-nephew');
-	case 'sisdauchi': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s child',       'great-nephew/niece');
+	case 'sisdauchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s child',       'great-nephew/niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s child',     'great-nephew/niece');
-	case 'sisdaudau': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s daughter',    'great-niece');
+	case 'sisdaudau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s daughter',    'great-niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s daughter',  'great-niece');
 	case 'sisdauhus': return KT_I18N::translate_c('sisters\'s daughter\'s husband',   'nephew-in-law');
-	case 'sisdauson': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s son',         'great-nephew');
+	case 'sisdauson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s son',         'great-nephew');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s son',       'great-nephew');
 	case 'sishusbro': return KT_I18N::translate_c('sister\'s husband\'s brother',     'brother-in-law');
 	case 'sishussib': return KT_I18N::translate_c('sister\'s husband\'s sibling',     'brother/sister-in-law');
 	case 'sishussis': return KT_I18N::translate_c('sister\'s husband\'s sister',      'sister-in-law');
-	case 'sissonchi': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s child',            'great-nephew/niece');
+	case 'sissonchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s child',            'great-nephew/niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s child',          'great-nephew/niece');
-	case 'sissondau': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s daughter',         'great-niece');
+	case 'sissondau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s daughter',         'great-niece');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s daughter',       'great-niece');
-	case 'sissonson': if ($sex1=='M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s son',              'great-nephew');
+	case 'sissonson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s son',              'great-nephew');
 	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s son',            'great-nephew');
 	case 'sissonwif': return KT_I18N::translate_c('sisters\'s son\'s wife',           'niece-in-law');
 	case 'sonchichi': return KT_I18N::translate_c('son\'s child\'s child',            'great-grandchild');
@@ -1669,14 +1669,14 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		// siblings of direct ancestors
-		$up=strlen($match[1])/3;
-		$bef_last=substr($path, -6, 3);
+		$up 		= strlen($match[1])/3;
+		$bef_last	= substr($path, -6, 3);
 		switch ($up) {
 		case 3:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return KT_I18N::translate_c('great-grandfather\'s brother', 'great-great-uncle');
-				else if ($bef_last=='mot') return KT_I18N::translate_c('great-grandmother\'s brother', 'great-great-uncle');
+				if ($bef_last == 'fat')      return KT_I18N::translate_c('great-grandfather\'s brother', 'great-great-uncle');
+				else if ($bef_last == 'mot') return KT_I18N::translate_c('great-grandmother\'s brother', 'great-great-uncle');
 				else                       return KT_I18N::translate_c('great-grandparent\'s brother', 'great-great-uncle');
 			case 'F': return KT_I18N::translate('great-great-aunt');
 			case 'U': return KT_I18N::translate('great-great-aunt/uncle');
@@ -1685,8 +1685,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 4:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return KT_I18N::translate_c('great-great-grandfather\'s brother', 'great-great-great-uncle');
-				else if ($bef_last=='mot') return KT_I18N::translate_c('great-great-grandmother\'s brother', 'great-great-great-uncle');
+				if ($bef_last == 'fat')      return KT_I18N::translate_c('great-great-grandfather\'s brother', 'great-great-great-uncle');
+				else if ($bef_last == 'mot') return KT_I18N::translate_c('great-great-grandmother\'s brother', 'great-great-great-uncle');
 				else                       return KT_I18N::translate_c('great-great-grandparent\'s brother', 'great-great-great-uncle');
 			case 'F': return KT_I18N::translate('great-great-great-aunt');
 			case 'U': return KT_I18N::translate('great-great-great-aunt/uncle');
@@ -1695,8 +1695,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 5:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return KT_I18N::translate_c('great-great-great-grandfather\'s brother', 'great x4 uncle');
-				else if ($bef_last=='mot') return KT_I18N::translate_c('great-great-great-grandmother\'s brother', 'great x4 uncle');
+				if ($bef_last == 'fat')    return KT_I18N::translate_c('great-great-great-grandfather\'s brother', 'great x4 uncle');
+				else if ($bef_last == 'mot') return KT_I18N::translate_c('great-great-great-grandmother\'s brother', 'great x4 uncle');
 				else                       return KT_I18N::translate_c('great-great-great-grandparent\'s brother', 'great x4 uncle');
 			case 'F': return KT_I18N::translate('great x4 aunt');
 			case 'U': return KT_I18N::translate('great x4 aunt/uncle');
@@ -1705,8 +1705,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 6:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return KT_I18N::translate_c('great x4 grandfather\'s brother', 'great x5 uncle');
-				else if ($bef_last=='mot') return KT_I18N::translate_c('great x4 grandmother\'s brother', 'great x5 uncle');
+				if ($bef_last == 'fat')      return KT_I18N::translate_c('great x4 grandfather\'s brother', 'great x5 uncle');
+				else if ($bef_last == 'mot') return KT_I18N::translate_c('great x4 grandmother\'s brother', 'great x5 uncle');
 				else                       return KT_I18N::translate_c('great x4 grandparent\'s brother', 'great x5 uncle');
 			case 'F': return KT_I18N::translate('great x5 aunt');
 			case 'U': return KT_I18N::translate('great x5 aunt/uncle');
@@ -1715,8 +1715,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 7:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return KT_I18N::translate_c('great x5 grandfather\'s brother', 'great x6 uncle');
-				else if ($bef_last=='mot') return KT_I18N::translate_c('great x5 grandmother\'s brother', 'great x6 uncle');
+				if ($bef_last == 'fat')      return KT_I18N::translate_c('great x5 grandfather\'s brother', 'great x6 uncle');
+				else if ($bef_last == 'mot') return KT_I18N::translate_c('great x5 grandmother\'s brother', 'great x6 uncle');
 				else                       return KT_I18N::translate_c('great x5 grandparent\'s brother', 'great x6 uncle');
 			case 'F': return KT_I18N::translate('great x6 aunt');
 			case 'U': return KT_I18N::translate('great x6 aunt/uncle');
@@ -1725,8 +1725,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 8:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return KT_I18N::translate_c('great x6 grandfather\'s brother', 'great x7 uncle');
-				else if ($bef_last=='mot') return KT_I18N::translate_c('great x6 grandmother\'s brother', 'great x7 uncle');
+				if ($bef_last == 'fat')      return KT_I18N::translate_c('great x6 grandfather\'s brother', 'great x7 uncle');
+				else if ($bef_last == 'mot') return KT_I18N::translate_c('great x6 grandmother\'s brother', 'great x7 uncle');
 				else                       return KT_I18N::translate_c('great x6 grandparent\'s brother', 'great x7 uncle');
 			case 'F': return KT_I18N::translate('great x7 aunt');
 			case 'U': return KT_I18N::translate('great x7 aunt/uncle');
@@ -1747,8 +1747,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 			case 'pl':
 				switch ($sex2) {
 				case 'M':
-					if ($bef_last=='fat')      return KT_I18N::translate_c('great x(%d-1) grandfather\'s brother', 'great x%d uncle', $up-2);
-					else if ($bef_last=='mot') return KT_I18N::translate_c('great x(%d-1) grandmother\'s brother', 'great x%d uncle', $up-2);
+					if ($bef_last == 'fat')      return KT_I18N::translate_c('great x(%d-1) grandfather\'s brother', 'great x%d uncle', $up-2);
+					else if ($bef_last == 'mot') return KT_I18N::translate_c('great x(%d-1) grandmother\'s brother', 'great x%d uncle', $up-2);
 					else                       return KT_I18N::translate_c('great x(%d-1) grandparent\'s brother', 'great x%d uncle', $up-2);
 				case 'F': return KT_I18N::translate('great x%d aunt', $up-2);
 				case 'U': return KT_I18N::translate('great x%d aunt/uncle', $up-2);
@@ -1769,31 +1769,31 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	}
 	if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
 		// direct descendants of siblings
-		$down=strlen($match[1])/3+1; // Add one, as we count generations from the common ancestor
-		$first=substr($path, 0, 3);
+		$down 	= strlen($match[1])/3+1; // Add one, as we count generations from the common ancestor
+		$first 	= substr($path, 0, 3);
 		switch ($down) {
 		case 4:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-grandson', 'great-great-nephew');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-grandson',  'great-great-nephew');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great-great-nephew', 'great-great-nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-granddaughter', 'great-great-niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-granddaughter',  'great-great-niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great-great-niece', 'great-great-niece');
 				}
 			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-grandchild', 'great-great-nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-grandchild',  'great-great-nephew/niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great-great-nephew/niece', 'great-great-nephew/niece');
@@ -1802,25 +1802,25 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 5:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-great-grandson', 'great-great-great-nephew');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-great-grandson',  'great-great-great-nephew');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great-great-great-nephew',  'great-great-great-nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-great-granddaughter', 'great-great-great-niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-great-granddaughter',  'great-great-great-niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great-great-great-niece',  'great-great-great-niece');
 				}
 			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-great-grandchild', 'great-great-great-nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-great-grandchild',  'great-great-great-nephew/niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great-great-great-nephew/niece',  'great-great-great-nephew/niece');
@@ -1829,25 +1829,25 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 6:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-great-great-grandson', 'great x4 nephew');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-great-great-grandson',  'great x4 nephew');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great x4 nephew',  'great x4 nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-great-great-granddaughter', 'great x4 niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-great-great-granddaughter',  'great x4 niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great x4 niece',  'great x4 niece');
 				}
 			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great-great-great-grandchild', 'great x4 nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great-great-great-grandchild',  'great x4 nephew/niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great x4 nephew/niece',  'great x4 nephew/niece');
@@ -1856,25 +1856,25 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		case 7:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great x4 grandson', 'great x5 nephew');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great x4 grandson',  'great x5 nephew');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great x5 nephew',  'great x5 nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great x4 granddaughter', 'great x5 niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great x4 granddaughter',  'great x5 niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great x5 niece',  'great x5 niece');
 				}
 			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first == 'bro' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) brother\'s great x4 grandchild', 'great x5 nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
+				} else if ($first == 'sis' && $sex1 == 'M') {
 					return KT_I18N::translate_c('(a man\'s) sister\'s great x4 grandchild',  'great x5 nephew/niece');
 				} else {
 					return KT_I18N::translate_c('(a woman\'s) great x5 nephew/niece',  'great x5 nephew/niece');
@@ -1889,24 +1889,24 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 			case 'pl': // Source: Lukasz Wilenski
 				switch ($sex2) {
 				case 'M':
-					if ($first=='bro' && $sex1=='M') {
+					if ($first == 'bro' && $sex1 == 'M') {
 						return KT_I18N::translate_c('(a man\'s) brother\'s great x(%d-1) grandson', 'great x%d nephew', $down-3);
-					} else if ($first=='sis' && $sex1=='M') {
+					} else if ($first == 'sis' && $sex1 == 'M') {
 						return KT_I18N::translate_c('(a man\'s) sister\'s great x(%d-1) grandson',  'great x%d nephew', $down-3);
 					} else
 						return KT_I18N::translate_c('(a woman\'s) great x%d nephew',  'great x%d nephew', $down-3);
 				case 'F':
-					if ($first=='bro' && $sex1=='M') {
+					if ($first == 'bro' && $sex1 == 'M') {
 						return KT_I18N::translate_c('(a man\'s) brother\'s great x(%d-1) granddaughter', 'great x%d niece', $down-3);
-					} else if ($first=='sis' && $sex1=='M') {
+					} else if ($first == 'sis' && $sex1 == 'M') {
 						return KT_I18N::translate_c('(a man\'s) sister\'s great x(%d-1) granddaughter',  'great x%d niece', $down-3);
 					} else {
 						return KT_I18N::translate_c('(a woman\'s) great x%d niece',  'great x%d niece', $down-3);
 					}
 				case 'U':
-					if ($first=='bro' && $sex1=='M') {
+					if ($first == 'bro' && $sex1 == 'M') {
 						return KT_I18N::translate_c('(a man\'s) brother\'s great x(%d-1) grandchild', 'great x%d nephew/niece', $down-3);
-					} else if ($first=='sis' && $sex1=='M') {
+					} else if ($first == 'sis' && $sex1 == 'M') {
 						return KT_I18N::translate_c('(a man\'s) sister\'s great x(%d-1) grandchild',  'great x%d nephew/niece', $down-3);
 					} else {
 						return KT_I18N::translate_c('(a woman\'s) great x%d nephew/niece',  'great x%d nephew/niece', $down-3);
@@ -1934,7 +1934,7 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	}
 	if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
 		// direct ancestors
-		$up=strlen($match[1])/3;
+		$up = strlen($match[1])/3;
 		switch ($up) {
 		case 4:
 			switch ($sex2) {
@@ -2027,7 +2027,7 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 	}
 	if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
 		// direct descendants
-		$up=strlen($match[1])/3;
+		$up = strlen($match[1]) / 3;
 		switch ($up) {
 		case 4:
 			switch ($sex2) {
@@ -2107,8 +2107,8 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 		$descent = $match[2];
 		$up      = strlen($ascent)/3;
 		$down    = strlen($descent)/3;
-		$cousin=min($up, $down);  // Moved out of switch (en/default case) so that
-		$removed=abs($down-$up);  // Spanish (and other languages) can use it, too.
+		$cousin  = min($up, $down);  // Moved out of switch (en/default case) so that
+		$removed = abs($down-$up);  // Spanish (and other languages) can use it, too.
 
 		// Different languages have different rules for naming cousins.  For example,
 		// an English “second cousin once removed” is a Polish “cousin of 7th degree”.
@@ -2121,7 +2121,7 @@ function get_relationship_name_from_path($path, KT_Person $person1=null, KT_Pers
 			return cousin_name($up+$down-3, $sex2);
 		case 'es':
 			// Source: Wes Groleau.  See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
-			if ($down==$up) {
+			if ($down == $up) {
 				return cousin_name($cousin, $sex2);
 			} elseif ($down<$up) {
 				return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
@@ -2223,10 +2223,10 @@ function get_theme_names() {
 
 	if ($themes === null) {
 		$themes = array();
-		$d = dir(KT_ROOT.KT_THEMES_DIR);
+		$d = dir(KT_ROOT . KT_THEMES_DIR);
 		while (false !== ($folder = $d->read())) {
-			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(KT_ROOT.KT_THEMES_DIR.$folder) && file_exists(KT_ROOT.KT_THEMES_DIR.$folder.'/theme.php')) {
-				$themefile = implode('', file(KT_ROOT.KT_THEMES_DIR.$folder.'/theme.php'));
+			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(KT_ROOT . KT_THEMES_DIR . $folder) && file_exists(KT_ROOT . KT_THEMES_DIR . $folder . '/theme.php')) {
+				$themefile = implode('', file(KT_ROOT . KT_THEMES_DIR . $folder . '/theme.php'));
 				if (preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match)) {
 					$theme_name = KT_I18N::translate($match[1]);
 					if (array_key_exists($theme_name, $themes)) {
@@ -2252,7 +2252,7 @@ function get_query_url($overwrite = null, $separator = '&') {
 		$get = $_GET;
 	}
 	if (is_array($overwrite)) {
-		foreach ($overwrite as $key=>$value) {
+		foreach ($overwrite as $key => $value) {
 			$get[$key]=$value;
 		}
 	}
@@ -2279,7 +2279,7 @@ function get_query_url($overwrite = null, $separator = '&') {
 //the PDF without regard to whether a known person exists in each generation.
 //TODO: If a known individual is found in a generation, add prior empty positions
 //and add remaining empty spots automatically.
-function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_empty=false) {
+function add_ancestors(&$list, $pid, $children = false, $generations = -1, $show_empty = false) {
 	$total_num_skipped = 0;
 	$skipped_gen = 0;
 	$num_skipped = 0;
@@ -2292,7 +2292,7 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 		$famids = $person->getChildFamilies();
 		if (count($famids) > 0) {
 			if ($show_empty) {
-				for ($i=0;$i<$num_skipped;$i++) {
+				for ($i = 0;$i<$num_skipped;$i++) {
 					$list["empty" . $total_num_skipped] = new KT_Person('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation + 1;
 					array_push($genlist, "empty" . $total_num_skipped);
@@ -2361,9 +2361,9 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 }
 
 //--- copied from class_reportpdf.php
-function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
+function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
 	$person = KT_Person::getInstance($pid);
-	if ($person==null) return;
+	if ($person == null) return;
 	if (!isset($list[$pid])) {
 		$list[$pid] = $person;
 	}
@@ -2408,7 +2408,7 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 }
 
 // Generate a new XREF, unique across all family trees
-function get_new_xref($type='INDI', $ged_id=KT_GED_ID) {
+function get_new_xref($type = 'INDI', $ged_id = KT_GED_ID) {
 	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;;
 
 	switch ($type) {
@@ -2469,7 +2469,7 @@ function get_new_xref($type='INDI', $ged_id=KT_GED_ID) {
 		"SELECT xref FROM `##change` WHERE xref = ?"
 	);
 
-	while ($statement->execute(array_fill(0, 6, $prefix.$num))->fetchOne()) {
+	while ($statement->execute(array_fill(0, 6, $prefix . $num))->fetchOne()) {
 		// Applications such as ancestry.com generate XREFs with numbers larger than
 		// PHP’s signed integer.  MySQL can handle large integers.
 		$num = KT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
@@ -2478,7 +2478,7 @@ function get_new_xref($type='INDI', $ged_id=KT_GED_ID) {
 	//-- update the next id number in the DB table
 	KT_DB::prepare("UPDATE `##next_id` SET next_id=? WHERE record_type=? AND gedcom_id=?")
 		->execute(array($num+1, $type, $ged_id));
-	return $prefix.$num;
+	return $prefix . $num;
 }
 
 /**
@@ -2487,10 +2487,10 @@ function get_new_xref($type='INDI', $ged_id=KT_GED_ID) {
  */
 function has_utf8($string) {
 	$len = strlen($string);
-	for ($i=0; $i<$len; $i++) {
+	for ($i = 0; $i<$len; $i++) {
 		$letter = substr($string, $i, 1);
 		$ord = ord($letter);
-		if ($ord==95 || $ord>=195)
+		if ($ord == 95 || $ord >= 195)
 			return true;
 	}
 	return false;
@@ -2510,7 +2510,7 @@ function expand_urls($text) {
 	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
 	// This matches far too much while a “precise” regex is several pages long.
 	// This is a compromise.
-	$URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
+	$URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
 	return preg_replace_callback(
 		'/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
@@ -2683,7 +2683,7 @@ function FamilyNavigator($pid){
 				// Parents - siblings
 				if (isset($people["children"])) {
 					$elderdate = $family->getMarriageDate();
-					foreach ($people["children"] as $key=>$child) {
+					foreach ($people["children"] as $key => $child) {
 						$fulln		= strip_tags($child->getFullName());
 						$menu		= new KT_Menu(getCloseRelationshipName($person, $child));
 						$slabel		= print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
@@ -2784,7 +2784,7 @@ function FamilyNavigator($pid){
 				// Children --
 				if (isset($people["children"])) {
 					$elderdate = $family->getMarriageDate();
-					foreach ($people["children"] as $key=>$child) {
+					foreach ($people["children"] as $key => $child) {
 						$fulln		= strip_tags($child->getFullName());
 						$menu		= new KT_Menu(getCloseRelationshipName($person, $child));
 						$slabel		= print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
@@ -2872,7 +2872,7 @@ function FamilyNavigator($pid){
 					<tr>
 				<?php }
 				// Children
-				foreach ($people["children"] as $key=>$child) {
+				foreach ($people["children"] as $key => $child) {
 					$fulln		= strip_tags($child->getFullName());
 					$menu		= new KT_Menu(getCloseRelationshipName($person, $child));
 					$slabel		= print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);

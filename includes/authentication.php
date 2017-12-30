@@ -88,15 +88,15 @@ function userLogout($user_id) {
  *
  */
 
-function getUserID() {
+function getUserId() {
 	global $KT_SESSION;
 
 	return (int)($KT_SESSION->kt_user);
 }
 
 function getUserName() {
-	if (getUserID()) {
-		return get_user_name(getUserID());
+	if (getUserId()) {
+		return get_user_name(getUserId());
 	} else {
 		return null;
 	}

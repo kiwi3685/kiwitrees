@@ -33,18 +33,18 @@ if (!defined('KT_KIWITREES')) {
  * @param string $pid optional pid
  * @param string $arrowDirection   direction of link arrow
  */
-function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
+function print_sosa_number($sosa, $pid = '', $arrowDirection = 'up', $sex = 'U') {
 	global $pbwidth, $pbheight;
 
-	if (substr($sosa,-1,1)==".") {
+	if (substr($sosa, -1, 1) == ".") {
 		$personLabel = substr($sosa,0,-1);
 	} else {
 		$personLabel = $sosa;
 	}
-	if ($arrowDirection=="blank") {
-		$visibility = "hidden";
+	if ($arrowDirection == 'blank') {
+		$visibility = 'none';
 	} else {
-		$visibility = "normal";
+		$visibility = 'block';
 	}
 	echo "<td class=\"subheaders center\" style=\"vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ", $visibility, ";\">";
 	echo $personLabel;
@@ -73,33 +73,47 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string $parid optional parent ID (descendancy booklet)
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
-function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='', $personcount=1) {
+function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gparid = '', $personcount = 1) {
 	global $pbwidth, $pbheight, $KT_IMAGES, $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
+	$ged_id = get_id_from_gedcom($GEDCOM);
 
 	$family = KT_Family::getInstance($famid);
-	if (is_null($family)) return;
+	if (is_null($family)) {
+		return;
+	}
 
 	$husb = $family->getHusband();
-	if (is_null($husb)) $husb = new KT_Person('');
+	if (is_null($husb)) {
+		$husb = new KT_Person('');
+	}
+
 	$wife = $family->getWife();
-	if (is_null($wife)) $wife = new KT_Person('');
+	if (is_null($wife)) {
+		$wife = new KT_Person('');
+	}
 
 	if (!is_null($husb)) {
 		$tempID = $husb->getXref();
-		if (!empty($tempID)) echo "<a name=\"{$tempID}\"></a>";
+		if (!empty($tempID)) {
+			echo '<a name="' . $tempID . '}"></a>';
+		}
 	}
+
 	if (!is_null($wife)) {
 		$tempID = $wife->getXref();
-		if (!empty($tempID)) echo "<a name=\"{$tempID}\"></a>";
+		if (!empty($tempID)) {
+			echo '<a name="' . $tempID . '}"></a>';
+		}
 	}
+
 	if ($sosa != 0) {
-		echo '<p class="name_head">', $family->getFullName(), '</p>';
+		echo '<p class="name_head">' . $family->getFullName() . '</p>';
 	}
+
 	// -- get the new record and parents if in editing show changes mode
 	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, KT_USER_CAN_EDIT)) {
-		$newrec = find_gedcom_record($famid, $ged_id, true);
-		$newparents = find_parents_in_record($newrec);
+		$newrec		= find_gedcom_record($famid, $ged_id, true);
+		$newparents	= find_parents_in_record($newrec);
 	}
 
 	/**
@@ -439,19 +453,26 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
  * @param string $parid optional parent ID (descendancy booklet)
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
-function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gparid="", $personcount="1") {
+function print_sosa_family($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $personcount = '1') {
 	global $pbwidth, $pbheight;
-
-	echo "<hr>";
-	echo "<p style='page-break-before:always'>";
-	if (!empty($famid)) echo "<a name=\"{$famid}\"></a>";
+	?>
+	<hr>
+	<p style='page-break-before:always'></p>
+	<?php if (!empty($famid)) { ?>
+		<a name="<?php echo $famid; ?>"></a>
+	<?php }
 	print_family_parents($famid, $sosa, $label, $parid, $gparid, $personcount);
-	$personcount++;
-	echo "<br>";
-	echo "<table width=\"95%\"><tr><td valign=\"top\" style=\"width: " . ($pbwidth) . "px;\">";
-	print_family_children($famid, $childid, $sosa, $label, $personcount);
-	echo "</td></tr></table>";
-	echo "<br>";
+	$personcount ++; ?>
+	<br>
+	<table>
+		<tr>
+			<td valign="top" style="width: "<?php echo $pbwidth; ?>"px;">
+				<?php echo print_family_children($famid, $childid, $sosa, $label, $personcount); ?>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<?php
 }
 
 /**
@@ -501,15 +522,15 @@ function ancestry_array($rootid, $maxgen=0) {
  * @param string $label arrow label
  * @param string $dir arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
-function print_url_arrow($id, $url, $label, $dir=2) {
+function print_url_arrow($id, $url, $label, $dir = 2) {
 	global $TEXT_DIRECTION;
 
-	if ($id=="" || $url=="") return;
+	if ($id == "" || $url == "") return;
 
 	// arrow direction
-	$adir=$dir;
-	if ($TEXT_DIRECTION=="rtl" && $dir==0) $adir=1;
-	if ($TEXT_DIRECTION=="rtl" && $dir==1) $adir=0;
+	$adir = $dir;
+	if ($TEXT_DIRECTION == "rtl" && $dir == 0) $adir = 1;
+	if ($TEXT_DIRECTION == "rtl" && $dir == 1) $adir = 0;
 
 
 	// arrow style     0         1         2         3

@@ -3523,9 +3523,9 @@ class KT_Stats {
 	static function usersLoggedInTotalAnon   () { return self::_usersLoggedInTotal('anon'   ); }
 	static function usersLoggedInTotalVisible() { return self::_usersLoggedInTotal('visible'); }
 
-	static function userID() {return getUserID();}
+	static function userID() {return getUserId();}
 	static function userName($params = array()) {
-		if (getUserID()) {
+		if (getUserId()) {
 			return getUserName();
 		} else {
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
@@ -3535,7 +3535,7 @@ class KT_Stats {
 			else return null;
 		}
 	}
-	static function userFullName() {return getUserFullName(getUserID());}
+	static function userFullName() {return getUserFullName(getUserId());}
 
 	static function _getLatestUserData($type='userid', $params = array()) {
 		global $DATE_FORMAT, $TIME_FORMAT;

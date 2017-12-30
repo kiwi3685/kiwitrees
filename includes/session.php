@@ -416,7 +416,7 @@ if (!$SEARCH_SPIDER && !$KT_SESSION->initiated) {
 }
 
 // Who are we?
-define('KT_USER_ID',       getUserID());
+define('KT_USER_ID',       getUserId());
 define('KT_USER_NAME',     getUserName());
 define('KT_USER_IS_ADMIN', userIsAdmin(KT_USER_ID));
 
@@ -578,9 +578,9 @@ if (substr(KT_SCRIPT_NAME, 0, 5) == 'admin' || KT_SCRIPT_NAME == 'module.php' &&
 }
 
 // If we have specified a CDN, use it for static theme resources
-define('KT_THEME_URL', KT_STATIC_URL.KT_THEME_DIR);
+define('KT_THEME_URL', KT_STATIC_URL . KT_THEME_DIR);
 
-require KT_ROOT.KT_THEME_DIR.'theme.php';
+require KT_ROOT . KT_THEME_DIR . 'theme.php';
 
 // Page hit counter - load after theme, as we need theme formatting
 if ($KT_TREE && $KT_TREE->preference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
