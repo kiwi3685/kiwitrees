@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -166,7 +166,7 @@ case 'load_json':
 	foreach ($aaData as &$row) {
 		$row[2]=htmlspecialchars($row[2]);
 	}
-	
+
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	$iTotalRecords=KT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();

@@ -2685,20 +2685,3 @@ case 'checkduplicates':
 	echo $html;
 	break;
 }
-
-/**
- * Can we edit a GedcomRecord object
- *
- * @param KT_GedcomRecord $object
- */
-//function check_record_access(KT_GedcomRecord $object = null) {
-//	global $controller;
-
-//	if (!$object || !$object->canDisplayDetails() || !$object->canEdit() || $object->canDisplayName()) {
-//		print_r($object->canDisplayDetails());
-//		$controller
-//			->pageHeader()
-//			->addInlineJavascript('closePopupAndReloadParent();');
-//		exit;
-//	}
-//}

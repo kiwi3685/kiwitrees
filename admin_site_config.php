@@ -66,7 +66,7 @@ switch (KT_Filter::post('action')) {
 		if (KT_File::mkdir($INDEX_DIRECTORY)) {
 			KT_Site::preference('INDEX_DIRECTORY', $INDEX_DIRECTORY);
 		} else {
-			KT_FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', KT_Filter::escapeHtml($INDEX_DIRECTORY)));
+			KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', KT_Filter::escapeHtml($INDEX_DIRECTORY)));
 		}
 		KT_Site::preference('MEMORY_LIMIT',				KT_Filter::post('MEMORY_LIMIT'));
 		KT_Site::preference('MAX_EXECUTION_TIME',		KT_Filter::post('MAX_EXECUTION_TIME'));

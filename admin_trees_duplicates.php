@@ -203,7 +203,7 @@ echo '<div id="admin_dup">
 	</form>';
 	// START OUTPUT
 	if ($surn) {
-		$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		if ($rows) {
 			$name1 = '';
 			$name2 = '';

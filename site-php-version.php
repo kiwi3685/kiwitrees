@@ -32,7 +32,7 @@ define('KT_GED_ID', 0);
 define('KT_USER_ID', 0);
 define('KT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
 $KT_SESSION = new stdClass();
-$KT_SESSION->locale='';
+$KT_SESSION->locale = '';
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and KT_XXXXX classes
 set_include_path(KT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';

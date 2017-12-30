@@ -32,7 +32,7 @@ $controller
 require_once KT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
-$ALL_EDIT_OPTIONS=array(
+$ALL_EDIT_OPTIONS = array(
 	'none'  => /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Visitor'),
 	'access'=> /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Member'),
 	'edit'  => /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Editor'),
@@ -167,33 +167,33 @@ switch (KT_Filter::get('action')) {
 				" user_name LIKE CONCAT('%', ?, '%') OR " .
 				" real_name LIKE CONCAT('%', ?, '%') OR " .
 				" email     LIKE CONCAT('%', ?, '%'))";
-			$ARGS=array($sSearch, $sSearch, $sSearch);
+			$ARGS = array($sSearch, $sSearch, $sSearch);
 		} else {
 		}
-		$iDisplayStart =(int)safe_GET('iDisplayStart');
-		$iDisplayLength=(int)safe_GET('iDisplayLength');
+		$iDisplayStart	= (int)safe_GET('iDisplayStart');
+		$iDisplayLength	= (int)safe_GET('iDisplayLength');
 		set_user_setting(KT_USER_ID, 'admin_users_page_size', $iDisplayLength);
 		if ($iDisplayLength>0) {
-			$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+			$LIMIT = " LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 		} else {
-			$LIMIT="";
+			$LIMIT = "";
 		}
-		$iSortingCols=(int)safe_GET('iSortingCols');
+		$iSortingCols = (int)safe_GET('iSortingCols');
 		if ($iSortingCols) {
-			$ORDER_BY=' ORDER BY ';
+			$ORDER_BY = ' ORDER BY ';
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
 				switch (safe_GET('sSortDir_'.$i)) {
 				case 'asc':
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1+(int)safe_GET('iSortCol_'.$i)) . ' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1+(int)safe_GET('iSortCol_'.$i)) . ' DESC ';
 					break;
 				}
-				if ($i<$iSortingCols-1) {
-					$ORDER_BY.=',';
+				if ($i < $iSortingCols - 1) {
+					$ORDER_BY .= ',';
 				}
 			}
 		} else {
@@ -208,8 +208,8 @@ switch (KT_Filter::get('action')) {
 			" LEFT JOIN `##user_setting` us3 ON (u.user_id=us3.user_id AND us3.setting_name='sessiontime')".
 			" LEFT JOIN `##user_setting` us4 ON (u.user_id=us4.user_id AND us4.setting_name='verified')".
 			" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')".
-			$WHERE.
-			$ORDER_BY.
+			$WHERE .
+			$ORDER_BY .
 			$LIMIT;
 
 		// This becomes a JSON list, not array, so need to fetch with numeric keys.
@@ -224,12 +224,12 @@ switch (KT_Filter::get('action')) {
 			$user_id	= $aData[1];
 			$username	= $aData[2];
 
-			$aData[0]='<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><i class="icon-edit"></i></a>';
+			$aData[0] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'. KT_I18N::translate('Edit user').'"><i class="icon-edit"></i></a>';
 			// $aData[1] is the user ID (not displayed)
 			// $aData[2] is the username
-			$aData[2] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[2]) . '</span></a>';
+			$aData[2] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'. KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[2]) . '</span></a>';
 			// $aData[3] is the real name
-			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[3]) . '</span></a>';
+			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'. KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[3]) . '</span></a>';
 			// $aData[4] is the email address
 			if ($user_id != KT_USER_ID) {
 				$url = KT_SERVER_NAME . KT_SCRIPT_PATH . 'admin_users.php';
@@ -269,16 +269,16 @@ switch (KT_Filter::get('action')) {
 		}
 
 		// Total filtered/unfiltered rows
-		$iTotalDisplayRecords=KT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-		$iTotalRecords=KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
+		$iTotalDisplayRecords	= KT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$iTotalRecords			= KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
 		Zend_Session::writeClose();
 		header('Content-type: application/json');
 		echo json_encode(array( // See http://www.datatables.net/usage/server-side
-			'sEcho'               =>(int)safe_GET('sEcho'),
-			'iTotalRecords'       =>$iTotalRecords,
-			'iTotalDisplayRecords'=>$iTotalDisplayRecords,
-			'aaData'              =>$aaData
+			'sEcho'               => (int)safe_GET('sEcho'),
+			'iTotalRecords'       => $iTotalRecords,
+			'iTotalDisplayRecords'=> $iTotalDisplayRecords,
+			'aaData'              => $aaData
 		));
 		exit;
 
@@ -301,7 +301,7 @@ switch (KT_Filter::get('action')) {
 		$controller
 			->pageHeader()
 			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
-			->addExternalJavascript(PASSWORDSCHECK)
+			->addExternalJavascript(KT_PASSWORDSCHECK)
 			->addInlineJavascript('
 				autocomplete();
 				jQuery(".relpath").change(function() {

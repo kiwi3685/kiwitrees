@@ -31,10 +31,10 @@ $controller
 	->setPageTitle(KT_I18N::translate('Pending changes'))
 	->pageHeader();
 
-$action		= safe_GET('action');
-$change_id	= safe_GET('change_id');
-$index		= safe_GET('index');
-$ged		= safe_GET('ged');
+$action		= KT_Filter::get('action');
+$change_id	= KT_Filter::get('change_id');
+$index		= KT_Filter::get('index');
+$ged		= KT_Filter::get('ged');
 
 switch ($action) {
 case 'undo':

@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -65,14 +65,14 @@ if ($action == "download" && $zip == "yes") {
 	$gedout = fopen($gedname, "w");
 	export_gedcom($GEDCOM, $gedout, $exportOptions);
 	fclose($gedout);
-	$comment = "Created by ".KT_KIWITREES." ".KT_VERSION_TEXT." on " . date("r") . ".";
+	$comment = "Created by " . KT_KIWITREES . " " . KT_VERSION_TEXT . " on " . date("r") . ".";
 	$archive = new PclZip($zipfile);
 	$v_list = $archive->create($gedname, PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, $temppath);
 	if ($v_list == 0) echo "Error : " . $archive->errorInfo(true);
 	else {
 		unlink($gedname);
 		if ($removeTempDir) rmdir($temppath);
-		header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH."downloadbackup.php?fname=".$zipname);
+		header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH."downloadbackup.php?fname=" . $zipname);
 		exit;
 	}
 	exit;

@@ -38,13 +38,11 @@ $gid         = KT_Filter::get('gid', KT_REGEX_XREF);
 $update_CHAN = KT_Filter::get('preserve_last_changed');
 
 $paramok =  true;
-if (!empty($linktoid)) $paramok = KT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+if (!empty($linktoid)) {
+	$paramok = KT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+}
 
-//if ($linkto == "manage") {
-	$controller = new KT_Controller_Page();
-//} elseif ($linkto == "person") {
-//	$controller = new KT_Controller_Page();
-//}
+$controller = new KT_Controller_Page();
 
 $controller
 	->requireEditorLogin()

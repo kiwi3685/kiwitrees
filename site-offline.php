@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,8 +31,8 @@ define('KT_ROOT', '');
 define('KT_GED_ID', 0);
 define('KT_USER_ID', 0);
 define('KT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
-$KT_SESSION=new stdClass();
-$KT_SESSION->locale='';
+$KT_SESSION = new stdClass();
+$KT_SESSION->locale = '';
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and KT_XXXXX classes
 set_include_path(KT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
@@ -41,8 +41,8 @@ require 'includes/functions/functions.php';
 require KT_ROOT.'includes/functions/functions_utf-8.php';
 define('KT_LOCALE', KT_I18N::init());
 
-if (file_exists(KT_DATA_DIR.'offline.txt')) {
-	$offline_txt=file_get_contents(KT_DATA_DIR.'offline.txt');
+if (file_exists(KT_DATA_DIR . 'offline.txt')) {
+	$offline_txt = file_get_contents(KT_DATA_DIR . 'offline.txt');
 } else {
 	// offline.txt has gone - we're back online!
 	header('Location: index.php');

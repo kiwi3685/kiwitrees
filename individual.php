@@ -216,7 +216,7 @@ if ($controller->record->canDisplayDetails()) {
 	//Display name details
 	foreach ($globalfacts as $key=>$value) {
 		$fact = $value->getTag();
-		if ($fact=="NAME") $controller->print_name_record($value);
+		if ($fact == "NAME") $controller->print_name_record($value);
 	}
 	//Display relationship to default individual
 	if (

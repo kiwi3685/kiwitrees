@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ set_include_path(KT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('KT_');
 require 'includes/functions/functions.php';
-require KT_ROOT.'includes/functions/functions_utf-8.php';
+require KT_ROOT . 'includes/functions/functions_utf-8.php';
 define('KT_LOCALE', KT_I18N::init());
 
 header('Content-Type: text/html; charset=UTF-8');

@@ -679,7 +679,7 @@ function get_REPO_rows($term) {
 			" FROM `##other`".
 			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
 			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='REPO'".
-			" ORDER BY n_full COLLATE '".KT_I18N::$collation."'"
+			" ORDER BY n_full COLLATE '" . KT_I18N::$collation . "'"
 		)
 		->execute(array($term, KT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);

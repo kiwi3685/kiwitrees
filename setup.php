@@ -265,7 +265,7 @@ try {
 	if (version_compare($row->value, KT_REQUIRED_MYSQL_VERSION, '<')) {
 		echo '<p class="bad">', KT_I18N::translate('This database is only running MySQL version %s.  You cannot install Kiwitrees here.', $row->value), '</p>';
 	} else {
-		$db_version_ok=true;
+		$db_version_ok = true;
 	}
 } catch (PDOException $ex) {
 	KT_DB::disconnect();

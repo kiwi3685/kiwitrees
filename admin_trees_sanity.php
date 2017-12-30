@@ -524,7 +524,7 @@ function invalid_tag($tag) {
 }
 
 function duplicate_tag($tag) {
-	$html	= '<ul>';
+	$html	= '';
 	$count	= 0;
 	$start	= microtime(true);
 	switch ($tag) {

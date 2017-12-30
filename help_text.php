@@ -26,14 +26,14 @@ require './includes/session.php';
 
 $controller = new KT_Controller_Ajax();
 global $KT_IMAGES;
-$help=safe_GET('help');
+$help = KT_Filter::get('help');
 switch ($help) {
 	//////////////////////////////////////////////////////////////////////////////
-	// This is a list of all known gedcom tags.  We list them all here so that
+	// This is a list of all known gedcom tags. We list them all here so that
 	// xgettext() may find them.
 	//
 	// Tags such as BIRT:PLAC are only used as labels, and do not require help
-	// text.  These are only used for translating labels.
+	// text. These are only used for translating labels.
 	//
 	// Tags such as _BIRT_CHIL are pseudo-tags, used to create family events.
 	//
@@ -301,7 +301,7 @@ case 'OBJE':
 	$title = KT_Gedcom_Tag::getLabel('OBJE');
 	$text =
 		'<p>'.
-		KT_I18N::translate('A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).').
+		KT_I18N::translate('A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).').
 		'</p>';
 	break;
 
@@ -398,7 +398,7 @@ case 'GEDCOM_MEDIA_PATH':
 	$text =
 		'<p>'.
 		// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
-		KT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
+		KT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow kiwitrees to find the file, the first part of the path must be removed.').
 		'</p><p>'.
 		// I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
 		KT_I18N::translate('For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="filename">/home/fab/documents/family/photo.jpeg</span>', '<span class="filename">family/photo.jpeg</span>', '<span class="filename">/home/fab/documents/</span>').
@@ -489,7 +489,7 @@ case 'edit_merge':
 
 case 'edit_SOUR_EVEN':
 	$title = KT_I18N::translate('Associate events with this source');
-	$text = KT_I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, "Oneida, Idaho, USA" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. "Idaho, USA" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
+	$text = KT_I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, "Oneida, Idaho, USA" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. "Idaho, USA" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
 	break;
 
 case 'edituser_contact_meth_short':
@@ -577,53 +577,45 @@ case 'password_confirm':
 	$text = KT_I18N::translate('Type your password again, to make sure you have typed it correctly.');
 	break;
 
-case 'PGV_WIZARD':
-	$title = KT_I18N::translate('PhpGedView to kiwitrees transfer wizard');
-	$text =KT_I18N::translate('The PGV to kiwitrees wizard is an automated process to assist administrators make the move from a PGV installation to a new kiwitrees one. It will transfer all PGV GEDCOM and other database information directly to your new kiwitrees database. The following requirements are necessary:');
-	$text .= '<ul><li>';
-	$text .= KT_I18N::translate('kiwitrees database must be on the same server as PGV\'s');
-	$text .= '</li><li>';
-	$text .= KT_I18N::translate('PGV must be version 4.2.3, or any SVN up to #6973');
-	$text .= '</li><li>';
-	$text .= KT_I18N::translate('All changes in PGV must be accepted');
-	$text .= '</li><li>';
-	$text .= KT_I18N::translate('You must export your latest GEDCOM data');
-	$text .= '</li><li>';
-	$text .= KT_I18N::translate('The current kiwitrees admin username must be the same as an existing PGV admin username');
-	$text .= '</li><li>';
-	$text .= KT_I18N::translate('All existing PGV users must have distinct email addresses');
-	$text .= '</li></ul><p>';
-	$text .= KT_I18N::translate('<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.');
-	$text .= '</p>';
+case 'password01':
+	$title	= '';
+	$text	= KT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.');
+	break;
+
+case 'password_confirm':
+	$title	= '';
+	$text	= KT_I18N::translate('Type your password again, to make sure you have typed it correctly.');
+	break;
+
+case 'password_lost':
+	$title	= '';
+	$text	= KT_I18N::translate('To reset your password, submit your username or email address here. If we can find you in the database an email will be sent to your email address, with instructions how to get access again.');
 	break;
 
 case 'phpinfo':
-	$title = KT_I18N::translate('PHP information');
-	$text = KT_I18N::translate('This page provides extensive information about the server on which kiwitrees is being hosted.  Many configuration details about the server\'s software, as it relates to PHP and kiwitrees, can be viewed.');
+	$title	= KT_I18N::translate('PHP information');
+	$text	= KT_I18N::translate('This page provides extensive information about the server on which kiwitrees is being hosted. Many configuration details about the server\'s software, as it relates to PHP and kiwitrees, can be viewed.');
 	break;
 
 case 'pending_changes':
-	$title = KT_I18N::translate('Pending changes');
-	$text =
-		'<p>'.
-		KT_I18N::translate('When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted.').
-		'</p><p>'.
-		KT_I18N::translate('This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc.').
-		'</p><p>'.
-		KT_I18N::translate('Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results.').
-		'</p>';
+	$title	= KT_I18N::translate('Pending changes');
+	$text	=
+		'<p>' .
+		KT_I18N::translate('When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted.') .
+		'<br>' .
+		KT_I18N::translate('This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc.') .
+		'</br>' .
+		KT_I18N::translate('Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results.') .
+		'</br>';
 	if (KT_USER_IS_ADMIN) {
-		$text.=
-			'<p>'.
-			KT_I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.').
-			'</p>';
+		$text .= KT_I18N::translate('Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account.');
 	}
-
+	$text .= '</p>';
 	break;
 
 case 'ppp_view_records':
-	$title = KT_I18N::translate('View all records');
-	$text = KT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
+	$title	= KT_I18N::translate('View all records');
+	$text	= KT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place. When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
 	break;
 
 case 'real_name':
@@ -773,9 +765,9 @@ default:
 	$title = KT_I18N::translate('Help');
 	$text = KT_I18N::translate('The help text has not been written for this item.');
 	// If we've been called from a module, allow the module to provide the help text
-	$mod=safe_GET('mod', '[A-Za-z0-9_]+');
-	if (file_exists(KT_ROOT.KT_MODULES_DIR.$mod.'/help_text.php')) {
-		require KT_ROOT.KT_MODULES_DIR.$mod.'/help_text.php';
+	$mod	=safe_GET('mod', '[A-Za-z0-9_]+');
+	if (file_exists(KT_ROOT . KT_MODULES_DIR . $mod . '/help_text.php')) {
+		require KT_ROOT . KT_MODULES_DIR . $mod . '/help_text.php';
 	}
 	break;
 }

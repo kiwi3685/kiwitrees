@@ -499,7 +499,7 @@ if ($type == "facts") {
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', KT_I18N::translate('save'), '</button></td>
+		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', KT_I18N::translate('Save'), '</button></td>
 	<tr></tbody></table>
 	</td></tr></table>
 	</form></div>';
@@ -612,9 +612,9 @@ if ($action == "filter") {
 	if ($type == "place") {
 		echo '<div id="find-output">';
 		if (!$filter || $all) {
-			$places=KT_Place::allPlaces(KT_GED_ID);
+			$places = KT_Place::allPlaces(KT_GED_ID);
 		} else {
-			$places=KT_Place::findPlaces($filter, KT_GED_ID);
+			$places = KT_Place::findPlaces($filter, KT_GED_ID);
 		}
 		if ($places) {
 			echo '<ul>';

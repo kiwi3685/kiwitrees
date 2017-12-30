@@ -39,14 +39,14 @@ if ($user_id) {
 if (
 	$gedcom_id < 0 && !KT_USER_IS_ADMIN ||
 	$gedcom_id > 0 && !userGedcomAdmin(KT_USER_ID, $gedcom_id) ||
-	$user_id && KT_USER_ID!= $user_id && !KT_USER_IS_ADMIN
+	$user_id && KT_USER_ID != $user_id && !KT_USER_IS_ADMIN
 ) {
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.location.reload();');
 	exit;
 }
 
-$action = safe_GET('action');
+$action = KT_Filter::get('action');
 
 if (isset($_REQUEST['main'])) {
 	$main = $_REQUEST['main'];
@@ -75,7 +75,7 @@ if($TEXT_DIRECTION == 'ltr') {
 }
 
 $all_blocks = array();
-foreach (KT_Module::getActiveBlocks() as $name=>$block) {
+foreach (KT_Module::getActiveBlocks() as $name => $block) {
 	if ($user_id || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name] = $block;
 	}
@@ -240,7 +240,7 @@ $controller
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "' . KT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
+		'block_descr["advice1"] = "' . KT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
 
 ?>

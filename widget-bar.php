@@ -44,7 +44,7 @@ $widgets = KT_Module::getActiveWidgets();
 
 echo '<div id="widget-bar">';
 	foreach ($widgets as $module_name=>$module) {
-		$class_name = $module_name.'_KT_Module';
+		$class_name = $module_name . '_KT_Module';
 		$module = new $class_name;
 		$widget = KT_DB::prepare(
 			"SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?"

@@ -74,7 +74,7 @@ switch (safe_POST('action')) {
 	case 'delete-repository':
 	case 'delete-source':
 		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record=KT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+		$record = KT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 		if ($record && KT_USER_CAN_EDIT && $record->canDisplayDetails() && $record->canEdit()) {
 			// Delete links to this record
 			foreach (fetch_all_links($record->getXref(), $record->getGedId()) as $xref) {

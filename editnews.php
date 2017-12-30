@@ -30,13 +30,13 @@ $controller
 	->requireMemberLogin()
 	->pageHeader();
 
-$action   =safe_GET('action', array('compose', 'save', 'delete'), 'compose');
-$news_id  =safe_GET('news_id');
-$user_id  =safe_REQUEST($_REQUEST, 'user_id');
-$gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
-$date     =safe_POST('date', KT_REGEX_INTEGER, KT_TIMESTAMP);
-$title    =safe_POST('title', KT_REGEX_UNSAFE);
-$text     =safe_POST('text', KT_REGEX_UNSAFE);
+$action    = safe_GET('action', array('compose', 'save', 'delete'), 'compose');
+$news_id   = safe_GET('news_id');
+$user_id   = safe_REQUEST($_REQUEST, 'user_id');
+$gedcom_id = safe_REQUEST($_REQUEST, 'gedcom_id');
+$date      = safe_POST('date', KT_REGEX_INTEGER, KT_TIMESTAMP);
+$title     = safe_POST('title', KT_REGEX_UNSAFE);
+$text      = safe_POST('text', KT_REGEX_UNSAFE);
 
 switch ($action) {
 case 'compose':

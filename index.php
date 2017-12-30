@@ -27,7 +27,6 @@ require './includes/session.php';
 // The only option for action is "ajax"
 $action = safe_REQUEST($_REQUEST, 'action', 'ajax');
 
-$ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), KT_USER_ID ? 'user' : 'gedcom');
 
 //-- get the blocks list
 $blocks = get_gedcom_blocks(KT_GED_ID);
@@ -40,7 +39,7 @@ if ($action == 'ajax') {
 	$controller->pageHeader();
 
 	// Check we're displaying an allowable block.
-	$block_id = safe_GET('block_id');
+	$block_id = KT_Filter::get('block_id');
 	if (array_key_exists($block_id, $blocks['main'])) {
 		$module_name = $blocks['main'][$block_id];
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
@@ -61,9 +60,9 @@ if ($action == 'ajax') {
 
 $controller = new KT_Controller_Page();
 $controller
-	->setPageTitle(KT_I18N::translate('Home'))
+	->setPageTitle(KT_TREE_TITLE)
 	->setMetaRobots('index,follow')
-	->setCanonicalUrl(KT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . KT_GEDCOM)
+	->setCanonicalUrl(KT_SCRIPT_NAME . '?ged=' . KT_GEDCOM)
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');

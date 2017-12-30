@@ -659,7 +659,7 @@ $controller
 									</td>
 								</tr>
 								<?php
-								$rows=KT_DB::prepare(
+								$rows = KT_DB::prepare(
 									"SELECT default_resn_id, tag_type, xref, resn".
 									" FROM `##default_resn`".
 									" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)".
@@ -673,7 +673,7 @@ $controller
 											<?php
 											$n++;
 											if ($row->xref) {
-												$record=KT_GedcomRecord::getInstance($row->xref);
+												$record = GedcomRecord::getInstance($row->xref);
 												if ($record) {
 													echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 												} else {
@@ -949,7 +949,7 @@ $controller
 											if (strstr($SHOW_RELATIVES_EVENTS, $col)) {
 												echo " checked=\"checked\"";
 											}
-											echo " onchange=\"var old=document.configform.NEW_SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.NEW_SHOW_RELATIVES_EVENTS.value=old\"> ";
+											echo " onchange=\"var old=document.configform.NEW_SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/" . $col . "/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.NEW_SHOW_RELATIVES_EVENTS.value=old\"> ";
 											echo KT_Gedcom_Tag::getLabel($col);
 										}
 										echo '</td>';

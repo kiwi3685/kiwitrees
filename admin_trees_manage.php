@@ -23,7 +23,7 @@
 
 define('KT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
-require KT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new KT_Controller_Page();
 $controller
@@ -90,7 +90,7 @@ case 'delete':
 	if (KT_Filter::checkCsrf() && $gedcom_id) {
 		KT_Tree::delete($gedcom_id);
 	}
-	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
 	break;
 case 'setdefault':
 	if (KT_Filter::checkCsrf()) {
@@ -114,22 +114,22 @@ case 'replace_upload':
 			}
 		}
 	}
-	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . KT_Filter::postBool('keep_media' . $gedcom_id));
 	exit;
 case 'replace_import':
-	$gedcom_id = KT_Filter::postInteger('gedcom_id');
+	$gedcom_id			= KT_Filter::postInteger('gedcom_id');
 	$keep_media         = KT_Filter::post('keep_media', '1', '0');
 	$GEDCOM_MEDIA_PATH  = KT_Filter::post('GEDCOM_MEDIA_PATH');
 	$WORD_WRAPPED_NOTES = KT_Filter::post('WORD_WRAPPED_NOTES', '1', '0');
 	// Make sure the gedcom still exists
 	if (KT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
 		$ged_name = basename(KT_Filter::post('ged_name'));
-		import_gedcom_file($gedcom_id, KT_DATA_DIR.$ged_name, $ged_name);
+		import_gedcom_file($gedcom_id, KT_DATA_DIR . $ged_name, $ged_name);
 		set_gedcom_setting(KT_GED_ID, 'GEDCOM_MEDIA_PATH', KT_Filter::post('GEDCOM_MEDIA_PATH'));
 		set_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES', KT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
 
 	}
-	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . KT_Filter::postBool('keep_media' . $gedcom_id));
 	exit;
 }
 
@@ -138,7 +138,7 @@ $controller->pageHeader();
 // Process GET actions
 switch (KT_Filter::get('action')) {
 case 'importform':
-	$gedcom_id	 = safe_GET('gedcom_id');
+	$gedcom_id	 = KT_Filter::GET('gedcom_id');
 	$gedcom_name = get_gedcom_from_id($gedcom_id);
 	// Check it exists
 	if (!$gedcom_name) {
@@ -187,12 +187,12 @@ case 'importform':
 						<span class="input_addon">' . KT_DATA_DIR;
 							$d = opendir(KT_DATA_DIR);
 							$files = array();
-							while (($f=readdir($d))!==false) {
-								if (!is_dir(KT_DATA_DIR.$f) && is_readable(KT_DATA_DIR.$f)) {
-									$fp = fopen(KT_DATA_DIR.$f, 'rb');
-									$header = fread($fp, 64);
+							while (($f = readdir($d)) !== false) {
+								if (!is_dir(KT_DATA_DIR . $f) && is_readable(KT_DATA_DIR.$f)) {
+									$fp		= fopen(KT_DATA_DIR . $f, 'rb');
+									$header	= fread($fp, 64);
 									fclose($fp);
-									if (preg_match('/^('.KT_UTF8_BOM.')?0 *HEAD/', $header)) {
+									if (preg_match('/^(' . KT_UTF8_BOM . ')?0 *HEAD/', $header)) {
 										$files[] = $f;
 									}
 								}
@@ -258,7 +258,7 @@ case 'importform':
 }
 
 echo '
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('View FAQ for this page.') . '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('View FAQ for this page.') . '">' . KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 	<h2>' . $controller->getPageTitle() . '</h2>
 	';
 
@@ -270,7 +270,7 @@ foreach (KT_Tree::GetAll() as $tree) {
 				<tr>
 					<th>' . KT_I18N::translate('Family tree') . '</th>
 					<th>
-						<a class="accepted" href="index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url . '" dir="auto">' . $tree->tree_title_html . '</a>
+						<a class="accepted" href="index.php?ged=' . $tree->tree_name_url . '" dir="auto">' . $tree->tree_title_html . '</a>
 						<a href="admin_trees_config.php?ged=' . $tree->tree_name_html . '"><i class="fa fa-cog"></i></a>
 					</th>
 				</tr>
@@ -294,38 +294,38 @@ foreach (KT_Tree::GetAll() as $tree) {
 								echo '<div id="import' . $tree->tree_id . '"></div>';
 							}
 							$controller->addInlineJavascript(
-								'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id='.$tree->tree_id.'&keep_media'.$tree->tree_id.'='.safe_GET('keep_media'.$tree->tree_id).'");'
+								'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id=' . $tree->tree_id . '&keep_media' . $tree->tree_id . '='.safe_GET('keep_media' . $tree->tree_id) . '");'
 							);
 							echo '<table border="0" width="100%" id="actions' . $tree->tree_id . '" style="display:none">';
 						} else {
 							echo '<table border="0" width="100%" id="actions' . $tree->tree_id . '">';
 						}
-							echo '<tr align="center">',
+							echo '<tr align="center">' .
 								// import
 								'<td>
-									<a href="' . KT_SCRIPT_NAME . '?action=importform&amp;gedcom_id=' . $tree->tree_id . '">',
+									<a href="' . KT_SCRIPT_NAME . '?action=importform&amp;gedcom_id=' . $tree->tree_id . '">' .
 										KT_I18N::translate('Import a GEDCOM file') . '
 										<i class="fa fa-upload"></i>
 									</a>
-								</td>',
+								</td>' .
 								// download
 								'<td>
-									<a href="admin_trees_download.php?ged=' . $tree->tree_name_url,'">',
+									<a href="admin_trees_download.php?ged=' . $tree->tree_name_url .'">' .
 										KT_I18N::translate('Export a GEDCOM file') . '
 										<i class="fa fa-download"></i>
 									</a>
-								</td>',
+								</td>' .
 								// delete
 								'<td>
-									<a href="#" onclick="if (confirm(\'' . KT_Filter::escapeJs(KT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)) . '\')) document.delete_form' . $tree->tree_id . '.submit(); return false;">',
+									<a href="#" onclick="if (confirm(\''. KT_Filter::escapeJs(KT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)) .'\')) document.delete_form' . $tree->tree_id . '.submit(); return false;">' .
 										KT_I18N::translate('Delete this family tree') . '
 										<i class="fa fa-trash"></i>
 									</a>
-									<form name="delete_form' . $tree->tree_id ,'" method="post" action="' . KT_SCRIPT_NAME . '">
+									<form name="delete_form' . $tree->tree_id  .'" method="post" action="' . KT_SCRIPT_NAME  .'">
 										<input type="hidden" name="action" value="delete">
-										<input type="hidden" name="gedcom_id" value="' . $tree->tree_id . '">',
+										<input type="hidden" name="gedcom_id" value="' . $tree->tree_id . '">' .
 										KT_Filter::getCsrf() . '
-									</form>',
+									</form>' .
 								'</td>
 							</tr>
 						</table>
