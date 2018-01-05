@@ -66,35 +66,35 @@ function print_pedigree_person($person, $style = 1, $count = 0, $personcount = "
 		echo '</div>';
 		return false;
 	}
-	$pid=$person->getXref();
-		if ($count == 0) {
-			$count = rand();
-		}
+	$pid = $person->getXref();
+	if ($count == 0) {
+		$count = rand();
+	}
 	$lbwidth = $bwidth*.75;
 
-		$lbwidth = $bwidth * .75;
-		if ($lbwidth < 150) {
-			$lbwidth = 150;
-		}
+	$lbwidth = $bwidth * .75;
+	if ($lbwidth < 150) {
+		$lbwidth = 150;
+	}
 
-		$tmp			= array('M'=>'M', 'F'=>'F', 'U'=>'U');
-		$isF			= $tmp[$person->getSex()];
-		$icons			= '';
-		$classfacts		= '';
-		$genderImage	= '';
-		$BirthDeath		= '';
-		$birthplace		= '';
-		$outBoxAdd		= '';
-		$showid			= '';
-		$iconsStyleAdd	= 'float:right;';
-		if ($TEXT_DIRECTION == 'rtl') {
-			$iconsStyleAdd = 'float:left;';
-		}
+	$tmp			= array('M'=>'M', 'F'=>'F', 'U'=>'U');
+	$isF			= $tmp[$person->getSex()];
+	$icons			= '';
+	$classfacts		= '';
+	$genderImage	= '';
+	$BirthDeath		= '';
+	$birthplace		= '';
+	$outBoxAdd		= '';
+	$showid			= '';
+	$iconsStyleAdd	= 'float:right;';
+	if ($TEXT_DIRECTION == 'rtl') {
+		$iconsStyleAdd = 'float:left;';
+	}
 
-		$disp			= $person->canDisplayDetails();
-		$uniqueID		= (int)(microtime(true) * 1000000);
-		$boxID			= $pid . '.' . $personcount . '.' . $count . '.' . $uniqueID;
-		$mouseAction4	= ' onclick="expandbox(\'' . $boxID . '\'' . $style . '); return false;"';
+	$disp			= $person->canDisplayDetails();
+	$uniqueID		= (int)(microtime(true) * 1000000);
+	$boxID			= $pid . '.' . $personcount . '.' . $count . '.' . $uniqueID;
+	$mouseAction4	= ' onclick="expandbox(\'' . $boxID . '\'' . $style . '); return false;"';
 	if ($person->canDisplayName()) {
 		if (empty($SEARCH_SPIDER)) {
 			$personlinks = getPersonLinks($person);
@@ -135,96 +135,96 @@ function print_pedigree_person($person, $style = 1, $count = 0, $personcount = "
 			$outBoxAdd .= "class=\"person_box$isF person_box_template style0\"";
 		}
 	}
-		//-- find the name
-		$name		= $person->getFullName();
-		$shortname	= $person->getShortName();
+	//-- find the name
+	$name		= $person->getFullName();
+	$shortname	= $person->getShortName();
 
-		if ($SHOW_HIGHLIGHT_IMAGES) {
-			$thumbnail = $person->displayImage();
-		} else {
-			$thumbnail = '';
-		}
+	if ($SHOW_HIGHLIGHT_IMAGES) {
+		$thumbnail = $person->displayImage();
+	} else {
+		$thumbnail = '';
+	}
 
-		//-- find additional name, e.g. Hebrew
-		$addname = $person->getAddName();
+	//-- find additional name, e.g. Hebrew
+	$addname = $person->getAddName();
 
-		// add optional CSS style for each fact
-		$indirec	= $person->getGedcomRecord();
-		$cssfacts	= array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
-		"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
-		foreach ($cssfacts as $indexval => $fact) {
-			if (strpos($indirec, "1 $fact") !== false) $classfacts .= " $fact";
-		}
+	// add optional CSS style for each fact
+	$indirec	= $person->getGedcomRecord();
+	$cssfacts	= array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
+	"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
+	foreach ($cssfacts as $indexval => $fact) {
+		if (strpos($indirec, "1 $fact") !== false) $classfacts .= " $fact";
+	}
 
-		if ($PEDIGREE_SHOW_GENDER && $show_full) {
-			$genderImage = " " . $person->getSexImage('small', "box-$boxID-gender");
-		}
+	if ($PEDIGREE_SHOW_GENDER && $show_full) {
+		$genderImage = " " . $person->getSexImage('small', "box-$boxID-gender");
+	}
 
-		// Here for alternate name2
-		if ($addname) {
-			$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name1\"> ".$addname."</span>";
-		}
+	// Here for alternate name2
+	if ($addname) {
+		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name1\"> ".$addname."</span>";
+	}
 
-		if ($SHOW_LDS_AT_GLANCE && $show_full) {
-			$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
-		}
+	if ($SHOW_LDS_AT_GLANCE && $show_full) {
+		$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
+	}
 
-		// Show BIRT or equivalent event
-		$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
-		if ($show_full) {
-			foreach (explode('|', KT_EVENTS_BIRT) as $birttag) {
-				if (!in_array($birttag, $opt_tags)) {
-					$event = $person->getFactByType($birttag);
-					if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
-						$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
-						break;
-					}
-				}
-			}
-		}
-			// Show optional events (before death)
-			foreach ($opt_tags as $key=>$tag) {
-				if (!preg_match('/^('.KT_EVENTS_DEAT.')$/', $tag)) {
-					$event = $person->getFactByType($tag);
-					if (!is_null($event) && $event->canShow()) {
-						$BirthDeath .= '<p>' . $event->print_simple_fact(true, true);
-						unset ($opt_tags[$key]);
-					}
-				}
-			}
-		// Show DEAT or equivalent event
-		if ($show_full) {
-			foreach (explode('|', KT_EVENTS_DEAT) as $deattag) {
-				$event = $person->getFactByType($deattag);
-				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getDetail()=='Y') && $event->canShow()) {
-					$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
-					if (in_array($deattag, $opt_tags)) {
-						unset ($opt_tags[array_search($deattag, $opt_tags)]);
-					}
-					break;
-				}
-			}
-		}
-		// Show remaining optional events (after death)
-		foreach ($opt_tags as $tag) {
-			$event = $person->getFactByType($tag);
-			if (!is_null($event) && $event->canShow()) {
-				$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
-			}
-		}
-		// Find the short birth place for compact chart
-		$opt_tags = preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
+	// Show BIRT or equivalent event
+	$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
+	if ($show_full) {
 		foreach (explode('|', KT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFactByType($birttag);
 				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
-					$tmp = new KT_Place($event->getPlace(), KT_GED_ID);
-					$birthplace .= $tmp->getShortName();
+					$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
 					break;
 				}
 			}
 		}
 	}
+	// Show optional events (before death)
+	foreach ($opt_tags as $key=>$tag) {
+		if (!preg_match('/^('.KT_EVENTS_DEAT.')$/', $tag)) {
+			$event = $person->getFactByType($tag);
+			if (!is_null($event) && $event->canShow()) {
+				$BirthDeath .= '<p>' . $event->print_simple_fact(true, true);
+				unset ($opt_tags[$key]);
+			}
+		}
+	}
+	// Show DEAT or equivalent event
+	if ($show_full) {
+		foreach (explode('|', KT_EVENTS_DEAT) as $deattag) {
+			$event = $person->getFactByType($deattag);
+			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getDetail()=='Y') && $event->canShow()) {
+				$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
+				if (in_array($deattag, $opt_tags)) {
+					unset ($opt_tags[array_search($deattag, $opt_tags)]);
+				}
+				break;
+			}
+		}
+	}
+	// Show remaining optional events (after death)
+	foreach ($opt_tags as $tag) {
+		$event = $person->getFactByType($tag);
+		if (!is_null($event) && $event->canShow()) {
+			$BirthDeath .= '<p>' . $event->print_simple_fact(true, true) . '</p>';
+		}
+	}
+	// Find the short birth place for compact chart
+	$opt_tags = preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
+	foreach (explode('|', KT_EVENTS_BIRT) as $birttag) {
+		if (!in_array($birttag, $opt_tags)) {
+			$event = $person->getFactByType($birttag);
+			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
+				$tmp = new KT_Place($event->getPlace(), KT_GED_ID);
+				$birthplace .= $tmp->getShortName();
+				break;
+			}
+		}
+	}
+
 	// Output to template
 	if ($style == 3) {
 	   require KT_THEME_DIR . 'templates/verticalbox_template.php';
