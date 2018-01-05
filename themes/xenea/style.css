@@ -925,7 +925,7 @@ a.showit:hover > span { display:block; position:absolute; top:22px; left:0; widt
 
 .wrap {
 	white-space: normal;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 ul.clist { list-style-image:none; margin:0;}

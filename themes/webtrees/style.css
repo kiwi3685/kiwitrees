@@ -496,7 +496,7 @@ a.showit:hover > span {display:block;position:absolute;top:22px;left:0;width:225
 .nowrap {white-space:nowrap;}
 .wrap {
 	white-space: normal;
-	word-break: break-all;
+	word-break: break-word;
 }
 ul.clist {list-style-image:none;text-decoration:none;margin:0;}
 

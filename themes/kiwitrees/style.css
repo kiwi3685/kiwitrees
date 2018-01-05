@@ -1975,7 +1975,7 @@ ul.ui-autocomplete li a:hover {
 
 .wrap {
 	white-space: normal;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 ul.clist {
@@ -3303,7 +3303,7 @@ div[id^="caldiv"] td {
     font-size: 90%;
     font-style: italic;
     margin: 10px 2px;
-    word-break: keep-all;
+    word-break: keep-word;
 }
 
 .media-display-image {

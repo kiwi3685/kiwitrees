@@ -702,7 +702,7 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .statistics-page {text-align:center;}
 .wrap {
 	white-space: normal;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 #pending h2 {margin-bottom:20px;text-align:center;}

@@ -466,7 +466,7 @@ ul.server_stats li {
 	background-color: #ddd;
 	max-width: 300px;
 	overflow-x: auto;
-	word-break: break-all;
+	word-break: break-word;
 }
 .php-info .v i {
 	color: #999;
