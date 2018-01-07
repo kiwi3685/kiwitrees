@@ -59,7 +59,7 @@ define('KT_MODERNIZR_URL',			KT_STATIC_URL . 'js/modernizr.custom.js');		    // 
 define('KT_JQUERY_AUTOSIZE',		KT_STATIC_URL . 'js/jquery.autosize.min.js');	    // 1.18.18	Updated 18-06-2015
 define('KT_JQUERYUI_TOUCH_PUNCH',	KT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 define('KT_JQUERY_SHORTEN',			KT_STATIC_URL . 'js/jquery.shorten.js');
-define('PASSWORDSCHECK',			KT_STATIC_URL . 'js/passwordscheck.js');			// Installed 09-11-2016
+define('KT_PASSWORDSCHECK',			KT_STATIC_URL . 'js/passwordscheck.js');			// Installed 09-11-2016
 define('KT_D3_JS',					KT_STATIC_URL . 'js/d3.min.js');					// 3.5.17 Installed 02-02-2017 - https://github.com/d3/d3/releases
 
 // Loation of our own javascript libraries
