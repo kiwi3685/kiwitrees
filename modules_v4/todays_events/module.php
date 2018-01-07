@@ -65,7 +65,7 @@ class todays_events_KT_Module extends KT_Module implements KT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && KT_USER_GEDCOM_ADMIN || $ctype=='user' && KT_USER_ID) {
+		if (KT_USER_GEDCOM_ADMIN) {
 			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
