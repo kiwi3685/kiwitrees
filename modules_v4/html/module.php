@@ -102,7 +102,7 @@ class html_KT_Module extends KT_Module implements KT_Module_Block {
 		$content = $html;
 
 		if (get_block_setting($block_id, 'show_timestamp', false)) {
-			$content .= '<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', KT_TIMESTAMP));
+			$content .= '<p class="timestamp">' . format_timestamp(get_block_setting($block_id, 'timestamp', KT_TIMESTAMP)) . '</p>';
 		}
 
 		if ($template) {
