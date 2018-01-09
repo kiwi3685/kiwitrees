@@ -69,7 +69,7 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 					};
 					function reload_image() {
 						if (play) {
-							jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype .'&action=ajax&block_id=' . $block_id . '&start=1");
+							jQuery("#block_' . $block_id . '").load("index.php?&action=ajax&block_id=' . $block_id . '&start=1");
 						}
 					};
 				</script>

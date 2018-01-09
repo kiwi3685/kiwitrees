@@ -253,8 +253,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 	 */
 	private function getHTML($person, $showUnknown = false) {
 		if ($person instanceof KT_Person) {
-			return '
-				<div class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</div>';
+			return '<div class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</div>';
 		} elseif ($showUnknown) {
 			return '<div class="flyout4">(' . KT_I18N::translate('unknown') . ')</div>';
 		} else {
@@ -357,7 +356,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 					$persons = true;
 					$spouselinks .= '
 						<ul class="clist">
-							<li class="flyout3" data-href="' . $child->getHtmlUrl() . '">' . $child->getFullName() . '</li>						</li>
+							<li class="flyout3" data-href="' . $child->getHtmlUrl() . '">' . $child->getFullName() . '</li>
 						</ul>';
 				}
 			}

@@ -126,7 +126,7 @@ class sitemap_KT_Module extends KT_Module implements KT_Module_Config {
 		if ($timestamp > KT_TIMESTAMP - self::CACHE_LIFE && !KT_USER_ID) {
 			$data = get_module_setting($this->getName(), 'sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
-			$data = '<url><loc>' . KT_SERVER_NAME . KT_SCRIPT_PATH . 'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url . '</loc></url>' . PHP_EOL;
+			$data = '<url><loc>' . KT_SERVER_NAME . KT_SCRIPT_PATH . 'index.php?ged=' . $tree->tree_name_url . '</loc></url>' . PHP_EOL;
 			$records = array();
 			switch ($rec_type) {
 			case 'i':

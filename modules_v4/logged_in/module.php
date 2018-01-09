@@ -50,7 +50,7 @@ class logged_in_KT_Module extends KT_Module implements KT_Module_Block {
 		$content = '<div>' . whoisonline() . '</div>';
 
 		if ($template) {
-			require KT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR . 'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}

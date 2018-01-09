@@ -134,9 +134,9 @@ class review_changes_KT_Module extends KT_Module implements KT_Module_Block {
 
 				if ($template) {
 					if ($block) {
-						require KT_THEME_DIR.'templates/block_small_temp.php';
+						require KT_THEME_DIR . 'templates/block_small_temp.php';
 					} else {
-						require KT_THEME_DIR.'templates/block_main_temp.php';
+						require KT_THEME_DIR . 'templates/block_main_temp.php';
 					}
 				} else {
 					return $content;

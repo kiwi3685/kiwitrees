@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,15 +60,23 @@ class list_families_KT_Module extends KT_Module implements KT_Module_List {
 		if ($SEARCH_SPIDER) {
 			return null;
 		}
-		$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
-		$menus = array();
-		$menu  = new KT_Menu(
-			$this->getTitle(),
-			'famlist.php' . $surname_url,
-			'menu-list-fam'
-		);
-		$menus[] = $menu;
-		return $menus;
+		// Do not show empty lists
+		$row = KT_DB::prepare(
+			"SELECT SQL_CACHE EXISTS(SELECT 1 FROM `##families` WHERE f_file=?)"
+		)->execute(array(KT_GED_ID))->fetchOneRow();
+		if ($row) {
+			$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
+			$menus = array();
+			$menu  = new KT_Menu(
+				$this->getTitle(),
+				'famlist.php' . $surname_url,
+				'menu-list-fam'
+			);
+			$menus[] = $menu;
+			return $menus;
+		} else {
+			return false;
+		}
 	}
 
 }

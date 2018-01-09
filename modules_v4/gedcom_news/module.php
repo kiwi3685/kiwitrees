@@ -134,7 +134,7 @@ class gedcom_news_KT_Module extends KT_Module implements KT_Module_Block {
 		}
 
 		if ($template) {
-			require KT_THEME_DIR.'templates/block_main_temp.php';
+			require KT_THEME_DIR . 'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
