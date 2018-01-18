@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,6 +40,7 @@ class widget_review_changes_KT_Module extends KT_Module implements KT_Module_Wid
 	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template = true, $cfg = null) {
 		global $KIWITREES_EMAIL;
+		require_once KT_ROOT . 'includes/functions/functions_mail.php';
 
 		$changes = KT_DB::prepare(
 			"SELECT 1".
@@ -77,27 +78,27 @@ class widget_review_changes_KT_Module extends KT_Module implements KT_Module_Wid
 					}
 					foreach ($users_with_changes as $user_id=>$user_name) {
 						//-- send message
-						$message = array();
-						$message["to"]=$user_name;
-						$message["from"] = $KIWITREES_EMAIL;
-						$message["subject"] = KT_I18N::translate('kiwitrees - Review changes');
-						$message["body"] = KT_I18N::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes.');
-						$message["method"] = get_user_setting($user_id, 'contactmethod');
-						$message["url"] = KT_SERVER_NAME.KT_SCRIPT_PATH;
+						$message			= array();
+						$message["to"]		= $user_name;
+						$message["from"]	= $KIWITREES_EMAIL;
+						$message["subject"]	= KT_I18N::translate('kiwitrees - Review changes');
+						$message["body"]	= KT_I18N::translate('Online changes have been made to a genealogical database. These changes need to be reviewed and accepted before they will appear to all users. Please use the URL below to enter that kiwitrees site and login to review the changes.');
+						$message["method"]	= get_user_setting($user_id, 'contactmethod');
+						$message["url"]		= KT_SERVER_NAME . KT_SCRIPT_PATH;
 						$message["no_from"] = true;
 						addMessage($message);
 					}
 				}
 			}
 			if (KT_USER_CAN_EDIT) {
-				$id=$this->getName();
-				$class=$this->getName();
+				$id		= $this->getName();
+				$class	= $this->getName();
 				if (KT_USER_GEDCOM_ADMIN) {
-					$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+					$title = '<i class="icon-admin" title="'.KT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 				} else {
-					$title='';
+					$title = '';
 				}
-				$title.=$this->getTitle().help_link('review_changes', $this->getName());
+				$title .= $this->getTitle().help_link('review_changes', $this->getName());
 
 				$content = '';
 				if (KT_USER_CAN_ACCEPT) {
@@ -109,9 +110,9 @@ class widget_review_changes_KT_Module extends KT_Module implements KT_Module_Wid
 				}
 				$changes = KT_DB::prepare(
 					"SELECT xref".
-					" FROM  `##change`".
+					" FROM`##change`".
 					" WHERE status = 'pending'".
-					" AND   gedcom_id = ?".
+					" AND gedcom_id = ?".
 					" GROUP BY xref"
 				)->execute(array(KT_GED_ID))->fetchAll();
 				foreach ($changes as $change) {
