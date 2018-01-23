@@ -66,7 +66,7 @@ $sql_SOUR = "
 	 AND ##link.l_from IS NULL
 ";
 $sql_MEDIA = "
-	SELECT m_id
+	SELECT m_id, m_filename
 	FROM `##media`
 	LEFT OUTER JOIN ##link
 	 ON (##media.m_id = ##link.l_to AND ##media.m_file = ##link.l_file)
@@ -227,9 +227,14 @@ $sql_REPO = "
 						<div>
 							<?php foreach ($rows_MEDIA as $row) {
 								$id = $row['m_id'];
+								$folder = $row['m_filename'];
 								$record = KT_Media::getInstance($id);
-								$fullname =  $record->getFullName(); ?>
-								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
+								$title =  $record->getTitle(); ?>
+								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer">
+									<?php echo $folder; ?>
+									<span class="id">&nbsp;(<?php echo $id; ?>)&nbsp;</span>
+									<?php echo $title !== $folder ? $title : ''; ?>
+								</a>
 								<?php } ?>
 						</div>
 					<?php } else { ?>

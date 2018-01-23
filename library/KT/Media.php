@@ -99,6 +99,15 @@ class KT_Media extends KT_GedcomRecord {
 		return $this->file;
 	}
 
+	/**
+	 * get the main media titles
+	 * This will be same as file name if title not set.
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->title;
+	}
+
 	// Get the filename on the server - for those (very few!) functions which actually
 	// need the filename, such as mediafirewall.php and the PDF reports.
 	public function getServerFilename($which='main') {
