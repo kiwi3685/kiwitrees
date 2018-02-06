@@ -498,7 +498,7 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 									<td colspan="5">
 										<div class="faq_edit_item">
 											<div class="faq_edit_title">', KT_I18N::translate($item->pages_title), '</div>
-											<div>', substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content), '</div>
+											<div class="faq_edit_content">', substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content), '</div>
 										</div>
 									</td>
 								</tr>';
