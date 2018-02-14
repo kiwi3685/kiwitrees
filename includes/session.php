@@ -77,7 +77,7 @@ define('KT_DEBUG',      false);
 define('KT_DEBUG_SQL',  false);
 
 //Font used to watermark images
-define('KT_FONT_DEJAVU_SANS_TTF',	KT_STATIC_URL . 'library/WT/Fonts/DejaVuSans.ttf');
+define('KT_FONT_DEJAVU_SANS_TTF',	KT_STATIC_URL . 'library/KT/Fonts/DejaVuSans.ttf');
 
 // Error reporting
 define('KT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
