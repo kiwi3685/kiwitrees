@@ -262,7 +262,7 @@ default:
 					KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 					KT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
 				);
-				AddToLog('Possible spam registration from "'.$user_name.'"/"'.$user_email.'", IP="'.$KT_REQUEST->getClientIp().'", comments="'.$user_comments.'"', 'auth');
+				AddToLog('Possible spam registration from "'.$user_name.'"/"'.$user_email.'", IP="'.$KT_REQUEST->getClientIp().'", comments="' . $user_comments . '"', 'auth');
 			} else {
 				// Everything looks good - create the user
 				$controller->pageHeader();
@@ -282,8 +282,11 @@ default:
 				set_user_setting($user_id, 'sessiontime',       0);
 
 				// Generate an email in the admin’s language
-				$webmaster_user_id	= get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID');
-				$tree_link			= '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GED_ID . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
+				$webmaster_user_id	= get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') ? get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') : get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID');
+				if (!$webmaster_user_id) {
+					$webmaster_user_id = get_admin_id(KT_GED_ID);
+				}
+				$tree_link			= '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
 
 				KT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
@@ -291,10 +294,10 @@ default:
 					KT_I18N::translate('Hello Administrator ...') . KT_Mail::EOL . KT_Mail::EOL .
 					/* I18N: %s is a server name/URL */
 					KT_I18N::translate('A prospective user has registered at %s.', $tree_link) . KT_Mail::EOL . KT_Mail::EOL .
-					KT_I18N::translate('Username') .': '. $user_name . KT_Mail::EOL .
-					KT_I18N::translate('Real name') .': '. $user_realname . KT_Mail::EOL .
-					KT_I18N::translate('Email Address') .': '. $user_email . KT_Mail::EOL . KT_Mail::EOL .
-					KT_I18N::translate('Comments') . ': '. $user_comments . KT_Mail::EOL . KT_Mail::EOL .
+					KT_I18N::translate('Username') . ': ' . $user_name . KT_Mail::EOL .
+					KT_I18N::translate('Real name') . ': ' . $user_realname . KT_Mail::EOL .
+					KT_I18N::translate('Email Address') . ': ' . $user_email . KT_Mail::EOL . KT_Mail::EOL .
+					KT_I18N::translate('Comments') . ': ' . $user_comments . KT_Mail::EOL . KT_Mail::EOL .
 					KT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . KT_Mail::EOL . KT_Mail::EOL .
 					KT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.') . "\r\n";
 
@@ -357,12 +360,14 @@ default:
 						<p><?php echo KT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email); ?></p>
 					</div>
 				</div>
+
 				<?php
 				return;
 			}
 		}
 
 		$KT_SESSION->good_to_send = true;
+
 		$controller
 			->pageHeader()
 			->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}'); ?>
@@ -375,7 +380,7 @@ default:
 				</div>
 			<?php } ?>
 			<div id="register-box">
-				<form id="register-form" name="register-form" method="post" action="<?php echo KT_LOGIN_URL; ?>" onsubmit="return checkform(this);" autocomplete="off">
+				<form id="register-form" name="register-form" method="post" action="<?php echo KT_LOGIN_URL; ?>" autocomplete="off">
 					<input type="hidden" name="action" value="register">
 					<h4><?php echo KT_I18N::translate('All fields must be completed.'); ?></h4>
 					<hr>
@@ -415,7 +420,7 @@ default:
 					</div>
 					<div>
 						<label for="user_comments"><?php echo KT_I18N::translate('Comments'), help_link('register_comments'); ?>
-							<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="<?php echo /* I18N: placeholder text for registration-comments field */ KT_I18N::translate('Explain why you are requesting an account.'); ?>">
+							<textarea id="user_comments" name="user_comments" placeholder="<?php echo /* I18N: placeholder text for registration-comments field */ KT_I18N::translate('Explain why you are requesting an account'); ?>" required>
 								<?php echo htmlspecialchars($user_comments); ?>
 							</textarea>
 						</label>
@@ -477,7 +482,10 @@ default:
 		AddToLog('User attempted to verify hashcode: '. $user_name, 'auth');
 
 		// switch language to webmaster settings
-		$webmaster_user_id = get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID');
+		$webmaster_user_id	= get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') ? get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') : get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID');
+		if (!$webmaster_user_id) {
+			$webmaster_user_id = get_admin_id(KT_GED_ID);
+		}
 		KT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 		$user_id		= get_user_id($user_name);

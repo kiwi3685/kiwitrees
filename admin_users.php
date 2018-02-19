@@ -87,7 +87,7 @@ switch (KT_Filter::post('action')) {
 			}
 
 			if ($user_id > 0) {
-				$tree_link = '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GED_ID . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
+				$tree_link = '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
 				// Approving for the first time? Send a confirmation email
 				if ($verified_by_admin && !get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'sessiontime') == 0) {
 					KT_I18N::init(get_user_setting($user_id, 'language'));

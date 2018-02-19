@@ -1541,6 +1541,13 @@ function get_gedcomid($user_id, $gedcom_id) {
 		)->execute(array($user_id, $gedcom_id, 'gedcomid'))->fetchOne();
 }
 
+function get_admin_id($gedcom_id) {
+	return
+		KT_DB::prepare(
+			"SELECT SQL_CACHE user_id FROM `##user_gedcom_setting` WHERE gedcom_id=? AND setting_value='admin'"
+		)->execute(array($gedcom_id))->fetchOne();
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Functions to access the ##BLOCK table
 ////////////////////////////////////////////////////////////////////////////////
