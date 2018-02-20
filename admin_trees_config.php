@@ -57,6 +57,13 @@ $PRIVACY_CONSTANTS = array(
 	'hidden'		=> KT_I18N::translate('Hide from everyone')
 );
 
+$privacy = array(
+	KT_PRIV_PUBLIC => KT_I18N::translate('Show to visitors'),
+	KT_PRIV_USER   => KT_I18N::translate('Show to members'),
+	KT_PRIV_NONE   => KT_I18N::translate('Show to managers'),
+	KT_PRIV_HIDE   => KT_I18N::translate('Hide from everyone')
+);
+
 // List custom theme files that might exist
 $custom_files = array(
 		'mystyle.css',
@@ -722,13 +729,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Who can upload new media files'); ?></label>
 						<div class="input_group">
-							<?php echo select_edit_control('NEW_MEDIA_UPLOAD',
-								array(
-									KT_PRIV_USER=>KT_I18N::translate('Show to members'),
-									KT_PRIV_NONE=>KT_I18N::translate('Show to managers'),
-									KT_PRIV_HIDE=>KT_I18N::translate('Hide from everyone')
-								),
-								 null, get_gedcom_setting(KT_GED_ID, 'MEDIA_UPLOAD')); ?>
+							<?php echo select_edit_control('NEW_MEDIA_UPLOAD', $privacy, null, get_gedcom_setting(KT_GED_ID, 'MEDIA_UPLOAD')); ?>
 							 <div class="helpcontent">
 								<?php echo KT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 							</div>
@@ -737,7 +738,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Show download link in media viewer'); ?></label>
 						<div class="input_group">
-							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(KT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
+							<?php echo select_edit_control('NEW_SHOW_MEDIA_DOWNLOAD',$privacy, null, get_gedcom_setting(KT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
 							<div class="helpcontent">
 								<?php echo KT_I18N::translate('The media viewer can show a link which when clicked will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
 							</div>
