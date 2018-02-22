@@ -77,7 +77,7 @@ function print_pedigree_person($person, $style = 1, $count = 0, $personcount = "
 		$lbwidth = 150;
 	}
 
-	$tmp			= array('M'=>'M', 'F'=>'F', 'U'=>'U');
+	$tmp			= array('M'=>'', 'F'=>'F', 'U'=>'U');
 	$isF			= $tmp[$person->getSex()];
 	$icons			= '';
 	$classfacts		= '';
