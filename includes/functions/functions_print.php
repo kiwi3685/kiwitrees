@@ -433,7 +433,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	} else {
 		$returnChar = "<br>";
 	}
-	$text .= get_cont($nlevel, $nrec);
+
+	$text_cont = get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @(' . KT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
@@ -448,12 +449,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	} else {
 		$note	= null;
 		$label	= 'NOTE';
-		$html	= $text;
+		$html	= $text . $text_cont;
 	}
 	if ($textOnly) {
-		return strip_tags($text);
+		return strip_tags($html);
 	}
-	if (strpos($text, $returnChar) === false) {
+	if (strpos($text . $text_cont, $returnChar) === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
 		return KT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
 	} elseif ($EXPAND_NOTES) {
@@ -465,8 +466,13 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
-			list($text) = explode($returnChar, strip_tags($html));
-			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . KT_I18N::translate('…') : $text;
+			if (strlen($text) > 100) {
+				$first_line = mb_substr($text, 0, 100) . KT_I18N::translate('…');
+//				$html = $text . $text_cont;
+			} else {
+				$first_line = $text;
+				$html = $text_cont;
+			}
 		}
 		if (KT_SCRIPT_NAME === 'note.php') {
 			$expand1 = $expand2 = '';
@@ -480,7 +486,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		}
 		return
 			'<div class="fact_NOTE">
-				<span class="label">
+				<span class="label X">
 					' . KT_Gedcom_Tag::getLabel($label) . ':&nbsp;
 				</span>
 				<span id="' . $element_id . '-alt">' . $first_line . $expand1 . '</span>
