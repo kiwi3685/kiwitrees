@@ -497,8 +497,8 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate = '') {
 				$value = $match[1];
 			}
 		}
-		if ($level!=0 || $t!="NOTE") {
-			$value .= get_cont($level+1, $subrec);
+		if ($level != 0 || $t != "NOTE") {
+			$value .= get_cont($level + 1, $subrec);
 		}
 		$value = preg_replace("'\n'", "", $value);
 		$value = preg_replace("'<br>'", "\n", $value);
