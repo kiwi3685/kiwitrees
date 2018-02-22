@@ -780,7 +780,7 @@ div[id*='-page'] {
 	color: #aaa;
 }
 
-.person_box,
+.person_boxM,
 .person_boxF,
 .person_boxNN {
 	background-color: #eee;
@@ -799,7 +799,7 @@ div[id*='-page'] {
 	display: inline;
 }
 /* families tab person box */
-#relatives_content .person_box > .person_box,
+#relatives_content .person_boxM > .person_boxM,
 #relatives_content .person_boxF > .person_boxF,
 #relatives_content .person_boxNN > .person_boxNN {
 	border: none;
@@ -2076,32 +2076,32 @@ dt {
 }
 
 /* ============== person box details ============== */
-.charts_block .person_box,
+.charts_block .person_boxM,
 .charts_block .person_boxF,
 .charts_block .person_boxNN,
 .gedcom_favorites_block,.widget_favorites_block,
-#ancestry_chart .person_box,
+#ancestry_chart .person_boxM,
 #ancestry_chart .person_boxF,
 #ancestry_chart .person_boxNN,
-#descendancy_chart .person_box,
+#descendancy_chart .person_boxM,
 #descendancy_chart .person_boxF,
 #descendancy_chart .person_boxNN,
-#family-table .person_box,
+#family-table .person_boxM,
 #family-table .person_boxF,
 #family-table .person_boxNN,
-#familybook_chart .person_box,
+#familybook_chart .person_boxM,
 #familybook_chart .person_boxF,
 #familybook_chart .person_boxNN,
-#hourglass_chart .person_box,
+#hourglass_chart .person_boxM,
 #hourglass_chart .person_boxF,
 #hourglass_chart .person_boxNN,
-#pedigree_chart .person_box,
+#pedigree_chart .person_boxM,
 #pedigree_chart .person_boxF,
 #pedigree_chart .person_boxNN,
-#relatives_content .person_box,
+#relatives_content .person_boxM,
 #relatives_content .person_boxF,
 #relatives_content .person_boxNN,
-table[id^='rel_'] .person_box,
+table[id^='rel_'] .person_boxM,
 table[id^='rel_'] .person_boxF,
 table[id^='rel_'] .person_boxNN {
 	overflow: visible !important;
@@ -2886,13 +2886,13 @@ table[id^='rel_'] .person_boxNN {
 }
 
 /* ======= Favourites block ========== */
-.gedcom_favorites_block .person_box .details2,
+.gedcom_favorites_block .person_boxM .details2,
 .gedcom_favorites_block .person_boxF.details2,
 .gedcom_favorites_block .person_boxNN.details2 {
 	min-height: 40px;
 }
 
-.widget_favorites_block .person_box .details2,
+.widget_favorites_block .person_boxM .details2,
 .widget_favorites_block .person_boxF.details2,
 .widget_favorites_block .person_boxNN.details2 {
 	min-height: 40px;
@@ -3078,7 +3078,7 @@ span.link_text {
 	font-size: 1.0em;
 }
 
-#indi_header h3.person_box,
+#indi_header h3.person_boxM,
 #indi_header h3.person_boxF ,
 #indi_header h3.person_boxNN {
 }
@@ -5220,7 +5220,7 @@ ul#research_status ul.sublinks {
 	width: 98%;
 }
 
-#cousins_tab .person_box,
+#cousins_tab .person_boxM,
 #cousins_tab .person_boxF,
 #cousins_tab .person_boxNN {
 	clear: left;

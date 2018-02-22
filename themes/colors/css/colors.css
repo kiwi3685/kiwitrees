@@ -461,7 +461,7 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 .person_box_lifespan {display:inline;    border:1px solid #aaaaaa;border-radius:3px;padding:3px;}
 
 /* families tab person box */
-#relatives_content .person_box > .person_box,
+#relatives_content .person_boxM > .person_boxM,
 #relatives_content .person_boxF > .person_boxF,
 #relatives_content .person_boxNN > .person_boxNN {
 	border:none;min-height:50px;
@@ -744,15 +744,15 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 	text-align: center;
 }
 
-.charts_block .person_box,.charts_block .person_boxF,.charts_block .person_boxNN,
+.charts_block .person_boxM,.charts_block .person_boxF,.charts_block .person_boxNN,
 .gedcom_favorites_block,.widget_favorites_block,
-#ancestry_chart .person_box,#ancestry_chart .person_boxF,#ancestry_chart .person_boxNN,
-#descendancy_chart .person_box,#descendancy_chart .person_boxF,#descendancy_chart .person_boxNN,
-#family-table .person_box,#family-table .person_boxF,#family-table .person_boxNN,#familybook_chart .person_box,#familybook_chart .person_boxF,#familybook_chart .person_boxNN,
-#hourglass_chart .person_box,#hourglass_chart .person_boxF,#hourglass_chart .person_boxNN,
-#pedigree_chart .person_box,#pedigree_chart .person_boxF,#pedigree_chart .person_boxNN,
-#relatives_content .person_box,#relatives_content .person_boxF,#relatives_content .person_boxNN,
-table[id^='rel_'] .person_box,table[id^='rel_'] .person_boxF,table[id^='rel_'] .person_boxNN {overflow:visible !important;}
+#ancestry_chart .person_boxM,#ancestry_chart .person_boxF,#ancestry_chart .person_boxNN,
+#descendancy_chart .person_boxM,#descendancy_chart .person_boxF,#descendancy_chart .person_boxNN,
+#family-table .person_boxM,#family-table .person_boxF,#family-table .person_boxNN,#familybook_chart .person_boxM,#familybook_chart .person_boxF,#familybook_chart .person_boxNN,
+#hourglass_chart .person_boxM,#hourglass_chart .person_boxF,#hourglass_chart .person_boxNN,
+#pedigree_chart .person_boxM,#pedigree_chart .person_boxF,#pedigree_chart .person_boxNN,
+#relatives_content .person_boxM,#relatives_content .person_boxF,#relatives_content .person_boxNN,
+table[id^='rel_'] .person_boxM,table[id^='rel_'] .person_boxF,table[id^='rel_'] .person_boxNN {overflow:visible !important;}
 .person_box_template .style1 {overflow:hidden;}
 .person_box_template .style0 {padding: 2px;}
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
@@ -763,8 +763,8 @@ table[id^='rel_'] .person_box,table[id^='rel_'] .person_boxF,table[id^='rel_'] .
 .person_box_template i[class^="icon-silhouette"] {float:left;}
 [dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 
-.gedcom_favorites_block .person_box .details2,.gedcom_favorites_block .person_boxF.details2,.gedcom_favorites_block
-.person_boxNN.details2,.widget_favorites_block .person_box .details2,.widget_favorites_block .person_boxF.details2,.widget_favorites_block .person_boxNN.details2 {min-height:40px;}
+.gedcom_favorites_block .person_boxM .details2,.gedcom_favorites_block .person_boxF.details2,.gedcom_favorites_block
+.person_boxNN.details2,.widget_favorites_block .person_boxM .details2,.widget_favorites_block .person_boxF.details2,.widget_favorites_block .person_boxNN.details2 {min-height:40px;}
 .action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
 
 /* ============= Statistics block ============ */
@@ -1131,7 +1131,7 @@ span.link_text {display:none;}
 #indi_header h3 a {display:inline;}
 #indi_header h3.name_one {font-size:1.5em;overflow:hidden;position:relative;}
 #indi_header h3.name_two {line-height: 25px;}
-#indi_header h3.person_box,#indi_header h3.person_boxF,#indi_header h3.person_boxNN {border:1px solid #999999;}
+#indi_header h3.person_boxM,#indi_header h3.person_boxF,#indi_header h3.person_boxNN {border:1px solid #999999;}
 #indi_header #indi_relationship {
 	border: 1px solid #ddd;
 	border-radius: 0 0 6px 6px;
@@ -2003,7 +2003,7 @@ ul#research_status ul.sublinks {display: none; font-size: 90%;}
 #cousins_tab h4 {font-size:16px;font-weight:900;margin:0 0 5px;text-align:center;}
 #cousins_tab h5 {margin:0;clear:both;padding:10px 0 2px 0;}
 #cousins_tab_content {border-spacing:10px;display:inline-table;margin:0 10px;overflow:hidden;padding:0;width:98%;}
-#cousins_tab .person_box, #cousins_tab .person_boxF, #cousins_tab .person_boxNN {clear:left;float:left;margin:1px 0;width:99%!important;}
+#cousins_tab .person_boxM, #cousins_tab .person_boxF, #cousins_tab .person_boxNN {clear:left;float:left;margin:1px 0;width:99%!important;}
 #cousins_f, #cousins_m {border:1px solid;border-radius:5px;display:table-cell;padding:10px;width:45%;}
 .cousins_name {}
 .cousins_lifespan, .cousins_pedi {font-size:9px;padding:3px 5px 5px 5px;}
