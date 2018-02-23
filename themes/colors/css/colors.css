@@ -515,6 +515,7 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 
 .details1 {font-size:11px;text-decoration:none;}
 .details2 {color:#000066;font-size:11px;font-weight:700;text-decoration:none;}
+.details2 p {margin: 2px;}
 .detailsZoom {font-size:13px;text-decoration:none;}
 
 .age {font-size:9px;}

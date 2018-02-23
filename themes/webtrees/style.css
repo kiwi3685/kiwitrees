@@ -165,6 +165,7 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 .name2 {color:#555555;font-weight:bold;font-size:12px;}
 .details1 {font-size:11px;}
 .details2 {font-size:12px;}
+.details2 p {margin: 2px;}
 .nameZoom {color:#555555;font-weight:bold;font-size:14px;}
 .detailsZoom {font-size:14px;text-decoration:none;}
 .details_label {font-weight:bold;}
