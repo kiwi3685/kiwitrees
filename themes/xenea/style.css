@@ -3624,7 +3624,7 @@ table.ca td.under {
     transition-duration: 0s;
 }
 
-#fanchart-page div.overlay .tooltip {
+#fanchart-page div.overlay .tooltip {()
     font-size: 22px;
     color: white;
     position: relative;
