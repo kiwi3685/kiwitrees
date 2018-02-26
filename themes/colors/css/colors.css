@@ -3337,15 +3337,15 @@ table.ca td.under {
 /* ------------------ */
 
 /* Styles for Fan Chart */
-#fanchart-page button {
-	display: inline-block;
-	margin-top: 15px;
-	vertical-align: top;
+#fanchart-page #fan_chart {
+    position: relative;
 }
 
 #fanchart-page svg {
     display: block;
     margin: auto;
+	cursor: -webkit-grab;
+	cursor: grab;
 }
 
 #fanchart-page svg .arc path {
@@ -3353,10 +3353,65 @@ table.ca td.under {
     stroke-width: 3px;
 }
 
-#fanchart-page svg .label .date {
+#fanchart-page svg .person:hover .arc {
+	opacity: 0.5;
+}
+
+#fanchart-page svg .person:hover .arc path {
+	stroke: #939393;
+}
+
+#fanchart-page svg .label .chart-date {
+	fill: #3f3f3f;
     font-weight: normal;
 }
 
+#fanchart-page svg rect.background {
+    fill: none;
+    pointer-events: all;
+}
+
+#fanchart-page div.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: 10px sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    transition: opacity ease-in-out;
+    transition-duration: 0s;
+}
+
+#fanchart-page div.overlay .tooltip {
+    font-size: 22px;
+    color: white;
+    position: relative;
+    margin: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#fanchart-page button {
+	display: inline-block;
+	margin-top: 15px;
+	vertical-align: top;
+}
+
+#fanchart-page .chart_options input.fontScale {
+	width: 75px;
+}
+
+#fanchart-page .chart_options select#generations {
+	width: 100px;
+}
 /* ------------------ */
 
 /* RESPOSIVE layout adjustments */

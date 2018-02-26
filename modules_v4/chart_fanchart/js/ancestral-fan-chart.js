@@ -1,5 +1,5 @@
 /*global
-    window, console, Math, d3, jQuery, $
+    window, console, Math, d3, jQuery
 */
 
 /**
@@ -49,9 +49,17 @@
             startPi: -Math.PI,
             endPi: Math.PI,
 
-            width: 1200,
-            height: 1200,
-            padding: 5,
+          width: 1200,
+          height: 1200,
+//          padding: 5,
+            minHeight: 500,
+            padding: 10,
+
+            // Left/Right padding of text
+            textPadding: 2,
+
+            // Relative position offsets in percent (0 = inner radius, 100 = outer radius)
+            positions: [70, 52, 25],
 
             x: null,
 
@@ -68,9 +76,6 @@
          * @constructs ancestralFanChart
          */
         _create: function () {
-            // Check dependencies
-            this.checkDependencies();
-
             this.options.startPi = -(this.options.fanDegree / 360 * Math.PI);
             this.options.endPi = (this.options.fanDegree / 360 * Math.PI);
 
@@ -82,23 +87,6 @@
             this.initData(this.options.data);
             this.createArcElements();
             this.updateViewBox();
-        },
-
-        /**
-         * Check widget dependencies
-         *
-         * @returns {boolean}
-         * @private
-         */
-        checkDependencies: function () {
-            // Confirm d3 is available [check minimum version]
-            if (typeof d3 !== 'object' || !d3.hasOwnProperty('version')) {
-                console.error('d3 error: d3 is not available');
-                console.info(typeof d3);
-                return false;
-            }
-
-            return true;
         },
 
         /**
@@ -123,15 +111,200 @@
          * @private
          */
         initChart: function () {
-            this.config.visual = d3
-                .select('#fan_chart')
+            var that = this;
+
+            this.config.zoom = d3.zoom()
+                .scaleExtent([0.5, 5.0])
+                .on('zoom', $.proxy(this.doZoom, this));
+
+            this.config.zoom.filter(function () {
+                // Allow "wheel" event only while control key is pressed
+                if (d3.event.type === 'wheel') {
+                    if (that.config.zoomLevel && d3.event.ctrlKey) {
+                        // Prevent zooming below lowest level
+                        if ((that.config.zoomLevel <= 0.5) && (d3.event.deltaY > 0)) {
+                            d3.event.preventDefault();
+                            return false;
+                        }
+
+                        // Prevent zooming above highest level
+                        if ((that.config.zoomLevel >= 5.0) && (d3.event.deltaY < 0)) {
+                            d3.event.preventDefault();
+                            return false;
+                        }
+                    }
+
+                    return d3.event.ctrlKey;
+                }
+
+                // Allow "touchmove" event only with two fingers
+                if (!d3.event.button && (d3.event.type === 'touchmove')) {
+                    return d3.event.touches.length === 2;
+                }
+
+                return true;
+            });
+
+            // Parent container
+            this.config.parent = d3
+                .select('#fan_chart');
+
+            // Add SVG element
+            this.config.svg = this.config.parent
                 .append('svg')
                 .attr('width', '100%')
                 .attr('height', '100%')
                 .attr('text-rendering', 'geometricPrecision')
                 .attr('text-anchor', 'middle')
+                .on('contextmenu', function () {
+                    d3.event.preventDefault();
+                })
+                .on('wheel', $.proxy(function () {
+                    if (!d3.event.ctrlKey) {
+                        that.showTooltipOverlay(this.options.labels.zoom, 300, function () {
+                            that.hideTooltipOverlay(700, 800);
+                        });
+                    }
+                }, this))
+                .on('touchend', $.proxy(function () {
+                    if (d3.event.touches.length < 2) {
+                        that.hideTooltipOverlay(0, 800);
+                    }
+                }, this))
+                .on('touchmove', $.proxy(function () {
+                    if (d3.event.touches.length >= 2) {
+                        // Hide tooltip on more than 2 fingers
+                        that.hideTooltipOverlay();
+                    } else {
+                        // Show tooltip if less than 2 fingers are used
+                        that.showTooltipOverlay(this.options.labels.move);
+                    }
+                }, this))
+                .on('click', $.proxy(this.doStopPropagation, this), true);
+
+            // Add an overlay with tooltip
+            this.config.overlay = this.config.parent
+                .append('div')
+                .attr('class', 'overlay')
+                .style('opacity', 1e-6);
+
+            // Add rectangle element
+            this.config.svg
+                .append('rect')
+                .attr('class', 'background')
+                .attr('width', '100%')
+                .attr('height', '100%');
+
+            // Bind click event on reset button
+            var $resetButton = $(this.config.parent.node())
+                .siblings('form')
+                .find('input[type=reset]');
+
+            d3.select($resetButton.get(0))
+                .on('click', $.proxy(this.doReset, this));
+
+            // Add group
+            this.config.visual = this.config.svg
                 .append('g')
                 .attr('class', 'group');
+
+            this.config.svg.call(this.config.zoom);
+        },
+
+        /**
+         * Stop any pending transition and hide overlay immediately.
+         *
+         * @param {string}  text     Text to display in overlay
+         * @param {int}     duration Duration of transition in msec
+         * @param {closure} callback Callback method to execute on end of transition
+         *
+         * @private
+         */
+        showTooltipOverlay: function (text, duration, callback) {
+            duration = duration || 0;
+
+            this.config.overlay
+                .select('p')
+                .remove();
+
+            this.config.overlay
+                .append('p')
+                .attr('class', 'tooltip')
+                .text(text);
+
+            this.config.overlay
+                .transition()
+                .duration(duration)
+                .style('opacity', 1)
+                .on('end', function() {
+                    if (callback) {
+                        callback();
+                    }
+                });
+        },
+
+        /**
+         * Stop any pending transition and hide overlay immediately.
+         *
+         * @param {int} delay    Delay in msec to wait before transition should start
+         * @param {int} duration Duration of transition in msec
+         *
+         * @private
+         */
+        hideTooltipOverlay: function (delay, duration) {
+            delay = delay || 0;
+            duration = duration || 0;
+
+            this.config.overlay
+                .transition()
+                .delay(delay)
+                .duration(duration)
+                .style('opacity', 1e-6);
+        },
+
+        /**
+         * Prevent default click and stop propagation.
+         *
+         * @private
+         */
+        doStopPropagation: function () {
+            if (d3.event.defaultPrevented) {
+                d3.event.stopPropagation();
+            }
+        },
+
+        /**
+         * Reset chart to initial zoom level and position.
+         *
+         * @private
+         */
+        doReset: function () {
+            this.config.svg
+                .transition()
+                .duration(750)
+                .call(this.config.zoom.transform, d3.zoomIdentity);
+        },
+
+        /**
+         * Zoom chart.
+         *
+         * @private
+         */
+        doZoom: function () {
+            // Abort any action if only one finger is used on "touchmove" events
+            if (d3.event.sourceEvent
+                && (d3.event.sourceEvent.type === 'touchmove')
+                && (d3.event.sourceEvent.touches.length < 2)
+            ) {
+                return;
+            }
+
+            this.config.zoomLevel = d3.event.transform.k;
+
+            this.config.visual.attr(
+                'transform',
+                d3.event.transform
+            );
         },
 
         /**
@@ -179,29 +352,47 @@
         },
 
         /**
-         * Update the viewBox attribute of the SVG element.
+         * Update/Calculate the viewBox attribute of the SVG element.
          */
         updateViewBox: function () {
-            // Adjust size of svg
-            var boundingBox = this.config.visual.node().getBBox();
-            var width       = boundingBox.width;
-            var height      = boundingBox.height;
-            var transX      = Math.round(width + (this.options.padding * 2));
-            var transY      = Math.round(height + (this.options.padding * 2));
+            // Get bounding boxes
+            var svgBoundingBox    = this.config.visual.node().getBBox();
+            var clientBoundingBox = this.config.parent.node().getBoundingClientRect();
 
-            // Set view box to actual width and height of svg
-            d3.select('#fan_chart svg')
+            // View box should have at least the same width/height as the parent element
+            var viewBoxWidth  = Math.max(clientBoundingBox.width, svgBoundingBox.width);
+            var viewBoxHeight = Math.max(clientBoundingBox.height, svgBoundingBox.height, this.options.minHeight);
+
+            // Calculate offset to center chart inside svg
+            var offsetX = (viewBoxWidth - svgBoundingBox.width) / 2;
+            var offsetY = (viewBoxHeight - svgBoundingBox.height) / 2;
+
+            // Adjust view box dimensions by padding and offset
+            var viewBoxLeft = Math.ceil(svgBoundingBox.x - offsetX - this.options.padding);
+            var viewBoxTop  = Math.ceil(svgBoundingBox.y - offsetY - this.options.padding);
+
+            // Final width/height of view box
+            viewBoxWidth  = Math.ceil(viewBoxWidth + (this.options.padding * 2));
+            viewBoxHeight = Math.ceil(viewBoxHeight + (this.options.padding * 2));
+
+            // Set view box attribute
+            this.config.svg
                 .attr('viewBox', [
-                    boundingBox.x - this.options.padding,
-                    boundingBox.y - this.options.padding,
-                    transX,
-                    transY
-                ])
-                .style('max-width', transX + 'px');
+                    viewBoxLeft,
+                    viewBoxTop,
+                    viewBoxWidth,
+                    viewBoxHeight
+                ]);
+
+            // Adjust rectangle position
+            this.config.svg
+                .select('rect')
+                .attr('x', viewBoxLeft)
+                .attr('y', viewBoxTop);
         },
 
         /**
-         * Calculate the angle.
+         * Calculate the angle in radians.
          *
          * @param {number} value Value
          *
@@ -215,7 +406,7 @@
         },
 
         /**
-         * Get the start angle.
+         * Get the start angle in radians.
          *
          * @param {object} d D3 data object
          *
@@ -226,7 +417,7 @@
         },
 
         /**
-         * Get the end angle.
+         * Get the end angle in radians.
          *
          * @param {object} d D3 data object
          *
@@ -244,7 +435,7 @@
          * @returns {number}
          */
         innerRadius: function (d) {
-            var data = [0, 65, 130, 195, 260, 325, 440, 555, 670, 785];
+            var data = [0, 65, 130, 195, 260, 325, 440, 555, 670, 785, 900];
             return data[d.depth];
         },
 
@@ -256,7 +447,7 @@
          * @returns {number}
          */
         outerRadius: function (d) {
-            var data = [65, 130, 195, 260, 325, 440, 555, 670, 785, 900];
+            var data = [65, 130, 195, 260, 325, 440, 555, 670, 785, 900, 1015];
             return data[d.depth];
         },
 
@@ -283,6 +474,19 @@
         relativeRadius: function (d, position) {
             var outerRadius = this.outerRadius(d);
             return outerRadius - ((100 - position) * (outerRadius - this.innerRadius(d)) / 100);
+        },
+
+        /**
+         * Get an radius relative to the outer radius adjusted by the given
+         * position in percent.
+         *
+         * @param {object} d        D3 data object
+         * @param {number} position Percent offset (0 = inner radius, 100 = outer radius)
+         *
+         * @returns {number}
+         */
+        arcLength: function (d, position) {
+            return (this.endAngle(d) - this.startAngle(d)) * this.relativeRadius(d, position);
         },
 
         /**
@@ -313,7 +517,7 @@
             // Remove any existing listener
             this.config.visual
                 .selectAll('g.person')
-                .style('cursor', 'default')
+                .style('cursor', 'grab')
                 .on('click', null);
 
             var personGroup = this.config.visual
@@ -422,21 +626,13 @@
                 var label    = d3.select(this);
                 var timeSpan = that.getTimeSpan(d);
 
-                // Relative position offsets in percent (0 = inner radius, 100 = outer radius)
-                var positions = [70, 52, 25];
-
-                // Flip label positions for 360 degree chart
-                if (that.isPositionFlipped(d)) {
-                    positions = [30, 48, 75];
-                }
-
                 // Create a path for each line of text as mobile devices
                 // won't display <tspan> elements in the right position
-                that.appendArcPath(label, 0, positions[0]);
-                that.appendArcPath(label, 1, positions[1]);
+                that.appendArcPath(label, 0);
+                that.appendArcPath(label, 1);
 
                 if (timeSpan) {
-                    that.appendArcPath(label, 2, positions[2]);
+                    that.appendArcPath(label, 2);
                 }
 
                 // Append text element
@@ -541,6 +737,8 @@
          * animated transition.
          */
         updateArcPath: function () {
+            var that = this;
+
             // Select all path elements and assign the data
             var path = d3.selectAll('g.arc')
                 .select('path')
@@ -602,44 +800,45 @@
         },
 
         /**
+         * Get the relative text offset for the labels.
+         *
+         * @param {int}    index Index position of element in parent container. Required to create a unique path id.
+         * @param {object} d     D3 data object
+         *
+         * @return {int}
+         */
+        getTextOffset: function(index, d) {
+            return this.isPositionFlipped(d)
+                ? (100 - this.options.positions[index])
+                : this.options.positions[index];
+        },
+
+        /**
          * Truncates the text of the current element depending on its depth
          * in the chart.
          *
-         * @param {int} padding Left/Right padding of text
+         * @param {int} index Index position of element in parent container. Required to create a unique path id.
          *
          * @returns {string} Truncated text
          */
-        truncate: function (padding) {
+        truncate: function (index) {
             var that = this;
 
             return function (d) {
-                // Modifier of available width depending on fan degrees
-                var widthMod = that.options.fanDegree / 360;
-
                 // Depending on the depth of an entry in the chart the available width differs
                 var availableWidth = 110;
+                var posOffset      = that.getTextOffset(index || 1, d);
 
-                if (d.depth === 1) {
-                    availableWidth = 280 * widthMod;
+                // Calc length of the arc
+                if (d.depth >= 1 && d.depth < 5) {
+                    availableWidth = that.arcLength(d, posOffset);
                 }
 
-                if (d.depth === 2) {
-                    availableWidth = 230 * widthMod;
-                }
+                var self       = d3.select(this);
+                var textLength = self.node().getComputedTextLength();
+                var text       = self.text();
 
-                if (d.depth === 3) {
-                    availableWidth = 160 * widthMod;
-                }
-
-                if (d.depth === 4) {
-                    availableWidth = 110 * widthMod;
-                }
-
-                var self = d3.select(this),
-                    textLength = self.node().getComputedTextLength(),
-                    text = self.text();
-
-                while ((textLength > (availableWidth - (padding * 2))) && (text.length > 0)) {
+                while ((textLength > (availableWidth - (that.options.textPadding * 2))) && (text.length > 0)) {
                     // Remove last char
                     text = text.slice(0, -1);
 
@@ -732,12 +931,9 @@
          * Append a path element to the given parent group element.
          *
          * @param {object} parent   Parent container element, D3 group element
-         * @param {int}    index    Index position of element in parent container.
-         *                          Required to create a unique path id.
-         * @param {int}    position Relative position offset for path
-         *                          (0 = inner radius, 100 = outer radius)
+         * @param {int}    index    Index position of element in parent container. Required to create a unique path id.
          */
-        appendArcPath: function (parent, index, position) {
+        appendArcPath: function (parent, index) {
             var that = this;
 
             // Create arc generator for path segments
@@ -753,10 +949,10 @@
                         : that.endAngle(d);
                 })
                 .innerRadius(function (d) {
-                    return that.relativeRadius(d, position);
+                    return that.relativeRadius(d, that.getTextOffset(index, d));
                 })
                 .outerRadius(function (d) {
-                    return that.relativeRadius(d, position);
+                    return that.relativeRadius(d, that.getTextOffset(index, d));
                 });
 
             // Append a path so we could use it to write the label along it
@@ -783,7 +979,7 @@
                     return '#label-' + d.data.id + '-' + index;
                 })
                 .text(label)
-                .each(this.truncate(5));
+                .each(this.truncate(index));
         },
 
         /**
@@ -825,7 +1021,7 @@
 
                 textElements.each(function (d, i) {
                     if (countElements === 1) {
-                        offset = 0;
+                        offset = -0.025;
                     }
 
                     if (countElements === 2) {
@@ -840,6 +1036,7 @@
                         .domain([0, countElements - 1])
                         .range([-offset, offset]);
 
+                    // Slight increase in the y axis' value so the texts may not overlay
                     var offsetRotate = (i <= 1 ? 1.25 : 1.75);
 
                     if (d.depth === 0) {

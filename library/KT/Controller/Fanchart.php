@@ -29,11 +29,25 @@ if (!defined('KT_KIWITREES')) {
  class KT_Controller_Fanchart extends KT_Controller_Chart {
 
     /**
+     * Minimum number of displayable generations.
+     *
+     * @var int
+     */
+    const MIN_GENERATIONS = 2;
+
+    /**
+     * Maximum number of displayable generations.
+     *
+     * @var int
+     */
+    const MAX_GENERATIONS = 11;
+
+    /**
      * Number of generations to display.
      *
      * @var int
      */
-    public $generations = 5;
+    public $generations = 6;
 
     /**
      * Style of fan chart. (2 = full circle, 3, three-quarter circle, 4 = half circle)
@@ -60,7 +74,7 @@ if (!defined('KT_KIWITREES')) {
 
         // Extract the request parameters
         $this->fanDegree   = KT_Filter::getInteger('fanDegree', 180, 360, 270);
-        $this->generations = KT_Filter::getInteger('generations', 2, 10, $defaultGenerations);
+        $this->generations = KT_Filter::getInteger('generations', self::MIN_GENERATIONS, self::MAX_GENERATIONS, $defaultGenerations);
         $this->fontScale   = KT_Filter::getInteger('fontScale', 0, 200, 100);
 
 		// Create page title
