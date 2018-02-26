@@ -1380,18 +1380,18 @@ $controller
 											<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
 											', $themename, '
 										</p>
-										<p class="custom_files">';
-											$html = KT_I18N::translate('Customized');
+										<div class="custom_files">';
+											$html = '<h4>' . KT_I18N::translate('Customized') . '</h4>';
 											$files_found = false;
 											foreach ($custom_files as $file) {
 												$path = KT_ROOT . KT_THEMES_DIR . $themedir . '/' . $file;
 												if (file_exists($path)) {
 													$files_found = true;
-													$html .= '&nbsp;' . $file . '&nbsp;';
+													$html .= '<p>' . $file . '</p>';
 												}
 											}
 											echo ($files_found ? $html : '');
-										echo '</p>
+										echo '</div>
 									</label>
 								</div>';
 							}

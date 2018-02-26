@@ -748,9 +748,11 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {
 	height:80px; width:100%;
 }
 
-.current_theme, .theme_box {float:left; height: 210px; padding: 10px; text-align:center;}
+.current_theme, .theme_box {float:left; padding: 10px; text-align:center;}
 #theme table {max-width:none;}
-.theme_box p.custom_files {font-weight: normal; font-size: 90%; font-style: italic;}
+.theme_box div.custom_files {font-weight: normal; font-size: 90%; font-style: italic;}
+.theme_box div.custom_files h4 {margin: 10px; font-weight: 700; font-style: normal; text-decoration: underline;}
+.theme_box div.custom_files p {font-weight: 400;}
 .current_theme {background: #d9edf7;}
 .current_theme p, .theme_box p {font-weight:bold; margin:0;}
 .current_theme input[type="radio"], .theme_box input[type="radio"] {cursor:pointer; height:20px; width:20px;}
