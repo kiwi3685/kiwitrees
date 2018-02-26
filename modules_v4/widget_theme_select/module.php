@@ -39,31 +39,45 @@ class widget_theme_select_KT_Module extends KT_Module implements KT_Module_Widge
 
 	// Implement class KT_Module_Block
 	public function getWidget($widget_id, $template = true, $cfg = null) {
-		$id = $this->getName().$widget_id;
-		$class = $this->getName();
-		$title = $this->getTitle();
-		$current_themedir = str_replace(array('themes','/'), '', KT_THEME_DIR);
+		$id					= $this->getName() . $widget_id;
+		$class				= $this->getName();
+		$title				= $this->getTitle();
+		$current_themedir	= str_replace(array('themes','/'), '', KT_THEME_DIR);
+
+		if (KT_Filter::post('action') == 'update') {
+			set_gedcom_setting(KT_GED_ID, 'THEME_DIR', KT_Filter::post('NEW_THEME_DIR'));
+		}
+
 		if(strstr(get_query_url(), 'php?')) {
 			$separator = '&amp;';
 		} else {
 			$separator = '?';
 		}
 
-		$content = '<div class="center theme_form">';
-			foreach (get_theme_names() as $themename=>$themedir) {
-				$content .= '
-					<div>
-						<a href="' . get_query_url($themedir . '&amp;') . $separator . 'theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >
-							<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
-							<p>' . $themename . '</p>
-						</a>
-					</div>
-				';
-			}
-		$content .= '</div><br>';
+		$content = '
+			<div class="center theme_form">
+				<form method="post" id="themeForm" name="themeForm" action="update">';
+					foreach (get_theme_names() as $themename=>$themedir) {
+						$themedir == $current_themedir ? $current = 'class="current"' : $current = '';
+						$content .= '
+							<div ' . $current . '>
+								<a href="' . get_query_url($themedir . '&amp;') . $separator . 'theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >
+									<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
+									<p>
+										<input type="hidden" id="hidden_' . $themedir . '" name="NEW_THEME_DIR" value="' . $themedir . '" ' . ($current_themedir == $themedir ? ' checked="checked"' : '') . '>' .
+										$themename . ' 
+									</p>
+								</a>
+							</div>
+						';
+					}
+		$content .= '
+				</form>
+			</div>
+		<br>';
 
 		if ($template) {
-			require KT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR . 'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -81,7 +95,7 @@ class widget_theme_select_KT_Module extends KT_Module implements KT_Module_Widge
 
 	// Implement KT_Module_Menu
 	public function defaultAccessLevel() {
-		return KT_PRIV_USER;
+		return KT_PRIV_NONE; // Access to GEDCOM manager only
 	}
 
 	// Implement class KT_Module_Block

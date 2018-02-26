@@ -1377,8 +1377,8 @@ $controller
 									<label for="radio_' ,$themedir, '">
 										<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
 										<p>
-											<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
-											', $themename, '
+											<input type="radio" id="radio_' . $themedir . '" name="NEW_THEME_DIR" value="' . $themedir . '" ' . ($current_themedir == $themedir ? ' checked="checked"' : '') . '>' .
+											$themename . '
 										</p>
 										<div class="custom_files">';
 											$html = '<h4>' . KT_I18N::translate('Customized') . '</h4>';

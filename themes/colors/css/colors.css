@@ -598,7 +598,6 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .submenu {text-decoration: none;font-size: 11px;background-color: #fff;border: 1px solid #888888;white-space: nowrap;visibility: hidden;position: absolute;padding: 5px;}
 .submenuitem,.submenuitem_hover {vertical-align: middle;height: 20px;text-decoration: none;font-size: 11px;background-color: #fff;white-space: nowrap;padding: 1px;}
 
-.theme_form {font-size:14px;margin:3px;margin-top:0;}
 .thumbnail {height:auto;padding:5px;}
 
 .person0 {background:#ddddff;border:outset #999 1px;border-radius:3px;vertical-align:top;}
@@ -772,12 +771,6 @@ table[id^='rel_'] .person_box,table[id^='rel_'] .person_boxF,table[id^='rel_'] .
 .gedcom_stats_block table td {vertical-align:top;}
 .gedcom_stats_block table td td {vertical-align:middle;}
 .gedcom_stats_block td .stats_value {text-align:center;}
-
-/* ============= Theme select block ============ */
-.theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
-.theme_form li {list-style:none;visibility:hidden;}
-.theme_form li ul li {float:left;padding:10px;visibility:visible;}
-[dir=rtl] .theme_form li ul li  {float:right;}
 
 /* ======= Favourites block ========== */
 .add_fav_head {font-weight:900;margin:5px 0;}
@@ -2301,13 +2294,24 @@ div.widget {
 	padding: 0 5px;
 }
 
+.widget_theme_select .theme_form {
+	font-size:14px;
+	margin-top:0;
+	overflow: hidden;
+}
+
 .widget_theme_select .theme_form div {
 	float:left;
 	margin: 5px;
 }
 
+.widget_theme_select .theme_form div.current {
+	background-color: #d3d3d3;
+	border: 1px solid #0000ff solid;
+}
+
 .widget_theme_select .theme_form div img {
-	width:95px;
+	width:93px;
 }
 
 .widget_theme_select .theme_form div p {

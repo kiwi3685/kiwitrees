@@ -2951,29 +2951,6 @@ table[id^='rel_'] .person_boxNN {
 	text-align: center;
 }
 
-/* ============= Theme select block ============ */
-.theme_form ul {
-	margin: -10px auto;
-	-webkit-padding-start: 0;
-	width: 90%;
-	overflow: hidden;
-}
-
-.theme_form li {
-	list-style: none;
-	visibility: hidden;
-}
-
-.theme_form li ul li {
-	float: left;
-	padding: 10px;
-	visibility: visible;
-}
-
-[dir='rtl'] .theme_form li ul li {
-	float: right;
-}
-
 /* ======= FAQ page styles ========== */
 #faq-page {
 	margin: 0 auto;
@@ -5840,13 +5817,24 @@ div.widget {
 	padding: 0 5px;
 }
 
+.widget_theme_select .theme_form {
+	font-size:14px;
+	margin-top:0;
+	overflow: hidden;
+}
+
 .widget_theme_select .theme_form div {
 	float:left;
 	margin: 5px;
 }
 
+.widget_theme_select .theme_form div.current {
+	background-color: #d3d3d3;
+	border: 1px solid #0000ff solid;
+}
+
 .widget_theme_select .theme_form div img {
-	width:95px;
+	width:93px;
 }
 
 .widget_theme_select .theme_form div p {

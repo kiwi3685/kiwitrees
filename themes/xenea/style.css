@@ -19,9 +19,7 @@
 *
 * You should have received a copy of the GNU General Public License
 * along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.widget_theme_select .theme_form {
-	overflow:hidden;
-}
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 */
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
@@ -494,8 +492,6 @@ font-size:10px;}
 }
 
 .contact_links { margin-top:15px; text-align:center;}
-
-.theme_form { margin-top:0; font-size:14px; color:#fff;}
 
 .hit-counter { background:#000; color:#fff; font-weight:bold;}
 
@@ -987,12 +983,6 @@ dt { float:left; font-weight:bold; margin-right:10px; clear:both;}
 .gedcom_stats_block table td {vertical-align:top;}
 .gedcom_stats_block table td td {vertical-align:middle;}
 .gedcom_stats_block td .stats_value {text-align:center;}
-
-/* ============= Theme select block ============ */
-.theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
-.theme_form li {list-style:none;visibility:hidden;}
-.theme_form li ul li {float:left;padding:10px;visibility:visible;}
-[dir=rtl] .theme_form li ul li {float:right;}
 
 /* ======= Favourites block ========== */
 .add_fav_head {font-weight:900;margin:5px 0;}
@@ -2550,12 +2540,19 @@ div.widget {
 }
 
 .widget_theme_select .theme_form {
+	font-size:14px;
+	margin-top:0;
 	overflow: hidden;
 }
 
 .widget_theme_select .theme_form div {
 	float:left;
 	margin: 5px;
+}
+
+.widget_theme_select .theme_form div.current {
+	background-color: #d3d3d3;
+	border: 1px solid #0000ff solid;
 }
 
 .widget_theme_select .theme_form div img {
@@ -2566,6 +2563,7 @@ div.widget {
 	margin: 2px;
 }
 /* ------------------ */
+
 /* Styling for Fancy Image bar */
 #fancy_imagebar img {
 	border-top: 2px solid #0073CF;
