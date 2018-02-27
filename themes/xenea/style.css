@@ -2546,13 +2546,14 @@ div.widget {
 }
 
 .widget_theme_select .theme_form div {
+	border: 1px solid transparent;
 	float:left;
 	margin: 5px;
 }
 
 .widget_theme_select .theme_form div.current {
 	background-color: #d3d3d3;
-	border: 1px solid #0000ff solid;
+	border: 1px solid #0000ff;
 }
 
 .widget_theme_select .theme_form div img {
