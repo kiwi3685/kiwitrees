@@ -21,16 +21,58 @@
  * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
+ // Perform an action, as an AJAX request.
+ //
+ // It is bad design to put actions in GET parameters (because
+ // reloading the page will execute the action again) or POST
+ // parameters (because it effectively disables the "back" button).
+ //
+ // It also means we must hide such links from search engines,
+ // which frequently penalize sites that generate different
+ // content for browsers/robots.
+ //
+ // Instead, use an AJAX request, such as
+ //
+ // <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}, function(){location.reload()});">click-me!</a>
+ // <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}).success(location.reload()).error(alert('failed'));">click-me!</a>
+ //
+ // Most actions will not need separate success() and error().
+ // Typically this may occur if an action has already been submitted, or
+ // the login session has expired.  In these cases, reloading the page is
+ // the correct response for both success/error.
+ //
+
+/**
+ * Perform an action, as an AJAX request.
+ * It is bad design to put actions in GET parameters (because
+*reloading the page will execute the action again) or POST
+*parameters (because it effectively disables the "back" button).
+*
+*It also means we must hide such links from search engines,
+*which frequently penalize sites that generate different
+*content for browsers/robots.
+*
+*Instead, use an AJAX request, such as
+*
+*<a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}, function(){location.reload()});">click-me!</a>
+*<a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}).success(location.reload()).error(alert('failed'));">click-me!</a>
+*
+*Most actions will not need separate success() and error().
+*Typically this may occur if an action has already been submitted, or
+*the login session has expired.  In these cases, reloading the page is
+*the correct response for both success/error.
+ */
+
 define('KT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
-switch (safe_POST('action')) {
+switch (KT_Filter::post('action')) {
 	case 'accept-changes':
 		// Accept all the pending changes for a record
 		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record=KT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+		$record=KT_GedcomRecord::getInstance(KT_Filter::post('xref', WT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 			accept_all_changes($record->getXref(), $record->getGedId());
@@ -43,14 +85,14 @@ switch (safe_POST('action')) {
 		// Copy a fact to the clipboard
 		// The calling page may want to reload, to refresh its "paste" buffer
 		require KT_ROOT.'includes/functions/functions_edit.php';
-		$fact=new KT_Event(rawurldecode(safe_POST('factgedcom', KT_REGEX_UNSAFE)), null, 0);
+		$fact = new KT_Event(rawurldecode(KT_Filter::post('factgedcom', KT_REGEX_UNSAFE)), null, 0);
 		// Where can we paste this?
 		if (preg_match('/^(NOTE|SOUR|OBJE)$/', $fact->getTag())) {
 			// Some facts can be pasted to any record
-			$type='all';
+			$type = 'all';
 		} else {
 			// Other facts can only be pasted records of the same type
-			$type=safe_POST('type', array('INDI','FAM','SOUR','REPO','OBJE','NOTE'));
+			$type = KT_Filter::post('type', array('INDI','FAM','SOUR','REPO','OBJE','NOTE'));
 		}
 		if (!is_array($KT_SESSION->clipboard)) {
 			$KT_SESSION->clipboard=array();
@@ -74,7 +116,7 @@ switch (safe_POST('action')) {
 	case 'delete-repository':
 	case 'delete-source':
 		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record = KT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', WT_REGEX_XREF));
 		if ($record && KT_USER_CAN_EDIT && $record->canDisplayDetails() && $record->canEdit()) {
 			// Delete links to this record
 			foreach (fetch_all_links($record->getXref(), $record->getGedId()) as $xref) {
@@ -120,7 +162,7 @@ switch (safe_POST('action')) {
 	case 'reject-changes':
 		// Reject all the pending changes for a record
 		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record = KT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', WT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 			reject_all_changes($record->getXref(), $record->getGedId());
@@ -131,9 +173,10 @@ switch (safe_POST('action')) {
 
 	case 'theme':
 		// Change the current theme
-		$theme_dir = safe_POST('theme');
+		$theme_dir = KT_Filter::post('theme');
 		if (in_array($theme_dir, get_theme_names())) {
-			$KT_SESSION->theme_dir=$theme_dir;
+			set_gedcom_setting(KT_GED_ID, 'THEME_DIR', $theme_dir);
+			$KT_SESSION->theme_dir = $theme_dir;
 		} else {
 			// Request for a non-existant theme.
 			header('HTTP/1.0 406 Not Acceptable');

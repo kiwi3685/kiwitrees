@@ -61,11 +61,11 @@ class widget_theme_select_KT_Module extends KT_Module implements KT_Module_Widge
 						$themedir == $current_themedir ? $current = 'class="current"' : $current = '';
 						$content .= '
 							<div ' . $current . '>
-								<a href="' . get_query_url($themedir . '&amp;') . $separator . 'theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >
+								<a href="#" onclick="jQuery.post(\'action.php\',{action:\'theme\',theme:\'' . $themedir . '\'},function(){location.reload();})">
 									<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
 									<p>
 										<input type="hidden" id="hidden_' . $themedir . '" name="NEW_THEME_DIR" value="' . $themedir . '" ' . ($current_themedir == $themedir ? ' checked="checked"' : '') . '>' .
-										$themename . ' 
+										$themename . '
 									</p>
 								</a>
 							</div>

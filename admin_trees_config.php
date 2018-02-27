@@ -1371,11 +1371,11 @@ $controller
 					<div class="input_group">
 						<?php
 							$current_themedir = get_gedcom_setting(KT_GED_ID, 'THEME_DIR');
-							foreach (get_theme_names() as $themename=>$themedir) {
+							foreach (get_theme_names() as $themename => $themedir) {
 								echo
 								'<div ', ($current_themedir == $themedir ? 'class = "current_theme theme_box"' : 'class = "theme_box"'), '>
-									<label for="radio_' ,$themedir, '">
-										<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
+									<label for="radio_' . $themedir . '">
+										<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
 										<p>
 											<input type="radio" id="radio_' . $themedir . '" name="NEW_THEME_DIR" value="' . $themedir . '" ' . ($current_themedir == $themedir ? ' checked="checked"' : '') . '>' .
 											$themename . '
