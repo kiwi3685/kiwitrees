@@ -265,7 +265,6 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 
 #content {
     clear:both;
-    position: relative;
     padding:10px 10px 0 10px;
     overflow: hidden;
     top: auto;
