@@ -3342,6 +3342,11 @@ table.ca td.under {
 	cursor: grab;
 }
 
+#page-fan svg:active {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
+
 #fanchart-page svg .arc path {
     stroke: #ebebeb;
     stroke-width: 3px;
