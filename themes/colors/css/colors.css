@@ -2301,6 +2301,7 @@ div.widget {
 }
 
 .widget_theme_select .theme_form div {
+	border: 1px solid transparent;
 	float:left;
 	margin: 5px;
 }
