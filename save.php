@@ -48,11 +48,11 @@ if (!KT_Filter::checkCsrf()) {
 // The id must be a valid CSS identifier, so it can be used in HTML.
 // We use "[A-Za-z0-9_]+" separated by "-".
 
-$id=safe_POST('id', '[a-zA-Z0-9_-]+');
-list($table, $id1, $id2, $id3)=explode('-', $id.'---');
+$id = KT_Filter::post('id', '[a-zA-Z0-9_-]+');
+list($table, $id1, $id2, $id3) = explode('-', $id . '---');
 
 // The replacement value.
-$value=safe_POST('value', KT_REGEX_UNSAFE);
+$value = KT_Filter::post('value', KT_REGEX_UNSAFE);
 
 // Every switch must have a default case, and every case must end in ok() or fail()
 
@@ -71,9 +71,9 @@ case 'site_setting':
 	// Validation
 	switch ($id1) {
 	case 'MAX_EXECUTION_TIME':
-		if ($value=='') {
+		if ($value == '') {
 			// Delete the existing value
-			$value=null;
+			$value = null;
 		} elseif (!is_numeric($value)) {
 			fail();
 		}
@@ -92,7 +92,7 @@ case 'site_setting':
 	case 'MEMORY_LIMIT':
 		if ($value=='') {
 			// Delete the existing value
-			$value=null;
+			$value = null;
 		} elseif (!preg_match('/^[0-9]+[KMG]$/', $value)) {
 			// A number must be followed by K, M or G.
 			fail();
