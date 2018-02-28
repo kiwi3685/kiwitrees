@@ -468,7 +468,6 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		} else {
 			if (strlen($text) > 100) {
 				$first_line = mb_substr($text, 0, 100) . KT_I18N::translate('…');
-//				$html = $text . $text_cont;
 			} else {
 				$first_line = $text;
 				$html = $text_cont;
@@ -486,7 +485,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		}
 		return
 			'<div class="fact_NOTE">
-				<span class="label X">
+				<span class="label">
 					' . KT_Gedcom_Tag::getLabel($label) . ':&nbsp;
 				</span>
 				<span id="' . $element_id . '-alt">' . $first_line . $expand1 . '</span>
