@@ -71,8 +71,8 @@ header('Content-type: text/html; charset=UTF-8');
 switch (KT_Filter::post('action')) {
 	case 'accept-changes':
 		// Accept all the pending changes for a record
-		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record=KT_GedcomRecord::getInstance(KT_Filter::post('xref', WT_REGEX_XREF));
+		require KT_ROOT . 'includes/functions/functions_edit.php';
+		$record=KT_GedcomRecord::getInstance(KT_Filter::post('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 			accept_all_changes($record->getXref(), $record->getGedId());
@@ -84,7 +84,7 @@ switch (KT_Filter::post('action')) {
 	case 'copy-fact':
 		// Copy a fact to the clipboard
 		// The calling page may want to reload, to refresh its "paste" buffer
-		require KT_ROOT.'includes/functions/functions_edit.php';
+		require KT_ROOT . 'includes/functions/functions_edit.php';
 		$fact = new KT_Event(rawurldecode(KT_Filter::post('factgedcom', KT_REGEX_UNSAFE)), null, 0);
 		// Where can we paste this?
 		if (preg_match('/^(NOTE|SOUR|OBJE)$/', $fact->getTag())) {
@@ -115,8 +115,8 @@ switch (KT_Filter::post('action')) {
 	case 'delete-note':
 	case 'delete-repository':
 	case 'delete-source':
-		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', WT_REGEX_XREF));
+		require KT_ROOT . 'includes/functions/functions_edit.php';
+		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_EDIT && $record->canDisplayDetails() && $record->canEdit()) {
 			// Delete links to this record
 			foreach (fetch_all_links($record->getXref(), $record->getGedId()) as $xref) {
@@ -124,7 +124,7 @@ switch (KT_Filter::post('action')) {
 				$gedrec = find_gedcom_record($xref, $record->getGedId(), true);
 				$gedrec = remove_links($gedrec, $record->getXref());
 				// If we have removed a link from a family to an individual, and it has only one member
-				if (preg_match('/^0 @'.KT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . KT_REGEX_XREF . ')@/', $gedrec, $match)<2) {
+				if (preg_match('/^0 @' . KT_REGEX_XREF . '@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . KT_REGEX_XREF . ')@/', $gedrec, $match)<2) {
 					// Delete the family
 					$family = KT_GedcomRecord::getInstance($xref);
 					KT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ KT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
@@ -161,8 +161,8 @@ switch (KT_Filter::post('action')) {
 
 	case 'reject-changes':
 		// Reject all the pending changes for a record
-		require KT_ROOT.'includes/functions/functions_edit.php';
-		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', WT_REGEX_XREF));
+		require KT_ROOT . 'includes/functions/functions_edit.php';
+		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 			reject_all_changes($record->getXref(), $record->getGedId());

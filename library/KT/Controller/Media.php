@@ -107,7 +107,7 @@ class KT_Controller_Media extends KT_Controller_GedcomRecord {
 		// delete
 		if (KT_USER_CAN_EDIT) {
 			$submenu = new KT_Menu(KT_I18N::translate('Delete'), '#', 'menu-obje-del');
-			$submenu->addOnclick("if (confirm('".KT_Filter::escapeJS(KT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())))."')) jQuery.post('action.php',{action:'delete-media',xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("if (confirm('" . KT_Filter::escapeJS(KT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())))."')) jQuery.post('action.php',{action:'delete-media',xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
