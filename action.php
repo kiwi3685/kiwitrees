@@ -19,49 +19,28 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
- */
-
- // Perform an action, as an AJAX request.
- //
- // It is bad design to put actions in GET parameters (because
- // reloading the page will execute the action again) or POST
- // parameters (because it effectively disables the "back" button).
- //
- // It also means we must hide such links from search engines,
- // which frequently penalize sites that generate different
- // content for browsers/robots.
- //
- // Instead, use an AJAX request, such as
- //
- // <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}, function(){location.reload()});">click-me!</a>
- // <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}).success(location.reload()).error(alert('failed'));">click-me!</a>
- //
- // Most actions will not need separate success() and error().
- // Typically this may occur if an action has already been submitted, or
- // the login session has expired.  In these cases, reloading the page is
- // the correct response for both success/error.
- //
+*/
 
 /**
  * Perform an action, as an AJAX request.
  * It is bad design to put actions in GET parameters (because
-*reloading the page will execute the action again) or POST
-*parameters (because it effectively disables the "back" button).
-*
-*It also means we must hide such links from search engines,
-*which frequently penalize sites that generate different
-*content for browsers/robots.
-*
-*Instead, use an AJAX request, such as
-*
-*<a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}, function(){location.reload()});">click-me!</a>
-*<a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}).success(location.reload()).error(alert('failed'));">click-me!</a>
-*
-*Most actions will not need separate success() and error().
-*Typically this may occur if an action has already been submitted, or
-*the login session has expired.  In these cases, reloading the page is
-*the correct response for both success/error.
- */
+ * reloading the page will execute the action again) or POST
+ * parameters (because it effectively disables the "back" button).
+ *
+ * It also means we must hide such links from search engines,
+ * which frequently penalize sites that generate different
+ * content for browsers/robots.
+ *
+ * Instead, use an AJAX request, such as
+ *
+ * <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}, function(){location.reload()});">click-me!</a>
+ * <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}).success(location.reload()).error(alert('failed'));">click-me!</a>
+ *
+ * Most actions will not need separate success() and error().
+ * Typically this may occur if an action has already been submitted, or
+ * the login session has expired.  In these cases, reloading the page is
+ * the correct response for both success/error.
+*/
 
 define('KT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
