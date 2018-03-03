@@ -47,11 +47,11 @@ require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
-switch (KT_Filter::post('action')) {
+switch (safe_POST('action')) {
 	case 'accept-changes':
 		// Accept all the pending changes for a record
 		require KT_ROOT . 'includes/functions/functions_edit.php';
-		$record=KT_GedcomRecord::getInstance(KT_Filter::post('xref', KT_REGEX_XREF));
+		$record=KT_GedcomRecord::getInstance(safe_POST('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 			accept_all_changes($record->getXref(), $record->getGedId());
@@ -64,14 +64,14 @@ switch (KT_Filter::post('action')) {
 		// Copy a fact to the clipboard
 		// The calling page may want to reload, to refresh its "paste" buffer
 		require KT_ROOT . 'includes/functions/functions_edit.php';
-		$fact = new KT_Event(rawurldecode(KT_Filter::post('factgedcom', KT_REGEX_UNSAFE)), null, 0);
+		$fact = new KT_Event(rawurldecode(safe_POST('factgedcom', KT_REGEX_UNSAFE)), null, 0);
 		// Where can we paste this?
 		if (preg_match('/^(NOTE|SOUR|OBJE)$/', $fact->getTag())) {
 			// Some facts can be pasted to any record
 			$type = 'all';
 		} else {
 			// Other facts can only be pasted records of the same type
-			$type = KT_Filter::post('type', array('INDI','FAM','SOUR','REPO','OBJE','NOTE'));
+			$type = safe_POST('type', array('INDI','FAM','SOUR','REPO','OBJE','NOTE'));
 		}
 		if (!is_array($KT_SESSION->clipboard)) {
 			$KT_SESSION->clipboard=array();
@@ -95,7 +95,7 @@ switch (KT_Filter::post('action')) {
 	case 'delete-repository':
 	case 'delete-source':
 		require KT_ROOT . 'includes/functions/functions_edit.php';
-		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', KT_REGEX_XREF));
+		$record = KT_GedcomRecord::getInstance(safe_POST('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_EDIT && $record->canDisplayDetails() && $record->canEdit()) {
 			// Delete links to this record
 			foreach (fetch_all_links($record->getXref(), $record->getGedId()) as $xref) {
@@ -130,7 +130,7 @@ switch (KT_Filter::post('action')) {
 		break;
 
 	case 'delete-user':
-		$user_id = KT_Filter::post('user_id');
+		$user_id = safe_POST('user_id');
 
 		if (KT_USER_IS_ADMIN && KT_USER_ID != $user_id && KT_Filter::checkCsrf()) {
 			AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
@@ -141,7 +141,7 @@ switch (KT_Filter::post('action')) {
 	case 'reject-changes':
 		// Reject all the pending changes for a record
 		require KT_ROOT . 'includes/functions/functions_edit.php';
-		$record = KT_GedcomRecord::getInstance(KT_Filter::post('xref', KT_REGEX_XREF));
+		$record = KT_GedcomRecord::getInstance(safe_POST('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 			reject_all_changes($record->getXref(), $record->getGedId());
@@ -152,7 +152,7 @@ switch (KT_Filter::post('action')) {
 
 	case 'theme':
 		// Change the current theme
-		$theme_dir = KT_Filter::post('theme');
+		$theme_dir = safe_POST('theme');
 		if (in_array($theme_dir, get_theme_names())) {
 			set_gedcom_setting(KT_GED_ID, 'THEME_DIR', $theme_dir);
 			$KT_SESSION->theme_dir = $theme_dir;
@@ -164,7 +164,7 @@ switch (KT_Filter::post('action')) {
 
 	case 'lookup_name':
 		// look up record name from id for media linking
-		$iid	= KT_Filter::post('iid');
+		$iid	= safe_POST('iid');
 		if ($iid instanceof KT_Person) {
 			$iname	= strip_tags(KT_Person::getInstance($iid)->getFullName());
 		} elseif ($iid instanceof KT_Family) {
