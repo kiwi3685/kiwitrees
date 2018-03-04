@@ -2003,6 +2003,19 @@ ul#research_status ul.sublinks {display: none; font-size: 90%;}
 .cousins_counter {margin:0 3px;font-size:80%;}
 .cousins_counter:after {content:". ";}
 
+/* Styling for census tab */
+#tab_census_content {overflow-y: auto;}
+#tab_census_content div.descriptionbox {border: 1px solid #555; border-radius: 5px; line-height: 18px; margin-bottom: 2px;}
+#tab_census_content div.descriptionbox span {display: inline-block;}
+#tab_census_content table {border-collapse: collapse; width: 100%;}
+#tab_census_content th {background: #ddd; border: 1px solid; font-weight: 700; padding: 8px;}
+#tab_census_content td {border: 1px solid; padding: 3px 8px;}
+#tab_census_content td.small {font-size: 90%;}
+#tab_census_content td.nowrap {white-space: nowrap;}
+#tab_census_content div.editfacts {text-align: center; 	padding: 0;}
+#tab_census_content div [class $="link"] {float: none;}
+#tab_census_content span.date {display: block; font-size: inherit;}
+
 /* Styling for reorder media page */
 #reordermedia-page div.pic {
 	display: table;

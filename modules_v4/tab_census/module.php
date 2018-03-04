@@ -76,18 +76,7 @@ class tab_census_KT_Module extends KT_Module implements KT_Module_Tab {
 			});
 		');
 		?>
-		<style>
-			#tab_census_content {overflow-y: auto;}
-			#tab_census_content div.descriptionbox {border: 1px solid #555; border-radius: 5px; line-height: 18px; margin-bottom: 2px;}
-			#tab_census_content div.descriptionbox span {display: inline-block;}
-			#tab_census_content table {border-collapse: collapse; width: 100%;}
-			#tab_census_content th {background: #ddd; border: 1px solid; font-weight: 700; padding: 8px;}
-			#tab_census_content td {border: 1px solid; padding: 3px 8px;}
-			#tab_census_content td.small {font-size: 90%;}
-			#tab_census_content td.nowrap {white-space: nowrap;}
-			#tab_census_content div.editfacts {text-align: center; 	padding: 0;}
-			#tab_census_content div [class $="link"] {float: none;}
-		</style>
+
 		<div id="tab_census_content">
 			<!-- Show header Links -->
 			<?php if (KT_USER_CAN_EDIT) { ?>
@@ -135,7 +124,7 @@ class tab_census_KT_Module extends KT_Module implements KT_Module_Tab {
 								if ($fact->getIsOld()) $styleadd = "change_old";
 								?>
 								<tr>
-									<td class="nowrap"><?php echo $fact->getDate()->JD() != 0 ?  format_fact_date($fact, $person, false, false, false) : ""; ?></td>
+									<td class="small nowrap"><?php echo $fact->getDate()->JD() != 0 ?  format_fact_date($fact, $person, false, false, true) : ""; ?></td>
 									<td class="nowrap"><?php echo format_fact_place($fact, true); ?></td>
 									<td class="small nowrap"><?php echo print_address_structure($fact->getGedcomRecord(), 2, 'inline'); ?></td>
 									<td class="small"><?php echo print_fact_notes($fact->getGedcomRecord(), 2); ?></td>
