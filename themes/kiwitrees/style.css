@@ -1062,6 +1062,10 @@ a:hover .nameZoom {
 	font-size: 11px;
 }
 
+.details1 p {
+	margin: 3px;
+}
+
 .details2 {
 	font-size: 12px;
 }
