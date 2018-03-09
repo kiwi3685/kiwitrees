@@ -28,7 +28,7 @@ if (!defined('KT_KIWITREES')) {
 
 // Create tables, if not already present
 try {
-	KT_DB::updateSchema(KT_ROOT.KT_MODULES_DIR.'gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 3);
+	KT_DB::updateSchema(KT_ROOT . KT_MODULES_DIR . 'gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
