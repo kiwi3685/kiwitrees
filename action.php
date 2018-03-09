@@ -51,7 +51,7 @@ switch (safe_POST('action')) {
 	case 'accept-changes':
 		// Accept all the pending changes for a record
 		require KT_ROOT . 'includes/functions/functions_edit.php';
-		$record=KT_GedcomRecord::getInstance(safe_POST('xref', KT_REGEX_XREF));
+		$record = KT_GedcomRecord::getInstance(safe_POST('xref', KT_REGEX_XREF));
 		if ($record && KT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 			KT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ KT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 			accept_all_changes($record->getXref(), $record->getGedId());
