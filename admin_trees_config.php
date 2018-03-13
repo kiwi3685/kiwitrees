@@ -680,7 +680,7 @@ $controller
 											<?php
 											$n++;
 											if ($row->xref) {
-												$record = GedcomRecord::getInstance($row->xref);
+												$record = KT_GedcomRecord::getInstance($row->xref);
 												if ($record) {
 													echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 												} else {
