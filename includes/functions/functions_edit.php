@@ -592,7 +592,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				// Populate the standard NAME field and subfields
 				$name_fields = array();
 				foreach ($STANDARD_NAME_FACTS as $tag) {
-					$name_fields[$tag]=get_gedcom_value($tag, 0, $namerec);
+					$name_fields[$tag] = get_gedcom_value($tag, 0, $namerec);
 				}
 
 				$new_marnm='';

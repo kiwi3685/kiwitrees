@@ -684,7 +684,7 @@ function print_main_sources(KT_Event $fact, $level) {
 	$factrec = $fact->getGedcomRecord();
 	$linenum = $fact->getLineNumber();
 	$parent  = $fact->getParentObject();
-	$pid     = $parent->getXref();
+	$parent ? $pid = $parent->getXref() : $pid = '';
 
 	$nlevel = $level+1;
 	if ($fact->getIsNew()) {
@@ -910,13 +910,13 @@ function print_main_notes(KT_Event $fact, $level) {
 	$factrec = $fact->getGedcomRecord();
 	$linenum = $fact->getLineNumber();
 	$parent  = $fact->getParentObject();
-	$pid     = $parent->getXref();
+	$parent ? $pid = $parent->getXref() : $pid = '';
 
 	if ($fact->getIsNew()) {
 		$styleadd = ' change_new';
 		$can_edit = $level==1 && $fact->canEdit();
 	} elseif ($fact->getIsOld()) {
-		$styleadd=' change_old';
+		$styleadd =' change_old';
 		$can_edit = false;
 	} else {
 		$styleadd='';

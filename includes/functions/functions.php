@@ -441,7 +441,7 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate = '') {
 	$tags = explode(':', $tag);
 	$origlevel = $level;
 	if ($level == 0) {
-		$level = $gedrec{0} + 1;
+		$level = (int) $gedrec{0} + 1;
 	}
 
 	$subrec = $gedrec;
