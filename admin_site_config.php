@@ -409,18 +409,26 @@ $controller
 								'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh',
 							);
 						}
-						foreach (KT_I18N::installed_languages() as $code=>$name) {
-							echo '
-								<span>
-									<input class="check" type="checkbox" name="LANGUAGES[]" id="lang_' . $code . '"';
-										if (in_array($code, $languages)) {
-											echo 'checked="checked"';
-										}
-									echo ' value="' . $code . '">
-									<label for="lang_' . $code . '"> '. KT_I18N::translate($name) . '</label>
-								</span>
-							';
+						$installed = KT_I18N::installed_languages();
+						// sort by localised name
+						foreach ($installed as $code=>$name) {
+							$installed[$code] = KT_I18N::translate($name);
 						}
+						asort($installed);
+						echo '<ul style="display: flex; flex-direction: column; flex-wrap: wrap; list-style: none; max-height: 200px;">';
+							foreach ($installed as $code=>$name) {
+								echo '
+									<li>
+										<input class="check" type="checkbox" name="LANGUAGES[]" id="lang_' . $code . '"';
+											if (in_array($code, $languages)) {
+												echo 'checked="checked"';
+											}
+										echo ' value="' . $code . '">
+										<label for="lang_' . $code . '"> '. KT_I18N::translate($name) . '</label>
+									</li>
+								';
+							}
+						echo '</ul>'
 					?>
 				</div>
 			</div>
