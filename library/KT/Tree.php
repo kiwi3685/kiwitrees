@@ -85,7 +85,7 @@ class KT_Tree {
 			if ($this->preference($setting_name) != $setting_value) {
 				$this->preference[$setting_name] = $setting_value;
 				// Audit log of changes
-				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+				AddToLog('Gedcom setting "' . $setting_name . '" set to "' . $setting_value . '"', 'config');
 			}
 			KT_DB::prepare(
 				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
@@ -115,7 +115,7 @@ class KT_Tree {
 			// If parameter two is specified, then SET the setting.
 			if ($this->preference($setting_name) != $setting_value) {
 				// Audit log of changes
-				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+				AddToLog('Gedcom setting "' . $setting_name . '" set to "' . $setting_value . '"', 'config');
 			}
 			KT_DB::prepare(
 				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
@@ -136,7 +136,7 @@ class KT_Tree {
 	public static function getAll() {
 		if (self::$trees === null) {
 			self::$trees=array();
-			$rows=KT_DB::prepare(
+			$rows = KT_DB::prepare(
 				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported, gs3.setting_value AS tree_subtitle".
 				" FROM `##gedcom` g".
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
