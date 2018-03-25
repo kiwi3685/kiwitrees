@@ -5009,6 +5009,7 @@ hr.stories_divider {
 	border: none;
 	border-top: medium double;
 	margin: auto;
+	overflow: visible;
 	padding: 0;
 	text-align: center;
 	width: 80%;
