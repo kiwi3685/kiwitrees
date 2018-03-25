@@ -111,7 +111,7 @@ $controller
 								displayLength: 20,
 								columns: [
 									/* 0-type */		null,
-									/* 1-record */		{ "className": "nowrap" },
+									/* 1-record */		null,
 									/* 2-birthdate */	{ dataSort: 3 },
 									/* 3-BIRT:DATE */	{ visible: false },
 									/* 4-event_tag */	null,
@@ -123,15 +123,15 @@ $controller
 								stateDuration: -1
 							});
 						'); ?>
-					<table id="facts_table" style="width: 100%;">
+					<table id="facts_table" style="width: 100%; table-layout: fixed;">
 						<thead>
 							<tr>
-								<th style="min-width: 200px;"><?php echo KT_I18N::translate('Edit raw GEDCOM record'); ?></th>
+								<th><?php echo KT_I18N::translate('Edit raw GEDCOM record'); ?></th>
 								<th><?php echo KT_I18N::translate('Record'); ?></th>
-								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Birth'); ?></th>
+								<th><?php echo KT_I18N::translate('Birth'); ?></th>
 								<th><?php //SORT_BIRT ?></th>
-								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Event'); ?></th>
-								<th style="min-width: 120px;"><?php echo KT_I18N::translate('Event date'); ?></th>
+								<th><?php echo KT_I18N::translate('Event'); ?></th>
+								<th><?php echo KT_I18N::translate('Event date'); ?></th>
 								<th><?php //SORT_EVENT ?></th>
 								<th><?php echo KT_I18N::translate('Citation text'); ?></th>
 							</tr>
@@ -227,7 +227,7 @@ $controller
 								displayLength: 20,
 								columns: [
 									/* 0-type */		null,
-									/* 1-record */		{ "className": "nowrap" },
+									/* 1-record */		null,
 									/* 2-birthdate */	{ dataSort: 3 },
 									/* 3-BIRT:DATE */	{ visible: false },
 									/* 4-birthplace */	null,
