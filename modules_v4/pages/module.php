@@ -338,14 +338,24 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 		$controller
 			->setPageTitle($HEADER_TITLE)
 			->pageHeader()
-			// following is for custom tabs using class "mytabs" and links to tabs with class "button"
+			// following is for custom js operations on pages
 			->addInlineJavascript('
+				// add custom sub-tabs
 				jQuery(".mytabs").tabs();
 				jQuery("a.button").click(function() {
 					var hash = jQuery(this).prop("hash");
-					jQuery(".mytabs").tabs("option", "active", hash);
-					window.location.reload(true);
+					if (hash) {
+						jQuery(".mytabs").tabs("option", "active", hash);
+						window.location.reload(true);
+						window.scrollBy({top: 500, left: 0, behavior: "smooth"});
+					}
 			    });
+
+				// add active_link class for breadcrumbs
+				jQuery( "a.reveal_link" ).click(function() {
+					jQuery("a.reveal_link").removeClass("active_link");
+					jQuery(this).addClass("active_link");
+				});
 			');
 
 		$items_id = safe_GET('pages_id');
