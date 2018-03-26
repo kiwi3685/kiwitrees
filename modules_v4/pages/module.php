@@ -332,6 +332,7 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 
 	private function show() {
 		global $controller;
+
 		$HEADER_TITLE = KT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', 'Resources'));
 		$HEADER_DESCRIPTION = KT_I18N::translate(get_module_setting($this->getName(), 'HEADER_DESCRIPTION', 'These are resources'));
 		$controller = new KT_Controller_Page();
@@ -388,7 +389,7 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 						} ?>
 					</ul>
 				<?php } ?>
-				<div id="outer_pages_container" style="padding: 1em;">
+				<div id="outer_pages_container">
 					<?php
 					foreach ($items_list as $items) {
 						$languages = get_block_setting($items->block_id, 'languages');
