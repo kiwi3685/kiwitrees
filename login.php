@@ -420,7 +420,7 @@ default:
 					</div>
 					<div>
 						<label for="user_comments"><?php echo KT_I18N::translate('Comments'), help_link('register_comments'); ?>
-							<textarea id="user_comments" name="user_comments" placeholder="<?php echo /* I18N: placeholder text for registration-comments field */ KT_I18N::translate('Explain why you are requesting an account'); ?>" required>
+							<textarea id="user_comments" name="user_comments">
 								<?php echo htmlspecialchars($user_comments); ?>
 							</textarea>
 						</label>
