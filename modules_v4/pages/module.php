@@ -352,10 +352,19 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 					}
 			    });
 
+			    function returnTop() {
+			    	jQuery("html, body").stop().animate({scrollTop: jQuery("html, body").offset().top});
+			    }
+
 				// add active_link class for breadcrumbs
 				jQuery( "a.reveal_link" ).click(function() {
 					jQuery("a.reveal_link").removeClass("active_link");
 					jQuery(this).addClass("active_link");
+					returnTop();
+				});
+				// add optional return to top button with class "reveal_button"
+				jQuery( ".reveal_button" ).click(function() {
+					returnTop();
 				});
 			');
 
