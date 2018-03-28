@@ -77,7 +77,9 @@ echo '<div id="place-hierarchy">';
 			<div id="placeListContainer" style="width: 60%; margin: auto; visibility: hidden;">
 				<div class="loading-image"></div>
 				<h2><?php echo $controller->getPageTitle(); ?></h2>
-				<h4><a href="placelist.php?display=hierarchy"><?php echo KT_I18N::translate('Switch to Place hierarchy'); ?></a></h4>';
+				<h4>
+					<a href="placelist.php?display=hierarchy"><?php echo KT_I18N::translate('Switch to Place hierarchy'); ?></a>
+				</h4>
 				<table id="placeListTable" style="width: 100%; table-layout:fixed;">
 					<thead>
 						<tr>
