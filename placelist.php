@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,25 +51,51 @@ echo '<div id="place-hierarchy">';
 	switch ($display) {
 		case 'list':
 			$list_places	= KT_Place::allPlaces(KT_GED_ID);
-			$num_places		= count($list_places);
 
-			echo '
-				<h2>', $controller->getPageTitle(), '</h2>
-				<h4><a href="placelist.php?display=hierarchy">', KT_I18N::translate('Switch to Place hierarchy'), '</a></h4>';
-
-			if ($num_places == 0) {
-				echo '<p>', KT_I18N::translate('No results found.'), '<p>';
-			} else {
-				echo '<ul>';
-					foreach ($list_places as $n=>$list_place) {
-						echo '
-							<li>
-								<a href="', $list_place->getURL(), '">', $list_place->getReverseName(), '</a>
-							</li>';
-					}
-				echo' </ul>';
+			$controller->addExternalJavascript(KT_JQUERY_DATATABLES_URL);
+			if (KT_USER_CAN_EDIT) {
+				$controller
+					->addExternalJavascript(KT_JQUERY_DT_HTML5)
+					->addExternalJavascript(KT_JQUERY_DT_BUTTONS);
 			}
-
+			$controller->addInlineJavascript('
+				jQuery("#placeListTable").dataTable({
+					dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+					' . KT_I18N::datatablesI18N() . ',
+					buttons: [{extend: "csv"}],
+					jQueryUI: true,
+					autoWidth: false,
+					displayLength: 20,
+					pagingType: "full_numbers",
+					stateSave: true,
+					stateDuration: -1
+				});
+				jQuery("#placeListContainer").css("visibility", "visible");
+				jQuery(".loading-image").css("display", "none");
+			');
+			?>
+			<div id="placeListContainer" style="width: 60%; margin: auto; visibility: hidden;">
+				<div class="loading-image"></div>
+				<h2><?php echo $controller->getPageTitle(); ?></h2>
+				<h4><a href="placelist.php?display=hierarchy"><?php echo KT_I18N::translate('Switch to Place hierarchy'); ?></a></h4>';
+				<table id="placeListTable" style="width: 100%; table-layout:fixed;">
+					<thead>
+						<tr>
+							<th style="padding: 5px 15px;"><?php echo KT_I18N::translate('Places'); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($list_places as $n=>$list_place) { ?>
+							<tr>
+								<td style="padding: 5px 15px;">
+									<a href="<?php echo $list_place->getURL(); ?>"><?php echo $list_place->getReverseName(); ?></a>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
+			<?php
 			break;
 		case 'hierarchy':
 			$use_googlemap = array_key_exists('googlemap', KT_Module::getActiveModules()) && get_module_setting('googlemap', 'GM_PLACE_HIERARCHY');
