@@ -1572,7 +1572,7 @@ a.icon-darrow:hover {width:20px;height:20px;background-image:url(images/darrow2.
 .icon-ddarrow {width:20px;height:20px;background-image:url(images/ddarrow.png);}
 a.icon-ddarrow:hover {width:20px;height:20px;background-image:url(images/ddarrow2.png);}
 .icon-edit_indi {width:20px;height:20px;background-image:url(images/edit_indi.png);}
-.fa-envelope-o {width:16px;height:16px;background-image:url(images/email.png);display: inline-block; margin-top: 6px; vertical-align: text-bottom;}
+.fa-envelope-o {width:16px;height:16px;background-image:url(images/email.png);display: inline-block; margin:2px 6px -2px; vertical-align: text-bottom;}
 .icon-fam-list {width:20px;height:20px;background-image:url(images/family.png);}
 .icon-googlemaps {width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help {cursor:help;margin:0 5px;width:15px;height:15px;background-image:url(images/help2.png);}
