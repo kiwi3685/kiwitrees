@@ -312,6 +312,20 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 				jQuery("#faq_accordion").css("visibility", "visible");
 				jQuery(".faq_subaccordion").accordion({heightStyle: "content", collapsible: true, active: false});
 				jQuery(".faq_subaccordion").css("visibility", "visible");
+
+				// Get hash from query string
+				var hash = window.location.hash;
+
+				if (hash) {
+				    // Get panel header element
+				    var requestedPanel = jQuery(hash);
+				    if (requestedPanel.length) {
+				        // Hide all panels
+				        jQuery(".faq_body").hide();
+				        // Show requested panel
+				        requestedPanel.next(".faq_body").show();
+				    }
+				}
 			');
 			/* Use a structure like <div id="faq_subaccordion"><h2>Your sub-level title<h2><p>Your sub-level content</p></div> inside any FAQ page to create sub-levels within that FAQ */
 
@@ -359,7 +373,7 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 					$faqbody	= get_block_setting($faq->block_id, 'faqbody');
 					$languages	= get_block_setting($faq->block_id, 'languages');
 					if (!$languages || in_array(KT_LOCALE, explode(',', $languages))) { ?>
-						<h2><?php echo $this->faq_search_hits($faq->header, $search); ?></h2>
+						<h2 id="faq<?php echo $faq->block_id; ?>"><?php echo $this->faq_search_hits($faq->header, $search); ?></h2>
 						<div class="faq_body"> <?php echo $this->faq_search_hits(substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody), $search); ?> </div>
 					<?php } ?>
 				<?php } ?>
