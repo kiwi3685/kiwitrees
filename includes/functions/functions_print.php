@@ -94,7 +94,7 @@ function print_pedigree_person($person, $style = 1, $count = 0, $personcount = "
 	$disp			= $person->canDisplayDetails();
 	$uniqueID		= (int)(microtime(true) * 1000000);
 	$boxID			= $pid . '.' . $personcount . '.' . $count . '.' . $uniqueID;
-	$mouseAction4	= ' onclick="expandbox(\'' . $boxID . '\'' . $style . '); return false;"';
+	$mouseAction4	= ' onclick="expandbox(\'' . $boxID . '\', ' . $style . '); return false;"';
 	if ($person->canDisplayName()) {
 		if (empty($SEARCH_SPIDER)) {
 			$personlinks = getPersonLinks($person);
