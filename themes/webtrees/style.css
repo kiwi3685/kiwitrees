@@ -405,8 +405,9 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 [dir=rtl] .title {float:right;}
 .subtitle {font-size: .4em; font-style: italic; font-weight: 600;}
 
-.header_search {clear:both; float:right;margin:-30px 10px;}
+.header_search {background: #fff; clear:both; float:right; margin:-30px 10px;}
 [dir=rtl] .header_search {float:left;}
+.header_search input {background: #fff;}
 #topMenu #nav-select {display: none;}
 
 #flash-messages {clear:both;}
@@ -3434,7 +3435,7 @@ table.ca td.under {
        display:none;
    }
    #navbar {
-       position: initial;
+       position: relative;
    }
    #topMenu #nav-select {
        background-color: #fff;
@@ -3481,11 +3482,13 @@ table.ca td.under {
        text-align: center;
    }
    #header .title {
+	   float:none;
        position: relative;
        text-align: center;
    }
    #header #extra-menu, #header .header_search {
        float:none;
+	   margin: 10px auto;
    }
 
    #content {

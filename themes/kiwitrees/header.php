@@ -73,94 +73,101 @@ $show_widgetbar = false;
 if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Module::getActiveWidgets()) {
 	$show_widgetbar = true;
 }
-
-echo '
-	<!DOCTYPE html>
-	<html ', KT_I18N::html_markup(), '>
+?>
+<!DOCTYPE html>
+	<html <?php echo KT_I18N::html_markup(); ?>>
 	<head>
 		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),'
-		<title>', htmlspecialchars($title), '</title>
-		<link rel="icon" href="', KT_THEME_URL, 'images/favicon.png" type="image/png">
-		<link rel="stylesheet" href="', KT_THEMES_DIR, '_administration/jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
-		<link rel="stylesheet" href="', KT_THEMES_DIR, '_administration/jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'style.css" type="text/css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+		<title><?php echo htmlspecialchars($title); ?></title>
+		<link rel="icon" href="<?php echo KT_THEME_URL; ?>images/favicon.png" type="image/png">
+		<link rel="stylesheet" href="<?php echo KT_THEMES_DIR; ?>_administration/jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
+		<link rel="stylesheet" href="<?php echo KT_THEMES_DIR; ?>_administration/jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
+		<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>style.css" type="text/css">
 		<!--[if IE]>
-			<link type="text/css" rel="stylesheet" href="', KT_THEME_URL, 'msie.css">
-		<![endif]-->';
-		if (file_exists(KT_THEME_URL . 'mystyle.css')) {
-			echo '<link rel="stylesheet" href="', KT_THEME_URL, 'mystyle.css" type="text/css">';
-		}
-	echo '</head>
-';
+			<link type="text/css" rel="stylesheet" href="<?php echo KT_THEME_URL; ?>msie.css">
+		<![endif]-->
+
+		<?php if (file_exists(KT_THEME_URL . 'mystyle.css')) { ?>
+			<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>mystyle.css" type="text/css">
+		<?php } ?>
+	</head>
+
+<?php // begin header section
 
 if ($view!='simple') {echo '<body id="body">';
 } else {echo '<body id="body_simple">';}
 
 // begin header section
-if ($view!='simple') {
-	echo '<div id="navbar">
+if ($view!='simple') { ?>
+	<div id="navbar">
 		<div id="header">
-			<div id="bigtext" class="title" dir="auto">',
-				KT_TREE_TITLE . KT_TREE_SUBTITLE . '
+			<div id="bigtext" class="title" dir="auto">
+				<?php echo KT_TREE_TITLE . KT_TREE_SUBTITLE; ?>
 			</div>
 			<div class="header_search">
 				<form action="search.php" method="post">
 					<input type="hidden" name="action" value="general">
 					<input type="hidden" name="topsearch" value="yes">
-					<input type="search" name="query" size="25" placeholder="', KT_I18N::translate('Search trees'), '" dir="auto">
+					<input type="search" name="query" size="25" placeholder="<?php echo KT_I18N::translate('Search trees'); ?>" dir="auto">
 				</form>
 			</div>
-			<ul id="extra-menu" class="makeMenu">';
-				if (KT_USER_CAN_ACCEPT && exists_pending_change()) {
-					echo '<li>
+			<ul id="extra-menu" class="makeMenu">
+				<?php if (KT_USER_CAN_ACCEPT && exists_pending_change()) { ?>
+					<li>
 						<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">',
-							KT_I18N::translate('Pending changes'), '
+							<?php echo KT_I18N::translate('Pending changes'); ?>
 						</a>
-					</li>';
-				}
+					</li>
+				<?php }
 				foreach (KT_MenuBar::getOtherMenus() as $menu) {
 					if (strpos($menu, KT_I18N::translate('Login')) && !KT_USER_ID && (array_key_exists('login_block', KT_Module::getInstalledModules('%')))) {
 						$class_name	= 'login_block_KT_Module';
-						$module		=  new $class_name;
-						echo '
+						$module		=  new $class_name; ?>
 						<li>
-							<a href="#">', (KT_Site::preference('USE_REGISTRATION_MODULE') ? KT_I18N::translate('Login or Register') : KT_I18N::translate('Login')), '</a>
+							<a href="#">
+								<?php echo (KT_Site::preference('USE_REGISTRATION_MODULE') ? KT_I18N::translate('Login or Register') : KT_I18N::translate('Login')); ?>
+							</a>
 							<ul id="login_popup">
-								<li>', $module->getBlock('login_block'), '</li>
+								<li><?php echo $module->getBlock('login_block'); ?></li>
 							</ul>
-						</li>';
-					} else {
+						</li>
+					<?php } else {
 						echo $menu->getMenuAsList();
 					}
-				}
-			echo '</ul>
-		</div>', // <div id="header">
-		'<div id="topMenu" class="ui-state-active">
-			<ul id="main-menu">';
-				if ($show_widgetbar) {
-					echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
-				}
+				} ?>
+			</ul>
+		</div>
+		<div id="topMenu" class="ui-state-active">
+			<ul id="main-menu">
+				<?php if ($show_widgetbar) { ?>
+					<li id="widget-button" class="fa fa-fw fa-2x fa-bars">
+						<a href="#" >
+							<span style="line-height: inherit;">&nbsp;</span>
+						</a>
+					</li>
+				<?php }
 				foreach (KT_MenuBar::getMainMenus() as $menu) {
 					echo $menu->getMenuAsList();
-				}
-			echo '</ul>',
-			// select menu for responsive layouts only
-			'<div id="nav-select" onChange="window.location.href=this.value">
-				<a href="#">Main menu</a>';
-				foreach (KT_MenuBar::getMainMenus() as $menu) {
+				} ?>
+			</ul>
+			<!-- select menu for responsive layouts only -->
+			<div id="nav-select" onChange="window.location.href=this.value">
+				<a href="#"><?php echo /* I18M: Menu label for responsive meny drop down */ KT_I18N::translate('Main menu'); ?></a>
+				<?php foreach (KT_MenuBar::getMainMenus() as $menu) {
 					echo $menu->getResponsiveMenu();
-				}
-			echo '</div>
-		</div>', // <div id="topMenu">
-		KT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-	'</div>'; // <div id="navbar">
-}
+				} ?>
+			</div>
+		</div>
+		<?php echo KT_FlashMessages::getHtmlMessages(); ?>
+	</div>
+<?php }
 // add widget bar for all pages except Home, and only for logged in users with role 'visitor' or above
 if ($show_widgetbar) {
 	include_once 'widget-bar.php';
 }
 // begin content section
-echo 	$javascript,
-		'<div id="content">';// closed in footer
+echo $javascript; ?>
+<div id="content">
+<?php

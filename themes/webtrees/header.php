@@ -44,7 +44,7 @@ $this
 				title: function(){
 							var url = jQuery(this).attr("href");
 							var img_title = jQuery(this).data("title");
-							return "<a href=\"" + url + "\" target=\"_blank\">" + img_title + " - '.
+							return "<a href=\"" + url + "\" target=\"_blank\">" + img_title + " - ' .
 							KT_I18N::translate('Open in full browser window').'</a>";
 						}
 			});
@@ -60,82 +60,91 @@ $show_widgetbar = false;
 if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Module::getActiveWidgets()) {
 	$show_widgetbar = true;
 }
-
-echo '
-	<!DOCTYPE html>
-	<html ', KT_I18N::html_markup(), '>
+?>
+<!DOCTYPE html>
+	<html <?php echo KT_I18N::html_markup(); ?>>
 	<head>
 		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL), '
-		<title>', htmlspecialchars($title), '</title>
-		<link rel="icon" href="', KT_THEME_URL, 'images/favicon.png" type="image/png">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'style.css" type="text/css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+		<title><?php echo htmlspecialchars($title); ?></title>
+		<link rel="icon" href="<?php echo KT_THEME_URL; ?>images/favicon.png" type="image/png">
+		<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
+		<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
+		<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>style.css" type="text/css">
 		<!--[if IE]>
-			<link type="text/css" rel="stylesheet" href="', KT_THEME_URL, 'msie.css">
-		<![endif]-->';
+			<link type="text/css" rel="stylesheet" href="<?php echo KT_THEME_URL; ?>msie.css">
+		<![endif]-->
 
-		if (file_exists(KT_THEME_URL . 'mystyle.css')) {
-			echo '<link rel="stylesheet" href="', KT_THEME_URL, 'mystyle.css" type="text/css">';
-		}
-	echo '</head>
-	<body id="body">';
+		<?php if (file_exists(KT_THEME_URL . 'mystyle.css')) { ?>
+			<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>mystyle.css" type="text/css">
+		<?php } ?>
+	</head>
+	<body id="body">
 
-// begin header section
-if ($view!='simple') {
-	global $KT_IMAGES;
-	echo '<div id="navbar">
-		<div id="header">',
-			'<div class="title" dir="auto">',
-				KT_TREE_TITLE . KT_TREE_SUBTITLE,'
-			</div>',
-			'<ul id="extra-menu" class="makeMenu">';
-				if (KT_USER_CAN_ACCEPT && exists_pending_change()) {
-echo				'<li>
-						<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">',
-							KT_I18N::translate('Pending changes'), '
+<?php // begin header section
+if ($view != 'simple') {
+	global $KT_IMAGES; ?>
+	<div id="navbar">
+		<div id="header">
+			<div class="title" dir="auto">
+				<?php echo KT_TREE_TITLE . KT_TREE_SUBTITLE; ?>
+			</div>
+			<ul id="extra-menu" class="makeMenu">
+				<?php if (KT_USER_CAN_ACCEPT && exists_pending_change()) { ?>
+					<li>
+						<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">
+							<?php echo KT_I18N::translate('Pending changes'); ?>
 						</a>
-					</li>';
-				}
+					</li>
+				<?php }
 				foreach (KT_MenuBar::getOtherMenus() as $menu) {
 					echo $menu->getMenuAsList();
-				}
-echo		'</ul>',
-			'<div class="header_search">',
-				'<form action="search.php" method="post">',
-					'<input type="hidden" name="action" value="general">',
-					'<input type="hidden" name="topsearch" value="yes">',
-					'<input type="search" name="query" size="25" placeholder="', KT_I18N::translate('Search'), '" dir="auto">',
-					'<input type="image" class="image" src="', $KT_IMAGES['search'], '" alt="', KT_I18N::translate('Search'), '" title="', KT_I18N::translate('Search'), '">',
-				'</form>',
-			'</div>',
-			'<div id="topMenu">',
-				'<ul id="main-menu">';
-					if ($show_widgetbar) {
-						echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">', KT_I18N::translate('Widgets'), '</span></a></li>';
-					}
+				} ?>
+			</ul>
+			<div class="header_search">
+				<form action="search.php" method="post">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="25" placeholder="<?php echo KT_I18N::translate('Search'); ?>" dir="auto">
+					<input
+						type="image"
+						class="image"
+						src="<?php echo $KT_IMAGES['search']; ?>"
+						alt="<?php echo KT_I18N::translate('Search'); ?>"
+						title="<?php echo KT_I18N::translate('Search'); ?>"
+					>
+				</form>
+			</div>
+			<div id="topMenu">
+				<ul id="main-menu">
+					<?php if ($show_widgetbar) { ?>
+						<li id="widget-button" class="fa fa-fw fa-2x fa-bars">
+							<a href="#">
+								<span style="line-height: inherit;"><?php echo KT_I18N::translate('Widgets'); ?></span>
+							</a>
+						</li>
+					<?php }
 					foreach (KT_MenuBar::getMainMenus() as $menu) {
 						echo $menu->getMenuAsList();
-					}
-echo			'</ul>',  // <ul id="main-menu">
-				// select menu for responsive layouts only
-				'<select id="nav-select" onChange="window.location.href=this.value">
-					<option selected="selected" value="">', KT_I18N::translate('Choose a page'), '</option>';
-					foreach (KT_MenuBar::getMainMenus() as $menu) {
+					} ?>
+				</ul>
+				<!-- select menu for responsive layouts only -->
+				<div id="nav-select" onChange="window.location.href=this.value">
+					<a href="#"><?php echo /* I18M: Menu label for responsive meny drop down */ KT_I18N::translate('Main menu'); ?></a>
+					<?php foreach (KT_MenuBar::getMainMenus() as $menu) {
 						echo $menu->getResponsiveMenu();
-					}
-echo			'</select>
-			</div>', // <div id="topMenu">
-		'</div>'; // <div id="header">
-}
-echo 	'</div>', // close navbar
-		$javascript,
-		KT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-	'<div id="content">';
-
-// add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
-if ($show_widgetbar) {
-	include_once 'widget-bar.php';
-}
+					} ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php }
+echo $javascript .
+KT_FlashMessages::getHtmlMessages(); ?>
+<div id="content">
+	<?php
+	// add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
+	if ($show_widgetbar) {
+		include_once 'widget-bar.php';
+	}
