@@ -47,17 +47,17 @@ class KT_Menu {
 	* @param string $pos The position of the label relative to the icon (right, left, top, bottom)
 	* @param string $flyout The direction where any submenus should appear relative to the menu item (right, down)
 	*/
-	function __construct($label=' ', $link='#', $id=null, $labelpos='right', $flyout='down')
+	function __construct($label = ' ', $link = '#', $id = null, $labelpos = 'right', $flyout = 'down')
 	{
-		$this->label   =$label;
-		$this->labelpos=$labelpos;
-		$this->link    =$link;
-		$this->id      =$id;
-		$this->flyout  =$flyout;
-		$this->submenus=array();
+		$this->label	= $label;
+		$this->labelpos	= $labelpos;
+		$this->link		= $link;
+		$this->id		= $id;
+		$this->flyout	= $flyout;
+		$this->submenus	= array();
 	}
 
-	function addLabel($label=' ', $pos='right')
+	function addLabel($label = null, $pos ='right')
 	{
 		if ($label) $this->label = $label;
 		$this->labelpos = $pos;
@@ -73,16 +73,16 @@ class KT_Menu {
 		$this->onclick = $onclick;
 	}
 
-	function addFlyout($flyout='down')
+	function addFlyout($flyout = 'down')
 	{
-		$this->flyout = $flyout;
+		$this->flyout	= $flyout;
 	}
 
-	function addClass($class, $submenuclass='', $iconclass='icon_general')
+	function addClass($class, $submenuclass = '', $iconclass = 'icon_general')
 	{
-		$this->class = $class;
-		$this->submenuclass = $submenuclass;
-		$this->iconclass = $iconclass;
+		$this->class		= $class;
+		$this->submenuclass	= $submenuclass;
+		$this->iconclass	= $iconclass;
 	}
 
 	function addTarget($target)
@@ -103,37 +103,37 @@ class KT_Menu {
 	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
 	function getMenuAsList() {
 		$link = '';
-		if ($this->link) {
+		if ($this->link && strpos($this->label, "<a href") !== 0) {
 			if ($this->target !== null) {
-				$link .= ' target="'.$this->target.'"';
+				$link .= ' target="' . $this->target . '"';
 			}
-			if ($this->link=='#') {
+			if ($this->link == '#') {
 				if ($this->onclick !== null) {
-					$link .= ' onclick="'.$this->onclick.'"';
+					$link .= ' onclick="' . $this->onclick . '"';
 				}
-				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				$html = '<a class="' . $this->iconclass . '" href="' . $this->link . '"' . $link . '>' . $this->label . '</a>';
 			} else {
-				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				$html = '<a class="' . $this->iconclass . '" href="' . $this->link . '"' . $link . '>' . $this->label . '</a>';
 			}
 		} else {
-			$html=$this->label;
+			$html = $this->label;
 		}
 		if ($this->submenus) {
-			$html.='<ul class="f-dropdown hover1">';
+			$html .= '<ul class="f-dropdown hover1">';
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
 					if ($submenu->submenus) {
-						$submenu->iconclass.=' icon_arrow';
+						$submenu->iconclass .= ' icon_arrow';
 					}
-					$html.=$submenu->getMenuAsList();
+					$html .= $submenu->getMenuAsList();
 				}
 			}
-			$html.='</ul>';
+			$html .= '</ul>';
 		}
 		if ($this->id) {
-			return '<li id="'.$this->id.'">'.$html.'</li>';
+			return '<li id="' . $this->id . '">' . $html . '</li>';
 		} else {
-			return '<li>'.$html.'</li>';
+			return '<li>' . $html . '</li>';
 		}
 	}
 
@@ -142,35 +142,37 @@ class KT_Menu {
 		$link = '';
 		if ($this->link) {
 			if ($this->target !== null) {
-				$link .= ' target="'.$this->target.'"';
+				$link .= ' target="' . $this->target . '"';
 			}
-			if ($this->link=='#') {
+			if ($this->link == '#') {
 				if ($this->onclick !== null) {
-					$link .= ' onclick="'.$this->onclick.'"';
+					$link .= ' onclick="' . $this->onclick . '"';
 				}
-				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				if ($this->label !== null) {
+					$html = '<a class="' . $this->iconclass . '" href="' . $this->link . '"' . $link . '>' . $this->label . '</a>';
+				}
 			} else {
-				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				$html = '<a class="' . $this->iconclass . '" href="' . $this->link . '"' . $link . '>' . $this->label . '</a>';
 			}
 		} else {
-			$html=$this->label;
+			$html = $this->label;
 		}
 		if ($this->submenus) {
-			$html.='<ul class="dropdown">';
+			$html .= '<ul class="dropdown">';
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
 					if ($submenu->submenus) {
-						$submenu->iconclass.=' icon_arrow';
+						$submenu->iconclass .= ' icon_arrow';
 					}
-					$html.=$submenu->getMenuAsList();
+					$html .= $submenu->getMenuAsList();
 				}
 			}
-			$html.='</ul>';
+			$html .= '</ul>';
 		}
 		if ($this->id) {
-			return '<li class="has-dropdown" id="'.$this->id.'">'.$html.'</li>';
+			return '<li class="has-dropdown" id="' . $this->id . '">' . $html . '</li>';
 		} else {
-			return '<li class="has-dropdown">'.$html.'</li>';
+			return '<li class="has-dropdown">' . $html . '</li>';
 		}
 	}
 
@@ -182,27 +184,27 @@ class KT_Menu {
 		} else {
 			$menucount++;
 		}
-		$id = $menucount.rand();
+		$id = $menucount . rand();
 		$c = count($this->submenus);
-		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">";
-		$link = "<a href=\"{$this->link}\" onmouseover=\"";
+		$output = '<div id="menu' . $id . '" class="' . $this->class . '">';
+		$link = '<a href="' . $this->link . '" onmouseover="';
 		if ($c >= 0) {
-			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}');";
+			$link .= 'show_submenu("menu' . $id . '_subs, menu' . $id . ', ' . $this->flyout . '");';
 		}
 		$link .= '" onmouseout="';
 		if ($c >= 0) {
-			$link .= "timeout_submenu('menu{$id}_subs');";
+			$link .= "timeout_submenu('menu' . $id . '_subs');";
 		}
 		if ($this->onclick !== null) {
-			$link .= "\" onclick=\"{$this->onclick}";
+			$link .= '" onclick="' . $this->onclick . '"';
 		}
 		if ($this->target !== null) {
 			$link .= '" target="'.$this->target;
 		}
-		$link .= "\">";
+		$link .= '">';
 		$output .= $link;
 		$output .= $this->label;
-		$output .= "</a>";
+		$output .= '</a>';
 
 		if ($c > 0) {
 			$submenuid = "menu{$id}_subs";
@@ -284,7 +286,7 @@ class KT_Menu {
 			if ($this->target !== null) {
 				$link .= ' target="'.$this->target.'"';
 			}
-			if ($this->link=='#') {
+			if ($this->link == '#') {
 				if ($this->onclick !== null) {
 					$link .= ' onclick="'.$this->onclick.'"';
 				}
@@ -296,16 +298,16 @@ class KT_Menu {
 			$html=$this->label;
 		}
 		if ($this->submenus) {
-			$html.='<ul class="f-dropdown"  id="hover1">';
+			$html .= '<ul class="f-dropdown"  id="hover1">';
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
 					if ($submenu->submenus) {
-						$submenu->iconclass.=' icon_arrow';
+						$submenu->iconclass .= ' icon_arrow';
 					}
-					$html.=$submenu->getMenuAsList();
+					$html .= $submenu->getMenuAsList();
 				}
 			}
-			$html.='</ul>';
+			$html .= '</ul>';
 		}
 			return $html;
 	}
