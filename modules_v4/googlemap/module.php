@@ -1544,7 +1544,11 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 						' . KT_I18N::datatablesI18N() . ',
 						buttons: [{extend: "csv"}],
 						jQueryUI: true,
-						autoWidth: false
+						autoWidth: false,
+						pageLength: 20,
+						pagingType: "full_numbers",
+						stateSave: true,
+						stateDuration: 300
 					});
 					jQuery("#gm_check_details").css("visibility", "visible");
 					jQuery(".loading-image").css("display", "none");
