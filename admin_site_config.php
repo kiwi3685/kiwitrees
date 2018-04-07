@@ -415,7 +415,7 @@ $controller
 							$installed[$code] = KT_I18N::translate($name);
 						}
 						asort($installed);
-						echo '<ul style="display: flex; flex-direction: column; flex-wrap: wrap; list-style: none; max-height: 200px;">';
+						echo '<ul class="vertList">';
 							foreach ($installed as $code=>$name) {
 								echo '
 									<li>

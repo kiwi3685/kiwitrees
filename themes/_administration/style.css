@@ -399,6 +399,13 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #site_config #lang h5 input {
 	vertical-align: middle;
 }
+#site_config ul.vertList {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	list-style: none;
+	max-height: 200px;
+}
 
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}
