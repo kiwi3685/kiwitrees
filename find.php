@@ -344,8 +344,8 @@ if ($type == 'specialchar') {
 // Show facts
 if ($type == "facts") {
 	echo '<div id="find-facts-header">
-	<form name="filterfacts" method="get" action="find.php"
-	input type="hidden" name="type" value="facts">
+	<form name="filterfacts" method="get" action="find.php">
+	<input type="hidden" name="type" value="facts">
 	<input type="hidden" name="tags" value="', $qs, '">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<table class="list_table width100" border="0">
