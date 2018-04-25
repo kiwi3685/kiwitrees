@@ -364,6 +364,18 @@ class KT_I18N {
 		return call_user_func_array('sprintf', $args);
 	}
 
+	/**
+	 * Perform a case-insensitive comparison of two strings.
+	 *
+	 * @param string $string1
+	 * @param string $string2
+	 *
+	 * @return int
+	 */
+	public static function strcasecmp($string1, $string2) {
+		return strcmp(strtolower($string1), strtolower($string2));
+	}
+
 	// Convert a GEDCOM age string into translated_text
 	// NB: The import function will have normalised this, so we don't need
 	// to worry about badly formatted strings

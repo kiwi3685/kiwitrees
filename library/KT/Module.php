@@ -140,7 +140,9 @@ abstract class KT_Module {
 			}
 		}
 		if ($sort && !$sorted) {
-			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+			uasort($modules, function ($x, $y) {
+				return KT_I18N::strcasecmp((string)$x, (string)$y);
+			});
 			$sorted = true;
 		}
 		return $modules;
@@ -168,8 +170,11 @@ abstract class KT_Module {
 				)->execute(array($module_name));
 			}
 		}
+
 		if ($component != 'menu' && $component != 'sidebar' && $component != 'tab' && $component != 'widget') {
-			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+			uasort($array, function ($x, $y) {
+				return KT_I18N::strcasecmp((string)$x, (string)$y);
+			});
 		}
 		return $array;
 	}
@@ -352,7 +357,10 @@ abstract class KT_Module {
 				}
 			}
 		}
-		uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+		uasort($modules, function ($x, $y) {
+			return KT_I18N::strcasecmp((string)$x, (string)$y);
+		});
+
 		return $modules;
 	}
 

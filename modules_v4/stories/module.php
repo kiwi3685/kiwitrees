@@ -481,7 +481,10 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 				$story->block_order = $order; // Make the new order take effect immediately
 			}
 		}
- 		uasort($stories, create_function('$x,$y', 'return $x->block_order > $y->block_order;'));
+		uasort($stories, function ($x, $y) {
+			return $x->block_order > $y->block_order;
+		});
+
 		?>
 		<div id="<?php echo $this->getName(); ?>">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>

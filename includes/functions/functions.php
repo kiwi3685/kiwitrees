@@ -2513,11 +2513,11 @@ function expand_urls($text) {
 	$URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
 	return preg_replace_callback(
-		'/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
-		create_function( // Insert soft hyphens into the replaced string
-			'$m',
-			'return "<a href=\"".$m[0]."\" target=\"blank\">".preg_replace("/\b/", "&shy;", $m[0])."</a>";'
-		),
+		'/' . addcslashes('(?!>)' . $URL_REGEX . '(?!</a>)', '/') . '/i',
+
+		function($m) {
+			return '<a href="' . $m[0] . '" target="blank">' . preg_replace("/\b/", "&shy;", $m[0]) . '</a>';
+		},
 		preg_replace("/<(?!br)/i", "&lt;", $text) // no html except br
 	);
 }

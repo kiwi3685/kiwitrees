@@ -1459,7 +1459,11 @@ case 'update':
 			if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
 
 			if (!empty($NOTE)) {
-				$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
+				$cmpfunc = preg_replace_callback(
+					function($e) {
+						return 'strpos($e,"0 @N") !== 0 && strpos($e,"1 CONT") !== 0;';
+					}
+				);
 				$gedlines = array_filter($gedlines, $cmpfunc);
 				$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 				$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
@@ -1525,7 +1529,11 @@ case 'update':
 				if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
 
 				if (!empty($NOTE)) {
-					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !== 0;');
+					$cmpfunc = preg_replace_callback(
+						function($e) {
+							return 'strpos($e,"0 @N") !== 0 && strpos($e,"1 CONT") !== 0;';
+						}
+					);
 					$gedlines = array_filter($gedlines, $cmpfunc);
 					$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 					$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);

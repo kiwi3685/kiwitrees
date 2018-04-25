@@ -94,7 +94,10 @@ class KT_MenuBar {
 			$indi_xref = $controller->getSignificantIndividual()->getXref();
 			$PEDIGREE_ROOT_ID = get_gedcom_setting(KT_GED_ID, 'PEDIGREE_ROOT_ID');
 			$menu = new KT_Menu(KT_I18N::translate('Charts'), '#', 'menu-chart');
-			uasort($active_charts, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+			uasort($active_charts, function ($x, $y) {
+				return KT_I18N::strcasecmp((string)$x, (string)$y);
+			});
+
 			foreach ($active_charts as $chart) {
 				foreach ($chart->getChartMenus() as $submenu) {
 					$menu->addSubmenu($submenu);
@@ -114,7 +117,10 @@ class KT_MenuBar {
 		}
 
 		$menu = new KT_Menu(KT_I18N::translate('Lists'), '#', 'menu-list');
-		uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+		uasort($active_lists, function ($x, $y) {
+			return KT_I18N::strcasecmp($x->getTitle(), $y->getTitle());
+		});
+
 		foreach ($active_lists as $list) {
 			foreach ($list->getListMenus() as $submenu) {
 				$menu->addSubmenu($submenu);
