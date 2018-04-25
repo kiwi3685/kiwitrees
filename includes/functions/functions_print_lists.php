@@ -127,13 +127,13 @@ function format_indi_table($datalist, $option='') {
 	$stats = new KT_Stats($GEDCOM);
 
 	// Bad data can cause "longest life" to be huge, blowing memory limits
-	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge())+1;
+	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge()) + 1;
 
 	// Inititialise chart data
-	for ($age=0; $age<=$max_age; $age++) {
+	for ($age = 0; $age <= $max_age; $age ++) {
 		$deat_by_age[$age] = '';
 	}
-	for ($year=1550; $year<2030; $year+=10) {
+	for ($year = 1550; $year < 2030; $year += 10) {
 		$birt_by_decade[$year] = '';
 		$deat_by_decade[$year] = '';
 	}
@@ -141,7 +141,7 @@ function format_indi_table($datalist, $option='') {
 	$html = '
 		<div class="loading-image">&nbsp;</div>
 		<div class="indi-list">
-			<table id="'. $table_id. '">
+			<table id="' . $table_id . '">
 				<thead>
 					<tr>
 						<th colspan="24">
