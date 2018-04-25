@@ -187,48 +187,53 @@ class KT_Menu {
 		$id = $menucount . rand();
 		$c = count($this->submenus);
 		$output = '<div id="menu' . $id . '" class="' . $this->class . '">';
-		$link = '<a href="' . $this->link . '" onmouseover="';
-		if ($c >= 0) {
-			$link .= 'show_submenu("menu' . $id . '_subs, menu' . $id . ', ' . $this->flyout . '");';
-		}
-		$link .= '" onmouseout="';
-		if ($c >= 0) {
-			$link .= "timeout_submenu('menu' . $id . '_subs');";
-		}
-		if ($this->onclick !== null) {
-			$link .= '" onclick="' . $this->onclick . '"';
-		}
-		if ($this->target !== null) {
-			$link .= '" target="'.$this->target;
-		}
-		$link .= '">';
-		$output .= $link;
-		$output .= $this->label;
-		$output .= '</a>';
 
-		if ($c > 0) {
-			$submenuid = "menu{$id}_subs";
-			if ($TEXT_DIRECTION == 'ltr') {
-				$output .= '<div style="text-align: left;">';
-			} else {
-				$output .= '<div style="text-align: right;">';
-			}
-			$output .= "<div id=\"menu{$id}_subs\" class=\"{$this->submenuclass}\" style=\"position: absolute; visibility: hidden; z-index: 100;";
-			if ($this->flyout == 'right') {
-				if ($TEXT_DIRECTION == 'ltr') {
-					$output .= ' left: 80px;';
-				} else {
-					$output .= ' right: 50px;';
+		$id = $menucount.rand();
+		$c = count($this->submenus);
+		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">";
+			$link = '<a href="' . $this->link . '" onmouseover="';
+				if ($c >= 0) {
+					$link .= 'show_submenu(\'menu' . $id . '_subs\', \'menu' . $id . '\', \'' . $this->flyout . '\');';
 				}
+				$link .= '" onmouseout="';
+				if ($c >= 0) {
+					$link .= 'timeout_submenu(\'menu' . $id . '_subs\');';
+				}
+				if ($this->onclick !== null) {
+					$link .= '" onclick="' . $this->onclick . '"';
+				}
+				if ($this->target !== null) {
+					$link .= '" target="'.$this->target;
+				}
+			$link .= '">';
+				$output .= $link;
+				$output .= $this->label;
+			$output .= '</a>';
+
+			if ($c > 0) {
+				$submenuid = 'menu' . $id . '_subs';
+				if ($TEXT_DIRECTION == 'ltr') {
+					$output .= '<div style="text-align: left;">';
+				} else {
+					$output .= '<div style="text-align: right;">';
+				}
+					$output .= '<div id="menu' . $id . '_subs" class="' . $this->submenuclass . '" style="position: absolute; visibility: hidden; z-index: 100;';
+					if ($this->flyout == 'right') {
+						if ($TEXT_DIRECTION == 'ltr') {
+							$output .= ' left: 80px;';
+						} else {
+							$output .= ' right: 50px;';
+						}
+					}
+					$output .= '" onmouseover="show_submenu(\'' . $this->parentmenu . '\'); show_submenu(\'' . $submenuid . '\');" onmouseout="timeout_submenu(\'menu' . $id . '_subs\');">';
+					foreach ($this->submenus as $submenu) {
+						$submenu->parentmenu = $submenuid;
+						$output .= $submenu->getMenu();
+					}
+					$output .= '</div>
+				</div>';
 			}
-			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">";
-			foreach ($this->submenus as $submenu) {
-				$submenu->parentmenu = $submenuid;
-				$output .= $submenu->getMenu();
-			}
-			$output .= "</div></div>";
-		}
-		$output .= "</div>";
+		$output .= '</div>';
 		return $output;
 	}
 
@@ -244,7 +249,7 @@ class KT_Menu {
 	function getTopMenuList() {
 		$html=$this->label;
 		if ($this->id) {
-			return '<li id="'.$this->id.'">'.$html.'</li>';
+			return '<li id="' . $this->id . '">' . $html . '</li>';
 		} else {
 			return '<li>' . $html . '</li>';
 		}
