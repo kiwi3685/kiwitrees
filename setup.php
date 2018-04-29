@@ -31,7 +31,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 	if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ||
 		ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
 		$in = array(&$_POST);
-		while (list($k,$v) = each($in)) {
+		foreach ($in as $k => $v) {
 			foreach ($v as $key => $val) {
 				if (!is_array($val)) {
 					$in[$k][$key] = stripslashes($val);

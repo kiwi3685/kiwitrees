@@ -97,7 +97,7 @@
  	 */
  	protected function extractPaths($target) {
  		$paths = array(array($target));
- 		while (list($key, $path) = each($paths)) {
+		foreach ($paths as $key => $path) {
  			if ($this->previous[$path[0]]) {
  				foreach ($this->previous[$path[0]] as $previous) {
  					$copy = $path;

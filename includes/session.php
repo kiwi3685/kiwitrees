@@ -159,7 +159,7 @@ if (version_compare(PHP_VERSION, '6.0', '<')) {
 	// magic_quotes_gpc can’t be disabled at run-time, so clean them up as necessary.
 	if (get_magic_quotes_gpc() || ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase')) != 'off') {
 		$in = array(&$_GET, &$_POST, &$_REQUEST, &$_COOKIE);
-		while (list($k,$v) = each($in)) {
+		foreach ($in as $k => $v) {
 			foreach ($v as $key => $val) {
 				if (!is_array($val)) {
 					$in[$k][$key] = stripslashes($val);
