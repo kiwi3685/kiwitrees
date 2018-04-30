@@ -42,7 +42,7 @@ class KT_Menu {
 
 	/**
 	* Constructor for the menu class
-	* @param string $label the label for the menu item (usually a _lang variable)
+	* @param string $label the label for the menu item (usually a kt_lang variable)
 	* @param string $link The link that the user should be taken to when clicking on the menuitem
 	* @param string $pos The position of the label relative to the icon (right, left, top, bottom)
 	* @param string $flyout The direction where any submenus should appear relative to the menu item (right, down)
@@ -247,7 +247,7 @@ class KT_Menu {
 
 	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
 	function getTopMenuList() {
-		$html=$this->label;
+		$html = $this->label;
 		if ($this->id) {
 			return '<li id="' . $this->id . '">' . $html . '</li>';
 		} else {
