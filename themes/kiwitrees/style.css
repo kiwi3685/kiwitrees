@@ -211,7 +211,7 @@ textarea:required:invalid {
 #navbar {
 	background-color: #eee;
 	left: 0;
-	position: fixed;
+	position: absolute;
 	right: 0;
 	top: 0;
 	z-index: 1030;
@@ -7341,4 +7341,9 @@ table.ca td.under {
 }
 input.modal-closing-trick:checked ~ div {
 display: none !important;
+}
+
+/* New css for fullscreen view */
+.tvfs-full-screen {
+  top: 118px!important;
 }

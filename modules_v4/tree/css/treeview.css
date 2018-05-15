@@ -343,3 +343,20 @@ table#tvTreeBorder td,
 .tvF {background-color: #FDD !important;}
 
 .dashed {border-top: thin dashed #81A9CB !important;}
+
+/* New css for fullscreen view */
+.tvfs-switch-full-screen:before {
+  content: '\2191';
+}
+.tvfs-full-screen {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.tvfs-full-screen .tvfs-switch-full-screen:before {
+  content: '\2193';
+}

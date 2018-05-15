@@ -345,3 +345,8 @@ function readCookie(name) {
 	}
 	return null;
 }
+
+/* New js for fullscreen view */
+jQuery("li#switch-full-screen").on('click', function() {
+    jQuery('#tvTab_out').toggleClass('tvfs-full-screen');
+});
