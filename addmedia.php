@@ -23,7 +23,7 @@
 
 define('KT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
-require_once KT_ROOT . 'includes/functions/functions_print_lists.php';
+//require_once KT_ROOT . 'includes/functions/functions_print_lists.php';
 require KT_ROOT . 'includes/functions/functions_edit.php';
 
 $pid			= KT_Filter::get('pid', KT_REGEX_XREF, KT_Filter::post('pid', KT_REGEX_XREF)); // edit this media object
@@ -47,14 +47,13 @@ $controller
 	')
 	->requireMemberLogin();
 
-$disp = true;
-$media = KT_Media::getInstance($pid);
+$disp	= true;
+$media	= KT_Media::getInstance($pid);
 if ($media) {
 	$disp = $media->canDisplayDetails();
 }
 if ($action == 'update' || $action == 'create') {
-	if (!isset($linktoid) || $linktoid == 'new') $linktoid = '';
-	if (!empty($linktoid)) {
+	if ($linktoid) {
 		$disp = KT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 	}
 }
@@ -63,12 +62,12 @@ if (!KT_USER_CAN_EDIT || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');
-	exit;
+
+	return;
 }
 
-// TODO - there is a lot of common code in the create and update cases....
+// There is a lot of common code in the create and update cases....
 // .... and also in the admin_media_upload.php script
-
 switch ($action) {
 	case 'create': // Save the information from the “showcreateform” action
 		$controller->setPageTitle(KT_I18N::translate('Create a new media object'));
@@ -231,19 +230,16 @@ switch ($action) {
 					$controller->addInlineJavascript('openerpasteid("' . $media_id . '");');
 				}
 			}
-		}
-	//	$controller->addInlineJavascript('closePopupAndReloadParent("");');
-	?>
+		} ?>
+
 		<div style="margin: 20px 50px">
-			<button class="btn btn-primary" type="button"  onclick="closePopupAndReloadParent();">
+			<button class="btn btn-primary" type="button" onclick="closePopupAndReloadParent();">
 				<i class="fa fa-times"></i>
 				<?php echo KT_I18N::translate('close'); ?>
 			</button>
 			<p class="warning"><?php echo KT_I18N::translate('Click the close button to return to the manage media page.'); ?></p>
 		</div>
-	<?php
-		exit;
-
+		<?php return;
 	case 'update': // Save the information from the “editmedia” action
 		$controller->setPageTitle(KT_I18N::translate('Edit media object'));
 
@@ -423,21 +419,19 @@ switch ($action) {
 		throw new Exception('Bad $action (' . $action . ') in addmedia.php');
 }
 
-$controller
-		->pageHeader()
-		->getPageTitle();
-?>
+$controller->pageHeader();?>
+
 <div id="addmedia-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="<?php echo $action; ?>">
-		<input type="hidden" name="ged" value="<?php echo  KT_GEDCOM; ?>">
-		<input type="hidden" name="pid" value="<?php echo  $pid; ?>">
+		<input type="hidden" name="ged" value="<?php echo KT_GEDCOM; ?>">
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 		<?php if ($linktoid) { ?>
 			<input type="hidden" name="linktoid" value="<?php echo $linktoid; ?>">
 		<?php } ?>
-		<div id="add_facts">
-			<?php if (!$linktoid && $type != 'event' && $action == 'create') { ?>
+		<div id="add_facts" style="max-width: 850px;">
+			<?php if (!$linktoid && $type !== 'event' && $action == 'create') { ?>
 				<div id="MEDIA_factdiv">
 					<label>
 						<?php echo KT_I18N::translate('Enter a Person, Family, or Source ID'); ?>
@@ -452,24 +446,18 @@ $controller
 					</div>
 				</div>
 			<?php }
+
 			$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
-			// 0 OBJE
+
 			// 1 FILE
-			if ($gedrec == '') {
+			if (preg_match('/\n\d (FILE.*)/', $gedrec, $match)) {
+				$gedfile = $match[1];
+			} elseif ($filename) {
+				$gedfile = 'FILE ' . $filename;
+			} else {
 				$gedfile = 'FILE';
-				if ($filename != '')
-					$gedfile = 'FILE ' . $filename;
-			} else {
-				$gedfile = get_first_tag(1, 'FILE', $gedrec);
-				if (empty($gedfile))
-					$gedfile = 'FILE';
 			}
-			if ($gedfile != 'FILE') {
-				$gedfile = 'FILE ' . substr($gedfile, 5);
-				$readOnly = 'READONLY';
-			} else {
-				$readOnly = '';
-			}
+
 			if ($gedfile == 'FILE') {
 				// Box for user to choose to upload file from local computer ?>
 				<div id="MEDIA-UP_factdiv">
@@ -495,7 +483,11 @@ $controller
 						<div class="input">
 							<input type="file" name="thumbnail">
 						</div>
-						<span id="upload_thumbnail_file" class="help_text"></span>
+						<div class="help_text">
+							<span class="help_content">
+								<?php echo KT_I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording.'); ?>
+							</span>
+						</div>
 					</div>
 				<?php }
 			}
@@ -505,28 +497,27 @@ $controller
 			if ($gedfile == 'FILE') {
 				if (KT_USER_GEDCOM_ADMIN) { ?>
 					<div id="FILE_factdiv">
-						<?php add_simple_tag("1 $gedfile",'',KT_I18N::translate('File name on server'),'','NOCLOSE'); ?>
+						<?php add_simple_tag("1 $gedfile",'',KT_I18N::translate('File name on server')); ?>
 					</div>
 					<div class="help_text">
 						<span class="help_content">
 							<?php echo
 								KT_I18N::translate('Do not change to keep original file name.') .
-								KT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.');
+								KT_I18N::translate('You may enter a URL, beginning with "http://".');
 							?>
 						</span>
 					</div>
 				<?php }
-				$fileName = '';
 				$folder = '';
 			} else {
 				if ($isExternal) {
 					$fileName	= substr($gedfile, 5);
 					$folder		= '';
 				} else {
-					$tmp		=substr($gedfile, 5);
+					$tmp		= substr($gedfile, 5);
 					$fileName	= basename($tmp);
 					$folder		= dirname($tmp);
-					if ($folder == '.') {
+					if ($folder === '.') {
 						$folder = '';
 					}
 				} ?>
@@ -536,11 +527,13 @@ $controller
 					</label>
 					<div class="input">
 						<?php if (KT_USER_GEDCOM_ADMIN) { ?>
-						    <input name="filename" type="text" value="<?php echo htmlspecialchars($fileName); ?>"
-						    <?php if ($isExternal) {
-						        echo '>';
-						    } else {
-						        echo '>'; ?>
+						    <input name="filename" type="text" value="<?php echo htmlspecialchars($fileName); ?>" >
+						    <?php if ($isExternal) { ?>
+								<div class="help_text">
+									<span class="help_content">
+										<?php echo KT_I18N::translate('Do not change to keep original file name.'); ?>
+									</span>
+								</div>
 						    <?php } ?>
 						<?php } else { ?>
 						    <?php echo $fileName; ?>
@@ -555,65 +548,64 @@ $controller
 				</div>
 			<?php } ?>
 
-			<div id="SERVER_factdiv">
-				<?php // Box for user to choose the folder to store the image
-				if (!$isExternal) { ?>
-						<label>
-							<?php echo KT_I18N::translate('Folder name on server'); ?>
-						</label>
+			<?php
+			// Box for user to choose the folder to store the image
+			if (!$isExternal) { ?>
+				<div id="SERVER_factdiv">
+					<label>
+						<?php echo KT_I18N::translate('Folder name on server'); ?>
+					</label>
 					<div class="input">
 						<?php //-- don’t let regular users change the location of media items
 						if ($action != 'update' || KT_USER_GEDCOM_ADMIN) {
-							$mediaFolders = KT_Query_Media::folderList();
-							echo '<span dir="ltr">
+							$mediaFolders = KT_Query_Media::folderList(); ?>
+							<span dir="ltr">
 								<select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">
-									<option';
-										if ($folder == '') {
-											echo ' selected="selected"';
-										}
-										echo ' value=""> ' . KT_I18N::translate('Choose: ') . '
-									</option>';
-									if (KT_USER_IS_ADMIN) {
-										echo ' <option value="other" disabled>'.
-											KT_I18N::translate('Other folder... please type in') . '
-										</option>';
-									}
-									foreach ($mediaFolders as $f) {
-										echo '<option value="' . $f . '"';
-											if ($folder === $f) {
-												echo ' selected="selected"';
-											}
-										echo '>' . $f . '</option>';
-									}
-								echo '</select>
-							</span>';
-						} else {
+									<option <?php echo ($folder == '' ? 'selected="selected"' : ''); ?> value="">
+										<?php echo KT_I18N::translate('Choose: '); ?>
+									</option>
+									<?php if (KT_USER_IS_ADMIN) { ?>
+										<option value="other" disabled>
+											<?php echo KT_I18N::translate('Other folder... please type in'); ?>
+										</option>
+									<?php }
+									foreach ($mediaFolders as $f) { ?>
+										<option value="<?php echo $f; ?>" <?php echo ($folder === $f ? 'selected="selected"' : ''); ?> >
+											<?php echo $f; ?>
+										</option>
+									<?php } ?>
+								</select>
+							</span>
+						<?php } else {
 							echo $folder;
 						}
-						if (KT_USER_IS_ADMIN) {
-							echo '<br>
+						if (KT_USER_IS_ADMIN) { ?>
+							<br>
 							<span dir="ltr">
-								<input type="text" name="folder" value="' . $folder . '">
-							</span>';
-						} else { ?>
+								<input type="text" name="folder" value="<?php echo $folder; ?>">
+							</span>
+						<?php } else { ?>
 							<input name="folder" type="hidden" value="<?php echo addslashes($folder); ?>">
-					<?php } ?>
+						<?php } ?>
 					</div>
 					<?php if ($gedfile == 'FILE') { ?>
 						<div class="help_text">
 							<span class="help_content">
 								<?php echo KT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'); ?>
+								<br>
+								<?php echo KT_I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.'); ?>
 							</span>
-							<span id="upload_server_folder" class="help_text"></span>
 						</div>
-					<?php }
-				} else { ?>
-					<div class="input">
-						<input name="folder" type="hidden" value="">
-					</div>
-				<?php } ?>
-			</div>
+					<?php } ?>
+				</div>
+			<?php } else { ?>
+				<div class="input">
+					<input name="folder" type="hidden" value="">
+				</div>
+			<?php } ?>
+
 			<hr>
+
 			<?php
 			// 2 TITL
 			if ($gedrec == '') {
@@ -693,7 +685,6 @@ $controller
 			}
 			add_simple_tag("3 $gedtype");
 
-
 			// 2 _PRIM
 			if ($gedrec == '') {
 				$gedprim = '_PRIM';
@@ -703,15 +694,14 @@ $controller
 					$gedprim = '_PRIM';
 				}
 			}
-			add_simple_tag(
-				"1 $gedprim",
-				'',
-				'',
-				''
-			); ?>
+			add_simple_tag("1 $gedprim",'','',''); ?>
 			<div class="help_text">
-				<span id="<?php echo $gedprim; ?>" class="help_text"></span>
+				<span class="help_content">
+					<?php echo KT_I18N::translate('Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page.'); ?>
+				</span>
 			</div>
+			<br>
+
 			<?php
 			//-- print out editing fields for any other data in the media record
 			$sourceSOUR = '';
@@ -722,29 +712,29 @@ $controller
 					foreach ($pieces as $piece) {
 						$ft = preg_match("/(\d) (\w+)(.*)/", $piece, $match);
 						if ($ft == 0) continue;
-						$subLevel = $match[1];
-						$fact = trim($match[2]);
-						$event = trim($match[3]);
-						if ($fact=='NOTE' || $fact=='TEXT') {
-							$event .= get_cont(($subLevel +1), $subrec, false);
+						$subLevel	= $match[1];
+						$fact		= trim($match[2]);
+						$event		= trim($match[3]);
+						if ($fact == 'NOTE' || $fact == 'TEXT') {
+							$event .= get_cont(($subLevel + 1), $subrec, false);
 						}
-						if ($sourceSOUR!='' && $subLevel<=$sourceLevel) {
+						if ($sourceSOUR != '' && $subLevel <= $sourceLevel) {
 							// Get rid of all saved Source data
-							add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
-							add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
-							add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-							add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', KT_Gedcom_Tag::getLabel('DATA:DATE'));
-							add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+							add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
+							add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+							add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+							add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', KT_Gedcom_Tag::getLabel('DATA:DATE'));
+							add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 							$sourceSOUR = '';
 						}
 
 						if ($fact=='SOUR') {
-							$sourceLevel = $subLevel;
-							$sourceSOUR = $event;
-							$sourcePAGE = '';
-							$sourceTEXT = '';
-							$sourceDATE = '';
-							$sourceQUAY = '';
+							$sourceLevel	= $subLevel;
+							$sourceSOUR		= $event;
+							$sourcePAGE		= '';
+							$sourceTEXT		= '';
+							$sourceDATE		= '';
+							$sourceQUAY		= '';
 							continue;
 						}
 
@@ -778,11 +768,11 @@ $controller
 
 				if ($sourceSOUR != '') {
 					// Get rid of all saved Source data
-					add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
-					add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
-					add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-					add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', KT_Gedcom_Tag::getLabel('DATA:DATE'));
-					add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+					add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
+					add_simple_tag(($sourceLevel + 1) . ' PAGE '. $sourcePAGE);
+					add_simple_tag(($sourceLevel + 2) . ' TEXT '. $sourceTEXT);
+					add_simple_tag(($sourceLevel + 2) . ' DATE '. $sourceDATE, '', KT_Gedcom_Tag::getLabel('DATA:DATE'));
+					add_simple_tag(($sourceLevel + 1) . ' QUAY '. $sourceQUAY);
 				}
 			}
 
