@@ -1459,11 +1459,11 @@ case 'update':
 			if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
 
 			if (!empty($NOTE)) {
-				$cmpfunc = preg_replace_callback(
-					function($e) {
-						return 'strpos($e,"0 @N") !== 0 && strpos($e,"1 CONT") !== 0;';
-					}
-				);
+
+				$cmpfunc = function($e) {
+					return strpos($e,"0 @N") !== 0 && strpos($e,"1 CONT") !== 0;
+				};
+
 				$gedlines = array_filter($gedlines, $cmpfunc);
 				$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 				$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
@@ -1529,11 +1529,11 @@ case 'update':
 				if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
 
 				if (!empty($NOTE)) {
-					$cmpfunc = preg_replace_callback(
-						function($e) {
-							return 'strpos($e,"0 @N") !== 0 && strpos($e,"1 CONT") !== 0;';
-						}
-					);
+
+					$cmpfunc = function($e) {
+						return strpos($e,"0 @N") !== 0 && strpos($e,"1 CONT") !== 0;
+					};
+
 					$gedlines = array_filter($gedlines, $cmpfunc);
 					$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 					$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
@@ -2069,7 +2069,7 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
 	function SwapArray($Array) {
 		$Values = array();
-		foreach ($Array as $Key => $Val) {
+		while (list($Key, $Val) = each($Array))
 			$Values[$Val] = $Key;
 		return $Values;
 	}
@@ -2642,7 +2642,20 @@ case 'checkduplicates':
 	$controller
 		->setPageTitle(KT_I18N::translate('Possible duplicates'))
 		->pageHeader()
-		->addExternalJavascript(KT_JQUERY_DATATABLES_URL);
+		->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+		->addInlineJavascript('
+			jQuery("#duplicates").dataTable({
+				"sDom": \'t\',
+				' . KT_I18N::datatablesI18N() . ',
+				jQueryUI: true,
+				autoWidth: false,
+				filter: false,
+				lengthChange: false,
+				info: true,
+				paging: false
+			});
+		');
+
 
 	$html = '
 		<div id="edit_interface-page" class="duplicates">
