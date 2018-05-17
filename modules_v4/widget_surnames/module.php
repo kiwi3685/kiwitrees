@@ -146,7 +146,7 @@ class widget_surnames_KT_Module extends KT_Module implements KT_Module_Widget {
 			<tr>
 				<td class="descriptionbox wrap width33">' . KT_I18N::translate('Number of items to show') . '</td>
 				<td class="optionbox">
-					<input type="text" name="num" size="2" value="' . get_block_setting($block_id, 'num', 10) . '">
+					<input type="text" name="num" size="2" value="' . get_block_setting($widget_id, 'num', 10) . '">
 				</td>
 			</tr>
 			<tr>
@@ -159,7 +159,7 @@ class widget_surnames_KT_Module extends KT_Module implements KT_Module_Widget {
 						'table' => KT_I18N::translate('table'),
 						'tagcloud' => KT_I18N::translate('tag cloud')),
 						null,
-						get_block_setting($block_id, 'infoStyle', 'table'),
+						get_block_setting($widget_id, 'infoStyle', 'table'),
 						''
 					) . '
 				</td>
