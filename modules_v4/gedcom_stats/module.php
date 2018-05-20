@@ -118,7 +118,7 @@ class gedcom_stats_KT_Module extends KT_Module implements KT_Module_Block {
 		if ($stat_users) {
 			$content .= '<tr><td class="facts_label">'.KT_I18N::translate('Total users').'</td><td class="facts_value stats_value">';
 			if (KT_USER_GEDCOM_ADMIN) {
-				$content .= '<a href="admin_users.php">'.$stats->totalUsers().'</a>';
+				$content .= '<a href="admin_members.php">'.$stats->totalUsers().'</a>';
 			} else {
 				$content .= $stats->totalUsers();
 			}

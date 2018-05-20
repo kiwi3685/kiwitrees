@@ -162,7 +162,7 @@ class widget_stats_KT_Module extends KT_Module implements KT_Module_Widget {
 						<span class="filler">&nbsp;</span>
 						<span class="stats_data">';
 							if (KT_USER_GEDCOM_ADMIN) {
-								$content .= '<a href="admin_users.php">'.$stats->totalUsers().'</a>';
+								$content .= '<a href="admin_members.php">'.$stats->totalUsers().'</a>';
 							} else {
 								$content .= $stats->totalUsers();
 							}

@@ -178,7 +178,7 @@ class KT_Controller_Individual extends KT_Controller_GedcomRecord {
 				$user_id=get_user_from_gedcom_xref(KT_GED_ID, $this->record->getXref());
 				if ($user_id) {
 					$user_name=get_user_name($user_id);
-					echo '<span> - <a class="warning" href="admin_users.php?filter='.$user_name.'">'.$user_name.'</a></span>';
+					echo '<span> - <a class="warning" href="admin_members.php?filter='.$user_name.'">'.$user_name.'</a></span>';
 				}
 			}
 		}

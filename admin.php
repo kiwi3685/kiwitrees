@@ -183,9 +183,9 @@ echo '
 	<legend>', KT_I18N::translate('Users'), '</legend>
 	<ul class="admin_stats">
 		<li>
-			<span><a href="admin_users.php" >', KT_I18N::translate('Total number of users'), '</a></span>
+			<span><a href="admin_members.php" >', KT_I18N::translate('Total number of users'), '</a></span>
 			<span class="filler">&nbsp;</span>
-			<span><a href="admin_users.php" >', $totusers, '</a></span>
+			<span><a href="admin_members.php" >', $totusers, '</a></span>
 		</li>
 		<li>
 			<span class="inset">', KT_I18N::translate('Administrators'), '</span>

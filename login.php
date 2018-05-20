@@ -489,7 +489,7 @@ default:
 		KT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 		$user_id		= get_user_id($user_name);
-		$edit_user_url	= KT_SERVER_NAME . '/admin_users.php?action=edit&amp;user_id=' . $user_id;
+		$edit_user_url	= KT_SERVER_NAME . '/admin_members.php?action=edit&amp;user_id=' . $user_id;
 		$mail1_body		=
 			KT_I18N::translate('Hello administrator…') . KT_Mail::EOL . KT_Mail::EOL .
 			/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ KT_I18N::translate(
