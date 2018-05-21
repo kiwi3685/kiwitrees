@@ -21,7 +21,7 @@
  * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('KT_SCRIPT_NAME', 'admin_members.php');
+define('KT_SCRIPT_NAME', 'admin_users.php');
 require './includes/session.php';
 
 $controller = new KT_Controller_Page();
@@ -172,7 +172,7 @@ switch (KT_Filter::get('action')) {
 		}
 		$iDisplayStart	= (int)safe_GET('iDisplayStart');
 		$iDisplayLength	= (int)safe_GET('iDisplayLength');
-		set_user_setting(KT_USER_ID, 'admin_members_page_size', $iDisplayLength);
+		set_user_setting(KT_USER_ID, 'admin_users_page_size', $iDisplayLength);
 		if ($iDisplayLength>0) {
 			$LIMIT = " LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 		} else {
@@ -232,7 +232,7 @@ switch (KT_Filter::get('action')) {
 			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'. KT_I18N::translate('Edit user').'"><span dir="auto">' . KT_Filter::escapeHtml($aData[3]) . '</span></a>';
 			// $aData[4] is the email address
 			if ($user_id != KT_USER_ID) {
-				$url = KT_SERVER_NAME . KT_SCRIPT_PATH . 'admin_members.php';
+				$url = KT_SERVER_NAME . KT_SCRIPT_PATH . 'admin_users.php';
 				$aData[4] = '<a href="message.php?to=' . $username . '&amp;url=' . $url . '"  title="' . KT_I18N::translate('Send Message') . '">' . KT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
 			}
 			// $aData[5] is the langauge
@@ -327,7 +327,7 @@ switch (KT_Filter::get('action')) {
 		<div id="user_details">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 
-			<form name="newform" method="post" role="form" action="admin_members.php?action=edit" autocomplete="off">
+			<form name="newform" method="post" role="form" action="admin_users.php?action=edit" autocomplete="off">
 				<?php echo KT_Filter::getCsrf(); ?>
 				<input type="hidden" name="action" value="save">
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
@@ -667,7 +667,7 @@ switch (KT_Filter::get('action')) {
 	case 'cleanup':
 		$controller->pageHeader();
 		?>
-		<form name="cleanupform" method="post" action="admin_members.php?action=cleanup2">
+		<form name="cleanupform" method="post" action="admin_users.php?action=cleanup2">
 		<table id="clean">
 		<?php
 		// Check for idle users
@@ -676,7 +676,7 @@ switch (KT_Filter::get('action')) {
 		echo "<tr><th>", KT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
 		echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
 		for ($i=1; $i<=12; $i++) {
-			echo "<option value=\"admin_members.php?action=cleanup&amp;month=$i\"";
+			echo "<option value=\"admin_users.php?action=cleanup&amp;month=$i\"";
 			if ($i == $month) echo " selected=\"selected\"";
 			echo ">", $i, "</option>";
 		}

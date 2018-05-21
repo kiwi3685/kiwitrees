@@ -21,7 +21,7 @@
  * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('KT_SCRIPT_NAME', 'admin_members_bulk.php');
+define('KT_SCRIPT_NAME', 'admin_users_bulk.php');
 require './includes/session.php';
 
 $controller = new KT_Controller_Page();

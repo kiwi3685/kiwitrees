@@ -193,10 +193,10 @@ if ($view != 'simple') {
 			<?php if (KT_USER_IS_ADMIN) { ?>
 				<h3 id="user-admin"><i class="fa fa-users fa-fw"></i><span class="menu-name"><?php echo KT_I18N::translate('Users'); ?></span></h3>
 				<div>
-					<p><a <?php echo (KT_SCRIPT_NAME == "admin_members.php" && safe_GET('action')!="cleanup" && safe_GET('action')!="edit" ? 'class="current" ' : ''); ?>href="admin_members.php"><?php echo KT_I18N::translate('Manage users'); ?></a></p>
-					<p><a <?php echo (KT_SCRIPT_NAME == "admin_members.php" && safe_GET('action')=="edit" && safe_GET('user_id')==0  ? 'class="current" ' : ''); ?>href="admin_members.php?action=edit"><?php echo KT_I18N::translate('Add a new user'); ?></a></p>
-					<p><a <?php echo (KT_SCRIPT_NAME == "admin_members_bulk.php" ? 'class="current" ' : ''); ?>href="admin_members_bulk.php"><?php echo KT_I18N::translate('Send broadcast messages'); ?></a>
-					<p><a <?php echo (KT_SCRIPT_NAME == "admin_members.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''); ?>href="admin_members.php?action=cleanup"><?php echo KT_I18N::translate('Delete inactive users'); ?></a></p>
+					<p><a <?php echo (KT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')!="cleanup" && safe_GET('action')!="edit" ? 'class="current" ' : ''); ?>href="admin_users.php"><?php echo KT_I18N::translate('Manage users'); ?></a></p>
+					<p><a <?php echo (KT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="edit" && safe_GET('user_id')==0  ? 'class="current" ' : ''); ?>href="admin_users.php?action=edit"><?php echo KT_I18N::translate('Add a new user'); ?></a></p>
+					<p><a <?php echo (KT_SCRIPT_NAME == "admin_users_bulk.php" ? 'class="current" ' : ''); ?>href="admin_users_bulk.php"><?php echo KT_I18N::translate('Send broadcast messages'); ?></a>
+					<p><a <?php echo (KT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''); ?>href="admin_users.php?action=cleanup"><?php echo KT_I18N::translate('Delete inactive users'); ?></a></p>
 				</div>
 				<h3 id="media"><i class="fa fa-image fa-fw"></i><span class="menu-name"><?php echo KT_I18N::translate('Media'); ?></span></h3>
 				<div>
