@@ -116,7 +116,7 @@ if ($view!='simple') { ?>
 			<ul id="extra-menu" class="makeMenu">
 				<?php if (KT_USER_CAN_ACCEPT && exists_pending_change()) { ?>
 					<li>
-						<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">',
+						<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">
 							<?php echo KT_I18N::translate('Pending changes'); ?>
 						</a>
 					</li>

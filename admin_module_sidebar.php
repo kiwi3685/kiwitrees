@@ -45,23 +45,23 @@ $controller
 
 $modules=KT_Module::getActiveSidebars(KT_GED_ID, KT_PRIV_HIDE);
 
-$action = safe_POST('action');
+$action = KT_Filter::post('action');
 
 if ($action=='update_mods' && KT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (KT_Tree::getAll() as $tree) {
-			$access_level = safe_POST("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = KT_Filter::post("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
 			KT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
 			)->execute(array($module_name, $tree->tree_id, $access_level));
 		}
-		$order = safe_POST('order-'.$module_name);
+		$order = KT_Filter::post('order-'.$module_name);
 		KT_DB::prepare(
 			"UPDATE `##module` SET sidebar_order=? WHERE module_name=?"
 		)->execute(array($order, $module_name));
 		$module->order=$order; // Make the new order take effect immediately
 	}
-	uasort($array, function ($x, $y) {
+	uasort($modules, function ($x, $y) {
 		return $x->order > $y->order;
 	});
 

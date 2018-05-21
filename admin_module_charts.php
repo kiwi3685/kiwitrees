@@ -33,12 +33,12 @@ $controller
 
 $modules = KT_Module::getActiveCharts(KT_GED_ID, KT_PRIV_HIDE);
 
-$action = safe_POST('action');
+$action = KT_Filter::post('action');
 
 if ($action=='update_mods' && KT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (KT_Tree::getAll() as $tree) {
-			$value = safe_POST("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$value = KT_Filter::post("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
 			KT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'chart', ?)"
 			)->execute(array($module_name, $tree->tree_id, $value));

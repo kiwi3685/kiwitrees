@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,12 +33,12 @@ $controller
 
 $modules = KT_Module::getActiveLists(KT_GED_ID, KT_PRIV_HIDE);
 
-$action = safe_POST('action');
+$action = KT_Filter::post('action');
 
 if ($action=='update_mods' && KT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name => $module) {
 		foreach (KT_Tree::getAll() as $tree) {
-			$value = safe_POST("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$value = KT_Filter::post("access-{$module_name}-{$tree->tree_id}", KT_REGEX_INTEGER, $module->defaultAccessLevel());
 			KT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'list', ?)"
 			)->execute(array($module_name, $tree->tree_id, $value));
