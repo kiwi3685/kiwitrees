@@ -25,12 +25,6 @@ define('KT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 require KT_ROOT . 'includes/functions/functions_edit.php';
 
-// If we are already logged in, then go to the home page
-if (KT_USER_ID && KT_GED_ID) {
-	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH);
-	exit;
-}
-
 $controller = new KT_Controller_Page();
 
 $action				= KT_Filter::post('action');
@@ -48,74 +42,84 @@ $password			= KT_Filter::post('password',KT_REGEX_UNSAFE); // Can use any passwo
 $usertime			= KT_Filter::post('usertime');
 
 // These parameters may come from the URL which is emailed to users.
-if (empty($action)) $action 				= KT_Filter::get('action');
-if (empty($user_name)) $user_name			= KT_Filter::get('user_name',KT_REGEX_USERNAME);
-if (empty($user_hashcode)) $user_hashcod	= KT_Filter::get('user_hashcode');
-
-// This parameter may come from generated login links
+if (!$action) {
+	$action = KT_Filter::get('action');
+}
+if (!$user_name) {
+	$user_name = KT_Filter::get('user_name', KT_REGEX_USERNAME);
+}
+if (!$user_hashcode) {
+	$user_hashcode = KT_Filter::get('user_hashcode');
+}
 if (!$url) {
 	$url = KT_Filter::get('url', KT_REGEX_URL);
 }
 
-$message='';
+$message = '';
+
+// If we are already logged in, then go to the home page
+if (KT_USER_ID && KT_GED_ID && !in_array($action, array('verify_hash', 'userverify'))) {
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH);
+	exit;
+}
 
 switch ($action) {
-case 'login':
-default:
-	if ($action == 'login') {
-		$user_id = authenticateUser($username, $password);
-		switch ($user_id) {
-		case -1: // not validated
-			$message = KT_I18N::translate('This account has not been verified. Please check your email for a verification message.');
-			break;
-		case -2: // not approved
-			$message = KT_I18N::translate('This account has not been approved. Please wait for an administrator to approve it.');
-			break;
-		case -3: // bad password
-		case -4: // bad username
-			$message = KT_I18N::translate('The username or password is incorrect.');
-			break;
-		case -5: // no cookies
-			$message = KT_I18N::translate('You cannot login because your browser does not accept cookies.');
-			break;
-		default: // Success
-			if ($usertime) {
-				$KT_SESSION->timediff = KT_TIMESTAMP - strtotime($usertime);
-			} else {
-				$KT_SESSION->timediff = 0;
-			}
-			$KT_SESSION->locale		= get_user_setting($user_id, 'language');
-			$KT_SESSION->theme_dir 	= get_user_setting($user_id, 'theme');
-			$KT_SESSION->gedcomid 	= get_gedcomid($user_id, KT_GED_ID);
-			if (KT_GED_ID == "") {
-				$KT_SESSION->rootid 	= $KT_SESSION->gedcomid;
-				$PEDIGREE_ROOT_ID 	= $KT_SESSION->gedcomid;
-			} else {
-				$KT_SESSION->rootid	= $KT_TREE->userPreference($user_id, 'rootid');
-				$PEDIGREE_ROOT_ID	= get_gedcom_setting(KT_GED_ID, 'PEDIGREE_ROOT_ID');
-			}
-
-			// If we’ve clicked login from the login page, we don’t want to go back there.
-			if (strpos('index.php', $url) === 0) {
-				if ($KT_SESSION->gedcomid) {
-					$url = 'individual.php?pid=' . $KT_SESSION->gedcomid . '&amp;ged=' . KT_GEDURL;
-				} elseif ($KT_SESSION->rootid) {
-					$url = 'individual.php?pid=' . $KT_SESSION->rootid . '&amp;ged=' . KT_GEDURL;
-				} elseif ($PEDIGREE_ROOT_ID) {
-					$url = 'individual.php?pid=' . $PEDIGREE_ROOT_ID . '&amp;ged=' . KT_GEDURL;
+	case 'login':
+	default:
+		if ($action == 'login') {
+			$user_id = authenticateUser($username, $password);
+			switch ($user_id) {
+			case -1: // not validated
+				$message = KT_I18N::translate('This account has not been verified. Please check your email for a verification message.');
+				break;
+			case -2: // not approved
+				$message = KT_I18N::translate('This account has not been approved. Please wait for an administrator to approve it.');
+				break;
+			case -3: // bad password
+			case -4: // bad username
+				$message = KT_I18N::translate('The username or password is incorrect.');
+				break;
+			case -5: // no cookies
+				$message = KT_I18N::translate('You cannot login because your browser does not accept cookies.');
+				break;
+			default: // Success
+				if ($usertime) {
+					$KT_SESSION->timediff = KT_TIMESTAMP - strtotime($usertime);
 				} else {
-					$url = 'index.php?ged=' . KT_GEDURL;
+					$KT_SESSION->timediff = 0;
 				}
-			}
+				$KT_SESSION->locale		= get_user_setting($user_id, 'language');
+				$KT_SESSION->theme_dir 	= get_user_setting($user_id, 'theme');
+				$KT_SESSION->gedcomid 	= get_gedcomid($user_id, KT_GED_ID);
+				if (KT_GED_ID == "") {
+					$KT_SESSION->rootid 	= $KT_SESSION->gedcomid;
+					$PEDIGREE_ROOT_ID 	= $KT_SESSION->gedcomid;
+				} else {
+					$KT_SESSION->rootid	= $KT_TREE->userPreference($user_id, 'rootid');
+					$PEDIGREE_ROOT_ID	= get_gedcom_setting(KT_GED_ID, 'PEDIGREE_ROOT_ID');
+				}
 
-			// Redirect to the target URL
-			header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . $url);
-			// Explicitly write the session data before we exit,
-			// as it doesn’t always happen when using APC.
-			Zend_Session::writeClose();
-			exit;
+				// If we’ve clicked login from the login page, we don’t want to go back there.
+				if (strpos('index.php', $url) === 0) {
+					if ($KT_SESSION->gedcomid) {
+						$url = 'individual.php?pid=' . $KT_SESSION->gedcomid . '&amp;ged=' . KT_GEDURL;
+					} elseif ($KT_SESSION->rootid) {
+						$url = 'individual.php?pid=' . $KT_SESSION->rootid . '&amp;ged=' . KT_GEDURL;
+					} elseif ($PEDIGREE_ROOT_ID) {
+						$url = 'individual.php?pid=' . $PEDIGREE_ROOT_ID . '&amp;ged=' . KT_GEDURL;
+					} else {
+						$url = 'index.php?ged=' . KT_GEDURL;
+					}
+				}
+
+				// Redirect to the target URL
+				header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . $url);
+				// Explicitly write the session data before we exit,
+				// as it doesn’t always happen when using APC.
+				Zend_Session::writeClose();
+				exit;
+			}
 		}
-	}
 
 		$controller
 			->setPageTitle(KT_I18N::translate('Login'))
@@ -186,7 +190,7 @@ default:
 			</div>
 		</div>
 		<?php
-		break;
+	break;
 
 	case 'requestpw':
 		$controller
@@ -239,7 +243,7 @@ default:
 			<?php } ?>
 		</div>
 		<?php
-		break;
+	break;
 
 	case 'register':
 		if (!KT_Site::preference('USE_REGISTRATION_MODULE')) {
@@ -312,8 +316,8 @@ default:
 						/* I18N: %1$s is the site URL and %2$s is an email address */
 						KT_I18N::translate('You (or someone claiming to be you) registered an account at %1$s using the email address %2$s.', $tree_link, $user_email) . KT_Mail::EOL . KT_Mail::EOL .
 						KT_I18N::translate('Follow this link to verify your email address.') . KT_Mail::EOL . KT_Mail::EOL .
-						'<a href="' . KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&action=userverify">' .
-							KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&action=userverify"' .
+						'<a href="' . KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&amp;user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify">' .
+							KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&amp;user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify' .
 						'</a>' . KT_Mail::EOL . KT_Mail::EOL .
 						KT_I18N::translate('Username') . ': ' . $user_name . KT_Mail::EOL .
 						KT_I18N::translate('Comments') . ': ' . $user_comments . KT_Mail::EOL . KT_Mail::EOL .
@@ -433,7 +437,7 @@ default:
 			</div>
 		</div>
 		<?php
-		break;
+	break;
 
 	case 'userverify':
 		if (!KT_Site::preference('USE_REGISTRATION_MODULE')) {
@@ -454,25 +458,32 @@ default:
 				<form id="verify-form" name="verify-form" method="post" action="<?php echo KT_LOGIN_URL; ?>">
 					<input type="hidden" name="action" value="verify_hash">
 					<div>
-						<label for="username"><?php echo KT_I18N::translate('Username'); ?></label>
-						<input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>">
+						<label for="username">
+							<?php echo KT_I18N::translate('Username'); ?>
+							<input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>">
+						</label>
 					</div>
 					<div>
-						<label for="user_password"><?php echo KT_I18N::translate('Password'); ?></label>
-						<input type="password" id="user_password" name="user_password" value="" autofocus>
+						<label for="user_password">
+							<?php echo KT_I18N::translate('Password'); ?>
+							<input type="password" id="user_password" name="user_password" value="" autofocus>
+						</label>
 					</div>
 					<div>
-						<label for="user_hashcode"><?php echo KT_I18N::translate('Verification code:'); ?></label>
-						<input type="text" id="user_hashcode" name="user_hashcode" value="<?php echo $user_hashcode; ?>">
+						<label for="user_hashcode">
+							<?php echo KT_I18N::translate('Verification code:'); ?>
+							<input type="text" id="user_hashcode" name="user_hashcode" value="<?php echo $user_hashcode; ?>">
+						</label>
 					</div>
-					<div>
+					<hr>
+					<div id="verify-submit">
 						<input type="submit" value="<?php echo KT_I18N::translate('Send'); ?>">
 					</div>
 				</form>
 			</div>
 		</div>
 		<?php
-		break;
+	break;
 
 	case 'verify_hash':
 		if (!KT_Site::preference('USE_REGISTRATION_MODULE')) {
@@ -550,5 +561,5 @@ default:
 			</div>
 		</div>
 		<?php
-		break;
+	break;
 }

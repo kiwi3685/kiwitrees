@@ -2416,8 +2416,7 @@ table[id^='rel_'] .person_boxNN {
 }
 
 #login-form label input,
-.new_passwd_form label input,
-#verify-form input {
+.new_passwd_form label input {
 	width: 140px;
 	margin: 0 10px;
 }
@@ -2435,7 +2434,8 @@ table[id^='rel_'] .person_boxNN {
 
 #register-form label input,
 #register-form label select,
-#register-form textarea {
+#register-form textarea,
+#verify-form label input {
 	width: 300px;
 	margin: 0 10px;
 	padding: 8px;
@@ -2450,7 +2450,8 @@ table[id^='rel_'] .person_boxNN {
 	vertical-align: top;
 }
 
-#register-form div#registration-submit {
+#register-form div#registration-submit,
+#verify-form div#verify-submit {
 	text-align: center;
 }
 

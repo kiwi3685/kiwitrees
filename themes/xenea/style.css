@@ -1215,13 +1215,13 @@ p.branches {display:inline;}
 #login-form, .new_passwd_form, #register-form, #verify-form {background-color:#c3dfff;display:inline-block;margin:10px auto 0 auto;padding:5px;}
 #login-form div, #login-form div a, .new_passwd_form div, #register-form div, #verify-form div {color:#000066;padding:5px;text-align:center;}
 #login-form label, .new_passwd_form label, #verify-form label {display:block;text-align:right;}
-#login-form label input, .new_passwd_form label input, #verify-form input {width:140px;margin:0 10px;}
+#login-form label input, .new_passwd_form label input {width:140px;margin:0 10px;}
 .new_passwd_form h4, #register-form h4 {color:#000066;font-weight:normal;text-align:center;}
 #register-form div, #verify-form div {text-align:right;}
-#register-form label input, #register-form label select, #register-form textarea {width:220px;margin:0 10px;}
+#register-form label input, #register-form label select, #register-form textarea, #verify-form label input {width:220px;margin:0 10px;}
 #register-form label select {margin:0 9px;width:223px;}
 #register-form textarea {margin:0 3px;vertical-align:top;}
-#register-form div#registration-submit {text-align:center;}
+#register-form div#registration-submit, #verify-form div#verify-submit {text-align:center;}
 .login_block_block #login-form, .login_block_block .new_passwd_form {border:0;background:none;}
 [dir=rtl] #login-form label, [dir=rtl] .new_passwd_form label, [dir=rtl] #register-form label, [dir=rtl] #verify-form label {text-align:left;}
 

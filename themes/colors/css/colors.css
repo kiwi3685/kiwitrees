@@ -976,16 +976,16 @@ p.branches {display:inline;}
 #login-form,.new_passwd_form,#register-form,#verify-form {border:1px solid #999999;border-radius:3px;display:inline-block;margin:10px auto 0;padding:5px;}
 #login-form div,#login-form div a,.new_passwd_form div,#register-form div,#verify-form div {margin:auto;padding:5px;text-align:center;}
 #login-form label,.new_passwd_form label,#verify-form label {display:block;text-align:right;}
-#login-form label input,.new_passwd_form label input,#verify-form input {margin:0 10px;width:140px;}
+#login-form label input,.new_passwd_form label input {margin:0 10px;width:140px;}
 
 .new_passwd_form h4 {font-weight:400;text-align:center;}
 
 #register-form div,#verify-form div {text-align:right;}
-#register-form label input {margin:0 10px;width:220px;}
+#register-form label input, #verify-form label input {margin:0 10px;width:220px;}
 #register-form textarea {margin:0 10px;width:220px;}
 #register-form label select {margin:0 10px;width:225px;}
 #register-form textarea {vertical-align:top;width:212px;}
-#register-form div#registration-submit {text-align:center;}
+#register-form div#registration-submit, #verify-form div#verify-submit {text-align:center;}
 #register-form h4 {font-weight:400;text-align:center;}
 
 [dir=rtl] #login-form label,[dir=rtl] .new_passwd_form label,[dir=rtl] #register-form label,[dir=rtl] #verify-form label {text-align:left;}
