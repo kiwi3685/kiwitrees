@@ -266,7 +266,7 @@ switch ($action) {
 					KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 					KT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
 				);
-				AddToLog('Possible spam registration from "'.$user_name.'"/"'.$user_email.'", IP="'.$KT_REQUEST->getClientIp().'", comments="' . $user_comments . '"', 'auth');
+				AddToLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '", comments="' . $user_comments . '"', 'error');
 			} else {
 				// Everything looks good - create the user
 				$controller->pageHeader();
