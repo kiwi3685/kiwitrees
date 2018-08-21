@@ -5528,10 +5528,11 @@ a#copy {
 }
 
 #husb_parents p,
-#wife_parents p {
-	height: 20px;
+#wife_parents p,
+.parent_husb p,
+.parent_wife p,
+.fam_child p {
 	margin: 0;
-	text-align: center;
 }
 
 #family_chart .fam_parent {
