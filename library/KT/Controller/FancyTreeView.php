@@ -246,7 +246,7 @@ class KT_Controller_FancyTreeView {
 					$next_gen[] = $this->getNextGen($pid);
 				}
 				foreach ($next_gen as $descendants) {
-					if (count($descendants) > 0) {
+					if (is_array($descendants) && count($descendants) > 0) {
 						foreach ($descendants as $descendant) {
 							if ($this->options($module, 'show_singles') == true || $descendant['desc'] == 1) {
 								$this->generation[] = $descendant['pid'];
@@ -258,7 +258,7 @@ class KT_Controller_FancyTreeView {
 			case 'fancy_treeview_ancestors':
 				foreach ($pids as $pid) {
 					$parents = $this->getParents($pid);
-					if (count($parents) > 0) {
+					if (is_array($parents) && count($parents) > 0) {
 						foreach ($parents as $parent) {
 							$this->generation[] = $parent;
 						}
