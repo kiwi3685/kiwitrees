@@ -68,7 +68,7 @@ if ($row->import_offset==$row->import_total) {
 }
 
 // Calculate progress so far
-$percent = 100*(($row->import_offset) / $row->import_total);
+$percent = 100 * (($row->import_offset) / $row->import_total);
 $status = '<span class="error indent">' . KT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent) . '</span>';
 
 echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
@@ -79,7 +79,7 @@ $controller->addInlineJavascript(
 $first_time=($row->import_offset==0);
 // Run for one second.  This keeps the resource requirements low.
 for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
-	$data=KT_DB::prepare(
+	$data = KT_DB::prepare(
 		"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 		" FROM `##gedcom_chunk`".
 		" WHERE gedcom_id=? AND NOT imported".
@@ -88,7 +88,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	)->execute(array($gedcom_id))->fetchOneRow();
 	// If we are at the start position, do some tidying up
 	if ($first_time) {
-		$keep_media=safe_GET_bool('keep_media'.$gedcom_id);
+		$keep_media = get_gedcom_setting(KT_GED_ID, 'keep_media');
 		// Delete any existing genealogical data
 		empty_database($gedcom_id, $keep_media);
 		set_gedcom_setting($gedcom_id, 'imported', false);
@@ -99,7 +99,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			" WHERE gedcom_chunk_id=?"
 		)->execute(array(KT_UTF8_BOM, $data->gedcom_chunk_id));
 		// Re-fetch the data, now that we have removed the BOM
-		$data=KT_DB::prepare(
+		$data = KT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 			" FROM `##gedcom_chunk`".
 			" WHERE gedcom_chunk_id=?"

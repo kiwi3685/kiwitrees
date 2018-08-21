@@ -105,16 +105,22 @@ case 'new_tree':
 	}
 	break;
 case 'replace_upload':
-	$gedcom_id = KT_Filter::postInteger('gedcom_id');
+	$gedcom_id			= KT_Filter::postInteger('gedcom_id');
+	$keep_media         = KT_Filter::post('keep_media', '1', '0');
+	$GEDCOM_MEDIA_PATH  = KT_Filter::post('GEDCOM_MEDIA_PATH');
+	$WORD_WRAPPED_NOTES = KT_Filter::post('WORD_WRAPPED_NOTES', '1', '0');
 	// Make sure the gedcom still exists
 	if (KT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
+		set_gedcom_setting(KT_GED_ID, 'keep_media', $keep_media);
+		set_gedcom_setting(KT_GED_ID, 'GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
+		set_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
 		foreach ($_FILES as $FILE) {
 			if ($FILE['error'] == 0 && is_readable($FILE['tmp_name'])) {
 				import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
 			}
 		}
 	}
-	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . KT_Filter::postBool('keep_media' . $gedcom_id));
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
 	exit;
 case 'replace_import':
 	$gedcom_id			= KT_Filter::postInteger('gedcom_id');
@@ -125,11 +131,11 @@ case 'replace_import':
 	if (KT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
 		$ged_name = basename(KT_Filter::post('ged_name'));
 		import_gedcom_file($gedcom_id, KT_DATA_DIR . $ged_name, $ged_name);
-		set_gedcom_setting(KT_GED_ID, 'GEDCOM_MEDIA_PATH', KT_Filter::post('GEDCOM_MEDIA_PATH'));
-		set_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES', KT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
-
+		set_gedcom_setting(KT_GED_ID, 'keep_media', $keep_media);
+		set_gedcom_setting(KT_GED_ID, 'GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
+		set_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
 	}
-	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . KT_Filter::postBool('keep_media' . $gedcom_id));
+	header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
 	exit;
 }
 
@@ -138,7 +144,7 @@ $controller->pageHeader();
 // Process GET actions
 switch (KT_Filter::get('action')) {
 case 'importform':
-	$gedcom_id	 = KT_Filter::GET('gedcom_id');
+	$gedcom_id	 = KT_Filter::get('gedcom_id');
 	$gedcom_name = get_gedcom_from_id($gedcom_id);
 	// Check it exists
 	if (!$gedcom_name) {
@@ -166,94 +172,97 @@ case 'importform':
 		>
 			<input type="hidden" name="gedcom_id" value="' . $gedcom_id . '">' .
 			KT_Filter::getCsrf() . '
-			<input type="hidden" name="action" value="replace_upload">
-				<h3>' . KT_I18N::translate('Select a GEDCOM file to import') . '</h3>
-				<div class="tree_import">
-					<label>' . KT_I18N::translate('A file on your computer') . '</label>
-					<div class="input">
-						<input type="radio" name="action" id="import-computer" value="replace_upload" checked>
-						<span class="input_addon">
-							<input type="file" name="ged_name" id="import-computer-file">
-						</span>
-						<div class="help_content">' .
-								KT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()) . '
-						</div>
+			<h3>' . KT_I18N::translate('Select a GEDCOM file to import') . '</h3>
+			<div class="tree_import">
+				<label>' . KT_I18N::translate('A file on your computer') . '</label>
+				<div class="input">
+					<input type="radio" name="action" id="import-computer" value="replace_upload" checked>
+					<span class="input_addon">
+						<input type="file" name="ged_name" id="import-computer-file">
+					</span>
+					<div class="help_content">' .
+							KT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()) . '
 					</div>
 				</div>
-				<div class="tree_import">
-					<label>' . KT_I18N::translate('A file on the server') . '</label>
-					<div class="input">
-						<input type="radio" name="action" id="import-server" value="replace_import">
-						<span class="input_addon">' . KT_DATA_DIR;
-							$d = opendir(KT_DATA_DIR);
-							$files = array();
-							while (($f = readdir($d)) !== false) {
-								if (!is_dir(KT_DATA_DIR . $f) && is_readable(KT_DATA_DIR.$f)) {
-									$fp		= fopen(KT_DATA_DIR . $f, 'rb');
-									$header	= fread($fp, 64);
-									fclose($fp);
-									if (preg_match('/^(' . KT_UTF8_BOM . ')?0 *HEAD/', $header)) {
-										$files[] = $f;
-									}
+			</div>
+			<div class="tree_import">
+				<label>' . KT_I18N::translate('A file on the server') . '</label>
+				<div class="input">
+					<input type="radio" name="action" id="import-server" value="replace_import">
+					<span class="input_addon">' . KT_DATA_DIR;
+						$d = opendir(KT_DATA_DIR);
+						$files = array();
+						while (($f = readdir($d)) !== false) {
+							if (!is_dir(KT_DATA_DIR . $f) && is_readable(KT_DATA_DIR.$f)) {
+								$fp		= fopen(KT_DATA_DIR . $f, 'rb');
+								$header	= fread($fp, 64);
+								fclose($fp);
+								if (preg_match('/^(' . KT_UTF8_BOM . ')?0 *HEAD/', $header)) {
+									$files[] = $f;
 								}
 							}
-							sort($files);
-							echo '<select name="ged_name">';
-								foreach ($files as $file) {
-									echo '<option value="' . htmlspecialchars($file) . '"';
-									if ($file == $previous_gedcom_filename) {
-										echo ' selected="selected"';
-									}
-									echo'>' . htmlspecialchars($file) . '</option>';
+						}
+						sort($files);
+						echo '<select name="ged_name">';
+							foreach ($files as $file) {
+								echo '<option value="' . htmlspecialchars($file) . '"';
+								if ($file == $previous_gedcom_filename) {
+									echo ' selected="selected"';
 								}
-								if (!$files) {
-									echo '<option disabled selected>' . KT_I18N::translate('No GEDCOM files found.') . '</option>';
-								}
-							echo '</select>
-						</span>
+								echo'>' . htmlspecialchars($file) . '</option>';
+							}
+							if (!$files) {
+								echo '<option disabled selected>' . KT_I18N::translate('No GEDCOM files found.') . '</option>';
+							}
+						echo '</select>
+					</span>
+				</div>
+			</div>
+			<hr>
+			<h3>' . KT_I18N::translate('Import options') . '</h3>
+			<div class="tree_import">
+				<label>' . KT_I18N::translate('Keep media objects') . '</label>
+				<div class="input">
+					<input type="checkbox" name="keep_media" value="1" ';
+					 	if (get_gedcom_setting(KT_GED_ID, 'keep_media') == '1') {
+							echo 'checked';
+						}
+					echo '>
+					<div class="help_content">' .
+						KT_I18N::translate('If you have created media objects in kiwitrees, and edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM. <p style="color:red">Otherwise, ensure this box is NOT checked</p>') . '
 					</div>
 				</div>
-				<hr>
-				<h3>' . KT_I18N::translate('Import options') . '</h3>
-				<div class="tree_import">
-					<label>' . KT_I18N::translate('Keep media objects') . '</label>
-					<div class="input">
-						<input type="checkbox" name="keep_media' . $gedcom_id . '" value="1">
-						<div class="help_content">' .
-							KT_I18N::translate('If you have created media objects in kiwitrees, and edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.') . '
-						</div>
+			</div>
+			<div class="tree_import">
+				<label>' . KT_I18N::translate('Add spaces where notes were wrapped') . '</label>
+				<div class="input">' .
+					edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES')) . '
+					<div class="help_content">' .
+						KT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.') . '
 					</div>
 				</div>
-				<div class="tree_import">
-					<label>' . KT_I18N::translate('Add spaces where notes were wrapped') . '</label>
-					<div class="input">' .
-						edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES')) . '
-						<div class="help_content">' .
-							KT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.') . '
-						</div>
+			</div>
+			<div class="tree_import">
+				<label>' . /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ KT_I18N::translate('Remove the GEDCOM media path from filenames') . '</label>
+				<div class="input">
+					<input type="text" name="NEW_GEDCOM_MEDIA_PATH" value="' . $GEDCOM_MEDIA_PATH . '" dir="ltr" maxlength="255">
+					<div class="help_content">' .
+						// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
+						KT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
+						// I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
+						KT_I18N::translate('For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="accepted">/home/familytree/documents/family/photo.jpeg</span>', '<span class="accepted">family/photo.jpeg</span>', '<span class="accepted">/home/familytree/documents/</span>').
+						KT_I18N::translate('This setting is only used when you read or write GEDCOM files.') .'
 					</div>
 				</div>
-				<div class="tree_import">
-					<label>' . /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ KT_I18N::translate('Remove the GEDCOM media path from filenames') . '</label>
-					<div class="input">
-						<input type="text" name="NEW_GEDCOM_MEDIA_PATH" value="' . $GEDCOM_MEDIA_PATH . '" dir="ltr" maxlength="255">
-						<div class="help_content">' .
-							// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
-							KT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
-							// I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
-							KT_I18N::translate('For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="accepted">/home/familytree/documents/family/photo.jpeg</span>', '<span class="accepted">family/photo.jpeg</span>', '<span class="accepted">/home/familytree/documents/</span>').
-							KT_I18N::translate('This setting is only used when you read or write GEDCOM files.') .'
-						</div>
-					</div>
-				</div>
-				<p>
-					<button class="btn btn-primary" type="submit">
-					<i class="fa fa-play"></i>' .
-						KT_I18N::translate('continue') . '
-					</button>
-				</p>
-			</form>
-		</div>';
+			</div>
+			<p>
+				<button class="btn btn-primary" type="submit">
+				<i class="fa fa-play"></i>' .
+					KT_I18N::translate('continue') . '
+				</button>
+			</p>
+		</form>
+	</div>';
 	return;
 }
 
@@ -271,7 +280,9 @@ foreach (KT_Tree::GetAll() as $tree) {
 					<th>' . KT_I18N::translate('Family tree') . '</th>
 					<th>
 						<a class="accepted" href="index.php?ged=' . $tree->tree_name_url . '" dir="auto">' . $tree->tree_title_html . '</a>
-						<a href="admin_trees_config.php?ged=' . $tree->tree_name_html . '"><i class="fa fa-cog"></i></a>
+						<a href="admin_trees_config.php?ged=' . $tree->tree_name_html . '">
+							<i class="fa fa-cog"></i>
+						</a>
 					</th>
 				</tr>
 				<tr>
@@ -294,7 +305,7 @@ foreach (KT_Tree::GetAll() as $tree) {
 								echo '<div id="import' . $tree->tree_id . '"></div>';
 							}
 							$controller->addInlineJavascript(
-								'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id=' . $tree->tree_id . '&keep_media' . $tree->tree_id . '='.safe_GET('keep_media' . $tree->tree_id) . '");'
+								'jQuery("#import' . $tree->getTreeId() . '").load("import.php?gedcom_id=' . $tree->tree_id . '");'
 							);
 							echo '<table border="0" width="100%" id="actions' . $tree->tree_id . '" style="display:none">';
 						} else {

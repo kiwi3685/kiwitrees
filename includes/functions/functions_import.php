@@ -596,7 +596,7 @@ function reformat_record_import($rec) {
 * @param boolean $update whether or not this is an updated record that has been accepted
 */
 function import_record($gedrec, $ged_id, $update) {
-	global $USE_RIN, $GENERATE_UIDS, $keep_media;
+	global $USE_RIN, $GENERATE_UIDS;
 
 	static $sql_insert_indi=null;
 	static $sql_insert_fam=null;
@@ -623,11 +623,11 @@ function import_record($gedrec, $ged_id, $update) {
 
 	// Escaped @ signs (only if importing from file)
 	if (!$update) {
-		$gedrec=str_replace('@@', '@', $gedrec);
+		$gedrec = str_replace('@@', '@', $gedrec);
 	}
 
 	// Standardise gedcom format
-	$gedrec=reformat_record_import($gedrec);
+	$gedrec = reformat_record_import($gedrec);
 
 	// import different types of records
 	if (preg_match('/^0 @('.KT_REGEX_XREF.')@ ('.KT_REGEX_TAG.')/', $gedrec, $match) > 0) {
@@ -650,8 +650,8 @@ function import_record($gedrec, $ged_id, $update) {
 	// If the user has downloaded their GEDCOM data (containing media objects) and edited it
 	// using an application which does not support (and deletes) media objects, then add them
 	// back in.
-	if ($keep_media) {
-		$old_linked_media=
+	if (get_gedcom_setting(KT_GED_ID, 'keep_media') && $xref) {
+		$old_linked_media =
 			KT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
 			->execute(array($xref, $ged_id))
 			->fetchOneColumn();
@@ -662,7 +662,7 @@ function import_record($gedrec, $ged_id, $update) {
 
 	switch ($type) {
 	case 'INDI':
-		$record=new KT_Person($gedrec);
+		$record = new KT_Person($gedrec);
 		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin=$match[1];
 		} else {
