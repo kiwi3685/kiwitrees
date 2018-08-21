@@ -134,7 +134,6 @@ switch ($action) {
 			unset($_FILES['thumbnail']);
 		}
 
-
 		// Thumbnails must be images.
 		if (!empty($_FILES['thumbnail']['name']) && !preg_match('/^image/', $_FILES['thumbnail']['type'])) {
 			KT_FlashMessages::addMessage(KT_I18N::translate('Thumbnails must be images.'));
