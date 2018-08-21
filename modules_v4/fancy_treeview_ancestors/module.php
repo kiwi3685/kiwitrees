@@ -203,7 +203,7 @@ class fancy_treeview_ancestors_KT_Module extends KT_Module implements KT_Module_
 			// Start page content
 			?>
 			<div id="page">
-				<h2><?php echo $this->getTitle(); ?></h2>
+				<h2 class="noprint"><?php echo $this->getTitle(); ?></h2>
 				<div class="chart_options noprint">
 					<form id="change_root">
 						<div class="chart_options">
