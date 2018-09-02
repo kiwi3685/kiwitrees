@@ -120,8 +120,8 @@ switch ($action) {
 			}
 		}
 
-		// Check for 0 bytes image
-		if ($_FILES['mediafile']['size'] === 0 || $_FILES['mediafile']['size'] > detectMaxUploadFileSize()) {
+		// Check for image having 0 bytes (corrupted)  or too large to import
+		if ($_FILES['mediafile']['size'] === 0 || $_FILES['mediafile']['size'] > int_from_bytestring(detectMaxUploadFileSize())) {
 			KT_FlashMessages::addMessage(KT_I18N::translate('The media file you selected either has a size of zero bytes or is too large to be uploaded.'));
 			unset($_FILES['mediafile']);
 			break;

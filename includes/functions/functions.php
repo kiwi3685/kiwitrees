@@ -2529,7 +2529,7 @@ function strstrb($haystack, $needle){
 }
 
 /**
-* Detects max size of file cab be uploaded to server
+* Detects max size of file that can be uploaded to server
 *
 * Based on php.ini parameters “upload_max_filesize”, “post_max_size” &
 * “memory_limit”. Valid for single file upload form. May be used
@@ -2594,6 +2594,27 @@ function detectMaxUploadFileSize(){
 
 	return $display_maxsize;
 
+}
+
+function int_from_bytestring ($byteString) {
+  preg_match('/^\s*([0-9.]+)\s*([KMGTPE])B?\s*$/i', $byteString, $matches);
+  $num = (float)$matches[1];
+  switch (strtoupper($matches[2])) {
+    case 'E':
+      $num = $num * 1024;
+    case 'P':
+      $num = $num * 1024;
+    case 'T':
+      $num = $num * 1024;
+    case 'G':
+      $num = $num * 1024;
+    case 'M':
+      $num = $num * 1024;
+    case 'K':
+      $num = $num * 1024;
+  }
+
+  return intval($num);
 }
 
 // family navigator
