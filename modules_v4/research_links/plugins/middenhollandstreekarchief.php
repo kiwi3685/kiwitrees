@@ -27,10 +27,10 @@ class middenhollandstreekarchief_plugin extends research_base_plugin {
 
 		$collection = array(
 		    
-		    "Archief"       => "hs_search/?q=$givn%20$surname&selected_facets=object_type_exact:Archiefstuk",
-		    "Beeldbank"     => "hs_search/?q=$givn%20$surname&selected_facets=object_type_exact:Beeldbank",
-		    "Genealogie"    => 'hs_search/?q=' . urlencode('"') . $givn . '%20' . $surname . urlencode('"') . '&selected_facets=object_type_exact:Genealogie%20Document',
-		    "Kranten"       => 'hs_search/?q=' . urlencode('"') . $givn . '%20' . $surname . urlencode('"') . '&selected_facets=object_type_exact:Krant',
+		    "Archief"            => "search/?q=$givn%20$surname&qf[]=nave_objectSoort%3AArchief",
+		    "Beeldmateriaal"     => "search/?q=$givn%20$surname&qf[]=nave_objectSoort%3ABeeldmateriaal",
+		    "Genealogie"         => 'search/?q=' . urlencode('"') . $givn . '%20' . $surname . urlencode('"') . '&qf[]=nave_objectSoort%3AGenealogie',
+		    "Kranten"            => 'search/?q=' . urlencode('"') . $givn . '%20' . $surname . urlencode('"') . '&qf[]=nave_objectSoort%3AKranten',
 		    
 		);
 

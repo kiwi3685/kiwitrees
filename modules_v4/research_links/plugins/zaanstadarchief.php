@@ -27,12 +27,12 @@ class zaanstadarchief_plugin extends research_base_plugin {
 
 		$collection = array(
 		    
-		    "Bevolkingsregister"       => "archieven?mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&mires=0&mip1=$surn&mip3=$givn&mib1=388",
-		    "Bidprentje"               => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mip1=$surn&mip3=$givn&mib1=111",
-			"Geboorteakte"             => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=113&mip1=$surn&mip3=$givn",
-		    "Huwelijksakte"            => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=109&mip1=$surn&mip3=$givn",
-		    "Overlijdensakte"          => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=114&mip1=$surn&mip3=$givn",		    
-		    "Transcripties"            => "voorouders?mivast=137&miadt=137&mizig=309&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$givn%20$surn",
+		    "Bevolkingsregister"       => "archieven/zoek-in-de-archieven?mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&mires=0&mip1=$surn&mip3=$givn&mib1=388",
+		    "Bidprentje"               => "archieven/zoek-in-de-archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mip1=$surn&mip3=$givn&mib1=111",
+			"Geboorteakte"             => "archieven/zoek-in-de-archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=113&mip1=$surn&mip3=$givn",
+		    "Huwelijksakte"            => "archieven/zoek-in-de-archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=109&mip1=$surn&mip3=$givn",
+		    "Overlijdensakte"          => "archieven/zoek-in-de-archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=114&mip1=$surn&mip3=$givn",		    
+		    "Transcripties"            => "archieven/zoek-in-de-archieven?mivast=137&miadt=137&mizig=309&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$givn%20$surn",
 		    );
 
 		foreach($collection as $key => $value) {

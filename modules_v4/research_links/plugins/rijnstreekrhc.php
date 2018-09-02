@@ -19,28 +19,11 @@ class rijnstreekrhc_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return false;
+		return "https://archief.rhcrijnstreek.nl/zoeken.php?zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=227&zoeken%5Bbeschrijvingssoorten%5D%5B193%5D=193&zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=7879447&zoeken%5Bbeschrijvingssoorten%5D%5B19764912%5D=19764912&zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=7881182&zoeken%5Bbeschrijvingssoorten%5D%5B7866604%5D=7866604&zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=19238956&zoeken%5Bbeschrijvingssoorten%5D%5B595%5D=595&zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=6964847&zoeken%5Bbeschrijvingssoorten%5D%5B703%5D=703&zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=19238958&zoeken%5Bbeschrijvingssoorten%5D%5B654%5D=654&zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=7881575&zoeken%5Bbeschrijvingssoorten%5D%5B7877169%5D=7877169&zoeken%5Bvelden%5D%5BAlle+velden%5D%5Bwaarde%5D=$fullname&zoeken%5Bvelden%5D%5BAlle+velden%5D%5Bhighlight%5D=t&zoeken%5Bvelden%5D%5BAlle+velden%5D%5Btype%5D=default&zoeken%5Bvelden%5D%5BAlle+velden%5D%5Bglobaal%5D=true&zoeken%5Bvelden%5D%5BJaar_van%5D%5Bwaarde%5D=&zoeken%5Bvelden%5D%5BJaar_van%5D%5Bhighlight%5D=f&zoeken%5Bvelden%5D%5BJaar_van%5D%5Btype%5D=date&zoeken%5Bvelden%5D%5BJaar_tot%5D%5Bwaarde%5D=&zoeken%5Bvelden%5D%5BJaar_tot%5D%5Bhighlight%5D=f&zoeken%5Bvelden%5D%5BJaar_tot%5D%5Btype%5D=date&zoeken%5Bvelden%5D%5BJaar%5D%5Bglobaal%5D=false&zoeken%5Btransformeren%5D=&searchtype=new&btn-submit=Zoeken";
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'http://rhcrijnstreek.nl/';
-
-		$collection = array(
-		"Burgelijke stand"				=> "bronnen/indexen/personen-zoeken/trefwoord/register_custom_s_type_archief/Burgerlijke%20stand/q/persoon_custom_t_naam/$givn%20$surn",
-		"Kerkelijk archief"				=> "bronnen/indexen/personen-zoeken/trefwoord/register_custom_s_type_archief/Kerkelijk%20archief/q/persoon_custom_t_naam/$givn%20$surn",
-		"Notarieel archief"				=> "bronnen/indexen/personen-zoeken/trefwoord/register_custom_s_type_archief/Notarieel%20archief/q/persoon_custom_t_naam/$givn%20$surn",
-		"Oud rechterlijk en weeskamer"	=> "bronnen/indexen/personen-zoeken/trefwoord/register_custom_s_type_archief/Oud%28~%29rechterlijk%20en%20weeskamer/q/persoon_custom_t_naam/$givn%20$surn",
-		"Plaatselijk bestuur"			=> "bronnen/indexen/personen-zoeken/sjabloon/index/facet_xml/personen/objecttype/personen/trefwoord/register_custom_s_type_archief/Plaatselijk%20bestuur/q/persoon_custom_t_naam/$givn%20$surn/start/0",
-		);
-
-		foreach($collection as $key => $value) {
-			$link[] = array(
-				'title' => KT_I18N::translate($key),
-				'link'  => $base_url . $value
-			);
-		}
-
-		return $link;
+		return false;
 	}
 
 	static function createLinkOnly() {
