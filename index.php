@@ -83,12 +83,12 @@ echo '<div id="home-page">';
 			} else {
 				// Load the block asynchronously
 				echo '
-					<div id="block_', $block_id, '">
+					<div id="block_' . $block_id . '">
 						<div class="loading-image">&nbsp;</div>
 					</div>
 				';
 				$controller->addInlineJavascript(
-					'jQuery("#block_'.$block_id.'").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+					'jQuery("#block_' . $block_id . '").load("index.php?action=ajax&block_id=' . $block_id . '");'
 				);
 			}
 		}
@@ -109,12 +109,12 @@ echo '<div id="home-page">';
 			} else {
 				// Load the block asynchronously
 				echo '
-					<div id="block_', $block_id, '">
+					<div id="block_' . $block_id . '">
 						<div class="loading-image">&nbsp;</div>
 					</div>
 				';
 				$controller->addInlineJavascript(
-					'jQuery("#block_'.$block_id.'").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+					'jQuery("#block_' . $block_id . '").load("index.php?action=ajax&block_id=' . $block_id . '");'
 				);
 			}
 		}

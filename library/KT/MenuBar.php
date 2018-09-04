@@ -29,13 +29,13 @@ if (!defined('KT_KIWITREES')) {
 class KT_MenuBar {
 	public static function getGedcomMenu() {
 		if (count(KT_Tree::getAll()) === 1 || KT_Site::preference('ALLOW_CHANGE_GEDCOM') === '0') {
-			$menu = new KT_Menu(KT_I18N::translate('Home'), 'index.php?ctype=gedcom&amp;ged=' . KT_GEDURL, 'menu-tree');
+			$menu = new KT_Menu(KT_I18N::translate('Home'), 'index.php?ged=' . KT_GEDURL, 'menu-tree');
 		} else {
 			$menu = new KT_Menu(KT_I18N::translate('Home'), '#', 'menu-tree');
 			foreach (KT_Tree::getAll() as $tree) {
 				$submenu = new KT_Menu(
 					$tree->tree_title_html,
-					'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url,
+					'index.php?amp;ged=' . $tree->tree_name_url,
 					'menu-tree-' . $tree->tree_id // Cannot use name - it must be a CSS identifier
 				);
 				$menu->addSubmenu($submenu);

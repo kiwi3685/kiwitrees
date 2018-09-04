@@ -108,43 +108,43 @@ class charts_KT_Module extends KT_Module implements KT_Module_Block {
 			$title .= help_link('index_charts', $this->getName());
 			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 			if ($type=='descendants' || $type=='hourglass') {
-				$content .= "<td valign=\"middle\">";
+				$content .= '<td valign="middle">';
 				ob_start();
 				$controller->print_descendency($person, 1, false);
 				$content .= ob_get_clean();
-				$content .= "</td>";
+				$content .= '</td>';
 			}
 			if ($type=='pedigree' || $type=='hourglass') {
 				//-- print out the root person
-				if ($type!='hourglass') {
-					$content .= "<td valign=\"middle\">";
+				if ($type != 'hourglass') {
+					$content .= '<td valign="middle">';
 					ob_start();
 					print_pedigree_person($person);
 					$content .= ob_get_clean();
-					$content .= "</td>";
+					$content .= '</td>';
 				}
-				$content .= "<td valign=\"middle\">";
+				$content .= '<td valign="middle">';
 				ob_start();
 				$controller->print_person_pedigree($person, 1);
 				$content .= ob_get_clean();
-				$content .= "</td>";
-			}
-			if ($type=='treenav') {
-				require_once KT_MODULES_DIR.'tree/module.php';
-				require_once KT_MODULES_DIR.'tree/class_treeview.php';
-				$mod=new tree_KT_Module;
-				$tv=new TreeView;
 				$content .= '<td>';
+			}
+			if ($type == 'treenav') {
+				require_once KT_MODULES_DIR . 'tree/module.php';
+				require_once KT_MODULES_DIR . 'tree/class_treeview.php';
+				$mod		= new tree_KT_Module;
+				$tv			= new TreeView;
+				$content	.= '<td>';
 
 				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
-				$content .= '<script src="'.$mod->js().'"></script>';
+				$content .= '<script src="' . $mod->js() . '"></script>';
 		    	list($html, $js) = $tv->drawViewport($person, 2);
 				$content .= $html.'<script>'.$js.'</script>';
 				$content .= '</td>';
 			}
-			$content .= "</tr></table>";
+			$content .= '</tr></table>';
 		} else {
-			$content=KT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
+			$content = KT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
 		if ($template) {
@@ -186,23 +186,27 @@ class charts_KT_Module extends KT_Module implements KT_Module_Block {
 			exit;
 		}
 
-		$details= get_block_setting($block_id, 'details', false);
-		$type   = get_block_setting($block_id, 'type',    'pedigree');
-		$pid    = get_block_setting($block_id, 'pid', KT_USER_ID ? (KT_USER_GEDCOM_ID ? KT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$details	= get_block_setting($block_id, 'details', false);
+		$type		= get_block_setting($block_id, 'type',    'pedigree');
+		$pid		= get_block_setting($block_id, 'pid', KT_USER_ID ? (KT_USER_GEDCOM_ID ? KT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
 			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
-	?>
-		<tr><td class="descriptionbox wrap width33"><?php echo KT_I18N::translate('Chart type'); ?></td>
-		<td class="optionbox">
-			<select name="type">
-				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Pedigree'); ?></option>
-				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Descendants'); ?></option>
-				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Hourglass chart'); ?></option>
-				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Interactive tree'); ?></option>
-			</select>
-		</td></tr>
+		?>
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<?php echo KT_I18N::translate('Chart type'); ?>
+			</td>
+			<td class="optionbox">
+				<select name="type">
+					<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Pedigree'); ?></option>
+					<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Descendants'); ?></option>
+					<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Hourglass chart'); ?></option>
+					<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Interactive tree'); ?></option>
+				</select>
+			</td>
+		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo KT_I18N::translate('Show Details'); ?></td>
 		<td class="optionbox">
@@ -218,22 +222,26 @@ class charts_KT_Module extends KT_Module implements KT_Module_Block {
 			<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root=KT_Person::getInstance($pid);
+				$root = KT_Person::getInstance($pid);
 				if ($root) {
-					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(KT_EVENTS_BIRT, 1), '</span>';
+					echo '<span class="list_item">', $root->getFullName(), $root->format_first_major_fact(KT_EVENTS_BIRT, 1), '</span>';
 				}
 				?>
 			</td>
 		</tr>
 		<?php
-
 		require_once KT_ROOT.'includes/functions/functions_edit.php';
+		$block = get_block_setting($block_id, 'block', false);
+		?>
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<?php echo /* I18N: label for a yes/no option */ KT_I18N::translate('Add a scrollbar when block contents grow'); ?>
+			</td>
+			<td class="optionbox">
+				<?php echo edit_field_yes_no('block', $block); ?>
+			</td>
+		</tr>
 
-		$block=get_block_setting($block_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ KT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
+		<?php
 	}
 }
