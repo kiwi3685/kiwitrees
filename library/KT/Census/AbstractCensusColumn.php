@@ -75,6 +75,19 @@ class KT_Census_AbstractCensusColumn {
 	}
 
 	/**
+	 * Extract the lowest part of a place name.
+	 *
+	 * @param string $place - e.g. "Westminster, London, England"
+	 *
+	 * @return string - e.g. "Westminster"
+	 */
+	protected function firstPartOfPlace($place) {
+		$place = explode(', ', $place);
+
+		return $place[0];
+	}
+
+	/**
 	 * When did this census occur
 	 *
 	 * @return Date

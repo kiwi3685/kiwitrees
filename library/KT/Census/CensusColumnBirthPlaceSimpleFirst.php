@@ -35,6 +35,6 @@ class KT_Census_CensusColumnBirthPlaceSimple extends KT_Census_CensusColumnBirth
 	 * @return string
 	 */
 	public function generate(KT_Person $individual, KT_Person $head = null) {
-		return $this->lastPartOfPlace(parent::generate($individual, $head));
+		return $this->firstPartOfPlace(parent::generate($individual, $head));
 	}
 }
