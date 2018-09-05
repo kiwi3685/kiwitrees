@@ -25,7 +25,7 @@
 /**
  * The individual's birth place.
  */
-class KT_Census_CensusColumnBirthPlaceSimple extends KT_Census_CensusColumnBirthPlace implements KT_Census_CensusColumnInterface {
+class KT_Census_CensusColumnBirthPlaceSimpleFirst extends KT_Census_CensusColumnBirthPlace implements KT_Census_CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
