@@ -54,7 +54,7 @@ class ckeditor_KT_Module extends KT_Module {
 					height: "400px",
 					filebrowserImageBrowseUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
 					filebrowserImageUploadUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
-					extraPlugins: "slideshow,footnotes",
+					extraPlugins: "emoji,slideshow,footnotes",
 					scayt_autoStartup: true,
 					footnotesPrefix: "a",
 					toolbarGroups: [
