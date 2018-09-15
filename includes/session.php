@@ -45,7 +45,7 @@ if (KT_USE_GOOGLE_API) {
 	define('KT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js');
 	define('KT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js');
 } else {
-	define('KT_JQUERY_URL',			KT_STATIC_URL . 'js/jquery.min.js');				    // 1.12.4	Updated 03-09-2016
+	define('KT_JQUERY_URL',			KT_STATIC_URL . 'js/jquery.min.js');				// 1.12.4	Updated 03-09-2016
 	define('KT_JQUERYUI_URL',		KT_STATIC_URL . 'js/jquery-ui.min.js');			    // 1.12.0	Updated 03-09-2016
 }
 define('KT_JQUERY_COLORBOX_URL',	KT_STATIC_URL . 'js/jquery.colorbox-min.js');	    // 1.6.1	Updated 18-06-2015
