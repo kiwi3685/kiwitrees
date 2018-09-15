@@ -45,7 +45,7 @@ class KT_Controller_Chart extends KT_Controller_Page {
 
 		if (!$this->root || !$this->root->canDisplayName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-			$this->error_message=KT_I18N::translate('This individual does not exist or you do not have permission to view it.');
+			$this->error_message = KT_I18N::translate('This individual does not exist or you do not have permission to view it.');
 			$this->rootid = null;
 		}
 	}
