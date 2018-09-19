@@ -211,6 +211,7 @@ switch ($type) {
 	exit;
 
 	case 'NAME': // Any type of names, that include the search term
+		$names = array();
 		// select by surname
 		$rows1 =
 			KT_DB::prepare("
@@ -244,10 +245,14 @@ switch ($type) {
 				$names[] = $row['name'];
 			}
 		}
-		//remove duplicate results
-		$data = array_unique($names);
 
+		//remove duplicate results
+		// array_unique() converts the keys from integer to string, which breaks
+		// the JSON encoding - so need to call array_values() to convert them
+		// back into integers.
+		$data = array_values(array_unique($names));
 		echo json_encode($data);
+
 	exit;
 
 	case 'INDI': // Individuals, whose name contains the search terms
