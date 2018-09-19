@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2018-09-02 17:26+1200\n"
-"PO-Revision-Date: 2018-09-02 17:28+1200\n"
+"POT-Creation-Date: 2018-09-19 16:44+1200\n"
+"PO-Revision-Date: 2018-09-19 16:44+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -80,6 +80,8 @@ msgid ""
 "The media file you selected either has a size of zero bytes or is too large "
 "to be uploaded."
 msgstr ""
+"The media file you selected either has a size of zero bytes or is too large "
+"to be uploaded."
 
 #: addmedia.php:139 admin_media_upload.php:105
 msgid "Thumbnails must be images."
@@ -220,7 +222,6 @@ msgid "Do not change to keep original file name."
 msgstr "Do not change to keep original file name."
 
 #: addmedia.php:513
-#| msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgid "You may enter a URL, beginning with \"http://\"."
 msgstr "You may enter a URL, beginning with \"http://\"."
 
@@ -290,7 +291,7 @@ msgstr ""
 #: admin_module_lists.php:109 admin_module_menus.php:138
 #: admin_module_reports.php:109 admin_module_sidebar.php:138
 #: admin_module_tabs.php:138 admin_module_widgets.php:139 admin_modules.php:203
-#: admin_site_config.php:439 admin_site_lang.php:120 admin_site_lang.php:148
+#: admin_site_config.php:471 admin_site_lang.php:120 admin_site_lang.php:148
 #: admin_trees_config.php:1409 admin_trees_manage.php:367
 #: admin_trees_merge.php:196 admin_users.php:658 block_edit.php:66
 #: edit_interface.php:166 edit_interface.php:266 edit_interface.php:325
@@ -568,7 +569,7 @@ msgstr "The file %s could not be deleted."
 #: includes/functions/functions_print_lists.php:925
 #: includes/functions/functions_resource.php:569 library/KT/Stats.php:3563
 #: medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375
-#: modules_v4/charts/module.php:211 modules_v4/relatives/module.php:258
+#: modules_v4/charts/module.php:215 modules_v4/relatives/module.php:258
 msgid "yes"
 msgstr "yes"
 
@@ -580,7 +581,7 @@ msgstr "yes"
 #: includes/functions/functions_print_lists.php:927
 #: library/KT/Controller/FancyTreeView.php:624 library/KT/Stats.php:3564
 #: medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374
-#: modules_v4/charts/module.php:210
+#: modules_v4/charts/module.php:214
 msgid "no"
 msgstr "no"
 
@@ -967,8 +968,8 @@ msgstr ""
 msgid "Deleted files:"
 msgstr "Deleted files:"
 
-#: admin_site_config.php:31 admin_site_config.php:142 admin_site_config.php:149
-#: admin_site_config.php:162 themes/_administration/header.php:136
+#: admin_site_config.php:31 admin_site_config.php:156 admin_site_config.php:163
+#: admin_site_config.php:176 themes/_administration/header.php:136
 msgid "Site configuration"
 msgstr "Site configuration"
 
@@ -1023,24 +1024,29 @@ msgstr ""
 msgid "Choose user defined welcome text typed below"
 msgstr "Choose user defined welcome text typed below"
 
-#: admin_site_config.php:152 admin_site_config.php:239
+#: admin_site_config.php:101
+#| msgid "Please enter a valid email address."
+msgid "You included one or more invalid email addresses."
+msgstr "You included one or more invalid email addresses."
+
+#: admin_site_config.php:166 admin_site_config.php:253
 msgid "Mail configuration"
 msgstr "Mail configuration"
 
-#: admin_site_config.php:155 admin_site_config.php:346
+#: admin_site_config.php:169 admin_site_config.php:360
 msgid "Login & registration"
 msgstr "Login & registration"
 
-#: admin_site_config.php:158 admin_site_config.php:394
+#: admin_site_config.php:172 admin_site_config.php:426
 msgid "Languages"
 msgstr "Languages"
 
-#: admin_site_config.php:165
+#: admin_site_config.php:179
 msgid "Data folder"
 msgstr "Data folder"
 
 #. I18N: Help text for the "Data folder" site configuration setting. “Apache” is a software program.
-#: admin_site_config.php:169
+#: admin_site_config.php:183
 msgid ""
 "This folder will be used by kiwitrees to store media files, GEDCOM files, "
 "temporary files, etc. The default setting is “data/”.<br>These files may "
@@ -1068,17 +1074,17 @@ msgstr ""
 "kiwitrees_data/) or relative to the installation folder (e.g. ../../"
 "kiwitrees_data/)."
 
-#: admin_site_config.php:174
+#: admin_site_config.php:188
 msgid "Memory limit"
 msgstr "Memory limit"
 
 #. I18N: %s is an amount of memory, such as 32MB
-#: admin_site_config.php:178
+#: admin_site_config.php:192
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr "By default, your server allows scripts to use %s of memory."
 
-#: admin_site_config.php:180 admin_site_config.php:196
+#: admin_site_config.php:194 admin_site_config.php:210
 msgid ""
 "You can request a higher or lower limit here, although the server may ignore "
 "this request.<br>If you leave this setting empty the default value will be "
@@ -1088,23 +1094,23 @@ msgstr ""
 "this request.<br>If you leave this setting empty the default value will be "
 "used."
 
-#: admin_site_config.php:186
+#: admin_site_config.php:200
 msgid "PHP time limit"
 msgstr "PHP time limit"
 
-#: admin_site_config.php:191
+#: admin_site_config.php:205
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] "By default, your server allows scripts to run for %s second."
 msgstr[1] "By default, your server allows scripts to run for %s seconds."
 
-#: admin_site_config.php:202
+#: admin_site_config.php:216
 msgid "Show list of family trees"
 msgstr "Show list of family trees"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
-#: admin_site_config.php:206
+#: admin_site_config.php:220
 msgid ""
 "For sites with more than one family tree, this option will show the list of "
 "family trees in the main menu, the search pages, etc."
@@ -1112,12 +1118,12 @@ msgstr ""
 "For sites with more than one family tree, this option will show the list of "
 "family trees in the main menu, the search pages, etc."
 
-#: admin_site_config.php:211
+#: admin_site_config.php:225
 msgid "Session timeout"
 msgstr "Session timeout"
 
 #. I18N: Help text for the “Session timeout” site configuration setting
-#: admin_site_config.php:215
+#: admin_site_config.php:229
 msgid ""
 "The time in seconds that a kiwitrees session remains active before requiring "
 "a login. The default is 7200, which is 2 hours."
@@ -1125,12 +1131,12 @@ msgstr ""
 "The time in seconds that a kiwitrees session remains active before requiring "
 "a login. The default is 7200, which is 2 hours."
 
-#: admin_site_config.php:220
+#: admin_site_config.php:234
 msgid "Website URL"
 msgstr "Website URL"
 
 #. I18N: Help text for the "Website URL" site configuration setting
-#: admin_site_config.php:224
+#: admin_site_config.php:238
 msgid ""
 "If your site can be reached using more than one URL such as <b>http://www."
 "example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b> you can "
@@ -1144,11 +1150,11 @@ msgstr ""
 "redirected to the preferred one. <span class=\"warning\">If not required, "
 "leave this field blank.</span>"
 
-#: admin_site_config.php:229
+#: admin_site_config.php:243
 msgid "Site maintenance"
 msgstr "Site maintenance"
 
-#: admin_site_config.php:233
+#: admin_site_config.php:247
 msgid ""
 "Set this to <b>yes</b> to temporarily prevent anyone <u>except the site "
 "administrator</u> from accessing your site."
@@ -1156,12 +1162,12 @@ msgstr ""
 "Set this to <b>yes</b> to temporarily prevent anyone <u>except the site "
 "administrator</u> from accessing your site."
 
-#: admin_site_config.php:242
+#: admin_site_config.php:256
 msgid "Messages"
 msgstr "Messages"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:252
+#: admin_site_config.php:266
 msgid ""
 "Kiwitrees needs to send emails such as password reminders and site "
 "notifications. To do this it can use this server's built in PHP mail "
@@ -1175,12 +1181,12 @@ msgstr ""
 "service, for which you will need to provide the connection details."
 "<br>Selecting SMTP will display additional configuration options below."
 
-#: admin_site_config.php:257
+#: admin_site_config.php:271
 msgid "Send mail in HTML format"
 msgstr "Send mail in HTML format"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:261
+#: admin_site_config.php:275
 msgid ""
 "By default kiwitrees sends emails in plain text format. Setting this option "
 "to <b>yes</b> will change that to the multipart format. This allows the use "
@@ -1192,12 +1198,12 @@ msgstr ""
 "of HTML formatting, but also includes a plain text version for recipients "
 "that do not allow HTML formatted emails."
 
-#: admin_site_config.php:266
+#: admin_site_config.php:280
 msgid "Sender email"
 msgstr "Sender email"
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:270
+#: admin_site_config.php:284
 msgid ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
@@ -1205,16 +1211,16 @@ msgstr ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
 
-#: admin_site_config.php:276
+#: admin_site_config.php:290
 msgid "SMTP mail server settings"
 msgstr "SMTP mail server settings"
 
-#: admin_site_config.php:278 setup.php:289
+#: admin_site_config.php:292 setup.php:289
 msgid "Server name"
 msgstr "Server name"
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:282
+#: admin_site_config.php:296
 msgid ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
@@ -1222,25 +1228,25 @@ msgstr ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
 
-#: admin_site_config.php:287 setup.php:294
+#: admin_site_config.php:301 setup.php:294
 msgid "Port number"
 msgstr "Port number"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:291
+#: admin_site_config.php:305
 msgid "By default SMTP works on port 25."
 msgstr "By default SMTP works on port 25."
 
-#: admin_site_config.php:296
+#: admin_site_config.php:310
 msgid "Use password"
 msgstr "Use password"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:300
+#: admin_site_config.php:314
 msgid "Most SMTP servers require a password."
 msgstr "Most SMTP servers require a password."
 
-#: admin_site_config.php:305 admin_users.php:349 admin_users.php:792
+#: admin_site_config.php:319 admin_users.php:349 admin_users.php:792
 #: edituser.php:130 help_text.php:745 login.php:153 login.php:225 login.php:301
 #: login.php:322 login.php:462 modules_v4/login_block/module.php:66
 #: modules_v4/report_changes/module.php:157
@@ -1249,35 +1255,35 @@ msgstr "Most SMTP servers require a password."
 msgid "Username"
 msgstr "Username"
 
-#: admin_site_config.php:309
+#: admin_site_config.php:323
 msgid "The user name required for authentication with the SMTP server."
 msgstr "The user name required for authentication with the SMTP server."
 
-#: admin_site_config.php:314 admin_users.php:361 edituser.php:161
+#: admin_site_config.php:328 admin_users.php:361 edituser.php:161
 #: help_text.php:571 login.php:158 login.php:226 login.php:468
 #: modules_v4/login_block/module.php:71 setup.php:439
 msgid "Password"
 msgstr "Password"
 
-#: admin_site_config.php:318
+#: admin_site_config.php:332
 msgid "The password required for authentication with the SMTP server."
 msgstr "The password required for authentication with the SMTP server."
 
-#: admin_site_config.php:323
+#: admin_site_config.php:337
 msgid "Secure connection"
 msgstr "Secure connection"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
-#: admin_site_config.php:327
+#: admin_site_config.php:341
 msgid "Most servers do not use secure connections."
 msgstr "Most servers do not use secure connections."
 
-#: admin_site_config.php:332
+#: admin_site_config.php:346
 msgid "Sending server name"
 msgstr "Sending server name"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
-#: admin_site_config.php:336
+#: admin_site_config.php:350
 msgid ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
@@ -1285,7 +1291,7 @@ msgstr ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
 
-#: admin_site_config.php:341
+#: admin_site_config.php:355
 msgid ""
 "To use a Google mail account, use the following settings: server=smtp.gmail."
 "com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail "
@@ -1299,12 +1305,12 @@ msgstr ""
 "account. <a href=\"https://support.google.com/a/answer/6260879\">https://"
 "support.google.com/a/answer/6260879</a>"
 
-#: admin_site_config.php:349
+#: admin_site_config.php:363
 msgid "Login URL"
 msgstr "Login URL"
 
 #. I18N: Help text for the “Login URL” site configuration setting
-#: admin_site_config.php:353
+#: admin_site_config.php:367
 msgid ""
 "You only need to enter a Login URL if you want to redirect to a different "
 "site or location when your users login. This is very useful if you need to "
@@ -1318,12 +1324,12 @@ msgstr ""
 "<i>login.php</i>. For example, https://www.yourserver.com/kiwitrees/login."
 "php ."
 
-#: admin_site_config.php:358
+#: admin_site_config.php:372
 msgid "Welcome text on login page"
 msgstr "Welcome text on login page"
 
 #. I18N: Explanation for custom welcome text
-#: admin_site_config.php:362
+#: admin_site_config.php:376
 msgid ""
 "Here you can choose text to appear on the login page. You must determine "
 "which predefined text is most appropriate. You can also choose to enter your "
@@ -1385,11 +1391,11 @@ msgstr ""
 "your request for an account. You will receive an email when your request is "
 "approved.</center></div></li></ul>"
 
-#: admin_site_config.php:367
+#: admin_site_config.php:381
 msgid "Custom welcome text"
 msgstr "Custom welcome text"
 
-#: admin_site_config.php:371
+#: admin_site_config.php:385
 msgid ""
 "If you have opted for custom welcome text, you can type that text here. To "
 "set this text for other languages you must switch to that language and visit "
@@ -1399,11 +1405,11 @@ msgstr ""
 "set this text for other languages you must switch to that language and visit "
 "this page again."
 
-#: admin_site_config.php:376
+#: admin_site_config.php:390
 msgid "Allow visitors to request account registration"
 msgstr "Allow visitors to request account registration"
 
-#: admin_site_config.php:380
+#: admin_site_config.php:394
 msgid ""
 "Gives visitors the option of registering themselves for an account on the "
 "site. The visitor will receive an email message with a code to verify their "
@@ -1415,11 +1421,11 @@ msgstr ""
 "application for an account. After verification the Administrator will have "
 "to approve the registration before it becomes active."
 
-#: admin_site_config.php:385
+#: admin_site_config.php:399
 msgid "Show acceptable use agreement on «Request new user account» page"
 msgstr "Show acceptable use agreement on «Request new user account» page"
 
-#: admin_site_config.php:389
+#: admin_site_config.php:403
 msgid ""
 "When set to <b>Yes</b>, the following message will appear above the input "
 "fields on the «Request new user account» page:<div class=\"list_value_wrap"
@@ -1437,11 +1443,28 @@ msgstr ""
 "whom you are related, or to provide us with information on someone who "
 "should be listed on our site.</li></ul></div></div>"
 
-#: admin_site_config.php:396
+#: admin_site_config.php:415
+#| msgid "Email address"
+msgid "Blocked email address list"
+msgstr "Blocked email address list"
+
+#: admin_site_config.php:419
+msgid ""
+"Add email addresses to this list to prevent them being used to register on "
+"this site. Separate each address with a comma. Whenever a visitor tries to "
+"use one of these addresses to register, their attempt will be ignored and a "
+"message added to the site error log."
+msgstr ""
+"Add email addresses to this list to prevent them being used to register on "
+"this site. Separate each address with a comma. Whenever a visitor tries to "
+"use one of these addresses to register, their attempt will be ignored and a "
+"message added to the site error log."
+
+#: admin_site_config.php:428
 msgid "Select the languages your site will use"
 msgstr "Select the languages your site will use"
 
-#: admin_site_config.php:398 admin_trees_findunlinked.php:124
+#: admin_site_config.php:430 admin_trees_findunlinked.php:124
 #: modules_v4/random_media/module.php:306
 #: modules_v4/random_media/module.php:357
 #: modules_v4/research_links/module.php:152
@@ -2020,7 +2043,7 @@ msgstr "Prefixes"
 #: includes/functions/functions_edit.php:1740
 #: includes/functions/functions_print_lists.php:1421 inverselink.php:221
 #: library/KT/Gedcom/Tag.php:249 modules_v4/chart_fanchart/module.php:109
-#: modules_v4/charts/module.php:216
+#: modules_v4/charts/module.php:220
 #: modules_v4/fancy_treeview_ancestors/module.php:210
 #: modules_v4/fancy_treeview_descendants/module.php:220
 #: modules_v4/googlemap/module.php:729
@@ -3677,10 +3700,6 @@ msgid "Keep media objects"
 msgstr "Keep media objects"
 
 #: admin_trees_manage.php:232
-#| msgid ""
-#| "If you have created media objects in kiwitrees, and edited your gedcom "
-#| "off-line using a program that deletes media objects, then check this box "
-#| "to merge the current media objects with the new GEDCOM."
 msgid ""
 "If you have created media objects in kiwitrees, and edited your gedcom off-"
 "line using a program that deletes media objects, then check this box to "
@@ -3925,7 +3944,7 @@ msgstr "Direct line ancestors and their families"
 #. I18N: Name of the module
 #: admin_trees_missing.php:70 includes/functions/functions_print.php:1389
 #: library/KT/Controller/Descendancy.php:99 library/KT/Gedcom/Tag.php:193
-#: modules_v4/charts/module.php:201 modules_v4/descendancy/module.php:33
+#: modules_v4/charts/module.php:204 modules_v4/descendancy/module.php:33
 #: modules_v4/fancy_treeview_descendants/module.php:41
 #: modules_v4/report_related_fam/module.php:115
 #: modules_v4/report_related_indi/module.php:101
@@ -4023,6 +4042,7 @@ msgid "Generations"
 msgstr "Generations"
 
 #. I18N: heading for report on missing data
+#. I18N: heading for report on related individuals
 #. I18N: heading for report on related individuals
 #: admin_trees_missing.php:251 modules_v4/report_related_fam/module.php:200
 #: modules_v4/report_related_indi/module.php:174
@@ -5087,7 +5107,7 @@ msgid "Show cousins"
 msgstr "Show cousins"
 
 #: ancestry.php:124 descendancy.php:86 familybook.php:47 hourglass.php:58
-#: modules_v4/charts/module.php:207 pedigree.php:64
+#: modules_v4/charts/module.php:211 pedigree.php:64
 msgid "Show Details"
 msgstr "Show Details"
 
@@ -5690,11 +5710,11 @@ msgstr "Unknown"
 msgid "Delete your account"
 msgstr "Delete your account"
 
-#: expand_view.php:32 includes/functions/functions.php:2655
-#: includes/functions/functions.php:2678 includes/functions/functions.php:2710
-#: includes/functions/functions.php:2752 includes/functions/functions.php:2779
-#: includes/functions/functions.php:2806 includes/functions/functions.php:2844
-#: includes/functions/functions.php:2869 includes/functions/functions.php:2892
+#: expand_view.php:32 includes/functions/functions.php:2676
+#: includes/functions/functions.php:2699 includes/functions/functions.php:2731
+#: includes/functions/functions.php:2773 includes/functions/functions.php:2800
+#: includes/functions/functions.php:2827 includes/functions/functions.php:2865
+#: includes/functions/functions.php:2890 includes/functions/functions.php:2913
 #: library/KT/Controller/FancyTreeView.php:719
 #: library/KT/Controller/GedcomRecord.php:50 library/KT/GedcomRecord.php:450
 #: library/KT/GedcomRecord.php:498 library/KT/GedcomRecord.php:612
@@ -10532,17 +10552,17 @@ msgid "%1$s's %2$s"
 msgstr "%1$s's %2$s"
 
 #. I18N: Name of a module/sidebar
-#: includes/functions/functions.php:2622 inverselink.php:142
+#: includes/functions/functions.php:2643 inverselink.php:142
 #: inverselink.php:153 inverselink.php:291 media_links.php:53
 #: modules_v4/family_nav/module.php:32
 msgid "Family navigator"
 msgstr "Family navigator"
 
-#: includes/functions/functions.php:2626 media_links.php:57
+#: includes/functions/functions.php:2647 media_links.php:57
 msgid "Click name to add person to list of links."
 msgstr "Click name to add person to list of links."
 
-#: includes/functions/functions.php:2900
+#: includes/functions/functions.php:2921
 #: includes/functions/functions_mail.php:136 media_links.php:331
 msgid "Close"
 msgstr "Close"
@@ -11252,7 +11272,7 @@ msgstr "Sat"
 #. I18N: Name of a module
 #: includes/functions/functions_print.php:1366
 #: library/KT/Controller/Pedigree.php:92
-#: modules_v4/chart_pedigree/module.php:33 modules_v4/charts/module.php:200
+#: modules_v4/chart_pedigree/module.php:33 modules_v4/charts/module.php:203
 msgid "Pedigree"
 msgstr "Pedigree"
 
@@ -11286,12 +11306,12 @@ msgstr "Compact tree"
 msgid "Fanchart"
 msgstr "Fanchart"
 
-#: includes/functions/functions_print.php:1409 modules_v4/charts/module.php:202
+#: includes/functions/functions_print.php:1409 modules_v4/charts/module.php:205
 msgid "Hourglass chart"
 msgstr "Hourglass chart"
 
 #. I18N: Name of a module
-#: includes/functions/functions_print.php:1416 modules_v4/charts/module.php:203
+#: includes/functions/functions_print.php:1416 modules_v4/charts/module.php:206
 #: modules_v4/tree/module.php:35
 msgid "Interactive tree"
 msgstr "Interactive tree"
@@ -19575,12 +19595,12 @@ msgstr ""
 "Duplicate user name. A user with that user name already exists. Please "
 "choose another user name."
 
-#: login.php:266 message.php:65 modules_v4/contact/module.php:135
+#: login.php:266 message.php:66 modules_v4/contact/module.php:135
 msgid "You are not allowed to send messages that contain external links."
 msgstr "You are not allowed to send messages that contain external links."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
-#: login.php:267 message.php:65 modules_v4/contact/module.php:135
+#: login.php:267 message.php:66 modules_v4/contact/module.php:135
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "You should delete the “%1$s” from “%2$s” and try again."
@@ -19904,12 +19924,12 @@ msgstr "Contact us"
 msgid "Please enter a valid email address."
 msgstr "Please enter a valid email address."
 
-#: message.php:95 modules_v4/contact/module.php:165
+#: message.php:96 modules_v4/contact/module.php:165
 #, php-format
 msgid "The message was successfully sent to %s."
 msgstr "The message was successfully sent to %s."
 
-#: message.php:97 modules_v4/contact/module.php:167
+#: message.php:98 modules_v4/contact/module.php:167
 msgid "The message was not sent."
 msgstr "The message was not sent."
 
@@ -23902,12 +23922,12 @@ msgstr ""
 "You must select an individual and chart type in the block configuration "
 "settings."
 
-#: modules_v4/charts/module.php:197 statistics.php:600
+#: modules_v4/charts/module.php:199 statistics.php:600
 msgid "Chart type"
 msgstr "Chart type"
 
 #. I18N: label for a yes/no option
-#: modules_v4/charts/module.php:234 modules_v4/gedcom_favorites/module.php:268
+#: modules_v4/charts/module.php:238 modules_v4/gedcom_favorites/module.php:268
 #: modules_v4/gedcom_news/module.php:189
 #: modules_v4/recent_changes/module.php:156
 #: modules_v4/review_changes/module.php:181
@@ -27631,7 +27651,6 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Show research tasks that have a date in the future"
 
 #. I18N: Name of a module.  Top=Most common
-#. I18N: Name of a module.  Top=Most common
 #: modules_v4/top10_givnnames/module.php:32
 #: modules_v4/widget_givnnames/module.php:32 statistics.php:185
 msgid "Top given names"
@@ -27738,7 +27757,6 @@ msgid "Show all spouses and ancestors"
 msgstr "Show all spouses and ancestors"
 
 #: modules_v4/tree/class_treeview.php:65
-#| msgid "Enter fullscreen"
 msgid "Toggle fullscreen view"
 msgstr "Toggle fullscreen view"
 
@@ -28404,11 +28422,11 @@ msgstr "You will use this to login to Kiwitrees."
 msgid "This must to be at least six characters.  It is case-sensitive."
 msgstr "This must to be at least six characters.  It is case-sensitive."
 
-#: setup.php:941
+#: setup.php:942
 msgid "An unexpected database error occurred."
 msgstr "An unexpected database error occurred."
 
-#: setup.php:943
+#: setup.php:944
 msgid ""
 "The kiwitrees developers would be very interested to learn about this "
 "error.  If you contact them, they will help you resolve the problem."
@@ -29156,7 +29174,6 @@ msgid "colors"
 msgstr "colors"
 
 #: themes/kiwitrees/header.php:157 themes/webtrees/header.php:134
-#| msgid "Main menu title"
 msgid "Main menu"
 msgstr "Main menu"
 
