@@ -751,7 +751,8 @@ div.config_options .helpcontent a:hover,
 	width: 50px;
 }
 
-textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {
+textarea[name="WELCOME_TEXT_AUTH_MODE_4"],
+textarea[name="BLOCKED_EMAIL_ADDRESS_LIST"] {
 	height:80px; width:100%;
 }
 

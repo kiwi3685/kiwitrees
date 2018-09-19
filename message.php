@@ -56,9 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$errors = true;
 	} elseif (!preg_match('/@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) {
 		KT_FlashMessages::addMessage(KT_I18N::translate('Please enter a valid email address.'));
+		AddToLog('Possible spam - invalid email address: ' . $from_email, 'error');
+		$errors = true;
+	} elseif (in_array($from_email, explode(',', KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST')))) {
+		// This type of validation error should not be shown in the client.
+		AddToLog('Possible spam - blocked email address: ' . $from_email, 'error');
 		$errors = true;
 	} elseif (preg_match('/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
 		KT_FlashMessages::addMessage(KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ KT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]));
+		AddToLog('Possible spam - attempt to include external links by: ' . $from_email, 'error');
 		$errors = true;
 	} elseif (empty($recipients)) {
 		$errors = true;

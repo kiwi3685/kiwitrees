@@ -68,30 +68,44 @@ switch (KT_Filter::post('action')) {
 		} else {
 			KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', KT_Filter::escapeHtml($INDEX_DIRECTORY)));
 		}
-		KT_Site::preference('MEMORY_LIMIT',				KT_Filter::post('MEMORY_LIMIT'));
-		KT_Site::preference('MAX_EXECUTION_TIME',		KT_Filter::post('MAX_EXECUTION_TIME'));
-		KT_Site::preference('ALLOW_CHANGE_GEDCOM',		KT_Filter::postBool('ALLOW_CHANGE_GEDCOM'));
-		KT_Site::preference('SESSION_TIME',				KT_Filter::post('SESSION_TIME'));
-		KT_Site::preference('SERVER_URL',				KT_Filter::post('SERVER_URL'));
-		KT_Site::preference('MAINTENANCE',				KT_Filter::postBool('MAINTENANCE'));
-		KT_Site::preference('SMTP_ACTIVE',				KT_Filter::post('SMTP_ACTIVE'));
-		KT_Site::preference('MAIL_FORMAT',				KT_Filter::postBool('MAIL_FORMAT'));
-		KT_Site::preference('SMTP_FROM_NAME',			KT_Filter::post('SMTP_FROM_NAME'));
-		KT_Site::preference('SMTP_HOST',				KT_Filter::post('SMTP_HOST'));
-		KT_Site::preference('SMTP_PORT',				KT_Filter::post('SMTP_PORT'));
-		KT_Site::preference('SMTP_AUTH',				KT_Filter::postBool('SMTP_AUTH'));
-		KT_Site::preference('SMTP_AUTH_USER',			KT_Filter::post('SMTP_AUTH_USER'));
-		KT_Site::preference('SMTP_SSL',					KT_Filter::post('SMTP_SSL'));
-		KT_Site::preference('SMTP_HELO',				KT_Filter::post('SMTP_HELO'));
+		KT_Site::preference('MEMORY_LIMIT',					KT_Filter::post('MEMORY_LIMIT'));
+		KT_Site::preference('MAX_EXECUTION_TIME',			KT_Filter::post('MAX_EXECUTION_TIME'));
+		KT_Site::preference('ALLOW_CHANGE_GEDCOM',			KT_Filter::postBool('ALLOW_CHANGE_GEDCOM'));
+		KT_Site::preference('SESSION_TIME',					KT_Filter::post('SESSION_TIME'));
+		KT_Site::preference('SERVER_URL',					KT_Filter::post('SERVER_URL'));
+		KT_Site::preference('MAINTENANCE',					KT_Filter::postBool('MAINTENANCE'));
+		KT_Site::preference('SMTP_ACTIVE',					KT_Filter::post('SMTP_ACTIVE'));
+		KT_Site::preference('MAIL_FORMAT',					KT_Filter::postBool('MAIL_FORMAT'));
+		KT_Site::preference('SMTP_FROM_NAME',				KT_Filter::post('SMTP_FROM_NAME'));
+		KT_Site::preference('SMTP_HOST',					KT_Filter::post('SMTP_HOST'));
+		KT_Site::preference('SMTP_PORT',					KT_Filter::post('SMTP_PORT'));
+		KT_Site::preference('SMTP_AUTH',					KT_Filter::postBool('SMTP_AUTH'));
+		KT_Site::preference('SMTP_AUTH_USER',				KT_Filter::post('SMTP_AUTH_USER'));
+		KT_Site::preference('SMTP_SSL',						KT_Filter::post('SMTP_SSL'));
+		KT_Site::preference('SMTP_HELO',					KT_Filter::post('SMTP_HELO'));
 		if (KT_Filter::post('SMTP_AUTH_PASS')) {
-			KT_Site::preference('SMTP_AUTH_PASS',		KT_Filter::post('SMTP_AUTH_PASS'));
+			KT_Site::preference('SMTP_AUTH_PASS',			KT_Filter::post('SMTP_AUTH_PASS'));
 		}
-		KT_Site::preference('LOGIN_URL',				KT_Filter::post('LOGIN_URL'));
-		KT_Site::preference('WELCOME_TEXT_AUTH_MODE',	KT_Filter::post('WELCOME_TEXT_AUTH_MODE'));
-		KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE, KT_Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
-		KT_Site::preference('USE_REGISTRATION_MODULE',	KT_Filter::postBool('USE_REGISTRATION_MODULE'));
-		KT_Site::preference('SHOW_REGISTER_CAUTION',	KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
-		KT_Site::preference('LANGUAGES', implode(',',	KT_Filter::postArray('LANGUAGES')));
+		KT_Site::preference('LOGIN_URL',					KT_Filter::post('LOGIN_URL'));
+		KT_Site::preference('WELCOME_TEXT_AUTH_MODE',		KT_Filter::post('WELCOME_TEXT_AUTH_MODE'));
+		KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' .		KT_LOCALE, KT_Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
+		KT_Site::preference('USE_REGISTRATION_MODULE',		KT_Filter::postBool('USE_REGISTRATION_MODULE'));
+		KT_Site::preference('SHOW_REGISTER_CAUTION',		KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
+		KT_Site::preference('LANGUAGES', implode(',',		KT_Filter::postArray('LANGUAGES')));
+
+		if (KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')) {
+			$emails = explode(',', str_replace(array(' ', "\n", "\r"), '', KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')));
+			foreach ($emails as $email) {
+				if (!preg_match('/@(.+)/', $email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) { ?>
+					<script>
+						var emailerror = "<?php echo KT_I18N::translate('You included one or more invalid email addresses.'); ?>";
+						alert(emailerror);
+					</script>
+					<?php break 2;
+				}
+			}
+			KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST', str_replace(array(' ', "\n", "\r"), '', KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')));
+		}
 
 		// Reload the page, so that the settings take effect immediately.
 		Zend_Session::writeClose();
@@ -390,6 +404,24 @@ $controller
 							</div>
 						</div>
 					</div>
+
+					<div class="config_options">
+						<?php
+							$blockedEmails = KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST');
+							if (!$blockedEmails) {
+								$blockedEmails = 'youremail@gmail.com';
+							}
+ 						?>
+						<label><?php echo KT_I18N::translate('Blocked email address list'); ?></label>
+						<div class="input_group">
+							<textarea id="BLOCKED_EMAIL_ADDRESS_LIST" name="BLOCKED_EMAIL_ADDRESS_LIST" rows="3"><?php echo $blockedEmails; ?></textarea>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log.'); ?>
+							</div>
+						</div>
+					</div>
+
+
 				</div>
 				<h3 class="accordion"><?php echo KT_I18N::translate('Languages'); ?></h3>
 				<div id="lang">

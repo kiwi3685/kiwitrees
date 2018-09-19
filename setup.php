@@ -898,7 +898,8 @@ try {
 		"('SMTP_AUTH_PASS',                  ''),".
 		"('SMTP_SSL',                        'none'),".
 		"('SMTP_HELO',                       ?),".
-		"('SMTP_FROM_NAME',                  ?)"
+		"('SMTP_FROM_NAME',                  ?),".
+		"('BLOCKED_EMAIL_ADDRESS_LIST',      'youremail@gmail.com')"
 	)->execute(array(
 		$_SERVER['SERVER_NAME'], $_SERVER['SERVER_NAME']
 	));
