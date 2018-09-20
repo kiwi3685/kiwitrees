@@ -5,12 +5,13 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2018-03-01 08:21+1300\n"
-"PO-Revision-Date: 2018-03-08 16:21+1300\n"
+"POT-Creation-Date: 2018-09-19 16:44+1200\n"
+"PO-Revision-Date: 2018-09-21 09:47+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Norwegian Nynorsk (http://www.transifex.com/kiwitrees/kiwitrees/language/nn/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nn\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -27,153 +28,161 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:77
+#: action.php:56
 #, php-format
 msgid "The changes to “%s” have been accepted."
 msgstr ""
 
-#: action.php:109
+#: action.php:88
 msgid "Record copied to clipboard"
 msgstr "Data er kopiert til utklippstavla"
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
-#: action.php:130
+#: action.php:109
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr ""
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
-#: action.php:138 action.php:142
+#: action.php:117 action.php:121
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
 msgstr ""
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:167
+#: action.php:146
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr ""
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:74 addmedia.php:415 admin_trees_addunlinked.php:72
+#: addmedia.php:73 addmedia.php:418 admin_trees_addunlinked.php:72
 msgid "Create a new media object"
 msgstr "Opprett nytt medieobjekt"
 
-#: addmedia.php:94 addmedia.php:105 addmedia.php:268 addmedia.php:279 admin_media_upload.php:59 admin_media_upload.php:70 admin_trees_config.php:230
+#: addmedia.php:93 addmedia.php:104 addmedia.php:271 addmedia.php:282 admin_media_upload.php:59 admin_media_upload.php:70 admin_trees_config.php:230
 #, php-format
 msgid "The folder %s was created."
 msgstr "Mappa %s blei oppretta"
 
-#: addmedia.php:96 addmedia.php:107 addmedia.php:119 addmedia.php:270 addmedia.php:281 addmedia.php:293 admin_media_upload.php:61 admin_media_upload.php:72 admin_media_upload.php:84 admin_site_config.php:69 admin_trees_config.php:232
+#: addmedia.php:95 addmedia.php:106 addmedia.php:118 addmedia.php:273 addmedia.php:284 addmedia.php:296 admin_media_upload.php:61 admin_media_upload.php:72 admin_media_upload.php:84 admin_site_config.php:69 admin_trees_config.php:232
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Mappa %s eksisterar ikkje, og kunne ikkje opprettast."
 
-#: addmedia.php:133 admin_media_upload.php:98
+#: addmedia.php:125 admin_media_upload.php:91
+msgid "The media file you selected either has a size of zero bytes or is too large to be uploaded."
+msgstr ""
+
+#: addmedia.php:139 admin_media_upload.php:105
 msgid "Thumbnails must be images."
 msgstr "Miniatyrar må vere bileter."
 
-#: addmedia.php:155 addmedia.php:306 admin_media_upload.php:112
+#: addmedia.php:161 addmedia.php:309 admin_media_upload.php:119
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Filnamn kan ikkje innehalde teiknet “%s”."
 
-#: addmedia.php:160 addmedia.php:311 admin_media_upload.php:117
+#: addmedia.php:166 addmedia.php:314 admin_media_upload.php:124
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Filnamn kan ikkje ha filendinga “%s”."
 
-#: addmedia.php:164 addmedia.php:315 admin_media_upload.php:121
+#: addmedia.php:170 addmedia.php:318 admin_media_upload.php:128
 msgid "No media file was provided."
 msgstr "Ingen mediefil blei gitt."
 
-#: addmedia.php:174 admin_media_upload.php:131
+#: addmedia.php:180 admin_media_upload.php:138
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "Fila “%s” fins allereie. Bruk eit anna filnamn."
 
-#: addmedia.php:183 admin_media_upload.php:141 edit_interface.php:1398
+#: addmedia.php:189 admin_media_upload.php:148 edit_interface.php:1398
 msgid "There was an error uploading your file."
 msgstr "Det oppsto ein FEIL under opplasting av fila di."
 
-#: addmedia.php:240 addmedia.php:407 addmedia.php:807 edit_changes.php:241 edit_interface.php:170 edit_interface.php:270 edit_interface.php:329 edit_interface.php:488 edit_interface.php:559 edit_interface.php:820 edit_interface.php:928 edit_interface.php:1065 edit_interface.php:1141 edit_interface.php:1268 edit_interface.php:2158 edit_interface.php:2312 edit_interface.php:2579 edit_interface.php:2680 find.php:732 includes/functions/functions_edit.php:974 includes/media_reorder.php:165
+#: addmedia.php:245 addmedia.php:410 addmedia.php:804 edit_changes.php:241 edit_interface.php:170 edit_interface.php:270 edit_interface.php:329 edit_interface.php:488 edit_interface.php:559 edit_interface.php:820 edit_interface.php:928 edit_interface.php:1065 edit_interface.php:1141 edit_interface.php:1268 edit_interface.php:2166 edit_interface.php:2320 edit_interface.php:2587 edit_interface.php:2701 find.php:732 includes/functions/functions_edit.php:974 includes/media_reorder.php:165
 #: inverselink.php:209 inverselink.php:238 modules_v4/album/module.php:338 modules_v4/census_assistant/census-edit.php:127 modules_v4/census_assistant/module.php:100 modules_v4/googlemap/admin_places_edit.php:83 modules_v4/googlemap/admin_places_edit.php:101 modules_v4/googlemap/admin_places_edit.php:358 modules_v4/googlemap/module.php:624 modules_v4/googlemap/module.php:692
 msgid "close"
 msgstr "lukk"
 
-#: addmedia.php:242
+#: addmedia.php:247
 msgid "Click the close button to return to the manage media page."
 msgstr ""
 
-#: addmedia.php:248 addmedia.php:419 library/KT/Controller/Media.php:83
+#: addmedia.php:251 addmedia.php:422 library/KT/Controller/Media.php:83
 msgid "Edit media object"
 msgstr "Endre medieobjekt"
 
-#: addmedia.php:326 addmedia.php:354
+#: addmedia.php:329 addmedia.php:357
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Mediefila %1$s kunne ikkje gjevast det nye namnet %2$s."
 
-#: addmedia.php:346
+#: addmedia.php:349
 msgid "This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
 msgstr "Denne fila er kopla til ein annan slektsbase på denne nettstaden. Fila kan difor ikkje slettast, flyttast eller gjevast nytt namn før desse koplingane er fjerna."
 
-#: addmedia.php:352
+#: addmedia.php:355
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Mediefila %1$s har skifta namn til %2$s."
 
-#: addmedia.php:359
+#: addmedia.php:362
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Mediafila %s eksisterar ikkje."
 
-#: addmedia.php:366
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Fila for miniatyrbiletet %1$s har skifta namn til %2$s."
 
-#: addmedia.php:368
+#: addmedia.php:371
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Fila for miniatyrbiletet %1$s kunne ikkje gjevast det nye namnet %2$s."
 
-#: addmedia.php:373
+#: addmedia.php:376
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "Fila for miniatyrbiletet %s eksisterar ikkje."
 
-#: addmedia.php:443 modules_v4/gedcom_favorites/module.php:186 modules_v4/widget_favorites/module.php:194
+#: addmedia.php:444 modules_v4/gedcom_favorites/module.php:186 modules_v4/widget_favorites/module.php:194
 msgid "Enter a Person, Family, or Source ID"
 msgstr "Angi ID til ein person, familie eller kjelde"
 
-#: addmedia.php:450 inverselink.php:178
+#: addmedia.php:451 inverselink.php:178
 msgid "Enter or search for the ID of the person, family, or source to which this media item should be linked."
 msgstr "Angi eller søk etter ID for person, familie eller kjelde som dette medieobjektet skal knytast til."
 
-#: addmedia.php:477 admin_media_upload.php:183 help_text.php:693
+#: addmedia.php:472 admin_media_upload.php:190 help_text.php:693
 msgid "Media file to upload"
 msgstr "Mediefil som skal lastast opp"
 
-#: addmedia.php:483 admin_media_upload.php:176 admin_trees_manage.php:179
+#: addmedia.php:478 admin_media_upload.php:183 admin_trees_manage.php:184
 #, php-format
 msgid "Maximum file size allowed is %s"
 msgstr ""
 
-#: addmedia.php:493 admin_media_upload.php:189 help_text.php:714
+#: addmedia.php:488 admin_media_upload.php:196 help_text.php:714
 msgid "Thumbnail to upload"
 msgstr "Miniatyrbilete som skal lastast opp"
 
-#: addmedia.php:508 addmedia.php:535 admin_media_upload.php:197
+#: addmedia.php:495 help_text.php:715
+msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
+msgstr "Vel kva miniatyrbilete du vil laste opp. Sjølv om miniatyrbileter kan genererast automatisk når du lastar opp bileter, vil du nokon gonger kanskje ønskje å lage dine eigne, ikke minst for andre medietypar. Du kan til dømes nytte eit stillbilete frå ein video, eller eit fotografi av ein person du har gjort eit lydopptak av."
+
+#: addmedia.php:507 addmedia.php:533 admin_media_upload.php:204
 msgid "File name on server"
 msgstr "Filnamn på server"
 
-#: addmedia.php:513 admin_media_upload.php:201
+#: addmedia.php:512 addmedia.php:541 admin_media_upload.php:208
 msgid "Do not change to keep original file name."
 msgstr "Ikkje endre for å behalde opprinneleg filnamn."
 
-#: addmedia.php:514
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
+#: addmedia.php:513
+msgid "You may enter a URL, beginning with \"http://\"."
 msgstr ""
 
 #. I18N: Help text for add media screens
@@ -183,25 +192,33 @@ msgid ""
 "The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)"
 msgstr ""
 
-#: addmedia.php:562 admin_media_upload.php:209 help_text.php:706 modules_v4/gallery/module.php:280
+#: addmedia.php:563 admin_media_upload.php:216 help_text.php:706 modules_v4/gallery/module.php:280
 msgid "Folder name on server"
 msgstr "Mappenamn på server"
 
-#: addmedia.php:574 admin_media_upload.php:215
+#: addmedia.php:572 admin_media_upload.php:222
 msgid "Choose: "
 msgstr "Vel: "
 
-#: addmedia.php:578 admin_media_upload.php:216
+#: addmedia.php:576 admin_media_upload.php:223
 msgid "Other folder... please type in"
 msgstr "Anna mappe... skriv inn"
 
-#: addmedia.php:605
+#: addmedia.php:601
 msgid "This entry is ignored if you have entered a URL into the file name field."
 msgstr "Denne inntastinga vert ignorert dersom du har angjeve ein URL i feltet for filnamn."
 
-#: addmedia.php:803 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:135 admin_module_reports.php:109 admin_module_sidebar.php:135 admin_module_tabs.php:135 admin_module_widgets.php:135 admin_modules.php:203 admin_site_config.php:431 admin_site_lang.php:120 admin_site_lang.php:148 admin_trees_config.php:1409 admin_trees_manage.php:356 admin_trees_merge.php:196 admin_users.php:658 block_edit.php:66 edit_interface.php:166
-#: edit_interface.php:266 edit_interface.php:325 edit_interface.php:484 edit_interface.php:555 edit_interface.php:816 edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137 edit_interface.php:1264 edit_interface.php:2150 edit_interface.php:2308 edit_interface.php:2571 edituser.php:191 find.php:502 includes/functions/functions_edit.php:964 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/calendar_utilities/module.php:167
-#: modules_v4/census_assistant/census-edit.php:123 modules_v4/chart_relationship/module.php:416 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/faq/module.php:226 modules_v4/faq/module.php:434 modules_v4/gallery/module.php:360 modules_v4/gallery/module.php:519 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:620 modules_v4/googlemap/module.php:688
+#: addmedia.php:603 help_text.php:709
+msgid "If you have a large number of media files, you can organize them into folders and subfolders."
+msgstr ""
+
+#: addmedia.php:707 help_text.php:388
+msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgstr "Bruk dette feltet for å angi at denne mediefila er hovudbilete for personen den er knytta til.  Hovudbiletet er det som vert nytta i diagram og på personen si faktaside."
+
+#: addmedia.php:800 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:138 admin_module_reports.php:109 admin_module_sidebar.php:138 admin_module_tabs.php:138 admin_module_widgets.php:139 admin_modules.php:203 admin_site_config.php:471 admin_site_lang.php:120 admin_site_lang.php:148 admin_trees_config.php:1409 admin_trees_manage.php:367 admin_trees_merge.php:196 admin_users.php:658 block_edit.php:66 edit_interface.php:166
+#: edit_interface.php:266 edit_interface.php:325 edit_interface.php:484 edit_interface.php:555 edit_interface.php:816 edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137 edit_interface.php:1264 edit_interface.php:2158 edit_interface.php:2316 edit_interface.php:2579 edituser.php:191 find.php:502 includes/functions/functions_edit.php:964 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/calendar_utilities/module.php:167
+#: modules_v4/census_assistant/census-edit.php:123 modules_v4/chart_relationship/module.php:416 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/faq/module.php:226 modules_v4/faq/module.php:448 modules_v4/gallery/module.php:360 modules_v4/gallery/module.php:519 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:620 modules_v4/googlemap/module.php:688
 #: modules_v4/googlemap/placehierarchy.php:233 modules_v4/pages/module.php:258
 msgid "Save"
 msgstr "Lagre"
@@ -294,21 +311,21 @@ msgstr ""
 
 #. I18N: Name of a module
 #: admin.php:257 admin.php:307 ancestry.php:93 calendar.php:377 calendar.php:556 descendancy.php:66 includes/functions/functions_print_lists.php:1117 includes/functions/functions_print_lists.php:1290 includes/functions/functions_print_lists.php:1639 includes/functions/functions_print_lists.php:1740 indilist.php:132 indilist.php:137 library/KT/Controller/Search.php:1196 mediaviewer.php:134 modules_v4/gedcom_stats/module.php:96 modules_v4/gedcom_stats/module.php:298
-#: modules_v4/googlemap/placehierarchy.php:276 modules_v4/html/module.php:164 modules_v4/list_individuals/module.php:33 modules_v4/random_media/module.php:296 modules_v4/widget_stats/module.php:88 modules_v4/widget_stats/module.php:338 note.php:100 placelist.php:181 search.php:136 search.php:260 source.php:99 statistics.php:50 statisticsplot.php:777
+#: modules_v4/googlemap/placehierarchy.php:276 modules_v4/html/module.php:164 modules_v4/list_individuals/module.php:33 modules_v4/random_media/module.php:296 modules_v4/widget_stats/module.php:88 modules_v4/widget_stats/module.php:338 note.php:100 placelist.php:209 search.php:136 search.php:260 source.php:99 statistics.php:50 statisticsplot.php:777
 msgid "Individuals"
 msgstr "Personar"
 
 #. I18N: Name of a module
 #. I18N: Name of a module
 #: admin.php:262 admin.php:308 ancestry.php:99 calendar.php:378 calendar.php:557 descendancy.php:71 famlist.php:134 famlist.php:139 includes/functions/functions_print_lists.php:1119 includes/functions/functions_print_lists.php:1292 includes/functions/functions_print_lists.php:1641 library/KT/Controller/Search.php:1197 mediaviewer.php:137 modules_v4/gedcom_stats/module.php:104 modules_v4/gedcom_stats/module.php:314 modules_v4/googlemap/placehierarchy.php:276 modules_v4/html/module.php:180
-#: modules_v4/list_families/module.php:33 modules_v4/relatives/module.php:32 modules_v4/report_individual/module.php:270 modules_v4/report_related_fam/module.php:345 modules_v4/widget_stats/module.php:116 modules_v4/widget_stats/module.php:354 note.php:103 placelist.php:184 search.php:140 source.php:102 statistics.php:52 statisticsplot.php:773
+#: modules_v4/list_families/module.php:33 modules_v4/relatives/module.php:32 modules_v4/report_individual/module.php:270 modules_v4/report_related_fam/module.php:345 modules_v4/widget_stats/module.php:116 modules_v4/widget_stats/module.php:354 note.php:103 placelist.php:212 search.php:140 source.php:102 statistics.php:52 statisticsplot.php:773
 msgid "Families"
 msgstr "Familiar"
 
 #. I18N: Name of a module
 #. I18N: Name of a module
 #: admin.php:267 admin.php:309 includes/functions/functions_print_lists.php:1296 includes/functions/functions_print_lists.php:1520 includes/functions/functions_print_lists.php:1643 library/KT/Controller/Search.php:1198 mediaviewer.php:140 modules_v4/album/album_print_media.php:313 modules_v4/gedcom_stats/module.php:107 modules_v4/gedcom_stats/module.php:322 modules_v4/html/module.php:184 modules_v4/list_sources/module.php:33 modules_v4/report_family/module.php:372
-#: modules_v4/report_individual/module.php:375 modules_v4/report_related_fam/module.php:454 modules_v4/sources_tab/module.php:32 modules_v4/tab_census/module.php:123 modules_v4/widget_stats/module.php:125 modules_v4/widget_stats/module.php:362 note.php:109 repo.php:97 search.php:144 sourcelist.php:31 sourcelist.php:35 statistics.php:337 statistics.php:374
+#: modules_v4/report_individual/module.php:375 modules_v4/report_related_fam/module.php:454 modules_v4/sources_tab/module.php:32 modules_v4/tab_census/module.php:112 modules_v4/widget_stats/module.php:125 modules_v4/widget_stats/module.php:362 note.php:109 repo.php:97 search.php:144 sourcelist.php:31 sourcelist.php:35 statistics.php:337 statistics.php:374
 msgid "Sources"
 msgstr "Kjelder"
 
@@ -346,7 +363,7 @@ msgid "Month"
 msgstr "Månad"
 
 #. I18N: Name of a module
-#: admin.php:312 library/KT/Controller/Search.php:1199 mediaviewer.php:146 modules_v4/calendar_utilities/plugins/regnal_years.php:140 modules_v4/census_assistant/census-edit.php:106 modules_v4/notes/module.php:32 modules_v4/report_family/module.php:353 modules_v4/report_individual/module.php:259 modules_v4/report_related_fam/module.php:334 modules_v4/tab_census/module.php:122 source.php:108 statistics.php:338
+#: admin.php:312 library/KT/Controller/Search.php:1199 mediaviewer.php:146 modules_v4/calendar_utilities/plugins/regnal_years.php:140 modules_v4/census_assistant/census-edit.php:106 modules_v4/notes/module.php:32 modules_v4/report_family/module.php:353 modules_v4/report_individual/module.php:259 modules_v4/report_related_fam/module.php:334 modules_v4/tab_census/module.php:111 source.php:108 statistics.php:338
 msgid "Notes"
 msgstr "Notat"
 
@@ -360,13 +377,13 @@ msgstr "Fila %s blei sletta."
 msgid "The file %s could not be deleted."
 msgstr "Fila %s kunne ikkje slettast."
 
-#: admin_media.php:163 admin_media.php:234 admin_trees_duplicates.php:284 admin_users.php:253 admin_users.php:254 branches.php:191 includes/functions/functions_edit.php:136 includes/functions/functions_edit.php:1413 includes/functions/functions_edit.php:1460 includes/functions/functions_print.php:899 includes/functions/functions_print.php.bak:900 includes/functions/functions_print_facts.php:1282 includes/functions/functions_print_lists.php:424 includes/functions/functions_print_lists.php:925
-#: includes/functions/functions_resource.php:569 library/KT/Stats.php:3563 medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375 modules_v4/charts/module.php:211 modules_v4/relatives/module.php:258
+#: admin_media.php:163 admin_media.php:234 admin_trees_duplicates.php:284 admin_users.php:253 admin_users.php:254 branches.php:191 includes/functions/functions_edit.php:136 includes/functions/functions_edit.php:1413 includes/functions/functions_edit.php:1460 includes/functions/functions_print.php:899 includes/functions/functions_print_facts.php:1282 includes/functions/functions_print_lists.php:424 includes/functions/functions_print_lists.php:925 includes/functions/functions_resource.php:569
+#: library/KT/Stats.php:3563 medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375 modules_v4/charts/module.php:215 modules_v4/relatives/module.php:258
 msgid "yes"
 msgstr "ja"
 
 #. I18N: 'no' is the number zero
-#: admin_media.php:166 admin_media.php:237 admin_users.php:253 admin_users.php:254 includes/functions/functions_edit.php:136 includes/functions/functions_edit.php:1457 includes/functions/functions_print_facts.php:1285 includes/functions/functions_print_lists.php:927 library/KT/Controller/FancyTreeView.php:624 library/KT/Stats.php:3564 medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374 modules_v4/charts/module.php:210
+#: admin_media.php:166 admin_media.php:237 admin_users.php:253 admin_users.php:254 includes/functions/functions_edit.php:136 includes/functions/functions_edit.php:1457 includes/functions/functions_print_facts.php:1285 includes/functions/functions_print_lists.php:927 library/KT/Controller/FancyTreeView.php:624 library/KT/Stats.php:3564 medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374 modules_v4/charts/module.php:214
 msgid "no"
 msgstr "nei"
 
@@ -374,7 +391,7 @@ msgstr "nei"
 msgid "Create"
 msgstr "Opprett"
 
-#: admin_media.php:322 admin_media.php:464 admin_site_access.php:130 admin_trees_config.php:705 admin_trees_manage.php:320 admin_users.php:257 edituser.php:196 library/KT/Controller/Individual.php:397 library/KT/Controller/Media.php:110 library/KT/Controller/Note.php:104 library/KT/Controller/Repository.php:104 library/KT/Controller/Source.php:104
+#: admin_media.php:322 admin_media.php:464 admin_site_access.php:130 admin_trees_config.php:705 admin_trees_manage.php:331 admin_users.php:257 edituser.php:196 library/KT/Controller/Individual.php:397 library/KT/Controller/Media.php:110 library/KT/Controller/Note.php:104 library/KT/Controller/Repository.php:104 library/KT/Controller/Source.php:104
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr ""
@@ -408,7 +425,7 @@ msgstr "Syn"
 msgid "This media object is not linked to any other record."
 msgstr "Dette medieobjektet er ikkje knytt til nokon annan post."
 
-#: admin_media.php:527 admin_media.php:621 admin_trees_config.php:295 admin_trees_config.php:461 admin_trees_config.php:717 admin_trees_missing.php:265 admin_trees_source.php:163 admin_trees_source.php:278 admin_trees_sourcecite.php:145 includes/functions/functions_print_lists.php:1636 inverselink.php:90 inverselink.php:214 modules_v4/tab_census/module.php:124 themes/_administration/header.php:201
+#: admin_media.php:527 admin_media.php:621 admin_trees_config.php:295 admin_trees_config.php:461 admin_trees_config.php:717 admin_trees_missing.php:265 admin_trees_source.php:163 admin_trees_source.php:278 admin_trees_sourcecite.php:145 includes/functions/functions_print_lists.php:1636 inverselink.php:90 inverselink.php:214 modules_v4/tab_census/module.php:113 themes/_administration/header.php:201
 msgid "Media"
 msgstr "Media"
 
@@ -447,7 +464,7 @@ msgstr "Ekskluder undermapper"
 msgid "External media files have a URL instead of a filename."
 msgstr "Eksterne mediefiler har URL istaden for eit filnamn."
 
-#: admin_media.php:620 admin_media_upload.php:181
+#: admin_media.php:620 admin_media_upload.php:188
 msgid "Media file"
 msgstr "Mediefil"
 
@@ -466,16 +483,16 @@ msgstr ""
 msgid "Media type"
 msgstr "Medietype"
 
-#: admin_media_upload.php:32 admin_media_upload.php:176 help_text.php:701 themes/_administration/header.php:204
+#: admin_media_upload.php:32 admin_media_upload.php:183 help_text.php:701 themes/_administration/header.php:204
 msgid "Upload media files"
 msgstr "Last opp mediefiler"
 
-#: admin_media_upload.php:136 admin_media_upload.php:155
+#: admin_media_upload.php:143 admin_media_upload.php:162
 #, php-format
 msgid "The file %s was uploaded."
 msgstr "Fila %s blei lasta opp."
 
-#: admin_media_upload.php:233 modules_v4/googlemap/admin_places.php:743 modules_v4/googlemap/admin_places.php:745
+#: admin_media_upload.php:240 modules_v4/googlemap/admin_places.php:743 modules_v4/googlemap/admin_places.php:745
 msgid "Upload"
 msgstr "Last opp"
 
@@ -488,11 +505,11 @@ msgid "Block"
 msgstr "Blokk"
 
 #. I18N: gedcom tag DSCR
-#: admin_module_blocks.php:58 admin_module_charts.php:58 admin_module_lists.php:58 admin_module_menus.php:76 admin_module_reports.php:58 admin_module_sidebar.php:76 admin_module_tabs.php:76 admin_module_widgets.php:76 admin_modules.php:134 find.php:485 library/KT/Gedcom/Tag.php:198 modules_v4/gallery/module.php:256
+#: admin_module_blocks.php:58 admin_module_charts.php:58 admin_module_lists.php:58 admin_module_menus.php:79 admin_module_reports.php:58 admin_module_sidebar.php:79 admin_module_tabs.php:79 admin_module_widgets.php:80 admin_modules.php:134 find.php:485 library/KT/Gedcom/Tag.php:198 modules_v4/gallery/module.php:256
 msgid "Description"
 msgstr "Skildring"
 
-#: admin_module_blocks.php:59 admin_module_charts.php:59 admin_module_lists.php:59 admin_module_menus.php:78 admin_module_reports.php:59 admin_module_sidebar.php:78 admin_module_tabs.php:78 admin_module_widgets.php:78 admin_trees_config.php:651 modules_v4/extra_menus/module.php:185 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:233 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:238 modules_v4/gallery/module.php:337
+#: admin_module_blocks.php:59 admin_module_charts.php:59 admin_module_lists.php:59 admin_module_menus.php:81 admin_module_reports.php:59 admin_module_sidebar.php:81 admin_module_tabs.php:81 admin_module_widgets.php:82 admin_trees_config.php:651 modules_v4/extra_menus/module.php:185 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:233 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:238 modules_v4/gallery/module.php:337
 #: modules_v4/pages/module.php:239
 msgid "Access level"
 msgstr "Nivå for tilgjenge"
@@ -505,11 +522,11 @@ msgstr "Diagram"
 msgid "List"
 msgstr "Liste"
 
-#: admin_module_menus.php:75 admin_modules.php:138 admin_modules.php:167 modules_v4/extra_menus/module.php:106 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:231 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:236
+#: admin_module_menus.php:78 admin_modules.php:138 admin_modules.php:167 modules_v4/extra_menus/module.php:106 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:231 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:236
 msgid "Menu"
 msgstr "Meny"
 
-#: admin_module_menus.php:77 admin_module_sidebar.php:77 admin_module_tabs.php:77 admin_module_widgets.php:77 modules_v4/stories/module.php:509
+#: admin_module_menus.php:80 admin_module_sidebar.php:80 admin_module_tabs.php:80 admin_module_widgets.php:81 modules_v4/stories/module.php:512
 msgid "Order"
 msgstr "Rekkefølgje"
 
@@ -517,15 +534,15 @@ msgstr "Rekkefølgje"
 msgid "Report"
 msgstr "Rapport"
 
-#: admin_module_sidebar.php:75 admin_modules.php:140 admin_modules.php:169 themes/_administration/header.php:215
+#: admin_module_sidebar.php:78 admin_modules.php:140 admin_modules.php:169 themes/_administration/header.php:215
 msgid "Sidebar"
 msgstr "Sidepanel"
 
-#: admin_module_tabs.php:75 admin_modules.php:141 admin_modules.php:170
+#: admin_module_tabs.php:78 admin_modules.php:141 admin_modules.php:170
 msgid "Tab"
 msgstr "Fane"
 
-#: admin_module_widgets.php:75 admin_modules.php:142 admin_modules.php:171
+#: admin_module_widgets.php:79 admin_modules.php:142 admin_modules.php:171
 msgid "Widget"
 msgstr ""
 
@@ -575,7 +592,7 @@ msgstr "søkjerobot"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Avgrens tilgangen til nettstaden ut frå IP-adresse eller brukaragent"
 
-#: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:35 admin_trees_check.php:36 admin_trees_manage.php:261 admin_trees_renumber.php:64 admin_trees_sanity.php:131 modules_v4/album/module.php:271 modules_v4/backup_to_dropbox/module.php:107 modules_v4/census_assistant/census-edit.php:53 modules_v4/census_assistant/census-edit.php:54 modules_v4/chart_relationship/module.php:196 modules_v4/gallery/module.php:484
+#: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:35 admin_trees_check.php:36 admin_trees_manage.php:270 admin_trees_renumber.php:64 admin_trees_sanity.php:131 modules_v4/album/module.php:271 modules_v4/backup_to_dropbox/module.php:107 modules_v4/census_assistant/census-edit.php:53 modules_v4/census_assistant/census-edit.php:54 modules_v4/chart_relationship/module.php:196 modules_v4/gallery/module.php:484
 msgid "View FAQ for this page."
 msgstr ""
 
@@ -610,7 +627,7 @@ msgstr "Kommentar"
 
 #: admin_site_access.php:299 admin_site_access.php:326 admin_site_clean.php:135 admin_site_logs.php:243 admin_trees_change.php:292 edit_interface.php:106 includes/functions/functions_print_facts.php:166 includes/functions/functions_print_facts.php:746 includes/functions/functions_print_facts.php:948 includes/functions/functions_print_facts.php:1233 includes/functions/functions_print_lists.php:1128 includes/functions/functions_print_lists.php:1204
 #: includes/functions/functions_print_lists.php:1301 includes/functions/functions_print_lists.php:1362 includes/functions/functions_print_lists.php:1525 includes/functions/functions_print_lists.php:1569 library/KT/Controller/Family.php:156 library/KT/Controller/Individual.php:396 library/KT/Controller/Media.php:109 library/KT/Controller/Note.php:103 library/KT/Controller/Repository.php:103 library/KT/Controller/Source.php:103 modules_v4/extra_menus/module.php:399
-#: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:234 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:239 modules_v4/faq/module.php:499 modules_v4/gallery/module.php:583 modules_v4/gedcom_news/module.php:121 modules_v4/googlemap/admin_places.php:634 modules_v4/googlemap/admin_places.php:692 modules_v4/pages/module.php:494 modules_v4/stories/module.php:513 modules_v4/tab_census/module.php:158 modules_v4/tab_census/module.php:159
+#: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:234 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:239 modules_v4/faq/module.php:513 modules_v4/gallery/module.php:583 modules_v4/gedcom_news/module.php:119 modules_v4/googlemap/admin_places.php:634 modules_v4/googlemap/admin_places.php:692 modules_v4/pages/module.php:524 modules_v4/stories/module.php:516 modules_v4/tab_census/module.php:147 modules_v4/tab_census/module.php:148
 #: modules_v4/widget_blog/module.php:85
 msgid "Delete"
 msgstr "Slett"
@@ -655,7 +672,7 @@ msgstr "Filer merka %s er naudsynte for at webtrees skal fungere, og kan ikkje s
 msgid "Deleted files:"
 msgstr "Sletta filer:"
 
-#: admin_site_config.php:31 admin_site_config.php:142 admin_site_config.php:149 admin_site_config.php:162 themes/_administration/header.php:136
+#: admin_site_config.php:31 admin_site_config.php:156 admin_site_config.php:163 admin_site_config.php:176 themes/_administration/header.php:136
 msgid "Site configuration"
 msgstr "Innstillingar"
 
@@ -701,202 +718,207 @@ msgstr "Førhandsdefinert tekst som seier at berre familiemedlemer kan søkje om
 msgid "Choose user defined welcome text typed below"
 msgstr "Bruk eigendefinert velkomsttekst skive i feltet nedanfor"
 
-#: admin_site_config.php:152 admin_site_config.php:239
+#: admin_site_config.php:101
+#| msgid "Please enter a valid email address."
+msgid "You included one or more invalid email addresses."
+msgstr ""
+
+#: admin_site_config.php:166 admin_site_config.php:253
 msgid "Mail configuration"
 msgstr "Innstillingar for Mail"
 
-#: admin_site_config.php:155 admin_site_config.php:346
+#: admin_site_config.php:169 admin_site_config.php:360
 msgid "Login & registration"
 msgstr ""
 
-#: admin_site_config.php:158 admin_site_config.php:394
+#: admin_site_config.php:172 admin_site_config.php:426
 msgid "Languages"
 msgstr ""
 
-#: admin_site_config.php:165
+#: admin_site_config.php:179
 msgid "Data folder"
 msgstr "Datamappe"
 
 #. I18N: Help text for the "Data folder" site configuration setting. “Apache”
 #. is a software program.
-#: admin_site_config.php:169
+#: admin_site_config.php:183
 msgid ""
 "This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc. The default setting is “data/”.<br>These files may contain private data and should not be made available over the internet. To protect this private data kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.<br>If your web-server does not support .htaccess files and you cannot restrict access to this folder then you can select another folder away from "
 "your web documents. If you select a different folder you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder. The folder can be specified here in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/)."
 msgstr ""
 
-#: admin_site_config.php:174
+#: admin_site_config.php:188
 msgid "Memory limit"
 msgstr "Grense for minne"
 
 #. I18N: %s is an amount of memory, such as 32MB
-#: admin_site_config.php:178
+#: admin_site_config.php:192
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr "Serveren din tillèt skript å nytte  %s av minne."
 
-#: admin_site_config.php:180 admin_site_config.php:196
+#: admin_site_config.php:194 admin_site_config.php:210
 msgid "You can request a higher or lower limit here, although the server may ignore this request.<br>If you leave this setting empty the default value will be used."
 msgstr ""
 
-#: admin_site_config.php:186
+#: admin_site_config.php:200
 msgid "PHP time limit"
 msgstr "PHP tidsavgrensing"
 
-#: admin_site_config.php:191
+#: admin_site_config.php:205
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] "Som standard, tillèt serveren din å køyre skript i %s sekund."
 msgstr[1] "Som standard, tillèt serveren din å køyre skript i %s sekund."
 
-#: admin_site_config.php:202
+#: admin_site_config.php:216
 msgid "Show list of family trees"
 msgstr ""
 
 #. I18N: Help text for the “Show list of family trees” site configuration
 #. setting
-#: admin_site_config.php:206
+#: admin_site_config.php:220
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
 
-#: admin_site_config.php:211
+#: admin_site_config.php:225
 msgid "Session timeout"
 msgstr "Session timeout"
 
 #. I18N: Help text for the “Session timeout” site configuration setting
-#: admin_site_config.php:215
+#: admin_site_config.php:229
 msgid "The time in seconds that a kiwitrees session remains active before requiring a login. The default is 7200, which is 2 hours."
 msgstr ""
 
-#: admin_site_config.php:220
+#: admin_site_config.php:234
 msgid "Website URL"
 msgstr "URL til nettstaden"
 
 #. I18N: Help text for the "Website URL" site configuration setting
-#: admin_site_config.php:224
+#: admin_site_config.php:238
 msgid "If your site can be reached using more than one URL such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b> you can specify the preferred URL here. Requests for the other URLs will be redirected to the preferred one. <span class=\"warning\">If not required, leave this field blank.</span>"
 msgstr ""
 
-#: admin_site_config.php:229
+#: admin_site_config.php:243
 msgid "Site maintenance"
 msgstr ""
 
-#: admin_site_config.php:233
+#: admin_site_config.php:247
 msgid "Set this to <b>yes</b> to temporarily prevent anyone <u>except the site administrator</u> from accessing your site."
 msgstr ""
 
-#: admin_site_config.php:242
+#: admin_site_config.php:256
 msgid "Messages"
 msgstr "Meldingar"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:252
+#: admin_site_config.php:266
 msgid "Kiwitrees needs to send emails such as password reminders and site notifications. To do this it can use this server's built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.<br>Selecting SMTP will display additional configuration options below."
 msgstr ""
 
-#: admin_site_config.php:257
+#: admin_site_config.php:271
 msgid "Send mail in HTML format"
 msgstr ""
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:261
+#: admin_site_config.php:275
 msgid "By default kiwitrees sends emails in plain text format. Setting this option to <b>yes</b> will change that to the multipart format. This allows the use of HTML formatting, but also includes a plain text version for recipients that do not allow HTML formatted emails."
 msgstr ""
 
-#: admin_site_config.php:266
+#: admin_site_config.php:280
 msgid "Sender email"
 msgstr ""
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:270
+#: admin_site_config.php:284
 msgid "This name is used in the “From” field, when sending automatic emails from this server. It must be a valid email address."
 msgstr ""
 
-#: admin_site_config.php:276
+#: admin_site_config.php:290
 msgid "SMTP mail server settings"
 msgstr ""
 
-#: admin_site_config.php:278 setup.php:289
+#: admin_site_config.php:292 setup.php:289
 msgid "Server name"
 msgstr "Servernamn"
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:282
+#: admin_site_config.php:296
 msgid "This is the name of the SMTP server. 'localhost' means that the mail service is running on the same computer as your web server."
 msgstr "Dette er namnet på SMTP-serveren. 'localhost' tyder at mailserveren køyrer på same computer som din webserver."
 
-#: admin_site_config.php:287 setup.php:294
+#: admin_site_config.php:301 setup.php:294
 msgid "Port number"
 msgstr "Portnummer"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:291
+#: admin_site_config.php:305
 msgid "By default SMTP works on port 25."
 msgstr ""
 
-#: admin_site_config.php:296
+#: admin_site_config.php:310
 msgid "Use password"
 msgstr "Bruk passord"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:300
+#: admin_site_config.php:314
 msgid "Most SMTP servers require a password."
 msgstr "Dei fleste SMTP-serverane krev passord."
 
-#: admin_site_config.php:305 admin_users.php:349 admin_users.php:792 edituser.php:130 help_text.php:745 login.php:149 login.php:221 login.php:297 login.php:318 login.php:457 modules_v4/login_block/module.php:66 modules_v4/report_changes/module.php:157 modules_v4/report_todo/module.php:160 modules_v4/todo/module.php:97 modules_v4/widget_todo/module.php:97
+#: admin_site_config.php:319 admin_users.php:349 admin_users.php:792 edituser.php:130 help_text.php:745 login.php:153 login.php:225 login.php:301 login.php:322 login.php:462 modules_v4/login_block/module.php:66 modules_v4/report_changes/module.php:157 modules_v4/report_todo/module.php:160 modules_v4/todo/module.php:97 modules_v4/widget_todo/module.php:97
 msgid "Username"
 msgstr "Brukarnamn"
 
-#: admin_site_config.php:309
+#: admin_site_config.php:323
 msgid "The user name required for authentication with the SMTP server."
 msgstr "Brukernamnet som krevjast for autentisering på SMTP-serveren."
 
-#: admin_site_config.php:314 admin_users.php:361 edituser.php:161 help_text.php:571 login.php:154 login.php:222 login.php:461 modules_v4/login_block/module.php:71 setup.php:439
+#: admin_site_config.php:328 admin_users.php:361 edituser.php:161 help_text.php:571 login.php:158 login.php:226 login.php:468 modules_v4/login_block/module.php:71 setup.php:439
 msgid "Password"
 msgstr "Passord"
 
-#: admin_site_config.php:318
+#: admin_site_config.php:332
 msgid "The password required for authentication with the SMTP server."
 msgstr "Passordet som krevjast for autentisering på SMTP-serveren."
 
-#: admin_site_config.php:323
+#: admin_site_config.php:337
 msgid "Secure connection"
 msgstr "Sikker forbindelse"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
-#: admin_site_config.php:327
+#: admin_site_config.php:341
 msgid "Most servers do not use secure connections."
 msgstr "Dei fleste serverane nytter ikkje sikre tilslutningar."
 
-#: admin_site_config.php:332
+#: admin_site_config.php:346
 msgid "Sending server name"
 msgstr "Avsendarserver sitt namn"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
-#: admin_site_config.php:336
+#: admin_site_config.php:350
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr "Mange e-postserverar krev at avsendarserveren identifiserer seg sjølv korrekt, med eit gyldig domenenamn."
 
-#: admin_site_config.php:341
+#: admin_site_config.php:355
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password].<br>You must also enable “less secure applications” in your Google account. <a href=\"https://support.google.com/a/answer/6260879\">https://support.google.com/a/answer/6260879</a>"
 msgstr ""
 
-#: admin_site_config.php:349
+#: admin_site_config.php:363
 msgid "Login URL"
 msgstr "URL for innlogging"
 
 #. I18N: Help text for the “Login URL” site configuration setting
-#: admin_site_config.php:353
+#: admin_site_config.php:367
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login. This is very useful if you need to switch from http to https when your users login. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/kiwitrees/login.php ."
 msgstr ""
 
-#: admin_site_config.php:358
+#: admin_site_config.php:372
 msgid "Welcome text on login page"
 msgstr "Velkomsttekst på sida for innlogging"
 
 #. I18N: Explanation for custom welcome text
-#: admin_site_config.php:362
+#: admin_site_config.php:376
 msgid ""
 "Here you can choose text to appear on the login page. You must determine which predefined text is most appropriate. You can also choose to enter your own custom welcome text.<br><br>Please refer to the Help text associated with the <b>Custom welcome text</b> field for more information.<br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b><br>Access to this "
 "site is permitted to every visitor who has a user account.<br>If you have a user account, you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying your application, the site administrator will activate your account. You will receive an email when your application has been approved.</center></div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div "
@@ -905,37 +927,46 @@ msgid ""
 "approve or decline your request for an account. You will receive an email when your request is approved.</center></div></li></ul>"
 msgstr ""
 
-#: admin_site_config.php:367
+#: admin_site_config.php:381
 msgid "Custom welcome text"
 msgstr "Eigendefinert velkomsttekst"
 
-#: admin_site_config.php:371
+#: admin_site_config.php:385
 msgid "If you have opted for custom welcome text, you can type that text here. To set this text for other languages you must switch to that language and visit this page again."
 msgstr ""
 
-#: admin_site_config.php:376
+#: admin_site_config.php:390
 msgid "Allow visitors to request account registration"
 msgstr "Tillat besøkjande å be om brukarkonto"
 
-#: admin_site_config.php:380
+#: admin_site_config.php:394
 msgid "Gives visitors the option of registering themselves for an account on the site. The visitor will receive an email message with a code to verify their application for an account. After verification the Administrator will have to approve the registration before it becomes active."
 msgstr ""
 
-#: admin_site_config.php:385
+#: admin_site_config.php:399
 msgid "Show acceptable use agreement on «Request new user account» page"
 msgstr "Syn avtale om akseptabel bruk ved søknad om brukarkonto"
 
-#: admin_site_config.php:389
+#: admin_site_config.php:403
 msgid ""
 "When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></"
 "div></div>"
 msgstr "Om sett til <b>Ja</>, vil følgjande tekst synast over innskrivingsfeltet på sida \"Søk om brukarkonto\":<div class=\"list_value_wrap\"><div class=\"largeError\">Merk:</div><div class=\"error\">Ved å fylle i og sende dette skjemaet, erklærer du at du vil:<ul><li>respektere vern av nolevande personar registrerte i denne databasen;</li><li>og greie ut i tekstboksa nedanfor kven du har slektskap til , eller skaffe oss opplysningar om personar som bør leggjast til i basen.</li></ul></div>"
 
-#: admin_site_config.php:396
+#: admin_site_config.php:415
+#| msgid "Email address"
+msgid "Blocked email address list"
+msgstr ""
+
+#: admin_site_config.php:419
+msgid "Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log."
+msgstr ""
+
+#: admin_site_config.php:428
 msgid "Select the languages your site will use"
 msgstr ""
 
-#: admin_site_config.php:398 admin_trees_findunlinked.php:124 modules_v4/random_media/module.php:306 modules_v4/random_media/module.php:357 modules_v4/research_links/module.php:152 modules_v4/research_links/module.php:394
+#: admin_site_config.php:430 admin_trees_findunlinked.php:124 modules_v4/random_media/module.php:306 modules_v4/random_media/module.php:357 modules_v4/research_links/module.php:152 modules_v4/research_links/module.php:394
 msgid "Select all"
 msgstr ""
 
@@ -1006,13 +1037,13 @@ msgstr "Melding"
 msgid "User"
 msgstr "Brukar"
 
-#: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286 admin_trees_change.php:310 admin_trees_duplicates.php:134 admin_trees_findunlinked.php:112 admin_trees_manage.php:271 admin_trees_missing.php:106 admin_trees_places.php:103 admin_trees_sanity.php:141 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_users.php:608 edit_changes.php:167 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:200
-#: modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:305 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:441 modules_v4/faq/module.php:465 modules_v4/gallery/module.php:525 modules_v4/gallery/module.php:549 modules_v4/googlemap/module.php:1493 modules_v4/html/module.php:288
-#: modules_v4/pages/module.php:456 modules_v4/stories/module.php:489 modules_v4/widget_html/module.php:171
+#: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286 admin_trees_change.php:310 admin_trees_duplicates.php:134 admin_trees_findunlinked.php:112 admin_trees_manage.php:280 admin_trees_missing.php:106 admin_trees_places.php:103 admin_trees_sanity.php:141 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_users.php:608 edit_changes.php:167 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:200
+#: modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:305 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:455 modules_v4/faq/module.php:479 modules_v4/gallery/module.php:525 modules_v4/gallery/module.php:549 modules_v4/googlemap/module.php:1493 modules_v4/html/module.php:288
+#: modules_v4/pages/module.php:486 modules_v4/stories/module.php:492 modules_v4/widget_html/module.php:171
 msgid "Family tree"
 msgstr "Slektstre"
 
-#: admin_site_logs.php:241 admin_trees_change.php:290 find.php:180 find.php:198 find.php:220 find.php:242 find.php:264 find.php:286 find.php:308 find.php:497 library/KT/I18N.php:726 modules_v4/random_media/module.php:300
+#: admin_site_logs.php:241 admin_trees_change.php:290 find.php:180 find.php:198 find.php:220 find.php:242 find.php:264 find.php:286 find.php:308 find.php:497 library/KT/I18N.php:738 modules_v4/random_media/module.php:300
 msgid "Filter"
 msgstr "Søk"
 
@@ -1114,7 +1145,7 @@ msgstr ""
 #. I18N: button label
 #. I18N: button label
 #. I18N: button label
-#: admin_trees_append.php:177 admin_trees_download.php:106 admin_trees_download.php:165 admin_trees_manage.php:252 admin_trees_renumber.php:283 admin_users.php:730 login.php:182 login.php:430 modules_v4/login_block/module.php:97 setup.php:213 setup.php:237 setup.php:309 setup.php:395 setup.php:454
+#: admin_trees_append.php:177 admin_trees_download.php:106 admin_trees_download.php:165 admin_trees_manage.php:261 admin_trees_renumber.php:283 admin_users.php:730 login.php:186 login.php:434 modules_v4/login_block/module.php:97 setup.php:213 setup.php:237 setup.php:309 setup.php:395 setup.php:454
 msgid "continue"
 msgstr "fortsett"
 
@@ -1139,7 +1170,7 @@ msgid "pending"
 msgstr "ventande"
 
 #. I18N: gedcom tag STAT
-#: admin_trees_change.php:273 admin_trees_change.php:305 includes/functions/functions_print.php:986 includes/functions/functions_print.php.bak:987 library/KT/Gedcom/Tag.php:334
+#: admin_trees_change.php:273 admin_trees_change.php:305 includes/functions/functions_print.php:986 library/KT/Gedcom/Tag.php:334
 msgid "Status"
 msgstr "Status"
 
@@ -1268,7 +1299,7 @@ msgstr "Rediger innstillingar"
 msgid "Theme"
 msgstr "Tema"
 
-#: admin_trees_config.php:306 admin_trees_manage.php:373
+#: admin_trees_config.php:306 admin_trees_manage.php:384
 msgid "Family tree title"
 msgstr "Namn på familietre"
 
@@ -1279,7 +1310,7 @@ msgstr ""
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
-#: admin_trees_config.php:318 admin_trees_manage.php:391 library/KT/Gedcom/Tag.php:348 library/KT/Gedcom/Tag.php:352 library/KT/Gedcom/Tag.php:836
+#: admin_trees_config.php:318 admin_trees_manage.php:402 library/KT/Gedcom/Tag.php:348 library/KT/Gedcom/Tag.php:352 library/KT/Gedcom/Tag.php:836
 msgid "URL"
 msgstr "URL"
 
@@ -1290,7 +1321,7 @@ msgstr ""
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:328 admin_users.php:428 admin_users.php:795 edituser.php:169 library/KT/Gedcom/Tag.php:251 library/KT/MenuBar.php:167
+#: admin_trees_config.php:328 admin_users.php:428 admin_users.php:795 edituser.php:169 library/KT/Gedcom/Tag.php:251 library/KT/MenuBar.php:173
 msgid "Language"
 msgstr "Språk"
 
@@ -1360,8 +1391,8 @@ msgstr ""
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module. Tasks that need further research.
-#: admin_trees_config.php:445 admin_trees_missing.php:124 admin_trees_source.php:155 admin_trees_source.php:270 admin_trees_sourcecite.php:137 ancestry.php:44 compact.php:40 descendancy.php:40 familybook.php:40 hourglass.php:49 includes/functions/functions_edit.php:1740 includes/functions/functions_print_lists.php:1421 inverselink.php:221 library/KT/Gedcom/Tag.php:249 modules_v4/chart_fanchart/module.php:109 modules_v4/charts/module.php:216 modules_v4/fancy_treeview_ancestors/module.php:210
-#: modules_v4/fancy_treeview_descendants/module.php:220 modules_v4/googlemap/module.php:729 modules_v4/report_individual/module.php:33 modules_v4/report_individual/module.php:109 modules_v4/report_related_fam/module.php:140 modules_v4/report_related_indi/module.php:112 modules_v4/stories/module.php:368 modules_v4/stories/module.php:511 modules_v4/stories/module.php:602 pedigree.php:41
+#: admin_trees_config.php:445 admin_trees_missing.php:124 admin_trees_source.php:155 admin_trees_source.php:270 admin_trees_sourcecite.php:137 ancestry.php:44 compact.php:40 descendancy.php:40 familybook.php:40 hourglass.php:49 includes/functions/functions_edit.php:1740 includes/functions/functions_print_lists.php:1421 inverselink.php:221 library/KT/Gedcom/Tag.php:249 modules_v4/chart_fanchart/module.php:109 modules_v4/charts/module.php:220 modules_v4/fancy_treeview_ancestors/module.php:210
+#: modules_v4/fancy_treeview_descendants/module.php:220 modules_v4/googlemap/module.php:729 modules_v4/report_individual/module.php:33 modules_v4/report_individual/module.php:109 modules_v4/report_related_fam/module.php:140 modules_v4/report_related_indi/module.php:112 modules_v4/stories/module.php:368 modules_v4/stories/module.php:514 modules_v4/stories/module.php:605 pedigree.php:41
 msgid "Individual"
 msgstr "Person"
 
@@ -1383,7 +1414,7 @@ msgid "Repository"
 msgstr "Arkiv"
 
 #. I18N: gedcom tag NOTE
-#: admin_trees_config.php:465 includes/functions/functions_print.php:539 includes/functions/functions_print.php:647 includes/functions/functions_print.php.bak:540 includes/functions/functions_print.php.bak:648 includes/functions/functions_resource.php:369 library/KT/Gedcom/Tag.php:286 modules_v4/report_individual/module.php:243
+#: admin_trees_config.php:465 includes/functions/functions_print.php:539 includes/functions/functions_print.php:647 includes/functions/functions_resource.php:369 library/KT/Gedcom/Tag.php:286 modules_v4/report_individual/module.php:243
 msgid "Note"
 msgstr "Notat"
 
@@ -1511,7 +1542,7 @@ msgstr ""
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction the following default restrictions will be used."
 msgstr ""
 
-#: admin_trees_config.php:650 admin_trees_missing.php:110 includes/functions/functions_print.php:1103 includes/functions/functions_print.php:1207 includes/functions/functions_print.php.bak:1104 includes/functions/functions_print.php.bak:1208 modules_v4/report_fact/module.php:183
+#: admin_trees_config.php:650 admin_trees_missing.php:110 includes/functions/functions_print.php:1103 includes/functions/functions_print.php:1207 modules_v4/report_fact/module.php:183
 msgid "Fact or event"
 msgstr "Fakta eller hending"
 
@@ -1649,7 +1680,7 @@ msgstr ""
 msgid "Display surnames in all CAPS"
 msgstr ""
 
-#: admin_trees_config.php:850 library/KT/MenuBar.php:116 themes/_administration/header.php:218
+#: admin_trees_config.php:850 library/KT/MenuBar.php:119 themes/_administration/header.php:218
 msgid "Lists"
 msgstr "Lister"
 
@@ -1686,9 +1717,9 @@ msgstr "Estimerte datoar for fødsel og død"
 msgid "hide"
 msgstr "skjul"
 
-#: admin_trees_config.php:873 admin_trees_config.php:882 admin_trees_config.php:1027 admin_trees_config.php:1036 admin_trees_config.php:1045 admin_trees_config.php:1067 admin_trees_config.php:1104 admin_trees_config.php:1113 admin_trees_duplicates.php:200 admin_trees_missing.php:135 modules_v4/extra_menus/module.php:347 modules_v4/fancy_treeview_ancestors/module.php:215 modules_v4/fancy_treeview_descendants/module.php:225 modules_v4/faq/module.php:447 modules_v4/gallery/module.php:531
-#: modules_v4/googlemap/module.php:267 modules_v4/pages/module.php:460 modules_v4/report_census/module.php:183 modules_v4/report_changes/module.php:202 modules_v4/report_fact/module.php:213 modules_v4/report_fact/module.php:215 modules_v4/report_family/module.php:153 modules_v4/report_family/module.php:155 modules_v4/report_individual/module.php:138 modules_v4/report_individual/module.php:140 modules_v4/report_marriages/module.php:156 modules_v4/report_marriages/module.php:158
-#: modules_v4/report_related_fam/module.php:189 modules_v4/report_related_fam/module.php:191 modules_v4/report_related_indi/module.php:125 modules_v4/report_related_indi/module.php:127 modules_v4/report_todo/module.php:133 modules_v4/report_vital_records/module.php:172 modules_v4/report_vital_records/module.php:174 modules_v4/stories/module.php:495 statistics.php:666
+#: admin_trees_config.php:873 admin_trees_config.php:882 admin_trees_config.php:1027 admin_trees_config.php:1036 admin_trees_config.php:1045 admin_trees_config.php:1067 admin_trees_config.php:1104 admin_trees_config.php:1113 admin_trees_duplicates.php:200 admin_trees_missing.php:135 modules_v4/extra_menus/module.php:347 modules_v4/fancy_treeview_ancestors/module.php:215 modules_v4/fancy_treeview_descendants/module.php:225 modules_v4/faq/module.php:461 modules_v4/gallery/module.php:531
+#: modules_v4/googlemap/module.php:267 modules_v4/pages/module.php:490 modules_v4/report_census/module.php:183 modules_v4/report_changes/module.php:202 modules_v4/report_fact/module.php:213 modules_v4/report_fact/module.php:215 modules_v4/report_family/module.php:153 modules_v4/report_family/module.php:155 modules_v4/report_individual/module.php:138 modules_v4/report_individual/module.php:140 modules_v4/report_marriages/module.php:156 modules_v4/report_marriages/module.php:158
+#: modules_v4/report_related_fam/module.php:189 modules_v4/report_related_fam/module.php:191 modules_v4/report_related_indi/module.php:125 modules_v4/report_related_indi/module.php:127 modules_v4/report_todo/module.php:133 modules_v4/report_vital_records/module.php:172 modules_v4/report_vital_records/module.php:174 modules_v4/stories/module.php:498 statistics.php:666
 msgid "show"
 msgstr "syn"
 
@@ -1761,7 +1792,7 @@ msgstr "Personsider"
 msgid "Show events of close relatives on individual page"
 msgstr "Syn hendingar for nære slektningar på personsider"
 
-#: admin_trees_config.php:964 statistics.php:391
+#: admin_trees_config.php:964 placelist.php:86 statistics.php:391
 msgid "Places"
 msgstr "Stadar"
 
@@ -2096,15 +2127,15 @@ msgstr ""
 msgid "Customized"
 msgstr ""
 
-#: admin_trees_download.php:30 admin_trees_manage.php:314
+#: admin_trees_download.php:30 admin_trees_manage.php:325
 msgid "Export a GEDCOM file"
 msgstr ""
 
-#: admin_trees_download.php:103 admin_trees_manage.php:184
+#: admin_trees_download.php:103 admin_trees_manage.php:189
 msgid "A file on the server"
 msgstr ""
 
-#: admin_trees_download.php:113 admin_trees_manage.php:172
+#: admin_trees_download.php:113 admin_trees_manage.php:177
 msgid "A file on your computer"
 msgstr ""
 
@@ -2208,7 +2239,7 @@ msgid "Include married names: "
 msgstr ""
 
 #. I18N: gedcom tag NAME
-#: admin_trees_duplicates.php:215 admin_trees_missing.php:260 admin_trees_sanity.php:117 edit_interface.php:2650 inverselink.php:112 inverselink.php:186 library/KT/Controller/Individual.php:173 library/KT/Gedcom/Tag.php:275 library/KT/Stats.php:3372 modules_v4/report_marriages/module.php:221 modules_v4/report_related_indi/module.php:236 modules_v4/report_vital_records/module.php:241 modules_v4/research_links/module.php:164
+#: admin_trees_duplicates.php:215 admin_trees_missing.php:260 admin_trees_sanity.php:117 edit_interface.php:2671 inverselink.php:112 inverselink.php:186 library/KT/Controller/Individual.php:173 library/KT/Gedcom/Tag.php:275 library/KT/Stats.php:3372 modules_v4/report_marriages/module.php:221 modules_v4/report_related_indi/module.php:236 modules_v4/report_vital_records/module.php:241 modules_v4/research_links/module.php:164
 msgid "Name"
 msgstr "Namn"
 
@@ -2227,13 +2258,13 @@ msgid "Merge selected"
 msgstr ""
 
 #. I18N: gedcom tag DATE
-#: admin_trees_duplicates.php:225 admin_trees_duplicates.php:227 admin_trees_missing.php:262 edit_changes.php:166 help_text.php:170 help_text.php:200 library/KT/Gedcom/Tag.php:188 modules_v4/report_fact/module.php:197 modules_v4/report_fact/module.php:356 modules_v4/report_marriages/module.php:222 modules_v4/report_vital_records/module.php:279 modules_v4/report_vital_records/module.php:320 modules_v4/report_vital_records/module.php:343 modules_v4/tab_census/module.php:119
+#: admin_trees_duplicates.php:225 admin_trees_duplicates.php:227 admin_trees_missing.php:262 edit_changes.php:166 help_text.php:170 help_text.php:200 library/KT/Gedcom/Tag.php:188 modules_v4/report_fact/module.php:197 modules_v4/report_fact/module.php:356 modules_v4/report_marriages/module.php:222 modules_v4/report_vital_records/module.php:279 modules_v4/report_vital_records/module.php:320 modules_v4/report_vital_records/module.php:343 modules_v4/tab_census/module.php:108
 msgid "Date"
 msgstr "Dato"
 
 #. I18N: gedcom tag PLAC
 #: admin_trees_duplicates.php:226 admin_trees_duplicates.php:228 admin_trees_missing.php:263 admin_trees_source.php:250 admin_trees_source.php:253 library/KT/Gedcom/Tag.php:300 modules_v4/census_assistant/census-edit.php:102 modules_v4/googlemap/admin_places.php:177 modules_v4/googlemap/admin_places.php:178 modules_v4/googlemap/admin_places.php:179 modules_v4/googlemap/admin_places.php:180 modules_v4/googlemap/admin_places.php:181 modules_v4/report_fact/module.php:202
-#: modules_v4/report_fact/module.php:357 modules_v4/report_marriages/module.php:224 modules_v4/report_related_indi/module.php:239 modules_v4/report_related_indi/module.php:242 modules_v4/report_vital_records/module.php:280 modules_v4/report_vital_records/module.php:321 modules_v4/report_vital_records/module.php:344 modules_v4/tab_census/module.php:120 search.php:187 search.php:264
+#: modules_v4/report_fact/module.php:357 modules_v4/report_marriages/module.php:224 modules_v4/report_related_indi/module.php:239 modules_v4/report_related_indi/module.php:242 modules_v4/report_vital_records/module.php:280 modules_v4/report_vital_records/module.php:321 modules_v4/report_vital_records/module.php:344 modules_v4/tab_census/module.php:109 search.php:187 search.php:264
 msgid "Place"
 msgstr "Stad"
 
@@ -2341,107 +2372,107 @@ msgstr ""
 msgid "My family tree"
 msgstr "Mitt familietre"
 
-#: admin_trees_manage.php:149 admin_trees_manage.php:307
+#: admin_trees_manage.php:155 admin_trees_manage.php:318
 msgid "Import a GEDCOM file"
 msgstr ""
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:150
+#: admin_trees_manage.php:156
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
 
-#: admin_trees_manage.php:164
+#: admin_trees_manage.php:170
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Du har valt ein GEDCOM med eit anna namn. Er dette korrekt?"
 
-#: admin_trees_manage.php:170
+#: admin_trees_manage.php:175
 msgid "Select a GEDCOM file to import"
 msgstr ""
 
-#: admin_trees_manage.php:210
+#: admin_trees_manage.php:215
 msgid "No GEDCOM files found."
 msgstr ""
 
-#: admin_trees_manage.php:217
+#: admin_trees_manage.php:222
 msgid "Import options"
 msgstr ""
 
-#: admin_trees_manage.php:219
+#: admin_trees_manage.php:224
 msgid "Keep media objects"
 msgstr ""
 
-#: admin_trees_manage.php:223
-msgid "If you have created media objects in kiwitrees, and edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
+#: admin_trees_manage.php:232
+msgid "If you have created media objects in kiwitrees, and edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM. <p style=\"color:red\">Otherwise, ensure this box is NOT checked</p>"
 msgstr ""
 
-#: admin_trees_manage.php:228
+#: admin_trees_manage.php:237
 msgid "Add spaces where notes were wrapped"
 msgstr "Legg til mellomrom der linjer er delte"
 
-#: admin_trees_manage.php:232
+#: admin_trees_manage.php:241
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
 msgstr ""
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_manage.php:237
+#: admin_trees_manage.php:246
 msgid "Remove the GEDCOM media path from filenames"
 msgstr ""
 
 #. I18N: A “path” is something like
 #. “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
-#: admin_trees_manage.php:242
+#: admin_trees_manage.php:251
 msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed."
 msgstr ""
 
 #. I18N: %s are all folder names; “GEDCOM media path” is a configuration
 #. setting
-#: admin_trees_manage.php:244 help_text.php:404
+#: admin_trees_manage.php:253 help_text.php:404
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
 msgstr ""
 
-#: admin_trees_manage.php:245 help_text.php:406
+#: admin_trees_manage.php:254 help_text.php:406
 msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "Innstillinga vert kun nytta når du les eller skriv GEDCOM-filer."
 
-#: admin_trees_manage.php:289
+#: admin_trees_manage.php:300
 msgid "Deleting old genealogy data…"
 msgstr "Slettar gamle slektsdata…"
 
-#: admin_trees_manage.php:321
+#: admin_trees_manage.php:332
 msgid "Delete this family tree"
 msgstr ""
 
-#: admin_trees_manage.php:346
+#: admin_trees_manage.php:357
 msgid "Default family tree"
 msgstr "Standard slektstre"
 
-#: admin_trees_manage.php:351
+#: admin_trees_manage.php:362
 msgid "This selects the family tree shown to visitors when they first arrive at the site."
 msgstr ""
 
-#: admin_trees_manage.php:364
+#: admin_trees_manage.php:375
 msgid "Create a new family tree"
 msgstr "Opprett eit nytt slektstre"
 
-#: admin_trees_manage.php:367
+#: admin_trees_manage.php:378
 msgid "You need to create a family tree."
 msgstr ""
 
-#: admin_trees_manage.php:387
+#: admin_trees_manage.php:398
 msgid "This is the name used for display."
 msgstr ""
 
-#: admin_trees_manage.php:408
+#: admin_trees_manage.php:419
 msgid "Keep this short and avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
 
-#: admin_trees_manage.php:413
+#: admin_trees_manage.php:424
 msgid "create"
 msgstr ""
 
-#: admin_trees_manage.php:416
+#: admin_trees_manage.php:427
 msgid "After creating the family tree you will be able to upload or import data from a GEDCOM file."
 msgstr ""
 
@@ -2502,15 +2533,15 @@ msgstr "Vel 2 postar i slektsbasen som skal flettast. Postane må vere av same t
 msgid "Merge To ID:"
 msgstr "Flett til ID:"
 
-#: admin_trees_merge.php:322 admin_trees_merge.php:348 find.php:71 includes/functions/functions_print.php:1267 includes/functions/functions_print.php.bak:1268 modules_v4/census_assistant/module.php:66 modules_v4/census_assistant/module.php:71
+#: admin_trees_merge.php:322 admin_trees_merge.php:348 find.php:71 includes/functions/functions_print.php:1267 modules_v4/census_assistant/module.php:66 modules_v4/census_assistant/module.php:71
 msgid "Find an individual"
 msgstr "Finn person"
 
-#: admin_trees_merge.php:323 admin_trees_merge.php:349 find.php:74 includes/functions/functions_print.php:1275 includes/functions/functions_print.php.bak:1276
+#: admin_trees_merge.php:323 admin_trees_merge.php:349 find.php:74 includes/functions/functions_print.php:1275
 msgid "Find a family"
 msgstr "Finn familie"
 
-#: admin_trees_merge.php:324 admin_trees_merge.php:350 find.php:89 includes/functions/functions_print.php:1293 includes/functions/functions_print.php.bak:1294
+#: admin_trees_merge.php:324 admin_trees_merge.php:350 find.php:89 includes/functions/functions_print.php:1293
 msgid "Find a source"
 msgstr "Finn kjelde"
 
@@ -2519,7 +2550,7 @@ msgid "Merge from ID:"
 msgstr ""
 
 #. I18N: button label, next page
-#: admin_trees_merge.php:354 library/KT/I18N.php:714 modules_v4/batch_update/admin_batch_update.php:102 modules_v4/fancy_treeview_ancestors/module.php:235 modules_v4/fancy_treeview_ancestors/module.php:237 modules_v4/fancy_treeview_descendants/module.php:247 modules_v4/fancy_treeview_descendants/module.php:249
+#: admin_trees_merge.php:354 library/KT/I18N.php:726 modules_v4/batch_update/admin_batch_update.php:102 modules_v4/fancy_treeview_ancestors/module.php:235 modules_v4/fancy_treeview_ancestors/module.php:237 modules_v4/fancy_treeview_descendants/module.php:247 modules_v4/fancy_treeview_descendants/module.php:249
 msgid "next"
 msgstr "neste"
 
@@ -2546,7 +2577,7 @@ msgstr ""
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/sidebar
 #. I18N: Name of the module
-#: admin_trees_missing.php:70 includes/functions/functions_print.php:1389 includes/functions/functions_print.php.bak:1390 library/KT/Controller/Descendancy.php:99 library/KT/Gedcom/Tag.php:193 modules_v4/charts/module.php:201 modules_v4/descendancy/module.php:33 modules_v4/fancy_treeview_descendants/module.php:41 modules_v4/report_related_fam/module.php:115 modules_v4/report_related_indi/module.php:101
+#: admin_trees_missing.php:70 includes/functions/functions_print.php:1389 library/KT/Controller/Descendancy.php:99 library/KT/Gedcom/Tag.php:193 modules_v4/charts/module.php:204 modules_v4/descendancy/module.php:33 modules_v4/fancy_treeview_descendants/module.php:41 modules_v4/report_related_fam/module.php:115 modules_v4/report_related_indi/module.php:101
 msgid "Descendants"
 msgstr "Etterkomarar"
 
@@ -2555,8 +2586,8 @@ msgid "All relatives"
 msgstr ""
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
-#: admin_trees_missing.php:85 calendar.php:257 famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:169 famlist.php:171 famlist.php:255 famlist.php:257 indilist.php:63 indilist.php:69 indilist.php:75 indilist.php:167 indilist.php:169 indilist.php:253 indilist.php:255 library/KT/I18N.php:665 library/KT/Stats.php:3371 modules_v4/extra_menus/help_text.php:45 modules_v4/extra_menus/module.php:367 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:288
-#: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:302 modules_v4/faq/module.php:219 modules_v4/faq/module.php:467 modules_v4/gallery/help_text.php:38 modules_v4/gallery/module.php:551 modules_v4/googlemap/admin_places.php:607 modules_v4/googlemap/admin_places.php:759 modules_v4/googlemap/module.php:1498 modules_v4/googlemap/module.php:1514 modules_v4/pages/help_text.php:38 modules_v4/pages/module.php:471 modules_v4/random_media/module.php:296
+#: admin_trees_missing.php:85 calendar.php:257 famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:169 famlist.php:171 famlist.php:255 famlist.php:257 indilist.php:63 indilist.php:69 indilist.php:75 indilist.php:167 indilist.php:169 indilist.php:253 indilist.php:255 library/KT/I18N.php:677 library/KT/Stats.php:3371 modules_v4/extra_menus/help_text.php:45 modules_v4/extra_menus/module.php:367 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:288
+#: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:302 modules_v4/faq/module.php:219 modules_v4/faq/module.php:481 modules_v4/gallery/help_text.php:38 modules_v4/gallery/module.php:551 modules_v4/googlemap/admin_places.php:607 modules_v4/googlemap/admin_places.php:759 modules_v4/googlemap/module.php:1498 modules_v4/googlemap/module.php:1514 modules_v4/pages/help_text.php:38 modules_v4/pages/module.php:501 modules_v4/random_media/module.php:296
 #: modules_v4/report_census/module.php:206 modules_v4/report_family/module.php:134 modules_v4/report_family/module.php:145 modules_v4/report_individual/module.php:130 modules_v4/report_related_fam/module.php:130 modules_v4/report_related_fam/module.php:161
 msgid "All"
 msgstr "Alle"
@@ -2574,15 +2605,15 @@ msgstr ""
 #. I18N: first/default option in a drop-down listbox
 #. I18N: first/default option in a drop-down listbox
 #. I18N: first/default option in a drop-down listbox
-#: admin_trees_missing.php:112 includes/functions/functions_print.php:1108 includes/functions/functions_print.php:1212 includes/functions/functions_print.php.bak:1109 includes/functions/functions_print.php.bak:1213 modules_v4/googlemap/module.php:1497 modules_v4/googlemap/module.php:1513 modules_v4/report_fact/module.php:185 modules_v4/widget_user_contacts/module.php:68
+#: admin_trees_missing.php:112 includes/functions/functions_print.php:1108 includes/functions/functions_print.php:1212 modules_v4/googlemap/module.php:1497 modules_v4/googlemap/module.php:1513 modules_v4/report_fact/module.php:185 modules_v4/widget_user_contacts/module.php:68
 msgid "Select"
 msgstr ""
 
-#: admin_trees_missing.php:118 calendar.php:296 includes/functions/functions_print.php:1115 includes/functions/functions_print.php:1217 includes/functions/functions_print.php.bak:1116 includes/functions/functions_print.php.bak:1218 modules_v4/report_fact/module.php:191
+#: admin_trees_missing.php:118 calendar.php:296 includes/functions/functions_print.php:1115 includes/functions/functions_print.php:1217 modules_v4/report_fact/module.php:191
 msgid "Custom event"
 msgstr ""
 
-#: admin_trees_missing.php:119 includes/functions/functions_print.php:1116 includes/functions/functions_print.php.bak:1117 modules_v4/report_fact/module.php:192
+#: admin_trees_missing.php:119 includes/functions/functions_print.php:1116 modules_v4/report_fact/module.php:192
 msgid "Custom Fact"
 msgstr ""
 
@@ -2831,7 +2862,7 @@ msgstr ""
 msgid "This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.<br><br>Options marked <span class=\"warning\">**</span> are often very slow."
 msgstr ""
 
-#: admin_trees_sanity.php:174 medialist.php:143 modules_v4/album/module.php:330 modules_v4/googlemap/module.php:2058 modules_v4/report_fact/module.php:219 modules_v4/research_links/module.php:420
+#: admin_trees_sanity.php:174 medialist.php:143 modules_v4/album/module.php:330 modules_v4/googlemap/module.php:2062 modules_v4/report_fact/module.php:219 modules_v4/research_links/module.php:420
 msgid "Reset"
 msgstr "Tilbakestill"
 
@@ -3021,7 +3052,7 @@ msgstr ""
 msgid "Display a list of facts, events or records where the selected source is used. Facts or events are items like birth, marriage, death. Records are items like individuals, families, media."
 msgstr ""
 
-#: admin_trees_source.php:129 admin_trees_source.php:246 admin_trees_sourcecite.php:119 edit_changes.php:159 edit_interface.php:143 edit_interface.php:1320 edit_interface.php:2323 help_text.php:478 library/KT/Controller/Family.php:141 library/KT/Controller/Individual.php:381 library/KT/Controller/Media.php:94 library/KT/Controller/Note.php:88 library/KT/Controller/Repository.php:88 library/KT/Controller/Source.php:88
+#: admin_trees_source.php:129 admin_trees_source.php:246 admin_trees_sourcecite.php:119 edit_changes.php:159 edit_interface.php:143 edit_interface.php:1320 edit_interface.php:2331 help_text.php:478 library/KT/Controller/Family.php:141 library/KT/Controller/Individual.php:381 library/KT/Controller/Media.php:94 library/KT/Controller/Note.php:88 library/KT/Controller/Repository.php:88 library/KT/Controller/Source.php:88
 msgid "Edit raw GEDCOM record"
 msgstr "Endre direkte i GEDCOM"
 
@@ -3075,7 +3106,7 @@ msgstr "Moderator"
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr ""
 
-#: admin_users.php:69 login.php:259
+#: admin_users.php:69 login.php:263
 msgid "Duplicate email address. A user with that email already exists."
 msgstr ""
 
@@ -3097,7 +3128,7 @@ msgstr ""
 msgid "Edit user"
 msgstr ""
 
-#: admin_users.php:236 edit_changes.php:186 includes/functions/functions_print.php:346 includes/functions/functions_print.php:371 includes/functions/functions_print.php:579 includes/functions/functions_print.php.bak:346 includes/functions/functions_print.php.bak:371 includes/functions/functions_print.php.bak:580 library/KT/Stats.php:3494 themes/colors/footer.php:35 themes/kiwitrees/footer.php:35 themes/webtrees/footer.php:35 themes/xenea/footer.php:35
+#: admin_users.php:236 edit_changes.php:186 includes/functions/functions_print.php:346 includes/functions/functions_print.php:371 includes/functions/functions_print.php:579 library/KT/Stats.php:3494 themes/colors/footer.php:35 themes/kiwitrees/footer.php:35 themes/webtrees/footer.php:35 themes/xenea/footer.php:35
 msgid "Send Message"
 msgstr ""
 
@@ -3118,7 +3149,7 @@ msgstr "Legg til ny brukar"
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "Du må angje ein personpost (INDI)  før du kan avgrense brukaren til næraste familie."
 
-#: admin_users.php:337 admin_users.php:793 edituser.php:135 help_text.php:622 login.php:298 login.php:389
+#: admin_users.php:337 admin_users.php:793 edituser.php:135 help_text.php:622 login.php:302 login.php:393
 msgid "Real name"
 msgstr "Eigentleg namn"
 
@@ -3131,7 +3162,7 @@ msgid "Usernames are case-insensitive and ignore accented letters, so that “ch
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:364 login.php:410
+#: admin_users.php:364 login.php:414
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -3151,12 +3182,12 @@ msgid ""
 "\t\t\t\t\t\t\t"
 msgstr ""
 
-#: admin_users.php:380 edituser.php:164 help_text.php:576 login.php:417
+#: admin_users.php:380 edituser.php:164 help_text.php:576 login.php:421
 msgid "Confirm password"
 msgstr "Stadfest passord"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:383 login.php:418
+#: admin_users.php:383 login.php:422
 msgid "Type the password again."
 msgstr "Skriv passordet ein gong til."
 
@@ -3164,7 +3195,7 @@ msgstr "Skriv passordet ein gong til."
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:389 edituser.php:181 help_text.php:506 includes/functions/functions_mail.php:106 library/KT/Gedcom/Tag.php:201 library/KT/Gedcom/Tag.php:202 library/KT/Gedcom/Tag.php:203 library/KT/Gedcom/Tag.php:724 login.php:394 setup.php:449
+#: admin_users.php:389 edituser.php:181 help_text.php:506 includes/functions/functions_mail.php:106 library/KT/Gedcom/Tag.php:201 library/KT/Gedcom/Tag.php:202 library/KT/Gedcom/Tag.php:203 library/KT/Gedcom/Tag.php:724 login.php:398 setup.php:449
 msgid "Email address"
 msgstr "E-postadresse"
 
@@ -3353,10 +3384,10 @@ msgid "Deleted user: "
 msgstr "Sletta brukar: "
 
 #. I18N: Name of a module/menu
-#: admin_users.php:790 edit_interface.php:184 edit_interface.php:1340 includes/functions/functions_print.php:1314 includes/functions/functions_print.php.bak:1315 includes/functions/functions_print_facts.php:162 includes/functions/functions_print_facts.php:164 includes/functions/functions_print_facts.php:733 includes/functions/functions_print_facts.php:743 includes/functions/functions_print_facts.php:934 includes/functions/functions_print_facts.php:946
-#: includes/functions/functions_print_facts.php:1230 includes/functions/functions_print_facts.php:1231 library/KT/Controller/Family.php:117 library/KT/Controller/Individual.php:266 library/KT/Controller/Individual.php:275 library/KT/Controller/Individual.php:284 library/KT/Controller/Individual.php:308 library/KT/Controller/Media.php:79 library/KT/Controller/Note.php:78 library/KT/Controller/Repository.php:78 library/KT/Controller/Source.php:78 modules_v4/extra_menus/module.php:394
-#: modules_v4/faq/module.php:494 modules_v4/gallery/module.php:578 modules_v4/gallery/module.php:820 modules_v4/gedcom_news/module.php:120 modules_v4/googlemap/admin_places.php:632 modules_v4/googlemap/admin_places.php:667 modules_v4/googlemap/admin_places.php:690 modules_v4/page_menu/module.php:32 modules_v4/pages/module.php:491 modules_v4/stories/module.php:512 modules_v4/tab_census/module.php:126 modules_v4/tab_census/module.php:148 modules_v4/tab_census/module.php:149
-#: modules_v4/widget_blog/module.php:82 note.php:122 note.php:126
+#: admin_users.php:790 edit_interface.php:184 edit_interface.php:1340 includes/functions/functions_print.php:1314 includes/functions/functions_print_facts.php:162 includes/functions/functions_print_facts.php:164 includes/functions/functions_print_facts.php:733 includes/functions/functions_print_facts.php:743 includes/functions/functions_print_facts.php:934 includes/functions/functions_print_facts.php:946 includes/functions/functions_print_facts.php:1230
+#: includes/functions/functions_print_facts.php:1231 library/KT/Controller/Family.php:117 library/KT/Controller/Individual.php:266 library/KT/Controller/Individual.php:275 library/KT/Controller/Individual.php:284 library/KT/Controller/Individual.php:308 library/KT/Controller/Media.php:79 library/KT/Controller/Note.php:78 library/KT/Controller/Repository.php:78 library/KT/Controller/Source.php:78 modules_v4/extra_menus/module.php:394 modules_v4/faq/module.php:508
+#: modules_v4/gallery/module.php:578 modules_v4/gallery/module.php:820 modules_v4/gedcom_news/module.php:118 modules_v4/googlemap/admin_places.php:632 modules_v4/googlemap/admin_places.php:667 modules_v4/googlemap/admin_places.php:690 modules_v4/page_menu/module.php:32 modules_v4/pages/module.php:521 modules_v4/stories/module.php:515 modules_v4/tab_census/module.php:115 modules_v4/tab_census/module.php:137 modules_v4/tab_census/module.php:138 modules_v4/widget_blog/module.php:82 note.php:122
+#: note.php:126
 msgid "Edit"
 msgstr "Endre"
 
@@ -3412,13 +3443,12 @@ msgstr "Hefte"
 msgid "Show cousins"
 msgstr "Syn syskenborn"
 
-#: ancestry.php:124 descendancy.php:86 familybook.php:47 hourglass.php:58 modules_v4/charts/module.php:207 pedigree.php:64
+#: ancestry.php:124 descendancy.php:86 familybook.php:47 hourglass.php:58 modules_v4/charts/module.php:211 pedigree.php:64
 msgid "Show Details"
 msgstr ""
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:72 includes/functions/functions_print.php:848 includes/functions/functions_print.php:886 includes/functions/functions_print.php.bak:849 includes/functions/functions_print.php.bak:887 library/KT/Controller/Timeline.php:223 library/KT/Controller/Timeline.php:225 library/KT/Gedcom/Tag.php:123 library/KT/Person.php:471 library/KT/Stats.php:1655 library/KT/Stats.php:2398 library/KT/Stats.php:2399 modules_v4/calendar_utilities/plugins/calculators.php:392
-#: modules_v4/census_assistant/census-edit.php:79 modules_v4/report_census/module.php:296 timeline.php:353
+#: autocomplete.php:72 includes/functions/functions_print.php:848 includes/functions/functions_print.php:886 library/KT/Controller/Timeline.php:223 library/KT/Controller/Timeline.php:225 library/KT/Gedcom/Tag.php:123 library/KT/Person.php:471 library/KT/Stats.php:1655 library/KT/Stats.php:2398 library/KT/Stats.php:2399 modules_v4/calendar_utilities/plugins/calculators.php:392 modules_v4/census_assistant/census-edit.php:79 modules_v4/report_census/module.php:296 timeline.php:353
 msgid "Age"
 msgstr "Alder"
 
@@ -3558,7 +3588,7 @@ msgstr "Du har ikkje løyve til å sjå denne sida."
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: edit_changes.php:31 help_text.php:601 modules_v4/report_changes/module.php:252 modules_v4/review_changes/module.php:32 modules_v4/widget_review_changes/module.php:32 themes/_administration/header.php:109 themes/colors/header.php:113 themes/kiwitrees/header.php:119 themes/levy/header.php:105 themes/webtrees/header.php:98 themes/xenea/header.php:103
+#: edit_changes.php:31 help_text.php:601 modules_v4/report_changes/module.php:252 modules_v4/review_changes/module.php:32 modules_v4/widget_review_changes/module.php:32 themes/_administration/header.php:109 themes/colors/header.php:113 themes/kiwitrees/header.php:120 themes/webtrees/header.php:97 themes/xenea/header.php:103
 msgid "Pending changes"
 msgstr "Ventande endringar"
 
@@ -3614,7 +3644,7 @@ msgstr ""
 msgid "Add new fact"
 msgstr ""
 
-#: edit_interface.php:345 edit_interface.php:2302
+#: edit_interface.php:345 edit_interface.php:2310
 msgid "Add a child"
 msgstr ""
 
@@ -3634,7 +3664,7 @@ msgstr ""
 msgid "Add a mother"
 msgstr ""
 
-#: edit_interface.php:396 edit_interface.php:1797 modules_v4/relatives/module.php:146 modules_v4/relatives/module.php:147 modules_v4/relatives/module.php:397
+#: edit_interface.php:396 edit_interface.php:1805 modules_v4/relatives/module.php:146 modules_v4/relatives/module.php:147 modules_v4/relatives/module.php:397
 msgid "Add a father"
 msgstr ""
 
@@ -3692,7 +3722,7 @@ msgstr "Opprett eit nytt Delt Notat"
 msgid "Shared Notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one person, family, source, or event."
 msgstr ""
 
-#: edit_interface.php:898 edit_interface.php:1111 includes/functions/functions_print.php:650 includes/functions/functions_print.php.bak:651 library/KT/Gedcom/Tag.php:325 note.php:124 note.php:130
+#: edit_interface.php:898 edit_interface.php:1111 includes/functions/functions_print.php:650 library/KT/Gedcom/Tag.php:325 note.php:124 note.php:130
 msgid "Shared note"
 msgstr "Delt notat"
 
@@ -3712,121 +3742,121 @@ msgstr "Du må gje arkivet eit namn"
 msgid "Repository name"
 msgstr "Arkivnamn"
 
-#: edit_interface.php:1564 edit_interface.php:1735 edit_interface.php:1887
+#: edit_interface.php:1572 edit_interface.php:1743 edit_interface.php:1895
 msgid "Add child"
 msgstr "Legg til barn"
 
-#: edit_interface.php:1642
+#: edit_interface.php:1650
 msgid "Add a spouse"
 msgstr ""
 
-#: edit_interface.php:1945 includes/functions/functions_edit.php:1489 library/KT/Controller/Individual.php:187
+#: edit_interface.php:1953 includes/functions/functions_edit.php:1489 library/KT/Controller/Individual.php:187
 msgid "Edit name"
 msgstr "Endre navn"
 
-#: edit_interface.php:1971 library/KT/Controller/Individual.php:323
+#: edit_interface.php:1979 library/KT/Controller/Individual.php:323
 msgid "Add new Name"
 msgstr "Legg til nytt namn"
 
-#: edit_interface.php:1989 help_text.php:424 includes/functions/functions_print.php:1041 includes/functions/functions_print.php:1145 includes/functions/functions_print.php.bak:1042 includes/functions/functions_print.php.bak:1146
+#: edit_interface.php:1997 help_text.php:424 includes/functions/functions_print.php:1041 includes/functions/functions_print.php:1145
 msgid "Add from clipboard"
 msgstr "Legg til frå utklippstavle"
 
 #. I18N: gedcom tag _KT_OBJE_SORT
-#: edit_interface.php:2003 edit_interface.php:2014 edit_interface.php:2038 edit_interface.php:2058 includes/media_reorder.php:64 library/KT/Gedcom/Tag.php:839 modules_v4/album/module.php:102
+#: edit_interface.php:2011 edit_interface.php:2022 edit_interface.php:2046 edit_interface.php:2066 includes/media_reorder.php:64 library/KT/Gedcom/Tag.php:839 modules_v4/album/module.php:102
 msgid "Re-order media"
 msgstr "Endre rekkefølgje på media"
 
-#: edit_interface.php:2094 edit_interface.php:2511 library/KT/Controller/Family.php:133 modules_v4/relatives/module.php:352
+#: edit_interface.php:2102 edit_interface.php:2519 library/KT/Controller/Family.php:133 modules_v4/relatives/module.php:352
 msgid "Re-order children"
 msgstr "Endre rekkefølgje på born"
 
-#: edit_interface.php:2101 edit_interface.php:2544
+#: edit_interface.php:2109 edit_interface.php:2552
 msgid "Either click the \"sort by date\" button or click a row then drag-and-drop to re-order."
 msgstr ""
 
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
-#: edit_interface.php:2154 edit_interface.php:2575 modules_v4/todays_events/module.php:155 modules_v4/upcoming_events/module.php:157 modules_v4/widget_todays_events/module.php:143 modules_v4/widget_upcoming/module.php:155
+#: edit_interface.php:2162 edit_interface.php:2583 modules_v4/todays_events/module.php:155 modules_v4/upcoming_events/module.php:157 modules_v4/widget_todays_events/module.php:143 modules_v4/widget_upcoming/module.php:155
 msgid "sort by date"
 msgstr "sorter etter dato"
 
-#: edit_interface.php:2172 library/KT/Controller/Family.php:122
+#: edit_interface.php:2180 library/KT/Controller/Family.php:122
 msgid "Change Family Members"
 msgstr "Byt familiemedlemer"
 
-#: edit_interface.php:2178 edit_interface.php:2281 includes/functions/functions.php:1238 modules_v4/googlemap/googlemap.php:298 modules_v4/googlemap/googlemap.php:325
+#: edit_interface.php:2186 edit_interface.php:2289 includes/functions/functions.php:1238 modules_v4/googlemap/googlemap.php:298 modules_v4/googlemap/googlemap.php:325
 msgid "child"
 msgstr "barn"
 
-#: edit_interface.php:2178 edit_interface.php:2234 edit_interface.php:2267 edit_interface.php:2293
+#: edit_interface.php:2186 edit_interface.php:2242 edit_interface.php:2275 edit_interface.php:2301
 msgid "Select person"
 msgstr ""
 
-#: edit_interface.php:2193
+#: edit_interface.php:2201
 msgid "For family member you can use the \"Select person\" field to choose a different person from your tree to fill that role or add someone if the role is empty. Tick the Remove option to delete that person from the family. Click \"Add a child\" to create fields for more children."
 msgstr ""
 
-#: edit_interface.php:2203
+#: edit_interface.php:2211
 msgid "Existing"
 msgstr ""
 
-#: edit_interface.php:2204 index_edit.php:284 index_edit.php:302 inverselink.php:114 inverselink.php:188 inverselink.php:292 modules_v4/census_assistant/module.php:243 modules_v4/census_assistant/module.php:263 modules_v4/clippings/module.php:344 modules_v4/clippings/module.php:364 modules_v4/clippings/module.php:526 modules_v4/gedcom_favorites/module.php:122 modules_v4/googlemap/admin_places.php:675 modules_v4/stories/module.php:384 modules_v4/stories/module.php:403
+#: edit_interface.php:2212 index_edit.php:284 index_edit.php:302 inverselink.php:114 inverselink.php:188 inverselink.php:292 modules_v4/census_assistant/module.php:243 modules_v4/census_assistant/module.php:263 modules_v4/clippings/module.php:344 modules_v4/clippings/module.php:364 modules_v4/clippings/module.php:526 modules_v4/gedcom_favorites/module.php:122 modules_v4/googlemap/admin_places.php:675 modules_v4/stories/module.php:384 modules_v4/stories/module.php:403
 #: modules_v4/widget_favorites/module.php:139
 msgid "Remove"
 msgstr "Fjern"
 
-#: edit_interface.php:2205
+#: edit_interface.php:2213
 msgid "Change or add"
 msgstr ""
 
-#: edit_interface.php:2213 edit_interface.php:2245 includes/functions/functions.php:1209
+#: edit_interface.php:2221 edit_interface.php:2253 includes/functions/functions.php:1209
 msgid "husband"
 msgstr "ektemann"
 
-#: edit_interface.php:2214 edit_interface.php:2246 includes/functions/functions.php:1222
+#: edit_interface.php:2222 edit_interface.php:2254 includes/functions/functions.php:1222
 msgid "wife"
 msgstr "hustru"
 
-#: edit_interface.php:2215 edit_interface.php:2223 edit_interface.php:2247 edit_interface.php:2256 includes/functions/functions.php:1235
+#: edit_interface.php:2223 edit_interface.php:2231 edit_interface.php:2255 edit_interface.php:2264 includes/functions/functions.php:1235
 msgid "spouse"
 msgstr "ektefelle"
 
-#: edit_interface.php:2279 includes/functions/functions.php:1236 includes/functions/functions_charts.php:284 includes/functions/functions_charts.php:852 modules_v4/googlemap/googlemap.php:294 modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341
+#: edit_interface.php:2287 includes/functions/functions.php:1236 includes/functions/functions_charts.php:284 includes/functions/functions_charts.php:852 modules_v4/googlemap/googlemap.php:294 modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341
 msgid "son"
 msgstr "son"
 
-#: edit_interface.php:2280 includes/functions/functions.php:1237 includes/functions/functions_charts.php:285 includes/functions/functions_charts.php:853 modules_v4/googlemap/googlemap.php:289 modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342
+#: edit_interface.php:2288 includes/functions/functions.php:1237 includes/functions/functions_charts.php:285 includes/functions/functions_charts.php:853 modules_v4/googlemap/googlemap.php:289 modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342
 msgid "daughter"
 msgstr "dotter"
 
-#: edit_interface.php:2538 edit_interface.php:2590 library/KT/Controller/Individual.php:338
+#: edit_interface.php:2546 edit_interface.php:2598 library/KT/Controller/Individual.php:338
 msgid "Re-order families"
 msgstr "Endre rekkefylgje på familiar"
 
-#: edit_interface.php:2635
+#: edit_interface.php:2643
 msgid "Possible duplicates"
 msgstr ""
 
-#: edit_interface.php:2645
+#: edit_interface.php:2666
 msgid "These individuals might be duplicates of your new entry. Click on a name to open a new tab at their page to view more details. <br><br>Close this window and the <strong>Add new individual</strong> window if you do not want to complete this addition."
 msgstr ""
 
-#: edit_interface.php:2646
+#: edit_interface.php:2667
 #, php-format
 msgid "Found %s possible duplicates"
 msgstr ""
 
-#: edit_interface.php:2651
+#: edit_interface.php:2672
 msgid "Birth year"
 msgstr ""
 
-#: edit_interface.php:2652
+#: edit_interface.php:2673
 msgid "Birth place"
 msgstr ""
 
-#: edit_interface.php:2673
+#: edit_interface.php:2694
 msgid "No duplicates found"
 msgstr ""
 
@@ -3844,7 +3874,7 @@ msgstr "Tekst:"
 
 #. I18N: button label
 #: editnews.php:68 edituser.php:191 includes/functions/functions_edit.php:35 includes/functions/functions_edit.php:49 includes/functions/functions_edit.php:103 modules_v4/album/module.php:325 modules_v4/custom_js/module.php:86 modules_v4/fancy_imagebar/module.php:360 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:280 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:389 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:290
-#: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:384 modules_v4/pages/module.php:452 modules_v4/research_links/module.php:157 modules_v4/research_links/module.php:197 modules_v4/sitemap/module.php:259 modules_v4/stories/module.php:422 modules_v4/stories/module.php:550
+#: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:384 modules_v4/pages/module.php:482 modules_v4/research_links/module.php:157 modules_v4/research_links/module.php:197 modules_v4/sitemap/module.php:259 modules_v4/stories/module.php:422 modules_v4/stories/module.php:553
 msgid "save"
 msgstr "lagre"
 
@@ -3884,7 +3914,7 @@ msgstr "Ukjent"
 msgid "Delete your account"
 msgstr ""
 
-#: expand_view.php:32 includes/functions/functions.php:2655 includes/functions/functions.php:2678 includes/functions/functions.php:2710 includes/functions/functions.php:2752 includes/functions/functions.php:2779 includes/functions/functions.php:2806 includes/functions/functions.php:2844 includes/functions/functions.php:2869 includes/functions/functions.php:2892 library/KT/Controller/FancyTreeView.php:719 library/KT/Controller/GedcomRecord.php:50 library/KT/GedcomRecord.php:450
+#: expand_view.php:32 includes/functions/functions.php:2676 includes/functions/functions.php:2699 includes/functions/functions.php:2731 includes/functions/functions.php:2773 includes/functions/functions.php:2800 includes/functions/functions.php:2827 includes/functions/functions.php:2865 includes/functions/functions.php:2890 includes/functions/functions.php:2913 library/KT/Controller/FancyTreeView.php:719 library/KT/Controller/GedcomRecord.php:50 library/KT/GedcomRecord.php:450
 #: library/KT/GedcomRecord.php:498 library/KT/GedcomRecord.php:612 library/KT/Note.php:63 library/KT/Person.php:119 library/KT/Person.php:334 library/KT/Person.php:357 library/KT/Person.php:380 library/KT/Person.php:417 library/KT/Person.php:440 library/KT/Person.php:1926 library/KT/Repository.php:55 library/KT/Source.php:47 library/KT/Stats.php:873 library/KT/Stats.php:1821 media_links.php:86 media_links.php:109 media_links.php:141 media_links.php:183 media_links.php:210 media_links.php:237
 #: media_links.php:275 media_links.php:300 media_links.php:323 media_links.php:441 media_links.php:477 media_links.php:510 media_links.php:530 media_links.php:584 media_links.php:633 modules_v4/googlemap/module.php:769
 msgid "Private"
@@ -3981,27 +4011,27 @@ msgstr "Syn lista over etternamn"
 msgid "Individuals with surname %s"
 msgstr "Personar med etternamn %s"
 
-#: find.php:77 includes/functions/functions_print.php:1305 includes/functions/functions_print.php.bak:1306
+#: find.php:77 includes/functions/functions_print.php:1305
 msgid "Find a media object"
 msgstr "Finn medieobjekt"
 
-#: find.php:80 includes/functions/functions_print.php:1271 includes/functions/functions_print.php.bak:1272
+#: find.php:80 includes/functions/functions_print.php:1271
 msgid "Find a place"
 msgstr "Finn stad"
 
-#: find.php:83 includes/functions/functions_print.php:1301 includes/functions/functions_print.php.bak:1302
+#: find.php:83 includes/functions/functions_print.php:1301
 msgid "Find a repository"
 msgstr "Finn arkiv"
 
-#: find.php:86 includes/functions/functions_print.php:1297 includes/functions/functions_print.php.bak:1298
+#: find.php:86 includes/functions/functions_print.php:1297
 msgid "Find a note"
 msgstr "Finn notat"
 
-#: find.php:92 includes/functions/functions_print.php:1279 includes/functions/functions_print.php.bak:1280
+#: find.php:92 includes/functions/functions_print.php:1279
 msgid "Find a special character"
 msgstr "Finn særskild bokstav/teikn"
 
-#: find.php:107 includes/functions/functions_print.php:1309 includes/functions/functions_print.php:1313 includes/functions/functions_print.php.bak:1310 includes/functions/functions_print.php.bak:1314
+#: find.php:107 includes/functions/functions_print.php:1309 includes/functions/functions_print.php:1313
 msgid "Find a fact or event"
 msgstr "Finn fakta eller hending"
 
@@ -4057,7 +4087,7 @@ msgstr "Syn alle koder"
 msgid "Custom tags"
 msgstr "Eigendefinerte koder"
 
-#: find.php:525 find.php:550 find.php:606 find.php:634 find.php:657 find.php:680 find.php:705 library/KT/Controller/Search.php:1330 modules_v4/census_assistant/module.php:96 placelist.php:61
+#: find.php:525 find.php:550 find.php:606 find.php:634 find.php:657 find.php:680 find.php:705 library/KT/Controller/Search.php:1330 modules_v4/census_assistant/module.php:96
 msgid "No results found."
 msgstr "Ingen resultat funne."
 
@@ -4281,10 +4311,6 @@ msgid ""
 "appear in lists and charts.<br><br>Although this field is labeled \"Hebrew\", it is not restricted to containing only Hebrew characters."
 msgstr ""
 
-#: help_text.php:388
-msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
-msgstr "Bruk dette feltet for å angi at denne mediefila er hovudbilete for personen den er knytta til.  Hovudbiletet er det som vert nytta i diagram og på personen si faktaside."
-
 #: help_text.php:392
 msgid "Check relationships by marriage"
 msgstr "Sjekk slektskap via inngifte"
@@ -4437,7 +4463,7 @@ msgstr "Breidde"
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
 msgstr "Her kan du endre breidda på diagrammet frå 50 prosent til 300 prosent. 100 prosent tilsvarar omlag 640 piksler."
 
-#: help_text.php:521 modules_v4/gedcom_news/module.php:132
+#: help_text.php:521 modules_v4/gedcom_news/module.php:130
 msgid "View archive"
 msgstr "Syn arkiv"
 
@@ -4445,7 +4471,7 @@ msgstr "Syn arkiv"
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
 msgstr "For å redusere høgda på blokka for Nyhende, har administratoren skjult nokon artiklar. Du kan syne desse ved å klikke på <b>Syn Arkiv</b>."
 
-#: help_text.php:526 modules_v4/gedcom_news/module.php:178
+#: help_text.php:526 modules_v4/gedcom_news/module.php:182
 msgid "Limit:"
 msgstr "Grense:"
 
@@ -4453,7 +4479,7 @@ msgstr "Grense:"
 msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
 msgstr ""
 
-#: help_text.php:531 modules_v4/gedcom_news/module.php:167
+#: help_text.php:531 modules_v4/gedcom_news/module.php:172
 msgid "Limit display by:"
 msgstr "Avgrens syning til:"
 
@@ -4467,7 +4493,7 @@ msgstr "Førekomst av det valde namnet vil synast på kartet. Let du feltet stå
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: help_text.php:541 library/KT/MenuBar.php:205 modules_v4/gedcom_favorites/module.php:32 modules_v4/widget_favorites/module.php:32
+#: help_text.php:541 library/KT/MenuBar.php:211 modules_v4/gedcom_favorites/module.php:32 modules_v4/widget_favorites/module.php:32
 msgid "Favorites"
 msgstr ""
 
@@ -4555,7 +4581,7 @@ msgstr "Syn alle poster"
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place. When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
 msgstr ""
 
-#: help_text.php:627 login.php:300 login.php:319 login.php:422
+#: help_text.php:627 login.php:304 login.php:323 login.php:426
 msgid "Comments"
 msgstr "Kommentarar"
 
@@ -4634,14 +4660,6 @@ msgstr "Det er lettare å organisere mediefilene dine om du er konsekvent med ko
 #: help_text.php:702
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "Last opp ei eller fleire mediefiler frå din eigen datamaskin. Mediefiler kan vere bileter, videoar, lydfiler eller filer i andre format."
-
-#: help_text.php:709
-msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
-
-#: help_text.php:715
-msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
-msgstr "Vel kva miniatyrbilete du vil laste opp. Sjølv om miniatyrbileter kan genererast automatisk når du lastar opp bileter, vil du nokon gonger kanskje ønskje å lage dine eigne, ikke minst for andre medietypar. Du kan til dømes nytte eit stillbilete frå ein video, eller eit fotografi av ein person du har gjort eit lydopptak av."
 
 #: help_text.php:719
 msgid "Automatically approve changes made by this user"
@@ -7995,15 +8013,15 @@ msgid "%1$s's %2$s"
 msgstr ""
 
 #. I18N: Name of a module/sidebar
-#: includes/functions/functions.php:2622 inverselink.php:142 inverselink.php:153 inverselink.php:291 media_links.php:53 modules_v4/family_nav/module.php:32
+#: includes/functions/functions.php:2643 inverselink.php:142 inverselink.php:153 inverselink.php:291 media_links.php:53 modules_v4/family_nav/module.php:32
 msgid "Family navigator"
 msgstr "Familienavigasjon"
 
-#: includes/functions/functions.php:2626 media_links.php:57
+#: includes/functions/functions.php:2647 media_links.php:57
 msgid "Click name to add person to list of links."
 msgstr ""
 
-#: includes/functions/functions.php:2900 includes/functions/functions_mail.php:136 media_links.php:331
+#: includes/functions/functions.php:2921 includes/functions/functions_mail.php:136 media_links.php:331
 msgid "Close"
 msgstr ""
 
@@ -8045,7 +8063,7 @@ msgstr "Spedbarn"
 msgid "Stillborn"
 msgstr "Dødfødd"
 
-#: includes/functions/functions_date.php:50 library/KT/I18N.php:387
+#: includes/functions/functions_date.php:50 library/KT/I18N.php:399
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
@@ -8053,7 +8071,7 @@ msgstr[0] "%s år"
 msgstr[1] "%s år"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: includes/functions/functions_date.php:55 library/KT/I18N.php:393
+#: includes/functions/functions_date.php:55 library/KT/I18N.php:405
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
@@ -8061,7 +8079,7 @@ msgstr[0] "%s månad"
 msgstr[1] "%s månader"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
-#: includes/functions/functions_date.php:57 library/KT/I18N.php:397
+#: includes/functions/functions_date.php:57 library/KT/I18N.php:409
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
@@ -8069,7 +8087,7 @@ msgstr[0] "%s veke"
 msgstr[1] "%s veker"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: includes/functions/functions_date.php:59 library/KT/I18N.php:401
+#: includes/functions/functions_date.php:59 library/KT/I18N.php:413
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
@@ -8352,7 +8370,7 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: includes/functions/functions_mail.php:132 login.php:469
+#: includes/functions/functions_mail.php:132 login.php:480
 msgid "Send"
 msgstr "Send"
 
@@ -8382,7 +8400,7 @@ msgstr "Innhald"
 msgid "This message was sent while viewing the following URL: "
 msgstr "Denne meldinga blei sendt medan du vitja følgjande internettadresse (URL): "
 
-#: includes/functions/functions_mail.php:265 includes/functions/functions_mail.php:308 login.php:218
+#: includes/functions/functions_mail.php:265 includes/functions/functions_mail.php:308 login.php:222
 #, php-format
 msgid "%1$s message"
 msgstr ""
@@ -8394,241 +8412,241 @@ msgstr ""
 msgid "%s sent you the following message."
 msgstr ""
 
-#: includes/functions/functions_print.php:114 includes/functions/functions_print.php.bak:114
+#: includes/functions/functions_print.php:114
 msgid "Zoom in/out on this box."
 msgstr "Zoom denne boksa inn/ut"
 
-#: includes/functions/functions_print.php:289 includes/functions/functions_print.php.bak:289 modules_v4/login_block/module.php:56 themes/kiwitrees/header.php:129
+#: includes/functions/functions_print.php:289 modules_v4/login_block/module.php:56 themes/kiwitrees/header.php:130
 msgid "Login or Register"
 msgstr ""
 
 #. I18N: Name of a module
-#: includes/functions/functions_print.php:289 includes/functions/functions_print.php.bak:289 login.php:121 login.php:159 modules_v4/login_block/module.php:32 modules_v4/login_block/module.php:56 modules_v4/login_block/module.php:76 themes/kiwitrees/header.php:124 themes/kiwitrees/header.php:129
+#: includes/functions/functions_print.php:289 login.php:125 login.php:163 modules_v4/login_block/module.php:32 modules_v4/login_block/module.php:56 modules_v4/login_block/module.php:76 themes/kiwitrees/header.php:125 themes/kiwitrees/header.php:130
 msgid "Login"
 msgstr "Logg inn"
 
-#: includes/functions/functions_print.php:301 includes/functions/functions_print.php.bak:301 modules_v4/login_block/module.php:47 modules_v4/login_block/module.php:52
+#: includes/functions/functions_print.php:301 modules_v4/login_block/module.php:47 modules_v4/login_block/module.php:52
 msgid "Logout"
 msgstr "Logg ut"
 
-#: includes/functions/functions_print.php:322 includes/functions/functions_print.php.bak:322 library/KT/Stats.php:3467
+#: includes/functions/functions_print.php:322 library/KT/Stats.php:3467
 #, php-format
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] "%d anonym brukar logga på"
 msgstr[1] "%d anonyme brukarar logga på"
 
-#: includes/functions/functions_print.php:328 includes/functions/functions_print.php.bak:328 library/KT/Stats.php:3477
+#: includes/functions/functions_print.php:328 library/KT/Stats.php:3477
 #, php-format
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
 msgstr[0] "%d brukar logga inn"
 msgstr[1] "%d brukarar logga inn"
 
-#: includes/functions/functions_print.php:398 includes/functions/functions_print.php.bak:398
+#: includes/functions/functions_print.php:398
 msgid "If you have any questions or comments please contact"
 msgstr ""
 
-#: includes/functions/functions_print.php:403 includes/functions/functions_print.php.bak:403 themes/levy/functions.php:58
+#: includes/functions/functions_print.php:403
 msgid "For technical support and information contact"
 msgstr "For teknisk hjelp og informasjon, kontakt"
 
-#: includes/functions/functions_print.php:409 includes/functions/functions_print.php.bak:409 themes/levy/functions.php:52
+#: includes/functions/functions_print.php:409
 msgid "For help with genealogy questions contact"
 msgstr "For hjelp med slektsspørsmål, kontakt"
 
-#: includes/functions/functions_print.php:470 includes/functions/functions_print.php.bak:470 library/KT/Note.php:94
+#: includes/functions/functions_print.php:470 library/KT/Note.php:94
 msgid "…"
 msgstr "…"
 
-#: includes/functions/functions_print.php:570 includes/functions/functions_print.php.bak:571 library/KT/Stats.php:858 library/KT/Stats.php:1401 library/KT/Stats.php:1487 library/KT/Stats.php:1799 library/KT/Stats.php:1898 library/KT/Stats.php:2129 library/KT/Stats.php:2549 library/KT/Stats.php:2650 library/KT/Stats.php:2697
+#: includes/functions/functions_print.php:570 library/KT/Stats.php:858 library/KT/Stats.php:1401 library/KT/Stats.php:1487 library/KT/Stats.php:1799 library/KT/Stats.php:1898 library/KT/Stats.php:2129 library/KT/Stats.php:2549 library/KT/Stats.php:2650 library/KT/Stats.php:2697
 msgid "This information is private and cannot be shown."
 msgstr "Denne informasjon er privat, og kan ikkje synast."
 
-#: includes/functions/functions_print.php:576 includes/functions/functions_print.php:579 includes/functions/functions_print.php.bak:577 includes/functions/functions_print.php.bak:580
+#: includes/functions/functions_print.php:576 includes/functions/functions_print.php:579
 msgid "For more information contact"
 msgstr "For meir informasjon, kontakt"
 
-#: includes/functions/functions_print.php:683 includes/functions/functions_print.php.bak:684 includes/functions/functions_print_lists.php:357 relationship.php:51
+#: includes/functions/functions_print.php:683 includes/functions/functions_print_lists.php:357 relationship.php:51
 msgid "Relationships"
 msgstr "Slektskapsband"
 
-#: includes/functions/functions_print.php:748 includes/functions/functions_print.php.bak:749
+#: includes/functions/functions_print.php:748
 msgid "Mother's age"
 msgstr ""
 
-#: includes/functions/functions_print.php:756 includes/functions/functions_print.php.bak:757
+#: includes/functions/functions_print.php:756
 msgid "Father's age"
 msgstr ""
 
-#: includes/functions/functions_print.php:760 includes/functions/functions_print.php.bak:761
+#: includes/functions/functions_print.php:760
 msgid "Parent's age"
 msgstr ""
 
-#: includes/functions/functions_print.php:858 includes/functions/functions_print.php.bak:859
+#: includes/functions/functions_print.php:858
 msgid "on the date of death"
 msgstr "på dødsdagen"
 
-#: includes/functions/functions_print.php:860 includes/functions/functions_print.php.bak:861
+#: includes/functions/functions_print.php:860
 msgid "after death"
 msgstr "etter dødsfall"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate
 #. it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:968 includes/functions/functions_print.php.bak:969 modules_v4/googlemap/admin_places.php:189 modules_v4/googlemap/module.php:51 modules_v4/googlemap/module.php:191 modules_v4/googlemap/module.php:1465 modules_v4/googlemap/module.php:2018 modules_v4/googlemap/module.php:2057
+#: includes/functions/functions_print.php:968 modules_v4/googlemap/admin_places.php:189 modules_v4/googlemap/module.php:51 modules_v4/googlemap/module.php:191 modules_v4/googlemap/module.php:1465 modules_v4/googlemap/module.php:2022 modules_v4/googlemap/module.php:2061
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
-#: includes/functions/functions_print.php:969 includes/functions/functions_print.php.bak:970
+#: includes/functions/functions_print.php:969
 msgid "Bing Maps™"
 msgstr ""
 
-#: includes/functions/functions_print.php:970 includes/functions/functions_print.php.bak:971
+#: includes/functions/functions_print.php:970
 msgid "OpenStreetMap™"
 msgstr ""
 
-#: includes/functions/functions_print.php:983 includes/functions/functions_print.php.bak:984
+#: includes/functions/functions_print.php:983
 msgid "LDS Temple"
 msgstr "Mormon tempel"
 
-#: includes/functions/functions_print.php:1060 includes/functions/functions_print.php:1119 includes/functions/functions_print.php:1164 includes/functions/functions_print.php:1220 includes/functions/functions_print.php.bak:1061 includes/functions/functions_print.php.bak:1120 includes/functions/functions_print.php.bak:1165 includes/functions/functions_print.php.bak:1221 index_edit.php:286 index_edit.php:304 inverselink.php:175 library/KT/Controller/Individual.php:293 lifespan.php:267
-#: modules_v4/clippings/module.php:205 modules_v4/clippings/module.php:323 modules_v4/gedcom_favorites/module.php:224 modules_v4/googlemap/admin_places.php:710 modules_v4/googlemap/admin_places.php:712 modules_v4/widget_favorites/module.php:210 timeline.php:279
+#: includes/functions/functions_print.php:1060 includes/functions/functions_print.php:1119 includes/functions/functions_print.php:1164 includes/functions/functions_print.php:1220 index_edit.php:286 index_edit.php:304 inverselink.php:175 library/KT/Controller/Individual.php:293 lifespan.php:267 modules_v4/clippings/module.php:205 modules_v4/clippings/module.php:323 modules_v4/gedcom_favorites/module.php:224 modules_v4/googlemap/admin_places.php:710 modules_v4/googlemap/admin_places.php:712
+#: modules_v4/widget_favorites/module.php:210 timeline.php:279
 msgid "Add"
 msgstr "Legg til"
 
-#: includes/functions/functions_print.php:1240 includes/functions/functions_print.php.bak:1241 library/KT/Date/Calendar.php:124
+#: includes/functions/functions_print.php:1240 library/KT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "januar"
 
-#: includes/functions/functions_print.php:1241 includes/functions/functions_print.php.bak:1242 library/KT/Date/Calendar.php:125
+#: includes/functions/functions_print.php:1241 library/KT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "februar"
 
-#: includes/functions/functions_print.php:1242 includes/functions/functions_print.php.bak:1243 library/KT/Date/Calendar.php:126
+#: includes/functions/functions_print.php:1242 library/KT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "mars"
 
-#: includes/functions/functions_print.php:1243 includes/functions/functions_print.php.bak:1244 library/KT/Date/Calendar.php:127
+#: includes/functions/functions_print.php:1243 library/KT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "april"
 
-#: includes/functions/functions_print.php:1244 includes/functions/functions_print.php.bak:1245 library/KT/Date/Calendar.php:128
+#: includes/functions/functions_print.php:1244 library/KT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "mai"
 
-#: includes/functions/functions_print.php:1245 includes/functions/functions_print.php.bak:1246 library/KT/Date/Calendar.php:129
+#: includes/functions/functions_print.php:1245 library/KT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "juni"
 
-#: includes/functions/functions_print.php:1246 includes/functions/functions_print.php.bak:1247 library/KT/Date/Calendar.php:130
+#: includes/functions/functions_print.php:1246 library/KT/Date/Calendar.php:130
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "juli"
 
-#: includes/functions/functions_print.php:1247 includes/functions/functions_print.php.bak:1248 library/KT/Date/Calendar.php:131
+#: includes/functions/functions_print.php:1247 library/KT/Date/Calendar.php:131
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "august"
 
-#: includes/functions/functions_print.php:1248 includes/functions/functions_print.php.bak:1249 library/KT/Date/Calendar.php:132
+#: includes/functions/functions_print.php:1248 library/KT/Date/Calendar.php:132
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "september"
 
-#: includes/functions/functions_print.php:1249 includes/functions/functions_print.php.bak:1250 library/KT/Date/Calendar.php:133
+#: includes/functions/functions_print.php:1249 library/KT/Date/Calendar.php:133
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "oktober"
 
-#: includes/functions/functions_print.php:1250 includes/functions/functions_print.php.bak:1251 library/KT/Date/Calendar.php:134
+#: includes/functions/functions_print.php:1250 library/KT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "november"
 
-#: includes/functions/functions_print.php:1251 includes/functions/functions_print.php.bak:1252 library/KT/Date/Calendar.php:135
+#: includes/functions/functions_print.php:1251 library/KT/Date/Calendar.php:135
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "desember"
 
-#: includes/functions/functions_print.php:1254 includes/functions/functions_print.php.bak:1255 library/KT/Date/Calendar.php:252
+#: includes/functions/functions_print.php:1254 library/KT/Date/Calendar.php:252
 msgid "Sun"
 msgstr "sun"
 
-#: includes/functions/functions_print.php:1255 includes/functions/functions_print.php.bak:1256 library/KT/Date/Calendar.php:246
+#: includes/functions/functions_print.php:1255 library/KT/Date/Calendar.php:246
 msgid "Mon"
 msgstr "mån"
 
-#: includes/functions/functions_print.php:1256 includes/functions/functions_print.php.bak:1257 library/KT/Date/Calendar.php:247
+#: includes/functions/functions_print.php:1256 library/KT/Date/Calendar.php:247
 msgid "Tue"
 msgstr "tys"
 
-#: includes/functions/functions_print.php:1257 includes/functions/functions_print.php.bak:1258 library/KT/Date/Calendar.php:248
+#: includes/functions/functions_print.php:1257 library/KT/Date/Calendar.php:248
 msgid "Wed"
 msgstr "ons"
 
-#: includes/functions/functions_print.php:1258 includes/functions/functions_print.php.bak:1259 library/KT/Date/Calendar.php:249
+#: includes/functions/functions_print.php:1258 library/KT/Date/Calendar.php:249
 msgid "Thu"
 msgstr "tor"
 
-#: includes/functions/functions_print.php:1259 includes/functions/functions_print.php.bak:1260 library/KT/Date/Calendar.php:250
+#: includes/functions/functions_print.php:1259 library/KT/Date/Calendar.php:250
 msgid "Fri"
 msgstr "fre"
 
-#: includes/functions/functions_print.php:1260 includes/functions/functions_print.php.bak:1261 library/KT/Date/Calendar.php:251
+#: includes/functions/functions_print.php:1260 library/KT/Date/Calendar.php:251
 msgid "Sat"
 msgstr "lau"
 
 #. I18N: Name of a module
-#: includes/functions/functions_print.php:1366 includes/functions/functions_print.php.bak:1367 library/KT/Controller/Pedigree.php:92 modules_v4/chart_pedigree/module.php:33 modules_v4/charts/module.php:200
+#: includes/functions/functions_print.php:1366 library/KT/Controller/Pedigree.php:92 modules_v4/chart_pedigree/module.php:33 modules_v4/charts/module.php:203
 msgid "Pedigree"
 msgstr "Anar"
 
-#: includes/functions/functions_print.php:1373 includes/functions/functions_print.php.bak:1374 modules_v4/googlemap/module.php:1330
+#: includes/functions/functions_print.php:1373 modules_v4/googlemap/module.php:1330
 msgid "Pedigree map"
 msgstr "Anekart"
 
-#: includes/functions/functions_print.php:1382 includes/functions/functions_print.php.bak:1383 modules_v4/chart_relationship/module.php:82 modules_v4/chart_relationship/module.php:92
+#: includes/functions/functions_print.php:1382 modules_v4/chart_relationship/module.php:82 modules_v4/chart_relationship/module.php:92
 msgid "Relationship to me"
 msgstr "Slektskap til meg"
 
 #. I18N: Name of the module
-#: includes/functions/functions_print.php:1394 includes/functions/functions_print.php.bak:1395 library/KT/Controller/Ancestry.php:81 modules_v4/fancy_treeview_ancestors/module.php:33
+#: includes/functions/functions_print.php:1394 library/KT/Controller/Ancestry.php:81 modules_v4/fancy_treeview_ancestors/module.php:33
 msgid "Ancestors"
 msgstr "Forfedre"
 
-#: includes/functions/functions_print.php:1399 includes/functions/functions_print.php.bak:1400 library/KT/Controller/Compact.php:48
+#: includes/functions/functions_print.php:1399 library/KT/Controller/Compact.php:48
 msgid "Compact tree"
 msgstr "Kompakt tre"
 
 #. I18N: Name of a module
-#: includes/functions/functions_print.php:1404 includes/functions/functions_print.php.bak:1405 library/KT/Controller/Fanchart.php:81 library/KT/Controller/Fanchart.php.bak:67 modules_v4/chart_fanchart/module.php:33
+#: includes/functions/functions_print.php:1404 library/KT/Controller/Fanchart.php:81 modules_v4/chart_fanchart/module.php:33
 msgid "Fanchart"
 msgstr ""
 
-#: includes/functions/functions_print.php:1409 includes/functions/functions_print.php.bak:1410 modules_v4/charts/module.php:202
+#: includes/functions/functions_print.php:1409 modules_v4/charts/module.php:205
 msgid "Hourglass chart"
 msgstr "Timeglasdiagram"
 
 #. I18N: Name of a module
-#: includes/functions/functions_print.php:1416 includes/functions/functions_print.php.bak:1417 modules_v4/charts/module.php:203 modules_v4/tree/module.php:35
+#: includes/functions/functions_print.php:1416 modules_v4/charts/module.php:206 modules_v4/tree/module.php:35
 msgid "Interactive tree"
 msgstr "Interaktivt tre"
 
-#: includes/functions/functions_print.php:1429 includes/functions/functions_print.php.bak:1430 modules_v4/report_individual/module.php:334 modules_v4/report_related_fam/module.php:405
+#: includes/functions/functions_print.php:1429 modules_v4/report_individual/module.php:334 modules_v4/report_related_fam/module.php:405
 msgid "Family with spouse"
 msgstr "Familie med ektefelle"
 
-#: includes/functions/functions_print_facts.php:165 includes/functions/functions_print_facts.php:744 includes/functions/functions_print_facts.php:947 includes/functions/functions_print_facts.php:1232 modules_v4/tab_census/module.php:153 modules_v4/tab_census/module.php:154
+#: includes/functions/functions_print_facts.php:165 includes/functions/functions_print_facts.php:744 includes/functions/functions_print_facts.php:947 includes/functions/functions_print_facts.php:1232 modules_v4/tab_census/module.php:142 modules_v4/tab_census/module.php:143
 msgid "Copy"
 msgstr "Kopier"
 
-#: includes/functions/functions_print_facts.php:166 includes/functions/functions_print_facts.php:746 includes/functions/functions_print_facts.php:948 includes/functions/functions_print_facts.php:1233 library/KT/Controller/Individual.php:186 modules_v4/tab_census/module.php:158
+#: includes/functions/functions_print_facts.php:166 includes/functions/functions_print_facts.php:746 includes/functions/functions_print_facts.php:948 includes/functions/functions_print_facts.php:1233 library/KT/Controller/Individual.php:186 modules_v4/tab_census/module.php:147
 msgid "Are you sure you want to delete this fact?"
 msgstr "Er du sikker på at du vil slette denne posten?"
 
@@ -8782,7 +8800,7 @@ msgstr "Tiår for vigsel"
 msgid "Age in year of marriage"
 msgstr "Alder i vigselår"
 
-#: includes/functions/functions_print_lists.php:1420 modules_v4/stories/module.php:354 modules_v4/stories/module.php:510 modules_v4/stories/module.php:601
+#: includes/functions/functions_print_lists.php:1420 modules_v4/stories/module.php:354 modules_v4/stories/module.php:513 modules_v4/stories/module.php:604
 msgid "Story title"
 msgstr "Tittel på artikkel"
 
@@ -9018,7 +9036,7 @@ msgstr "Om du slettar denne familien vil alle koplingar mellom familiemedlemene 
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #. I18N: Menu option.  Add [the current page] to the list of favorites
-#: library/KT/Controller/Family.php:164 library/KT/Controller/Individual.php:404 library/KT/Controller/Media.php:117 library/KT/Controller/Note.php:111 library/KT/Controller/Repository.php:111 library/KT/Controller/Source.php:111 library/KT/MenuBar.php:229
+#: library/KT/Controller/Family.php:164 library/KT/Controller/Individual.php:404 library/KT/Controller/Media.php:117 library/KT/Controller/Note.php:111 library/KT/Controller/Repository.php:111 library/KT/Controller/Source.php:111 library/KT/MenuBar.php:235
 msgid "Add to favorites"
 msgstr ""
 
@@ -9047,43 +9065,43 @@ msgstr "Familiebok"
 msgid "Family of %s"
 msgstr "Familie til %s"
 
-#: library/KT/Controller/Fanchart.php:83 library/KT/Controller/Fanchart.php.bak:69
+#: library/KT/Controller/Fanchart.php:83
 #, php-format
 msgid "Fanchart of %s"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:174 library/KT/Controller/Fanchart.php.bak:160
+#: library/KT/Controller/Fanchart.php:174
 msgid "180 degree"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:175 library/KT/Controller/Fanchart.php.bak:161
+#: library/KT/Controller/Fanchart.php:175
 msgid "210 degree"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:176 library/KT/Controller/Fanchart.php.bak:162
+#: library/KT/Controller/Fanchart.php:176
 msgid "240 degree"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:177 library/KT/Controller/Fanchart.php.bak:163
+#: library/KT/Controller/Fanchart.php:177
 msgid "270 degree"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:178 library/KT/Controller/Fanchart.php.bak:164
+#: library/KT/Controller/Fanchart.php:178
 msgid "300 degree"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:179 library/KT/Controller/Fanchart.php.bak:165
+#: library/KT/Controller/Fanchart.php:179
 msgid "330 degree"
 msgstr ""
 
 #. I18N: configuration option for fan chart
-#: library/KT/Controller/Fanchart.php:180 library/KT/Controller/Fanchart.php.bak:166
+#: library/KT/Controller/Fanchart.php:180
 msgid "360 degree"
 msgstr ""
 
@@ -9711,7 +9729,7 @@ msgstr "%1$s (%2$s)"
 msgid "Edit gender"
 msgstr "Endre kjønn"
 
-#: library/KT/Controller/Individual.php:781 modules_v4/charts/module.php:88 modules_v4/gedcom_news/module.php:85 modules_v4/gedcom_stats/module.php:80 modules_v4/html/module.php:96 modules_v4/random_media/module.php:142 modules_v4/recent_changes/module.php:70 modules_v4/review_changes/module.php:97 modules_v4/todays_events/module.php:69 modules_v4/todo/module.php:59 modules_v4/top10_givnnames/module.php:60 modules_v4/top10_pageviews/module.php:58 modules_v4/top10_surnames/module.php:81
+#: library/KT/Controller/Individual.php:781 modules_v4/charts/module.php:88 modules_v4/gedcom_news/module.php:84 modules_v4/gedcom_stats/module.php:80 modules_v4/html/module.php:96 modules_v4/random_media/module.php:142 modules_v4/recent_changes/module.php:70 modules_v4/review_changes/module.php:97 modules_v4/todays_events/module.php:69 modules_v4/todo/module.php:59 modules_v4/top10_givnnames/module.php:60 modules_v4/top10_pageviews/module.php:58 modules_v4/top10_surnames/module.php:81
 #: modules_v4/upcoming_events/module.php:67 modules_v4/widget_givnnames/module.php:59 modules_v4/widget_html/module.php:100 modules_v4/widget_pageviews/module.php:56 modules_v4/widget_recent_changes/module.php:70 modules_v4/widget_review_changes/module.php:97 modules_v4/widget_stats/module.php:73 modules_v4/widget_surnames/module.php:80 modules_v4/widget_todays_events/module.php:62 modules_v4/widget_todo/module.php:59 modules_v4/widget_upcoming/module.php:69
 #: modules_v4/widget_yahrzeit/module.php:62 modules_v4/yahrzeit/module.php:63
 msgid "Configure"
@@ -9752,8 +9770,8 @@ msgstr "Utføringstid: %1$s sekund. Databasespørringar: %2$s. Personvernkontrol
 msgid "Pedigree tree of %s"
 msgstr "Anar til %s"
 
-#: library/KT/Controller/Pedigree.php:240 library/KT/Place.php:94 modules_v4/family_nav/module.php:258 modules_v4/googlemap/admin_places.php:587 modules_v4/googlemap/admin_places.php:594 modules_v4/googlemap/admin_places.php:649 modules_v4/googlemap/admin_places_edit.php:173 modules_v4/googlemap/admin_places_edit.php:220 modules_v4/googlemap/admin_places_edit.php:224 modules_v4/googlemap/module.php:1701 modules_v4/googlemap/placehierarchy.php:305 modules_v4/googlemap/placehierarchy.php:318
-#: modules_v4/googlemap/placehierarchy.php:320 modules_v4/googlemap/placehierarchy.php:386 modules_v4/googlemap/placehierarchy.php:399 modules_v4/googlemap/placehierarchy.php:401 placelist.php:114
+#: library/KT/Controller/Pedigree.php:240 library/KT/Place.php:94 modules_v4/family_nav/module.php:258 modules_v4/googlemap/admin_places.php:587 modules_v4/googlemap/admin_places.php:594 modules_v4/googlemap/admin_places.php:649 modules_v4/googlemap/admin_places_edit.php:173 modules_v4/googlemap/admin_places_edit.php:220 modules_v4/googlemap/admin_places_edit.php:224 modules_v4/googlemap/module.php:1705 modules_v4/googlemap/placehierarchy.php:305 modules_v4/googlemap/placehierarchy.php:318
+#: modules_v4/googlemap/placehierarchy.php:320 modules_v4/googlemap/placehierarchy.php:386 modules_v4/googlemap/placehierarchy.php:399 modules_v4/googlemap/placehierarchy.php:401 placelist.php:142
 msgid "unknown"
 msgstr "ukjend"
 
@@ -9762,7 +9780,7 @@ msgid "Edit repository"
 msgstr "Endre arkiv"
 
 #. I18N: Name of a module
-#: library/KT/Controller/Search.php:1200 modules_v4/stories/module.php:32 modules_v4/stories/module.php:596 search.php:153
+#: library/KT/Controller/Search.php:1200 modules_v4/stories/module.php:32 modules_v4/stories/module.php:599 search.php:153
 msgid "Stories"
 msgstr "Artiklar"
 
@@ -12895,7 +12913,7 @@ msgid "Abbreviation"
 msgstr "Korting"
 
 #. I18N: gedcom tag ADDR
-#: library/KT/Gedcom/Tag.php:115 modules_v4/tab_census/module.php:121
+#: library/KT/Gedcom/Tag.php:115 modules_v4/tab_census/module.php:110
 msgid "Address"
 msgstr "Adresse"
 
@@ -13180,7 +13198,7 @@ msgid "Place of cremation"
 msgstr ""
 
 #. I18N: gedcom tag CTRY
-#: library/KT/Gedcom/Tag.php:185 modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/admin_places_edit.php:282 modules_v4/googlemap/module.php:308 modules_v4/googlemap/module.php:401 modules_v4/googlemap/module.php:1495 modules_v4/googlemap/module.php:1633
+#: library/KT/Gedcom/Tag.php:185 modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/admin_places_edit.php:282 modules_v4/googlemap/module.php:308 modules_v4/googlemap/module.php:401 modules_v4/googlemap/module.php:1495 modules_v4/googlemap/module.php:1637
 msgid "Country"
 msgstr "Land"
 
@@ -13417,7 +13435,7 @@ msgid "Place of immigration"
 msgstr ""
 
 #. I18N: gedcom tag LATI
-#: library/KT/Gedcom/Tag.php:252 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1643
+#: library/KT/Gedcom/Tag.php:252 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1647
 msgid "Latitude"
 msgstr "Breiddegrad"
 
@@ -13427,7 +13445,7 @@ msgid "Legatee"
 msgstr "Arving"
 
 #. I18N: gedcom tag LONG
-#: library/KT/Gedcom/Tag.php:254 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1643
+#: library/KT/Gedcom/Tag.php:254 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1647
 msgid "Longitude"
 msgstr "lengdegrad"
 
@@ -14990,79 +15008,79 @@ msgstr "%s%%"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (stillborn)
-#: library/KT/I18N.php:375
+#: library/KT/I18N.php:387
 msgid "(stillborn)"
 msgstr "(dødfødd)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (in infancy)
-#: library/KT/I18N.php:378
+#: library/KT/I18N.php:390
 msgid "(in infancy)"
 msgstr "(som spedbarn)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (in childhood)
-#: library/KT/I18N.php:381
+#: library/KT/I18N.php:393
 msgid "(in childhood)"
 msgstr "(i barndomen)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (aged less than 21 years)
-#: library/KT/I18N.php:410
+#: library/KT/I18N.php:422
 #, php-format
 msgid "(aged less than %s)"
 msgstr "(yngre enn %s)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (aged more than 21 years)
-#: library/KT/I18N.php:413
+#: library/KT/I18N.php:425
 #, php-format
 msgid "(aged more than %s)"
 msgstr "(eldre enn %s)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (aged 43 years)
-#: library/KT/I18N.php:416 library/KT/I18N.php:420
+#: library/KT/I18N.php:428 library/KT/I18N.php:432
 #, php-format
 msgid "(aged %s)"
 msgstr "(alder %s)"
 
-#: library/KT/I18N.php:438
+#: library/KT/I18N.php:450
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "%s år sidan"
 msgstr[1] "%s år sidan"
 
-#: library/KT/I18N.php:441
+#: library/KT/I18N.php:453
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
 msgstr[0] "%s månad sidan"
 msgstr[1] "%s månader sidan"
 
-#: library/KT/I18N.php:444
+#: library/KT/I18N.php:456
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "%s dag sidan"
 msgstr[1] "%s dagar sidan"
 
-#: library/KT/I18N.php:447
+#: library/KT/I18N.php:459
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "%s time sidan"
 msgstr[1] "%s timar sidan"
 
-#: library/KT/I18N.php:450
+#: library/KT/I18N.php:462
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] "%s minutt sidan"
 msgstr[1] "%s minutt sidan"
 
-#: library/KT/I18N.php:452
+#: library/KT/I18N.php:464
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
@@ -15071,43 +15089,43 @@ msgstr[1] "%s sekund sidan"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox
 #. containing numeric options
-#: library/KT/I18N.php:669
+#: library/KT/I18N.php:681
 #, php-format
 msgid "Display %s"
 msgstr "Syn %s"
 
 #. I18N: button label, first page
-#: library/KT/I18N.php:712
+#: library/KT/I18N.php:724
 msgid "first"
 msgstr "fyrste"
 
 #. I18N: button label, last page
-#: library/KT/I18N.php:713
+#: library/KT/I18N.php:725
 msgid "last"
 msgstr "siste"
 
 #. I18N: button label, previous page
-#: library/KT/I18N.php:715 modules_v4/batch_update/admin_batch_update.php:101
+#: library/KT/I18N.php:727 modules_v4/batch_update/admin_batch_update.php:101
 msgid "previous"
 msgstr "førre"
 
-#: library/KT/I18N.php:717 library/KT/I18N.php:728
+#: library/KT/I18N.php:729 library/KT/I18N.php:740
 msgid "No records to display"
 msgstr "Ingen postar å syne"
 
 #. I18N: %s are placeholders for numbers
-#: library/KT/I18N.php:718 library/KT/I18N.php:719
+#: library/KT/I18N.php:730 library/KT/I18N.php:731
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
 msgstr "Syner %1$s til %2$s av %3$s"
 
 #. I18N: %s is a placeholder for a number
-#: library/KT/I18N.php:720
+#: library/KT/I18N.php:732
 #, php-format
 msgid "(filtered from %s total entries)"
 msgstr "(utvalt av totalt %s)"
 
-#: library/KT/I18N.php:724 library/KT/I18N.php:725
+#: library/KT/I18N.php:736 library/KT/I18N.php:737
 msgid "Loading…"
 msgstr ""
 
@@ -15119,12 +15137,11 @@ msgstr "Mine anar"
 msgid "My individual record"
 msgstr "Mine personlege data"
 
-#: library/KT/MenuBar.php:139 themes/_administration/header.php:216
+#: library/KT/MenuBar.php:145 themes/_administration/header.php:216
 msgid "Reports"
 msgstr "Rapportar"
 
-#: library/KT/MenuBar.php:156 lifespan.php:297 medialist.php:139 modules_v4/batch_update/plugins/search_replace.php:126 modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133 modules_v4/families/module.php:146 modules_v4/individuals/module.php:146 search.php:31 search.php:251 search.php:542 themes/colors/header.php:105 themes/colors/header.php:106 themes/levy/header.php:97 themes/levy/header.php:98 themes/webtrees/header.php:110 themes/webtrees/header.php:111
-#: themes/xenea/header.php:93
+#: library/KT/MenuBar.php:162 lifespan.php:297 medialist.php:139 modules_v4/batch_update/plugins/search_replace.php:126 modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133 modules_v4/families/module.php:146 modules_v4/individuals/module.php:146 search.php:31 search.php:251 search.php:542 themes/colors/header.php:105 themes/colors/header.php:106 themes/webtrees/header.php:109 themes/webtrees/header.php:114 themes/webtrees/header.php:115 themes/xenea/header.php:93
 msgid "Search"
 msgstr "Søk"
 
@@ -16581,233 +16598,228 @@ msgid_plural "%d Individuals"
 msgstr[0] "%d person"
 msgstr[1] "%d personar"
 
-#: login.php:69
+#: login.php:73
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
 
-#: login.php:72
+#: login.php:76
 msgid "This account has not been approved. Please wait for an administrator to approve it."
 msgstr ""
 
-#: login.php:76
+#: login.php:80
 msgid "The username or password is incorrect."
 msgstr "Feil brukarnamn eller passord."
 
-#: login.php:79
+#: login.php:83
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "Du kan ikkje logge inn fordi din nettlesar ikkje godtek infokapslar (cookies)."
 
-#: login.php:128
+#: login.php:132
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account. You will receive an email when your application has been approved."
 msgstr ""
 
-#: login.php:131
+#: login.php:135
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
 msgstr ""
 
-#: login.php:134
+#: login.php:138
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
 msgstr ""
 
-#: login.php:162 modules_v4/login_block/module.php:79
+#: login.php:166 modules_v4/login_block/module.php:79
 msgid "Request new password"
 msgstr "Be om nytt passord"
 
-#: login.php:166 login.php:250 modules_v4/gedcom_block/module.php:57 modules_v4/login_block/module.php:82
+#: login.php:170 login.php:254 modules_v4/gedcom_block/module.php:57 modules_v4/login_block/module.php:82
 msgid "Request new user account"
 msgstr "Søk om brukarkonto"
 
-#: login.php:175 login.php:193 login.php:218 modules_v4/login_block/module.php:91
+#: login.php:179 login.php:197 login.php:222 modules_v4/login_block/module.php:91
 msgid "Lost password request"
 msgstr "Nytt passord"
 
-#: login.php:177 modules_v4/login_block/module.php:93
+#: login.php:181 modules_v4/login_block/module.php:93
 msgid "Username or email address"
 msgstr "Brukarnamn eller e-postadresse"
 
-#: login.php:219
+#: login.php:223
 #, php-format
 msgid "Hello %s…"
 msgstr ""
 
-#: login.php:220
+#: login.php:224
 msgid "A new password has been requested for your username."
 msgstr ""
 
-#: login.php:223
+#: login.php:227
 msgid "After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password."
 msgstr ""
 
 #. I18N: %s is a username
-#: login.php:230
+#: login.php:234
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you login."
 msgstr ""
 
 #. I18N: %s is a username
-#: login.php:236
+#: login.php:240
 #, php-format
 msgid "There is no account with the username or email “%s”."
 msgstr ""
 
-#: login.php:257
+#: login.php:261
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
 msgstr ""
 
-#: login.php:262 message.php:61 modules_v4/contact/module.php:130
+#: login.php:266 message.php:66 modules_v4/contact/module.php:135
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Du har ikkje løyve til å sende meldingar som inneheld eksterne lenker."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com”
 #. and try again.’
-#: login.php:263 message.php:61 modules_v4/contact/module.php:130
+#: login.php:267 message.php:66 modules_v4/contact/module.php:135
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr ""
 
-#: login.php:294
+#: login.php:298
 msgid "Hello Administrator ..."
 msgstr "Hei administrator ..."
 
 #. I18N: %s is a server name/URL
-#: login.php:296
+#: login.php:300
 #, php-format
 msgid "A prospective user has registered at %s."
 msgstr ""
 
-#: login.php:299
+#: login.php:303
 msgid "Email Address"
 msgstr ""
 
-#: login.php:301
+#: login.php:305
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
 msgstr ""
 
-#: login.php:302
+#: login.php:306
 msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:304
+#: login.php:308
 #, php-format
 msgid "New registration at %s"
 msgstr "Ny registrering på %s"
 
-#: login.php:311
+#: login.php:315
 #, php-format
 msgid "Hello %s ..."
 msgstr "Hei %s ..."
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:313
+#: login.php:317
 #, php-format
 msgid "You (or someone claiming to be you) registered an account at %1$s using the email address %2$s."
 msgstr ""
 
-#: login.php:314
+#: login.php:318
 msgid "Follow this link to verify your email address."
 msgstr ""
 
-#: login.php:320
+#: login.php:324
 msgid "If you didn't request an account, you can just delete this message."
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:321
+#: login.php:325
 #, php-format
 msgid "Your registration at %s"
 msgstr "Di registrering hos %s"
 
-#: login.php:359
+#: login.php:363
 #, php-format
 msgid "Hello %s ...<br />Thank you for your registration."
 msgstr "Hei %s og takk for søknaden din om å få ein brukarkonto."
 
-#: login.php:360
+#: login.php:364
 #, php-format
 msgid ""
 "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, "
 "you will need to know your user name and password."
 msgstr ""
 
-#: login.php:379
+#: login.php:383
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
 msgstr "<div class=\"largeError\">NB:</div><div class=\"error\">Ved å fylle ut og sende inn dette skjemaet, erklærer du at du vil:<ul><li>respektere personvern av nolevande personar;</li><li>og forklare i kommentarfeltet nedanfor kven du er i slekt med, eller skaffe oss opplysningar om personar som vi bør ha denne slektsdatabasen.</li></ul></div>"
 
-#: login.php:385
+#: login.php:389
 msgid "All fields must be completed."
 msgstr "Alle felt må fyllast ut."
 
-#: login.php:399
+#: login.php:403
 msgid "Desired user name"
 msgstr "Ønska brukarnamn"
 
-#: login.php:404
+#: login.php:408
 msgid "Desired password"
 msgstr "Ønska passord"
 
-#. I18N: placeholder text for registration-comments field
-#: login.php:423
-msgid "Explain why you are requesting an account"
-msgstr ""
-
-#: login.php:448 login.php:452 login.php:513 login.php:517
+#: login.php:452 login.php:456 login.php:524 login.php:528
 msgid "User verification"
 msgstr "Brukargodkjenning"
 
-#: login.php:465
+#: login.php:474
 msgid "Verification code:"
 msgstr "Kontrollkode:"
 
-#: login.php:494
+#: login.php:505
 msgid "Hello administrator…"
 msgstr ""
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:496
+#: login.php:507
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Ein ny brukar (%1$s) har bedet om brukarkonto (%2$s) og har stadfesta e-postadressa (%3$s)."
 
-#: login.php:501
+#: login.php:512
 msgid "You need to review the account details."
 msgstr ""
 
 #. I18N: You need to:
-#: login.php:503
+#: login.php:514
 msgid "Set the status to “approved”."
 msgstr ""
 
 #. I18N: You need to:
-#: login.php:504
+#: login.php:515
 msgid "Set the access level for each tree."
 msgstr ""
 
 #. I18N: You need to:
-#: login.php:505
+#: login.php:516
 msgid "Set a role for this user."
 msgstr ""
 
 #. I18N: You need to:
-#: login.php:506
+#: login.php:517
 msgid "Link the user account to an individual."
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:508
+#: login.php:519
 #, php-format
 msgid "New user at %s"
 msgstr "Ny brukar på %s"
 
-#: login.php:540
+#: login.php:551
 msgid "You have confirmed your request to become a registered user."
 msgstr "Du har stadfesta din søknad om å få brukarkonto"
 
-#: login.php:541
+#: login.php:552
 msgid "The administrator has been informed. As soon as they give you permission you can login with your user name and password."
 msgstr ""
 
-#: login.php:546
+#: login.php:557
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr ""
 
@@ -16915,12 +16927,12 @@ msgstr ""
 msgid "Please enter a valid email address."
 msgstr "Skriv inn ei gyldig e-postadresse."
 
-#: message.php:90 modules_v4/contact/module.php:159
+#: message.php:96 modules_v4/contact/module.php:165
 #, php-format
 msgid "The message was successfully sent to %s."
 msgstr ""
 
-#: message.php:92 modules_v4/contact/module.php:161
+#: message.php:98 modules_v4/contact/module.php:167
 msgid "The message was not sent."
 msgstr ""
 
@@ -20373,7 +20385,7 @@ msgstr "Ein alternativ måte å syne diagram på."
 msgid "Pedigree of %s"
 msgstr "Anetre til %s"
 
-#: modules_v4/charts/module.php:105 modules_v4/tree/class_treeview.php:54 modules_v4/tree/class_treeview.php:142 modules_v4/tree/module.php:116
+#: modules_v4/charts/module.php:105 modules_v4/tree/class_treeview.php:54 modules_v4/tree/class_treeview.php:143 modules_v4/tree/module.php:116
 #, php-format
 msgid "Interactive tree of %s"
 msgstr "Interaktivt tre for %s"
@@ -20382,12 +20394,12 @@ msgstr "Interaktivt tre for %s"
 msgid "You must select an individual and chart type in the block configuration settings."
 msgstr "Du må velje ein startperson og ein diagramtype i innstillingane for denne blokka."
 
-#: modules_v4/charts/module.php:197 statistics.php:600
+#: modules_v4/charts/module.php:199 statistics.php:600
 msgid "Chart type"
 msgstr "Diagramtype"
 
 #. I18N: label for a yes/no option
-#: modules_v4/charts/module.php:234 modules_v4/gedcom_favorites/module.php:268 modules_v4/recent_changes/module.php:156 modules_v4/review_changes/module.php:181 modules_v4/todays_events/module.php:161 modules_v4/todo/module.php:190 modules_v4/top10_givnnames/module.php:154 modules_v4/top10_pageviews/module.php:142 modules_v4/top10_surnames/module.php:175 modules_v4/upcoming_events/module.php:163 modules_v4/yahrzeit/module.php:268
+#: modules_v4/charts/module.php:238 modules_v4/gedcom_favorites/module.php:268 modules_v4/gedcom_news/module.php:189 modules_v4/recent_changes/module.php:156 modules_v4/review_changes/module.php:181 modules_v4/todays_events/module.php:161 modules_v4/todo/module.php:190 modules_v4/top10_givnnames/module.php:154 modules_v4/top10_pageviews/module.php:142 modules_v4/top10_surnames/module.php:175 modules_v4/upcoming_events/module.php:163 modules_v4/yahrzeit/module.php:268
 msgid "Add a scrollbar when block contents grow"
 msgstr "Legg til rulleliste når innhaldet i blokka veks"
 
@@ -21068,7 +21080,7 @@ msgstr ""
 msgid "A narrative report of the descendants of one family or individual"
 msgstr ""
 
-#: modules_v4/faq/help_text.php:31 modules_v4/faq/module.php:341
+#: modules_v4/faq/help_text.php:31 modules_v4/faq/module.php:355
 msgid "Frequently asked questions"
 msgstr "Ofte stilte spørsmål"
 
@@ -21080,7 +21092,7 @@ msgstr ""
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "HTML kan nyttast for å formatere svaret og for å lenke til andre nettstadar."
 
-#: modules_v4/faq/help_text.php:39 modules_v4/faq/module.php:205 modules_v4/faq/module.php:464
+#: modules_v4/faq/help_text.php:39 modules_v4/faq/module.php:205 modules_v4/faq/module.php:478
 msgid "FAQ position"
 msgstr "FAQ-plassering"
 
@@ -21115,7 +21127,7 @@ msgid "This option will let you move an item upwards on the FAQ page.<br /><br /
 msgstr "Dette valet let deg flytte eit element oppover på FAQ-sida.<br /><br />Kvar gong du gjer bruk av dette valet, vil FAQ-posisjonnummeret for dette elementet minke med ein.  Du kan få same effekt ved å redigere det aktuelle elementet og endre FAQ-posisjonsfeltet.  Når fleire enn eitt element har same posisjonsnummer, vil kun eitt av elementa vere synleg."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
-#: modules_v4/faq/module.php:33 modules_v4/faq/module.php:109 modules_v4/faq/module.php:420
+#: modules_v4/faq/module.php:33 modules_v4/faq/module.php:109 modules_v4/faq/module.php:434
 msgid "FAQs"
 msgstr ""
 
@@ -21128,7 +21140,7 @@ msgstr "Liste over vanlege spørsmål og svar."
 msgid "Edit FAQ item"
 msgstr "Rediger FAQ-element"
 
-#: modules_v4/faq/module.php:168 modules_v4/faq/module.php:453
+#: modules_v4/faq/module.php:168 modules_v4/faq/module.php:467
 msgid "Add FAQ item"
 msgstr "Legg til FAQ-element"
 
@@ -21144,33 +21156,33 @@ msgstr "Svar"
 msgid "Show this block for which languages?"
 msgstr "For kva språk skal denne blokka synast?"
 
-#: modules_v4/faq/module.php:351
+#: modules_v4/faq/module.php:365
 msgid "Search FAQs"
 msgstr ""
 
 #. I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View
 #. FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
-#: modules_v4/faq/module.php:419 modules_v4/gallery/module.php:488 modules_v4/pages/module.php:440
+#: modules_v4/faq/module.php:433 modules_v4/gallery/module.php:488 modules_v4/pages/module.php:470
 msgid "Summary"
 msgstr ""
 
-#: modules_v4/faq/module.php:425
+#: modules_v4/faq/module.php:439
 msgid "Main menu and page title"
 msgstr ""
 
-#: modules_v4/faq/module.php:427 modules_v4/pages/help_text.php:52
+#: modules_v4/faq/module.php:441 modules_v4/pages/help_text.php:52
 msgid "Page description"
 msgstr ""
 
-#: modules_v4/faq/module.php:498
+#: modules_v4/faq/module.php:512
 msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "Er du sikker på at du vil slette dette spørsmål & svar"
 
-#: modules_v4/faq/module.php:515
+#: modules_v4/faq/module.php:529
 msgid "The FAQ list is empty."
 msgstr "Lista med spørsmål & svar er tom."
 
-#: modules_v4/faq/module.php:544
+#: modules_v4/faq/module.php:558
 msgid "Edit FAQ items"
 msgstr ""
 
@@ -21296,11 +21308,11 @@ msgstr ""
 msgid "Galleries"
 msgstr ""
 
-#: modules_v4/gallery/module.php:494 modules_v4/pages/module.php:446
+#: modules_v4/gallery/module.php:494 modules_v4/pages/module.php:476
 msgid "Main menu and summary page title"
 msgstr ""
 
-#: modules_v4/gallery/module.php:496 modules_v4/pages/module.php:448
+#: modules_v4/gallery/module.php:496 modules_v4/pages/module.php:478
 msgid "Summary page description"
 msgstr ""
 
@@ -21312,7 +21324,7 @@ msgstr ""
 msgid "Add gallery"
 msgstr ""
 
-#: modules_v4/gallery/module.php:599 modules_v4/pages/module.php:507
+#: modules_v4/gallery/module.php:599 modules_v4/pages/module.php:537
 msgid "No pages have been created"
 msgstr ""
 
@@ -21402,27 +21414,27 @@ msgstr "Nyhende"
 msgid "Family news and site announcements."
 msgstr "Nyhende og kunngjeringar."
 
-#: modules_v4/gedcom_news/module.php:93
+#: modules_v4/gedcom_news/module.php:91
 msgid "No News articles have been submitted."
 msgstr "Notis om nyhende er ikkje lagt inn."
 
-#: modules_v4/gedcom_news/module.php:121
+#: modules_v4/gedcom_news/module.php:119
 msgid "Are you sure you want to delete this News entry?"
 msgstr "Er du sikker på at du vil slette denne notisen?"
 
-#: modules_v4/gedcom_news/module.php:127
+#: modules_v4/gedcom_news/module.php:125
 msgid "Add a News article"
 msgstr "Legg inn ny notis"
 
-#: modules_v4/gedcom_news/module.php:170
+#: modules_v4/gedcom_news/module.php:175
 msgid "No limit"
 msgstr "Inga grense"
 
-#: modules_v4/gedcom_news/module.php:171
+#: modules_v4/gedcom_news/module.php:176
 msgid "Age of item"
 msgstr "Alder på notis"
 
-#: modules_v4/gedcom_news/module.php:172
+#: modules_v4/gedcom_news/module.php:177
 msgid "Number of items"
 msgstr "Tal på notisar"
 
@@ -21503,7 +21515,7 @@ msgstr "Andre oppføringar"
 msgid "Show link to Statistics charts?"
 msgstr "Syne lenke til statistikkdiagram?"
 
-#: modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/module.php:403 modules_v4/googlemap/module.php:1635
+#: modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/module.php:403 modules_v4/googlemap/module.php:1639
 msgid "Level"
 msgstr "Nivå"
 
@@ -21563,7 +21575,7 @@ msgstr "Fortsett å leggje til"
 msgid "By default the list shows only those places which can be matched between the Google Maps place list and your family trees.  You may have details for other places, such as those imported in bulk from an external file.  This option also allows you to list all the places that exist the Google Maps list, or just those that exist in the Google Maps table but not on your family trees."
 msgstr ""
 
-#: modules_v4/googlemap/admin_places.php:599 modules_v4/googlemap/admin_places.php:709 placelist.php:100
+#: modules_v4/googlemap/admin_places.php:599 modules_v4/googlemap/admin_places.php:709 placelist.php:128
 msgid "Top Level"
 msgstr "Toppnivå"
 
@@ -21695,7 +21707,7 @@ msgid "Events"
 msgstr "Hendingar"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: modules_v4/googlemap/googlemap.js.php:495 modules_v4/googlemap/module.php:266 modules_v4/googlemap/module.php:2021
+#: modules_v4/googlemap/googlemap.js.php:495 modules_v4/googlemap/module.php:266 modules_v4/googlemap/module.php:2025
 msgid "Google Street View™"
 msgstr "Google Street View™"
 
@@ -21915,15 +21927,15 @@ msgstr ""
 msgid "Include fully matched places: "
 msgstr "Inkluder stadar med 100% match: "
 
-#: modules_v4/googlemap/module.php:1627
+#: modules_v4/googlemap/module.php:1631
 msgid "Family tree place"
 msgstr ""
 
-#: modules_v4/googlemap/module.php:1628
+#: modules_v4/googlemap/module.php:1632
 msgid "Google Maps location data"
 msgstr ""
 
-#: modules_v4/googlemap/module.php:1696
+#: modules_v4/googlemap/module.php:1700
 msgid "Zoom="
 msgstr "Zoom="
 
@@ -22060,8 +22072,7 @@ msgid "A list of sources"
 msgstr ""
 
 #. I18N: Name of a module. (A list of users who are online now)
-#. I18N: Name of a module. (A list of users who are online now)
-#: modules_v4/logged_in/module.php:32 modules_v4/widget_logged_in/module.php:32 themes/levy/footer.php:37
+#: modules_v4/logged_in/module.php:32 modules_v4/widget_logged_in/module.php:32
 msgid "Who is online"
 msgstr "Kven er pålogga"
 
@@ -22225,7 +22236,7 @@ msgstr ""
 msgid "This is a sub-heading that will display below the Summary page title, above the tabbed list of pages. It can contain HTML elements including an image if you wish. Simply ensure there is no content if you do not want to display it."
 msgstr ""
 
-#: modules_v4/pages/module.php:33 modules_v4/pages/module.php:441
+#: modules_v4/pages/module.php:33 modules_v4/pages/module.php:471
 msgid "Pages"
 msgstr ""
 
@@ -22253,27 +22264,27 @@ msgstr ""
 msgid "Pages visibility"
 msgstr ""
 
-#: modules_v4/pages/module.php:380
+#: modules_v4/pages/module.php:410
 msgid "No content"
 msgstr ""
 
-#: modules_v4/pages/module.php:412
+#: modules_v4/pages/module.php:442
 msgid "Resources"
 msgstr ""
 
-#: modules_v4/pages/module.php:413
+#: modules_v4/pages/module.php:443
 msgid "These are resources"
 msgstr ""
 
-#: modules_v4/pages/module.php:462
+#: modules_v4/pages/module.php:492
 msgid "Add page"
 msgstr ""
 
-#: modules_v4/pages/module.php:469
+#: modules_v4/pages/module.php:499
 msgid "Position item"
 msgstr "Plassering"
 
-#: modules_v4/pages/module.php:494
+#: modules_v4/pages/module.php:524
 msgid "Are you sure you want to delete this page?"
 msgstr ""
 
@@ -22401,11 +22412,11 @@ msgstr ""
 msgid "Random image"
 msgstr ""
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:40 themes/kiwitrees/header.php:42 themes/levy/header.php:38 themes/webtrees/header.php:38 themes/xenea/header.php:38
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:40 themes/kiwitrees/header.php:42 themes/webtrees/header.php:38 themes/xenea/header.php:38
 msgid "Play"
 msgstr "Start avspeling"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:41 themes/kiwitrees/header.php:43 themes/levy/header.php:39 themes/webtrees/header.php:39 themes/xenea/header.php:39
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:41 themes/kiwitrees/header.php:43 themes/webtrees/header.php:39 themes/xenea/header.php:39
 msgid "Stop"
 msgstr "Stopp"
 
@@ -23035,11 +23046,11 @@ msgstr "Siste påminning med e-post blei sendt "
 msgid "Next email reminder will be sent after "
 msgstr "Neste påminning vil bli sendt med e-post etter "
 
-#: modules_v4/review_changes/module.php:172 modules_v4/widget_review_changes/module.php:171
+#: modules_v4/review_changes/module.php:172 modules_v4/widget_review_changes/module.php:173
 msgid "Send out reminder emails?"
 msgstr "Sende påminning med e-post?"
 
-#: modules_v4/review_changes/module.php:176 modules_v4/widget_review_changes/module.php:175
+#: modules_v4/review_changes/module.php:176 modules_v4/widget_review_changes/module.php:178
 msgid "Reminder email frequency (days)"
 msgstr "Kor ofte skal påminning sandast? (dagar)"
 
@@ -23085,7 +23096,7 @@ msgstr "Det er ikkje nokon kjelder knytt til denne personen."
 msgid "Add narrative stories to individuals in the family tree."
 msgstr "Legg til lengre tekst om personar i slektstreet."
 
-#: modules_v4/stories/module.php:155 modules_v4/stories/module.php:330 modules_v4/stories/module.php:502
+#: modules_v4/stories/module.php:155 modules_v4/stories/module.php:330 modules_v4/stories/module.php:505
 msgid "Add story"
 msgstr "Legg til artikkel"
 
@@ -23113,15 +23124,15 @@ msgstr ""
 msgid "Add another individual"
 msgstr ""
 
-#: modules_v4/stories/module.php:514
+#: modules_v4/stories/module.php:517
 msgid "Link"
 msgstr ""
 
-#: modules_v4/stories/module.php:540
+#: modules_v4/stories/module.php:543
 msgid "Are you sure you want to delete this story?"
 msgstr "Er du sikker på at du vil slette denne artikkelen?"
 
-#: modules_v4/stories/module.php:541
+#: modules_v4/stories/module.php:544
 msgid "Are you sure you want to link to this story?"
 msgstr ""
 
@@ -23135,15 +23146,15 @@ msgstr ""
 msgid "A tab summarising census events."
 msgstr ""
 
-#: modules_v4/tab_census/module.php:98
+#: modules_v4/tab_census/module.php:87
 msgid "Add census"
 msgstr ""
 
-#: modules_v4/tab_census/module.php:104
+#: modules_v4/tab_census/module.php:93
 msgid "Expand all sources"
 msgstr ""
 
-#: modules_v4/tab_census/module.php:110
+#: modules_v4/tab_census/module.php:99
 msgid "Expand all notes"
 msgstr ""
 
@@ -23275,20 +23286,24 @@ msgstr "Bruk kompakt utsjånad"
 msgid "Show all spouses and ancestors"
 msgstr "Syn alle ektefeller og anar"
 
+#: modules_v4/tree/class_treeview.php:65
+msgid "Toggle fullscreen view"
+msgstr ""
+
 #. I18N: e.g. “Son of [father name & mother name]”
-#: modules_v4/tree/class_treeview.php:337
+#: modules_v4/tree/class_treeview.php:338
 #, php-format
 msgid "Son of %s"
 msgstr "Son til %s"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
-#: modules_v4/tree/class_treeview.php:343
+#: modules_v4/tree/class_treeview.php:344
 #, php-format
 msgid "Daughter of %s"
 msgstr "Dotter til %s"
 
 #. I18N: e.g. “Child of [father name & mother name]”
-#: modules_v4/tree/class_treeview.php:349
+#: modules_v4/tree/class_treeview.php:350
 #, php-format
 msgid "Child of %s"
 msgstr "Barn til %s"
@@ -23431,21 +23446,21 @@ msgstr "Eldste nederst"
 msgid "Place List"
 msgstr "Liste over stadnamn"
 
-#: placelist.php:58
+#: placelist.php:81
 msgid "Switch to Place hierarchy"
 msgstr ""
 
-#: placelist.php:104
+#: placelist.php:132
 msgid "Switch to list view"
 msgstr ""
 
 #. I18N: %s is a country or region
-#: placelist.php:125
+#: placelist.php:153
 #, php-format
 msgid "Places in %s"
 msgstr "Stadar i %s"
 
-#: placelist.php:142
+#: placelist.php:170
 #, php-format
 msgid "View all records found in %s"
 msgstr ""
@@ -23820,11 +23835,11 @@ msgstr ""
 msgid "This must to be at least six characters.  It is case-sensitive."
 msgstr "Dette skal innehalde minst seks teikn, og er versalkjensleg. (skil mellom store og små bokstavar)"
 
-#: setup.php:941
+#: setup.php:942
 msgid "An unexpected database error occurred."
 msgstr "Ein uventa databasefeil har oppstått."
 
-#: setup.php:943
+#: setup.php:944
 msgid "The kiwitrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr ""
 
@@ -24302,12 +24317,12 @@ msgid "age"
 msgstr "alder"
 
 #. I18N: kiwitrees logo on page footer
-#: themes/_administration/footer.php:35 themes/colors/footer.php:43 themes/kiwitrees/footer.php:43 themes/levy/footer.php:43 themes/webtrees/footer.php:43 themes/xenea/footer.php:43
+#: themes/_administration/footer.php:35 themes/colors/footer.php:43 themes/kiwitrees/footer.php:43 themes/webtrees/footer.php:43 themes/xenea/footer.php:43
 #, php-format
 msgid "Powered by %s"
 msgstr ""
 
-#: themes/_administration/header.php:116 themes/kiwitrees/header.php:112
+#: themes/_administration/header.php:116 themes/kiwitrees/header.php:113
 msgid "Search trees"
 msgstr ""
 
@@ -24379,7 +24394,7 @@ msgstr "Faner"
 msgid "Blocks"
 msgstr "Blokker"
 
-#: themes/_administration/header.php:214 themes/webtrees/header.php:117 themes/xenea/header.php:118
+#: themes/_administration/header.php:214 themes/webtrees/header.php:124 themes/xenea/header.php:118
 msgid "Widgets"
 msgstr ""
 
@@ -24396,16 +24411,15 @@ msgstr ""
 msgid "If you have any questions or comments please contact us"
 msgstr ""
 
-#: themes/colors/header.php:50 themes/kiwitrees/header.php:52 themes/levy/header.php:48 themes/webtrees/header.php:48 themes/xenea/header.php:48
+#: themes/colors/header.php:50 themes/kiwitrees/header.php:52 themes/webtrees/header.php:48 themes/xenea/header.php:48
 msgid "Open in full browser window"
 msgstr ""
 
-#: themes/colors/header.php:135 themes/webtrees/header.php:125 themes/xenea/header.php:127
+#: themes/colors/header.php:135 themes/xenea/header.php:127
 msgid "Choose a page"
 msgstr ""
 
-#: themes/colors/templates/compactbox_template.php:48 themes/colors/templates/personbox_template.php:43 themes/kiwitrees/templates/compactbox_template.php:48 themes/kiwitrees/templates/personbox_template.php:42 themes/levy/templates/compactbox_template.php:48 themes/levy/templates/personbox_template.php:42 themes/webtrees/templates/compactbox_template.php:48 themes/webtrees/templates/personbox_template.php:42 themes/xenea/templates/compactbox_template.php:48
-#: themes/xenea/templates/personbox_template.php:42
+#: themes/colors/templates/compactbox_template.php:48 themes/colors/templates/personbox_template.php:43 themes/kiwitrees/templates/compactbox_template.php:48 themes/kiwitrees/templates/personbox_template.php:42 themes/webtrees/templates/compactbox_template.php:48 themes/webtrees/templates/personbox_template.php:42 themes/xenea/templates/compactbox_template.php:48 themes/xenea/templates/personbox_template.php:42
 msgid "Loading..."
 msgstr "Laster..."
 
@@ -24499,8 +24513,8 @@ msgstr "Teal Top"
 msgid "colors"
 msgstr ""
 
-#: themes/levy/functions.php:48
-msgid "For technical support or genealogy questions, please contact"
+#: themes/kiwitrees/header.php:157 themes/webtrees/header.php:134
+msgid "Main menu"
 msgstr ""
 
 #. I18N: Name of a theme.
@@ -24533,6 +24547,12 @@ msgstr "Syn ein aldersmarkør?"
 #: timeline.php:293
 msgid "Show lifespans"
 msgstr "Syn livsløp"
+
+#~ msgid "Explain why you are requesting an account"
+#~ msgstr "Explain why you are requesting an account"
+
+#~ msgid "For technical support or genealogy questions, please contact"
+#~ msgstr "For technical support or genealogy questions, please contact"
 
 #~ msgid "PhpGedView to kiwitrees transfer wizard"
 #~ msgstr "PhpGedView to kiwitrees transfer wizard"
