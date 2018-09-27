@@ -793,7 +793,10 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="parent_husb">
 				<div id="family_lines2"></div>
 				<div class="person_box empty_parent">
-					<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+					<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">
+						<i class="icon-sex_m_15x15"></i>
+						<span>', KT_I18N::translate('Add new'), '</span>
+					</a>
 				</div>';
 		}
 		echo '</div>';
@@ -801,7 +804,6 @@ function print_parents($famid, $personcount=1) {
 		if (isset($newparents) && $wife->getXref() != $newparents["WIFE"]) {
 			echo '<div class="facts_valueblue parent_wife">
 				<div id="family_lines2"></div>';
-
 			print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 3, 3, $personcount);
 		} elseif ($wife->getXref()) {
 			echo '<div class="parent_wife">
@@ -811,7 +813,11 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="parent_wife">
 				<div id="family_lines2"></div>
 				<div class="person_boxF empty_parent">
-					<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>';
+					<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">
+						<i class="icon-sex_f_15x15"></i>
+						<span>', KT_I18N::translate('Add new'), '</span>
+					</a>
+				</div>';
 		}
 		echo '</div>';
 		/* marriage details */

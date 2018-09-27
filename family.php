@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ $controller = new KT_Controller_Family();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	$controller->pageHeader();
-	
+
 	if ($controller->record->isMarkedDeleted()) {
 		if (KT_USER_CAN_ACCEPT) {
 			echo
@@ -87,14 +87,14 @@ echo '
 				print_parents($controller->record->getXref());
 				if (KT_USER_CAN_EDIT) {
 					if ($controller->diff_record) {
-						$husb=$controller->diff_record->getHusband();
+						$husb = $controller->diff_record->getHusband();
 					} else {
-						$husb=$controller->record->getHusband();
+						$husb = $controller->record->getHusband();
 					}
 					if ($controller->diff_record) {
-						$wife=$controller->diff_record->getWife();
+						$wife = $controller->diff_record->getWife();
 					} else {
-						$wife=$controller->record->getWife();
+						$wife = $controller->record->getWife();
 					}
 				}
 			echo '<div id="children">',
