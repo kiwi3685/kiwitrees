@@ -346,7 +346,7 @@ table#tvTreeBorder td,
 
 /* New css for fullscreen view */
 .tvfs-switch-full-screen:before {
-  content: '\2191';
+  content: "\2191";
 }
 .tvfs-full-screen {
   position: fixed;
@@ -358,5 +358,5 @@ table#tvTreeBorder td,
   width: 100%;
 }
 .tvfs-full-screen .tvfs-switch-full-screen:before {
-  content: '\2193';
+  content: "\2193";
 }
