@@ -229,6 +229,7 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 		}
 
 		$num_paths = 0;
+		//foreach ($paths as $path) {
 		foreach ($caAndPaths as $caAndPath) {
 			$path = $caAndPath->getPath();
 			// Extract the relationship names between pairs of individuals
@@ -252,13 +253,11 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 			$slcaKey = $caAndPath->getCommonAncestor();
 			$fam = null;
 			if (($slcaKey !== null) && ($showCa)) {
-				$caIsIndi = KT_GedcomRecord::getInstance($slcaKey, $KT_TREE);
-//				$caIsIndi = "Fisharebest\Webtrees\Individual" === get_class($record);
-
-				if ($caIsIndi) {
+				$record = KT_GedcomRecord::getInstance($slcaKey, $KT_TREE);
+				if ($record->getType() === 'INDI') {
 					//skip - slca is already in the path!
 				} else {
-					$fam = $record; //Family::getInstance($slcaKey, $WT_TREE);
+					$fam = $record;
 				}
 			}
 
@@ -281,17 +280,38 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 					case 'bro':
 					case 'sis':
 					case 'sib':
-						$table[$x + 1][$y] = '<div style="background:url(' . $KT_IMAGES['hline'] . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
+						//only draw this in certain cases!
+						if ((!$fam) || (count($fam->getSpouses()) === 0)) {
+							$table[$x + 1][$y] = '
+								<div style="background:url(' . $KT_IMAGES['hline'] . ') repeat-x center; width: 64px; text-align: center">
+									<div style="height: 32px;"><span style="background-color:white;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</span></div>
+									<div style="height: 32px;">' . $horizontal_arrow . '</div>
+								</div>
+							';
+						} else {
+							//keep the relationship for later
+							$skippedRelationship = $relationships[$n];
+						}
 						$x += 2;
 						break;
 					case 'son':
 					case 'dau':
 					case 'chi':
 						if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-							$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . ') center; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+							$table[$x + 1][$y - 1] = '
+								<div style="background:url(' . $diagonal2 . ') center; width: 64px; height: 64px; text-align: center;">
+									<div style="height: 32px; text-align: end;"><span style="background-color:white;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</span></div>
+									<div style="height: 32px; text-align: start;">' . $down_arrow . '</div>
+								</div>
+							';
 							$x += 2;
 						} else {
-							$table[$x][$y - 1] = '<div style="background:url(' . $KT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
+							$table[$x][$y - 1] = '
+								<div style="background:url(' . $KT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align: center;">
+									<div class="vline-text" style="display: inline-block; width:50%; line-height: 32px;"><span style="background-color:white;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</span></div>
+									<div style="display: inline-block; width:50%; line-height: 32px;">' . $down_arrow . '</span></div>
+								</div>
+							';
 						}
 						$y -= 2;
 						break;
@@ -299,10 +319,20 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 					case 'mot':
 					case 'par':
 						if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-							$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . ') center; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
+							$table[$x + 1][$y + 1] = '
+								<div style="background:url(' . $diagonal1 . ') center; width: 64px; height: 64px; text-align: center;">
+									<div style="height: 32px; text-align: start;"><span style="background-color:white;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</span></div>
+									<div style="height: 32px; text-align: end;">' . $up_arrow . '</div>
+								</div>
+							';
 							$x += 2;
 						} else {
-							$table[$x][$y + 1] = '<div style="background:url(' . $KT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
+							$table[$x][$y + 1] = '
+								<div style="background:url(' . $KT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align:center; ">
+									<div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;"><span style="background-color:white;">' . get_relationship_name_from_path($relationships[$n], KT_Person::getInstance($path[$n - 1], $KT_TREE), KT_Person::getInstance($path[$n + 1], $KT_TREE)) . '</span></div>
+									<div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div>
+								</div>
+							';
 						}
 						$y += 2;
 						break;
@@ -317,19 +347,81 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 					$table[$x][$y] = ob_get_clean();
 				}
 			}
-			echo '<table id="rel_'.$num_paths.'">';
-			for ($y = $max_y; $y >= $min_y; --$y) {
-				echo '<tr>';
-				for ($x = 0; $x <= $max_x; ++$x) {
-					echo '<td style="padding: 0;">';
-					if (isset($table[$x][$y])) {
-						echo $table[$x][$y];
+
+			if ($fam) {
+				$size = count($fam->getSpouses());
+
+				if ($size > 0) { //there may be families with siblings only (we still have a ca in that case)
+					$x = 0;
+					$y = $max_y + count($fam->getSpouses()) + 1;
+					foreach ($fam->getSpouses() as $indi) {
+						$individual = KT_Person::getInstance($indi->getXref(), $KT_TREE);
+						ob_start();
+						print_pedigree_person($individual, $show_full);
+						$table[$x][$y] = ob_get_clean();
+						//$x += 2;
+						$y -= 1;
 					}
-					echo '</td>';
+
+					//draw the extra lines
+					$relUp = KT_I18N::translate('parents');
+					if ($size == 1) {
+						//single parent (spouse unknown)
+						switch ($individual->getSex()) {
+						case 'M':
+							$relUp = KT_I18N::translate('father');
+							break;
+						case 'F':
+							$relUp = KT_I18N::translate('mother');
+							break;
+						default:
+							$relUp = KT_I18N::translate('parent');
+						}
+					}
+
+					switch ($skippedRelationship) {
+						case 'bro':
+							$relDn = KT_I18N::translate('son');
+							break;
+						case 'sis':
+							$relDn = KT_I18N::translate('daughter');
+							break;
+						default:
+							$relDn = KT_I18N::translate('child');
+					}
+
+					$table[0][$max_y + 1] = '
+						<div style="background:url(' . $KT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align:center; ">
+							<div style="display: inline-block; width: 50%; line-height: 32px;"><span style="background-color:white;">' . $relUp . '</span></div>
+							<div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div>
+						</div>
+					';
+
+					$table[1][$max_y + 1] = '
+						<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;">
+							<div style="height: 32px; text-align: end;"><span style="background-color:white;">' . $relDn . '</span></div>
+							<div style="height: 32px; text-align: start;">' . $down_arrow . '</div>
+						</div>
+					';
+
+					$max_x = max($max_x, $x); //shouldn't actually make any difference
+					$max_y += count($fam->getSpouses()) + 1;
 				}
-				echo '</tr>';
 			}
-			echo '</table><hr>';
+
+			echo '<table id="rel_' . $num_paths . '" style="border-collapse: collapse; margin: 20px auto;">';
+				for ($y = $max_y; $y >= $min_y; --$y) {
+					echo '<tr>';
+					for ($x = 0; $x <= $max_x; ++$x) {
+						echo '<td style="padding: 0;">';
+						if (isset($table[$x][$y])) {
+							echo $table[$x][$y];
+						}
+						echo '</td>';
+					}
+					echo '</tr>';
+				}
+			echo '</table>';
 		}
 
 		if (!$num_paths) {
@@ -340,7 +432,7 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 					echo KT_I18N::translate('If this is unexpected, and there are recent changes, you may have to follow this link: ');
 					?>
 					<a href="module.php?mod=batch_update&mod_action=admin_batch_update&xref=&action=&data=&ged=Osborne.ged&plugin=update_links_bu_plugin">
-						<?php echo I18N::translate('Update missing relationship links'); echo '.'; ?>
+						<?php echo I18N::translate('Update missing relationship links'); ?>
 					</a>
 					<?php
 				}

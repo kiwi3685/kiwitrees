@@ -1401,10 +1401,6 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
-#relationship-page {
-	overflow-x: auto;
-}
-
 #relationship-page .chart_options.block {
 	display: block;
 }

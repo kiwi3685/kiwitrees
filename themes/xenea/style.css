@@ -651,10 +651,6 @@ img.block { border:none; height:20px; vertical-align:middle;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
 
-#relationship-page {
-	overflow-x: auto;
-}
-
 #relationship-page .chart_options.block {
 	background: none;
 	border: 0;

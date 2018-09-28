@@ -298,10 +298,6 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {color:#000066;font-size: 16px;text-align:center;}
 
-#relationship-page {
-	overflow-x: auto;
-}
-
 #relationship-page .chart_options.block {
 	background: none;
 	border: 0;
