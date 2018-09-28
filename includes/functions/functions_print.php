@@ -395,18 +395,18 @@ function contact_links($ged_id = KT_GED_ID) {
 	}
 
 	if ($supportLink == $contactLink) {
-		return '<div class="contact_links">'.KT_I18N::translate('If you have any questions or comments please contact').' '.$supportLink.'</div>';
+		return '<div class="contact_links">'.KT_I18N::translate('If you have any questions or comments please contact %s', $supportLink) .'</div>';
 	} else {
 		if ($webmaster_user_id || $contact_user_id) {
 			$returnText = '<div class="contact_links">';
 				if ($supportLink && $webmaster_user_id) {
-					$returnText .= KT_I18N::translate('For technical support and information contact').' '.$supportLink;
+					$returnText .= KT_I18N::translate('For technical support and information please contact %s', $supportLink);
 					if ($contactLink) {
 						$returnText .= '<br>';
 					}
 				}
 				if ($contactLink && $contact_user_id) {
-					$returnText .= KT_I18N::translate('For help with genealogy questions contact').' '.$contactLink;
+					$returnText .= KT_I18N::translate('For help with genealogy questions please contact %s', $contactLink);
 				}
 			$returnText .= '</div>';
 			return $returnText;
