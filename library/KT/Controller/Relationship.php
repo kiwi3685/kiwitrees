@@ -103,58 +103,111 @@ class CommonAncestorAndPath {
 	}
 }
 
+class CorPlus {
+
+	private $cor;
+	private $actuallyBetterThan;
+	private $equivalentRelationships;
+
+	/**
+	 *
+	 * @return double
+	 */
+	public function getCor() {
+		return $this->cor;
+	}
+
+	/**
+	 *
+	 * @return int only abs value is relevant
+	 */
+	public function getActuallyBetterThan() {
+		return $this->actuallyBetterThan;
+	}
+
+	/**
+	 *
+	 * @return string[]|null
+	 */
+	public function getEquivalentRelationships() {
+		return $this->equivalentRelationships;
+	}
+
+	public function __construct($cor, $actuallyBetterThan, $equivalentRelationships) {
+		$this->cor = $cor;
+		$this->actuallyBetterThan = $actuallyBetterThan;
+		$this->equivalentRelationships = $equivalentRelationships;
+	}
+}
+
 /**
  * Controller for the relationships calculations
  */
 class KT_Controller_Relationship extends KT_Controller_Page {
 
 	/**
-	 * Convert a path (list of XREFs) to an "old-style" string of relationships.
-	 *
-	 * Return an empty array, if privacy rules prevent us viewing any node.
-	 *
-	 * @param GedcomRecord[] $path Alternately Individual / Family
-	 *
-	 * @return string[]
-	 */
-	public function oldStyleRelationshipPath(array $path) {
+	* Convert a path (list of XREFs) to an "old-style" string of relationships.
+	*
+	* Return an empty array, if privacy rules prevent us viewing any node.
+	*
+	* Adapted from webtrees\app\Http\Controllers\RelationshipsChartController.php
+	* @param string[] $path Alternately Individual / Family
+	*
+	* @return string[]
+	*/
+	public function oldStyleRelationshipPath(array $path): array {
+		$spouse_codes = [
+			'M' => 'hus',
+			'F' => 'wif',
+			'U' => 'spo',
+		];
+		$parent_codes = [
+			'M' => 'fat',
+			'F' => 'mot',
+			'U' => 'par',
+		];
+		$child_codes = [
+			'M' => 'son',
+			'F' => 'dau',
+			'U' => 'chi',
+		];
+		$sibling_codes = [
+			'M' => 'bro',
+			'F' => 'sis',
+			'U' => 'sib',
+		];
+		$relationships = [];
 		global $KT_TREE;
 
-		$spouse_codes  = array('M' => 'hus', 'F' => 'wif', 'U' => 'spo');
-		$parent_codes  = array('M' => 'fat', 'F' => 'mot', 'U' => 'par');
-		$child_codes   = array('M' => 'son', 'F' => 'dau', 'U' => 'chi');
-		$sibling_codes = array('M' => 'bro', 'F' => 'sis', 'U' => 'sib');
-		$relationships = array();
-
-		for ($i = 1; $i < count($path); $i += 2) {
+		for ($i = 1, $count = count($path); $i < $count; $i += 2) {
 			$family = KT_Family::getInstance($path[$i], $KT_TREE);
 			$prev   = KT_Person::getInstance($path[$i - 1], $KT_TREE);
 			$next   = KT_Person::getInstance($path[$i + 1], $KT_TREE);
 			if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->getXref() . '@/', $family->getGedcomRecord(), $match)) {
 				$rel1 = $match[1];
 			} else {
-				return array();
+				return [];
 			}
 			if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->getXref() . '@/', $family->getGedcomRecord(), $match)) {
 				$rel2 = $match[1];
 			} else {
-				return array();
+				return [];
 			}
 			if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
 				$relationships[$i] = $spouse_codes[$next->getSex()];
 			} elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
 				$relationships[$i] = $child_codes[$next->getSex()];
 			} elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-				$relationships[$i] = $parent_codes[$next->getSex()];
+					$relationships[$i] = $parent_codes[$next->getSex()];
 			} elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
-				$relationships[$i] = $sibling_codes[$next->getSex()];
+			$relationships[$i] = $sibling_codes[$next->getSex()];
 			}
 		}
 
 		return $relationships;
 	}
 
-	public function getCor($paths) {
+	public function getCorFromPaths($paths) {
 		$cor = 0.0;
 		foreach ($paths as $path) {
 			$pathSegments = count($path)-1;
@@ -176,79 +229,231 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 		return $cor;
 	}
 
-	public function calculateRelationships(KT_Person $person1, KT_Person $person2, $mode, $recursion) {
-		if ($mode === 1) {
-			//single slca
-			$caAndPaths = $this->calculateRelationships_slca($person1, $person2, $mode);
-			$paths = array();
-			foreach ($caAndPaths as $caAndPath) {
-				$paths[] = $caAndPath->getPath();
+	public function getCorFromCaAndPaths($caAndPaths) {
+		$bestPathLength = null;
+		$bestPath = null;
+
+		$cor = 0.0;
+		foreach ($caAndPaths as $caAndPath) {
+			$path = $caAndPath->getPath();
+			$pathSegments = count($path)-1;
+
+			//if ca is INDI, we have to add a single path for this ca.
+			//
+			//if ca is FAM, we actually have to add two paths (one per family spouse) of length $pathSegments+2
+			//i.e. the formula is
+			//$cor += 2*pow(2,-($pathSegments+2)/2);
+			//which is the same as
+			//$cor += pow(2,-$pathSegments/2);
+			//so we don't actually have to distinguish the two cases here!
+
+			//in each case,
+			//divide by 2 to collapse all 'INDI - FAM - INDI' segments to 'INDI - INDI' segments
+
+			$singleCor = pow(2,-$pathSegments/2);
+			$cor += $singleCor;
+
+			if (!$bestPathLength) {
+				$bestPathLength = $pathSegments/2;
+				$bestPath = $path;
 			}
-			return $paths;
 		}
 
-		if ($mode === 2) {
-			//all slcas
-			$caAndPaths = $this->calculateRelationships_slca($person1, $person2, $mode);
-			$paths = array();
-			foreach ($caAndPaths as $caAndPath) {
-				$paths[] = $caAndPath->getPath();
+		$actuallyBetterThan = 1;
+		$equivalentPathLength = -(log($cor,2));
+		$eplFraction = $equivalentPathLength - floor($equivalentPathLength);
+		if ($eplFraction < 0.001) {
+			$actuallyBetterThan = 0;
+		} else if ($eplFraction < 0.5) {
+			$actuallyBetterThan = -1;
+		}
+		$equivalentPathLength = (int)round($equivalentPathLength);
+		if ($equivalentPathLength == $bestPathLength) {
+			return new CorPlus($cor, $actuallyBetterThan, null);
+		}
+
+		//create an equivalent relationship that's similar 'in character'
+		//to the relationship established via the closest ca
+
+		$relationships = $this->oldStyleRelationshipPath($bestPath);
+		$up = array();
+		$right = array();
+		$dn = array();
+		foreach ($relationships as $rel) {
+			if (("mot" === $rel) || ("fat" === $rel)) {
+				$up[] = $rel;
+			} else if (("bro" === $rel) || ("sis" === $rel)) {
+				$right[] = $rel;
+			} else {
+				$dn[] = $rel;
 			}
-			return $paths;
 		}
 
-		if ($mode === 3) {
-			//lcas: all paths for COR (uncorrected coefficient of relationship)
-			$caAndPaths = $this->calculateRelationships_slca($person1, $person2, $mode);
-			$paths = array();
-			foreach ($caAndPaths as $caAndPath) {
-				$paths[] = $caAndPath->getPath();
+		$toRemove = $bestPathLength - $equivalentPathLength;
+		$upShortened = sizeof($up);
+		$dnShortened = sizeof($dn);
+		$diff = abs(sizeof($up) - sizeof($dn));
+		if ($toRemove <= $diff) {
+			//remove entirely from longer
+			if (sizeof($up) > sizeof($dn)) {
+				$upShortened -= $toRemove;
+			} else {
+				$dnShortened -= $toRemove;
 			}
-			return $paths;
+		} else {
+			if ($diff === 0) {
+				$toRemoveFromBoth = floor($toRemove/2);
+				$upShortened -= $toRemoveFromBoth;
+				$dnShortened -= $toRemoveFromBoth;
+				if ($toRemove % 2 !== 0) {
+					//we have to pick one
+					$upShortened -= 1;
+				}
+			} else {
+				//remove as much as possible from longer
+				$toRemoveFromBoth = ceil(($toRemove - $diff)/2);
+				$toRemoveFromLonger = $toRemove - $toRemoveFromBoth*2;
+
+				$upShortened -= $toRemoveFromBoth;
+				$dnShortened -= $toRemoveFromBoth;
+				if (sizeof($up) > sizeof($dn)) {
+					$upShortened -= $toRemoveFromLonger;
+				} else {
+					$dnShortened -= $toRemoveFromLonger;
+				}
+			}
 		}
 
-		if ($mode === 4) {
-			//adjusted original algorithm
-			return $this->calculateRelationships_withWeights($person1, $person2, 0);
+		//shorten 'least significant' parts of path
+		$shortenedRelationships = array();
+		for ($i=0; $i<$upShortened; $i++) {
+			$shortenedRelationships[] = $up[$i+sizeof($up)-$upShortened];
+		}
+		//0 or 1 times
+		foreach ($right as $rel) {
+			$shortenedRelationships[] = $rel;
+		}
+		for ($i=0; $i<$dnShortened; $i++) {
+			$shortenedRelationships[] = $dn[$i+sizeof($dn)-$dnShortened];
 		}
 
-		if ($mode === 5) {
-			//original algorithm, optimized
-			return $this->calculateRelationships_optimized($person1, $person2, 0);
-		}
-
-		if ($mode === 6) {
-			//original algorithm, optimized
-			return $this->calculateRelationships_optimized($person1, $person2, $recursion);
-		}
-
-		//mode 7: 1 with fallback to 5
-		$ret = $this->calculateRelationships($person1, $person2, 1, $recursion);
-		if (!empty($ret)) {
-			return $ret;
-		}
-		return $this->calculateRelationships($person1, $person2, 5, $recursion);
+		return new CorPlus($cor, $actuallyBetterThan, $shortenedRelationships);
 	}
 
-	public function calculateCaAndPaths_123456(KT_Person $person1, KT_Person $person2, $mode, $recursion) {
+	public function calculateRelationships_123456(KT_Person $individual1, KT_Person $individual2, $mode, $recursion, $beforeJD = null) {
+		global $KT_TREE;
+		return $this->x_calculateRelationships_123456($KT_TREE, $individual1->getXref(), $individual2->getXref(), $mode, $recursion, $beforeJD);
+	}
+
+	public function x_calculateRelationships_123456($KT_TREE, $xref1, $xref2, $mode, $recursion, $beforeJD = null) {
+		global $KT_TREE;
 		if ($mode === 1) {
 			//single slca
-			return $this->calculateRelationships_slca($person1, $person2, $mode);
+			$caAndPaths = $this->x_calculateRelationships_slca($KT_TREE, $xref1, $xref2, $mode);
+			$paths = array();
+			foreach ($caAndPaths as $caAndPath) {
+				$paths[] = $caAndPath->getPath();
+			}
+			return $paths;
 		}
 
 		if ($mode === 2) {
 			//all slcas
-			return $this->calculateRelationships_slca($person1, $person2, $mode);
+			$caAndPaths = $this->x_calculateRelationships_slca($KT_TREE, $xref1, $xref2, $mode);
+			$paths = array();
+			foreach ($caAndPaths as $caAndPath) {
+				$paths[] = $caAndPath->getPath();
+			}
+			return $paths;
 		}
 
 		if ($mode === 3) {
-			//lcas: all paths for COR (uncorrected coefficient of relationship)
-			return $this->calculateRelationships_slca($person1, $person2, $mode);
+			//lcas: all paths for CoR (uncorrected coefficient of relationship)
+			$caAndPaths = $this->x_calculateRelationships_slca($KT_TREE, $xref1, $xref2, $mode);
+			$paths = array();
+			foreach ($caAndPaths as $caAndPath) {
+				$paths[] = $caAndPath->getPath();
+			}
+			return $paths;
 		}
 
 		if ($mode === 4) {
-			//adjusted original algorithm
-			$paths = $this->calculateRelationships_withWeights($person1, $person2, 0);
+			//adjusted original algorithm + dated links
+			$ret = $this->x_calculateRelationships_withWeights($KT_TREE, $xref1, $xref2, 0, $beforeJD);
+			if (empty($ret) && $beforeJD) {
+				//beforeJD and nothing found - check if we can at least provide results via common ancestors
+				//(dated links may not have found anything due to insufficient dates)
+				return $this->x_calculateRelationships_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			}
+			return $ret;
+		}
+
+		if ($mode === 5) {
+			//original algorithm, optimized + dated links
+			$ret = $this->x_calculateRelationships_optimized($KT_TREE, $xref1, $xref2, 0, $beforeJD);
+			if (empty($ret) && $beforeJD) {
+				//beforeJD and nothing found - check if we can at least provide results via common ancestors
+				//(dated links may not have found anything due to insufficient dates)
+				return $this->x_calculateRelationships_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			}
+			return $ret;
+		}
+
+		if ($mode === 6) {
+			//original algorithm, optimized + dated links
+			$ret = $this->x_calculateRelationships_optimized($KT_TREE, $xref1, $xref2, $recursion, $beforeJD);
+			if (empty($ret) && $beforeJD) {
+				//beforeJD and nothing found - check if we can at least provide results via common ancestors
+				//(dated links may not have found anything due to insufficient dates)
+				return $this->x_calculateRelationships_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			}
+			return $ret;
+		}
+
+		//1 with fallback to 5
+		if ($mode === 7) {
+			//1
+			$ret = $this->x_calculateRelationships_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			if (!empty($ret)) {
+				return $ret;
+			}
+			//5 (directly: if $beforeJD, we don't have to fallback again to 1)
+			return $this->x_calculateRelationships_optimized($KT_TREE, $xref1, $xref2, 0, $beforeJD);
+			//return $this->x_calculateRelationships_123456($tree, $xref1, $xref2, 5, $recursion, $beforeJD);
+		}
+
+		return "unexpected mode!";
+	}
+
+	public function calculateCaAndPaths_123456(KT_Person $individual1, KT_Person $individual2, $mode, $recursion, $beforeJD = null) {
+		global $KT_TREE;
+		return $this->x_calculateCaAndPaths_123456($KT_TREE, $individual1->getXref(), $individual2->getXref(), $mode, $recursion, $beforeJD);
+	}
+
+	public function x_calculateCaAndPaths_123456($KT_TREE, $xref1, $xref2, $mode, $recursion, $beforeJD = null) {
+		if ($mode === 1) {
+			//single slca
+			return $this->x_calculateRelationships_slca($KT_TREE, $xref1, $xref2, $mode);
+		}
+
+		if ($mode === 2) {
+			//all slcas
+			return $this->x_calculateRelationships_slca($KT_TREE, $xref1, $xref2, $mode);
+		}
+
+		if ($mode === 3) {
+			//lcas: all paths for CoR (uncorrected coefficient of relationship)
+			return $this->x_calculateRelationships_slca($KT_TREE, $xref1, $xref2, $mode);
+		}
+
+		if ($mode === 4) {
+			//adjusted original algorithm + dated links
+			$paths = $this->x_calculateRelationships_withWeights($KT_TREE, $xref1, $xref2, 0, $beforeJD);
+			if (empty($paths) && $beforeJD) {
+				//beforeJD and nothing found - check if we can at least provide results via common ancestors
+				//(dated links may not have found anything due to insufficient dates)
+				return $this->x_calculateCaAndPaths_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			}
 			$caAndPaths = array();
 			foreach ($paths as $path) {
 				$caAndPaths[] = new CommonAncestorAndPath(null, $path);
@@ -257,8 +462,13 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 		}
 
 		if ($mode === 5) {
-			//original algorithm, optimized
-			$paths = $this->calculateRelationships_optimized($person1, $person2, 0);
+			//original algorithm, optimized + dated links
+			$paths = $this->x_calculateRelationships_optimized($KT_TREE, $xref1, $xref2, 0, $beforeJD);
+			if (empty($paths) && $beforeJD) {
+				//beforeJD and nothing found - check if we can at least provide results via common ancestors
+				//(dated links may not have found anything due to insufficient dates)
+				return $this->x_calculateCaAndPaths_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			}
 			$caAndPaths = array();
 			foreach ($paths as $path) {
 				$caAndPaths[] = new CommonAncestorAndPath(null, $path);
@@ -267,8 +477,13 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 		}
 
 		if ($mode === 6) {
-			//original algorithm, optimized
-			$paths = $this->calculateRelationships_optimized($person1, $person2, $recursion);
+			//original algorithm, optimized + dated links
+			$paths = $this->x_calculateRelationships_optimized($KT_TREE, $xref1, $xref2, $recursion, $beforeJD);
+			if (empty($paths) && $beforeJD) {
+				//beforeJD and nothing found - check if we can at least provide results via common ancestors
+				//(dated links may not have found anything due to insufficient dates)
+				return $this->x_calculateCaAndPaths_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			}
 			$caAndPaths = array();
 			foreach ($paths as $path) {
 				$caAndPaths[] = new CommonAncestorAndPath(null, $path);
@@ -277,40 +492,56 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 		}
 
 		//mode 7: 1 with fallback to 5
-		$ret = $this->calculateCaAndPaths_123456($person1, $person2, 1, $recursion);
-		if (!empty($ret)) {
-			return $ret;
+		if ($mode === 7) {
+			//1
+			$ret = $this->x_calculateCaAndPaths_123456($KT_TREE, $xref1, $xref2, 1, $recursion);
+			if (!empty($ret)) {
+				return $ret;
+			}
+			//5 (directly: if $beforeJD, we don't have to fallback again to 1)
+			$paths = $this->x_calculateRelationships_optimized($KT_TREE, $xref1, $xref2, 0, $beforeJD);
+			$caAndPaths = array();
+			foreach ($paths as $path) {
+				$caAndPaths[] = new CommonAncestorAndPath(null, $path);
+			}
+			return $caAndPaths;
+			//return $this->x_calculateCaAndPaths_123456($tree, $xref1, $xref2, 5, $recursion, $beforeJD);
 		}
-		return $this->calculateCaAndPaths_123456($person1, $person2, 5, $recursion);
+
+		return "unexpected mode!";
 	}
 
 	public static function compareCommonAncestorAndPath(CommonAncestorAndPath $a, CommonAncestorAndPath $b) {
 		if ($a == $b) {
 			return 0;
+    }
+    return ($a->getSize() < $b->getSize()) ? -1 : 1;
 	}
-	return ($a->getSize() < $b->getSize()) ? -1 : 1;
+
+	public function calculateRelationships_slca(KT_Person $individual1, KT_Person $individual2, $mode) {
+		global $KT_TREE;
+		return $this->x_calculateRelationships_slca($KT_TREE, $individual1->getXref(), $individual2->getXref(), $mode);
 	}
 
 	/**
 	 * 'naive' algorithm (no precomputations), performance seems to be sufficient for ~max. 15 generations
 	 *
-	 * @param KT_Person $person1
-	 * @param KT_Person $person2
-	 * @param integer    $mode
+	 * @param String  $xref1
+	 * @param String  $xref2
+	 * @param integer $mode
 	 *
 	 * @return CommonAncestorAndPath[]
 	 */
-	public function calculateRelationships_slca(KT_Person $person1, KT_Person $person2, $mode) {
-
-		global $KT_TREE;
+	public function x_calculateRelationships_slca($tree, $xref1, $xref2, $mode) {
 
 		$rows = KT_DB::prepare(
 			//we don't need 'FAMS', 'CHIL' (we're only ascending!)
 			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMC', 'HUSB', 'WIFE')" // AND l_from = :from
 		)->execute(array(
-			'tree_id' => $person1->getGedId()
+			'tree_id' => $tree->getTreeId()
+
 			//fetching one seems to be not much faster than fetching all ...
-			/*,'from' => $person1->getXref()*/
+			/*,'from' => $xref1()*/
 		))->fetchAll();
 
 		$graph = array();
@@ -320,9 +551,6 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 			}
 			$graph[$row->l_from][] = $row->l_to;
 		}
-
-		$xref1 = $person1->getXref();
-		$xref2 = $person2->getXref();
 
 		$queue1 = array(); //key = (generated); value = IdWithDescendant;
 		$queue1[] = new IdWithDescendant($xref1, new Descendant(null));
@@ -445,7 +673,7 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 			}
 		}
 
-		//sort by length
+		//sort by length (couold additional sort, in case of same length, by sth like distance to ca)
 		usort($paths, array($this,'compareCommonAncestorAndPath'));
 
 		if ($mode != 1) {
@@ -583,12 +811,19 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 	}
 
 	private static function debug_echo($xref) {
-		global $KT_TREE, $GEDCOM_ID_PREFIX;
-		if (substr($xref, 0, 1) === $GEDCOM_ID_PREFIX) {
-			$indi = KT_Person::getInstance($xref, $KT_TREE);
+		global $KT_TREE;
+
+		//not correct in all cases: INDIs may use different prefixes!
+		//$caIsIndi = (substr($slcaKey, 0, 1) === "I");
+
+		$caIsIndi = KT_GedcomRecord::getInstance($xref, $KT_TREE);
+//		$caIsIndi = "Fisharebest\Webtrees\Individual" === get_class($record);
+
+		if ($caIsIndi) {
+			$indi = $record; //KT_Person::getInstance($xref, $WT_TREE);
 			echo $indi->getFullName();
 		} else {
-			$fam = Family::getInstance($xref, $KT_TREE);
+			$fam = $record; //Family::getInstance($xref, $WT_TREE);
 			foreach ($fam->getSpouses() as $indi) {
 				$names[] = $indi->getFullName();
 			}
@@ -598,54 +833,105 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 		echo "<br />";
 	}
 
+	public function calculateRelationships_withWeights(KT_Person $individual1, KT_Person $individual2, $all, $beforeJD = null) {
+		global $KT_TREE;
+		return $this->x_calculateRelationships_withWeights($KT_TREE, $individual1->getXref(), $individual2->getXref(), $all, $beforeJD);
+	}
+
 	/**
 	 * Calculate the shortest paths - or all paths - between two individuals.
 	 * blood relationships preferred!
+	 * extension: only links established before given julian day
 	 *
-	 * @param KT_Person $person1
-	 * @param KT_Person $person2
-	 * @param bool       $all
+	 * @param String $xref1
+	 * @param String $xref2
+	 * @param bool   $all
 	 *
 	 * @return string[][]
 	 */
-	public function calculateRelationships_withWeights(KT_Person $person1, KT_Person $person2, $all, $notViaDescendants=false) {
-		$rows = KT_DB::prepare(
-			"SELECT l_from, l_to, l_type FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'CHIL', 'HUSB', 'WIFE')"
-		)->execute(array(
-			'tree_id' => $person1->getGedId(),
-		))->fetchAll();
-
-		$xref1    = $person1->getXref();
-		$xref2    = $person2->getXref();
-
+	public function x_calculateRelationships_withWeights($tree, $xref1, $xref2, $all, $beforeJD = null) {
 		$graph = array();
-		foreach ($rows as $row) {
-			if ($notViaDescendants) {
-				if (($row->l_from === $xref1) && ($row->l_type === 'FAMS')) {
-					//ignore!
-					continue;
+
+		if ($beforeJD === null) {
+			$rows = KT_DB::prepare(
+				"SELECT l_from, l_to, l_type FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
+			)->execute(array(
+				'tree_id' => $tree->getTreeId(),
+			))->fetchAll();
+
+			foreach ($rows as $row) {
+				if ($row->l_type === 'FAMS') {
+					//edge between 'descent' nodes
+					$graph["D_".$row->l_from]["D_".$row->l_to] = 1;
+
+					//revert as ascent node (HUSB/WIFE)
+					$graph["A_".$row->l_to]["A_".$row->l_from] = 1;
+				} else {
+					//edge between 'ascent' nodes
+					$graph["A_".$row->l_from]["A_".$row->l_to] = 1;
+
+					//revert as descent node (CHIL)
+					$graph["D_".$row->l_to]["D_".$row->l_from] = 1;
 				}
 
-				if (($row->l_to === $xref2) && (($row->l_type === 'HUSB') || ($row->l_type === 'WIFE'))) {
-					//ignore!
-					continue;
-				}
+				//edges connecting 'ascent' and 'descent' nodes
+				//(maybe added more than once per node)
+				$graph["A_".$row->l_from]["D_".$row->l_from] = 0; //turn around (related)
+				$graph["A_".$row->l_to]["D_".$row->l_to] = 0; //turn around (related)
+				$graph["D_".$row->l_from]["A_".$row->l_from] = 1000; //turn around (non-related)
+				$graph["D_".$row->l_to]["A_".$row->l_to] = 1000; //turn around (non-related)
 			}
+		} else {
+			//make sure the tables exist.
+			Sync::initializeSchema();
 
-			if (($row->l_type === 'FAMS') || ($row->l_type === 'CHIL')) {
+			$rows = KT_DB::prepare(
+				"SELECT l_from, l_to FROM `##link`
+				INNER JOIN ##rel_families ON ##link.l_to = ##rel_families.f_id AND ##link.l_file = ##rel_families.f_file AND ##rel_families.f_from < :beforeJD
+				WHERE l_file = :tree_id AND l_type = 'FAMS'"
+			)->execute(array(
+				'tree_id' => $tree->getTreeId(),
+				'beforeJD' => $beforeJD
+			))->fetchAll();
+
+			foreach ($rows as $row) {
 				//edge between 'descent' nodes
 				$graph["D_".$row->l_from]["D_".$row->l_to] = 1;
-			} else {
-				//edge between 'ascent' nodes
-				$graph["A_".$row->l_from]["A_".$row->l_to] = 1;
+
+				//revert as ascent node (HUSB/WIFE)
+				$graph["A_".$row->l_to]["A_".$row->l_from] = 1;
+
+				//edges connecting 'ascent' and 'descent' nodes
+				//(maybe added more than once per node)
+				$graph["A_".$row->l_from]["D_".$row->l_from] = 0; //turn around (related)
+				$graph["A_".$row->l_to]["D_".$row->l_to] = 0; //turn around (related)
+				$graph["D_".$row->l_from]["A_".$row->l_from] = 1000; //turn around (non-related)
+				$graph["D_".$row->l_to]["A_".$row->l_to] = 1000; //turn around (non-related)
 			}
 
-			//edges connecting 'ascent' and 'descent' nodes
-			//(maybe added more than once per node)
-			$graph["A_".$row->l_from]["D_".$row->l_from] = 0; //turn around (related)
-			$graph["A_".$row->l_to]["D_".$row->l_to] = 0; //turn around (related)
-			$graph["D_".$row->l_from]["A_".$row->l_from] = 1000; //turn around (non-related)
-			$graph["D_".$row->l_to]["A_".$row->l_to] = 1000; //turn around (non-related)
+			$rows = KT_DB::prepare(
+				"SELECT l_from, l_to FROM `##link`
+				INNER JOIN ##rel_individuals ON ##link.l_from = ##rel_individuals.i_id AND ##link.l_file = ##rel_individuals.i_file AND ##rel_individuals.i_from < :beforeJD
+				WHERE l_file = :tree_id AND l_type = 'FAMC'"
+			)->execute(array(
+				'tree_id' => $tree->getTreeId(),
+				'beforeJD' => $beforeJD
+			))->fetchAll();
+
+			foreach ($rows as $row) {
+				//edge between 'ascent' nodes
+				$graph["A_".$row->l_from]["A_".$row->l_to] = 1;
+
+				//revert as descent node (CHIL)
+				$graph["D_".$row->l_to]["D_".$row->l_from] = 1;
+
+				//edges connecting 'ascent' and 'descent' nodes
+				//(maybe added more than once per node)
+				$graph["A_".$row->l_from]["D_".$row->l_from] = 0; //turn around (related)
+				$graph["A_".$row->l_to]["D_".$row->l_to] = 0; //turn around (related)
+				$graph["D_".$row->l_from]["A_".$row->l_from] = 1000; //turn around (non-related)
+				$graph["D_".$row->l_to]["A_".$row->l_to] = 1000; //turn around (non-related)
+			}
 		}
 
 		$dijkstra = new OptimizedDijkstra($graph);
@@ -662,7 +948,7 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 				// Insert the paths into the queue, with an exclusion list.
 				$queue[] = array('path' => $path, 'exclude' => array());
 				// While there are un-extended paths
-				foreach ($queue as $next) {
+				while (list(, $next) = each($queue)) {
 					// For each family on the path
 					for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
 						$exclude   = $next['exclude'];
@@ -676,7 +962,7 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 						}
 						// Add any new path to the queue
 						$new_paths = $dijkstra->shortestPaths($xref1, $xref2, $costFunction, $exclude);
-						$new_paths = KT_Controller_Relationship::adjustPaths($new_paths);
+						$new_paths = ExtendedRelationshipController::adjustPaths($new_paths);
 						foreach ($new_paths as $new_path) {
 							$queue[] = array('path' => $new_path, 'exclude' => $exclude);
 						}
@@ -690,25 +976,73 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 			}
 		}
 
+		//1. would be nice to have additional tiebreakers for multiple paths with same length and same weight,
+		//in order to obtain consistent ordering;
+		//2. seems reasonable to use symmetric ordering (order should be the same when swapping source and target individual),
+		//otherwise potentially confusing;
+		//due to 2., we cannot use "shortest name" reliably, nor sth like positions of weights within the path
+		//we could use 'established on date', but that's too inefficient to determine
+		//
+		//remaining options (resulting order is semantically rather irrelevant):
+		//compare via participating individuals, use smallest alphanumeric id(s) as tiebreaker
+
 		return $paths;
 	}
 
-	//only adjustment from original: OptimizedDijkstra
-	public function calculateRelationships_optimized(KT_Person $person1, KT_Person $person2, $recursion) {
-		$rows = KT_DB::prepare(
-			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
-		)->execute(array(
-			'tree_id' => $person1->getGedId(),
-		))->fetchAll();
+	public function calculateRelationships_optimized(KT_Person $individual1, KT_Person $individual2, $recursion, $beforeJD = null) {
+		global $KT_TREE;
+		return $this->x_calculateRelationships_optimized($KT_TREE, $individual1->getXref(), $individual2->getXref(), $recursion, $beforeJD);
+	}
 
+	//adjustment from original: OptimizedDijkstra
+	//extension: only links established before given julian day
+	public function x_calculateRelationships_optimized($tree, $xref1, $xref2, $recursion, $beforeJD = null) {
 		$graph = array();
-		foreach ($rows as $row) {
-			$graph[$row->l_from][$row->l_to] = 1;
-			$graph[$row->l_to][$row->l_from] = 1;
+
+		if ($beforeJD === null) {
+			$rows = KT_DB::prepare(
+				"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
+			)->execute(array(
+				'tree_id' => $tree->getTreeId(),
+			))->fetchAll();
+
+			foreach ($rows as $row) {
+				$graph[$row->l_from][$row->l_to] = 1;
+				$graph[$row->l_to][$row->l_from] = 1;
+			}
+		} else {
+			//make sure the tables exist.
+			Sync::initializeSchema();
+
+			$rows = KT_DB::prepare(
+				"SELECT l_from, l_to FROM `##link`
+				INNER JOIN ##rel_families ON ##link.l_to = ##rel_families.f_id AND ##link.l_file = ##rel_families.f_file AND ##rel_families.f_from < :beforeJD
+				WHERE l_file = :tree_id AND l_type = 'FAMS'"
+			)->execute(array(
+				'tree_id' => $tree->getTreeId(),
+				'beforeJD' => $beforeJD
+			))->fetchAll();
+
+			foreach ($rows as $row) {
+				$graph[$row->l_from][$row->l_to] = 1;
+				$graph[$row->l_to][$row->l_from] = 1;
+			}
+
+			$rows = KT_DB::prepare(
+				"SELECT l_from, l_to FROM `##link`
+				INNER JOIN ##rel_individuals ON ##link.l_from = ##rel_individuals.i_id AND ##link.l_file = ##rel_individuals.i_file AND ##rel_individuals.i_from < :beforeJD
+				WHERE l_file = :tree_id AND l_type = 'FAMC'"
+			)->execute(array(
+				'tree_id' => $tree->getTreeId(),
+				'beforeJD' => $beforeJD
+			))->fetchAll();
+
+			foreach ($rows as $row) {
+				$graph[$row->l_from][$row->l_to] = 1;
+				$graph[$row->l_to][$row->l_from] = 1;
+			}
 		}
 
-		$xref1    = $person1->getXref();
-		$xref2    = $person2->getXref();
 		$dijkstra = new OptimizedDijkstra($graph);
 		$paths    = $dijkstra->shortestPaths($xref1, $xref2);
 
@@ -720,6 +1054,7 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 			// Insert the paths into the queue, with an exclusion list.
 			$queue[] = array('path' => $path, 'exclude' => array());
 			// While there are un-extended paths
+			//while (list(, $next) = each($queue)) {
 			foreach ($queue as $next) {
 				// For each family on the path
 				for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
@@ -769,5 +1104,4 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 
 		return $finalPaths;
 	}
-
 }

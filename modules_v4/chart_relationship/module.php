@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -136,6 +136,7 @@ class chart_relationship_KT_Module extends KT_Module implements KT_Module_Chart,
 		$rel1_ca	 = '1';
 		$rel2_ca	 = '1';
 		$rel3_ca	 = '1';
+		$showCa		 = '1';
 
 		if (KT_Filter::postBool('reset')) {
 			set_gedcom_setting(KT_GED_ID, 'CHART_1',							1);
@@ -152,6 +153,7 @@ class chart_relationship_KT_Module extends KT_Module implements KT_Module_Chart,
 			set_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	'1');
 			set_gedcom_setting(KT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA',			'1');
 			set_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA',			'1');
+			set_gedcom_setting(KT_GED_ID, 'CHART_SHOW_CAS',						'1');
 
 			AddToLog($this->getTitle().' set to default values', 'config');
 		}
@@ -171,6 +173,7 @@ class chart_relationship_KT_Module extends KT_Module implements KT_Module_Chart,
 			set_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	KT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI_SHOW_CA', KT_REGEX_INTEGER, $rel1_ca));
 			set_gedcom_setting(KT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA',			KT_Filter::post('NEW_TAB_REL_OF_PARENTS_SHOW_CA', KT_REGEX_INTEGER, $rel2_ca));
 			set_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA',			KT_Filter::post('NEW_TAB_REL_TO_SPOUSE_SHOW_CA', KT_REGEX_INTEGER, $rel3_ca));
+			set_gedcom_setting(KT_GED_ID, 'CHART_SHOW_CAS',						KT_Filter::post('NEW_CHART_SHOW_CAS', KT_REGEX_INTEGER, $showCa));
 
 			AddToLog($this->getTitle().' set to new values', 'config');
 		}
@@ -189,6 +192,7 @@ class chart_relationship_KT_Module extends KT_Module implements KT_Module_Chart,
 		$rel1_ca	 = get_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA');
 		$rel2_ca	 = get_gedcom_setting(KT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA');
 		$rel3_ca	 = get_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA');
+		$showCa		 = get_gedcom_setting(KT_GED_ID, 'CHART_SHOW_CAS');
 
 		?>
 
@@ -271,6 +275,12 @@ class chart_relationship_KT_Module extends KT_Module implements KT_Module_Chart,
 								<?php echo /* I18N: Configuration option for relationship chart */ KT_I18N::translate('Searching for all possible relationships can take a lot of time in complex trees, This option can help limit the extent of relationships included in the relationship chart.'); ?>
 							</div>
 						 </div>
+					</div>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ KT_I18N::translate('Show common ancestors'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_SHOW_CAS', $showCa); ?>
+						</div>
 					</div>
 				</div>
 				<div id="config-tab">

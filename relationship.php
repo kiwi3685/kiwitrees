@@ -25,6 +25,8 @@ define('KT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require KT_ROOT.'includes/functions/functions_edit.php';
 
+$showCa = boolval(get_gedcom_setting(KT_GED_ID, 'CHART_SHOW_CAS', '1'));
+
 $max_recursion = intval(get_gedcom_setting(KT_GED_ID, 'RELATIONSHIP_RECURSION'));
 
 $controller = new KT_Controller_Relationship();
@@ -33,6 +35,8 @@ $pid2       = KT_Filter::get('pid2', KT_REGEX_XREF);
 $show_full  = KT_Filter::getInteger('show_full', 0, 1, get_gedcom_setting(KT_GED_ID, 'PEDIGREE_FULL_DETAILS'));
 $recursion  = KT_Filter::getInteger('recursion', 0, $max_recursion, 0);
 $find		= KT_Filter::getInteger('find', 1, 7, 1);
+$beforeJD	= KT_Filter::getInteger('beforeJD', 0, PHP_INT_MAX, null);
+
 $person1	= KT_Person::getInstance($pid1, $KT_TREE);
 $person2	= KT_Person::getInstance($pid2, $KT_TREE);
 
@@ -40,20 +44,42 @@ $controller
 	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
+if ($beforeJD) {
+	$ymd = cal_from_jd($beforeJD, CAL_GREGORIAN);
+	$date = new Date($ymd["day"] . ' '. strtoupper($ymd["abbrevmonth"]) . ' ' . $ymd["year"]);
+	$dateDisplay = $date->display();
+}
+
 if ($person1 && $person2) {
+	$pageTitle = KT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName());
+	if ($beforeJD) {
+		//it'S ok to always print this: common ancestors are always before the given date as well!
+		$pageTitle .= ' (';
+		$pageTitle .= KT_I18N::translate('established before %1$s', $dateDisplay);
+		$pageTitle .= ')';
+	}
 	$controller
-		->setPageTitle(KT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
-		->pageHeader();
-	$paths = $controller->calculateRelationships($person1, $person2, $find, $recursion);
+		->setPageTitle($pageTitle)
+		->PageHeader();
+	$caAndPaths = $controller->calculateCaAndPaths_123456($person1, $person2, $find, $recursion, $beforeJD);
 
 } else {
 	$controller
 		->setPageTitle(KT_I18N::translate('Relationships'))
 		->pageHeader();
-	$paths = array();
+	//$paths = array();
+	$caAndPaths = array();
 }
-?>
 
+$chart1 = ($find == 1) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_1', '1')));
+$chart2 = ($find == 2) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_2', '0')));
+$chart3 = ($find == 3) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_3', '1')));
+$chart4 = ($find == 4) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_4', '1')));
+$chart5 = ($find == 5) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_5', '1')));
+$chart6 = ($find == 6) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_6', '0')));
+$chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')));
+
+?>
 <div id="relationship-page">
 	<h2>
 		<?php echo $controller->getPageTitle() ?>
@@ -64,6 +90,9 @@ if ($person1 && $person2) {
 		<?php } ?>
 	</h2>
 	<form name="people" method="get" action="?">
+		<?php if ($beforeJD !== null): ?>
+			<input type="hidden" name="beforeJD" value="<?php echo $beforeJD ?>">
+		<?php endif; ?>
 		<input type="hidden" name="ged" value="<?php echo KT_GEDCOM; ?>">
 		<div id="row1">
 			<div class="chart_options">
@@ -87,51 +116,57 @@ if ($person1 && $person2) {
 			</button>
 		</div>
 		<div id="row2">
-			<?php if (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_1'))): ?>
+			<?php if ($chart1): ?>
 				<div class="chart_options block">
 					<input type="radio" class="inline" id="chart1" name="find" value="1" <?php echo ($find === 1) ? 'checked' : ''; ?>>
 					<label for = "chart1" class="inline"><?php echo KT_I18N::translate('Find a closest relationship via common ancestors'); ?></label>
 				</div>
 			<?php endif; ?>
-			<?php if (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_2'))): ?>
+			<?php if ($chart2): ?>
 				<div class="chart_options block">
 					<input type="radio" class="inline" id="chart2" name="find" value="2"<?php echo ($find === 2) ? 'checked' : ''; ?>>
 					<label for = "chart2" class="inline"><?php echo KT_I18N::translate('Find all smallest lowest common ancestors, show a closest connection for each'); ?></label>
 				</div>
 			<?php endif; ?>
-			<?php if (get_gedcom_setting(KT_GED_ID, 'CHART_3')): ?>
+			<?php if ($chart3): ?>
 				<div class="chart_options block">
 					<input type="radio" class="inline" id="chart3" name="find" value="3"<?php echo ($find === 3) ? 'checked' : ''; ?>>
 					<label for = "chart3" class="inline"><?php echo KT_I18N::translate('Find all relationships via lowest common ancestors'); ?></label>
 				</div>
 			<?php endif; ?>
-			<?php if (get_gedcom_setting(KT_GED_ID, 'CHART_4')): ?>
+			<?php if ($beforeJD && ($chart4 || $chart5 || $chart6 || $chart7)): ?>
+			<p class="small text-muted">
+				<?php echo I18N::translate('The following options refer to overall connections established before %1$s.',$dateDisplay) ?>
+
+			</p>
+			<?php endif; ?>
+			<?php if ($chart4): ?>
 				<div class="chart_options block">
 					<input type="radio" class="inline" id="chart4" name="find" value="4"<?php echo ($find === 4) ? 'checked' : ''; ?>>
 					<label for = "chart4" class="inline"><?php echo KT_I18N::translate('Find the closest overall connections (preferably via common ancestors)'); ?></label>
 				</div>
 			<?php endif; ?>
-			<?php if (get_gedcom_setting(KT_GED_ID, 'CHART_7')): ?>
+			<?php if ($chart7): ?>
 				<div class="chart_options block">
 					<input type="radio" class="inline" id="chart7" name="find" value="7"<?php echo ($find === 7) ? 'checked' : ''; ?>>
 					<label for = "chart7" class="inline"><?php echo KT_I18N::translate('Find a closest relationship via common ancestors, or fallback to the closest overall connection'); ?></label>
 				</div>
 			<?php endif; ?>
 			<?php if ($max_recursion == 0): ?>
-				<?php if (get_gedcom_setting(KT_GED_ID, 'CHART_5')): ?>
+				<?php if ($chart5): ?>
 					<div class="chart_options block">
 						<input type="radio" class="inline" id="chart5" name="find" value="5"<?php echo ($find === 5) ? 'checked' : ''; ?>>
 						<label for = "chart5" class="inline"><?php echo KT_I18N::translate('Find the closest overall connections') ?>
 					</div>
 				<?php endif; ?>
 			<?php else: ?>
-				<?php if (get_gedcom_setting(KT_GED_ID, 'CHART_5')): ?>
+				<?php if ($chart5): ?>
 					<div class="chart_options block">
 						<input type="radio" class="inline" id="chart5" name="find" value="5"<?php echo ($find === 5) ? 'checked' : ''; ?>>
 						<label for = "chart5" class="inline"><?php echo KT_I18N::translate('Find the closest overall connections') ?></label>
 					</div>
 				<?php endif; ?>
-				<?php if (get_gedcom_setting(KT_GED_ID, 'CHART_6')): ?>
+				<?php if ($chart6): ?>
 					<div class="chart_options block">
 						<input type="radio" class="inline" id="chart6" name="find" value="6"<?php echo ($find === 6) ? 'checked' : ''; ?>>
 						<input type="hidden" name="recursion" value="<?php echo $max_recursion ?>">
@@ -165,32 +200,67 @@ if ($person1 && $person2) {
 		$down_arrow = ' <i class="icon-darrow"></i>';
 
 		if ($find == 3) {
-			$cor = $controller->getCor($paths);
+			//$cor = $controller->getCorFromPaths($paths);
+			$corPlus	= $controller->getCorFromCaAndPaths($caAndPaths);
+			$cor		= $corPlus->getCor();
 			echo '<h3>', KT_I18N::translate('Uncorrected CoR (Coefficient of Relationship): %s', KT_I18n::percentage($cor, 2)); ?>
 			<div class="helpcontent">
 				<?php echo /* I18N: Configuration option */ KT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank" rel="noopener noreferrer">Coefficient of Relationship</a>'); ?>
 			</div>
 			<?php
-			echo KT_I18N::translate('(Number of relationships: %s)', count($paths)), '</h3>';
+			echo KT_I18N::translate('(Number of relationships: %s)', count($caAndPaths)), '</h3>';
+			if (count($caAndPaths) > 1) {
+				$er = $corPlus->getEquivalentRelationships();
+				echo '(';
+				if ($er === null) {
+					echo KT_I18N::translate('that\'s overall not significantly closer than the closest relationship via common ancestors');
+				} else {
+					if ($corPlus->getActuallyBetterThan() === 0) {
+						echo KT_I18N::translate('that\'s overall as close as:').' ';
+					} else if ($corPlus->getActuallyBetterThan() < 0) {
+						echo KT_I18N::translate('that\'s overall almost as close as:').' ';
+					} else {
+						echo KT_I18N::translate('that\'s overall closer than:').' ';
+					}
+					echo get_relationship_name_from_path(implode('', $er), $person1, $person2);
+				}
+				echo ')';
+			}
 		}
 
 		$num_paths = 0;
-		foreach ($paths as $path) {
+		foreach ($caAndPaths as $caAndPath) {
+			$path = $caAndPath->getPath();
 			// Extract the relationship names between pairs of individuals
 			$relationships = $controller->oldStyleRelationshipPath($path);
 			if (empty($relationships)) {
 				// Cannot see one of the families/individuals, due to privacy;
 				continue;
 			}
+			$sosa = 0;
 			$num_paths++;
 			echo '<h3>';
-				if (count($paths) > 1) {
-					echo '<a href="#" onclick="return expand_layer(\'rel_'.$num_paths.'\');" class="top">
+				if (count($caAndPaths) > 1) {
+					echo '<a href="#" onclick="return expand_layer(\'rel_' . $num_paths . '\');" class="top">
 						<i id="rel_'.$num_paths.'_img" class="icon-minus" title="', KT_I18N::translate('View Relationship'), '"></i>
 					</a> ';
 				}
 				echo KT_I18N::translate('Relationship: %s', get_relationship_name_from_path(implode('', $relationships), $person1, $person2)), '
 			</h3>';
+
+			//add common ancestors (if configured and not already included)
+			$slcaKey = $caAndPath->getCommonAncestor();
+			$fam = null;
+			if (($slcaKey !== null) && ($showCa)) {
+				$caIsIndi = KT_GedcomRecord::getInstance($slcaKey, $KT_TREE);
+//				$caIsIndi = "Fisharebest\Webtrees\Individual" === get_class($record);
+
+				if ($caIsIndi) {
+					//skip - slca is already in the path!
+				} else {
+					$fam = $record; //Family::getInstance($slcaKey, $WT_TREE);
+				}
+			}
 
 			// Use a table/grid for layout.
 			$table = array();
@@ -263,7 +333,19 @@ if ($person1 && $person2) {
 		}
 
 		if (!$num_paths) {
-			echo '<p>', KT_I18N::translate('No link between the two individuals could be found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No link between the two individuals could be found.');
+			if ($beforeJD !== null) {
+				if (KT_USER_GEDCOM_ADMIN) {
+					echo ' ';
+					echo KT_I18N::translate('If this is unexpected, and there are recent changes, you may have to follow this link: ');
+					?>
+					<a href="module.php?mod=batch_update&mod_action=admin_batch_update&xref=&action=&data=&ged=Osborne.ged&plugin=update_links_bu_plugin">
+						<?php echo I18N::translate('Update missing relationship links'); echo '.'; ?>
+					</a>
+					<?php
+				}
+			}
+			echo '</p>';
 		}
 	echo '</div>'; // close page
 }
