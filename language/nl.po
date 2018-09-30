@@ -6,14 +6,15 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 # Nigel Osborne <kiwi3685@me.com>, 2016
 # wim meijberg <jwmeijberg@home.nl>, 2016-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2018-09-19 16:44+1200\n"
-"PO-Revision-Date: 2018-09-21 09:47+1200\n"
+"POT-Creation-Date: 2018-09-28 16:10+1200\n"
+"PO-Revision-Date: 2018-10-01 12:30+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/kiwitrees/kiwitrees/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +75,7 @@ msgstr "De map %s bestaat niet, en kon niet aangemaakt worden."
 
 #: addmedia.php:125 admin_media_upload.php:91
 msgid "The media file you selected either has a size of zero bytes or is too large to be uploaded."
-msgstr ""
+msgstr "Het geselecteerde mediabestand heeft een grootte van nul bytes of is te groot om te uploaden."
 
 #: addmedia.php:139 admin_media_upload.php:105
 msgid "Thumbnails must be images."
@@ -184,7 +185,7 @@ msgstr "Niet wijzigen om originele bestandsnaam te behouden."
 
 #: addmedia.php:513
 msgid "You may enter a URL, beginning with \"http://\"."
-msgstr ""
+msgstr "U kunt een URL invoeren, beginnend met \"http: //\"."
 
 #. I18N: Help text for add media screens
 #: addmedia.php:552
@@ -215,7 +216,7 @@ msgstr "Als u een groot aantal mediabestanden heeft, kunt u deze organiseren in 
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
 msgstr "Gebruik dit keuzeveld om aan te geven of de afbeelding de gemarkeerde of primaire is, die aan deze persoon is gekoppeld.<br />De gemarkeerde afbeelding wordt gebruikt op diagrammen en op de persoonspagina."
 
-#: addmedia.php:800 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:138 admin_module_reports.php:109 admin_module_sidebar.php:138 admin_module_tabs.php:138 admin_module_widgets.php:139 admin_modules.php:203 admin_site_config.php:471 admin_site_lang.php:120 admin_site_lang.php:148 admin_trees_config.php:1409 admin_trees_manage.php:367 admin_trees_merge.php:196 admin_users.php:658 block_edit.php:66 edit_interface.php:166 edit_interface.php:266 edit_interface.php:325 edit_interface.php:484 edit_interface.php:555 edit_interface.php:816 edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137 edit_interface.php:1264 edit_interface.php:2158 edit_interface.php:2316 edit_interface.php:2579 edituser.php:191 find.php:502 includes/functions/functions_edit.php:964 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/calendar_utilities/module.php:167 modules_v4/census_assistant/census-edit.php:123 modules_v4/chart_relationship/module.php:416 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/faq/module.php:226 modules_v4/faq/module.php:448 modules_v4/gallery/module.php:360 modules_v4/gallery/module.php:519 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:620 modules_v4/googlemap/module.php:688 modules_v4/googlemap/placehierarchy.php:233 modules_v4/pages/module.php:258
+#: addmedia.php:800 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:138 admin_module_reports.php:109 admin_module_sidebar.php:138 admin_module_tabs.php:138 admin_module_widgets.php:139 admin_modules.php:203 admin_site_config.php:471 admin_site_lang.php:120 admin_site_lang.php:148 admin_trees_config.php:1409 admin_trees_manage.php:367 admin_trees_merge.php:196 admin_users.php:658 block_edit.php:66 edit_interface.php:166 edit_interface.php:266 edit_interface.php:325 edit_interface.php:484 edit_interface.php:555 edit_interface.php:816 edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137 edit_interface.php:1264 edit_interface.php:2158 edit_interface.php:2316 edit_interface.php:2579 edituser.php:191 find.php:502 includes/functions/functions_edit.php:964 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/calendar_utilities/module.php:167 modules_v4/census_assistant/census-edit.php:123 modules_v4/chart_relationship/module.php:426 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/faq/module.php:226 modules_v4/faq/module.php:448 modules_v4/gallery/module.php:360 modules_v4/gallery/module.php:519 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:620 modules_v4/googlemap/module.php:688 modules_v4/googlemap/placehierarchy.php:233 modules_v4/pages/module.php:258
 msgid "Save"
 msgstr "Opslaan"
 
@@ -582,7 +583,7 @@ msgstr "robot"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Toegangsbeperking middels het gebruik van IP-adressen en gebruikers-tekenreeksen"
 
-#: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:35 admin_trees_check.php:36 admin_trees_manage.php:270 admin_trees_renumber.php:64 admin_trees_sanity.php:131 modules_v4/album/module.php:271 modules_v4/backup_to_dropbox/module.php:107 modules_v4/census_assistant/census-edit.php:53 modules_v4/census_assistant/census-edit.php:54 modules_v4/chart_relationship/module.php:196 modules_v4/gallery/module.php:484
+#: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:35 admin_trees_check.php:36 admin_trees_manage.php:270 admin_trees_renumber.php:64 admin_trees_sanity.php:131 modules_v4/album/module.php:271 modules_v4/backup_to_dropbox/module.php:107 modules_v4/census_assistant/census-edit.php:53 modules_v4/census_assistant/census-edit.php:54 modules_v4/chart_relationship/module.php:200 modules_v4/gallery/module.php:484
 msgid "View FAQ for this page."
 msgstr "Bekijk FAQ voor deze pagina."
 
@@ -623,7 +624,7 @@ msgstr "Verwijder"
 msgid "This will delete all your access rules and replace with basic kiwitrees defaults. Are you sure?"
 msgstr "Dit verwijderd al uw toegangsregels en vervangt dit met kiwitrees basisinstellingen. Weet u dit zeker?"
 
-#: admin_site_access.php:305 modules_v4/chart_relationship/module.php:423 modules_v4/custom_js/module.php:90 modules_v4/fancy_imagebar/module.php:364 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:393 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:395 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:388 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:390 modules_v4/report_changes/module.php:205 modules_v4/report_marriages/module.php:162 modules_v4/report_vital_records/module.php:178 statistics.php:667
+#: admin_site_access.php:305 modules_v4/chart_relationship/module.php:433 modules_v4/custom_js/module.php:90 modules_v4/fancy_imagebar/module.php:364 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:393 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:395 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:388 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:390 modules_v4/report_changes/module.php:205 modules_v4/report_marriages/module.php:162 modules_v4/report_vital_records/module.php:178 statistics.php:667
 msgid "reset"
 msgstr "reset"
 
@@ -705,9 +706,8 @@ msgid "Choose user defined welcome text typed below"
 msgstr "Kies de hieronder aangemaakte zelfgedefinieerde welkomsttekst"
 
 #: admin_site_config.php:101
-#| msgid "Please enter a valid email address."
 msgid "You included one or more invalid email addresses."
-msgstr ""
+msgstr "U hebt een of meer ongeldige e-mailadressen toegevoegd."
 
 #: admin_site_config.php:166 admin_site_config.php:253
 msgid "Mail configuration"
@@ -931,13 +931,12 @@ msgid "When set to <b>Yes</b>, the following message will appear above the input
 msgstr "Staat dit ingesteld op <b>Ja</b>, dan wordt de volgende melding getoond boven de invoervelden op de pagina voor het aanvragen van een nieuw gebruikersaccount: <div class=\"list_value_wrap\"><div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">Door dit formulier in te vullen en te verzenden, gaat u akkoord met:<ul><li> het respecteren van de privacy van nog levende personen, die op onze site voorkomen;</li><li>en dat u in het onderstaande vak uitlegt aan wie u verwant bent, of dat u ons van informatie voorziet over iemand die op onze site vermeld zou moeten staan.</li></ul></div></div>"
 
 #: admin_site_config.php:415
-#| msgid "Email address"
 msgid "Blocked email address list"
-msgstr ""
+msgstr "Geblokkeerde e-mailadreslijst"
 
 #: admin_site_config.php:419
 msgid "Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log."
-msgstr ""
+msgstr "Voeg e-mailadressen toe aan deze lijst om te voorkomen dat ze worden gebruikt om op deze site te registreren. Scheid elk adres met een komma. Telkens wanneer een bezoeker een van deze adressen probeert te registreren, wordt zijn poging genegeerd en een bericht toegevoegd aan het foutenlogboek van de site."
 
 #: admin_site_config.php:428
 msgid "Select the languages your site will use"
@@ -1014,7 +1013,7 @@ msgstr "Bericht"
 msgid "User"
 msgstr "Gebruiker"
 
-#: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286 admin_trees_change.php:310 admin_trees_duplicates.php:134 admin_trees_findunlinked.php:112 admin_trees_manage.php:280 admin_trees_missing.php:106 admin_trees_places.php:103 admin_trees_sanity.php:141 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_users.php:608 edit_changes.php:167 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:200 modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:305 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:455 modules_v4/faq/module.php:479 modules_v4/gallery/module.php:525 modules_v4/gallery/module.php:549 modules_v4/googlemap/module.php:1493 modules_v4/html/module.php:288 modules_v4/pages/module.php:486 modules_v4/stories/module.php:492 modules_v4/widget_html/module.php:171
+#: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286 admin_trees_change.php:310 admin_trees_duplicates.php:134 admin_trees_findunlinked.php:112 admin_trees_manage.php:280 admin_trees_missing.php:106 admin_trees_places.php:103 admin_trees_sanity.php:141 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_users.php:608 edit_changes.php:167 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:204 modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:305 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:455 modules_v4/faq/module.php:479 modules_v4/gallery/module.php:525 modules_v4/gallery/module.php:549 modules_v4/googlemap/module.php:1493 modules_v4/html/module.php:288 modules_v4/pages/module.php:486 modules_v4/stories/module.php:492 modules_v4/widget_html/module.php:171
 msgid "Family tree"
 msgstr "Stamboom"
 
@@ -2373,7 +2372,7 @@ msgstr "Bewaar media objecten"
 
 #: admin_trees_manage.php:232
 msgid "If you have created media objects in kiwitrees, and edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM. <p style=\"color:red\">Otherwise, ensure this box is NOT checked</p>"
-msgstr ""
+msgstr "Als u media-objecten in kiwitrees hebt gemaakt en uw gedcom off-line hebt bewerkt met een programma dat media-objecten verwijdert, vinkt u dit selectievakje aan om de huidige media-objecten samen te voegen met de nieuwe GEDCOM.<p style=\"color:red\">Anders, ervoor zorgen dat dit vakje NIET is aangevinkt</p>"
 
 #: admin_trees_manage.php:237
 msgid "Add spaces where notes were wrapped"
@@ -2593,7 +2592,6 @@ msgid "Generations"
 msgstr "Generaties"
 
 #. I18N: heading for report on missing data
-#. I18N: heading for report on related individuals
 #. I18N: heading for report on related individuals
 #: admin_trees_missing.php:251 modules_v4/report_related_fam/module.php:200 modules_v4/report_related_indi/module.php:174
 #, php-format
@@ -3453,7 +3451,7 @@ msgstr "Daitch-Mokotoff"
 #. I18N::translate('Font size');
 #. echo $controller->fontScale;
 #. I18N: A button label.
-#: branches.php:85 calendar.php:203 modules_v4/chart_fanchart/module.php:128 relationship.php:86
+#: branches.php:85 calendar.php:203 modules_v4/chart_fanchart/module.php:128 relationship.php:115
 msgid "Show"
 msgstr "Toon"
 
@@ -3559,7 +3557,7 @@ msgstr "U heeft geen toestemming om deze pagina te zien."
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: edit_changes.php:31 help_text.php:601 modules_v4/report_changes/module.php:252 modules_v4/review_changes/module.php:32 modules_v4/widget_review_changes/module.php:32 themes/_administration/header.php:109 themes/colors/header.php:113 themes/kiwitrees/header.php:120 themes/webtrees/header.php:97 themes/xenea/header.php:103
+#: edit_changes.php:31 help_text.php:601 modules_v4/report_changes/module.php:252 modules_v4/review_changes/module.php:32 modules_v4/widget_review_changes/module.php:32 themes/_administration/header.php:109 themes/colors/header.php:113 themes/kiwitrees/header.php:120 themes/levy/header.php:105 themes/webtrees/header.php:97 themes/xenea/header.php:103
 msgid "Pending changes"
 msgstr "Uitstaande wijzigingen"
 
@@ -3757,7 +3755,7 @@ msgstr "sorteer op datum"
 msgid "Change Family Members"
 msgstr "Wijzig gezinsleden"
 
-#: edit_interface.php:2186 edit_interface.php:2289 includes/functions/functions.php:1238 modules_v4/googlemap/googlemap.php:298 modules_v4/googlemap/googlemap.php:325
+#: edit_interface.php:2186 edit_interface.php:2289 includes/functions/functions.php:1238 modules_v4/googlemap/googlemap.php:298 modules_v4/googlemap/googlemap.php:325 relationship.php:390
 msgid "child"
 msgstr "kind"
 
@@ -3793,11 +3791,11 @@ msgstr "echtgenote"
 msgid "spouse"
 msgstr "huwelijkspartner"
 
-#: edit_interface.php:2287 includes/functions/functions.php:1236 includes/functions/functions_charts.php:284 includes/functions/functions_charts.php:852 modules_v4/googlemap/googlemap.php:294 modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341
+#: edit_interface.php:2287 includes/functions/functions.php:1236 includes/functions/functions_charts.php:284 includes/functions/functions_charts.php:858 modules_v4/googlemap/googlemap.php:294 modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341 relationship.php:384
 msgid "son"
 msgstr "zoon"
 
-#: edit_interface.php:2288 includes/functions/functions.php:1237 includes/functions/functions_charts.php:285 includes/functions/functions_charts.php:853 modules_v4/googlemap/googlemap.php:289 modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342
+#: edit_interface.php:2288 includes/functions/functions.php:1237 includes/functions/functions_charts.php:285 includes/functions/functions_charts.php:859 modules_v4/googlemap/googlemap.php:289 modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342 relationship.php:387
 msgid "daughter"
 msgstr "dochter"
 
@@ -5508,15 +5506,15 @@ msgstr "%1$d x %2$s"
 msgid "self"
 msgstr "zelf"
 
-#: includes/functions/functions.php:1194
+#: includes/functions/functions.php:1194 relationship.php:375
 msgid "mother"
 msgstr "moeder"
 
-#: includes/functions/functions.php:1195
+#: includes/functions/functions.php:1195 relationship.php:372
 msgid "father"
 msgstr "vader"
 
-#: includes/functions/functions.php:1196
+#: includes/functions/functions.php:1196 relationship.php:378
 msgid "parent"
 msgstr "ouder"
 
@@ -7972,27 +7970,27 @@ msgstr "Klik de naam om een persoon toe te voegen aan een lijst van koppelingen.
 msgid "Close"
 msgstr "Sluit"
 
-#: includes/functions/functions_charts.php:275 includes/functions/functions_charts.php:844 library/KT/Controller/Descendancy.php:247 modules_v4/descendancy/module.php:205 modules_v4/descendancy/module.php:224
+#: includes/functions/functions_charts.php:275 includes/functions/functions_charts.php:850 library/KT/Controller/Descendancy.php:247 modules_v4/descendancy/module.php:205 modules_v4/descendancy/module.php:224
 msgid "No children"
 msgstr "Geen kinderen"
 
 #. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:277 includes/functions/functions_charts.php:846
+#: includes/functions/functions_charts.php:277 includes/functions/functions_charts.php:852
 #, php-format
 msgid "%d Child"
 msgid_plural "%d Children"
 msgstr[0] "%d Kind"
 msgstr[1] "%d Kinderen"
 
-#: includes/functions/functions_charts.php:283 includes/functions/functions_charts.php:851 library/KT/Controller/Family.php:127
+#: includes/functions/functions_charts.php:283 includes/functions/functions_charts.php:857 library/KT/Controller/Family.php:127
 msgid "Add a child to this family"
 msgstr "Voeg een kind toe aan dit gezin"
 
-#: includes/functions/functions_charts.php:432 includes/functions/functions_charts.php:612 includes/functions/functions_charts.php:905
+#: includes/functions/functions_charts.php:432 includes/functions/functions_charts.php:612 includes/functions/functions_charts.php:911
 msgid "This family remained childless"
 msgstr "Dit gezin bleef kinderloos"
 
-#: includes/functions/functions_charts.php:669 includes/functions/functions_charts.php:681 includes/functions/functions_charts.php:700 includes/functions/functions_charts.php:705 includes/functions/functions_charts.php:737 includes/functions/functions_charts.php:749 includes/functions/functions_charts.php:768 includes/functions/functions_charts.php:773 includes/functions/functions_charts.php:796 includes/functions/functions_charts.php:814
+#: includes/functions/functions_charts.php:669 includes/functions/functions_charts.php:681 includes/functions/functions_charts.php:700 includes/functions/functions_charts.php:705 includes/functions/functions_charts.php:737 includes/functions/functions_charts.php:749 includes/functions/functions_charts.php:768 includes/functions/functions_charts.php:773 includes/functions/functions_charts.php:798 includes/functions/functions_charts.php:818
 msgid "Add new"
 msgstr "Voeg nieuw toe"
 
@@ -8389,16 +8387,22 @@ msgstr[0] "%d aangemelde gebruiker"
 msgstr[1] "%d aangemelde gebruikers"
 
 #: includes/functions/functions_print.php:398
-msgid "If you have any questions or comments please contact"
-msgstr "Heeft u vragen of opmerkingen neem a.u.b. contact op met"
+#, php-format
+#| msgid "If you have any questions or comments please contact us"
+msgid "If you have any questions or comments please contact %s"
+msgstr "Als u vragen of opmerkingen heeft, neem dan contact op met%s"
 
 #: includes/functions/functions_print.php:403
-msgid "For technical support and information contact"
-msgstr "Voor technische ondersteuning en informatie, neem contact op met"
+#, php-format
+#| msgid "For technical support and information contact"
+msgid "For technical support and information please contact %s"
+msgstr "Neem voor technische ondersteuning en informatie contact op met%s"
 
 #: includes/functions/functions_print.php:409
-msgid "For help with genealogy questions contact"
-msgstr "Neem voor genealogische vragen contact op met"
+#, php-format
+#| msgid "For help with genealogy questions contact"
+msgid "For help with genealogy questions please contact %s"
+msgstr "Neem voor hulp bij genealogische vragen contact op met%s"
 
 #: includes/functions/functions_print.php:470 library/KT/Note.php:94
 msgid "…"
@@ -8412,7 +8416,7 @@ msgstr "Deze informatie is privé en kan niet getoond worden."
 msgid "For more information contact"
 msgstr "Neem voor meer informatie contact op met"
 
-#: includes/functions/functions_print.php:683 includes/functions/functions_print_lists.php:357 relationship.php:51
+#: includes/functions/functions_print.php:683 includes/functions/functions_print_lists.php:357 relationship.php:68
 msgid "Relationships"
 msgstr "Verwantschappen"
 
@@ -15084,7 +15088,7 @@ msgstr "Mijn persoonsrecord"
 msgid "Reports"
 msgstr "Rapporten"
 
-#: library/KT/MenuBar.php:162 lifespan.php:297 medialist.php:139 modules_v4/batch_update/plugins/search_replace.php:126 modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133 modules_v4/families/module.php:146 modules_v4/individuals/module.php:146 search.php:31 search.php:251 search.php:542 themes/colors/header.php:105 themes/colors/header.php:106 themes/webtrees/header.php:109 themes/webtrees/header.php:114 themes/webtrees/header.php:115 themes/xenea/header.php:93
+#: library/KT/MenuBar.php:162 lifespan.php:297 medialist.php:139 modules_v4/batch_update/plugins/search_replace.php:126 modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133 modules_v4/families/module.php:146 modules_v4/individuals/module.php:146 search.php:31 search.php:251 search.php:542 themes/colors/header.php:105 themes/colors/header.php:106 themes/levy/header.php:97 themes/levy/header.php:98 themes/webtrees/header.php:109 themes/webtrees/header.php:114 themes/webtrees/header.php:115 themes/xenea/header.php:93
 msgid "Search"
 msgstr "Zoek"
 
@@ -20173,120 +20177,120 @@ msgid "unlimited"
 msgstr "onbeperkt"
 
 #. I18N: Configuration page title
-#: modules_v4/chart_relationship/module.php:197
+#: modules_v4/chart_relationship/module.php:201
 msgid "Relationship calculation options"
 msgstr "Verwantschap berekening opties"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:207
+#: modules_v4/chart_relationship/module.php:211
 msgid "Chart settings"
 msgstr "Diagram instellingen"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:208
+#: modules_v4/chart_relationship/module.php:212
 msgid "Options to show in the chart"
 msgstr "Optie om te tonen in het diagram"
 
-#: modules_v4/chart_relationship/module.php:210 modules_v4/chart_relationship/module.php:290 modules_v4/chart_relationship/module.php:349 modules_v4/chart_relationship/module.php:387 relationship.php:93
+#: modules_v4/chart_relationship/module.php:214 modules_v4/chart_relationship/module.php:300 modules_v4/chart_relationship/module.php:359 modules_v4/chart_relationship/module.php:397 relationship.php:122
 msgid "Find a closest relationship via common ancestors"
 msgstr "Vind de dichtstbijzijnde verwantschap via gemeenschappelijke voorouders"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:214
+#: modules_v4/chart_relationship/module.php:218
 msgid "Determines the shortest path between two individuals via a LCA (lowest common ancestor), i.e. a common ancestor who only appears on the path once."
 msgstr "Bepaalt de kortste weg tussen twee personen via een LCA (laagste gemeenschappelijke voorouder), b.v. een gemeenschappelijke voorouder, die maar eenmaal voorkomt op het pad."
 
-#: modules_v4/chart_relationship/module.php:219 modules_v4/chart_relationship/module.php:296 modules_v4/chart_relationship/module.php:355 modules_v4/chart_relationship/module.php:393 relationship.php:99
+#: modules_v4/chart_relationship/module.php:223 modules_v4/chart_relationship/module.php:306 modules_v4/chart_relationship/module.php:365 modules_v4/chart_relationship/module.php:403 relationship.php:128
 msgid "Find all smallest lowest common ancestors, show a closest connection for each"
 msgstr "Vind alle kleinste laagste gemeenschappelijke voorouders, toon de kortste verbinding voor elk."
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:223
+#: modules_v4/chart_relationship/module.php:227
 msgid "Each SLCA (smallest lowest common ancestor) essentially represents a part of the tree which both individuals share (as part of their ancestors). More technically, the SLCA set of two individuals is a subset of the LCA set (excluding all LCAs that are themselves ancestors of other LCAs)."
 msgstr "Elke SLCA (kleinste laagste gemeenschappelijke voorouder) is in wezen een gedeelte van de stamboom welke personen delen (als deel van hun voorouders). Meer technisch, de SLCA instelling van 2 personen is een subinstelling van de LCA instelling (exclusief alle LCAs die zelf voorouders van andere LCAs zijn)."
 
-#: modules_v4/chart_relationship/module.php:228 modules_v4/chart_relationship/module.php:302 modules_v4/chart_relationship/module.php:361 modules_v4/chart_relationship/module.php:399 relationship.php:105
+#: modules_v4/chart_relationship/module.php:232 modules_v4/chart_relationship/module.php:312 modules_v4/chart_relationship/module.php:371 modules_v4/chart_relationship/module.php:409 relationship.php:134
 msgid "Find all relationships via lowest common ancestors"
 msgstr "Vind alle verwantschappen via laagste gemeenschappelijke voorouders."
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:232 relationship.php:171
+#: modules_v4/chart_relationship/module.php:236 relationship.php:208
 msgid "All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\" rel=\"noopener noreferrer\">Coefficient of Relationship</a>"
 msgstr "Alle paden tussen de twee personen die bijdragen aan de CoR (Coëfficiënt van verwantschap), zoals hier gedefiniëerd: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\" rel=\"noopener noreferrer\">Coefficient of Relationship</a>"
 
-#: modules_v4/chart_relationship/module.php:237 modules_v4/chart_relationship/module.php:308 relationship.php:111
+#: modules_v4/chart_relationship/module.php:241 modules_v4/chart_relationship/module.php:318 relationship.php:146
 msgid "Find the closest overall connections (preferably via common ancestors)"
 msgstr "Vind de dichtstbijzijnde algemene verbinding (bij voorkeur via gemeenschappelijke voorouders)"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:241
+#: modules_v4/chart_relationship/module.php:245
 msgid "Prefers partial paths via common ancestors, even if there is no direct common ancestor."
 msgstr "Geeft de voorkeur aan gedeeltelijke paden via gemeenschappelijke voorouders, zelfs als er geen directe gemeenschappelijke voorouder is."
 
-#: modules_v4/chart_relationship/module.php:246 modules_v4/chart_relationship/module.php:314 relationship.php:117
+#: modules_v4/chart_relationship/module.php:250 modules_v4/chart_relationship/module.php:324 relationship.php:152
 msgid "Find a closest relationship via common ancestors, or fallback to the closest overall connection"
 msgstr "Vind de dichtsbijzijnde verwantschap via gemeenschappelijke voorouders of val terug naar de dichtstbijzijnde algemene verbinding"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:250
+#: modules_v4/chart_relationship/module.php:254
 msgid "For close relationships similar to the previous option, but faster. Internally just a combination of two other methods."
 msgstr "Voor dichtstbijzijnde verwantschappen vergelijkbaar aan de vorige optie, maar sneller. Eigenlijk een combinatie van twee andere methoden."
 
-#: modules_v4/chart_relationship/module.php:255 modules_v4/chart_relationship/module.php:320 relationship.php:124 relationship.php:131
+#: modules_v4/chart_relationship/module.php:259 modules_v4/chart_relationship/module.php:330 relationship.php:159 relationship.php:166
 msgid "Find the closest overall connections"
 msgstr "Vind de dichtstbijzijnde algemene verbinding"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:261 modules_v4/chart_relationship/module.php:326
+#: modules_v4/chart_relationship/module.php:265 modules_v4/chart_relationship/module.php:336
 msgid "Find other/all overall connections"
 msgstr "Vind andere/alle algemene verbindingen"
 
-#: modules_v4/chart_relationship/module.php:267
+#: modules_v4/chart_relationship/module.php:271
 msgid "How much recursion to use when searching for relationships"
 msgstr "Hoeveel recursie te gebruiken bij het zoeken naar verwantschappen"
 
 #. I18N: Configuration option for relationship chart
-#: modules_v4/chart_relationship/module.php:271
+#: modules_v4/chart_relationship/module.php:275
 msgid "Searching for all possible relationships can take a lot of time in complex trees, This option can help limit the extent of relationships included in the relationship chart."
 msgstr "Zoeken naar alle mogelijke verwantschappen kan veel tijd in beslag nemen in complexe stambomen. Deze optie kan helpen de omvang van de verwantschappen te beperken in de verwantschapsgrafiek."
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:277
-msgid "Families tab settings"
-msgstr "Gezinstabblad instellingen"
-
-#. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:279
-msgid "How to determine relationships to the default individual"
-msgstr "Hoe de verwantschappen naar de standaard persoon te bepalen"
-
-#. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:281 modules_v4/chart_relationship/module.php:340 modules_v4/chart_relationship/module.php:378
-msgid "Do not show any relationship"
-msgstr "Toon geen enkele verwantschap"
-
-#. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:288 modules_v4/chart_relationship/module.php:347 modules_v4/chart_relationship/module.php:385
-msgid "The following options refer to the same algorithms used in the relationships chart. Choose any one of these."
-msgstr "De volgende opties verwijzen naar dezelfde algoritmen die gebruikt worden in het verwantschapsdiagram. Kies een van deze."
-
-#. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:332 modules_v4/chart_relationship/module.php:370 modules_v4/chart_relationship/module.php:408
+#: modules_v4/chart_relationship/module.php:280 modules_v4/chart_relationship/module.php:342 modules_v4/chart_relationship/module.php:380 modules_v4/chart_relationship/module.php:418
 msgid "Show common ancestors"
 msgstr "Toon gemeenschappelijke voorouders"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:338
+#: modules_v4/chart_relationship/module.php:287
+msgid "Families tab settings"
+msgstr "Gezinstabblad instellingen"
+
+#. I18N: Configuration option
+#: modules_v4/chart_relationship/module.php:289
+msgid "How to determine relationships to the default individual"
+msgstr "Hoe de verwantschappen naar de standaard persoon te bepalen"
+
+#. I18N: Configuration option
+#: modules_v4/chart_relationship/module.php:291 modules_v4/chart_relationship/module.php:350 modules_v4/chart_relationship/module.php:388
+msgid "Do not show any relationship"
+msgstr "Toon geen enkele verwantschap"
+
+#. I18N: Configuration option
+#: modules_v4/chart_relationship/module.php:298 modules_v4/chart_relationship/module.php:357 modules_v4/chart_relationship/module.php:395
+msgid "The following options refer to the same algorithms used in the relationships chart. Choose any one of these."
+msgstr "De volgende opties verwijzen naar dezelfde algoritmen die gebruikt worden in het verwantschapsdiagram. Kies een van deze."
+
+#. I18N: Configuration option
+#: modules_v4/chart_relationship/module.php:348
 msgid "How to determine relationships between parents"
 msgstr "Hoe verwantschappen tussen ouders te bepalen"
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:366 modules_v4/chart_relationship/module.php:404
+#: modules_v4/chart_relationship/module.php:376 modules_v4/chart_relationship/module.php:414
 msgid "Searching for overall connections is not included here because there is always a trivial HUSB - WIFE connection."
 msgstr "Zoeken naar algemene verbindingen is hier niet ingesloten omdat er altijd een gewone HUSB - WIFE verbinding is."
 
 #. I18N: Configuration option
-#: modules_v4/chart_relationship/module.php:376
+#: modules_v4/chart_relationship/module.php:386
 msgid "How to determine relationships to spouses"
 msgstr "Hoe verwantschappen tussen echtgenoten te bepalen"
 
@@ -21995,7 +21999,8 @@ msgid "A list of sources"
 msgstr "Een lijst van bronnen"
 
 #. I18N: Name of a module. (A list of users who are online now)
-#: modules_v4/logged_in/module.php:32 modules_v4/widget_logged_in/module.php:32
+#. I18N: Name of a module. (A list of users who are online now)
+#: modules_v4/logged_in/module.php:32 modules_v4/widget_logged_in/module.php:32 themes/levy/footer.php:37
 msgid "Who is online"
 msgstr "Wie is online"
 
@@ -22335,11 +22340,11 @@ msgstr "Slideshow"
 msgid "Random image"
 msgstr "Willekeurige afbeelding"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:40 themes/kiwitrees/header.php:42 themes/webtrees/header.php:38 themes/xenea/header.php:38
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:40 themes/kiwitrees/header.php:42 themes/levy/header.php:38 themes/webtrees/header.php:38 themes/xenea/header.php:38
 msgid "Play"
 msgstr "Afspelen"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:41 themes/kiwitrees/header.php:43 themes/webtrees/header.php:39 themes/xenea/header.php:39
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:41 themes/kiwitrees/header.php:43 themes/levy/header.php:39 themes/webtrees/header.php:39 themes/xenea/header.php:39
 msgid "Stop"
 msgstr "Stop"
 
@@ -23210,7 +23215,7 @@ msgstr "Toon alle huwelijkspartners en voorouders"
 
 #: modules_v4/tree/class_treeview.php:65
 msgid "Toggle fullscreen view"
-msgstr ""
+msgstr "Volledig scherm inschakelen"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v4/tree/class_treeview.php:338
@@ -23388,58 +23393,96 @@ msgid "View all records found in %s"
 msgstr "Toon alle records gevonden in %s"
 
 #. I18N: %s are individual’s names
-#: relationship.php:45
+#: relationship.php:54
 #, php-format
 msgid "Relationships between %1$s and %2$s"
 msgstr "Verwantschappen tussen %1$s en %2$s"
 
-#: relationship.php:70
+#: relationship.php:58
+#, php-format
+msgid "established before %1$s"
+msgstr "eerder gevestigd%1$s"
+
+#: relationship.php:99
 msgid "Individual 1"
 msgstr "Persoon 1"
 
-#: relationship.php:74
+#: relationship.php:103
 msgid "Individual 2"
 msgstr "Persoon 2"
 
 #. I18N: Reverse the order of two individuals
-#: relationship.php:78
+#: relationship.php:107
 msgid "Swap individuals"
 msgstr "Wissel personen"
 
-#: relationship.php:81
+#: relationship.php:110
 msgid "Show details"
 msgstr "Toon details"
 
-#: relationship.php:140
+#: relationship.php:139
+#, php-format
+msgid "The following options refer to overall connections established before %1$s."
+msgstr "De volgende opties verwijzen naar de al eerder tot stand gebrachte algehele verbindingen%1$s"
+
+#: relationship.php:175
 msgid "Find all overall connections"
 msgstr "Vind alle algemene verbindingen"
 
-#: relationship.php:142
+#: relationship.php:177
 msgid "Find other overall connections"
 msgstr "Vind andere algemene verbindingen"
 
-#: relationship.php:169
+#: relationship.php:206
 #, php-format
 msgid "Uncorrected CoR (Coefficient of Relationship): %s"
 msgstr "Ongecorrigeerd CoR (Coëfficiënt van verwantschap): %s"
 
-#: relationship.php:174
+#: relationship.php:211
 #, php-format
 msgid "(Number of relationships: %s)"
 msgstr "(Aantal verwantschappen: %s)"
 
-#: relationship.php:189
+#: relationship.php:216
+msgid "that's overall not significantly closer than the closest relationship via common ancestors"
+msgstr "dat is over het algemeen niet aanzienlijk dichterbij dan de naaste relatie via gemeenschappelijke voorouders"
+
+#: relationship.php:219
+msgid "that's overall as close as:"
+msgstr "dat is over het algemeen zo dichtbij als:"
+
+#: relationship.php:221
+msgid "that's overall almost as close as:"
+msgstr "dat is over het algemeen bijna net zo dichtbij als:"
+
+#: relationship.php:223
+msgid "that's overall closer than:"
+msgstr "dat is over het algemeen dichterbij dan:"
+
+#: relationship.php:246
 msgid "View Relationship"
 msgstr "Toon verwantschap"
 
-#: relationship.php:192
+#: relationship.php:249
 #, php-format
 msgid "Relationship: %s"
 msgstr "Verwantschap: %s"
 
-#: relationship.php:266
+#: relationship.php:367
+msgid "parents"
+msgstr "ouders"
+
+#: relationship.php:428
 msgid "No link between the two individuals could be found."
 msgstr "Geen koppeling tussen de twee personen gevonden."
+
+#: relationship.php:432
+msgid "If this is unexpected, and there are recent changes, you may have to follow this link: "
+msgstr "Als dit onverwacht is en er zijn recente wijzigingen, moet u mogelijk deze link volgen:"
+
+#: relationship.php:435
+msgid "Update missing relationship links"
+msgstr "Update ontbrekende relatiekoppelingen"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:37
@@ -24239,7 +24282,7 @@ msgid "age"
 msgstr "leeftijd"
 
 #. I18N: kiwitrees logo on page footer
-#: themes/_administration/footer.php:35 themes/colors/footer.php:43 themes/kiwitrees/footer.php:43 themes/webtrees/footer.php:43 themes/xenea/footer.php:43
+#: themes/_administration/footer.php:35 themes/colors/footer.php:43 themes/kiwitrees/footer.php:43 themes/levy/footer.php:43 themes/webtrees/footer.php:43 themes/xenea/footer.php:43
 #, php-format
 msgid "Powered by %s"
 msgstr "Powered by %s"
@@ -24333,7 +24376,7 @@ msgstr "_beheer"
 msgid "If you have any questions or comments please contact us"
 msgstr "Heeft u vragen of opmerkingen neem a.u.b. contact op met ons"
 
-#: themes/colors/header.php:50 themes/kiwitrees/header.php:52 themes/webtrees/header.php:48 themes/xenea/header.php:48
+#: themes/colors/header.php:50 themes/kiwitrees/header.php:52 themes/levy/header.php:48 themes/webtrees/header.php:48 themes/xenea/header.php:48
 msgid "Open in full browser window"
 msgstr "Open volledige schermweergave"
 
@@ -24341,7 +24384,7 @@ msgstr "Open volledige schermweergave"
 msgid "Choose a page"
 msgstr "Kies een pagina"
 
-#: themes/colors/templates/compactbox_template.php:48 themes/colors/templates/personbox_template.php:43 themes/kiwitrees/templates/compactbox_template.php:48 themes/kiwitrees/templates/personbox_template.php:42 themes/webtrees/templates/compactbox_template.php:48 themes/webtrees/templates/personbox_template.php:42 themes/xenea/templates/compactbox_template.php:48 themes/xenea/templates/personbox_template.php:42
+#: themes/colors/templates/compactbox_template.php:48 themes/colors/templates/personbox_template.php:43 themes/kiwitrees/templates/compactbox_template.php:48 themes/kiwitrees/templates/personbox_template.php:42 themes/levy/templates/compactbox_template.php:48 themes/levy/templates/personbox_template.php:42 themes/webtrees/templates/compactbox_template.php:48 themes/webtrees/templates/personbox_template.php:42 themes/xenea/templates/compactbox_template.php:48 themes/xenea/templates/personbox_template.php:42
 msgid "Loading..."
 msgstr "Laden..."
 
@@ -24437,7 +24480,19 @@ msgstr "kleuren"
 
 #: themes/kiwitrees/header.php:157 themes/webtrees/header.php:134
 msgid "Main menu"
-msgstr ""
+msgstr "Hoofdmenu"
+
+#: themes/levy/functions.php:48
+msgid "For technical support or genealogy questions, please contact"
+msgstr "Neem voor technische ondersteuning of genealogische vragen, contact op met"
+
+#: themes/levy/functions.php:52
+msgid "For help with genealogy questions contact"
+msgstr "Neem voor genealogische vragen contact op met"
+
+#: themes/levy/functions.php:58
+msgid "For technical support and information contact"
+msgstr "Voor technische ondersteuning en informatie, neem contact op met"
 
 #. I18N: Name of a theme.
 #: themes/webtrees/theme.php:30
@@ -24470,11 +24525,11 @@ msgstr "Leeftijd indicator tonen?"
 msgid "Show lifespans"
 msgstr "Toon levensduren"
 
+#~ msgid "If you have any questions or comments please contact"
+#~ msgstr "If you have any questions or comments please contact"
+
 #~ msgid "Explain why you are requesting an account"
 #~ msgstr "Explain why you are requesting an account"
-
-#~ msgid "For technical support or genealogy questions, please contact"
-#~ msgstr "For technical support or genealogy questions, please contact"
 
 #~ msgid "PhpGedView to kiwitrees transfer wizard"
 #~ msgstr "PhpGedView to kiwitrees transfer wizard"
