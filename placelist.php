@@ -50,7 +50,18 @@ $controller
 echo '<div id="place-hierarchy">';
 	switch ($display) {
 		case 'list':
-			$list_places	= KT_Place::allPlaces(KT_GED_ID);
+			$listPlaceNames = array();
+			$placeName		= array();
+			$maxParts		= 0;
+			$list_places = KT_Place::allPlaces(KT_GED_ID);
+			foreach ($list_places as $n=>$list_place) {
+				$placeName	= explode(', ', $list_place->getReverseName());
+				$countParts	= count($placeName);
+				if ($countParts > $maxParts) {
+					$maxParts = $countParts;
+				}
+				$listPlaceNames[]	= $placeName;
+			}
 
 			$controller->addExternalJavascript(KT_JQUERY_DATATABLES_URL);
 			if (KT_USER_CAN_EDIT) {
@@ -74,6 +85,7 @@ echo '<div id="place-hierarchy">';
 				jQuery(".loading-image").css("display", "none");
 			');
 			?>
+
 			<div id="placeListContainer" style="width: 60%; margin: auto; visibility: hidden;">
 				<div class="loading-image"></div>
 				<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -83,15 +95,24 @@ echo '<div id="place-hierarchy">';
 				<table id="placeListTable" style="width: 100%; table-layout:fixed;">
 					<thead>
 						<tr>
-							<th style="padding: 5px 15px;"><?php echo KT_I18N::translate('Places'); ?></th>
+							<?php for ($i = 0; $i < $maxParts; $i++) { ?>
+								<th style="padding: 5px 15px;"><?php echo KT_I18N::translate('Places'); ?>&nbsp;<?php echo $i + 1; ?></th>
+							<?php } ?>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($list_places as $n=>$list_place) { ?>
+						<?php foreach ($list_places as $n=>$list_place) {
+							$placeName	= explode(', ', $list_place->getReverseName());?>
 							<tr>
-								<td style="padding: 5px 15px;">
-									<a href="<?php echo $list_place->getURL(); ?>"><?php echo $list_place->getReverseName(); ?></a>
-								</td>
+								<?php for ($i = 0; $i < $maxParts; $i++) { ?>
+									<td style="padding: 5px 15px;">
+										<?php if ($i < count($placeName)) { ?>
+											<a href="<?php echo $list_place->getURL(); ?>"><?php echo $placeName[$i]; ?></a>
+										<?php } else { ?>
+											&nbsp;
+										<?php }?>
+									</td>
+								<?php } ?>
 							</tr>
 						<?php } ?>
 					</tbody>
