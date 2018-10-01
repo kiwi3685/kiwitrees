@@ -165,15 +165,35 @@ class KT_MenuBar {
 
 	public static function getLanguageMenu() {
 		global $SEARCH_SPIDER;
-		$languages = KT_I18N::used_languages();
+
+		// filter and sort by localised name
+		$code_list = KT_Site::preference('LANGUAGES');
+		if ($code_list) {
+			$languages = explode(',', $code_list);
+		} else {
+			$languages = array(
+				'ar', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en_GB', 'en_US', 'es',
+				'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'nb',
+				'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh',
+			);
+		}
+		$installed = KT_I18N::installed_languages();
+		foreach ($installed as $code=>$name) {
+			if (in_array($code, $languages)) {
+				$installed[$code] = KT_I18N::translate($name);
+			} else {
+				unset($installed[$code]);
+			}
+		}
+		asort($installed);
 
 		if ($SEARCH_SPIDER) {
 			return null;
 		} else {
 			$menu = new KT_Menu(KT_I18N::translate('Language'), '#', 'menu-language');
-			foreach ($languages as $lang=>$name) {
-				$submenu=new KT_Menu(KT_I18N::translate($name), get_query_url(array('lang'=>$lang), '&amp;'), 'menu-language-'.$lang);
-				if (KT_LOCALE == $lang) {$submenu->addClass('','','lang-active');}
+			foreach ($installed as $code=>$name) {
+				$submenu=new KT_Menu(KT_I18N::translate($name), get_query_url(array('lang'=>$code), '&amp;'), 'menu-language-'.$code);
+				if (KT_LOCALE == $code) {$submenu->addClass('','','lang-active');}
 				$menu->addSubMenu($submenu);
 			}
 			if (count($menu->submenus)>1) {
