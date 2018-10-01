@@ -2645,7 +2645,7 @@ case 'checkduplicates':
 		->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
 			jQuery("#duplicates").dataTable({
-				"sDom": \'t\',
+				dom: \'t\',
 				' . KT_I18N::datatablesI18N() . ',
 				jQueryUI: true,
 				autoWidth: false,
@@ -2668,9 +2668,9 @@ case 'checkduplicates':
 					<table id="duplicates">
 					<thead>
 						<tr>
-							<th>' . KT_I18N::translate('Name') . '</th>
-							<th>' . KT_I18N::translate('Birth year') . '</th>
-							<th>' . KT_I18N::translate('Birth place') . '</th>
+							<th style="padding: 5px 15px;">' . KT_I18N::translate('Name') . '</th>
+							<th style="padding: 5px 15px;">' . KT_I18N::translate('Birth year') . '</th>
+							<th style="padding: 5px 15px;">' . KT_I18N::translate('Birth place') . '</th>
 						</tr>
 					</thead>
 					<tbody>';
