@@ -475,7 +475,10 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 								<tr class="faq_edit_pos">
 									<td>
 										<?php
-										echo '<p>' . KT_I18N::translate('FAQ position') . '<span>' . ($faq->block_order) . '</span></p>';
+										echo '
+											<p>' . KT_I18N::translate('FAQ position') . '<span>' . ($faq->block_order) . '</span>
+												<small>(#faq' . $faq->block_id . ')</small>
+											</p>';
 										echo '<p>' . KT_I18N::translate('Family tree');
 											if ($faq->gedcom_id == null) {
 												echo '<span>' . KT_I18N::translate('All') . '</span>';
