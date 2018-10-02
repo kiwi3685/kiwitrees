@@ -1421,6 +1421,7 @@ function activate_colorbox(config) {
 			slideshow:		true,
 			slideshowAuto:	false,
 			speed:			2000,
+			transition:		'none',
 			title:			function(){
 								var title = jQuery(this).data("title");
 								return title;
@@ -1431,8 +1432,8 @@ function activate_colorbox(config) {
 				// Add wheelzoom to the displayed image
 				jQuery('.cboxPhoto').wheelzoom();
 				// Drag events cause the slideshow to advance.  Prevent this.
-				// TODO - only when the click was the end of a drag..
-				jQuery('.cboxPhoto img').on('click', function(e) {e.preventDefault();});
+				// Solution from: https://github.com/jackmoore/colorbox/issues/668
+				jQuery('.cboxPhoto').unbind('click');
 			}
 		});
 		// Add colorbox to pdf-files
