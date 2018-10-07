@@ -101,6 +101,8 @@ class report_marriages_KT_Module extends KT_Module implements KT_Module_Report {
 				}
 			');
 
+		init_calendar_popup();
+
 		//Configuration settings ===== //
 	    $action	= KT_Filter::post('action');
 		$reset	= KT_Filter::post('reset');

@@ -103,6 +103,8 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
 				}
 			');
 
+		init_calendar_popup();
+
 		//Configuration settings ===== //
 	    $action	= KT_Filter::post('action');
 		$reset	= KT_Filter::post('reset');
@@ -155,19 +157,23 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
 					</div>
 					<div class="chart_options">
 		              <label for = "DATE1"><?php echo KT_I18N::translate('Birth date - from'); ?></label>
-		              <input type="text" name="b_from" id="DATE1" value="<?php echo $b_from; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE1"); ?>
+		              <input type="text" name="b_from" id="DATE1" value="<?php echo $b_from; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);">
+					  <?php echo print_calendar_popup("DATE1"); ?>
 		            </div>
 		            <div class="chart_options">
 		              <label for = "DATE2"><?php echo KT_I18N::translate('Birth date - to'); ?></label>
-		              <input type="text" name="b_to" id="DATE2" value="<?php echo $b_to; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE2"); ?>
+		              <input type="text" name="b_to" id="DATE2" value="<?php echo $b_to; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);">
+					  <?php echo print_calendar_popup("DATE2"); ?>
 		            </div>
 					<div class="chart_options">
 		              <label for = "DATE3"><?php echo KT_I18N::translate('Death date - from'); ?></label>
-		              <input type="text" name="d_from" id="DATE3" value="<?php echo $d_from; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE3"); ?>
+		              <input type="text" name="d_from" id="DATE3" value="<?php echo $d_from; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);">
+					  <?php echo print_calendar_popup("DATE3"); ?>
 		            </div>
 		            <div class="chart_options">
 		              <label for = "DATE4"><?php echo KT_I18N::translate('Death date - to'); ?></label>
-		              <input type="text" name="d_to" id="DATE4" value="<?php echo $d_to; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE4"); ?>
+		              <input type="text" name="d_to" id="DATE4" value="<?php echo $d_to; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);">
+					  <?php echo print_calendar_popup("DATE4"); ?>
 		            </div>
 	 				<button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>" onclick="return checkform()">
 						<i class="fa fa-eye"></i>
