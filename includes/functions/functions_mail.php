@@ -280,9 +280,9 @@ function addMessage($message) {
 			KT_Mail::EOL .
 			KT_Mail::EOL;
 		if (KT_USER_ID) {
-			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $sender_real_name . ' (' . $message['from_email'] . ')' . KT_Mail::EOL;
+			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $sender_real_name . ' (' . $sender_email . ')' . KT_Mail::EOL;
 		} else {
-			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $message['from_email'] . KT_Mail::EOL;
+			$original_email .= $bold_on . KT_I18N::translate('From') . ':  ' . $bold_off . $sender_email . KT_Mail::EOL;
 		}
 		$original_email .=
 			$bold_on . KT_I18N::translate('Subject') . ':  ' . $bold_off . $message['subject'] . KT_Mail::EOL .
