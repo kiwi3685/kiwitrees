@@ -3758,29 +3758,40 @@ class KT_Stats {
 	///////////////////////////////////////////////////////////////////////////////
 
 	static function callBlock($params = array()) {
-		global $ctype;
-		if ($params === null) {return '';}
-		if (isset($params[0]) && $params[0] != '') {$block = $params[0];} else {return '';}
-		$all_blocks=array();
-		foreach (KT_Module::getActiveBlocks() as $name=>$active_block) {
-			if ($ctype=='user' || $ctype=='gedcom' && $active_block->isGedcomBlock()) {
-				$all_blocks[$name]=$active_block;
+		if ($params === null) {
+			return '';
+		}
+		if (isset($params[0]) && $params[0] != '') {
+			$block = $params[0];
+		} else {
+			return '';
+		}
+		$all_blocks = array();
+		foreach (KT_Module::getActiveBlocks() as $name => $active_block) {
+			if ($active_block->isGedcomBlock()) {
+				$all_blocks[$name] = $active_block;
 			}
 		}
-		if (!array_key_exists($block, $all_blocks) || $block=='html') return '';
-		$class_name = $block.'_KT_Module';
+		if (!array_key_exists($block, $all_blocks) || $block == 'html') {
+			return '';
+		}
+		$class_name = $block . '_KT_Module';
+		
 		// Build the config array
 		array_shift($params);
 		$cfg = array();
 		foreach ($params as $config) {
 			$bits = explode('=', $config);
-			if (count($bits) < 2) {continue;}
-			$v = array_shift($bits);
-			$cfg[$v] = join('=', $bits);
+			if (count($bits) < 2) {
+				continue;
+			}
+			$v			= array_shift($bits);
+			$cfg[$v]	= join('=', $bits);
 		}
-		$block = new $class_name;
-		$block_id=safe_GET('block_id');
-		$content = $block->getBlock($block_id, false, $cfg);
+		$block		= new $class_name;
+		$block_id	= KT_Filter::get('block_id');
+		$content	= $block->getBlock($block_id, false, $cfg);
+
 		return $content;
 	}
 

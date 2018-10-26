@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,12 +38,12 @@ class top10_pageviews_KT_Module extends KT_Module implements KT_Module_Block {
 	}
 
 	// Implement class KT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $SHOW_COUNTER;
+	public function getBlock($block_id, $template = true, $cfg = null) {
+		global $SHOW_COUNTER;
 
-		$count_placement=get_block_setting($block_id, 'count_placement', 'before');
-		$num=(int)get_block_setting($block_id, 'num', 10);
-		$block=get_block_setting($block_id, 'block', false);
+		$count_placement	= get_block_setting($block_id, 'count_placement', 'before');
+		$num				= (int)get_block_setting($block_id, 'num', 10);
+		$block				= get_block_setting($block_id, 'block', false);
 		if ($cfg) {
 			foreach (array('count_placement', 'num', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -52,45 +52,47 @@ class top10_pageviews_KT_Module extends KT_Module implements KT_Module_Block {
 			}
 		}
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
+		$id		= $this->getName() . $block_id;
+		$class	= $this->getName() . '_block';
 		if (KT_USER_GEDCOM_ADMIN) {
-			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+			$title = '
+				<i class="icon-admin" title="' . KT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.=$this->getTitle();
+		$title .= $this->getTitle();
 
-		$content = "";
+		$content = '';
+
 		// load the lines from the file
-		$top10=KT_DB::prepare(
-			"SELECT page_parameter, page_count".
-			" FROM `##hit_counter`".
-			" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
-			" ORDER BY page_count DESC LIMIT ".$num
+		$top10 = KT_DB::prepare("
+			SELECT page_parameter, page_count
+			 FROM `##hit_counter`
+			 WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')
+			 ORDER BY page_count DESC LIMIT " . $num
 		)->execute(array(KT_GED_ID))->FetchAssoc();
 
 
 		if ($block) {
-			$content .= "<table width=\"90%\">";
+			$content .= '<table width="90%">';
 		} else {
-			$content .= "<table>";
+			$content .= '<table>';
 		}
-		foreach ($top10 as $id=>$count) {
-			$record=KT_GedcomRecord::getInstance($id);
+		foreach ($top10 as $id => $count) {
+			$record = KT_GedcomRecord::getInstance($id);
 			if ($record && $record->canDisplayDetails()) {
 				$content .= '<tr valign="top">';
-				if ($count_placement=='before') {
-					$content .= '<td dir="ltr" align="right">['.$count.']</td>';
+				if ($count_placement == 'before') {
+					$content .= '<td dir="ltr" align="right">[' . $count . ']</td>';
 				}
-				$content .= '<td class="name2" ><a href="'.$record->getHtmlUrl().'">'.$record->getFullName().'</a></td>';
-				if ($count_placement=='after') {
-					$content .= '<td dir="ltr" align="right">['.$count.']</td>';
+				$content .= '<td class="name2" ><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+				if ($count_placement == 'after') {
+					$content .= '<td dir="ltr" align="right">[' . $count . ']</td>';
 				}
 				$content .= '</tr>';
 			}
 		}
-		$content .= "</table>";
+		$content .= '</table>';
 
 		if ($template) {
 			if ($block) {
@@ -123,25 +125,37 @@ class top10_pageviews_KT_Module extends KT_Module implements KT_Module_Block {
 		}
 		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
-		$num=get_block_setting($block_id, 'num', 10);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo KT_I18N::translate('Number of items to show');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
+		$num				= get_block_setting($block_id, 'num', 10);
+		$count_placement	= get_block_setting($block_id, 'count_placement', 'before');
+		$block				= get_block_setting($block_id, 'block', false);
+		?>
 
-		$count_placement=get_block_setting($block_id, 'count_placement', 'left');
-		echo "<tr><td class=\"descriptionbox wrap width33\">";
-		echo KT_I18N::translate('Place counts before or after name?');
-		echo "</td><td class=\"optionbox\">";
-		echo select_edit_control('count_placement', array('before'=>KT_I18N::translate('before'), 'after'=>KT_I18N::translate('after')), null, $count_placement, '');
-		echo '</td></tr>';
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<?php echo KT_I18N::translate('Number of items to show'); ?>
+			</td>
+			<td class="optionbox">
+				<input type="text" name="num" size="2" value="'<?php echo $num; ?>">
+			</td>
+		</tr>
 
-		$block=get_block_setting($block_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ KT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
-	}
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<?php echo KT_I18N::translate('Place counts before or after name?'); ?>
+			</td>
+			<td class="optionbox">
+				<?php echo select_edit_control('count_placement', array('before' => KT_I18N::translate('before'), 'after' => KT_I18N::translate('after')), null, $count_placement, ''); ?>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<?php echo /* I18N: label for a yes/no option */ KT_I18N::translate('Add a scrollbar when block contents grow'); ?>
+			</td>
+			<td class="optionbox">
+				<?php echo edit_field_yes_no('block', $block); ?>
+			</td>
+		</tr>
+
+	<?php }
 }
