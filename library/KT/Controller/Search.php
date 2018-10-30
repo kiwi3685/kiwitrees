@@ -510,40 +510,40 @@ class KT_Controller_Search extends KT_Controller_Page {
 			// If ID cannot be displayed, continue to the search page.
 			if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist && !$this->mystorieslist) {
 				$indi = $this->myindilist[0];
-				if ($indi->canDisplayName()) {
+				if ($indi && $indi->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$indi->getRawUrl());
+					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $indi->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist && !$this->mystorieslist) {
 				$fam = $this->myfamlist[0];
-				if ($fam->canDisplayName()) {
+				if ($fam && $fam->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$fam->getRawUrl());
+					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $fam->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist && !$this->mystorieslist) {
 				$sour = $this->mysourcelist[0];
-				if ($sour->canDisplayName()) {
+				if ($sour && $sour->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$sour->getRawUrl());
+					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $sour->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1 && !$this->mystorieslist) {
 				$note = $this->mynotelist[0];
-				if ($note->canDisplayName()) {
+				if ($note && $note->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$note->getRawUrl());
+					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $note->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist && count($this->mystorieslist) == 1) {
 				$story = $this->mystorieslist[0];
 				$person = KT_Person::getInstance($story['xref']);
-				if ($person->canDisplayName()) {
+				if ($person && $person->canDisplayName()) {
 					Zend_Session::writeClose();
 					header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH. $person->getRawUrl() . '#stories');
 					exit;
@@ -724,7 +724,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist) == 1 && $this->action!="replace") {
 			reset($this->myindilist);
-			header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH.$indi->getRawUrl());
+			header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $indi->getRawUrl());
 			exit;
 		}
 		usort($this->myindilist, array('KT_GedcomRecord', 'Compare'));
