@@ -475,6 +475,7 @@ class report_related_fam_KT_Module extends KT_Module implements KT_Module_Report
 				<div id="noresult">
 					<?php echo KT_I18N::translate('Nothing found'); ?>
 				</div>
+			<?php } ?>
 		</div> <!-- #pages -->
 		<?php
 	}
