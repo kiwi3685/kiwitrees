@@ -254,215 +254,227 @@ class report_related_fam_KT_Module extends KT_Module implements KT_Module_Report
 				}
 			}
 			// output display
-			?>
-			<div class="loading-image">&nbsp;</div>
-			<div id="container" style="visibility:hidden;">
-				<div id="accordion">
-					<?php
-					$number			= 0;
-					$sup			= '';
-					$source_list	= array();
-					$data			= array();
-					foreach ($list as $relative) {
-						$person = KT_Person::getInstance($relative->getXref());
-						$person->add_family_facts(false);
-						$indifacts = $person->getIndiFacts();
-						sort_facts($indifacts);
-						if ($person && $person->canDisplayDetails()) { ?>
-							<h3><?php echo $person->getLifespanName(); ?></a></h3>
-							<div class="accordion-container">
-									<?php // Image displays
-									switch ($photos) {
-										case 'highlighted': ?>
-											<div style="vertical-align: top;">
-												<?php $image = $person->displayImage(true);
-												if ($image) { ?>
-													<div class="indi_mainimage" style="display: inline-block;"><?php echo $person->displayImage(true); ?></div>
-												<?php } ?>
-												<h3 style="display: inline-block;vertical-align: top;margin: 10px;"><a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getLifespanName(); ?></a></h3>
+			if ($list) { ?>
+				<div class="loading-image">&nbsp;</div>
+				<div id="container" style="visibility:hidden;">
+					<div id="accordion">
+						<?php
+						$number			= 0;
+						$sup			= '';
+						$source_list	= array();
+						$data			= array();
+						foreach ($list as $relative) {
+							$person = KT_Person::getInstance($relative->getXref());
+							$person->add_family_facts(false);
+							$indifacts = $person->getIndiFacts();
+							sort_facts($indifacts);
+							if ($person && $person->canDisplayDetails()) { ?>
+								<h3><?php echo $person->getLifespanName(); ?></a></h3>
+								<div class="accordion-container">
+										<?php // Image displays
+										switch ($photos) {
+											case 'highlighted': ?>
+												<div style="vertical-align: top;">
+													<?php $image = $person->displayImage(true);
+													if ($image) { ?>
+														<div class="indi_mainimage" style="display: inline-block;"><?php echo $person->displayImage(true); ?></div>
+													<?php } ?>
+													<h3 style="display: inline-block;vertical-align: top;margin: 10px;">
+														<a href="<?php echo $person->getHtmlUrl(); ?>">
+															<?php echo $person->getLifespanName(); ?>
+														</a>
+													</h3>
+												</div>
+												<?php break;
+											case 'all':
+												//show all level 1 images ?>
+												<div class="images" style="display: inline-block;">
+													<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
+													$allMedia =  $match[1];
+													foreach ($allMedia as $media) {
+														$image = KT_Media::getInstance($media);
+														if ($image && $image->canDisplayDetails()) { ?>
+															<span><?php echo $image->displayImage(); ?></span>
+														<?php }
+													} ?>
+												</div>
+												<h3 style="margin: 10px;">
+													<a href="<?php echo $person->getHtmlUrl(); ?>">
+														<?php echo $person->getLifespanName(); ?>
+													</a>
+												</h3>
+												<?php
+											break;
+											case 'none':
+											default:
+											// show nothing
+											break;
+										} ?>
+									<div class="facts_events">
+										<h3><?php echo KT_I18N::translate('Facts and events'); ?></h3>
+										<?php
+										foreach ($indifacts as $fact) {
+											if (
+												(!array_key_exists('extra_info', KT_Module::getActiveSidebars()) || !extra_info_KT_Module::showFact($fact))
+												&& !in_array($fact->getTag(), $exclude_tags)
+											) {
+												$data		 = getResourcefact($fact, $person, $sup, $source_list, $number);
+												$sup		 = $data[0];
+												$source_list = $data[1];
+												$number		 = $data[2]; ?>
+												<p class="report_fact">
+													<span class="label"><?php echo print_fact_label($fact, $person) . $showsources ? $sup : ''; ?></span>
+													<span class="details">
+														<?php echo $data[3]['date']; ?>
+														<?php echo $data[3]['place']; ?>
+														<?php echo $data[3]['addr']; ?>
+														<?php echo $data[3]['detail']; ?>
+													</span>
+												</p>
+											<?php }
+										} ?>
+									</div> <!-- .facts_events -->
+									<?php if ($shownotes) {
+										$otherfacts = $person->getOtherFacts();
+										foreach ($otherfacts as $fact) {
+											if ($fact->getTag() == 'NOTE') { ?>
+												<div class="notes">
+													<h3><?php echo KT_I18N::translate('Notes'); ?></h3>
+													<ol>
+														<li>
+															<?php echo print_resourcenotes($fact, 1, true, true); ?>
+														</li>
+													</ol>
+												</div>
+											<?php }
+										}
+									} ?>
+									<div id="families">
+										<h3><?php echo KT_I18N::translate('Families'); ?></h3>
+										<?php
+										$families = $person->getChildFamilies();
+										// parents
+										foreach ($families as $family) { ?>
+											<h4><?php echo $person->getChildFamilyLabel($family); ?></h4>
+											<div id="parents">
+												<?php
+												$husband = $family->getHusband();
+												$wife = $family->getWife();
+												if (!empty($husband)) { ?>
+													<p>
+														<span class="label">
+															<?php echo KT_I18N::translate('Father'); ?>
+														</span>
+														<?php echo $husband->getFullName(); ?>&nbsp;
+														<span class="details">
+															<?php echo personDetails($husband); ?>
+														</span>
+													</p>
+												<?php }
+												if (!empty($wife)) { ?>
+													<p>
+														<span class="label">
+															<?php echo KT_I18N::translate('Mother'); ?>
+														</span>
+														<?php echo $wife->getFullName(); ?>&nbsp;
+														<span class="details">
+															<?php echo personDetails($wife); ?>
+														</span>
+													</p>
+												<?php }
+												$marriage_details = marriageDetails($family);
+												if (!empty($marriage_details)) {
+													echo $marriage_details . '&nbsp;';
+												} ?>
 											</div>
-											<?php break;
-										case 'all':
-											//show all level 1 images ?>
-											<div class="images" style="display: inline-block;">
-												<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
-												$allMedia =  $match[1];
-												foreach ($allMedia as $media) {
-													$image = KT_Media::getInstance($media);
-													if ($image && $image->canDisplayDetails()) { ?>
-														<span><?php echo $image->displayImage(); ?></span>
+											<div id="siblings">
+												<?php
+												$children = $family->getChildren();
+												foreach ($children as $child) {
+													if (!empty($child) && $child != $person) {  ?>
+														<p>
+															<span class="label">
+																<?php echo get_relationship_name(get_relationship($person, $child)); ?>
+															</span>
+															<?php echo $child->getFullName(); ?>&nbsp;
+															<span class="details">
+																<?php echo personDetails($child); ?>
+															</span>
+														</p>
 													<?php }
 												} ?>
 											</div>
-											<h3 style="margin: 10px;"><a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getLifespanName(); ?></a></h3>
-											<?php
-										break;
-										case 'none':
-										default:
-										// show nothing
-										break;
-									} ?>
-								<div class="facts_events">
-									<h3><?php echo KT_I18N::translate('Facts and events'); ?></h3>
-									<?php
-									foreach ($indifacts as $fact) {
-										if (
-											(!array_key_exists('extra_info', KT_Module::getActiveSidebars()) || !extra_info_KT_Module::showFact($fact))
-											&& !in_array($fact->getTag(), $exclude_tags)
-										) {
-											$data		 = getResourcefact($fact, $person, $sup, $source_list, $number);
-											$sup		 = $data[0];
-											$source_list = $data[1];
-											$number		 = $data[2]; ?>
-											<p class="report_fact">
-												<span class="label"><?php echo print_fact_label($fact, $person) . $showsources ? $sup : ''; ?></span>
-												<span class="details">
-													<?php echo $data[3]['date']; ?>
-													<?php echo $data[3]['place']; ?>
-													<?php echo $data[3]['addr']; ?>
-													<?php echo $data[3]['detail']; ?>
-												</span>
-											</p>
 										<?php }
-									} ?>
-								</div> <!-- .facts_events -->
-								<?php if ($shownotes) {
-									$otherfacts = $person->getOtherFacts();
-									foreach ($otherfacts as $fact) {
-										if ($fact->getTag() == 'NOTE') { ?>
-											<div class="notes">
-												<h3><?php echo KT_I18N::translate('Notes'); ?></h3>
-												<ol>
-													<li>
-														<?php echo print_resourcenotes($fact, 1, true, true); ?>
-													</li>
-												</ol>
+										// spouses
+										$families = $person->getSpouseFamilies();
+										foreach ($families as $family) {
+											$spouse = $family->getSpouse($person);
+											$marriage = $family->getMarriage(); ?>
+											<h4><?php echo ($marriage ? KT_I18N::translate('Family with spouse') : KT_I18N::translate('Family with partner')); ?></h4>
+											<div id="spouses">
+												<?php if (!empty($spouse)) { ?>
+													<p>
+														<span class="label">
+															<?php echo ($marriage ? KT_I18N::translate('Spouse') : KT_I18N::translate('Partner')); ?>
+														</span>
+														<?php echo $spouse->getFullName(); ?>&nbsp;
+														<span class="details">
+															<?php echo personDetails($spouse); ?>
+														</span>
+													</p>
+												<?php }
+												$marriage_details = marriageDetails($family);
+												if (!empty($marriage_details)) {
+													echo $marriage_details . '&nbsp;';
+												} ?>
 											</div>
-										<?php }
-									}
-								} ?>
-								<div id="families">
-									<h3><?php echo KT_I18N::translate('Families'); ?></h3>
-									<?php
-									$families = $person->getChildFamilies();
-									// parents
-									foreach ($families as $family) { ?>
-										<h4><?php echo $person->getChildFamilyLabel($family); ?></h4>
-										<div id="parents">
-											<?php
-											$husband = $family->getHusband();
-											$wife = $family->getWife();
-											if (!empty($husband)) { ?>
-												<p>
-													<span class="label">
-														<?php echo KT_I18N::translate('Father'); ?>
-													</span>
-													<?php echo $husband->getFullName(); ?>&nbsp;
-													<span class="details">
-														<?php echo personDetails($husband); ?>
-													</span>
-												</p>
-											<?php }
-											if (!empty($wife)) { ?>
-												<p>
-													<span class="label">
-														<?php echo KT_I18N::translate('Mother'); ?>
-													</span>
-													<?php echo $wife->getFullName(); ?>&nbsp;
-													<span class="details">
-														<?php echo personDetails($wife); ?>
-													</span>
-												</p>
-											<?php }
-											$marriage_details = marriageDetails($family);
-											if (!empty($marriage_details)) {
-												echo $marriage_details . '&nbsp;';
-											} ?>
+											<div id="spouse_children">
+												<?php
+												$children = $family->getChildren();
+												foreach ($children as $child) {
+													if (!empty($child)) { ?>
+														<p>
+															<span class="label">
+																<?php echo get_relationship_name(get_relationship($person, $child)); ?>
+															</span>
+															<?php echo $child->getFullName(); ?> &nbsp;
+															<span class="details">
+																<?php echo personDetails($child); ?>
+															</span>
+														</p>
+													<?php }
+												} ?>
+											</div>
+										<?php } ?>
 										</div>
-										<div id="siblings">
-											<?php
-											$children = $family->getChildren();
-											foreach ($children as $child) {
-												if (!empty($child) && $child != $person) {  ?>
-													<p>
-														<span class="label">
-															<?php echo get_relationship_name(get_relationship($person, $child)); ?>
-														</span>
-														<?php echo $child->getFullName(); ?>&nbsp;
-														<span class="details">
-															<?php echo personDetails($child); ?>
-														</span>
-													</p>
-												<?php }
-											} ?>
-										</div>
-									<?php }
-									// spouses
-									$families = $person->getSpouseFamilies();
-									foreach ($families as $family) {
-										$spouse = $family->getSpouse($person);
-										$marriage = $family->getMarriage(); ?>
-										<h4><?php echo ($marriage ? KT_I18N::translate('Family with spouse') : KT_I18N::translate('Family with partner')); ?></h4>
-										<div id="spouses">
-											<?php if (!empty($spouse)) { ?>
-												<p>
-													<span class="label">
-														<?php echo ($marriage ? KT_I18N::translate('Spouse') : KT_I18N::translate('Partner')); ?>
-													</span>
-													<?php echo $spouse->getFullName(); ?>&nbsp;
-													<span class="details">
-														<?php echo personDetails($spouse); ?>
-													</span>
-												</p>
-											<?php }
-											$marriage_details = marriageDetails($family);
-											if (!empty($marriage_details)) {
-												echo $marriage_details . '&nbsp;';
-											} ?>
-										</div>
-										<div id="spouse_children">
-											<?php
-											$children = $family->getChildren();
-											foreach ($children as $child) {
-												if (!empty($child)) { ?>
-													<p>
-														<span class="label">
-															<?php echo get_relationship_name(get_relationship($person, $child)); ?>
-														</span>
-														<?php echo $child->getFullName(); ?> &nbsp;
-														<span class="details">
-															<?php echo personDetails($child); ?>
-														</span>
-													</p>
-												<?php }
-											} ?>
-										</div>
-									<?php } ?>
-									</div>
-							</div> <!-- .accordion-container -->
-						<?php } elseif ($person && $person->canDisplayName()) { ?>
-							<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $person->getFullName(); ?></h2>
-							<p class="ui-state-highlight"><?php echo KT_I18N::translate('The details of this individual are private.'); ?></p>
-							<?php exit;
-						} else { ?>
-							<h2><?php echo $this->getTitle(); ?></h2>
-							<p class="ui-state-error"><?php echo KT_I18N::translate('This individual does not exist or you do not have permission to view it.'); ?></p>
-							<?php exit;
+								</div> <!-- .accordion-container -->
+							<?php } elseif ($person && $person->canDisplayName()) { ?>
+								<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $person->getFullName(); ?></h2>
+								<p class="ui-state-highlight"><?php echo KT_I18N::translate('The details of this individual are private.'); ?></p>
+								<?php exit;
+							} else { ?>
+								<h2><?php echo $this->getTitle(); ?></h2>
+								<p class="ui-state-error"><?php echo KT_I18N::translate('This individual does not exist or you do not have permission to view it.'); ?></p>
+								<?php exit;
+							}
 						}
-					}
-					if ($showsources) {?>
-						<h3><?php echo KT_I18N::translate('Sources'); ?></h3>
-						<div id="facts_sources">
-							<?php foreach ($source_list as $source) { ?>
-								<p>
-									<span><?php echo ($source['key']); ?></span>
-									<span><?php echo $source['value']; ?></span>
-								</p>
-							<?php } ?>
-						</div>
-					<?php } ?>
-				</div> <!-- #accordion -->
-			</div> <!-- #container -->
+						if ($showsources) {?>
+							<h3><?php echo KT_I18N::translate('Sources'); ?></h3>
+							<div id="facts_sources">
+								<?php foreach ($source_list as $source) { ?>
+									<p>
+										<span><?php echo ($source['key']); ?></span>
+										<span><?php echo $source['value']; ?></span>
+									</p>
+								<?php } ?>
+							</div>
+						<?php } ?>
+					</div> <!-- #accordion -->
+				</div> <!-- #container -->
+			<?php } else { ?>
+				<div id="noresult">
+					<?php echo KT_I18N::translate('Nothing found'); ?>
+				</div>
 		</div> <!-- #pages -->
 		<?php
 	}
