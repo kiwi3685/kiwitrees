@@ -1147,7 +1147,42 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 .gm_check_details {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0; max-width:none; width:100%;}
 .gm_check_details th {border-right:1px solid #d3d3d3; border-left:1px solid #d3d3d3; border-bottom:2px solid #d3d3d3; border-top:0; font-size:95%; font-weight:bold; padding:2px; text-align:center;}
 .gm_check_details td {border:1px solid #d3d3d3; border-top:0; font-size:95%;}
-
+.CellWithComment{
+  position:relative;
+}
+.CellComment {
+	display:none;
+	position:absolute;
+	z-index:100;
+	border:1px;
+	background-color:white;
+	border-style:solid;
+	border-width:2px;
+	border-color:#333;
+	border-radius: 8px;
+	padding:3px;
+	color:#333;
+	top:26px;
+	left:20px;
+	width:300px;
+}
+.CellWithComment:hover span.CellComment{
+  display:block;
+}
+.CellComment:after{
+    content:'';
+    position:absolute;
+	border-color:#333;
+	border-width: 0 2px 2px 0;
+	border-style: solid;
+    left:10px;
+	top:-8px;
+    width:10px;
+	height:10px;
+    background:inherit;
+    transform:rotate(-135deg);
+/*    box-shadow: inset -5px -5px 5px -4px rgba(21,139,204,1); */
+}
 /* Admin_places_edit */
 #editplaces-page #map_pane {
 	border: 2px inset;

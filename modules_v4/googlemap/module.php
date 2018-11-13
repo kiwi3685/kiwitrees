@@ -1295,14 +1295,14 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							$ffile = substr($ffile,1, strpos($ffile, '.')-1);
 							if (empty($flags[$ffile])) {
 								$flags[$ffile] = $i; // Only generate the flag once
-								$js.= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i]. ');';
-								$js.= 'var Marker1_0_flag = new google.maps.MarkerImage();';
-								$js.= 'Marker1_0_flag.image = "'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/'.$flags[$i].'";';
-								$js.= 'Marker1_0_flag.shadow = "'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/images/flag_shadow.png";';
-								$js.= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
-								$js.= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
-								$js.= 'Marker1_0_flag.iconAnchor = new google.maps.Point(12, 15);';
-								$js.= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
+								$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i]. ');';
+								$js .= 'var Marker1_0_flag = new google.maps.MarkerImage();';
+								$js .= 'Marker1_0_flag.image = "'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/'.$flags[$i].'";';
+								$js .= 'Marker1_0_flag.shadow = "'.KT_STATIC_URL.KT_MODULES_DIR.'googlemap/images/flag_shadow.png";';
+								$js .= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
+								$js .= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
+								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(12, 15);';
+								$js .= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
 							}
 						}
 						$marker_number = $curgen;
@@ -1323,15 +1323,15 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 								}
 							}
 						}
-						$js.= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
-						$js.= "var marker = createMarker(point, \"".addslashes($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
-						$js.= "<div class='iwstyle'>";
-						$js.= "<a href='module.php?ged=".KT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-						$js.= "' title='".KT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";
+						$js .= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
+						$js .= "var marker = createMarker(point, \"".addslashes($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
+						$js .= "<div class='iwstyle'>";
+						$js .= "<a href='module.php?ged=".KT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+						$js .= "' title='".KT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";
 						// Construct the polygon lines
 						$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
 						if (array_key_exists($to_child, $lat) && $lat[$to_child]!=0 && $lon[$to_child]!=0) {
-							$js.='
+							$js .='
 							var linecolor;
 							var plines;
 							var lines = [new google.maps.LatLng('.$lat[$i].','.$lon[$i].'),
@@ -1348,8 +1348,8 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							plines.setMap(pm_map);';
 						}
 					// Extend and fit marker bounds
-					$js.='bounds.extend(point);';
-					$js.='pm_map.fitBounds(bounds);';
+					$js .='bounds.extend(point);';
+					$js .='pm_map.fitBounds(bounds);';
 					$count++;
 					}
 				}
@@ -1357,7 +1357,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 				$latlongval[$i] = NULL;
 			}
 		}
-		$js.='pm_map.setCenter(bounds.getCenter());'.
+		$js .='pm_map.setCenter(bounds.getCenter());'.
 		// Close the sidebar highlight when the infowindow is closed
 		'google.maps.event.addListener(infowindow, "closeclick", function() {
 			document.getElementById(lastlinkid).className = "person_box:target";
@@ -1554,11 +1554,11 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 					jQuery(".loading-image").css("display", "none");
 				');
 			//Identify gedcom file
-			$trees=KT_Tree::getAll();
+			$trees		= KT_Tree::getAll();
 			echo '<div id="gm_check_title">', $trees[$gedcom_id]->tree_title_html, '</div>';
 			//Select all '2 PLAC ' tags in the file and create array
-			$place_list=array();
-			$ged_data=KT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
+			$place_list	= array();
+			$ged_data	= KT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
 				->execute(array("%\n2 PLAC %", $gedcom_id))
 				->fetchOneColumn();
 			foreach ($ged_data as $ged_datum) {
@@ -1567,7 +1567,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 					$place_list[$match]=true;
 				}
 			}
-			$ged_data=KT_DB::prepare("SELECT f_gedcom FROM `##families` WHERE f_gedcom LIKE ? AND f_file=?")
+			$ged_data = KT_DB::prepare("SELECT f_gedcom FROM `##families` WHERE f_gedcom LIKE ? AND f_file=?")
 				->execute(array("%\n2 PLAC %", $gedcom_id))
 				->fetchOneColumn();
 			foreach ($ged_data as $ged_datum) {
@@ -1577,33 +1577,36 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 				}
 			}
 			// Unique list of places
-			$place_list=array_keys($place_list);
+			$place_list	= array_keys($place_list);
 
 			// Apply_filter
 			if ($country == 'XYZ') {
-				$filter='.*$';
+				$filter = '.*$';
 			} else {
-				$filter=preg_quote($country).'$';
-				if ($state!='XYZ') {
-					$filter=preg_quote($state).', '.$filter;
+				$filter = preg_quote($country).'$';
+				if ($state != 'XYZ') {
+					$filter = preg_quote($state).', '.$filter;
 				}
 			}
-			$place_list=preg_grep('/'.$filter.'/', $place_list);
+			$place_list = preg_grep('/'.$filter.'/', $place_list);
 
 			//sort the array, limit to unique values, and count them
-			$place_parts=array();
+			$place_parts = array();
 			usort($place_list, "utf8_strcasecmp");
-			$i=count($place_list);
+			$i = count($place_list);
 
 			//calculate maximum no. of levels to display
-			$x=0;
-			$max=0;
-			while ($x<$i) {
-				$levels=explode(",", $place_list[$x]);
-				$parts=count($levels);
-				if ($parts>$max) $max=$parts;
-			$x++;}
-			$x=0;
+			$x		= 0;
+			$max	= 0;
+			while ($x < $i) {
+				$levels	= explode(",", $place_list[$x]);
+				$parts	= count($levels);
+				if ($parts > $max) {
+					$max = $parts;
+				}
+				$x++;
+			}
+			$x = 0;
 
 			//scripts for edit, add and refresh
 			?>
@@ -1621,8 +1624,8 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			<?php
 
 			//start to produce the display table
-			$cols=0;
-			$span=$max*3+3;
+			$cols	= 0;
+			$span	= $max * 3 + 3;
 			echo '<div class="loading-image">&nbsp;</div>
 			<div class="gm_check_details">
 				<table id="gm_check_details" style="width: 100%; visibility: hidden;">
@@ -1642,16 +1645,19 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							}
 						echo '</tr>
 						<tr>';
-							$cols=0;
-							while ($cols<$max) {
-								echo '<th>', KT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', KT_I18N::translate('Latitude'), '</th><th>', KT_I18N::translate('Longitude'), '</th>';
-								$cols++;
+							$cols = 0;
+							while ($cols < $max) {
+								echo '
+									<th>' . KT_Gedcom_Tag::getLabel('PLAC') . '</th>
+									<th>' . KT_I18N::translate('Latitude') . '</th>
+									<th>' . KT_I18N::translate('Longitude') . '</th>';
+								$cols ++;
 							}
 						echo '</tr>
 					</thead>
 					<tbody>';
-						$countrows=0;
-						while ($x<$i) {
+						$countrows = 0;
+						while ($x < $i) {
 							$placestr 	= '';
 							$levels 	= explode(', ', $place_list[$x]);
 							$parts		= count($levels);
@@ -1662,6 +1668,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							}
 							$placestr		.= '">' . $place_list[$x] . "</a>";
 							$gedplace		= '<tr><td>' . $placestr . '</td>';
+							$prev_lati		= 1;
 							$z				= 0;
 							$y				= 0;
 							$id				= 0;
@@ -1675,12 +1682,12 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							$mapstr6		= '\' >';
 							$mapstr7		= '\')">';
 							$mapstr8		= '</a>';
-			 				while ($z<$parts) {
+			 				while ($z < $parts) {
 								if ($levels[$z] == ' ' || $levels[$z] == '')
-									$levels[$z] = "unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
+									$levels[$z] = 'unknown';// GoogleMap module uses "unknown" while GEDCOM uses , ,
 
 								$levels[$z] = rtrim(ltrim($levels[$z]));
-								$placelist	= create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
+								$placelist	= create_possible_place_names($levels[$z], $z + 1); // add the necessary prefix/postfix values to the place name
 								foreach ($placelist as $key=>$placename) {
 									$row =
 										KT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
@@ -1696,41 +1703,49 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 									$id = $row['pl_id'];
 								}
 
-								if ($row['pl_place']!='') {
-									$placestr2=$mapstr_edit.$id."&amp;level=" . $level . $mapstr3 . $mapstr5 . KT_I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
+								if ($row['pl_place'] != '') {
+									$placestr2 = $mapstr_edit . $id . '&amp;level=' . $level . $mapstr3 . $mapstr5 . KT_I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
 									if ($row['pl_place'] == 'unknown')
 										$matched[$x]++;
 								} else {
-									if ($levels[$z] == "unknown") {
-										$placestr2 = $mapstr_add . $id ."&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . rtrim(ltrim(KT_I18N::translate('unknown'))) . "</strong>" . $mapstr8;
+									if ($levels[$z] == 'unknown') {
+										$placestr2 = $mapstr_add . $id . '&amp;level=' . $level . $mapstr3 . $mapstr7 . '<strong>' . rtrim(ltrim(KT_I18N::translate('unknown'))) . "</strong>" . $mapstr8;
 										$matched[$x]++;
 									} else {
-										$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="error">' . rtrim(ltrim($levels[$z])) . '</span>' . $mapstr8;
+										$placestr2 = $mapstr_add . $id . '&amp;place_name=' . urlencode($levels[$z]) . '&amp;level=' . $level . $mapstr3 . $mapstr7 . '<span class="error">' . rtrim(ltrim($levels[$z])) . '</span>' . $mapstr8;
 										$matched[$x]++;
 									}
 								}
 
-								$plac[$z] = "<td>" . $placestr2 . "</td>\n";
+								if ($prev_lati == 0) { // no link to edit if parent has no coordinates
+									$plac[$z] = '<td class="CellWithComment">' .
+										$levels[$z] . '
+										<span class="CellComment">' . KT_I18N::translate('Coordinates can not be added here until the parent place has coordinates.') . '</span>
+									</td>';
+								} else {
+									$plac[$z] = '<td>' . $placestr2 . '</td>';
+								}
 
 								if ($row['pl_lati'] == '0') {
-									$lati[$z] = "<td class='error'><strong>" . $row['pl_lati'] . "</strong></td>";
+									$lati[$z] = '<td class="error"><strong>' . $row['pl_lati'] . '</strong></td>';
 								} elseif ($row['pl_lati'] != '') {
-									$lati[$z] = "<td>" . $row['pl_lati'] . "</td>";
+									$lati[$z] = '<td>' . $row['pl_lati'] . '</td>';
 								} else {
-									$lati[$z] = "<td class='error center'><strong>X</strong></td>";
+									$lati[$z] = '<td class="error center"><strong>X</strong></td>';
+									$prev_lati = 0;
 									$matched[$x]++;
 								}
 								if ($row['pl_long'] == '0') {
-									$long[$z] = "<td class='error'><strong>" . $row['pl_long'] . "</strong></td>";
+									$long[$z] = '<td class="error"><strong>' . $row['pl_long'] . '</strong></td>';
 								} elseif ($row['pl_long']!='') {
-									$long[$z] = "<td>" . $row['pl_long'] . "</td>";
+									$long[$z] = '<td>' . $row['pl_long'] . '</td>';
 								} else {
-									$long[$z] = "<td class='error center'><strong>X</strong></td>";
+									$long[$z] = '<td class="error center"><strong>X</strong></td>';
 									$matched[$x]++;
 								}
 								$level++;
-								$mapstr3 = $mapstr3 . "&amp;parent[" . $z . "]=" . addslashes($row['pl_placerequested']);
-								$mapstr4 = $mapstr4 . "&amp;parent[" . $z . "]=" . addslashes(rtrim(ltrim($levels[$z])));
+								$mapstr3 = $mapstr3 . '&amp;parent[' . $z . ']=' . addslashes($row['pl_placerequested']);
+								$mapstr4 = $mapstr4 . '&amp;parent[' . $z . ']=' . addslashes(rtrim(ltrim($levels[$z])));
 								$z++;
 							}
 							if ($matching) {
