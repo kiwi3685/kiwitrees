@@ -90,13 +90,14 @@ class KT_Controller_FancyTreeView {
 
 	// Get Indis from surname input
 	public function indisArray($surname, $soundex_std, $soundex_dm) {
-		$sql =
-			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
-			" FROM `##individuals`".
-			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
-			" WHERE n_file=?".
-			" AND n_type!=?".
-			" AND (n_surn=? OR n_surname=?";
+		$sql = "
+			SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom
+			 FROM `##individuals`
+			 JOIN `##name` ON (i_id=n_id AND i_file=n_file)
+			 WHERE n_file=?
+			 AND n_type!=?
+			 AND (n_surn=? OR n_surname=?
+		";
 		$args = array(KT_GED_ID, '_MARNM', $surname, $surname);
 		if ($soundex_std) { // works only with latin letters. For other letters it outputs the code '0000'.
 			foreach (explode(':', KT_Soundex::soundex_std($surname)) as $value) {
@@ -1105,7 +1106,7 @@ class KT_Controller_FancyTreeView {
 	// check (blood) relationship between partners
 	public function checkRelationship($person, $spouse) {
 		$controller	 = new KT_Controller_Relationship();
-		$paths		 = $controller->calculateRelationships($person, $spouse, 1, 0);
+		$paths		 = $controller->calculateRelationships_123456($person, $spouse, 1, 0);
 		foreach ($paths as $path) {
 			$relationships = $controller->oldStyleRelationshipPath($path);
 			if (empty($relationships)) {
