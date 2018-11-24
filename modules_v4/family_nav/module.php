@@ -146,7 +146,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 			<?php
 		}
 		foreach ($family->getChildren() as $child) {
-			$menu = new KT_Menu(getCloseRelationshipName($controller->record, $child));
+			$menu = new KT_Menu(getCloseRelationshipName($controller->record, $child, $family->getXref()));
 			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new KT_Menu($this->getFamily($child)));
 			?>

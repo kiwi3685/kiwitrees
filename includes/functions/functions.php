@@ -1006,11 +1006,26 @@ function get_relationship_name($nodes) {
  *
  * @return string
  */
-function getCloseRelationshipName(KT_Person $individual1, KT_Person $individual2) {
+function getCloseRelationshipName(KT_Person $individual1, KT_Person $individual2, $family = '') {
+	$family ? $include_pedi = true : $include_pedi = false;
+
 	if ($individual1->getXref() === $individual2->getXref()) {
 		$label = '<i class="icon-selected"></i>' . reflexivePronoun($individual1);
 	} else {
 		$label = get_relationship_name(get_relationship($individual1, $individual2));
+	}
+
+	if ($family) {
+		$gedrec		= $individual2->getGedcomRecord();
+		preg_match('/\n1 ADOP(\n[2-9].*)*\n2 FAMC @(.+)@/', $gedrec, $match);
+		if ($match) {
+			preg_match('~2 FAMC @(.*?)@~', $match[0], $output);
+			$famcrec = get_sub_record(1, "1 FAMC @" . $output[1] . "@", $gedrec);
+			$pedi	 = get_gedcom_value("PEDI", 2, $famcrec);
+			if ($pedi && $output[1] == $family) {
+				$label .= '<br>(' . KT_Gedcom_Code_Pedi::getValue($pedi, $individual2) . ')';
+			}
+		}
 	}
 
 	return $label;
