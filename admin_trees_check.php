@@ -78,16 +78,16 @@ $controller
 
 		// Need to merge pending new/changed/deleted records
 
-		$rows = KT_DB::prepare(
-			" SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec".
-			" FROM (".
-			"  SELECT MAX(change_id) AS change_id".
-			"  FROM `##change`".
-			"  WHERE gedcom_id=? AND status='pending'".
-			"  GROUP BY xref".
-			" ) AS t1".
-			" JOIN `##change` t2 USING (change_id)"
-		)->execute(array(KT_GED_ID))->fetchAll();
+		$rows = KT_DB::prepare("
+			SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec
+				FROM (
+					SELECT MAX(change_id) AS change_id
+					FROM `##change`
+					WHERE gedcom_id=? AND status='pending'
+					GROUP BY xref
+				) AS t1
+				JOIN `##change` t2 USING (change_id)
+			")->execute(array(KT_GED_ID))->fetchAll();
 
 		foreach ($rows as $row) {
 			if ($row->gedrec) {
@@ -114,7 +114,7 @@ $controller
 			'SUBM'          => 'SUBM',
 			'FAMC'          => 'FAM',
 			'FAMS'          => 'FAM',
-			//'ADOP'=>'FAM', // Need to handle this case specially.  We may have both ADOP and FAMC links to the same FAM, but only store one.
+//			'ADOP'			=> 'FAM', // Need to handle this case specially.  We may have both ADOP and FAMC links to the same FAM, but only store one.
 			'HUSB'          => 'INDI',
 			'WIFE'          => 'INDI',
 			'CHIL'          => 'INDI',
@@ -124,78 +124,78 @@ $controller
 			'AUTH'          => 'INDI', // A kiwitrees extension
 			'ANCI'          => 'SUBM',
 			'DESI'          => 'SUBM',
-			'_KT_OBJE_SORT' => 'OBJE',
+			'_KT_OBJE_SORT' => 'OBJE', // A kiwitrees extension
 		);
 
 		$RECORD_LINKS = array(
-			'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_KT_OBJE_SORT', '_LOC'),
-			'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'),
-			'SOUR'=>array('NOTE', 'OBJE', 'REPO', 'AUTH'),
-			'REPO'=>array('NOTE'),
-			'OBJE'=>array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
-			'NOTE'=>array(), // The spec also allows SOUR, but we treat this as a warning
-			'SUBM'=>array('NOTE', 'OBJE'),
-			'SUBN'=>array('SUBM'),
-			'_LOC'=>array('SOUR', 'OBJE', '_LOC'),
+			'INDI' => array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_KT_OBJE_SORT', '_LOC'),
+			'FAM'  => array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'),
+			'SOUR' => array('NOTE', 'OBJE', 'REPO', 'AUTH'),
+			'REPO' => array('NOTE'),
+			'OBJE' => array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
+			'NOTE' => array(), // The spec also allows SOUR, but we treat this as a warning
+			'SUBM' => array('NOTE', 'OBJE'),
+			'SUBN' => array('SUBM'),
+			'_LOC' => array('SOUR', 'OBJE', '_LOC'),
 		);
 
 		// Generate lists of all links
-		$all_links = array();
-		$upper_links = array();
+		$all_links		= array();
+		$upper_links	= array();
 		foreach ($records as $record) {
 			$all_links[$record->xref] = array();
 			$upper_links[strtoupper($record->xref)] = $record->xref;
-			preg_match_all('/\n\d ('.KT_REGEX_TAG.') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
+			preg_match_all('/\n\d (' . KT_REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
 			foreach ($matches as $match) {
 				$all_links[$record->xref][$match[2]] = $match[1];
 			}
 		}
 
-		foreach ($all_links as $xref1=>$links) {
+		foreach ($all_links as $xref1 => $links) {
 			$type1 = $records[$xref1]->type;
-			foreach ($links as $xref2=>$type2) {
+			foreach ($links as $xref2 => $type2) {
 				$type3 = @$records[$xref2]->type;
 				if (!array_key_exists($xref2, $all_links)) {
 					if (array_key_exists(strtoupper($xref2), $upper_links)) {
 						echo warning(
-							link_message($type1, $xref1, $type2, $xref2).' '.
+							link_message($type1, $xref1, $type2, $xref2) .' '.
 							/* I18N: placeholders are GEDCOM IDs, such as R123 */ KT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
 						);
 					} else {
 						echo error(
 							link_message(
-								$type1, $xref1, $type2, $xref2).' '.
+								$type1, $xref1, $type2, $xref2) .' '.
 								/* I18N: placeholders are GEDCOM IDs, such as R123 */ KT_I18N::translate('%1$s does not exist.', format_link($xref2))
 						);
 					}
-				} elseif ($type2=='SOUR' && $type1=='NOTE') {
+				} elseif ($type2 == 'SOUR' && $type1 == 'NOTE') {
 					//echo warning(KT_I18N::translate('The note %1$s has a source %2$s. Notes are intended to add explanations and comments to other records.  They should not have their own sources.'), format_link($xref1), format_link($xref2));
-				} elseif ($type2=='SOUR' && $type1=='OBJE') {
+				} elseif ($type2 == 'SOUR' && $type1 == 'OBJE') {
 					//echo warning(KT_I18N::translate('The media object %1$s has a source %2$s. Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.', format_link($xref1), format_link($xref2)));
-				} elseif ($type2=='OBJE' && $type1=='REPO') {
+				} elseif ($type2 == 'OBJE' && $type1 == 'REPO') {
 					echo warning(
 						link_message($type1, $xref1, $type2, $xref2) . ' ' .  KT_I18N::translate('This type of link is not allowed here.')
 					);
 				} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
 					echo error(
-						link_message($type1, $xref1, $type2, $xref2).' '.
+						link_message($type1, $xref1, $type2, $xref2) .' '.
 						KT_I18N::translate('This type of link is not allowed here.')
 					);
-				} elseif ($XREF_LINKS[$type2]!=$type3) {
+				} elseif ($XREF_LINKS[$type2] != $type3) {
 					// Target XREF does exist - but is invalid
 					echo error(
-						link_message($type1, $xref1, $type2, $xref2).' '.
+						link_message($type1, $xref1, $type2, $xref2) .' '.
 						/* I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR */ KT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
 					);
 				} elseif (
-					$type2=='FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='CHIL') ||
-					$type2=='FAMS' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='HUSB' && $all_links[$xref2][$xref1]!='WIFE') ||
-					$type2=='CHIL' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMC') ||
-					$type2=='HUSB' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMS') ||
-					$type2=='WIFE' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMS')
+					$type2 == 'FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] != 'CHIL') ||
+					$type2 == 'FAMS' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] != 'HUSB' && $all_links[$xref2][$xref1] != 'WIFE') ||
+					$type2 == 'CHIL' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] != 'FAMC') ||
+					$type2 == 'HUSB' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] != 'FAMS') ||
+					$type2 == 'WIFE' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] != 'FAMS')
 				) {
 					echo error(
-					link_message($type1, $xref1, $type2, $xref2).' '.
+						link_message($type1, $xref1, $type2, $xref2) .' '.
 						/* I18N: %1$s and %2$s are internal ID numbers such as R123 */ KT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
 					);
 				}
@@ -231,11 +231,11 @@ function format_type($type) {
 function error($message) {
 	global $errors;
 	$errors = true;
-	return '<p class="ui-state-error">' . $message . '</p>';
+	return '<p class="result ui-state-error">' . $message . '</p>';
 }
 
 function warning($message) {
 	global $errors;
 	$errors = true;
-	return '<p class="ui-state-highlight">' . $message . '</p>';
+	return '<p class="result ui-state-highlight">' . $message . '</p>';
 }

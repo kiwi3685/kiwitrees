@@ -777,6 +777,15 @@ textarea[name="BLOCKED_EMAIL_ADDRESS_LIST"] {
 	padding-top: 3px;
 }
 
+#check_errors fieldset {
+	background-color: lightgray;
+    margin-bottom: 30px;
+}
+
+#check_errors p.result {
+    margin: auto 15px;
+}
+
 #check_errors .noresult {
 	padding: 10px;
 	margin: 20px 10px;
