@@ -5219,8 +5219,8 @@ ul#research_status ul.sublinks {
 	width: 99%!important;
 }
 
-#cousins_f,
-#cousins_m {
+.cousins_f,
+.cousins_m {
 	border: 1px solid;
 	border-radius: 5px;
 	display: table-cell;
