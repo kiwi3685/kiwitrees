@@ -59,13 +59,14 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 		$person		= $controller->getSignificantIndividual();
 		$fullname	= $controller->record->getFullName();
 		$xref		= $controller->record->getXref();
+		$noFamily	= '';
 		$cousins	= KT_Filter::post('cousins');
 
 		if ($person->getPrimaryChildFamily()) {
 			$parentFamily = $person->getPrimaryChildFamily();
-		} else { ?>
-			<h3><?php echo KT_I18N::translate('No family available'); ?></h3>
-			<?php exit;
+		} else {
+			$noFamily = KT_I18N::translate('No family available');
+			exit;
 		}
 		if ($parentFamily->getHusband()) {
 			$grandparentFamilyHusb = $parentFamily->getHusband()->getPrimaryChildFamily();
@@ -91,30 +92,35 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 					</button>
 				</form>
 			</div>
-
 			<?php
+			if ($noFamily) { ?>
+				<h3><?php echo $noFamily; ?></h3>
+			<?php }
 			if (KT_Filter::post('cousins') <> 'second') { ?>
 				<div class="first_cousins">
 					<?php
-					$firstCousinsF	= $this->getFirstCousins($parentFamily, $grandparentFamilyHusb, 'husb');
-					$firstCousinsM	= $this->getFirstCousins($parentFamily, $grandparentFamilyWife, 'wife');
-					$firstCousins	= $firstCousinsF[1] + $firstCousinsM[1];
-					$duplicates		= $firstCousinsF[2] + $firstCousinsM[2];
+					$firstCousinsF	= $grandparentFamilyHusb ? $this->getFirstCousins($parentFamily, $grandparentFamilyHusb, 'husb') : array('',0,0);
+					$firstCousinsM	= $grandparentFamilyWife ? $this->getFirstCousins($parentFamily, $grandparentFamilyWife, 'wife') : array('',0,0);
+					$countCousinsF	= $firstCousinsF[1];
+					$countCousinsM	= $firstCousinsM[1];
+					$totalCousins	= $countCousinsF + $countCousinsM;
+					$duplicatesF	= $firstCousinsF[2];
+					$duplicatesM	= $firstCousinsM[2];
+					$duplicates		= $duplicatesF + $duplicatesM;
 					?>
 					<div class="cousins_row">
-						<h3><?php echo KT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $firstCousins, $firstCousins, $fullname); ?></h3>
+						<h3><?php echo KT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $totalCousins, $totalCousins, $fullname); ?></h3>
 						<?php if ($duplicates > 0) { ?>
 							<p><?php echo /* I18N: a reference to cousins of siblings married to siblings */ KT_I18N::plural('%1$d is on both sides of the family', '%1$d are on both sides of the family', $duplicates, $duplicates); ?></p>
 						<?php } ?>
 					</div>
 					<div class="cousins_row">
 						<div class="cousins_f">
-							<h4><?php echo KT_I18N::translate('Father\'s family (%s)', $firstCousinsF[1]); ?></h4>
+							<h4><?php echo KT_I18N::translate('Father\'s family (%s)', $countCousinsF); ?></h4>
 							<?php echo $firstCousinsF[0]; ?>
 						</div>
-
 						<div class="cousins_m">
-							<h4><?php echo KT_I18N::translate('Mother\'s family (%s)', $firstCousinsM[1]); ?></h4>
+							<h4><?php echo KT_I18N::translate('Mother\'s family (%s)', $countCousinsM); ?></h4>
 							<?php echo $firstCousinsM[0]; ?>
 						</div>
 					</div>
@@ -124,20 +130,24 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 				<div class="secondCousins">
 					<div class="second_cousins">
 						<?php
-						$secondCousinsF = $this->getSecondCousins($grandparentFamilyHusb, 'husb');
-						$secondCousinsM = $this->getSecondCousins($grandparentFamilyWife, 'wife');
-						$secondCousins	= $secondCousinsF[1] + $secondCousinsM[1];
+						$secondCousinsF = $grandparentFamilyHusb ? $this->getSecondCousins($grandparentFamilyHusb, 'husb') : array('',0,0);
+						$secondCousinsM = $grandparentFamilyWife ? $this->getSecondCousins($grandparentFamilyWife, 'wife') : array('',0,0);
+						$countCousinsF	= $secondCousinsF[1];
+						$countCousinsM	= $secondCousinsM[1];
+						$totalCousins	= $countCousinsF + $countCousinsM;
+
+
 						?>
 						<div class="cousins_row">
-							<h3><?php echo KT_I18N::plural('%2$s has %1$d second cousin recorded', '%2$s has %1$d second cousins recorded', $secondCousins, $secondCousins, $fullname); ?></h3>
+							<h3><?php echo KT_I18N::plural('%2$s has %1$d second cousin recorded', '%2$s has %1$d second cousins recorded', $totalCousins, $totalCousins, $fullname); ?></h3>
 						</div>
 						<div class="cousins_row">
 							<div class="cousins_f">
-								<h4><?php echo KT_I18N::translate('Second cousins on father\'s side (%s)', $secondCousinsF[1]); ?></h4>
+								<h4><?php echo KT_I18N::translate('Second cousins on father\'s side (%s)', $countCousinsF); ?></h4>
 								<?php echo $secondCousinsF[0]; ?>
 							</div>
 							<div class="cousins_m">
-								<h4><?php echo KT_I18N::translate('Second cousins on mother\'s side (%s)', $secondCousinsM[1]); ?></h4>
+								<h4><?php echo KT_I18N::translate('Second cousins on mother\'s side (%s)', $countCousinsM); ?></h4>
 								<?php echo $secondCousinsM[0]; ?>
 							</div>
 						</div>

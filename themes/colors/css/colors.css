@@ -1997,7 +1997,7 @@ ul#research_status ul.sublinks {display: none; font-size: 90%;}
 #cousins_tab .person_box, #cousins_tab .person_boxF, #cousins_tab .person_boxNN {clear:left;float:left;margin:1px 0;width:99%!important;}
 .first_cousins, .second_cousins {border-spacing: 10px 0; display:table; width: 100%;}
 .cousins_row {display:table-row;}
-.cousins_f, .cousins_m {border:1px solid;border-radius:5px;display:table-cell;padding:10px;}
+.cousins_f, .cousins_m {border:1px solid;border-radius:5px;display:table-cell;padding:10px;width: 50%;}
 .cousins_name {}
 .cousins_lifespan, .cousins_pedi {font-size:9px;padding:3px 5px 5px 5px;}
 .cousins_counter {margin:0 3px;font-size:80%;}

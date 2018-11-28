@@ -5241,6 +5241,7 @@ ul#research_status ul.sublinks {
 	border-radius: 5px;
 	display: table-cell;
 	padding: 10px;
+	width: 50%;
 }
 
 .cousins_name {
