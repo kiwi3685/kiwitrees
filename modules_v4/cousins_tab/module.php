@@ -123,8 +123,8 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 					<div class="secondCousins">
 						<div class="second_cousins">
 							<?php
-							$secondCousinsF = $grandparentFamilyHusb ? $this->getSecondCousins($grandparentFamilyHusb, 'husb') : array('',0);
-							$secondCousinsM = $grandparentFamilyWife ? $this->getSecondCousins($grandparentFamilyWife, 'wife') : array('',0);
+							$secondCousinsF = $grandparentFamilyHusb ? $this->getSecondCousins($grandparentFamilyHusb) : array('',0);
+							$secondCousinsM = $grandparentFamilyWife ? $this->getSecondCousins($grandparentFamilyWife) : array('',0);
 							$countCousinsF	= $secondCousinsF[1];
 							$countCousinsM	= $secondCousinsM[1];
 							$totalCousins	= $countCousinsF + $countCousinsM;
@@ -235,49 +235,55 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 		return array($html, $count_1cousins, $count_duplicates);
 	}
 
-	function getSecondCousins($grandparentFamily, $type) {
+	function getSecondCousins($grandparentFamily) {
 		$html			= '';
 		$count_2cousins	= 0;
 		$prev_fam_id	= -1;
 
-		if ($type == 'husb') {
-			$myGrandParent = $grandparentFamily->getHusband();
-		} elseif ($type == 'wife') {
-			$myGrandParent = $grandparentFamily->getWife();
-		}
+//		if ($type == 'husb') {
+//			$myGrandParent = $grandparentFamily->getHusband();
+//		} elseif ($type == 'wife') {
+//			$myGrandParent = $grandparentFamily->getWife();
+//		} else {
+//			exit;
+//		}
 
-		foreach ($myGrandParent->getPrimaryChildFamily()->getChildren() as $key => $child) {
-			if ($child->getSpouseFamilies() && $child->getXref() <> $myGrandParent->getXref()) {
-				foreach ($child->getSpouseFamilies() as $family) {
-					if (!is_null($family)) {
-						$i = 0;
-						$children = $family->getChildren();
-						foreach ($children as $key => $child2) {
-							foreach ($child2->getSpouseFamilies() as $family2) {
-								if (!is_null($family2)) {
-									$children2 = $family2->getChildren();
-									foreach ($children2 as $key => $child3) {
-										if ($child->canDisplayName()) {
-											$i ++;
-											$tmp				= array('M'=>'', 'F'=>'F', 'U'=>'NN');
-											$isF				= $tmp[$child3->getSex()];
-											$cousinParentFamily = substr($child3->getPrimaryChildFamily(), 0, strpos($child3->getPrimaryChildFamily(), '@'));
-											$family				= KT_Family::getInstance($cousinParentFamily);
-											if ($cousinParentFamily != $prev_fam_id) {
-								 				$prev_fam_id = $cousinParentFamily;
-												$html .= '<h5>' . KT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="' . $family->getHtmlUrl() . '">&nbsp;' . $family->getFullName() . '</a></h5>';
-												$i = 1;
+
+		for ($x = 1; $x < 3; $x ++) {
+			$x == 1 ? $myGrandParent = $grandparentFamily->getHusband() : $myGrandParent = $grandparentFamily->getWife();
+			foreach ($myGrandParent->getPrimaryChildFamily()->getChildren() as $key => $child) {
+				if ($child->getSpouseFamilies() && $child->getXref() <> $myGrandParent->getXref()) {
+					foreach ($child->getSpouseFamilies() as $family) {
+						if (!is_null($family)) {
+							$i = 0;
+							$children = $family->getChildren();
+							foreach ($children as $key => $child2) {
+								foreach ($child2->getSpouseFamilies() as $family2) {
+									if (!is_null($family2)) {
+										$children2 = $family2->getChildren();
+										foreach ($children2 as $key => $child3) {
+											if ($child->canDisplayName()) {
+												$i ++;
+												$tmp				= array('M'=>'', 'F'=>'F', 'U'=>'NN');
+												$isF				= $tmp[$child3->getSex()];
+												$cousinParentFamily = substr($child3->getPrimaryChildFamily(), 0, strpos($child3->getPrimaryChildFamily(), '@'));
+												$family				= KT_Family::getInstance($cousinParentFamily);
+												if ($cousinParentFamily != $prev_fam_id) {
+									 				$prev_fam_id = $cousinParentFamily;
+													$html .= '<h5>' . KT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="' . $family->getHtmlUrl() . '">&nbsp;' . $family->getFullName() . '</a></h5>';
+													$i = 1;
+												}
+												$html .= '
+													<div class="person_box' . $isF . '">
+														<span class="cousins_counter">' . $i . '</span>
+														<span class="cousins_name">
+															<a target="_blank" rel="noopener noreferrer" href="' . $child3->getHtmlUrl() . '">' . $child3->getFullName() . '</a>
+														</span>
+														<span class="cousins_lifespan">' . $child3->getLifeSpan() . '</span>
+													</div>
+												';
+												$count_2cousins ++;
 											}
-											$html .= '
-												<div class="person_box' . $isF . '">
-													<span class="cousins_counter">' . $i . '</span>
-													<span class="cousins_name">
-														<a target="_blank" rel="noopener noreferrer" href="' . $child3->getHtmlUrl() . '">' . $child3->getFullName() . '</a>
-													</span>
-													<span class="cousins_lifespan">' . $child3->getLifeSpan() . '</span>
-												</div>
-											';
-											$count_2cousins ++;
 										}
 									}
 								}
