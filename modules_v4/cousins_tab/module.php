@@ -240,15 +240,6 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 		$count_2cousins	= 0;
 		$prev_fam_id	= -1;
 
-//		if ($type == 'husb') {
-//			$myGrandParent = $grandparentFamily->getHusband();
-//		} elseif ($type == 'wife') {
-//			$myGrandParent = $grandparentFamily->getWife();
-//		} else {
-//			exit;
-//		}
-
-
 		for ($x = 1; $x < 3; $x ++) {
 			$x == 1 ? $myGrandParent = $grandparentFamily->getHusband() : $myGrandParent = $grandparentFamily->getWife();
 			foreach ($myGrandParent->getPrimaryChildFamily()->getChildren() as $key => $child) {
