@@ -117,7 +117,8 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 			$recipients = recipients($to);
 
 			// Different validation for admin/user/visitor.
-			$errors = false;
+			$errors		= false;
+			$urlRegex	= '/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')((?:ftp|http|https|www|\/\/)?(?>[a-z\-0-9]{2,}\.){1,}[a-z]{2,8})(?:\s|\/|\")/m';
 			if (KT_USER_ID) {
 				$from_name  = getUserFullName(KT_USER_ID);
 				$from_email = getUserEmail(KT_USER_ID);
@@ -131,9 +132,9 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 				// This type of validation error should not be shown in the client.
 				AddToLog('Possible spam - blocked email address: ' . $from_email, 'error');
 				$errors = true;
-			} elseif (preg_match('/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
-				KT_FlashMessages::addMessage(KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ KT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]));
-				AddToLog('Possible spam - attempt to include external links by: ' . $from_email, 'error');
+			} elseif (preg_match($urlRegex, $subject . $body, $match)) {
+				KT_FlashMessages::addMessage(KT_I18N::translate('You are not allowed to send messages that contain external links.'));
+				AddToLog('Possible spam - attempt to include external links (' . $match[1] . ') by: ' . $from_email, 'error');
 				$errors = true;
 			} elseif (empty($recipients)) {
 				$errors = true;
