@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -263,10 +263,18 @@ class KT_Family extends KT_GedcomRecord {
 	// Note that this is calculated using unprivatized data, so we can
 	// always distinguish spouses from ex-spouses.
 	function isDivorced() {
-		return (bool)preg_match('/\n1 ('.KT_EVENTS_DIV.')( Y|\n)/', $this->_gedrec);
+		return (bool)preg_match('/\n1 (' . KT_EVENTS_DIV . ')( Y|\n)/', $this->_gedrec);
 	}
 	function isNotMarried() {
 		return (bool)preg_match('/\n1 _NMR( Y|\n)/', $this->_gedrec);
+	}
+
+	/**
+	 * Simple check if couple are married, by existance of MARR tag
+	 * @return boolean True of tag exisits with "Y" or line feed
+	 */
+	function isMarried() {
+		return (bool)preg_match('/\n1 MARR( Y|\n)/', $this->_gedrec);
 	}
 
 	/**
