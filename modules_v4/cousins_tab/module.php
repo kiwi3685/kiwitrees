@@ -56,11 +56,11 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 	public function getTabContent() {
 		global $controller;
 
-		$person		= $controller->getSignificantIndividual();
-		$fullname	= $controller->record->getFullName();
-		$xref		= $controller->record->getXref();
-		$parentFamily = '';
-		$cousins	= KT_Filter::post('cousins');
+		$person			= $controller->getSignificantIndividual();
+		$fullname		= $controller->record->getFullName();
+		$xref			= $controller->record->getXref();
+		$parentFamily	= '';
+		$cousins		= KT_Filter::post('cousins');
 
 		if ($person->getPrimaryChildFamily()) {
 			$parentFamily = $person->getPrimaryChildFamily();
@@ -92,8 +92,9 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 				<?php if ($cousins <> 'second') { ?>
 					<div class="first_cousins">
 						<?php
-						$firstCousinsF	= $grandparentFamilyHusb ? $this->getFirstCousins($parentFamily, $grandparentFamilyHusb, 'husb') : array('',0,0);
-						$firstCousinsM	= $grandparentFamilyWife ? $this->getFirstCousins($parentFamily, $grandparentFamilyWife, 'wife') : array('',0,0);
+						$firstCousinsF	= $grandparentFamilyHusb ? $this->getFirstCousins($parentFamily, $grandparentFamilyHusb, 'husb') : array('',0,0,'');
+						$list 			= $firstCousinsF[3]; // list of cousins used by next function to assess possible duplicates due to siblings marry siblings links.
+						$firstCousinsM	= $grandparentFamilyWife ? $this->getFirstCousins($parentFamily, $grandparentFamilyWife, 'wife', $list) : array('',0,0);
 						$countCousinsF	= $firstCousinsF[1];
 						$countCousinsM	= $firstCousinsM[1];
 						$totalCousins	= $countCousinsF + $countCousinsM;
@@ -104,7 +105,7 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 						<div class="cousins_row">
 							<h3><?php echo KT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $totalCousins, $totalCousins, $fullname); ?></h3>
 							<?php if ($duplicates > 0) { ?>
-								<p><?php echo /* I18N: a reference to cousins of siblings married to siblings */ KT_I18N::plural('%1$d is on both sides of the family', '%1$d are on both sides of the family', $duplicates, $duplicates); ?></p>
+								<p style="margin: 0 15px 5px;"><?php echo /* I18N: a reference to cousins of siblings married to siblings */ KT_I18N::plural('%1$d is on both sides of the family', '%1$d are on both sides of the family', $duplicates, $duplicates); ?></p>
 							<?php } ?>
 						</div>
 						<div class="cousins_row">
@@ -170,13 +171,13 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 		return '';
 	}
 
-	function getFirstCousins($parentFamily, $grandparentFamily, $type) {
+	function getFirstCousins($parentFamily, $grandparentFamily, $type, $list = array()) {
 		$html				= '';
 		$count_1cousins		= 0;
 		$prev_fam_id		= -1;
 		$family				= '';
-		$list				= array();
 		$count_duplicates	= 0;
+//		$list ? $list : $list = array();
 
 		if ($type == 'husb') {
 			$myParent = $parentFamily->getHusband()->getXref();
@@ -232,7 +233,7 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 			}
 		}
 
-		return array($html, $count_1cousins, $count_duplicates);
+		return array($html, $count_1cousins, $count_duplicates, $list);
 	}
 
 	function getSecondCousins($grandparentFamily) {
