@@ -118,7 +118,7 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
 			// Different validation for admin/user/visitor.
 			$errors		= false;
-			$urlRegex	= '/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')((?:ftp|http|https|www|\/\/)?(?>[a-z\-0-9]{2,}\.){1,}[a-z]{2,8})(?:\s|\/|\")/m';
+			$urlRegex	= '/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')((?:ftp|http|https|www|\:|\/\/)?(?>[a-z\-0-9]{2,}\.){1,}[a-z]{2,8})/m';
 			if (KT_USER_ID) {
 				$from_name  = getUserFullName(KT_USER_ID);
 				$from_email = getUserEmail(KT_USER_ID);
