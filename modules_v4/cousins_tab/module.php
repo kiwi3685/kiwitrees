@@ -177,7 +177,7 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 		$prev_fam_id		= -1;
 		$family				= '';
 		$count_duplicates	= 0;
-//		$list ? $list : $list = array();
+		$list ? $list : $list = array();
 
 		if ($type == 'husb') {
 			$myParent = $parentFamily->getHusband()->getXref();
