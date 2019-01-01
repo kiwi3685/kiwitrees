@@ -120,18 +120,18 @@ switch ($action) {
 			}
 		}
 
-		// Check for image having 0 bytes (corrupted)  or too large to import
-		if ($_FILES['mediafile']['size'] && ($_FILES['mediafile']['size'] === 0 || $_FILES['mediafile']['size'] > int_from_bytestring(detectMaxUploadFileSize()))) {
-			KT_FlashMessages::addMessage(KT_I18N::translate('The media file you selected either has a size of zero bytes or is too large to be uploaded.'));
-			unset($_FILES['mediafile']);
-			break;
-		}
-
 		// A thumbnail file with no main image?
 		if (!empty($_FILES['thumbnail']['name']) && empty($_FILES['mediafile']['name'])) {
 			// Assume the user used the wrong field, and treat this as a main image
 			$_FILES['mediafile'] = $_FILES['thumbnail'];
 			unset($_FILES['thumbnail']);
+		}
+
+		// Check for image having 0 bytes (corrupted)  or too large to import
+		if ($_FILES['mediafile']['size'] && ($_FILES['mediafile']['size'] === 0 || $_FILES['mediafile']['size'] > int_from_bytestring(detectMaxUploadFileSize()))) {
+			KT_FlashMessages::addMessage(KT_I18N::translate('The media file you selected either has a size of zero bytes or is too large to be uploaded.'));
+			unset($_FILES['mediafile']);
+			break;
 		}
 
 		// Thumbnails must be images.
