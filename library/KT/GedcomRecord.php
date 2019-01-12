@@ -523,15 +523,14 @@ class KT_GedcomRecord {
 			// Generally, the first name is the primary one....
 			$this->_getPrimaryName = 0;
 			// ....except when the language/name use different character sets
-			if (count($this->getAllNames()) > 1) {
-				foreach ($this->getAllNames() as $n => $name) {
-					if ($name['type'] !== '_MARNM' && KT_I18N::textScript($name['sort']) === $language_script) {
-						$this->_getPrimaryName = $n;
-						break;
-					}
+			foreach ($this->getAllNames() as $n => $name) {
+				if ($name['type'] !== '_MARNM' && KT_I18N::textScript($name['sort']) === $language_script) {
+					$this->_getPrimaryName = $n;
+					break;
 				}
 			}
 		}
+		
 		return $this->_getPrimaryName;
 	}
 
