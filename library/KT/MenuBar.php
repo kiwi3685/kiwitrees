@@ -35,7 +35,7 @@ class KT_MenuBar {
 			foreach (KT_Tree::getAll() as $tree) {
 				$submenu = new KT_Menu(
 					$tree->tree_title_html,
-					'index.php?amp;ged=' . $tree->tree_name_url,
+					'index.php?ged=' . $tree->tree_name_url,
 					'menu-tree-' . $tree->tree_id // Cannot use name - it must be a CSS identifier
 				);
 				$menu->addSubmenu($submenu);
