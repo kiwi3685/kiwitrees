@@ -23,7 +23,7 @@
 
 define('KT_SCRIPT_NAME', 'admin_site_config.php');
 require './includes/session.php';
-require KT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new KT_Controller_Page();
 $controller
@@ -38,9 +38,9 @@ $controller
 
 // Lists of options for <select> controls.
 $SMTP_SSL_OPTIONS = array(
-	'none'=>KT_I18N::translate('none'),
-	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'=>KT_I18N::translate('ssl'),
-	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls'=>KT_I18N::translate('tls'),
+	'none' => KT_I18N::translate('none'),
+	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl' => KT_I18N::translate('ssl'),
+	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls' => KT_I18N::translate('tls'),
 );
 $SMTP_ACTIVE_OPTIONS = array(
 	'internal'=>KT_I18N::translate('Use PHP mail to send messages'),
@@ -443,7 +443,7 @@ $controller
 						}
 						$installed = KT_I18N::installed_languages();
 						// sort by localised name
-						foreach ($installed as $code=>$name) {
+						foreach ($installed as $code => $name) {
 							$installed[$code] = KT_I18N::translate($name);
 						}
 						asort($installed);

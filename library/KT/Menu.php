@@ -27,17 +27,17 @@ if (!defined('KT_KIWITREES')) {
 }
 
 class KT_Menu {
-	var $label = ' ';
-	var $labelpos = 'right';
-	var $link = '#';
-	var $onclick = null;
-	var $flyout = 'down';
-	var $class = '';
-	var $id=null;
-	var $submenuclass = '';
-	var $iconclass = '';
-	var $target = null;
-	var $parentmenu = null;
+	var $label			= ' ';
+	var $labelpos		= 'right';
+	var $link			= '#';
+	var $onclick		= null;
+	var $flyout			= 'down';
+	var $class			= '';
+	var $id				= null;
+	var $submenuclass	= '';
+	var $iconclass		= '';
+	var $target			= null;
+	var $parentmenu		= null;
 	var $submenus;
 
 	/**

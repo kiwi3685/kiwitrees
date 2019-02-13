@@ -156,7 +156,7 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 	// Action from the configuration page
 	private function edit() {
 		if (KT_USER_IS_ADMIN) {
-			require_once KT_ROOT.'includes/functions/functions_edit.php';
+			require_once KT_ROOT . 'includes/functions/functions_edit.php';
 
 			if (safe_POST_bool('save')) {
 				$block_id=safe_POST('block_id');
@@ -417,7 +417,7 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 	<?php }
 
 	private function config() {
-		require_once KT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT . 'includes/functions/functions_edit.php';
 
 		$controller=new KT_Controller_Page();
 		$controller
@@ -463,8 +463,8 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 		)->execute(array($this->getName()))->fetchOne();
 
 		echo'<div id="' . $this->getName() . '">';
-//			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
-			echo'<h2>' .$controller->getPageTitle(). '</h2>
+//			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="' . $iconStyle . ' fa-comments-o"></i></a>
+			echo'<h2>' . $controller->getPageTitle() . '</h2>
 			<div id="pages_tabs">
 				<ul>
 					<li><a href="#pages_summary"><span>', KT_I18N::translate('Summary'), '</span></a></li>
@@ -479,7 +479,7 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 					<div class="value2">
 						<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $HEADER_DESCRIPTION, '</textarea>
 					</div>
-					<div class="save"><input type="submit" value="', KT_I18N::translate('save'), '"></div>
+					<div class="save"><input type="submit" value="', KT_I18N::translate('Save'), '"></div>
 					</form>
 				</div>
 				<div id="pages_pages">

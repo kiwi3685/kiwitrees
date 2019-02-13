@@ -120,7 +120,7 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 	// Action from the configuration page
 	private function edit() {
 		if (KT_USER_IS_ADMIN) {
-			require_once KT_ROOT.'includes/functions/functions_edit.php';
+			require_once KT_ROOT . 'includes/functions/functions_edit.php';
 			if (KT_Filter::postBool('save') && KT_Filter::checkCsrf()) {
 				$block_id = KT_Filter::postInteger('block_id');
 				if ($block_id) {
@@ -383,7 +383,7 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 	}
 
 	private function config() {
-		require_once KT_ROOT.'includes/functions/functions_edit.php';
+		require_once KT_ROOT . 'includes/functions/functions_edit.php';
 
 		$controller = new KT_Controller_Page();
 		$controller
@@ -475,10 +475,7 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 								<tr class="faq_edit_pos">
 									<td>
 										<?php
-										echo '
-											<p>' . KT_I18N::translate('FAQ position') . '<span>' . ($faq->block_order) . '</span>
-												<small>(#faq' . $faq->block_id . ')</small>
-											</p>';
+										echo '<p>' . KT_I18N::translate('FAQ position') . '<span>' . ($faq->block_order) . '</span></p>';
 										echo '<p>' . KT_I18N::translate('Family tree');
 											if ($faq->gedcom_id == null) {
 												echo '<span>' . KT_I18N::translate('All') . '</span>';
