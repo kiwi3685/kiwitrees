@@ -1613,9 +1613,6 @@ function old_paths() {
 		// Removed in kiwitrees 3.3.3
 		KT_ROOT . 'js/d3.min.js',
 		KT_ROOT . 'modules_v4/research_links/plugins/vlaardingengeschiedenis.php',
-		// temporary changes
-		KT_ROOT . 'admin_members.php',
-		KT_ROOT . 'admin_members_bulk.php',
 	);
 }
 
