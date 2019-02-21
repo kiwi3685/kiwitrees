@@ -87,8 +87,8 @@ $generations = array(
 
 $false	= '<i class="error fa fa-times"></i>';
 $true	= '<i class="accepted fa fa-check"></i>';
-
 ?>
+<!-- input form -->
 <div id="missing_data-page">
 	<div class="noprint">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
