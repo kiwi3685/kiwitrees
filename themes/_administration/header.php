@@ -170,19 +170,20 @@ if ($view != 'simple') {
 			<div>
 				<?php //-- gedcom list
 				$ft_tools = array(
-					"admin_trees_check.php"			=> KT_I18N::translate('Check for GEDCOM errors'),
-					"admin_trees_change.php"		=> KT_I18N::translate('Changes log'),
-					"admin_trees_addunlinked.php"	=> KT_I18N::translate('Add unlinked records'),
-					"admin_trees_places.php"		=> KT_I18N::translate('Update place names'),
-					"admin_trees_merge.php"			=> KT_I18N::translate('Merge records'),
-					"admin_trees_renumber.php"		=> KT_I18N::translate('Renumber family tree'),
-					"admin_trees_append.php"		=> KT_I18N::translate('Append family tree'),
-					"admin_trees_duplicates.php"	=> KT_I18N::translate('Find duplicate individuals'),
-					"admin_trees_findunlinked.php"	=> KT_I18N::translate('Find unlinked records'),
-					"admin_trees_sanity.php"		=> KT_I18N::translate('Sanity check'),
-					"admin_trees_source.php"		=> KT_I18N::translate('Sources - review'),
-					"admin_trees_sourcecite.php"	=> KT_I18N::translate('Sources - review citations'),
-					"admin_trees_missing.php"		=> KT_I18N::translate('Missing data'),
+					"admin_trees_check.php"				=> KT_I18N::translate('Check for GEDCOM errors'),
+					"admin_trees_change.php"			=> KT_I18N::translate('Changes log'),
+					"admin_trees_addunlinked.php"		=> KT_I18N::translate('Add unlinked records'),
+					"admin_trees_places.php"			=> KT_I18N::translate('Update place names'),
+					"admin_trees_merge.php"				=> KT_I18N::translate('Merge records'),
+					"admin_trees_renumber.php"			=> KT_I18N::translate('Renumber family tree'),
+					"admin_trees_append.php"			=> KT_I18N::translate('Append family tree'),
+					"admin_trees_duplicates.php"		=> KT_I18N::translate('Find duplicate individuals'),
+					"admin_trees_findunlinked.php"		=> KT_I18N::translate('Find unlinked records'),
+					"admin_trees_sanity.php"			=> KT_I18N::translate('Sanity check'),
+					"admin_trees_source.php"			=> KT_I18N::translate('Sources - review'),
+					"admin_trees_sourcecite.php"		=> KT_I18N::translate('Sources - review citations'),
+					"admin_trees_missing.php"			=> KT_I18N::translate('Missing data'),
+					"admin_trees_missing-source.php"	=> KT_I18N::translate('Missing fact/event sources'),
 				);
 				asort($ft_tools);
 				foreach ($ft_tools as $file=>$title) { ?>
