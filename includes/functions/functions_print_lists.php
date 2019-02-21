@@ -305,7 +305,7 @@ function format_indi_table($datalist, $option='') {
 	$unique_indis	= array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
-			$person=$value;
+			$person = $value;
 		} elseif (!is_array($value)) { // Array of IDs
 			$person = KT_Person::getInstance($value);
 		} else { // Array of search results
@@ -329,7 +329,7 @@ function format_indi_table($datalist, $option='') {
 			if ($name['type']=='NAME') {
 				$title='';
 			} else {
-				$title='title="'.strip_tags(KT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
+				$title = 'title="'.strip_tags(KT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
 			}
 			if ($num == $person->getPrimaryName()) {
 				$class =' class="name2"';
@@ -339,7 +339,7 @@ function format_indi_table($datalist, $option='') {
 				$class = '';
 				$sex_image = '';
 			}
-			$html .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
+			$html .= '<a ' . $title. ' href="' . $person->getHtmlUrl(). '"'. $class . '>'. highlight_search_hits($name['full']) . '</a>' . $sex_image . '<br>';
 		}
 		// Indi parents
 		$html .= $person->getPrimaryParentsNames('parents details1', 'none');
