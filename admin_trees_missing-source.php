@@ -53,10 +53,54 @@ foreach ($facts as $addfact) {
 uasort($translated_facts, 'factsort');
 
 //-- variables
-$fact				= KT_Filter::post('fact');
-$go 				= KT_Filter::post('go');
-$ged				= KT_Filter::post('ged') ? KT_Filter::post('ged') : KT_GEDCOM;
-?>
+$fact	= KT_Filter::post('fact');
+$go 	= KT_Filter::post('go');
+$ged	= KT_Filter::post('ged') ? KT_Filter::post('ged') : KT_GEDCOM;
+
+// prepare result list
+$list	= array_unique(KT_Query_Name::individuals('', '', '', false, false, KT_GED_ID));
+$result	= array();
+$check	= array();
+$count	= 0;
+$countr	= 0;
+
+foreach ($list as $person) {
+	if (in_array($fact, $after_death) && !$person->isDead()) {
+		continue;
+	}
+	if (in_array($fact, $famfacts)) {
+		$fam_record	= array();
+		// collect FAMS records for this person
+		$ct = preg_match_all('/\n1 FAMS @(.+)@/', $person->getGedcomRecord(), $matches, PREG_SET_ORDER); // collect family info for FAM records ($matches)
+		foreach ($matches as $match) {
+			if (!in_array($match[1], $check)) {
+				$check[] = $match[1]; // avoid duplicate data from both spouses
+				$fam_record[] = KT_Family::getInstance($match[1]);
+			}
+		}
+		foreach ($fam_record as $family) {
+			$event = $family->getFactByType($fact);
+			if ($event) {
+				$count ++;
+				$ct_s = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match);
+				if ($ct_s == 0) {
+					$countr ++;
+					$result[$family->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
+				}
+			}
+		}
+	} else {
+		$event = $person->getFactByType($fact);
+		if ($event) {
+			$count ++;
+			$ct_s = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match);
+			if ($ct_s == 0) {
+				$countr ++;
+				$result[$person->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $person->getHtmlUrl() . '" target="_blank;">' . $person->getLifespanName() . '</a>';
+			}
+		}
+	}
+} ?>
 
 <!-- input form -->
 <div id="missing_data-page">
@@ -99,6 +143,8 @@ $ged				= KT_Filter::post('ged') ? KT_Filter::post('ged') : KT_GEDCOM;
 	</div>
 	<hr class="noprint" style="clear:both;">
 	<!-- end of form -->
+
+	<!-- output results as table -->
 	<?php if ($go == 1) {
 		$controller
 			->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
@@ -123,51 +169,14 @@ $ged				= KT_Filter::post('ged') ? KT_Filter::post('ged') : KT_GEDCOM;
 					stateSave: true,
 					stateDuration: -1
 				});
+
 				jQuery("#missing_data").css("visibility", "visible");
 				jQuery(".loading-image").css("display", "none");
 			');
+		$percent = round((float)$countr / $count * 100) . '%';; ?>
 
-		// prepare final list
-		$list	= array_unique(KT_Query_Name::individuals('', '', '', false, false, KT_GED_ID));
-		$result	= array();
-		$check	= array();
-
-		foreach ($list as $person) {
-			if (in_array($fact, $after_death) && !$person->isDead()) {
-				continue;
-			}
-			if (in_array($fact, $famfacts)) {
-				$fam_record	= array();
-				// collect FAMS records for this person
-				$ct = preg_match_all('/\n1 FAMS @(.+)@/', $person->getGedcomRecord(), $matches, PREG_SET_ORDER); // collect family info for FAM records ($matches)
-				foreach ($matches as $match) {
-					if (!in_array($match[1], $check)) {
-						$check[] = $match[1]; // avoid duplicate data from both spouses
-						$fam_record[] = KT_Family::getInstance($match[1]);
-					}
-				}
-				foreach ($fam_record as $family) {
-					$event = $family->getFactByType($fact);
-					if ($event) {
-						$ct_s = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match);
-						if ($ct_s == 0) {
-							$result[$family->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
-						}
-					}
-				}
-			} else {
-				$event = $person->getFactByType($fact);
-				if ($event) {
-					$ct_s = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match);
-					if ($ct_s == 0) {
-						$result[$person->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $person->getHtmlUrl() . '" target="_blank;">' . $person->getLifespanName() . '</a>';
-					}
-				}
-			}
-		} ?>
-
-		<!-- output results as table -->
-		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ KT_I18N::translate('Missing source reference for <u>%s</u> data', strtolower(KT_Gedcom_Tag::getLabel($fact))); ?></h3>
+		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ KT_I18N::translate('Missing source references for <u>%s</u> data', KT_Gedcom_Tag::getLabel($fact)); ?></h3>
+		<h4><?php echo /* I18N: example << 10 out of 50, or 20% >> */ KT_I18N::translate('(%s out of %s = %s)', KT_I18N::number($countr), KT_I18N::number($count), $percent); ?></h4>
 		<div class="loading-image">&nbsp;</div>
 		<table id="missing_data">
 			<thead>
