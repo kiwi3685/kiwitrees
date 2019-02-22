@@ -299,9 +299,12 @@ case 'load_json':
 			}
 
 			// Is there a pending record for this file?
-			$exists_pending = KT_DB::prepare(
-				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', ?, '\n%')"
-			)->execute(array($unused_file))->fetchOne();
+			$exists_pending = KT_DB::prepare("
+				SELECT 1 FROM `##change`
+					WHERE status='pending'
+					AND new_gedcom
+					LIKE CONCAT('%\n1 FILE ', ?, '\n%')
+			")->execute(array($unused_file))->fetchOne();
 
 			// Form to create new media object in each tree
 			$create_form='';
@@ -407,7 +410,7 @@ function scan_dirs($dir, $recursive, $filter) {
 
 // Fetch a list of all files on disk
 function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
-	return scan_dirs(KT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
+	return scan_dirs(KT_DATA_DIR . $media_folder . $media_path, $subfolders == 'include', $filter);
 }
 
 function externalMedia() {
@@ -533,13 +536,13 @@ $controller
 			processing: true,
 			serverSide: true,
 			ajaxSource: "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
-			' . KT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
+			' . KT_I18N::datatablesI18N(array(1, 5, 10, 20, 50, 100, 500, 1000, -1)) . ',
 			jQueryUI: true,
 			autoWidth:false,
 			pageLength: 10,
 			pagingType: "full_numbers",
 			stateSave: true,
-			stateDuration: 300,
+			stateDuration: 0,
 			columns: [
 				/*0 - media file */		{},
 				/*1 - media object */	{sortable: false, class: "center"},
