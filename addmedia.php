@@ -470,7 +470,7 @@ $controller->pageHeader();?>
 				<!-- Option to use editing tool before uploading image -->
 				<div id="MEDIA_factdiv">
 					<label>
-						<?php echo KT_I18N::translate('External editor'); ?>
+						<?php echo KT_I18N::translate('External image editor'); ?>
 					</label>
 					<div class="input">
 						<?php echo '<a href="' . $IMAGE_EDITOR . '" target="_blank">' . $IMAGE_EDITOR . '</a>'; ?>

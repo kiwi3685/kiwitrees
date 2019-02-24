@@ -183,7 +183,7 @@ if ($view != 'simple') {
 					"admin_trees_source.php"			=> KT_I18N::translate('Sources - review'),
 					"admin_trees_sourcecite.php"		=> KT_I18N::translate('Sources - review citations'),
 					"admin_trees_missing.php"			=> KT_I18N::translate('Missing data'),
-					"admin_trees_missing-source.php"	=> KT_I18N::translate('Missing fact/event sources'),
+					"admin_trees_missing-source.php"	=> KT_I18N::translate('Missing fact or event sources'),
 				);
 				asort($ft_tools);
 				foreach ($ft_tools as $file=>$title) { ?>
