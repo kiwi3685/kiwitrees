@@ -530,7 +530,7 @@ try {
 		"CREATE TABLE IF NOT EXISTS `##log` (".
 		" log_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
-		" log_type    ENUM('auth', 'config', 'debug', 'edit', 'error', 'media', 'search') NOT NULL,".
+		" log_type    ENUM('auth', 'config', 'debug', 'edit', 'error', 'media', 'search', 'spam') NOT NULL,".
 		" log_message TEXT         NOT NULL,".
 		" ip_address  VARCHAR(40)  NOT NULL,".
 		" user_id     INTEGER          NULL,".

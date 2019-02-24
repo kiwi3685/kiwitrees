@@ -31,23 +31,23 @@ $controller
 
 require KT_ROOT.'includes/functions/functions_edit.php';
 
-$earliest=KT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
-$latest  =KT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$earliest	= KT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$latest		= KT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
 
 // Filtering
-$action=safe_GET('action');
-$from  =safe_GET('from', '\d\d\d\d-\d\d-\d\d', $earliest);
-$to    =safe_GET('to',   '\d\d\d\d-\d\d-\d\d', $latest);
-$type  =safe_GET('type', array('auth','change','config','debug','edit','error','media','search'));
-$text  =safe_GET('text');
-$ip    =safe_GET('ip');
-$user  =safe_GET('user');
+$action	= KT_Filter::get('action');
+$from	= KT_Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
+$to		= KT_Filter::get('to',   '\d\d\d\d-\d\d-\d\d', $latest);
+$type	= safe_GET('type', array('auth','change','config','debug','edit','error','media','search','spam'));
+$text	= KT_Filter::get('text');
+$ip		= KT_Filter::get('ip');
+$user	= KT_Filter::get('user');
 if (KT_USER_IS_ADMIN) {
 	// Administrators can see all logs
-	$gedc=safe_GET('gedc');
+	$gedc = KT_Filter::get('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
-	$gedc=KT_GEDCOM;
+	$gedc = KT_GEDCOM;
 }
 
 $query=array();
@@ -123,60 +123,60 @@ case 'export':
 	exit;
 case 'load_json':
 	Zend_Session::writeClose();
-	$iDisplayStart =(int)safe_GET('iDisplayStart');
-	$iDisplayLength=(int)safe_GET('iDisplayLength');
+	$iDisplayStart	= (int) KT_Filter::get('iDisplayStart');
+	$iDisplayLength	= (int) KT_Filter::get('iDisplayLength');
 	set_user_setting(KT_USER_ID, 'admin_site_log_page_size', $iDisplayLength);
-	if ($iDisplayLength>0) {
-		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+	if ($iDisplayLength > 0) {
+		$LIMIT = " LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 	} else {
-		$LIMIT="";
+		$LIMIT = "";
 	}
-	$iSortingCols=safe_GET('iSortingCols');
+	$iSortingCols	= KT_Filter::get('iSortingCols');
 	if ($iSortingCols) {
-		$ORDER_BY=' ORDER BY ';
-		for ($i=0; $i<$iSortingCols; ++$i) {
+		$ORDER_BY	= ' ORDER BY ';
+		for ($i = 0; $i < $iSortingCols; ++$i) {
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (safe_GET('sSortDir_'.$i)) {
+			switch (KT_Filter::get('sSortDir_' . $i)) {
 			case 'asc':
-				if ((int)safe_GET('iSortCol_'.$i)==0) {
+				if ((int) KT_Filter::get('iSortCol_' . $i) == 0) {
 					$ORDER_BY.='log_id ASC '; // column 0 is "timestamp", using log_id gives the correct order for events in the same second
 				} else {
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY.=(1+(int) KT_Filter::get('iSortCol_'.$i)).' ASC ';
 				}
 				break;
 			case 'desc':
-				if ((int)safe_GET('iSortCol_'.$i)==0) {
-					$ORDER_BY.='log_id DESC ';
+				if ((int) KT_Filter::get('iSortCol_'.$i)==0) {
+					$ORDER_BY .= 'log_id DESC ';
 				} else {
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1 + (int) KT_Filter::get('iSortCol_'.$i)).' DESC ';
 				}
 				break;
 			}
 			if ($i<$iSortingCols-1) {
-				$ORDER_BY.=',';
+				$ORDER_BY .= ',';
 			}
 		}
 	} else {
-		$ORDER_BY='1 DESC';
+		$ORDER_BY = '1 DESC';
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData=KT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$aaData = KT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
-		$row[2]=htmlspecialchars($row[2]);
+		$row[2] = htmlspecialchars($row[2]);
 	}
 
 	// Total filtered/unfiltered rows
-	$iTotalDisplayRecords=KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$iTotalRecords=KT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
+	$iTotalDisplayRecords	= KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+	$iTotalRecords			= KT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'               =>(int)safe_GET('sEcho'),
-		'iTotalRecords'       =>$iTotalRecords,
-		'iTotalDisplayRecords'=>$iTotalDisplayRecords,
-		'aaData'              =>$aaData
+		'sEcho'               => (int) KT_Filter::get('sEcho'),
+		'iTotalRecords'       => $iTotalRecords,
+		'iTotalDisplayRecords'=> $iTotalDisplayRecords,
+		'aaData'              => $aaData
 	));
 	exit;
 }
@@ -189,12 +189,12 @@ $controller
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
-			'.KT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
+			"sAjaxSource": "' .
+				KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",' . KT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)) . ',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],
-			"iDisplayLength": '.get_user_setting(KT_USER_ID, 'admin_site_log_page_size', 20).',
+			"iDisplayLength": ' . get_user_setting(KT_USER_ID, 'admin_site_log_page_size', 20) . ',
 			"sPaginationType": "full_numbers"
 		});
 	');
@@ -222,7 +222,7 @@ echo
 				'</td>',
 			'</tr><tr>',
 				'<td>',
-					KT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
+					KT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search','spam'=>'spam'), null, $type, ''),
 				'</td>',
 				'<td>',
 					KT_I18N::translate('Message'), '<br><input class="log-filter" name="text" value="', htmlspecialchars($text), '"> ',

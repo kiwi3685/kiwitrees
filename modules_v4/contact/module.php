@@ -126,15 +126,15 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 				$errors = true;
 			} elseif (!preg_match('/@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) {
 				KT_FlashMessages::addMessage(KT_I18N::translate('Please enter a valid email address.'));
-				AddToLog('Possible spam - invalid email address: ' . $from_email, 'error');
+				AddToLog('Invalid email address: ' . $from_email, 'spam');
 				$errors = true;
 			} elseif (in_array($from_email, explode(',', KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST')))) {
 				// This type of validation error should not be shown in the client.
-				AddToLog('Possible spam - blocked email address: ' . $from_email, 'error');
+				AddToLog('Blocked email address: ' . $from_email, 'spam');
 				$errors = true;
 			} elseif (preg_match($urlRegex, $subject . $body, $match)) {
 				KT_FlashMessages::addMessage(KT_I18N::translate('You are not allowed to send messages that contain external links.'));
-				AddToLog('Possible spam - attempt to include external links (' . $match[1] . ') by: ' . $from_email, 'error');
+				AddToLog('Attempt to include external links (' . $match[1] . ') by: ' . $from_email, 'spam');
 				$errors = true;
 			} elseif (empty($recipients)) {
 				$errors = true;
