@@ -507,3 +507,9 @@ $REVERSED_NAME_FACTS = array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');
 /* I18N: language name - Chinese */				KT_I18N::translate('中文');
 /* I18N: language name - Chinese (Simplified) */  KT_I18N::translate('简体中文'); // Simplified Chinese
 /* I18N: language name - Chinese (Traditional) */ KT_I18N::translate('繁體中文'); // Traditional Chinese
+
+/**
+ * Default URL for image editor linked
+ */
+
+get_gedcom_setting(KT_GED_ID, 'IMAGE_EDITOR') ? $IMAGE_EDITOR = get_gedcom_setting(KT_GED_ID, 'IMAGE_EDITOR') : $IMAGE_EDITOR = 'https://pixlr.com/x/';

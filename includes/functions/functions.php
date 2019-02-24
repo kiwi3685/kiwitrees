@@ -228,6 +228,7 @@ function load_gedcom_settings($ged_id =  KT_GED_ID) {
 	global $GENERATE_UIDS;                $GENERATE_UIDS                = get_gedcom_setting($ged_id, 'GENERATE_UIDS');
 	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           = get_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS');
 	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             = get_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE');
+	global $IMAGE_EDITOR;             	  $IMAGE_EDITOR         	    = get_gedcom_setting($ged_id, 'IMAGE_EDITOR');	
 	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       = get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH');
 	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       = get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH');
 	global $LANGUAGE;                     $LANGUAGE                     = get_gedcom_setting($ged_id, 'LANGUAGE');
@@ -2436,7 +2437,7 @@ function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
 
 // Generate a new XREF, unique across all family trees
 function get_new_xref($type = 'INDI', $ged_id = KT_GED_ID) {
-	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;;
+	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;
 
 	switch ($type) {
 	case 'INDI':

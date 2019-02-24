@@ -151,6 +151,7 @@ case 'update':
 	set_gedcom_setting(KT_GED_ID, 'GENERATE_UIDS',					KT_Filter::postBool('NEW_GENERATE_UIDS'));
 	set_gedcom_setting(KT_GED_ID, 'HIDE_GEDCOM_ERRORS',				KT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(KT_GED_ID, 'HIDE_LIVE_PEOPLE',				KT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
+	set_gedcom_setting(KT_GED_ID, 'IMAGE_EDITOR',					KT_Filter::post('NEW_IMAGE_EDITOR'));
 	set_gedcom_setting(KT_GED_ID, 'INDI_FACTS_ADD',					str_replace(' ', '', KT_Filter::post('NEW_INDI_FACTS_ADD')));
 	set_gedcom_setting(KT_GED_ID, 'INDI_FACTS_QUICK',				str_replace(' ', '', KT_Filter::post('NEW_INDI_FACTS_QUICK')));
 	set_gedcom_setting(KT_GED_ID, 'INDI_FACTS_UNIQUE',				str_replace(' ', '', KT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
@@ -806,6 +807,15 @@ $controller
 								<div class="helpcontent">
 									<?php echo KT_I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
 								</div>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('External image editor'); ?></label>
+						<div class="input_group">
+							<input type="url" name="NEW_IMAGE_EDITOR" required value="<?php echo $IMAGE_EDITOR; ?>" size="50" maxlength="255" dir="ltr">
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Preferred URL link to an external image editor provided for members use when uploading media images. The default link is %s>', $IMAGE_EDITOR); ?>
 							</div>
 						</div>
 					</div>

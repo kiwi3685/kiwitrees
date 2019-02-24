@@ -465,8 +465,26 @@ $controller->pageHeader();?>
 				$gedfile = 'FILE';
 			}
 
-			if ($gedfile == 'FILE') {
-				// Box for user to choose to upload file from local computer ?>
+			if ($gedfile == 'FILE') { ?>
+
+				<!-- Option to use editing tool before uploading image -->
+				<div id="MEDIA_factdiv">
+					<label>
+						<?php echo KT_I18N::translate('External editor'); ?>
+					</label>
+					<div class="input">
+						<?php echo '<a href="' . $IMAGE_EDITOR . '" target="_blank">' . $IMAGE_EDITOR . '</a>'; ?>
+					</div>
+					<div class="help_text">
+						<span class="help_content">
+							<?php echo KT_I18N::translate('You can use this editor to adjust your media images before uploading. It can help to resize, modify colours, change rotation etc. Please remember %s is not part of this %s website. The link is provided for your convenience, with no guarantees. For assistance using the software please contact its developers directly.', $IMAGE_EDITOR, KT_TREE_TITLE); ?>
+						</span>
+					</div>
+				</div>
+
+				<hr>
+
+				<!--  Box for user to choose to upload file from local computer -->
 				<div id="MEDIA-UP_factdiv">
 					<label>
 						<?php echo  KT_I18N::translate('Media file to upload'); ?>
