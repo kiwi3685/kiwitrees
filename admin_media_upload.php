@@ -31,12 +31,12 @@ $controller
 	->requireEditorLogin() /* Editing may be disabled, even for admins */
 	->setPageTitle(KT_I18N::translate('Upload media files'));
 
-$action = safe_POST('action');
+$action = KT_Filter::post('action');
 
 if ($action == "upload") {
-	for ($i=1; $i<6; $i++) {
-		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
-			$folder = safe_POST('folder' . $i, KT_REGEX_UNSAFE);
+	for ($i = 1; $i < 6; $i ++) {
+		if (!empty($_FILES['mediafile' . $i]["name"]) || !empty($_FILES['thumbnail' . $i]["name"])) {
+			$folder = KT_Filter::post('folder' . $i, KT_REGEX_UNSAFE);
 
 			// Validate the media folder
 			$folderName = str_replace('\\', '/', $folder);
@@ -93,10 +93,10 @@ if ($action == "upload") {
 				unset($_FILES['thumbnail' . $i]);
 			}
 
-			// Check for 0 bytes image
-			if ($_FILES['mediafile']['size'] && ($_FILES['mediafile']['size'] === 0 || $_FILES['mediafile']['size'] > detectMaxUploadFileSize())) {
+			// Check for image having 0 bytes (corrupted)  or too large to import
+			if ($_FILES['mediafile' . $i]['size'] && ($_FILES['mediafile' . $i]['size'] === 0 || $_FILES['mediafile' . $i]['size'] > int_from_bytestring(detectMaxUploadFileSize()))) {
 				KT_FlashMessages::addMessage(KT_I18N::translate('The media file you selected either has a size of zero bytes or is too large to be uploaded.'));
-				unset($_FILES['mediafile']);
+				unset($_FILES['mediafile' . $i]);
 				break;
 			}
 
@@ -107,7 +107,7 @@ if ($action == "upload") {
 			}
 
 			// User-specified filename?
-			$filename = safe_POST('filename' . $i, KT_REGEX_UNSAFE);
+			$filename = KT_Filter::post('filename' . $i, KT_REGEX_UNSAFE);
 			// Use the name of the uploaded file?
 			if (!$filename && !empty($_FILES['mediafile' . $i]['name'])) {
 				$filename = $_FILES['mediafile' . $i]['name'];
