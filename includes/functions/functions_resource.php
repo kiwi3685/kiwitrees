@@ -150,7 +150,6 @@ function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 		$html .= '<a href="' . htmlspecialchars($fact->getDetail()) . '">' . htmlspecialchars($fact->getDetail()) . '</a>';
 		break;
 	case 'TEXT': // 0 SOUR / 1 TEXT
-		// PHP5.3 $html .= nl2br(htmlspecialchars($fact->getDetail()) . false) . '</div>';
 		$html .= nl2br(htmlspecialchars($fact->getDetail()));
 		break;
 	default:

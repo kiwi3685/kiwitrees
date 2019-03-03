@@ -45,8 +45,8 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 }
 
 
-if (version_compare(PHP_VERSION, '5.3')<0) {
-	// Our translation system requires PHP 5.3, so we cannot translate this message :-(
+if (version_compare(PHP_VERSION, '5.6') < 0) {
+	// Our translation system requires PHP 5.6, so we cannot translate this message :-(
 	header('Content-Type: text/html; charset=UTF-8');
 	echo
 		'<!DOCTYPE html>',
@@ -56,8 +56,8 @@ if (version_compare(PHP_VERSION, '5.3')<0) {
 		'<title>Kiwitrees setup wizard</title>',
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
-		'<p><b>Kiwitrees</b> requires PHP 5.3 or later.  PHP 5.5 is recommended.</p>';
-	if (version_compare(PHP_VERSION, '5.0')<0) {
+		'<p><b>Kiwitrees</b> requires PHP 5.6 or later.  PHP 5.5 is recommended.</p>';
+	if (version_compare(PHP_VERSION, '5.0') < 0) {
 		echo '<p>Many servers offer both PHP4 and PHP5.  You may be able to change your default to PHP5 using a control panel or a configuration setting.</p>';
 	}
 	exit;

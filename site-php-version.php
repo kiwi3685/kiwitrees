@@ -41,7 +41,7 @@ require 'includes/functions/functions.php';
 require KT_ROOT.'includes/functions/functions_utf-8.php';
 define('KT_LOCALE', KT_I18N::init());
 
-if (version_compare(PHP_VERSION, '5.3.3', '>=')) {
+if (version_compare(PHP_VERSION, '5.6.0', '>=')) {
 	//header('Location: index.php');
 }
 
@@ -77,7 +77,7 @@ header('Content-Type: text/html; charset=UTF-8');
 				<?php echo KT_I18N::translate('You have the following options:'); ?>
 			</p>
 			<ul>
-				<li><?php /* I18N: %s is a version number */ echo KT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.3.3'); ?></li>
+				<li><?php /* I18N: %s is a version number */ echo KT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.6.0'); ?></li>
 			</ul>
 			<p class="good">
 				<?php echo KT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://kiwitrees.net">kiwitrees.net</a>'); ?>
