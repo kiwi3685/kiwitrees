@@ -228,7 +228,7 @@ function load_gedcom_settings($ged_id =  KT_GED_ID) {
 	global $GENERATE_UIDS;                $GENERATE_UIDS                = get_gedcom_setting($ged_id, 'GENERATE_UIDS');
 	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           = get_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS');
 	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             = get_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE');
-	global $IMAGE_EDITOR;             	  $IMAGE_EDITOR         	    = get_gedcom_setting($ged_id, 'IMAGE_EDITOR');	
+	global $IMAGE_EDITOR;             	  $IMAGE_EDITOR         	    = get_gedcom_setting($ged_id, 'IMAGE_EDITOR');
 	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       = get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH');
 	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       = get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH');
 	global $LANGUAGE;                     $LANGUAGE                     = get_gedcom_setting($ged_id, 'LANGUAGE');
@@ -2572,9 +2572,7 @@ function strstrb($haystack, $needle){
 * Shorthand notation, as described in this FAQ, may also be used. If the size
 * of post data is greater than post_max_size, the $_POST and $_FILES
 * superglobals are empty. This can be tracked in various ways, e.g. by passing
-* the $_GET variable to the script processing the data, i.e.
-* , and then checking
-* if $_GET['processed'] is set.
+* the $_GET variable to the script processing the data, i.e., and then checking if $_GET['processed'] is set.
 * memory_limit > post_max_size > upload_max_filesize
 * @author Paul Melekhov edited by lostinscope http://www.kavoir.com/2010/02/php-get-the-file-uploading-limit-max-file-size-allowed-to-upload.html
 * @return int Max file size in bytes
@@ -2588,23 +2586,17 @@ function detectMaxUploadFileSize(){
 	*/
 	$normalize = function($size) {
 		if (preg_match('/^([\d\.]+)([KMG])$/i', $size, $match)) {
-		$pos = array_search($match[2], array("K", "M", "G"));
-			if ($pos !== false) {
+		$pos = array_search($match[2], array('K', 'M', 'G'));
+			if ($pos) {
 				$size = $match[1] * pow(1024, $pos + 1);
 			}
 		}
 		return $size;
 	};
 
-	$max_upload = $normalize(ini_get('upload_max_filesize'));
-
-	$max_post = (ini_get('post_max_size') == 0) ?
-		function(){throw new Exception('Check Your php.ini settings');}
-		: $normalize(ini_get('post_max_size')
-	);
-
-	$memory_limit = (ini_get('memory_limit') == -1) ?
-	$max_post : $normalize(ini_get('memory_limit'));
+	$max_upload		= $normalize(ini_get('upload_max_filesize'));
+	$max_post		= (ini_get('post_max_size') == 0) ? function(){throw new Exception('Check Your php.ini settings');} : $normalize(ini_get('post_max_size'));
+	$memory_limit	= (ini_get('memory_limit') == -1) ? $max_post : $normalize(ini_get('memory_limit'));
 
 	if($memory_limit < $max_post || $memory_limit < $max_upload)
 	return $memory_limit;
@@ -2625,24 +2617,28 @@ function detectMaxUploadFileSize(){
 }
 
 function int_from_bytestring ($byteString) {
-  preg_match('/^\s*([0-9.]+)\s*([KMGTPE])B?\s*$/i', $byteString, $matches);
-  $num = (float)$matches[1];
-  switch (strtoupper($matches[2])) {
-    case 'E':
-      $num = $num * 1024;
-    case 'P':
-      $num = $num * 1024;
-    case 'T':
-      $num = $num * 1024;
-    case 'G':
-      $num = $num * 1024;
-    case 'M':
-      $num = $num * 1024;
-    case 'K':
-      $num = $num * 1024;
-  }
+	preg_match('/^\s*([0-9.]+)\s*([KMGTPE])B?\s*$/i', $byteString, $matches);
+	if ($matches) {
+		$num = (float)$matches[1];
+		switch (strtoupper($matches[2])) {
+			case 'E':
+			$num = $num * 1024;
+			case 'P':
+			$num = $num * 1024;
+			case 'T':
+			$num = $num * 1024;
+			case 'G':
+			$num = $num * 1024;
+			case 'M':
+			$num = $num * 1024;
+			case 'K':
+			$num = $num * 1024;
+		}
+		return intval($num);
+	} else {
+		return $byteString;
+	}
 
-  return intval($num);
 }
 
 // family navigator
