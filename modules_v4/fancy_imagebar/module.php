@@ -78,11 +78,11 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	 */
 	private function setDefault($key) {
 		$FIB_DEFAULT = [
-			'IMAGES'		 => [], // All images
-			'RANDOM'		 => '1',
-			'TONE'			 => '2', // Colors
-			'SEPIA'			 => '30', // Example
-			'SIZE'		 	=> '60'
+			'IMAGES'	=> [], // All images
+			'RANDOM'	=> '1',
+			'TONE'		=> '2', // Colors
+			'SEPIA'		=> '30', // Example
+			'SIZE'		=> '60'
 		];
 		return $FIB_DEFAULT[$key];
 	}
@@ -117,7 +117,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 			$LIMIT = "";
 		}
 
-		$sql = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file=? AND m_type=?".$LIMIT;
+		$sql = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file=? AND m_type=?" . $LIMIT;
 		$args = array($gedcom_id, 'photo');
 
 		$rows = KT_DB::prepare($sql)->execute($args)->fetchAll();
@@ -152,8 +152,8 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 
 		// ouput all thumbs as jpg thumbs (transparent png files are not possible in the Fancy Imagebar, so there is no need to keep the mimeType png).
 		ob_start();imagejpeg($image,null,100);$image = ob_get_clean();
-		return '<img src="data:image/jpeg;base64,'.base64_encode($image).'" alt="'.$media->getXref().'" title="'.strip_tags($media->getFullName()).'"/><br/>
-				<span><input type="checkbox" value="'.$media->getXref().'"'.$img_checked.'></span>';
+		return '<img src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="' . $media->getXref() . '" title="' . strip_tags($media->getFullName()) . '"/><br/>
+				<span><input type="checkbox" value="' . $media->getXref() . '"' . $img_checked . '></span>';
 	}
 
 	private function getXrefs() {
@@ -191,11 +191,11 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	// Reset all settings to default
 	private function fib_reset() {
 		KT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'FIB%'")->execute();
-		AddToLog($this->getTitle().' reset to default values', 'config');
+		AddToLog($this->getTitle() . ' reset to default values', 'config');
 	}
 
 	private function config() {
-		require KT_ROOT.'includes/functions/functions_edit.php';
+		require KT_ROOT . 'includes/functions/functions_edit.php';
 
 		$controller = new KT_Controller_Page;
 		$controller
@@ -217,7 +217,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 				sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				bProcessing: true,
 				bServerSide: true,
-				sAjaxSource: "module.php?mod='.$this->getName().'&mod_action=load_json",
+				sAjaxSource: "module.php?mod=' . $this->getName() . '&mod_action=load_json",
 				'.KT_I18N::datatablesI18N(array(5,10,15,25,50,100,500,1000,-1)).',
 				bJQueryUI: true,
 				bAutoWidth: false,
@@ -280,9 +280,9 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 
 			var current = jQuery(".tree option:selected");
 			jQuery(".tree").change(function() {
-				if (formChanged == false || (formChanged == true && confirm("'.KT_I18N::translate('The settings are changed. You will loose your changes if you switch trees.').'"))) {
+				if (formChanged == false || (formChanged == true && confirm("' . KT_I18N::translate('The settings are changed. You will loose your changes if you switch trees.') . '"))) {
 					var ged = jQuery("option:selected", this).data("ged");
-					jQuery.get("module.php?mod='.$this->getName().'&mod_action=admin_config&ged=" + ged, function(data) {
+					jQuery.get("module.php?mod=' . $this->getName() . '&mod_action=admin_config&ged=" + ged, function(data) {
 						 jQuery("#imagelist").replaceWith(jQuery(data).find("#imagelist"));
 						 jQuery("#options").replaceWith(jQuery(data).find("#options"));
 						 oTable.fnDraw();
@@ -297,7 +297,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 		');
 
 		$html =
-			'<div id="fib_config"><h2>'.$this->getTitle().'</h2>
+			'<div id="fib_config"><h2>' . $this->getTitle() . '</h2>
 			<form method="post" name="configform" action="' . $this->getConfigLink() . '">
 				<input type="hidden" name="save" value="1">
 				<div id="selectbar">
@@ -330,7 +330,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 		// The datatable will be dynamically filled with images from the database.
 		$html .= '</div>
 					<div class="clearfloat"></div>
-					<h3 class="no_images">'.KT_I18N::translate('No images to display for this tree').'</h3>';
+					<h3 class="no_images">' . KT_I18N::translate('No images to display for this tree') . '</h3>';
 		$html .= '	<input id="imagelist" type="hidden" name="NEW_FIB_IMAGES" value = "' . $imagelist .'">
 					<table id="image_block" class="table">
 						<thead></thead>
@@ -338,7 +338,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 					</table>
 				</div>
 				<div id="block_right" class="right">
-					<h3>'.KT_I18N::translate('Options').':</h3>
+					<h3>' . KT_I18N::translate('Options') . ':</h3>
 					<div id="options">
 						<div class="field">
 							<label class="label">'.KT_I18N::translate('Random images').':</label>'.
@@ -350,18 +350,18 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 						</div>
 						<div class="field">
 							<label class="label">'.KT_I18N::translate('Cropped image size').':</label>
-							<input type="text" name="NEW_FIB_OPTIONS[SIZE]" size="3" value="'.$this->options('size').'"/>&nbsp;px
+							<input type="text" name="NEW_FIB_OPTIONS[SIZE]" size="3" value="' . $this->options('size') . '"/>&nbsp;px
 						</div>
 					</div>
 				</div>
 				<p class="buttons">
 					<button class="btn btn-primary save" type="submit">
 						<i class="fa fa-floppy-o"></i>' .
-						KT_I18N::translate('save') . '
+						KT_I18N::translate('Save') . '
 					</button>
-					<button class="btn btn-primary cancel" type="reset" onclick="if (confirm(\''.KT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+					<button class="btn btn-primary cancel" type="reset" onclick="if (confirm(\'' . KT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?') . '\')) window.location.href=\'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_reset\';">
 						<i class="fa fa-refresh"></i>' .
-						KT_I18N::translate('reset') . '
+						KT_I18N::translate('Reset') . '
 					</button>
 				</p>
 			</form>
@@ -375,7 +375,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 
 	// Implement KT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=' . $this->getName().'&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
 	// Get the medialist from the database
@@ -392,7 +392,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 					$sql .= " AND m_id IN (" . implode(',', $images_sql) . ")";
 				}
 		$sql .=	$this->options('random') == 1 ? " ORDER BY RAND()" : " ORDER BY m_id DESC";
-		$sql .= " LIMIT " . ceil(2400/$this->options('size'));
+		$sql .= " LIMIT " . ceil(2400 / $this->options('size'));
 
 		$rows = KT_DB::prepare($sql)->execute()->fetchAll();
 		$list = array();
@@ -406,8 +406,8 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	}
 
 	private function FancyThumb($mediaobject, $thumbwidth, $thumbheight) {
-		$imgSrc = $mediaobject->getServerFilename();
-		$type = $mediaobject->mimeType();
+		$imgSrc	= $mediaobject->getServerFilename();
+		$type	= $mediaobject->mimeType();
 
 		//getting the image dimensions
 		list($width_orig, $height_orig) = @getimagesize($imgSrc);
@@ -423,11 +423,11 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 		$ratio_orig = $width_orig/$height_orig;
 
 		if ($thumbwidth/$thumbheight > $ratio_orig) {
-		   $new_height = $thumbwidth/$ratio_orig;
-		   $new_width = $thumbwidth;
+		   $new_height	= $thumbwidth/$ratio_orig;
+		   $new_width	= $thumbwidth;
 		} else {
-		   $new_width = $thumbheight*$ratio_orig;
-		   $new_height = $thumbheight;
+		   $new_width	= $thumbheight*$ratio_orig;
+		   $new_height	= $thumbheight;
 		}
 
 		// transparent png files are not possible in the Fancy Imagebar, so no extra code needed.
@@ -445,9 +445,9 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	private function CreateFancyImageBar($srcImages, $thumbWidth, $thumbHeight, $numberOfThumbs) {
 		// defaults
 		$pxBetweenThumbs = 0;
-		$leftOffSet = $topOffSet = 0;
-		$canvasWidth = ($thumbWidth + $pxBetweenThumbs) * $numberOfThumbs;
-		$canvasHeight = $thumbHeight;
+		$leftOffSet		= $topOffSet = 0;
+		$canvasWidth	= ($thumbWidth + $pxBetweenThumbs) * $numberOfThumbs;
+		$canvasHeight	= $thumbHeight;
 
 		// create the FancyImagebar canvas to put the thumbs on
 		$FancyImageBar = @imagecreatetruecolor($canvasWidth, $canvasHeight);
@@ -465,17 +465,17 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	private function FancyImageBarSepia($FancyImageBar, $depth) {
 		@imagetruecolortopalette($FancyImageBar,1,256);
 
-		for ($c=0;$c<256;$c++) {
-			$col=@imagecolorsforindex($FancyImageBar,$c);
-			$new_col=floor($col['red']*0.2125+$col['green']*0.7154+$col['blue']*0.0721);
-		if ($depth>0) {
-				$r=$new_col+$depth;
-				$g=floor($new_col+$depth/1.86);
-				$b=floor($new_col+$depth/-3.48);
+		for ($c = 0; $c < 256; $c++) {
+			$col = @imagecolorsforindex($FancyImageBar,$c);
+			$new_col = floor($col['red'] * 0.2125 + $col['green'] * 0.7154 + $col['blue'] * 0.0721);
+		if ($depth > 0) {
+				$r = $new_col+$depth;
+				$g = floor($new_col+$depth/1.86);
+				$b = floor($new_col+$depth/-3.48);
 			} else {
-				$r=$new_col;
-				$g=$new_col;
-				$b=$new_col;
+				$r = $new_col;
+				$g = $new_col;
+				$b = $new_col;
 			}
 			@imagecolorset($FancyImageBar,$c,max(0,min(255,$r)),max(0,min(255,$g)),max(0,min(255,$b)));
 
@@ -487,7 +487,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	private function GetFancyImageBar(){
 		global $controller;
 
-		if($medialist=$this->FancyImageBarMedia()) {
+		if($medialist = $this->FancyImageBarMedia()) {
 			$width = $height = $this->options('size');
 
 			// begin looping through the media and write the imagebar
@@ -503,13 +503,13 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 				$newArray = array();
 
 				// determine how many thumbs we need (based on a users screen of 2400px);
-				$fib_length = ceil(2400/$this->options('size'));
+				$fib_length = ceil(2400 / $this->options('size'));
 				while(count($newArray) <= $fib_length){
 					$newArray = array_merge($newArray, $srcImages);
 				}
 				// reduce the new array to the desired length (as there might be too many elements in the new array
-				$srcImages = array_slice($newArray, 0, $fib_length);
-				$FancyImageBar = $this->CreateFancyImageBar($srcImages, $width, $height, $fib_length);
+				$srcImages		= array_slice($newArray, 0, $fib_length);
+				$FancyImageBar	= $this->CreateFancyImageBar($srcImages, $width, $height, $fib_length);
 				if($this->options('tone') == 0) {
 					$FancyImageBar = $this->FancyImageBarSepia($FancyImageBar, 50);
 				}
@@ -518,7 +518,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 				}
 				ob_start();imagejpeg($FancyImageBar,null,100);$FancyImageBar = ob_get_clean();
 				$html = '<div id="fancy_imagebar" style="clear:both; overflow:hidden;">
-							<img alt="fancy_imagebar" src="data:image/jpeg;base64,'.base64_encode($FancyImageBar).'">
+							<img alt="fancy_imagebar" src="data:image/jpeg;base64,' . base64_encode($FancyImageBar).'">
 						</div>';
 						$theme = explode('/', KT_THEME_DIR);
 						switch ($theme[1]) {
@@ -547,8 +547,6 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 
 		if (!empty($this->options('IMAGES')) && KT_SCRIPT_NAME === 'index.php') {
 			if ($SEARCH_SPIDER) return null;
-			if ($ctype=='gedcom') {
-
 				// put the fancy imagebar in the right position
 				$controller->addInlineJavaScript("jQuery('#topMenu').append(jQuery('#fancy_imagebar'));");
 				$html = $this->GetFancyImageBar();
@@ -557,8 +555,8 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 				ob_start();
 				$html .= ob_get_clean();
 				echo $html;
-			}
 		}
+
 		return null;
 	}
 }
