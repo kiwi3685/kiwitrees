@@ -46,7 +46,7 @@ if (!defined('KT_KIWITREES')) {
 // checked).  This lets us use the syntax safe_GET('my_checkbox', 'yes', 'no')
 //
 // NOTE: when using listboxes, $regex can be an array of valid values.  For
-// example, you can use safe_POST('lang', array_keys($pgv_language), KT_LOCALE)
+// example, you can use KT_Filter::post('lang', array_keys($pgv_language), KT_LOCALE)
 // to validate against a list of valid languages and supply a sensible default.
 //
 // If the values are plain text, pass them through preg_quote_array() to
@@ -71,7 +71,7 @@ function safe_GET_integer($var, $min, $max, $default) {
 	return (int)$num;
 }
 function safe_POST_integer($var, $min, $max, $default) {
-	$num = safe_POST($var, KT_REGEX_INTEGER, $default);
+	$num = KT_Filter::post($var, KT_REGEX_INTEGER, $default);
 	$num = max($num, $min);
 	$num = min($num, $max);
 	return (int)$num;
@@ -80,15 +80,17 @@ function safe_POST_integer($var, $min, $max, $default) {
 function safe_GET_bool($var, $true = '(y|Y|1|yes|YES|Yes|true|TRUE|True|on)') {
 	return !is_null(safe_GET($var, $true));
 }
+
 function safe_POST_bool($var, $true = '(y|Y|1|yes|YES|Yes|true|TRUE|True|on)') {
-	return !is_null(safe_POST($var, $true));
+	return !is_null(KT_Filter::post($var, $true));
 }
 
 function safe_GET_xref($var, $default = null) {
 	return safe_GET($var, KT_REGEX_XREF, $default);
 }
+
 function safe_POST_xref($var, $default = null) {
-	return safe_POST($var, KT_REGEX_XREF, $default);
+	return KT_Filter::post($var, KT_REGEX_XREF, $default);
 }
 
 function safe_REQUEST($arr, $var, $regex = KT_REGEX_NOSCRIPT, $default = null) {
