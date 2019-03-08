@@ -265,6 +265,7 @@ class KT_Family extends KT_GedcomRecord {
 	function isDivorced() {
 		return (bool)preg_match('/\n1 (' . KT_EVENTS_DIV . ')( Y|\n)/', $this->_gedrec);
 	}
+
 	function isNotMarried() {
 		return (bool)preg_match('/\n1 _NMR( Y|\n)/', $this->_gedrec);
 	}
