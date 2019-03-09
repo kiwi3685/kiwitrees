@@ -98,8 +98,8 @@ if (!$ajax) {
 				<td class="facts_label">', KT_I18N::translate('Total deaths'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalBirths(), '</td>
-				<td class="facts_value" align="center">', $stats->totalDeaths(), '</td>
+				<td class="facts_value" align="center">', KT_I18n::number($stats->totalBirths()), '</td>
+				<td class="facts_value" align="center">', KT_I18n::number($stats->totalDeaths()), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', KT_I18N::translate('Births by century'), '</td>
@@ -200,8 +200,8 @@ if (!$ajax) {
 				<td class="facts_label">', KT_I18N::translate('Total divorces'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalMarriages(), '</td>
-				<td class="facts_value" align="center">', $stats->totalDivorces(), '</td>
+				<td class="facts_value" align="center">', KT_I18n::number($stats->totalMarriages()), '</td>
+				<td class="facts_value" align="center">', KT_I18n::number($stats->totalDivorces()), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', KT_I18N::translate('Marriages by century'), '</td>

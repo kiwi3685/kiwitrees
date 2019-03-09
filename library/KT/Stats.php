@@ -505,7 +505,14 @@ class KT_Stats {
 	}
 
 	function totalBirths() {
-		return $this->totalEvents(array('BIRT'));
+		return KT_DB::prepare("
+				SELECT SQL_CACHE COUNT(*)
+					FROM `##individuals`
+					WHERE `i_file`=?
+					AND `i_gedcom` REGEXP '\n1 BIRT(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+			")
+			->execute(array($this->_ged_id))
+			->fetchOne();
 	}
 
 	function totalEventsDeath() {
@@ -513,7 +520,14 @@ class KT_Stats {
 	}
 
 	function totalDeaths() {
-		return $this->totalEvents(array('DEAT'));
+		return KT_DB::prepare("
+				SELECT SQL_CACHE COUNT(*)
+					FROM `##individuals`
+					WHERE `i_file`=?
+					AND `i_gedcom` REGEXP '\n1 DEAT(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+			")
+			->execute(array($this->_ged_id))
+			->fetchOne();
 	}
 
 	function totalEventsMarriage() {
@@ -521,7 +535,14 @@ class KT_Stats {
 	}
 
 	function totalMarriages() {
-		return $this->totalEvents(array('MARR'));
+		return KT_DB::prepare("
+				SELECT SQL_CACHE COUNT(*)
+					FROM `##families`
+					WHERE `f_file`=?
+					AND `f_gedcom` REGEXP '\n1 MARR(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+			")
+			->execute(array($this->_ged_id))
+			->fetchOne();
 	}
 
 	function totalEventsDivorce() {
@@ -3776,7 +3797,7 @@ class KT_Stats {
 			return '';
 		}
 		$class_name = $block . '_KT_Module';
-		
+
 		// Build the config array
 		array_shift($params);
 		$cfg = array();
