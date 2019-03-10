@@ -840,7 +840,7 @@ class KT_Stats {
 // Birth & Death                                                             //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
+	function _mortalityQuery($type = 'full', $life_dir = 'ASC', $birth_death = 'BIRT') {
 		global $listDir;
 		if ($birth_death == 'MARR') {
 			$query_field = "'MARR'";
@@ -855,43 +855,43 @@ class KT_Stats {
 		if ($life_dir == 'ASC') {
 			$dmod = 'MIN';
 		} else {
-			$dmod = 'MAX';
-			$life_dir = 'DESC';
+			$dmod		= 'MAX';
+			$life_dir	= 'DESC';
 		}
-		$rows=self::_runSQL(
-			"SELECT SQL_CACHE d_year, d_type, d_fact, d_gid".
-			" FROM `##dates`".
-			" WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1=(".
-			" SELECT {$dmod}( d_julianday1 )".
-			" FROM `##dates`".
-			" WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )".
- 			" LIMIT 1"
-		);
+		$rows = self::_runSQL("
+			SELECT SQL_CACHE d_year, d_type, d_fact, d_gid
+			 FROM `##dates`
+			 WHERE d_file=" . $this->_ged_id . " AND d_fact IN (" . $query_field . ") AND d_julianday1=(
+			 	SELECT " . $dmod . "( d_julianday1 )
+				 FROM `##dates`
+				 WHERE d_file=" . $this->_ged_id . " AND d_fact IN (" . $query_field . ") AND d_julianday1<>0 )
+				 LIMIT 1
+		");
 		if (!isset($rows[0])) {return '';}
-		$row=$rows[0];
-		$record=KT_GedcomRecord::getInstance($row['d_gid']);
+		$row	= $rows[0];
+		$record	= KT_GedcomRecord::getInstance($row['d_gid']);
 		switch($type) {
 			default:
 			case 'full':
 				if ($record->canDisplayDetails()) {
-					$result=$record->format_list('span', false, $record->getFullName());
+					$result = $record->format_list('span', false, $record->getFullName());
 				} else {
-					$result=KT_I18N::translate('This information is private and cannot be shown.');
+					$result = KT_I18N::translate('This information is private and cannot be shown.');
 				}
 				break;
 			case 'year':
-				$date=new KT_Date($row['d_type'].' '.$row['d_year']);
-				$result=$date->Display(true);
+				$date	= new KT_Date($row['d_type'] . ' ' . $row['d_year']);
+				$result	= $date->Display(true);
 				break;
 			case 'name':
-				$result="<a href=\"".$record->getHtmlUrl()."\">".$record->getFullName()."</a>";
+				$result ='<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
 				break;
 			case 'place':
-				$fact=KT_GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
+				$fact = KT_GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
 				if ($fact) {
-					$result=format_fact_place($fact, true, true, true);
+					$result = format_fact_place($fact, true, true, true);
 				} else {
-					$result=KT_I18N::translate('Private');
+					$result = KT_I18N::translate('Private');
 				}
 				break;
 		}

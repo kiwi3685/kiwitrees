@@ -25,8 +25,8 @@ define('KT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 
 // check for on demand content loading
-$tab = safe_GET('tab', KT_REGEX_NOSCRIPT, 0);
-$ajax = safe_GET('ajax', KT_REGEX_NOSCRIPT, 0);
+$tab	= KT_Filter::get('tab', KT_REGEX_NOSCRIPT, 0);
+$ajax	= KT_Filter::get('ajax', KT_REGEX_NOSCRIPT, 0);
 
 if (!$ajax) {
 	$controller = new KT_Controller_Page();
@@ -664,7 +664,7 @@ if (!$ajax) {
 			<tr align="center"><td>
 				<br>
 				<input type="submit" value="', KT_I18N::translate('show'), ' ">
-				<input type="reset"  value=" ', KT_I18N::translate('reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>
+				<input type="reset"  value=" ', KT_I18N::translate('Reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>
 			</td>
 			</tr>
 		</table>
