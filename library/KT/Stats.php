@@ -509,7 +509,7 @@ class KT_Stats {
 				SELECT SQL_CACHE COUNT(*)
 					FROM `##individuals`
 					WHERE `i_file`=?
-					AND `i_gedcom` REGEXP '\n1 BIRT(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+					AND `i_gedcom` REGEXP '\n1 BIRT(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
 			")
 			->execute(array($this->_ged_id))
 			->fetchOne();
@@ -524,7 +524,7 @@ class KT_Stats {
 				SELECT SQL_CACHE COUNT(*)
 					FROM `##individuals`
 					WHERE `i_file`=?
-					AND `i_gedcom` REGEXP '\n1 DEAT(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+					AND `i_gedcom` REGEXP '\n1 DEAT(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
 			")
 			->execute(array($this->_ged_id))
 			->fetchOne();
@@ -539,7 +539,7 @@ class KT_Stats {
 				SELECT SQL_CACHE COUNT(*)
 					FROM `##families`
 					WHERE `f_file`=?
-					AND `f_gedcom` REGEXP '\n1 MARR(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+					AND `f_gedcom` REGEXP '\n1 MARR(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
 			")
 			->execute(array($this->_ged_id))
 			->fetchOne();
