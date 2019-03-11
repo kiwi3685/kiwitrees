@@ -26,29 +26,36 @@ require './includes/session.php';
 
 $controller = new KT_Controller_Page();
 
-$obj = KT_GedcomRecord::getInstance(safe_GET_xref('pid'));
+$pid = KT_Filter::get('pid', KT_REGEX_XREF);
 
-if (
-	$obj instanceof KT_Person ||
-	$obj instanceof KT_Family ||
-	$obj instanceof KT_Source ||
-	$obj instanceof KT_Repository ||
-	$obj instanceof KT_Note ||
-	$obj instanceof KT_Media
-) {
-	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $obj->getRawUrl());
+if ($pid == 'SUBM') {
+	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . 'edit_interface.php?action=editraw&pid=SUBM');
 	exit;
-} elseif (!$obj || !$obj->canDisplayDetails()) {
-	$controller->pageHeader();
-	print_privacy_error();
 } else {
-	$controller->pageHeader();
-	echo
-		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
-		preg_replace(
-			'/@('.KT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-			htmlspecialchars($obj->getGedcomRecord()
-		)
-		),
-		'</pre>';
+	$obj = KT_GedcomRecord::getInstance($pid);
+
+	if (
+		$obj instanceof KT_Person ||
+		$obj instanceof KT_Family ||
+		$obj instanceof KT_Source ||
+		$obj instanceof KT_Repository ||
+		$obj instanceof KT_Note ||
+		$obj instanceof KT_Media
+	) {
+		header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . $obj->getRawUrl());
+		exit;
+	} elseif (!$obj || !$obj->canDisplayDetails()) {
+		$controller->pageHeader();
+		print_privacy_error();
+	} else {
+		$controller->pageHeader();
+		echo
+			'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
+			preg_replace(
+				'/@('.KT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
+				htmlspecialchars($obj->getGedcomRecord()
+			)
+			),
+			'</pre>';
+	}
 }
