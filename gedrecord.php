@@ -28,12 +28,13 @@ $controller = new KT_Controller_Page();
 
 $pid = KT_Filter::get('pid', KT_REGEX_XREF);
 
-if ($pid == 'SUBM') {
-	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . 'edit_interface.php?action=editraw&pid=SUBM');
+$obj = KT_GedcomRecord::getInstance($pid);
+
+// Special case - allow raw editting of SUBM records
+if ($obj && $obj->getType() == 'SUBM' ) {
+	header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH . 'edit_interface.php?action=editraw&pid=' . $pid);
 	exit;
 } else {
-	$obj = KT_GedcomRecord::getInstance($pid);
-
 	if (
 		$obj instanceof KT_Person ||
 		$obj instanceof KT_Family ||
@@ -52,9 +53,8 @@ if ($pid == 'SUBM') {
 		echo
 			'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 			preg_replace(
-				'/@('.KT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-				htmlspecialchars($obj->getGedcomRecord()
-			)
+				'/@(' . KT_REGEX_XREF . ')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
+				htmlspecialchars($obj->getGedcomRecord())
 			),
 			'</pre>';
 	}
