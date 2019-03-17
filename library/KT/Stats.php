@@ -505,14 +505,24 @@ class KT_Stats {
 	}
 
 	function totalBirths() {
-		return KT_DB::prepare("
-				SELECT SQL_CACHE COUNT(*)
-					FROM `##individuals`
-					WHERE `i_file`=?
-					AND `i_gedcom` REGEXP '\n1 BIRT(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
-			")
-			->execute(array($this->_ged_id))
-			->fetchOne();
+		$rows = KT_DB::prepare("
+			SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedrec
+				FROM `##individuals` WHERE `i_file` = ?
+			")->execute(array($this->_ged_id))
+			->fetchAll();
+
+		$count = count($rows);
+
+		foreach ($rows as $row) {
+			preg_match('/\n1 BIRT/', $row->gedrec, $match);
+			preg_match('/\n1 BIRT Y\n1/', $row->gedrec, $match1);
+			preg_match('/\n(1 BIRT.*\n([2-9] (?!DATE|PLAC|SOUR).*\n)+)1/', $row->gedrec, $match2);
+			if (!$match || $match1 || $match2) {
+				$count --;
+			}
+		}
+
+		return $count;
 	}
 
 	function totalEventsDeath() {
@@ -520,14 +530,24 @@ class KT_Stats {
 	}
 
 	function totalDeaths() {
-		return KT_DB::prepare("
-				SELECT SQL_CACHE COUNT(*)
-					FROM `##individuals`
-					WHERE `i_file`=?
-					AND `i_gedcom` REGEXP '\n1 DEAT(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
-			")
-			->execute(array($this->_ged_id))
-			->fetchOne();
+		$rows = KT_DB::prepare("
+			SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedrec
+				FROM `##individuals` WHERE `i_file` = ?
+			")->execute(array($this->_ged_id))
+			->fetchAll();
+
+		$count = count($rows);
+
+		foreach ($rows as $row) {
+			preg_match('/\n1 DEAT/', $row->gedrec, $match);
+			preg_match('/\n1 DEAT Y\n1/', $row->gedrec, $match1);
+			preg_match('/\n(1 DEAT.*\n([2-9] (?!DATE|PLAC|SOUR).*\n)+)1/', $row->gedrec, $match2);
+			if (!$match || $match1 || $match2) {
+				$count --;
+			}
+		}
+
+		return $count;
 	}
 
 	function totalEventsMarriage() {
@@ -535,14 +555,22 @@ class KT_Stats {
 	}
 
 	function totalMarriages() {
-		return KT_DB::prepare("
-				SELECT SQL_CACHE COUNT(*)
-					FROM `##families`
-					WHERE `f_file`=?
-					AND `f_gedcom` REGEXP '\n1 MARR(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
-			")
-			->execute(array($this->_ged_id))
-			->fetchOne();
+		$rows = KT_DB::prepare("
+			SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedrec
+				FROM `##families` WHERE `f_file` = ?
+			")->execute(array($this->_ged_id))
+			->fetchAll();
+
+		$count = count($rows);
+
+		foreach ($rows as $row) {
+			preg_match('/\n1 MARR.*(?:\n[2-9](?:.*))*\n2 (DATE|PLAC|SOUR).*/', $row->gedrec, $match);
+			if (!$match) {
+				$count --;
+			}
+		}
+
+		return $count;
 	}
 
 	function totalEventsDivorce() {

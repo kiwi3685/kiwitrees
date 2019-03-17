@@ -39,13 +39,19 @@ $controller
 		jQuery(".loading-image").css("display", "none");
 	');
 
-	// default ages
+	// default options
 	$bap_age	= 5;
 	$oldage		= $MAX_ALIVE_AGE;
 	$marr_age	= 14;
 	$spouseage	= 30;
 	$child_y	= 15;
 	$child_o	= 50;
+	$bDate		= 1;
+	$bPlac		= 1;
+	$bSour		= 1;
+	$dDate		= 1;
+	$dPlac		= 1;
+	$dSour		= 1;
 
 	if (KT_Filter::postBool('reset')) {
 		set_gedcom_setting(KT_GED_ID, 'SANITY_BAPTISM', $bap_age);
@@ -54,18 +60,30 @@ $controller
 		set_gedcom_setting(KT_GED_ID, 'SANITY_SPOUSE_AGE', $spouseage);
 		set_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_Y', $child_y);
 		set_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_O', $child_o);
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BD', $bDate);
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BP', $bPlac);
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BS', $bSour);
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DD', $dDate);
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DP', $dPlac);
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DS', $dSour);
 
 		AddToLog($controller->getPageTitle() .' set to default values', 'config');
 	}
 
 	// save new values
 	if (KT_Filter::postBool('save')) {
-		set_gedcom_setting(KT_GED_ID, 'SANITY_BAPTISM',		KT_Filter::post('NEW_SANITY_BAPTISM', KT_REGEX_INTEGER, $bap_age));
-		set_gedcom_setting(KT_GED_ID, 'SANITY_OLDAGE',		KT_Filter::post('NEW_SANITY_OLDAGE', KT_REGEX_INTEGER, $oldage));
-		set_gedcom_setting(KT_GED_ID, 'SANITY_MARRIAGE',	KT_Filter::post('NEW_SANITY_MARRIAGE', KT_REGEX_INTEGER, $marr_age));
-		set_gedcom_setting(KT_GED_ID, 'SANITY_SPOUSE_AGE',	KT_Filter::post('NEW_SANITY_SPOUSE_AGE', KT_REGEX_INTEGER, $spouseage));
-		set_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_Y',		KT_Filter::post('NEW_SANITY_CHILD_Y', KT_REGEX_INTEGER, $child_y));
-		set_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_O',		KT_Filter::post('NEW_SANITY_CHILD_O', KT_REGEX_INTEGER, $child_o));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_BAPTISM',			KT_Filter::post('NEW_SANITY_BAPTISM', KT_REGEX_INTEGER, $bap_age));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_OLDAGE',			KT_Filter::post('NEW_SANITY_OLDAGE', KT_REGEX_INTEGER, $oldage));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_MARRIAGE',		KT_Filter::post('NEW_SANITY_MARRIAGE', KT_REGEX_INTEGER, $marr_age));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_SPOUSE_AGE',		KT_Filter::post('NEW_SANITY_SPOUSE_AGE', KT_REGEX_INTEGER, $spouseage));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_Y',			KT_Filter::post('NEW_SANITY_CHILD_Y', KT_REGEX_INTEGER, $child_y));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_O',			KT_Filter::post('NEW_SANITY_CHILD_O', KT_REGEX_INTEGER, $child_o));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BD',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_BD', $bDate));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BP',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_BP', $bPlac));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BS',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_BS', $bSour));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DD',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_DD', $dDate));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DP',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_DP', $dPlac));
+		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DS',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_DS', $dSour));
 
 		AddToLog($controller->getPageTitle() .' set to new values', 'config');
 	}
@@ -77,6 +95,12 @@ $controller
 	$spouseage	= get_gedcom_setting(KT_GED_ID, 'SANITY_SPOUSE_AGE');
 	$child_y	= get_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_Y');
 	$child_o	= get_gedcom_setting(KT_GED_ID, 'SANITY_CHILD_O');
+	$bDate		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BD');
+	$bPlac		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BP');
+	$bSour		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_BS');
+	$dDate		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DD');
+	$dPlac		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DP');
+	$dSour		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DS');
 
 	/**
 	 * Array of sanity check groupings
@@ -89,6 +113,38 @@ $controller
 		KT_I18N::translate('Duplicated family data'),
 		KT_I18N::translate('Missing or invalid data'),
 	);
+
+	/**
+	 * Array of options required to define "incomplete birth data""
+	 */
+	$birthOptions = array(
+		'NEW_SANITY_INCOMPLETE_BD',
+		$bDate,
+		'NEW_SANITY_INCOMPLETE_BP',
+		$bPlac,
+		'NEW_SANITY_INCOMPLETE_BS',
+		$bSour
+	);
+
+	$bDateTag = $bDate ? 'DATE' : '';
+	$bPlacTag = $bPlac ? 'PLAC' : '';
+	$bSourTag = $bSour ? 'SOUR' : '';
+
+	/**
+	 * Array of options required to define "incomplete death data""
+	 */
+	$deathOptions = array(
+		'NEW_SANITY_INCOMPLETE_DD',
+		$dDate,
+		'NEW_SANITY_INCOMPLETE_DP',
+		$dPlac,
+		'NEW_SANITY_INCOMPLETE_DS',
+		$dSour
+	);
+
+	$dDate ? $dDateTag = 'DATE' : '';
+	$dPlac ? $dPlacTag = 'PLAC' : '';
+	$dSour ? $dSourTag = 'SOUR' : '';
 
 	/**
 	 * Array of items for sanity $checks
@@ -107,7 +163,7 @@ $controller
 		array (2, 'old_age',		KT_I18N::translate('Alive after a certain age'), 'NEW_SANITY_OLDAGE', 'oldage', $oldage),
 		array (2, 'marr_yng',		KT_I18N::translate('Married before a certain age') . '<span class="error">**</span>', 'NEW_SANITY_MARRIAGE', 'marr_age', $marr_age),
 		array (2, 'spouse_age',		KT_I18N::translate('Being much older than spouse'), 'NEW_SANITY_SPOUSE_AGE',	'spouseage', $spouseage),
-		array (2, 'child_yng',		KT_I18N::translate('Mothers having children before a certain age'), 'NEW_SANITY_BAPTISM', 'child_y', $child_y),
+		array (2, 'child_yng',		KT_I18N::translate('Mothers having children before a certain age'), 'NEW_SANITY_CHILD_Y', 'child_y', $child_y),
 		array (2, 'child_old',		KT_I18N::translate('Mothers having children past a certain age'), 'NEW_SANITY_CHILD_O', 'child_o', $child_o),
 		array (3, 'dupe_birt',		KT_I18N::translate('Birth')),
 		array (3, 'dupe_bapm',		KT_I18N::translate('Baptism or christening')),
@@ -118,8 +174,8 @@ $controller
 		array (3, 'dupe_name',		KT_I18N::translate('Name')),
 		array (4, 'dupe_marr',		KT_I18N::translate('Marriage')),
 		array (4, 'dupe_child',		KT_I18N::translate('Families with duplicately named children')),
-		array (5, 'birt',			KT_I18N::translate('Missing or incomplete birth')),
-		array (5, 'deat',			KT_I18N::translate('Missing or incomplete death')),
+		array (5, 'birt',			KT_I18N::translate('Missing or incomplete birth'), $birthOptions),
+		array (5, 'deat',			KT_I18N::translate('Missing or incomplete death'), $deathOptions),
 		array (5, 'sex',			KT_I18N::translate('No gender recorded')),
 		array (5, 'age',			KT_I18N::translate('Invalid age recorded')),
 		array (5, 'empty_tag',		KT_I18N::translate('Empty individual fact or event') . '<span class="error">**</span>'),
@@ -151,13 +207,21 @@ $controller
 					<?php for ($row = 0; $row < count($checks); $row ++) {
 						if ($checks[$row][0] == $i) { ?>
 							<li class="facts_value" name="<?php echo $checks[$row][1]; ?>" id="<?php echo $checks[$row][1]; ?>">
-								<input type="checkbox" name="<?php echo $checks[$row][1]; ?>" value="<?php echo $checks[$row][1]; ?>"
-									<?php if (KT_Filter::post($checks[$row][1])) echo ' checked="checked"'?>
-								>
+								<input type="checkbox" name="<?php echo $checks[$row][1]; ?>" value="<?php echo $checks[$row][1]; ?>" <?php echo KT_Filter::post($checks[$row][1]) ? ' checked="checked"' : ''; ?>>
 								<?php echo $checks[$row][2];
-								if (isset($checks[$row][3])) { ?>
-									<input name="<?php echo $checks[$row][3]; ?>" id="<?php echo $checks[$row][4]; ?>" type="text" value="<?php echo $checks[$row][5]; ?>" >
-								<?php } ?>
+								if (isset($checks[$row][3])) {
+									if ($checks[$row][3] == $birthOptions) { ?>
+										<input type="checkbox" name="<?php echo $birthOptions[0]; ?>" value="1" <?php echo $birthOptions[1] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Date'); ?>
+										<input type="checkbox" name="<?php echo $birthOptions[2]; ?>" value="1" <?php echo $birthOptions[3] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Place'); ?>
+										<input type="checkbox" name="<?php echo $birthOptions[4]; ?>" value="1" <?php echo $birthOptions[5] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Source'); ?>
+									<?php } elseif ($checks[$row][3] == $deathOptions) { ?>
+										<input type="checkbox" name="<?php echo $deathOptions[0]; ?>" value="1" <?php echo $deathOptions[1] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Date'); ?>
+										<input type="checkbox" name="<?php echo $deathOptions[2]; ?>" value="1" <?php echo $deathOptions[3] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Place'); ?>
+										<input type="checkbox" name="<?php echo $deathOptions[4]; ?>" value="1" <?php echo $deathOptions[5] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Source'); ?>
+									<?php } else { ?>
+										<input name="<?php echo $checks[$row][3]; ?>" id="<?php echo $checks[$row][4]; ?>" type="text" value="<?php echo $checks[$row][5]; ?>" >
+									<?php }
+								} ?>
 						 	</li>
 						<?php }
 					} ?>
@@ -358,14 +422,14 @@ $controller
 				<div>' . $data['html'] . '</div>';
 			}
 			if (KT_Filter::post('birt')) {
-				$data = missing_vital('BIRT');
+				$data = missing_vital('BIRT', $bDateTag, $bPlacTag, $bSourTag);
 				echo '<h5>' . KT_I18N::translate('%s have missing or incomplete birth data', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
 			if (KT_Filter::post('deat')) {
-				$data = missing_vital('DEAT');
+				$data = missing_vital('DEAT', $dDateTag, $dPlacTag, $dSourTag);
 				echo '<h5>' . KT_I18N::translate('%s have missing or incomplete death data', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
