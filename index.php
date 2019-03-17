@@ -125,7 +125,7 @@ echo '<div id="home-page">';
 	if (KT_USER_ID || $SHOW_COUNTER) {
 		echo '<div id="link_change_blocks">';
 			if (KT_USER_GEDCOM_ADMIN) echo '<a href="index_edit.php?gedcom_id=' . KT_GED_ID . '" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . KT_GED_ID . '\', \'' . KT_I18N::translate('Change the blocks on this page') . '\');">', KT_I18N::translate('Change the blocks on this page'), '</a>';
-			if ($SHOW_COUNTER) {echo '<span>'.KT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
+			if ($SHOW_COUNTER) {echo '<span>' . KT_I18N::translate('Hit Count:') . ' ' . $hitCount . '</span>';}
 		echo '</div>'; // <div id="link_change_blocks">
 	} else {
 		echo '<div class="clearfloat"></div>';
