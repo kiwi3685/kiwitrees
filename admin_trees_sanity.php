@@ -142,9 +142,9 @@ $controller
 		$dSour
 	);
 
-	$dDate ? $dDateTag = 'DATE' : '';
-	$dPlac ? $dPlacTag = 'PLAC' : '';
-	$dSour ? $dSourTag = 'SOUR' : '';
+	$dDateTag = $dDate ? 'DATE' : '';
+	$dPlacTag = $dPlac ? 'PLAC' : '';
+	$dSourTag = $dSour ? 'SOUR' : '';
 
 	/**
 	 * Array of items for sanity $checks

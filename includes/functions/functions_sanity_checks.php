@@ -681,7 +681,7 @@ function missing_vital($tag, $DateTag, $PlacTag, $SourTag) {
 	$gedrec 	= '';
 	$subTags	= trim($DateTag . '|' . $PlacTag . '|' . $SourTag, "|");
 	$subTags	= str_replace("||", "|", $subTags);
-	$result 	= array();
+	$results 	= array();
 
 	// no <<$tag>> record at all
 	$rows_1 = KT_DB::prepare("
