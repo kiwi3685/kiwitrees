@@ -292,6 +292,18 @@ class KT_Tree {
 		set_gedcom_setting($tree_id, 'REPO_FACTS_QUICK',             '');
 		set_gedcom_setting($tree_id, 'REPO_FACTS_UNIQUE',            'NAME,ADDR');
 		set_gedcom_setting($tree_id, 'REPO_ID_PREFIX',               'R');
+		set_gedcom_setting($tree_id, 'SANITY_BAPTISM',				 5);
+		set_gedcom_setting($tree_id, 'SANITY_OLDAGE',				 $MAX_ALIVE_AGE);
+		set_gedcom_setting($tree_id, 'SANITY_MARRIAGE',				 14);
+		set_gedcom_setting($tree_id, 'SANITY_SPOUSE_AGE',			 30);
+		set_gedcom_setting($tree_id, 'SANITY_CHILD_Y',				 15);
+		set_gedcom_setting($tree_id, 'SANITY_CHILD_O',				 50);
+		set_gedcom_setting($tree_id, 'SANITY_INCOMPLETE_BD',		 1);
+		set_gedcom_setting($tree_id, 'SANITY_INCOMPLETE_BP',		 1);
+		set_gedcom_setting($tree_id, 'SANITY_INCOMPLETE_BS',		 1);
+		set_gedcom_setting($tree_id, 'SANITY_INCOMPLETE_DD',		 1);
+		set_gedcom_setting($tree_id, 'SANITY_INCOMPLETE_DP',		 1);
+		set_gedcom_setting($tree_id, 'SANITY_INCOMPLETE_DS',		 1);
 		set_gedcom_setting($tree_id, 'SAVE_WATERMARK_IMAGE',         false);
 		set_gedcom_setting($tree_id, 'SAVE_WATERMARK_THUMB',         false);
 		set_gedcom_setting($tree_id, 'SHOW_COUNTER',                 true);
