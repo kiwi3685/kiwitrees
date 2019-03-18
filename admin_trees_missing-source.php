@@ -172,27 +172,31 @@ foreach ($list as $person) {
 
 				jQuery("#missing_data").css("visibility", "visible");
 				jQuery(".loading-image").css("display", "none");
-			');
-		$percent = round((float)$countr / $count * 100) . '%';; ?>
+			'); ?>
 
-		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ KT_I18N::translate('Missing source references for <u>%s</u> data', KT_Gedcom_Tag::getLabel($fact)); ?></h3>
-		<h4><?php echo /* I18N: example << 10 out of 50, or 20% >> */ KT_I18N::translate('(%s out of %s = %s)', KT_I18N::number($countr), KT_I18N::number($count), $percent); ?></h4>
 		<div class="loading-image">&nbsp;</div>
-		<table id="missing_data">
-			<thead>
-				<tr>
-					<th><?php echo KT_I18N::translate('Name'); ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($result as $output) { ?>
+		<?php if($countr > 0 && $count > 0) {
+			$percent = round((float)$countr / $count * 100) . '%'; ?>
+			<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ KT_I18N::translate('Missing source references for <u>%s</u> data', KT_Gedcom_Tag::getLabel($fact)); ?></h3>
+			<h4><?php echo /* I18N: example << 10 out of 50, or 20% >> */ KT_I18N::translate('(%s out of %s = %s)', KT_I18N::number($countr), KT_I18N::number($count), $percent); ?></h4>
+			<table id="missing_data">
+				<thead>
 					<tr>
-						<td><?php  echo $output['name']; ?></td>
+						<th><?php echo KT_I18N::translate('Name'); ?></th>
 					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-	<?php } ?>
+				</thead>
+				<tbody>
+					<?php foreach ($result as $output) { ?>
+						<tr>
+							<td><?php  echo $output['name']; ?></td>
+						</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+		<?php } else { ?>
+			<p><?php echo KT_I18N::translate('No missing source references found'); ?></p>
+		<?php }
+	} ?>
 </div> <!-- close missing_data page div -->
 
 <?php
