@@ -236,7 +236,7 @@ case 'importform':
 			<div class="tree_import">
 				<label>' . KT_I18N::translate('Add spaces where notes were wrapped') . '</label>
 				<div class="input">' .
-					edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES')) . '
+					edit_field_yes_no('WORD_WRAPPED_NOTES', get_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES')) . '
 					<div class="help_content">' .
 						KT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.') . '
 					</div>
@@ -245,7 +245,7 @@ case 'importform':
 			<div class="tree_import">
 				<label>' . /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ KT_I18N::translate('Remove the GEDCOM media path from filenames') . '</label>
 				<div class="input">
-					<input type="text" name="NEW_GEDCOM_MEDIA_PATH" value="' . $GEDCOM_MEDIA_PATH . '" dir="ltr" maxlength="255">
+					<input type="text" name="GEDCOM_MEDIA_PATH" value="' . $GEDCOM_MEDIA_PATH . '" dir="ltr" maxlength="255">
 					<div class="help_content">' .
 						// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
 						KT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
