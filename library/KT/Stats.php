@@ -645,15 +645,15 @@ class KT_Stats {
 		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
 		$sizes = explode('x', $size);
 		// Raw data - for calculation
-		$tot_f = $this->_totalSexFemales();
-		$tot_m = $this->_totalSexMales();
-		$tot_u = $this->_totalSexUnknown();
-		$tot=$tot_f+$tot_m+$tot_u;
+		$tot_f	= $this->_totalSexFemales();
+		$tot_m	= $this->_totalSexMales();
+		$tot_u	= $this->_totalSexUnknown();
+		$tot	= $tot_f+$tot_m+$tot_u;
 		// I18N data - for display
 		$per_f = $this->totalSexFemalesPercentage();
 		$per_m = $this->totalSexMalesPercentage();
 		$per_u = $this->totalSexUnknownPercentage();
-		if ($tot==0) {
+		if ($tot == 0) {
 			return '';
 		} else if ($tot_u > 0) {
 			$chd = self::_array_to_extended_encoding(array(4095*$tot_u/$tot, 4095*$tot_f/$tot, 4095*$tot_m/$tot));
