@@ -226,17 +226,17 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 							if (jQuery("#kiwitrees-radio").is(":checked")){
 								jQuery("#kiwitrees-div .vis").css("visibility","visible");
 								jQuery("#flickr-div .vis").css("visibility","hidden");
-								jQuery("#picasa-div .vis").css("visibility","hidden");
+								jQuery("#googlephotos-div .vis").css("visibility","hidden");
 							}
 							else if (jQuery("#flickr-radio").is(":checked")){
 								jQuery("#kiwitrees-div .vis").css("visibility","hidden");
 								jQuery("#flickr-div .vis").css("visibility","visible");
-								jQuery("#picasa-div .vis").css("visibility","hidden");
+								jQuery("#googlephotos-div .vis").css("visibility","hidden");
 							}
-							else if (jQuery("#picasa-radio").is(":checked")){
+							else if (jQuery("#googlephotos-radio").is(":checked")){
 								jQuery("#kiwitrees-div .vis").css("visibility","hidden");
 								jQuery("#flickr-div .vis").css("visibility","hidden");
-								jQuery("#picasa-div .vis").css("visibility","visible");
+								jQuery("#googlephotos-div .vis").css("visibility","visible");
 							}
 						};
 					');
@@ -304,25 +304,25 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 										echo '</label>';
 										?>
 									</div>
-									<div id="picasa-div">
+									<div id="googlephotos-div">
 										<p>
 											<?php
-											echo '<input id="picasa-radio" type="radio" name="plugin" value="picasa"';
-											if ($plugin == 'picasa') {
+											echo '<input id="googlephotos-radio" type="radio" name="plugin" value="googlephotos"';
+											if ($plugin == 'googlephotos') {
 												echo ' checked ';
 											}
-											echo ' onclick="hide_fields();">' . KT_I18N::translate('Picasa');
+											echo ' onclick="hide_fields();">' . KT_I18N::translate('Google Photos');
 											?>
 										</p>
 										<?php
 										echo '<label class="vis"';
-											if ($plugin == 'picasa') {
+											if ($plugin == 'googlephotos') {
 												echo ' style="visibility:visible;">';
 											} else {
 												echo ' style="visibility:hidden;">';
 											}
-											echo KT_I18N::translate('Picasa user/gallery');
-											echo '<input id="picasa" type="text" name="gallery_folder_p" tabindex="1" value="' . htmlspecialchars($item_folder_p) . '">';
+											echo KT_I18N::translate('Google Photos album ID');
+											echo '<input id="googlephotos" type="text" name="gallery_folder_p" tabindex="1" value="' . htmlspecialchars($item_folder_p) . '">';
 										echo '</label>';
 										?>
 									</div>
@@ -628,15 +628,15 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 				});
 			';
 			break;
-			case 'picasa':
-			$picasa_set = get_block_setting($item_id, 'gallery_folder_p');
+			case 'googlephotos':
+			$googlephotos_set = get_block_setting($item_id, 'gallery_folder_p');
 			$js.='
 				Galleria.run("#galleria", {
-					picasa: "useralbum:'.$picasa_set.'",
-					picasaOptions: {
-						sort: "date-posted-asc",
-						imageSize: "original"
-					},
+					googlephotos: "photos.google.com/share/' . $googlephotos_set . '",
+//					googlephotosOptions: {
+//						sort: "date-posted-asc",
+//						imageSize: "original"
+//					},
 					_showCaption: false,
 					imageCrop: false
 				});
@@ -740,7 +740,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 			->pageHeader()
 			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/galleria-' . $version . '.min.js')
 			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/plugins/flickr/galleria.flickr.min.js')
-			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/plugins/picasa/galleria.picasa.min.js')
+			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/plugins/googlephotos/galleria.googlephotos.js')
 			->addInlineJavaScript($this->getJavaScript($item_id));
 		?>
 
