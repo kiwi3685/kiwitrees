@@ -293,7 +293,7 @@ class KT_Tree {
 		set_gedcom_setting($tree_id, 'REPO_FACTS_UNIQUE',            'NAME,ADDR');
 		set_gedcom_setting($tree_id, 'REPO_ID_PREFIX',               'R');
 		set_gedcom_setting($tree_id, 'SANITY_BAPTISM',				 5);
-		set_gedcom_setting($tree_id, 'SANITY_OLDAGE',				 get_gedcom_setting(MAX_ALIVE_AGE));
+		set_gedcom_setting($tree_id, 'SANITY_OLDAGE',				 120);
 		set_gedcom_setting($tree_id, 'SANITY_MARRIAGE',				 14);
 		set_gedcom_setting($tree_id, 'SANITY_SPOUSE_AGE',			 30);
 		set_gedcom_setting($tree_id, 'SANITY_CHILD_Y',				 15);
