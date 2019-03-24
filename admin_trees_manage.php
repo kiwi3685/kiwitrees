@@ -105,7 +105,6 @@ case 'new_tree':
 	}
 	break;
 case 'replace_upload':
-	KT_FlashMessages::addMessage('Starting upload');
 	$gedcom_id			= KT_Filter::postInteger('gedcom_id');
 	$keep_media         = KT_Filter::post('keep_media', '1', '0');
 	$GEDCOM_MEDIA_PATH  = KT_Filter::post('GEDCOM_MEDIA_PATH');
@@ -117,14 +116,12 @@ case 'replace_upload':
 		set_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
 		foreach ($_FILES as $FILE) {
 			if ($FILE['error'] == 0 && is_readable($FILE['tmp_name'])) {
-
 				$filename	= $FILE['name'];
 				$source		= $FILE['tmp_name'];
 				$type		= $FILE['type'];
 				$name		= explode(".", $filename);
 				$ext		= strtolower($name[1]);
-				$ged_name	= strtolower($name[0]) . '.ged';
-
+				$ged_name	= $name[0] . '.ged';
 				if ($ext == 'zip') {
 					//check for valid zip file
 					$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
@@ -134,7 +131,6 @@ case 'replace_upload':
 							break;
 						}
 					}
-
 					$target_path = KT_DATA_DIR . $filename;
 					if(move_uploaded_file($source, $target_path)) {
 						$zip = new ZipArchive();
@@ -144,10 +140,9 @@ case 'replace_upload':
 							$zip->close();
 							unlink($target_path);
 						}
+						// import the unzipped file
+						import_gedcom_file($gedcom_id, KT_DATA_DIR . $ged_name, $ged_name);
 					}
-					// import the unzipped file
-					import_gedcom_file($gedcom_id, KT_DATA_DIR . $ged_name, $ged_name);
-
 				} else {
 					// import as a ged file
 					import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
