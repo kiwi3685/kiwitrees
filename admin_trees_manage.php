@@ -105,6 +105,7 @@ case 'new_tree':
 	}
 	break;
 case 'replace_upload':
+	KT_FlashMessages::addMessage('Starting upload');
 	$gedcom_id			= KT_Filter::postInteger('gedcom_id');
 	$keep_media         = KT_Filter::post('keep_media', '1', '0');
 	$GEDCOM_MEDIA_PATH  = KT_Filter::post('GEDCOM_MEDIA_PATH');
@@ -116,7 +117,41 @@ case 'replace_upload':
 		set_gedcom_setting(KT_GED_ID, 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
 		foreach ($_FILES as $FILE) {
 			if ($FILE['error'] == 0 && is_readable($FILE['tmp_name'])) {
-				import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
+
+				$filename	= $FILE['name'];
+				$source		= $FILE['tmp_name'];
+				$type		= $FILE['type'];
+				$name		= explode(".", $filename);
+				$ext		= strtolower($name[1]);
+				$ged_name	= strtolower($name[0]) . '.ged';
+
+				if ($ext == 'zip') {
+					//check for valid zip file
+					$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
+					foreach($accepted_types as $mime_type) {
+						if($mime_type == $type) {
+							$okay = true;
+							break;
+						}
+					}
+
+					$target_path = KT_DATA_DIR . $filename;
+					if(move_uploaded_file($source, $target_path)) {
+						$zip = new ZipArchive();
+						$x = $zip->open($target_path);
+						if ($x === true) {
+							$zip->extractTo(KT_DATA_DIR);
+							$zip->close();
+							unlink($target_path);
+						}
+					}
+					// import the unzipped file
+					import_gedcom_file($gedcom_id, KT_DATA_DIR . $ged_name, $ged_name);
+
+				} else {
+					// import as a ged file
+					import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
+				}
 			}
 		}
 	}
@@ -182,6 +217,8 @@ case 'importform':
 					</span>
 					<div class="help_content">' .
 							KT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()) . '
+							<br>' .
+							KT_I18N::translate('You can upload a zip file containing your GEDCOM file. The zip folder must have the same name as your GEDCOM file.') . '
 					</div>
 				</div>
 			</div>
