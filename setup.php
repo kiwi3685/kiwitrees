@@ -90,7 +90,7 @@ if (file_exists(KT_DATA_DIR . KT_CONFIG_FILE)) {
 }
 
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and KT_XXXXX classes
-set_include_path(KT_ROOT.'library' . PATH_SEPARATOR . get_include_path());
+set_include_path(KT_ROOT . 'library' . PATH_SEPARATOR . get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('KT_');
 require 'includes/functions/functions.php';
