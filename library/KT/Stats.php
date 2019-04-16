@@ -648,7 +648,7 @@ class KT_Stats {
 		$tot_f	= $this->_totalSexFemales();
 		$tot_m	= $this->_totalSexMales();
 		$tot_u	= $this->_totalSexUnknown();
-		$tot	= $tot_f+$tot_m+$tot_u;
+		$tot	= $tot_f + $tot_m + $tot_u;
 		// I18N data - for display
 		$per_f = $this->totalSexFemalesPercentage();
 		$per_m = $this->totalSexMalesPercentage();
