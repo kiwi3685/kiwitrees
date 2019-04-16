@@ -42,8 +42,8 @@ class KT_Tree {
 	private static $trees   = null;
 
 	// Tree settings
-	private $preference     = null;    // _gedcom_setting table
-	private $user_preference = array(); // _user_gedcom_setting table
+	private $preference			= null;    // _gedcom_setting table
+	private $user_preference	= array(); // _user_gedcom_setting table
 
 	// Create a tree object.  This is a private constructor - it can only
 	// be called from KT_Tree::getAll() to ensure proper initialisation.
@@ -364,9 +364,9 @@ class KT_Tree {
 
 		// Genealogy data
 		// It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-		$john_doe=/* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
+		$john_doe	= /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
 			KT_I18N::translate('John /DOE/');
-		$note=KT_I18N::translate('Edit this individual and replace their details with your own');
+		$note		= KT_I18N::translate('Edit this individual and replace their details with your own');
 		KT_DB::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute(array(
 			$tree_id,
 			"0 HEAD\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
