@@ -23,21 +23,21 @@ class findmypast_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url	= 'http://search.findmypast.com/search/';
-		$url		= '?firstname=' . $givn . '&firstname_variants=true&lastname=' . $surname . '&yearofbirth=' . $birth_year . '&yearofbirth_offset=2';
+		$base_url	= 'https://www.findmypast.com/search/';
+		$url		= 'results?firstname=' . $givn . '&firstname_variants=true&lastname=' . $surname . '&yearofbirth=' . $birth_year . '&yearofbirth_offset=2';
 
 		$collection = array(
-			"World"							=>"world-records",
-			"Australia &amp; New Zealand"	=>"australia-and-new-zealand-records",
-			"Ireland"						=>"ireland-records",
-			"United Kingdom"				=>"united-kingdom-records",
-			"United States &amp; Canada"	=>"united-states-records",
+			"World"							=>"",
+			"Australia &amp; New Zealand"	=>"&sourcecountry=australasia~new%20zealand",
+			"Ireland"						=>"&sourcecountry=ireland",
+			"United Kingdom"				=>"&sourcecountry=great%20britain",
+			"United States &amp; Canada"	=>"&sourcecountry=united%20states~canada~north%20america",
 		);
 
 		foreach($collection as $x=>$x_value) {
 			$link[] = array(
 				'title' => KT_I18N::translate($x),
-				'link'  => $base_url. $x_value . $url
+				'link'  => $base_url . $url . $x_value
 			);
 		}
 
