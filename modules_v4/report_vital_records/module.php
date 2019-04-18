@@ -235,140 +235,145 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
 				$list = report_vital_records($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $d_toJD, KT_GED_ID);
 
 				// output display
-				?>
-				<div id="report_header">
-					<h4><?php echo KT_I18N::translate('Listing individuals based on these filters'); ?></h4>
-					<p><?php echo $filter_list; ?></p>
-				</div>
-				<div class="loading-image">&nbsp;</div>
-				<table id="vital_records" class="width100" style="visibility:hidden;">
-					<thead>
-						<tr>
-							<th><?php echo KT_I18N::translate('Name'); ?></th>
-							<th><?php echo KT_I18N::translate('Birth'); ?></th>
-							<th><?php //SORT_BIRT ?></th>
-							<th><?php echo KT_I18N::translate('Marriage'); ?></th>
-							<th><?php echo KT_I18N::translate('Death'); ?></th>
-							<th><?php //SORT_DEAT ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						foreach ($list as $person) {
-							if ($person && $person->canDisplayDetails()) {
-								$person->add_family_facts();
-								$indifacts = $person->getIndiFacts();
-								?>
-								<tr>
-									<td>
-										<div>
-											<p class="first">
-												<a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getFullName(); ?></a>
-											</p>
-											<?php if ($person->getPrimaryChildFamily() && $person->getPrimaryChildFamily()->getHusband()) { ?>
-												<p>
-													<?php echo KT_I18N::translate('Father') . ': ' . $person->getPrimaryChildFamily()->getHusband()->getLifespanName(); ?>
+				if ($list) { ?>
+					<div id="report_header">
+						<h4><?php echo KT_I18N::translate('Listing individuals based on these filters'); ?></h4>
+						<p><?php echo $filter_list; ?></p>
+					</div>
+					<div class="loading-image">&nbsp;</div>
+					<table id="vital_records" class="width100" style="visibility:hidden;">
+						<thead>
+							<tr>
+								<th><?php echo KT_I18N::translate('Name'); ?></th>
+								<th><?php echo KT_I18N::translate('Birth'); ?></th>
+								<th><?php //SORT_BIRT ?></th>
+								<th><?php echo KT_I18N::translate('Marriage'); ?></th>
+								<th><?php echo KT_I18N::translate('Death'); ?></th>
+								<th><?php //SORT_DEAT ?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							foreach ($list as $person) {
+								if ($person && $person->canDisplayDetails()) {
+									$person->add_family_facts();
+									$indifacts = $person->getIndiFacts();
+									?>
+									<tr>
+										<td>
+											<div>
+												<p class="first">
+													<a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getFullName(); ?></a>
 												</p>
-											<?php }
-											if ($person->getPrimaryChildFamily() && $person->getPrimaryChildFamily()->getWife()) { ?>
-												<p>
-													<?php echo KT_I18N::translate('Mother') . ': ' . $person->getPrimaryChildFamily()->getWife()->getLifespanName(); ?>
-												</p>
-											<?php } ?>
-										</div>
-									</td>
-									<td>
-										<div>
-											<?php foreach ($indifacts as $fact) {
-												if ($fact->getTag() == 'BIRT') { ?>
-													<p class="first">
-														<?php echo ($person->getBirthDate() ? KT_I18N::translate('Date') . ': ' . format_fact_date($fact, $person, true, true, false) . '<br>' : '') .
-														($person->getBirthPlace() ? KT_I18N::translate('Place') . ': ' . format_fact_place($fact, true, true, true) : ''); ?>
+												<?php if ($person->getPrimaryChildFamily() && $person->getPrimaryChildFamily()->getHusband()) { ?>
+													<p>
+														<?php echo KT_I18N::translate('Father') . ': ' . $person->getPrimaryChildFamily()->getHusband()->getLifespanName(); ?>
 													</p>
-													<?php $ct = preg_match_all("/(2 SOUR (.+))/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-													for ($j=0; $j<$ct; $j++) {
-														$sid = trim($match[$j][2], '@');
-														$source = KT_Source::getInstance($sid);
-														if ($source->canDisplayDetails()) {
-															echo '<p>' . KT_I18N::translate('Source') . ': ' . $source->getFullName() . '</p>';
+												<?php }
+												if ($person->getPrimaryChildFamily() && $person->getPrimaryChildFamily()->getWife()) { ?>
+													<p>
+														<?php echo KT_I18N::translate('Mother') . ': ' . $person->getPrimaryChildFamily()->getWife()->getLifespanName(); ?>
+													</p>
+												<?php } ?>
+											</div>
+										</td>
+										<td>
+											<div>
+												<?php foreach ($indifacts as $fact) {
+													if ($fact->getTag() == 'BIRT') { ?>
+														<p class="first">
+															<?php echo ($person->getBirthDate() ? KT_I18N::translate('Date') . ': ' . format_fact_date($fact, $person, true, true, false) . '<br>' : '') .
+															($person->getBirthPlace() ? KT_I18N::translate('Place') . ': ' . format_fact_place($fact, true, true, true) : ''); ?>
+														</p>
+														<?php $ct = preg_match_all("/(2 SOUR (.+))/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+														for ($j=0; $j<$ct; $j++) {
+															$sid = trim($match[$j][2], '@');
+															$source = KT_Source::getInstance($sid);
+															if ($source->canDisplayDetails()) {
+																echo '<p>' . KT_I18N::translate('Source') . ': ' . $source->getFullName() . '</p>';
+															}
 														}
 													}
 												}
-											}
-											?>
-										</div>
-									</td>
-									<td><?php echo $person->getBirthDate()->JD(); ?></td><!-- used for sorting only -->
-									<td>
-										<div>
-											<?php foreach ($indifacts as $fact) {
-												if ($fact->getParentObject() instanceof KT_Family && ($fact->getTag() == 'MARR' || $fact->getTag() == '_NMR')) {
-													foreach ($fact->getParentObject() as $family_fact) {
-														$sex = $person->getSex();
-														switch ($sex) {
-															case 'M':
-																$spouse = $fact->getParentObject()->getWife();
-																break;
-															case 'F':
-																$spouse = $fact->getParentObject()->getHusband();
-																break;
-															default:
-																$spouse = '';
-																break;
-														} ?>
-														<?php
-														if ($spouse) { ?>
-															<div>
-																<p class="first">
-																	<?php echo KT_I18N::translate('Spouse'); ?>: <a href="<?php echo $spouse->getHtmlUrl(); ?>"><?php echo $spouse->getFullName(); ?></a>
-																</p>
-																<p class="first">
-																	<?php echo ($fact->getParentObject()->getMarriageDate() ? KT_I18N::translate('Date') . ': ' . format_fact_date($fact, $spouse, true, true, false) . '<br>' : '') .
-																	($fact->getParentObject()->getMarriagePlace() ? KT_I18N::translate('Place') . ': ' . format_fact_place($fact, true, true, true) : ''); ?>
-																</p>
-																<?php $ct = preg_match_all("/(2 SOUR (.+))/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-																for ($j=0; $j<$ct; $j++) {
-																	$sid = trim($match[$j][2], '@');
-																	$source = KT_Source::getInstance($sid);
-																	if ($source->canDisplayDetails()) {
-																		echo '<p>' . KT_I18N::translate('Source') . ': ' . $source->getFullName() . '</p>';
-																	}
-																} ?>
-															</div>
-														<?php }
+												?>
+											</div>
+										</td>
+										<td><?php echo $person->getBirthDate()->JD(); ?></td><!-- used for sorting only -->
+										<td>
+											<div>
+												<?php foreach ($indifacts as $fact) {
+													if ($fact->getParentObject() instanceof KT_Family && ($fact->getTag() == 'MARR' || $fact->getTag() == '_NMR')) {
+														foreach ($fact->getParentObject() as $family_fact) {
+															$sex = $person->getSex();
+															switch ($sex) {
+																case 'M':
+																	$spouse = $fact->getParentObject()->getWife();
+																	break;
+																case 'F':
+																	$spouse = $fact->getParentObject()->getHusband();
+																	break;
+																default:
+																	$spouse = '';
+																	break;
+															} ?>
+															<?php
+															if ($spouse) { ?>
+																<div>
+																	<p class="first">
+																		<?php echo KT_I18N::translate('Spouse'); ?>: <a href="<?php echo $spouse->getHtmlUrl(); ?>"><?php echo $spouse->getFullName(); ?></a>
+																	</p>
+																	<p class="first">
+																		<?php echo ($fact->getParentObject()->getMarriageDate() ? KT_I18N::translate('Date') . ': ' . format_fact_date($fact, $spouse, true, true, false) . '<br>' : '') .
+																		($fact->getParentObject()->getMarriagePlace() ? KT_I18N::translate('Place') . ': ' . format_fact_place($fact, true, true, true) : ''); ?>
+																	</p>
+																	<?php $ct = preg_match_all("/(2 SOUR (.+))/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+																	for ($j=0; $j<$ct; $j++) {
+																		$sid = trim($match[$j][2], '@');
+																		$source = KT_Source::getInstance($sid);
+																		if ($source->canDisplayDetails()) {
+																			echo '<p>' . KT_I18N::translate('Source') . ': ' . $source->getFullName() . '</p>';
+																		}
+																	} ?>
+																</div>
+															<?php }
+														}
 													}
-												}
-											} ?>
-										</div>
-									</td>
-									<td>
-										<div>
-											<?php foreach ($indifacts as $fact) {
-												if ($fact->getTag() == 'DEAT') { ?>
-													<p class="first">
-														<?php echo ($person->getDeathDate() ? KT_I18N::translate('Date') . ': ' . format_fact_date($fact, $person, true, true, false) . '<br>' : '') .
-														($person->getDeathPlace() ? KT_I18N::translate('Place') . ': ' . format_fact_place($fact, true, true, true) : ''); ?>
-													</p>
-													<?php $ct = preg_match_all("/(2 SOUR (.+))/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-													for ($j=0; $j<$ct; $j++) {
-														$sid = trim($match[$j][2], '@');
-														$source = KT_Source::getInstance($sid);
-														if ($source->canDisplayDetails()) {
-															echo '<p>' . KT_I18N::translate('Source') . ': ' . $source->getFullName() . '</p>';
+												} ?>
+											</div>
+										</td>
+										<td>
+											<div>
+												<?php foreach ($indifacts as $fact) {
+													if ($fact->getTag() == 'DEAT') { ?>
+														<p class="first">
+															<?php echo ($person->getDeathDate() ? KT_I18N::translate('Date') . ': ' . format_fact_date($fact, $person, true, true, false) . '<br>' : '') .
+															($person->getDeathPlace() ? KT_I18N::translate('Place') . ': ' . format_fact_place($fact, true, true, true) : ''); ?>
+														</p>
+														<?php $ct = preg_match_all("/(2 SOUR (.+))/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+														for ($j=0; $j<$ct; $j++) {
+															$sid = trim($match[$j][2], '@');
+															$source = KT_Source::getInstance($sid);
+															if ($source->canDisplayDetails()) {
+																echo '<p>' . KT_I18N::translate('Source') . ': ' . $source->getFullName() . '</p>';
+															}
 														}
 													}
 												}
-											}
-											?>
-										</div>
-									</td>
-									<td><?php echo $person->getDeathDate()->JD(); ?></td><!-- used for sorting only -->
-								</tr>
-							<?php }
-						}
-						?>
-			 		</tbody>
-				</table>
-			<?php }
+												?>
+											</div>
+										</td>
+										<td><?php echo $person->getDeathDate()->JD(); ?></td><!-- used for sorting only -->
+									</tr>
+								<?php }
+							}
+							?>
+				 		</tbody>
+					</table>
+				<?php } else { ?>
+					<div id="noresult">
+						<?php echo KT_I18N::translate('Nothing found'); ?>
+					</div>
+				<?php } ?>
+			}
 		}
 }
