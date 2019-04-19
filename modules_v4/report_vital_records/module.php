@@ -373,7 +373,7 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
 					<div id="noresult">
 						<?php echo KT_I18N::translate('Nothing found'); ?>
 					</div>
-				<?php } ?>
+				<?php }
 			}
 		}
 }
