@@ -1445,7 +1445,7 @@ function activate_colorbox(config) {
 
 		// Enable colorbox for video using <video></video>, where supported
 		jQuery('a[type^=video].gallery').colorbox({
-			innerWidth	:"80%",
+			innerWidth	:"50%",
 			innerHeight	:"80%",
 			iframe		:true,
 			rel:        'nofollow' // Slideshows are just for images
