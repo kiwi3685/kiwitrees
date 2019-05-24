@@ -65,7 +65,7 @@ class review_changes_KT_Module extends KT_Module implements KT_Module_Block {
 			if (KT_TIMESTAMP - $LAST_CHANGE_EMAIL > (60*60*24*$days)) {
 				$LAST_CHANGE_EMAIL = KT_TIMESTAMP;
 				KT_Site::preference('LAST_CHANGE_EMAIL', $LAST_CHANGE_EMAIL);
-				if ($sendmail == "yes") {
+				if ($sendmail == true) {
 					// Which users have pending changes?
 					$users_with_changes = array();
 					foreach (get_all_users() as $user_id=>$user_name) {
