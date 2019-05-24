@@ -213,46 +213,49 @@ class families_KT_Module extends KT_Module implements KT_Module_Sidebar {
 		}
 
 		//-- search for INDI names
-		$rows=KT_DB::prepare(
-			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
-			" FROM `##individuals`, `##name`".
-			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
-			" AND i_id=n_id AND i_file=n_file AND i_file=?".
-			" ORDER BY n_sort"
-		)
-		->execute(array('INDI', "%{$query}%", "%{$query}%", KT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+		$rows=
+			KT_DB::prepare("
+				SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec
+				 FROM `##individuals`, `##name`
+				 WHERE (i_id LIKE ? OR n_sort LIKE ?)
+				 AND i_id=n_id AND i_file=n_file AND i_file=?
+				 ORDER BY n_sort COLLATE '" . KT_I18N::$collation . "'
+				 LIMIT 50
+			")
+			->execute(array('INDI', "%{$query}%", "%{$query}%", KT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+
 		$ids = array();
 		foreach ($rows as $row) {
 			$ids[] = $row['xref'];
 		}
 
-		$vars=array();
+		$vars = array('FAM');
 		if (empty($ids)) {
 			//-- no match : search for FAM id
-			$where = "f_id LIKE ?";
-			$vars[]="%{$query}%";
+			$where	= "f_id LIKE ?";
+			$vars[]	= "%{$query}%";
 		} else {
 			//-- search for spouses
-			$qs=implode(',', array_fill(0, count($ids), '?'));
-			$where = "(f_husb IN ($qs) OR f_wife IN ($qs))";
-			$vars=array_merge($vars, $ids, $ids);
+			$qs		= implode(',', array_fill(0, count($ids), '?'));
+			$where	= "(f_husb IN ($qs) OR f_wife IN ($qs))";
+			$vars	= array_merge($vars, $ids, $ids);
 		}
 
-		$vars[]=KT_GED_ID;
-		$rows=KT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` WHERE {$where} AND f_file=?")
+		$vars[]	= KT_GED_ID;
+		$rows	= KT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
 		->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$family=KT_Family::getInstance($row);
+			$family = KT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
-				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
+				$out .= '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . ' ';
 				if ($family->canDisplayDetails()) {
-					$marriage_year=$family->getMarriageYear();
+					$marriage_year = $family->getMarriageYear();
 					if ($marriage_year) {
-						$out.=' ('.$marriage_year.')';
+						$out .= ' (' . $marriage_year . ')';
 					}
 				}
 				$out .= '</a></li>';
