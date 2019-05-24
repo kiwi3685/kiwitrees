@@ -211,14 +211,14 @@ class individuals_KT_Module extends KT_Module implements KT_Module_Sidebar {
 			return '';
 		}
 		$rows=
-			KT_DB::prepare(
-				"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
-				" FROM `##individuals`, `##name`".
-				" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
-				" AND i_id=n_id AND i_file=n_file AND i_file=?".
-				" ORDER BY n_sort COLLATE '".KT_I18N::$collation."'".
-				" LIMIT 50"
-			)
+			KT_DB::prepare("
+				SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec
+				 FROM `##individuals`, `##name`
+				 WHERE (i_id LIKE ? OR n_sort LIKE ?)
+				 AND i_id=n_id AND i_file=n_file AND i_file=?
+				 ORDER BY n_sort COLLATE '" . KT_I18N::$collation . "'
+				 LIMIT 50
+			")
 			->execute(array('INDI', "%{$query}%", "%{$query}%", KT_GED_ID))
 			->fetchAll(PDO::FETCH_ASSOC);
 
