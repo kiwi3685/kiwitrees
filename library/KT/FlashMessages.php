@@ -53,7 +53,7 @@ class KT_FlashMessages {
 		return $messages;
 	}
 
-	// Most theres will want a simple block of HTML to display
+	// Most themes will want a simple block of HTML to display
 	public static function getHtmlMessages() {
 		$html = '';
 
