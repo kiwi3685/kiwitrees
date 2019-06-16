@@ -118,7 +118,8 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
 			// Different validation for admin/user/visitor.
 			$errors		= false;
-			$urlRegex	= '/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')((?:ftp|http|https|www|\:|\/\/)?(?>[a-z\-0-9]{2,}\.){1,}[a-z]{2,8})/m';
+			$urlRegex	= '/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')((?:ftp|http|https|www|\:|\/\/)?(?>[a-z\-0-9]{1,}\.){1,}[a-z]{2,8})/m';
+
 			if (KT_USER_ID) {
 				$from_name  = getUserFullName(KT_USER_ID);
 				$from_email = getUserEmail(KT_USER_ID);
@@ -143,8 +144,8 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 			if ($errors) {
 				// Errors? Go back to the form.
 				header(
-					'Location: message.php' .
-					'?to=' . rawurlencode($to) .
+					'Location: module.php?mod=' . $this->getName() . '&mod_action=show' .
+					'&to=' . rawurlencode($to) .
 					'&from_name=' . rawurlencode($from_name) .
 					'&from_email=' . rawurlencode($from_email) .
 					'&subject=' . rawurlencode($subject) .
