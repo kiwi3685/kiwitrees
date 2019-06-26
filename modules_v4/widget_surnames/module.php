@@ -96,16 +96,16 @@ class widget_surnames_KT_Module extends KT_Module implements KT_Module_Widget {
 			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':
-			uasort($all_surnames,array('top10_surnames_KT_Module', 'top_surname_sort'));
+			uasort($all_surnames,array('widget_surnames_KT_Module', 'top_surname_sort'));
 			$content = format_surname_list($all_surnames, '1', true, 'indilist.php');
 			break;
 		case 'array':
-			uasort($all_surnames,array('top10_surnames_KT_Module', 'top_surname_sort'));
+			uasort($all_surnames,array('widget_surnames_KT_Module', 'top_surname_sort'));
 			$content = format_surname_list($all_surnames, '2', true, 'indilist.php');
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, array('top10_surnames_KT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('widget_surnames_KT_Module', 'top_surname_sort'));
 			$content = format_surname_table($all_surnames, 'indilist.php', '2');
 			break;
 		}
