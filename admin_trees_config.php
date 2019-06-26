@@ -269,13 +269,6 @@ $controller
 				jQuery("#tabs").tabs({ active: ' . $active . ' });
 			}
 		}
-		if(jQuery("input[name=\'NEW_WATERMARK_THUMB\']:checked").val() != 1){
-			 jQuery("#watermarks").hide()
-		 }
-		 jQuery("input[name=\'NEW_WATERMARK_THUMB\']").on("change",function(){
-			 var showOrHide = (jQuery(this).val() == 1) ? true : false;
-			 jQuery("#watermarks").toggle(showOrHide);
-		 })
 
 		 jQuery("#tabs").css("visibility", "visible");
 	');
@@ -776,6 +769,15 @@ $controller
 						</div>
 					</div>
 					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Full size images without watermarks'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Add watermarks to thumbnails'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', get_gedcom_setting(KT_GED_ID, 'WATERMARK_THUMB')); ?>
@@ -784,30 +786,19 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div id="watermarks"> <!-- this div is hidden / displayed by js -->
-						<div class="config_options">
-							<label><?php echo KT_I18N::translate('Store watermarked full size images on server?'); ?></label>
-							<div class="input_group">
-								<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(KT_GED_ID, 'SAVE_WATERMARK_IMAGE')); ?>
-								<div class="helpcontent">
-									<?php echo KT_I18N::translate('Watermarks can be slow to generate for large images. Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
-								</div>
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Store watermarked full size images on server?'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(KT_GED_ID, 'SAVE_WATERMARK_IMAGE')); ?>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Watermarks can be slow to generate for large images. Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
 							</div>
 						</div>
-						<div class="config_options">
-							<label><?php echo KT_I18N::translate('Store watermarked thumbnails on server'); ?></label>
-							<div class="input_group">
-								<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(KT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
-							</div>
-						</div>
-						<div class="config_options">
-							<label><?php echo KT_I18N::translate('Images without watermarks'); ?></label>
-							<div class="input_group">
-								<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
-								<div class="helpcontent">
-									<?php echo KT_I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
-								</div>
-							</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Store watermarked thumbnails on server'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(KT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
 						</div>
 					</div>
 					<div class="config_options">
