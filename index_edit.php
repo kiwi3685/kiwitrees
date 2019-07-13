@@ -273,7 +273,7 @@ $controller
 			<td class="optionbox center">
 				<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">
 					<?php foreach ($blocks['main'] as $block_id => $block_name) { ?>
-						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle(); ?></option>
+						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle() . ' (id ' . $block_id . ')'; ?></option>
 					<?php } ?>
 				</select>
 			</td>
@@ -309,7 +309,7 @@ $controller
 			<td class="optionbox center">
 				<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description('right_select');">
 					<?php foreach ($blocks['side'] as $block_id=>$block_name) { ?>
-						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle(); ?></option>
+						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle() . ' (id ' . $block_id . ')'; ?></option>
 					<?php } ?>
 				</select>
 			</td>
