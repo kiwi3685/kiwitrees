@@ -90,9 +90,9 @@ $KT_STATS_L_CHART_X = 900;
 $KT_STATS_MAP_X = 440;
 $KT_STATS_MAP_Y = 220;
 
-$KT_STATS_CHART_COLOR1 = "ffffff";
-$KT_STATS_CHART_COLOR2 = "9ca3d4";
-$KT_STATS_CHART_COLOR3 = "e5e6ef";
+$KT_STATS_CHART_COLOR1 = "#0193b7";
+$KT_STATS_CHART_COLOR2 = "#e09798";
+$KT_STATS_CHART_COLOR3 = "#8a8a8a";
 
 // -- fanchart variables
 $fanChart = array(

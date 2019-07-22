@@ -636,47 +636,35 @@ class KT_Stats {
 		return $this->_getPercentage($this->_totalSexUnknown(), 'individual');
 	}
 
-	function chartSex($params = array()) {
-		global $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_female = strtolower($params[1]);} else {$color_female = 'ffd1dc';}
-		if (isset($params[2]) && $params[2] != '') {$color_male = strtolower($params[2]);} else {$color_male = '84beff';}
-		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
-		$sizes = explode('x', $size);
-		// Raw data - for calculation
-		$tot_f	= $this->_totalSexFemales();
-		$tot_m	= $this->_totalSexMales();
-		$tot_u	= $this->_totalSexUnknown();
-		$tot	= $tot_f + $tot_m + $tot_u;
-		// I18N data - for display
-		$per_f = $this->totalSexFemalesPercentage();
-		$per_m = $this->totalSexMalesPercentage();
-		$per_u = $this->totalSexUnknownPercentage();
+	function chartSex() {
+		$tot = $this->_totalSexFemales() + $this->_totalSexMales() + $this->_totalSexUnknown();
+
 		if ($tot == 0) {
 			return '';
-		} else if ($tot_u > 0) {
-			$chd = self::_array_to_extended_encoding(array(4095*$tot_u/$tot, 4095*$tot_f/$tot, 4095*$tot_m/$tot));
-			$chl =
-				KT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u.'|'.
-				KT_I18N::translate('Females').' - '.$per_f.'|'.
-				KT_I18N::translate('Males').' - '.$per_m;
-			$chart_title =
-				KT_I18N::translate('Males').' - '.$per_m.KT_I18N::$list_separator.
-				KT_I18N::translate('Females').' - '.$per_f.KT_I18N::$list_separator.
-				KT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u;
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
-			return str_replace("|", "%7C", $img);
 		} else {
-			$chd = self::_array_to_extended_encoding(array(4095*$tot_f/$tot, 4095*$tot_m/$tot));
-			$chl =
-				KT_I18N::translate('Females').' - '.$per_f.'|'.
-				KT_I18N::translate('Males').' - '.$per_m;
-			$chart_title =  KT_I18N::translate('Males').' - '.$per_m.KT_I18N::$list_separator.
-							KT_I18N::translate('Females').' - '.$per_f;
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
-			return str_replace("|", "%7C", $img);
+			$data = array (
+				array (
+					'category'	=> KT_I18N::translate('Females'),
+					'count'		=> $this->_totalSexFemales(),
+					'percent'	=> $this->totalSexFemalesPercentage(),
+					'color'		=> 'f'
+				),
+				array (
+					'category'	=> KT_I18N::translate('Males'),
+					'count'		=> $this->_totalSexMales(),
+					'percent'	=> $this->totalSexMalesPercentage(),
+					'color'		=> 'm'
+				),
+				array (
+					'category'	=> $this->_totalSexUnknown() > 0 ? KT_I18N::translate_c('unknown people', 'Unknown') : '',
+					'count'		=> $this->_totalSexUnknown() > 0 ? $this->_totalSexUnknown() : '',
+					'percent'	=> $this->totalSexUnknownPercentage(),
+					'color'		=> 'u'
+				)
+			);
 		}
+
+		return json_encode($data);
 	}
 
 	// The totalLiving/totalDeceased queries assume that every dead person will
@@ -714,32 +702,30 @@ class KT_Stats {
 		return $this->_getPercentage($this->_totalDeceased(), 'individual');
 	}
 
-	function chartMortality($params = array()) {
-		global $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_living = strtolower($params[1]);} else {$color_living = 'ffffff';}
-		if (isset($params[2]) && $params[2] != '') {$color_dead = strtolower($params[2]);} else {$color_dead = 'cccccc';}
-		$sizes = explode('x', $size);
-		// Raw data - for calculation
-		$tot_l = $this->_totalLiving();
-		$tot_d = $this->_totalDeceased();
-		$tot=$tot_l+$tot_d;
-		// I18N data - for display
-		$per_l = $this->totalLivingPercentage();
-		$per_d = $this->totalDeceasedPercentage();
-		if ($tot==0) {
+	function chartMortality() {
+		$tot = $this->_totalLiving() + $this->_totalDeceased();
+
+		if ($tot == 0) {
 			return '';
 		} else {
-			$chd = self::_array_to_extended_encoding(array(4095*$tot_l/$tot, 4095*$tot_d/$tot));
-			$chl =
-				KT_I18N::translate('Living').' - '.$per_l.'|'.
-				KT_I18N::translate('Dead').' - '.$per_d.'|';
-			$chart_title =  KT_I18N::translate('Living').' - '.$per_l.KT_I18N::$list_separator.
-							KT_I18N::translate('Dead').' - '.$per_d;
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
-			return str_replace("|", "%7C", $img);
+			$data = array (
+				array (
+					'category'	=> KT_I18N::translate('Living'),
+					'count'		=> $this->_totalLiving(),
+					'percent'	=> $this->totalLivingPercentage(),
+					'color'		=> 'l'
+				),
+				array (
+					'category'	=> KT_I18N::translate('Dead'),
+					'count'		=> $this->_totalDeceased(),
+					'percent'	=> $this->totalDeceasedPercentage(),
+					'color'		=> 'd'
+				)
+			);
 		}
+
+		return json_encode($data);
+
 	}
 
 	static function totalUsers($params = array()) {
@@ -1246,9 +1232,7 @@ class KT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function _statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-
+	function _statsBirth($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
 		if ($simple) {
 			$sql =
 			 	"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` ".
@@ -1282,35 +1266,39 @@ class KT_Stats {
 			$sql .= " GROUP BY d_month";
 			if ($sex) $sql .= ", i_sex";
 		}
-		$rows=self::_runSQL($sql);
+		$rows = self::_runSQL($sql);
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
 				$tot += $values['total'];
 			}
 			// Beware divide by zero
-			if ($tot==0) return '';
-			$centuries = "";
-			foreach ($rows as $values) {
-				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.KT_I18N::number($values['total']).'|';
+			if ($tot == 0) {
+				return '';
+			} else {
+				$centuries = "";
+				foreach ($rows as $values) {
+					$centuries .= self::_centuryName($values['century']) . ' - ' . KT_I18N::number($values['total']).'|';
+
+					$data[] = array (
+						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
+						KT_I18N::translate('count')		=> $values['total'],
+						KT_I18N::translate('percent')	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
+						KT_I18N::translate('color')		=> 'd'
+					);
+				}
 			}
-			$chd = self::_array_to_extended_encoding($counts);
-			$chl = rawurlencode(substr($centuries,0,-1));
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Births by century')."\" title=\"".KT_I18N::translate('Births by century')."\" />";
-			return str_replace("|", "%7C", $img);
+
+			return json_encode($data);
+
 		}
-		if (!isset($rows)) return 0;
+
+		if (!isset($rows)) {return 0;}
 		return $rows;
+
 	}
 
-	function _statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-
+	function _statsDeath($simple = true, $sex = false, $year1 = -1, $year2 = -1) {
 		if ($simple) {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` ".
@@ -1335,7 +1323,7 @@ class KT_Stats {
 				"d_fact='DEAT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
-		if ($year1>=0 && $year2>=0) {
+		if ($year1 >= 0 && $year2 >= 0) {
 			$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 		}
 		if ($simple) {
@@ -1344,28 +1332,34 @@ class KT_Stats {
 			$sql .= " GROUP BY d_month";
 			if ($sex) $sql .= ", i_sex";
 		}
-		$rows=self::_runSQL($sql);
+		$rows = self::_runSQL($sql);
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
 				$tot += $values['total'];
 			}
 			// Beware divide by zero
-			if ($tot==0) return '';
-			$centuries = "";
-			foreach ($rows as $values) {
-				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.KT_I18N::number($values['total']).'|';
+			if ($tot == 0) {
+				return '';
+			} else {
+				$centuries = "";
+				foreach ($rows as $values) {
+					$centuries .= self::_centuryName($values['century']) . ' - ' . KT_I18N::number($values['total']).'|';
+					$percentage	=
+
+					$data[] = array (
+						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
+						KT_I18N::translate('count')		=> $values['total'],
+						KT_I18N::translate('percent')	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
+						KT_I18N::translate('color')		=> 'd'
+					);
+				}
 			}
-			$chd = self::_array_to_extended_encoding($counts);
-			$chl = rawurlencode(substr($centuries,0,-1));
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Deaths by century')."\" title=\"".KT_I18N::translate('Deaths by century')."\" />";
-			return str_replace("|", "%7C", $img);
+
+			return json_encode($data);
+
 		}
+
 		if (!isset($rows)) {return 0;}
 		return $rows;
 	}
@@ -1673,49 +1667,22 @@ class KT_Stats {
 			foreach ($rows as $values) {
 				$out[$values['century']][$values['sex']]=$values['age'];
 			}
-			foreach ($out as $century=>$values) {
-				if ($sizes[0]<980) $sizes[0] += 50;
-				$chxl .= self::_centuryName($century).'|';
-				$average = 0;
-				if (isset($values['F'])) {
-					$countsf .= $values['F'].',';
-					$average = $values['F'];
-				} else {
-					$countsf .= '0,';
-				}
-				if (isset($values['M'])) {
-					$countsm .= $values['M'].',';
-					if ($average==0) $countsa .= $values['M'].',';
-					else $countsa .= (($values['M']+$average)/2).',';
-				} else {
-					$countsm .= '0,';
-					if ($average==0) $countsa .= '0,';
-					else $countsa .= $values['F'].',';
-				}
+
+			foreach ($out as $century => $values) {
+				$female_age  = $values['F'] ?? 0;
+				$male_age    = $values['M'] ?? 0;
+				$average_age = ($female_age + $male_age) / 2.0;
+
+				$data[] = array (
+					'century'	=> self::_centuryName($century),
+					KT_I18N::translate('Males')		=> $male_age,
+					KT_I18N::translate('Females')	=> $female_age,
+					KT_I18N::translate('Average')	=> $average_age
+				);
 			}
-			$countsm = substr($countsm,0,-1);
-			$countsf = substr($countsf,0,-1);
-			$countsa = substr($countsa,0,-1);
-			$chd = 't2:'.$countsm.'|'.$countsf.'|'.$countsa;
-			$decades='';
-			for ($i=0; $i<=100; $i+=10) {
-				$decades.='|'.KT_I18N::number($i);
-			}
-			$chxl .= '1:||'.KT_I18N::translate('century').'|2:'.$decades.'|3:||'.KT_I18N::translate('Age').'|';
-			$title = KT_I18N::translate('Average age related to death century');
-			if (count($rows)>6 || utf8_strlen($title)<30) {
-				$chtt = $title;
-			} else {
-				$offset = 0;
-				$counter = array();
-				while ($offset = strpos($title, ' ', $offset + 1)) {
-					$counter[] = $offset;
-				}
-				$half = (int)(count($counter)/2);
-				$chtt = substr_replace($title, '|', $counter[$half], 1);
-			}
-			$img = '<img src="'."https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".rawurlencode($chtt)."&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."&amp;chdl=".rawurlencode(KT_I18N::translate('Males').'|'.KT_I18N::translate('Females').'|'.KT_I18N::translate('Average age at death'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Average age related to death century')."\" title=\"".KT_I18N::translate('Average age related to death century')."\" />";
-			return str_replace("|", "%7C", $img);
+
+			return json_encode($data);
+
 		} else {
 			$sex_search = '';
 			$years = '';
@@ -1732,7 +1699,7 @@ class KT_Stats {
 					$years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
 			}
-			$rows=self::_runSQL(
+			$rows = self::_runSQL(
 				"SELECT SQL_CACHE".
 				" death.d_julianday2-birth.d_julianday1 AS age".
 				" FROM".
@@ -3247,40 +3214,36 @@ class KT_Stats {
 	static function commonSurnamesListTotals($params=array('','','rcount')) { return self::_commonSurnamesQuery('list',   true,  $params); }
 
 	function chartCommonSurnames($params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
-		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
-		$sizes = explode('x', $size);
-		$tot_indi = $this->_totalIndividuals();
-		$surnames = get_common_surnames($threshold);
+		// parameter example: chartCommonSurnames(array(25,7))
+		if (isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
+		if (isset($params[1]) && $params[1] != '') {$maxtoshow = strtolower($params[1]);} else {$maxtoshow = 7;}
+		$tot_indi	= $this->_totalIndividuals();
+		$surnames	= get_common_surnames($threshold);
 		if (count($surnames) <= 0) {return '';}
-		$SURNAME_TRADITION=get_gedcom_setting(KT_GED_ID, 'SURNAME_TRADITION');
+		$SURNAME_TRADITION = get_gedcom_setting(KT_GED_ID, 'SURNAME_TRADITION');
 		uasort($surnames, array('KT_Stats', '_name_total_rsort'));
 		$surnames = array_slice($surnames, 0, $maxtoshow);
 		$all_surnames = array();
-		foreach (array_keys($surnames) as $n=>$surname) {
-			if ($n>=$maxtoshow) {
+		foreach (array_keys($surnames) as $n => $surname) {
+			if ($n >= $maxtoshow) {
 				break;
 			}
 			$all_surnames = array_merge($all_surnames, KT_Query_Name::surnames(utf8_strtoupper($surname), '', false, false, KT_GED_ID));
 		}
 		$tot = 0;
 		$per = 0;
-		foreach ($surnames as $indexval=>$surname) {$tot += $surname['match'];}
-		$chd = '';
-		$chl = array();
+		foreach ($surnames as $indexval => $surname) {
+			$tot += $surname['match'];
+		}
+
 		foreach ($all_surnames as $surn=>$surns) {
-			$count_per = 0;
-			$max_name = 0;
+			$count_per	= 0;
+			$max_name	= 0;
 			foreach ($surns as $spfxsurn=>$indis) {
 				$per = count($indis);
 				$count_per += $per;
 				// select most common surname from all variants
-				if ($per>$max_name) {
+				if ($per > $max_name) {
 					$max_name = $per;
 					$top_name = $spfxsurn;
 				}
@@ -3291,21 +3254,17 @@ class KT_Stats {
 				$top_name=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
 			}
 			$per = round(100 * $count_per / $tot_indi, 0);
-			$chd .= self::_array_to_extended_encoding($per);
-			//ToDo: RTL names are often printed LTR when also LTR names are present
-			$chl[] = $top_name.' - '.KT_I18N::number($count_per);
 
+			$data[] = array (
+				KT_I18N::translate('category')	=> $top_name,
+				KT_I18N::translate('count')		=> KT_I18N::number($count_per),
+				KT_I18N::translate('color')		=> ''
+			);
 		}
-		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
-		$chd .= self::_array_to_extended_encoding($per);
-		$chl[] = KT_I18N::translate('Other').' - '.KT_I18N::number($tot_indi-$tot);
 
-		$chart_title=implode(KT_I18N::$list_separator, $chl);
-		$chl=implode('|', $chl);
-		$img = '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:'.$chd.'&amp;chs='.$size.'&amp;chco='.$color_from.','.$color_to.'&amp;chf=bg,s,ffffff00&amp;chl='.rawurlencode($chl).'" width="'.$sizes[0].'" height="'.$sizes[1].'" alt="'.$chart_title.'" title="'.$chart_title.'" />';
-		return str_replace("|", "%7C", $img);
+		return json_encode($data);
+
 	}
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // Given Names                                                               //
@@ -3454,41 +3413,26 @@ class KT_Stats {
 	static function commonGivenUnknownTable     ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'table',  false, $params); }
 
 	function chartCommonGiven($params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
-		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
-		$sizes = explode('x', $size);
+		// parameter example: chartCommonSurnames(array(25,7))
+		if (isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
+		if (isset($params[1]) && $params[1] != '') {$maxtoshow = strtolower($params[1]);} else {$maxtoshow = 7;}
 		$tot_indi = $this->_totalIndividuals();
 		$given = self::_commonGivenQuery('B', 'chart');
 		if (!is_array($given)) return '';
 		$given = array_slice($given, 0, $maxtoshow);
-		if (count($given) <= 0) {return '';}
-		$tot = 0;
-		foreach ($given as $givn=>$count) {$tot += $count;}
-		$chd = '';
-		$chl = array();
-		foreach ($given as $givn=>$count) {
-			if ($tot==0) {
-				$per = 0;
-			} else {
-				$per = round(100 * $count / $tot_indi, 0);
-			}
-			$chd .= self::_array_to_extended_encoding($per);
-			//ToDo: RTL names are often printed LTR when also LTR names are present
-			$chl[] = $givn.' - '.KT_I18N::number($count);
+		if (count($given) <= 0) {
+			return '';
 		}
-		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
-		$chd .= self::_array_to_extended_encoding($per);
-		$chl[] = KT_I18N::translate('Other').' - '.KT_I18N::number($tot_indi-$tot);
+		foreach ($given as $givn => $count) {
+			$data[] = array (
+				KT_I18N::translate('category')	=> $givn,
+				KT_I18N::translate('count')		=> KT_I18N::number($count),
+				KT_I18N::translate('color')		=> ''
+			);
+		}
 
-		$chart_title=implode(KT_I18N::$list_separator, $chl);
-		$chl=implode('|', $chl);
-		$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=".rawurlencode($chl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
-		return str_replace("|", "%7C", $img);
+		return json_encode($data);
+
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4204,6 +4148,41 @@ class KT_Stats {
 		case  1: return strip_tags (KT_I18N::translate_c('CENTURY', '1st'));
 		default: return ($century-1).'01-'.$century.'00';
 		}
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	// LISTS                                                                     //
+	///////////////////////////////////////////////////////////////////////////////
+
+	static function individualsList($ged_id, $option = '') {
+		$sql	= "SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=" . $ged_id;
+		if ($option) {
+			switch ($option){
+				case 'male':
+					$sql .= " AND i_gedcom LIKE '%1 SEX M%'";
+					break;
+				case 'female':
+					$sql .= " AND i_gedcom LIKE '%1 SEX F%'";
+					break;
+				case 'unknown':
+					$sql .= " AND i_gedcom NOT LIKE '%1 SEX M%' AND i_gedcom NOT LIKE '%1 SEX F%'";
+					break;
+				case 'living':
+					$sql .= " AND i_gedcom NOT REGEXP '\\n1 (" . KT_EVENTS_DEAT . ")'";
+					break;
+				case 'deceased':
+					$sql .= " AND i_gedcom REGEXP '\\n1 (" . KT_EVENTS_DEAT . ")'";
+					break;
+			}
+		}
+		$rows	= KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+		$list	= array();
+		foreach ($rows as $row) {
+			$person = KT_Person::getInstance($row);
+				$list[] = clone $person;
+		}
+		return $list;
+
 	}
 
 }

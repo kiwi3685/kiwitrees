@@ -1989,6 +1989,15 @@ ul.clist {
 	margin: 0;
 }
 
+/* statistics page */
+#statistics-page fieldset legend a,
+#statistics-page fieldset td a {
+	color:#3383bb;
+}
+#statistics-page fieldset legend a:hover,
+#statistics-page fieldset td a:hover {
+	color:#ff0000;
+}
 .statistics-page {
 	text-align: center;
 }

@@ -188,7 +188,8 @@ class gedcom_stats_KT_Module extends KT_Module implements KT_Module_Block {
 		}
 		$content .= '</table></td></tr></table>';
 		if ($stat_link) {
-			$content .= '<a href="statistics.php?ged='.KT_GEDURL.'"><b>'.KT_I18N::translate('View statistics as graphs').'</b></a><br>';
+			$content .= '<a href="module.php?mod=chart_statistics&mod_action=show&ged=' . KT_GEDURL . '"><b>'.KT_I18N::translate('View statistics as graphs').'</b></a><br>';
+
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
@@ -202,7 +203,7 @@ class gedcom_stats_KT_Module extends KT_Module implements KT_Module_Block {
 						if ($i>0) {
 							$content .= ', ';
 						}
-						$content .= '<a href="'."indilist.php?ged=".KT_GEDURL."&amp;surname=".rawurlencode($surname['name']).'">'.$surname['name'].'</a>';
+						$content .= '<a href="' . 'indilist.php?ged=' . KT_GEDURL . '&amp;surname=' . rawurlencode($surname['name']) . '">' . $surname['name'] . '</a>';
 						$i++;
 					}
 				}
