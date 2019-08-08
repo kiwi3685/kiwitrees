@@ -2754,7 +2754,6 @@ table[id^='rel_'] .person_boxNN {
 
 #statistics_chart {
 	margin: auto;
-	visibility: hidden;
 	width: 90%;
 }
 
@@ -4378,13 +4377,6 @@ a.icon-udarrow:hover {
 	height: 97px;
 	background-image: url(images/silhouette_unknown.png);
 }
-
-#statistics_chart {
-	margin: auto;
-	visibility: hidden;
-	width: 90%;
-}
-
 
 /* Edit interface pages*/
 #edit_interface-page h4 {

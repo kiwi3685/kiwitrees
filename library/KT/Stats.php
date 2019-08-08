@@ -314,25 +314,34 @@ class KT_Stats {
 		return KT_I18N::number(self::_totalIndisWithSources());
 	}
 
-	function chartIndisWithSources($params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-		$sizes = explode('x', $size);
-		$tot_indi = $this->_totalIndividuals();
-		if ($tot_indi==0) {
+	function totalIndisWithSourcesPercentage() {
+		return KT_I18N::percentage(round(self::_totalIndisWithSources() / self::_totalIndividuals(), 1));
+	}
+
+	function chartIndisWithSources() {
+		$tot = $this->_totalIndividuals();
+
+		if ($tot == 0) {
 			return '';
 		} else {
-			$tot_sindi_per = round($this->_totalIndisWithSources()/$tot_indi, 3);
-			$chd = self::_array_to_extended_encoding(array(100-100*$tot_sindi_per, 100*$tot_sindi_per));
-			$chl =  KT_I18N::translate('Without sources').' - '.KT_I18N::percentage(1-$tot_sindi_per,1).'|'.
-					KT_I18N::translate('With sources').' - '.KT_I18N::percentage($tot_sindi_per,1);
-			$chart_title = KT_I18N::translate('Individuals with sources');
-			$img = '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:'.$chd.'&amp;chs='.$size.'&amp;chco='.$color_from.','.$color_to.'&amp;chf=bg,s,ffffff00&amp;chl='.rawurlencode($chl).'" width="'.$sizes[0].'" height="'.$sizes[1].'" alt="'.$chart_title.'" title="'.$chart_title.'">';
-			return str_replace("|", "%7C", $img);
+			$data = array (
+				array (
+					'category'	=> KT_I18N::translate('With sources'),
+					'count'		=> $this->_totalIndisWithSources(),
+					'percent'	=> KT_I18N::number($this->_totalIndisWithSources(), 0),
+					'color'		=> 'l'
+				),
+				array (
+					'category'	=> KT_I18N::translate('Without sources'),
+					'count'		=> $tot - $this->_totalIndisWithSources(),
+					'percent'	=> KT_I18N::number($tot - $this->_totalIndisWithSources(), 0),
+					'color'		=> 'd'
+				)
+			);
 		}
+
+		return json_encode($data, JSON_NUMERIC_CHECK);
+
 	}
 
 	function totalIndividualsPercentage() {
@@ -359,25 +368,34 @@ class KT_Stats {
 		return KT_I18N::number(self::_totalFamsWithSources());
 	}
 
-	function chartFamsWithSources($params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-		$sizes = explode('x', $size);
-		$tot_fam = $this->_totalFamilies();
-		if ($tot_fam==0) {
+	function totalFamsWithSourcesPercentage() {
+		return KT_I18N::percentage(round(self::_totalFamsWithSources() / self::_totalFamilies(), 1));
+	}
+
+	function chartFamsWithSources() {
+		$tot = $this->_totalFamilies();
+
+		if ($tot == 0) {
 			return '';
 		} else {
-			$tot_sfam_per = round($this->_totalFamsWithSources()/$tot_fam, 3);
-			$chd = self::_array_to_extended_encoding(array(100-100*$tot_sfam_per, 100*$tot_sfam_per));
-			$chl =  KT_I18N::translate('Without sources').' - '.KT_I18N::percentage(1-$tot_sfam_per,1).'|'.
-					KT_I18N::translate('With sources').' - '.KT_I18N::percentage($tot_sfam_per,1);
-			$chart_title = KT_I18N::translate('Families with sources');
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
-			return str_replace("|", "%7C", $img);
+			$data = array (
+				array (
+					'category'	=> KT_I18N::translate('With sources'),
+					'count'		=> $this->_totalFamsWithSources(),
+					'percent'	=> KT_I18N::number($this->_totalFamsWithSources(), 0),
+					'color'		=> 'l'
+				),
+				array (
+					'category'	=> KT_I18N::translate('Without sources'),
+					'count'		=> $tot - $this->_totalFamsWithSources(),
+					'percent'	=> KT_I18N::number($tot - $this->_totalFamsWithSources(), 0),
+					'color'		=> 'd'
+				)
+			);
 		}
+
+		return json_encode($data, JSON_NUMERIC_CHECK);
+
 	}
 
 	function totalFamiliesPercentage() {
@@ -646,25 +664,25 @@ class KT_Stats {
 				array (
 					'category'	=> KT_I18N::translate('Females'),
 					'count'		=> $this->_totalSexFemales(),
-					'percent'	=> $this->totalSexFemalesPercentage(),
+					'percent'	=> KT_I18N::number($this->_totalSexFemales(), 0),
 					'color'		=> 'f'
 				),
 				array (
 					'category'	=> KT_I18N::translate('Males'),
 					'count'		=> $this->_totalSexMales(),
-					'percent'	=> $this->totalSexMalesPercentage(),
+					'percent'	=> KT_I18N::number($this->_totalSexMales(), 0),
 					'color'		=> 'm'
 				),
 				array (
 					'category'	=> $this->_totalSexUnknown() > 0 ? KT_I18N::translate_c('unknown people', 'Unknown') : '',
 					'count'		=> $this->_totalSexUnknown() > 0 ? $this->_totalSexUnknown() : '',
-					'percent'	=> $this->totalSexUnknownPercentage(),
+					'percent'	=> $this->_totalSexUnknown() > 0 ? KT_I18N::number($this->_totalSexUnknown(), 0) : '',
 					'color'		=> 'u'
 				)
 			);
 		}
 
-		return json_encode($data);
+		return json_encode($data, JSON_NUMERIC_CHECK);
 	}
 
 	// The totalLiving/totalDeceased queries assume that every dead person will
@@ -712,19 +730,19 @@ class KT_Stats {
 				array (
 					'category'	=> KT_I18N::translate('Living'),
 					'count'		=> $this->_totalLiving(),
-					'percent'	=> $this->totalLivingPercentage(),
-					'color'		=> 'l'
+					'percent'	=> KT_I18N::number($this->_totalLiving(), 0),
+				'color'		=> 'l'
 				),
 				array (
 					'category'	=> KT_I18N::translate('Dead'),
 					'count'		=> $this->_totalDeceased(),
-					'percent'	=> $this->totalDeceasedPercentage(),
+					'percent'	=> KT_I18N::number($this->_totalDeceased(), 0),
 					'color'		=> 'd'
 				)
 			);
 		}
 
-		return json_encode($data);
+		return json_encode($data, JSON_NUMERIC_CHECK);
 
 	}
 
@@ -790,26 +808,20 @@ class KT_Stats {
 	function totalMediaOther()       {return KT_I18N::number($this->_totalMediaType('other'));}
 	function totalMediaUnknown()     {return KT_I18N::number($this->_totalMediaType('unknown'));}
 
-	function chartMedia($params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-		$sizes = explode('x', $size);
+	function chartMedia($minimum = 0) {
 		$tot = $this->_totalMediaType('all');
 		// Beware divide by zero
-		if ($tot==0) return KT_I18N::translate('None');
+		if ($tot == 0) return KT_I18N::translate('None');
 		// Build a table listing only the media types actually present in the GEDCOM
 		$mediaCounts = array();
 		$mediaTypes = "";
 		$chart_title = "";
 		$c = 0;
 		$max = 0;
-		$media=array();
+		$media = array();
 		foreach (self::$_media_types as $type) {
 			$count = $this->_totalMediaType($type);
-			if ($count>0) {
+			if ($count > $minimum) {
 				$media[$type] = $count;
 				if ($count > $max) {
 					$max = $count;
@@ -818,15 +830,15 @@ class KT_Stats {
 			}
 		}
 		$count = $this->_totalMediaType('unknown');
-		if ($count>0) {
-			$media['unknown'] = $tot-$c;
+		if ($count > $minimum) {
+			$media['unknown'] = $tot - $c;
 			if ($tot-$c > $max) {
 				$max = $count;
 			}
 		}
-		if (($max/$tot)>0.6 && count($media)>10) {
+		if (($max / $tot) > 0.6 && count($media) > $minimum) {
 			arsort($media);
-			$media = array_slice($media, 0, 10);
+			$media = array_slice($media, 0, $minimum);
 			$c = $tot;
 			foreach ($media as $cm) {
 				$c -= $cm;
@@ -838,16 +850,18 @@ class KT_Stats {
 			}
 		}
 		asort($media);
+
 		foreach ($media as $type=>$count) {
-			$mediaCounts[] = round(100 * $count / $tot, 0);
-			$mediaTypes .= KT_Gedcom_Tag::getFileFormTypeValue($type).' - '.KT_I18N::number($count).'|';
-			$chart_title .= KT_Gedcom_Tag::getFileFormTypeValue($type).' ('.$count.'), ';
+			$data[] = array (
+				KT_I18N::translate('category')	=> KT_Gedcom_Tag::getFileFormTypeValue($type),
+				KT_I18N::translate('count')		=> $count,
+				KT_I18N::translate('percent')	=> KT_I18N::number($count) . ' (' . KT_I18N::number(100 * $count / $tot, 1) . '%)',
+				KT_I18N::translate('color')		=> 'd'
+			);
 		}
-		$chart_title = substr($chart_title,0,-2);
-		$chd = self::_array_to_extended_encoding($mediaCounts);
-		$chl = substr($mediaTypes,0,-1);
-		$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
-		return str_replace("|", "%7C", $img);
+
+		return json_encode($data, JSON_NUMERIC_CHECK);
+
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1015,9 +1029,9 @@ class KT_Stats {
 
 	function chartDistribution($params = array()) {
 		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_CHART_COLOR3, $KT_STATS_MAP_X, $KT_STATS_MAP_Y;
-		if ($params !== null && isset($params[0])) {$chart_shows = $params[0];} else {$chart_shows='world';}
-		if ($params !== null && isset($params[1])) {$chart_type = $params[1];} else {$chart_type='';}
-		if ($params !== null && isset($params[2])) {$surname = $params[2];} else {$surname='';}
+		if ($params !== null && isset($params[0])) {$chart_shows = $params[0];} else {$chart_shows = 'world';}
+		if ($params !== null && isset($params[1])) {$chart_type = $params[1];} else {$chart_type = '';}
+		if ($params !== null && isset($params[2])) {$surname = $params[2];} else {$surname = '';}
 
 		if ($this->_totalPlaces()==0) {
 			return '';
@@ -1035,21 +1049,21 @@ class KT_Stats {
 		KT_I18N::init(KT_LOCALE);
 		switch ($chart_type) {
 		case 'surname_distribution_chart':
-			if ($surname=="") $surname = $this->getCommonSurname();
-			$chart_title=KT_I18N::translate('Surname distribution chart').': '.$surname;
+			if ($surname == "") $surname = $this->getCommonSurname();
+			$chart_title = KT_I18N::translate('Surname distribution chart').': '.$surname;
 			// Count how many people are events in each country
-			$surn_countries=array();
-			$indis = KT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, KT_GED_ID);
+			$surn_countries	= array();
+			$indis			= KT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, KT_GED_ID);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcomRecord(), $matches)) {
 					// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 					foreach ($matches[1] as $country) {
-						$country=trim($country);
+						$country = trim($country);
 						if (array_key_exists($country, $country_to_iso3166)) {
-							if (array_key_exists($country_to_iso3166[$country], $surn_countries)) {
-								$surn_countries[$country_to_iso3166[$country]]++;
+							if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+								$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
 							} else {
-								$surn_countries[$country_to_iso3166[$country]]=1;
+								$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
 							}
 						}
 					}
@@ -1057,112 +1071,108 @@ class KT_Stats {
 			};
 			break;
 		case 'birth_distribution_chart':
-			$chart_title=KT_I18N::translate('Birth by country');
+			$chart_title = KT_I18N::translate('Birth by country');
 			// Count how many people were born in each country
-			$surn_countries=array();
-			$b_countries=$this->_statsPlaces('INDI', 'BIRT', 0, true);
+			$surn_countries	= array();
+			$b_countries	= $this->_statsPlaces('INDI', 'BIRT', 0, true);
 			foreach ($b_countries as $place=>$count) {
-				$country = $place;
+				$country = trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-						$surn_countries[$country_to_iso3166[$country]]=$count;
-					}
-					else {
-						$surn_countries[$country_to_iso3166[$country]]+=$count;
+						$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
+					} else {
+						$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
 					}
 				}
 			}
 			break;
 		case 'death_distribution_chart':
-			$chart_title=KT_I18N::translate('Death by country');
+			$chart_title = KT_I18N::translate('Death by country');
 			// Count how many people were death in each country
-			$surn_countries=array();
+			$surn_countries = array();
 			$d_countries=$this->_statsPlaces('INDI', 'DEAT', 0, true);
 			foreach ($d_countries as $place=>$count) {
-				$country = $place;
-				if (array_key_exists($country, $country_to_iso3166)) {
-					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-						$surn_countries[$country_to_iso3166[$country]]=$count;
+				$country = trim($place['country']);
+				if (array_key_exists($country, $countries)) {
+					if (!isset($surn_countries[$country])) {
+						$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
+					} else {
+						$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
 					}
-					else {
-						$surn_countries[$country_to_iso3166[$country]]+=$count;
-					}
+				}
+				if (!isset($surn_countries[$country])) {
+					$surn_countries[$country] = $place['tot'];
+				} else {
+					$surn_countries[$country] += $place['tot'];
 				}
 			}
 			break;
 		case 'marriage_distribution_chart':
-			$chart_title=KT_I18N::translate('Marriage by country');
+			$chart_title = KT_I18N::translate('Marriage by country');
 			// Count how many families got marriage in each country
-			$surn_countries=array();
-			$m_countries=$this->_statsPlaces('FAM');
+			$surn_countries	= array();
+			$m_countries	= $this->_statsPlaces('FAM');
 			// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($m_countries as $place) {
-				$country=trim($place['country']);
+				$country = trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-						$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
+						$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
 					} else {
-						$surn_countries[$country_to_iso3166[$country]]+=$place['tot'];
+						$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
 					}
 				}
 			}
 			break;
 		case 'indi_distribution_chart':
 		default:
-			$chart_title=KT_I18N::translate('Individual distribution chart');
-			// Count how many people are events in each country
-			$surn_countries=array();
-			$a_countries=$this->_statsPlaces('INDI');
+			$surn_countries	= array();
+			$a_countries	= $this->_statsPlaces('INDI');
 			// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($a_countries as $place) {
-				$country=trim($place['country']);
+				$country = trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-						$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
+						$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
 					} else {
-						$surn_countries[$country_to_iso3166[$country]]+=$place['tot'];
+						$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
 					}
 				}
 			}
 			break;
 		}
-		$chart_url ="https://chart.googleapis.com/chart?cht=t&amp;chtm=".$chart_shows;
-		$chart_url.="&amp;chco=".$KT_STATS_CHART_COLOR1.",".$KT_STATS_CHART_COLOR3.",".$KT_STATS_CHART_COLOR2; // country colours
-		$chart_url.="&amp;chf=bg,s,ECF5FF"; // sea colour
-		$chart_url.="&amp;chs=".$KT_STATS_MAP_X."x".$KT_STATS_MAP_Y;
-		$chart_url.="&amp;chld=".implode('', array_keys($surn_countries))."&amp;chd=s:";
-		foreach ($surn_countries as $count) {
-			$chart_url.=substr(KT_GOOGLE_CHART_ENCODING, (int)($count/max($surn_countries)*61), 1);
+
+		foreach ($surn_countries as $country=>$count) {
+			$data[] = array (
+				KT_I18N::translate('country')	=> $country,
+				KT_I18N::translate('count')		=> $count,
+			);
 		}
-		$chart = '<div id="google_charts" class="center">';
-		$chart .= '<b>'.$chart_title.'</b><br><br>';
-		$chart .= '<div align="center"><img src="'.$chart_url.'" alt="'.$chart_title.'" title="'.$chart_title.'" class="gchart" /><br>';
-		$chart .= '<table align="center" border="0" cellpadding="1" cellspacing="1"><tr>';
-		$chart .= '<td bgcolor="#'.$KT_STATS_CHART_COLOR2.'" width="12"></td><td>'.KT_I18N::translate('Highest population').'&nbsp;&nbsp;</td>';
-		$chart .= '<td bgcolor="#'.$KT_STATS_CHART_COLOR3.'" width="12"></td><td>'.KT_I18N::translate('Lowest population').'&nbsp;&nbsp;</td>';
-		$chart .= '<td bgcolor="#'.$KT_STATS_CHART_COLOR1.'" width="12"></td><td>'.KT_I18N::translate('Nobody at all').'&nbsp;&nbsp;</td>';
-		$chart .= '</tr></table></div></div>';
-		return $chart;
+
+		return json_encode($data, JSON_NUMERIC_CHECK);
+
 	}
 
-	function commonCountriesList() {
+	function commonCountriesList($params = array()) {
+		if ($params === null) {$params = array();}
+		if (isset($params[0]) && $params[0] != '') {$max = $params[0];} else {$max = 10;}
 		$countries = $this->_statsPlaces();
 		if (!is_array($countries)) return '';
 		$top10 = array();
 		$i = 1;
 		// Get the country names for each language
-		$country_names=array();
-		foreach (KT_I18N::installed_languages() as $code=>$lang) {
+		$country_names = array();
+		foreach (KT_I18N::installed_languages() as $code => $lang) {
 			KT_I18N::init($code);
 			$all_countries = self::get_all_countries();
-			foreach ($all_countries as $country_code=>$country_name) {
-				$country_names[$country_name]=$country_code;
+			foreach ($all_countries as $country_code => $country_name) {
+				$country_names[$country_name] = $country_code;
 			}
 		}
 		KT_I18N::init(KT_LOCALE);
-		$all_db_countries=array();
+		$all_db_countries = array();
 		foreach ($countries as $place) {
-			$country=trim($place['country']);
+			$country = trim($place['country']);
 			if (array_key_exists($country, $country_names)) {
 				if (!isset($all_db_countries[$country_names[$country]][$country])) {
 					$all_db_countries[$country_names[$country]][$country]=$place['tot'];
@@ -1173,62 +1183,69 @@ class KT_Stats {
 		}
 		// get all the user’s countries names
 		$all_countries = self::get_all_countries();
-		foreach ($all_db_countries as $country_code=>$country) {
-			$top10[]='<li>';
+		foreach ($all_db_countries as $country_code => $country) {
+			$top10[] = '<li>';
 			foreach ($country as $country_name=>$tot) {
-				$tmp=new KT_Place($country_name, $this->_ged_id);
-				$place = '<a href="' . $tmp->getURL() . '" class="list_item">'.$all_countries[$country_code].'</a>';
-				$top10[].=$place.' - '.KT_I18N::number($tot);
+				$tmp		= new KT_Place($country_name, $this->_ged_id);
+				$place		= '<a href="' . $tmp->getURL() . '" class="list_item">' . $all_countries[$country_code] . '</a>';
+				$top10[]	.= $place . ' - ' . KT_I18N::number($tot);
 			}
-			$top10[].='</li>';
-			if ($i++==10) break;
+			$top10[] .= '</li>';
+			if ($i++ == $max) break;
 		}
-		$top10=join('', $top10);
+		$top10 = join('', $top10);
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function commonBirthPlacesList() {
-		$places = $this->_statsPlaces('INDI', 'BIRT');
-		$top10 = array();
+
+	function commonBirthPlacesList($params = array()) {
+		if ($params === null) {$params = array();}
+		if (isset($params[0]) && $params[0] != '') {$max = $params[0];} else {$max = 10;}
+		$places	= $this->_statsPlaces('INDI', 'BIRT');
+		$top10	= array();
 		$i = 1;
 		arsort($places);
-		foreach ($places as $place=>$count) {
-			$tmp=new KT_Place($place, $this->_ged_id);
-			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
-			$top10[]='<li>'.$place.' - '.KT_I18N::number($count).'</li>';
-			if ($i++==10) break;
+		foreach ($places as $place => $count) {
+			$tmp		= new KT_Place($place, $this->_ged_id);
+			$place		= '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
+			$top10[]	='<li>' . $place . ' - ' . KT_I18N::number($count) . '</li>';
+			if ($i++ == $max) break;
 		}
-		$top10=join('', $top10);
+		$top10 = join('', $top10);
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function commonDeathPlacesList() {
-		$places = $this->_statsPlaces('INDI', 'DEAT');
-		$top10 = array();
+	function commonDeathPlacesList($params = array()) {
+		if ($params === null) {$params = array();}
+		if (isset($params[0]) && $params[0] != '') {$max = $params[0];} else {$max = 10;}
+		$places	= $this->_statsPlaces('INDI', 'DEAT');
+		$top10	= array();
 		$i = 1;
 		arsort($places);
-		foreach ($places as $place=>$count) {
-			$tmp=new KT_Place($place, $this->_ged_id);
-			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
-			$top10[]='<li>'.$place.' - '.KT_I18N::number($count).'</li>';
-			if ($i++==10) break;
+		foreach ($places as $place => $count) {
+			$tmp		= new KT_Place($place, $this->_ged_id);
+			$place		= '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
+			$top10[]	= '<li>' . $place . ' - ' . KT_I18N::number($count) . '</li>';
+			if ($i++ == $max) break;
 		}
 		$top10=join('', $top10);
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function commonMarriagePlacesList() {
+	function commonMarriagePlacesList($params = array()) {
+		if ($params === null) {$params = array();}
+		if (isset($params[0]) && $params[0] != '') {$max = $params[0];} else {$max = 10;}
 		$places = $this->_statsPlaces('FAM', 'MARR');
-		$top10 = array();
+		$top10	= array();
 		$i = 1;
 		arsort($places);
-		foreach ($places as $place=>$count) {
-			$tmp=new KT_Place($place, $this->_ged_id);
-			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
-			$top10[]='<li>'.$place.' - '.KT_I18N::number($count).'</li>';
-			if ($i++==10) break;
+		foreach ($places as $place => $count) {
+			$tmp		= new KT_Place($place, $this->_ged_id);
+			$place		= '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
+			$top10[]	= '<li>' . $place . ' - ' . KT_I18N::number($count) . '</li>';
+			if ($i++ == $max) break;
 		}
-		$top10=join('', $top10);
+		$top10 = join('', $top10);
 		return '<ul>' . $top10 . '</ul>';
 	}
 
@@ -1276,10 +1293,7 @@ class KT_Stats {
 			if ($tot == 0) {
 				return '';
 			} else {
-				$centuries = "";
 				foreach ($rows as $values) {
-					$centuries .= self::_centuryName($values['century']) . ' - ' . KT_I18N::number($values['total']).'|';
-
 					$data[] = array (
 						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
 						KT_I18N::translate('count')		=> $values['total'],
@@ -1289,7 +1303,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data);
+			return json_encode($data, JSON_NUMERIC_CHECK);
 
 		}
 
@@ -1342,11 +1356,7 @@ class KT_Stats {
 			if ($tot == 0) {
 				return '';
 			} else {
-				$centuries = "";
 				foreach ($rows as $values) {
-					$centuries .= self::_centuryName($values['century']) . ' - ' . KT_I18N::number($values['total']).'|';
-					$percentage	=
-
 					$data[] = array (
 						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
 						KT_I18N::translate('count')		=> $values['total'],
@@ -1356,7 +1366,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data);
+			return json_encode($data, JSON_NUMERIC_CHECK);
 
 		}
 
@@ -1379,7 +1389,6 @@ class KT_Stats {
 	function lastBirthPlace()  { return $this->_mortalityQuery('place', 'DESC', 'BIRT'); }
 
 	function statsBirth($params = array()) {return $this->_statsBirth(true, false, -1, -1, $params);}
-
 	//
 	// Death
 	//
@@ -1660,7 +1669,6 @@ class KT_Stats {
 				" death.d_julianday1>birth.d_julianday2".
 				" GROUP BY century, sex ORDER BY century, sex");
 			if (empty($rows)) return '';
-			$chxl = '0:|';
 			$countsm = '';
 			$countsf = '';
 			$countsa = '';
@@ -1671,7 +1679,7 @@ class KT_Stats {
 			foreach ($out as $century => $values) {
 				$female_age  = $values['F'] ?? 0;
 				$male_age    = $values['M'] ?? 0;
-				$average_age = ($female_age + $male_age) / 2.0;
+				$average_age = round(($female_age + $male_age) / 2.0, 1);
 
 				$data[] = array (
 					'century'	=> self::_centuryName($century),
@@ -1681,7 +1689,7 @@ class KT_Stats {
 				);
 			}
 
-			return json_encode($data);
+			return json_encode($data, JSON_NUMERIC_CHECK);
 
 		} else {
 			$sex_search = '';
@@ -2167,21 +2175,19 @@ class KT_Stats {
 		return $result;
 	}
 
-	function _statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-
+	function _statsMarr($simple = true, $first = false, $year1 = -1, $year2 = -1) {
 		if ($simple) {
 			$sql =
-				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
+				"SELECT SQL_CACHE FLOOR(d_year / 100 + 1) AS century, COUNT(*) AS total".
 				" FROM `##dates`".
 				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-			if ($year1>=0 && $year2>=0) {
+			if ($year1 >= 0 && $year2 >= 0) {
 				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 			}
 			$sql .= " GROUP BY century ORDER BY century";
 		} else if ($first) {
 			$years = '';
-			if ($year1>=0 && $year2>=0) {
+			if ($year1 >= 0 && $year2 >= 0) {
 				$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 			}
 			$sql=
@@ -2207,36 +2213,37 @@ class KT_Stats {
 				}
 			$sql .= " GROUP BY d_month";
 		}
-		$rows=self::_runSQL($sql);
-		if (!isset($rows)) {return 0;}
+		$rows = self::_runSQL($sql);
+
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
 				$tot += $values['total'];
 			}
 			// Beware divide by zero
-			if ($tot==0) return '';
-			$centuries = "";
-			$counts=array();
-			foreach ($rows as $values) {
-				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.KT_I18N::number($values['total']).'|';
+			if ($tot == 0) {
+				return '';
+			} else {
+				foreach ($rows as $values) {
+					$data[] = array (
+						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
+						KT_I18N::translate('count')		=> $values['total'],
+						KT_I18N::translate('percent')	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
+						KT_I18N::translate('color')		=> 'd'
+					);
+				}
 			}
-			$chd = self::_array_to_extended_encoding($counts);
-			$chl = substr($centuries,0,-1);
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Marriages by century')."\" title=\"".KT_I18N::translate('Marriages by century')."\" />";
-			return str_replace("|", "%7C", $img);
+
+			return json_encode($data, JSON_NUMERIC_CHECK);
+
 		}
+
+		if (!isset($rows)) {return 0;}
 		return $rows;
+
 	}
 
 	function _statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params = array()) {
-		global $KT_STATS_CHART_COLOR1, $KT_STATS_CHART_COLOR2, $KT_STATS_S_CHART_X, $KT_STATS_S_CHART_Y;
-
 		if ($simple) {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
@@ -2274,30 +2281,32 @@ class KT_Stats {
 			$sql .= " GROUP BY d_month";
 		}
 		$rows=self::_runSQL($sql);
-		if (!isset($rows)) {return 0;}
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $KT_STATS_S_CHART_X."x".$KT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $KT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $KT_STATS_CHART_COLOR2;}
-			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
 				$tot += $values['total'];
 			}
 			// Beware divide by zero
-			if ($tot==0) return '';
-			$centuries = "";
-			$counts=array();
-			foreach ($rows as $values) {
-				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.KT_I18N::number($values['total']).'|';
+			if ($tot == 0) {
+				return '';
+			} else {
+				foreach ($rows as $values) {
+					$data[] = array (
+						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
+						KT_I18N::translate('count')		=> $values['total'],
+						KT_I18N::translate('percent')	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
+						KT_I18N::translate('color')		=> 'd'
+					);
+				}
 			}
-			$chd = self::_array_to_extended_encoding($counts);
-			$chl = substr($centuries,0,-1);
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Divorces by century')."\" title=\"".KT_I18N::translate('Divorces by century')."\" />";
-			return str_replace("|", "%7C", $img);
+
+			return json_encode($data, JSON_NUMERIC_CHECK);
+
 		}
+
+		if (!isset($rows)) {return 0;}
 		return $rows;
+
 	}
 
 	//
@@ -2367,9 +2376,6 @@ class KT_Stats {
 			foreach ($rows as $values) {
 				if ($max<$values['age']) $max = $values['age'];
 			}
-			$chxl = '0:|';
-			$chmm = '';
-			$chmf = '';
 			$i = 0;
 			$countsm = '';
 			$countsf = '';
@@ -2377,55 +2383,21 @@ class KT_Stats {
 			foreach ($rows as $values) {
 				$out[$values['century']][$values['sex']]=$values['age'];
 			}
-			foreach ($out as $century=>$values) {
-				if ($sizes[0]<1000) $sizes[0] += 50;
-				$chxl .= self::_centuryName($century).'|';
-				$average = 0;
-				if (isset($values['F'])) {
-					if ($max<=50) $value = $values['F']*2;
-					else $value = $values['F'];
-					$countsf .= $value.',';
-					$average = $value;
-					$chmf .= 't'.$values['F'].',000000,1,'.$i.',11,1|';
-				} else {
-					$countsf .= '0,';
-					$chmf .= 't0,000000,1,'.$i.',11,1|';
-				}
-				if (isset($values['M'])) {
-					if ($max<=50) $value = $values['M']*2;
-					else $value = $values['M'];
-					$countsm .= $value.',';
-					if ($average==0) $countsa .= $value.',';
-					else $countsa .= (($value+$average)/2).',';
-					$chmm .= 't'.$values['M'].',000000,0,'.$i.',11,1|';
-				} else {
-					$countsm .= '0,';
-					if ($average==0) $countsa .= '0,';
-					else $countsa .= $value.',';
-					$chmm .= 't0,000000,0,'.$i.',11,1|';
-				}
-				$i++;
+			foreach ($out as $century => $values) {
+				$female_age  = $values['F'] ?? 0;
+				$male_age    = $values['M'] ?? 0;
+				$average_age = round(($female_age + $male_age) / 2.0, 1);
+
+				$data[] = array (
+					'century'	=> self::_centuryName($century),
+					KT_I18N::translate('Males')		=> $male_age,
+					KT_I18N::translate('Females')	=> $female_age,
+					KT_I18N::translate('Average')	=> $average_age
+				);
 			}
-			$countsm = substr($countsm,0,-1);
-			$countsf = substr($countsf,0,-1);
-			$countsa = substr($countsa,0,-1);
-			$chmf = substr($chmf,0,-1);
-			$chd = 't2:'.$countsm.'|'.$countsf.'|'.$countsa;
-			if ($max<=50) $chxl .= '1:||'.KT_I18N::translate('century').'|2:|0|10|20|30|40|50|3:||'.KT_I18N::translate('Age').'|';
-			else $chxl .= '1:||'.KT_I18N::translate('century').'|2:|0|10|20|30|40|50|60|70|80|90|100|3:||'.KT_I18N::translate('Age').'|';
-			if (count($rows)>4 || utf8_strlen(KT_I18N::translate('Average age in century of marriage'))<30) {
-				$chtt = KT_I18N::translate('Average age in century of marriage');
-			} else {
-				$offset = 0;
-				$counter = array();
-				while ($offset = strpos(KT_I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
-					$counter[] = $offset;
-				}
-				$half = (int)(count($counter)/2);
-				$chtt = substr_replace(KT_I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
-			}
-			$img = "<img src=\""."https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".rawurlencode($chtt)."&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."&amp;chdl=".rawurlencode(KT_I18N::translate('Males')."|".KT_I18N::translate('Females')."|".KT_I18N::translate('Average age'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Average age in century of marriage')."\" title=\"".KT_I18N::translate('Average age in century of marriage')."\" />";
-			return str_replace("|", "%7C", $img);
+
+			return json_encode($data, JSON_NUMERIC_CHECK);
+
 		} else {
 			if ($year1>=0 && $year2>=0) {
 				$years=" married.d_year BETWEEN {$year1} AND {$year2} AND ";
@@ -2682,32 +2654,32 @@ class KT_Stats {
 			if ($type == 'list') {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-						$return = "<li>";
-						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
-						$return .= KT_I18N::translate('and')." ";
-						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
-						$return .= " (".$age.")";
-						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family')."]</a>";
+						$return = '<li>';
+						$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+						$return .= KT_I18N::translate('and').' ';
+						$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+						$return .= ' (' . $age . ') ';
+						$return .= '<a href="' . $family->getHtmlUrl() . '"><small>' . (KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family')) . '</small></a>';
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[] = $fam['family'];
 					}
 				} else if (!$one && $child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-					$return = "<li>";
-					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
-					$return .= KT_I18N::translate('and')." ";
-					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
-					$return .= " (".$age.")";
-					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family')."]</a>";
+					$return = '<li>';
+					$return .= '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
+					$return .= KT_I18N::translate('and').' ';
+					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
+					$return .= ' (' . $age . ') ';
+					$return .= '<a href="' . $family->getHtmlUrl() . '"><small>' . (KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family')) . '</small></a>';
 					$return .= '</li>';
 					$top10[] = $return;
 				}
 			} else {
 				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 					$return = $child2->format_list('span', false, $child2->getFullName());
-					$return .= "<br>".KT_I18N::translate('and')."<br>";
+					$return .= '<br>' . KT_I18N::translate('and') . '<br>';
 					$return .= $child1->format_list('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"".$family->getHtmlUrl()."\">[".KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family')."]</a>";
+					$return .= '<br><a href="' . $family->getHtmlUrl() . '"><small>' . (KT_USER_CAN_EDIT ? KT_I18N::translate('Edit family') : KT_I18N::translate('View family')) . '</small></a>';
 					return $return;
 				} else {
 					return KT_I18N::translate('This information is private and cannot be shown.');
@@ -2901,7 +2873,7 @@ class KT_Stats {
 			$sizes = explode('x', $size);
 			$max = 0;
 			$rows=self::_runSQL(
-				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(married.d_year/100+1) AS century".
+				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(married.d_year / 100 + 1) AS century".
 				" FROM `##families` AS fam".
 				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
 				" WHERE".
@@ -2912,39 +2884,29 @@ class KT_Stats {
 				" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
 				" GROUP BY century".
 				" ORDER BY century");
+
 			if (empty($rows)) return '';
+
 			foreach ($rows as $values) {
-				if ($max<$values['num']) $max = $values['num'];
-			}
-			$chm = "";
-			$chxl = "0:|";
-			$i = 0;
-			$counts = array();
-			foreach ($rows as $values) {
-				if ($sizes[0] < 980) $sizes[0] += 38;
-				$chxl .= self::_centuryName($values['century'])."|";
-				if ($max <= 5) {
-					$counts[] = round($values['num']*819.2-1, 1);
-				} elseif ($max <= 10) {
-					$counts[] = round($values['num']*409.6, 1);
-				} else {
-					$counts[] = round($values['num'] * 204.8, 1);
-				}
-				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
-				$i++;
-			}
-			$chd = self::_array_to_extended_encoding($counts);
-			$chm = substr($chm,0,-1);
-			if ($max <= 5) {
-				$chxl .= "1:||".KT_I18N::translate('century')."|2:|0|1|2|3|4|5|3:||".KT_I18N::translate('Number of children')."|";
-			} elseif ($max <= 10) {
-				$chxl .= "1:||".KT_I18N::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".KT_I18N::translate('Number of children')."|";
-			} else {
-				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||" . I18N::translate('Number of children') . "|";
+				if ($max < $values['num']) $max = $values['num'];
 			}
 
-			$img = "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Average number of children per family')."\" title=\"".KT_I18N::translate('Average number of children per family')."\" />";
-			return str_replace("|", "%7C", $img);
+			// Beware divide by zero
+			if ($max == 0) {
+				return '';
+			} else {
+				foreach ($rows as $values) {
+					$data[] = array (
+						KT_I18N::translate('category')	=> self::_centuryName($values['century']),
+						KT_I18N::translate('count')		=> $values['num'],
+						KT_I18N::translate('percent')	=> KT_I18N::number($values['num'], 1),
+						KT_I18N::translate('color')		=> 'd'
+					);
+				}
+			}
+
+			return json_encode($data, JSON_NUMERIC_CHECK);
+
 		} else {
 			if ($sex=='M') {
 				$sql =
@@ -3045,8 +3007,7 @@ class KT_Stats {
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 		if (isset($params[1]) && $params[1] != '') {$year1 = $params[1];} else {$year1 = -1;}
 		if (isset($params[2]) && $params[2] != '') {$year2 = $params[2];} else {$year2 = -1;}
-		$sizes = explode('x', $size);
-		if ($year1>=0 && $year2>=0) {
+		if ($year1 >= 0 && $year2 >= 0) {
 			$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 		} else {
 			$years = "";
@@ -3069,46 +3030,29 @@ class KT_Stats {
 			" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
 			" GROUP BY century ORDER BY century"
 		);
+
 		if (empty($rows)) return '';
+
 		foreach ($rows as $values) {
-			if ($max<$values['count']) $max = $values['count'];
 			$tot += $values['count'];
 		}
-		$unknown = $this->noChildrenFamilies()-$tot;
-		if ($unknown>$max) $max=$unknown;
-		$chm = "";
-		$chxl = "0:|";
-		$i = 0;
-		foreach ($rows as $values) {
-			if ($sizes[0]<980) $sizes[0] += 38;
-			$chxl .= self::_centuryName($values['century'])."|";
-			$counts[] = round(4095*$values['count']/($max+1));
-			$chm .= 't'.$values['count'].',000000,0,'.$i.',11,1|';
-			$i++;
-		}
-		$counts[] = round(4095*$unknown/($max+1));
-		$chd = self::_array_to_extended_encoding($counts);
-		$chm .= 't'.$unknown.',000000,0,'.$i.',11,1';
-		$chxl .= KT_I18N::translate_c('unknown century', 'Unknown')."|1:||".KT_I18N::translate('century')."|2:|0|";
-		$step = $max+1;
-		for ($d=(int)($max+1); $d>0; $d--) {
-			if (($max+1)<($d*10+1) && fmod(($max+1),$d)==0) {
-				$step = $d;
+
+		// Beware divide by zero
+		if ($tot == 0) {
+			return '';
+		} else {
+			foreach ($rows as $values) {
+				$data[] = array (
+					KT_I18N::translate('category')	=> self::_centuryName($values['century']),
+					KT_I18N::translate('count')		=> $values['count'],
+					KT_I18N::translate('percent')	=> KT_I18N::number($values['count']),
+					KT_I18N::translate('color')		=> 'd'
+				);
 			}
 		}
-		if ($step==(int)($max+1)) {
-			for ($d=(int)($max); $d>0; $d--) {
-				if ($max<($d*10+1) && fmod($max,$d)==0) {
-					$step = $d;
-				}
-			}
-		}
-		for ($n=$step; $n<=($max+1); $n+=$step) {
-			$chxl .= $n."|";
-		}
-		$chxl .= "3:||".KT_I18N::translate('Total families')."|";
-		$img = "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:".($i-1).",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".KT_I18N::translate('Number of families without children')."\" title=\"".KT_I18N::translate('Number of families without children')."\" />";
-		return str_replace("|", "%7C", $img);
+
+		return json_encode($data, JSON_NUMERIC_CHECK);
+
 	}
 
 	function _topTenGrandFamilyQuery($type='list', $params = array()) {
@@ -3253,16 +3197,15 @@ class KT_Stats {
 				// most common surname should be in male variant (Kowalski, not Kowalska)
 				$top_name=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
 			}
-			$per = round(100 * $count_per / $tot_indi, 0);
-
 			$data[] = array (
 				KT_I18N::translate('category')	=> $top_name,
-				KT_I18N::translate('count')		=> KT_I18N::number($count_per),
-				KT_I18N::translate('color')		=> ''
+				KT_I18N::translate('count')		=> $count_per,
+				KT_I18N::translate('percent')	=> KT_I18N::number($count_per) . ' (' . KT_I18N::number(100 * $count_per / $tot, 1) . '%)',
+				KT_I18N::translate('color')		=> 'd'
 			);
 		}
 
-		return json_encode($data);
+		return json_encode($data, JSON_NUMERIC_CHECK);
 
 	}
 
@@ -3426,12 +3369,13 @@ class KT_Stats {
 		foreach ($given as $givn => $count) {
 			$data[] = array (
 				KT_I18N::translate('category')	=> $givn,
-				KT_I18N::translate('count')		=> KT_I18N::number($count),
-				KT_I18N::translate('color')		=> ''
+				KT_I18N::translate('count')		=> $count,
+				KT_I18N::translate('percent')	=> KT_I18N::number($count) . ' (' . KT_I18N::number(100 * $count / $tot_indi, 1) . '%)',
+				KT_I18N::translate('color')		=> 'd'
 			);
 		}
 
-		return json_encode($data);
+		return json_encode($data, JSON_NUMERIC_CHECK);
 
 	}
 

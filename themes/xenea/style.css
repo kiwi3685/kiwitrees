@@ -1537,7 +1537,7 @@ div.dt-buttons a.dt-button {
 .givn-list th {cursor:pointer;white-space:nowrap;padding:2px;text-align:center;}
 #source-details-page h2, #sourcelist-page h2, #note-details-page h2, #notelist-page h2, #repo-details-page h2, #repolist-page h2, #media-details-page h2, #medialist-page h2, #statistics-page h2 {margin-bottom:20px;text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto;visibility:hidden;width:80%;}
-#statistics_chart {margin:auto;visibility:hidden;width:90%;}
+#statistics_chart {margin:auto;width:90%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 .media-list td img {display:block;height:40px;width:auto;margin:3px auto;}
 .filtersH, .filtersF {margin:4px}
