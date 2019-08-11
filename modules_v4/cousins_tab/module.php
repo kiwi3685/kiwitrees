@@ -209,10 +209,14 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 									$label = KT_Gedcom_Code_Pedi::getValue($pedi, $record);
 								}
 								$cousinParentFamily = substr($child2->getPrimaryChildFamily(), 0, strpos($child2->getPrimaryChildFamily(), '@'));
-								$family = KT_Family::getInstance($cousinParentFamily);
+								$family2 = KT_Family::getInstance($cousinParentFamily);
 								if ($cousinParentFamily != $prev_fam_id) {
 									$prev_fam_id = $cousinParentFamily;
-									$html .= '<h5>' . KT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="' . $family->getHtmlUrl() . '">&nbsp;' . $family->getFullName() . '</a></h5>';
+									$html .= '<h5>' . KT_I18N::translate('Parents');
+										if (!is_null($family2)) {
+											$html .= '<a target="_blank" rel="noopener noreferrer" href="' . $family2->getHtmlUrl() . '">&nbsp;' . $family2->getFullName() . '</a>';
+										}
+									$html .= '</h5>';
 									$i = 1;
 								}
 								$html .= '
@@ -260,10 +264,14 @@ class cousins_tab_KT_Module extends KT_Module implements KT_Module_Tab {
 													$tmp				= array('M'=>'', 'F'=>'F', 'U'=>'NN');
 													$isF				= $tmp[$child3->getSex()];
 													$cousinParentFamily = substr($child3->getPrimaryChildFamily(), 0, strpos($child3->getPrimaryChildFamily(), '@'));
-													$family				= KT_Family::getInstance($cousinParentFamily);
+													$family3			= KT_Family::getInstance($cousinParentFamily);
 													if ($cousinParentFamily != $prev_fam_id) {
 										 				$prev_fam_id = $cousinParentFamily;
-														$html .= '<h5>' . KT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="' . $family->getHtmlUrl() . '">&nbsp;' . $family->getFullName() . '</a></h5>';
+														$html .= '<h5>' . KT_I18N::translate('Parents');
+															if (!is_null($family3)) {
+																$html .= '<a target="_blank" rel="noopener noreferrer" href="' . $family3->getHtmlUrl() . '">&nbsp;' . $family3->getFullName() . '</a>';
+															}
+														$html .= '</h5>';
 														$i = 1;
 													}
 													$html .= '
