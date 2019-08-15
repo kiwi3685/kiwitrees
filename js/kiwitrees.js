@@ -1535,7 +1535,7 @@ function toggle_select(source) {
 }
 
 // Delete multiple list items
-function checkbox_delete(type) {
+function checkbox_delete(type, pid = '') {
 	var i = 0, counter = 0, delete_list = [];
 	input_obj = document.getElementsByClassName("check");
 	for (i = 0; i < input_obj.length; i++) {
@@ -1558,6 +1558,10 @@ function checkbox_delete(type) {
 			case "places":
 				window.location = location.pathname + '?mod=googlemap&mod_action=admin_places&action=DeleteRecord&deleteRecord=' + delete_list;
 		  	break;
+			case "dna":
+				jQuery.post("action.php",{action:"delete-dna",dna_id:delete_list[i]},function(){location.reload();});
+			break;
+
 		 }
 	}
 }
