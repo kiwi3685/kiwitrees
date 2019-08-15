@@ -522,7 +522,7 @@ if ($action == "filter") {
 			echo '</ul>
 			<p>', KT_I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
 		} else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -547,7 +547,7 @@ if ($action == "filter") {
 			echo '</ul>
 			<p>', KT_I18N::translate('Total families: %s', count($myfamlist)), '</p>';
 		} else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -603,7 +603,7 @@ if ($action == "filter") {
 				echo '</div>'; // close div="find-media-media"
 			}
 		} else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -631,7 +631,7 @@ if ($action == "filter") {
 			<p>', KT_I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
 		}
 		else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -654,7 +654,7 @@ if ($action == "filter") {
 			<p>', KT_I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
 		}
 		else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -677,7 +677,7 @@ if ($action == "filter") {
 			<p>', KT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</p>';
 		}
 		else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}
@@ -702,7 +702,7 @@ if ($action == "filter") {
 			<p>', KT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
 		}
 		else {
-			echo '<p>', KT_I18N::translate('No results found.'), '</p>';
+			echo '<p>', KT_I18N::translate('No results found'), '</p>';
 		}
 		echo '</div>';
 	}

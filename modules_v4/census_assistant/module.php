@@ -93,7 +93,7 @@ class census_assistant_KT_Module extends KT_Module {
 							<?php } ?>
 						</ul>
 					<?php } else { ?>
-						<p> <?php echo KT_I18N::translate('No results found.'); ?> </p>
+						<p> <?php echo KT_I18N::translate('No results found'); ?> </p>
 					<?php } ?>
 					<button onclick="window.close();">
 						<i class="fa fa-close"></i>

@@ -127,86 +127,97 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 			<?php } ?>
 			<?php if ($person && $person->canDisplayDetails()) { ?>
 				<h3><?php echo KT_I18N::translate('Recorded DNA connections for %s', $fullname); ?></h3>
-			<?php } ?>
-			<table id="dnaTable">
-				<thead>
-					<tr>
-						<th><?php echo KT_I18N::translate('Name'); ?></th>
-						<th><?php echo KT_I18N::translate('Relationship'); ?></th>
-						<th><?php echo KT_I18N::translate('cMs'); ?></th>
-						<th><?php echo KT_I18N::translate('Segments'); ?></th>
-						<th><?php echo KT_I18N::translate('Common ancestors'); ?></th>
-						<th><?php echo KT_I18N::translate('Source'); ?></th>
-						<th><?php echo KT_I18N::translate('Note'); ?></th>
-						<th><?php echo KT_I18N::translate('Date added'); ?></th>
-						<th><?php echo KT_I18N::translate('Edit'); ?></th>
-						<?php //-- Select & delete
-						if (KT_USER_GEDCOM_ADMIN) { ?>
-							<th>
-								<div class="delete_dna">
-									<?php echo '
-										<input type="button" value="'. KT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(KT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'dna\', \'' . $xref . '\');} else {return false;}">
-										<input type="checkbox" onClick="toggle_select(this)" style="vertical-align:middle;">
-									' ?>
-								</div>
-							</th>
-						<?php } ?>
-					</tr>
-				</thead>
-				<tbody>
-					<?php $rows = $this->getData($xref);
-					foreach ($rows as $row) {
-						($xref == $row->id_a) ? $personA = KT_Person::getInstance($row->id_b) : $personA = KT_Person::getInstance($row->id_a);
-						if (!$personA) {continue;} ?>
+				<div class="help_text">
+					<div class="help_content">
+						<h5><?php echo $this->getDescription(); ?></h5>
+						<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+						<div class="hidden">
+							<?php echo /* I18N: help for report facts and events module */ KT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+						</div>
+					</div>
+				</div>
+				<table id="dnaTable">
+					<thead>
 						<tr>
-							<td>
-								<a href="<?php echo $personA->getHtmlUrl(); ?>" target="_blank">
-									<?php echo $personA->getFullName(); ?>
-								</a>
-							</td>
-							<td>
-								<?php $relationship = ucfirst($this->findRelationship($person, $personA));
-								if ($relationship){ ?>
-									<a href="relationship.php?pid1=<?php echo $person->getXref(); ?>&amp;pid2=<?php echo $personA->getXref(); ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;find=1" target="_blank">
-										<?php echo $relationship; ?>
-									</a>
-								<?php } else {
-									echo KT_I18N::translate('No relationship found');
-								} ?>
-							</td>
-							<td><?php echo KT_I18N::number($row->cms); ?></td>
-							<td><?php echo KT_I18N::number($row->seg); ?></td>
-							<td>
-								<?php echo $this->findCommonAncestor($person, $personA); ?>
-							<td>
-								<?php $source = KT_Source::getInstance($row->source);
-								if ($source) { ?>
-									<a href="<?php echo $source->getHtmlUrl(); ?>" target="_blank">
-										<?php echo$source->getFullName(); ?>
-									</a>
-								<?php } ?>
-							</td>
-							<td><?php echo $row->note; ?></td>
-							<td>
-								<?php echo timestamp_to_gedcom_date(strtotime($row->date))->Display(); ?>
-							</td>
-							<td>
-								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=edit-dna&amp;pid=<?php echo $xref; ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;dna-id=<?php echo $row->dna_id; ?>" target="_blank" title="<?php echo KT_I18N::translate('Edit DNA data'); ?>">
-									<i style="margin: 0 3px 0 10px;" class="icon-edit"></i>
-								</a>
-							</td>
+							<th><?php echo KT_I18N::translate('Name'); ?></th>
+							<th><?php echo KT_I18N::translate('Relationship'); ?></th>
+							<th><?php echo KT_I18N::translate('cMs'); ?></th>
+							<th><?php echo KT_I18N::translate('Segments'); ?></th>
+							<th><?php echo KT_I18N::translate('Common ancestors'); ?></th>
+							<th><?php echo KT_I18N::translate('Source'); ?></th>
+							<th><?php echo KT_I18N::translate('Note'); ?></th>
+							<th><?php echo KT_I18N::translate('Date added'); ?></th>
+							<th><?php echo KT_I18N::translate('Edit'); ?></th>
 							<?php //-- Select & delete
 							if (KT_USER_GEDCOM_ADMIN) { ?>
-								<td>
-									<div class="delete_src">
-										<input type="checkbox" name="del_places[]" class="check" value="<?php echo $row->dna_id; ?>" title="<?php echo KT_I18N::translate('Delete'); ?>">
+								<th>
+									<div class="delete_dna">
+										<?php echo '
+											<input type="button" value="'. KT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(KT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'dna\', \'' . $xref . '\');} else {return false;}">
+											<input type="checkbox" onClick="toggle_select(this)" style="vertical-align:middle;">
+										' ?>
 									</div>
-								</td>
+								</th>
 							<?php } ?>
 						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<?php $rows = $this->getData($xref);
+						foreach ($rows as $row) {
+							($xref == $row->id_a) ? $personA = KT_Person::getInstance($row->id_b) : $personA = KT_Person::getInstance($row->id_a);
+							if (!$personA) {continue;} ?>
+							<tr>
+								<td>
+									<a href="<?php echo $personA->getHtmlUrl(); ?>" target="_blank">
+										<?php echo $personA->getFullName(); ?>
+									</a>
+								</td>
+								<td>
+									<?php $relationship = ucfirst($this->findRelationship($person, $personA));
+									if ($relationship){ ?>
+										<a href="relationship.php?pid1=<?php echo $person->getXref(); ?>&amp;pid2=<?php echo $personA->getXref(); ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;find=1" target="_blank">
+											<?php echo $relationship; ?>
+										</a>
+									<?php } else {
+										echo KT_I18N::translate('No relationship found');
+									} ?>
+								</td>
+								<td><?php echo KT_I18N::number($row->cms); ?></td>
+								<td><?php echo KT_I18N::number($row->seg); ?></td>
+								<td>
+									<?php echo $this->findCommonAncestor($person, $personA); ?>
+								<td>
+									<?php $source = KT_Source::getInstance($row->source);
+									if ($source) { ?>
+										<a href="<?php echo $source->getHtmlUrl(); ?>" target="_blank">
+											<?php echo$source->getFullName(); ?>
+										</a>
+									<?php } ?>
+								</td>
+								<td><?php echo $row->note; ?></td>
+								<td>
+									<?php echo timestamp_to_gedcom_date(strtotime($row->date))->Display(); ?>
+								</td>
+								<td>
+									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=edit-dna&amp;pid=<?php echo $xref; ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;dna-id=<?php echo $row->dna_id; ?>" target="_blank" title="<?php echo KT_I18N::translate('Edit DNA data'); ?>">
+										<i style="margin: 0 3px 0 10px;" class="icon-edit"></i>
+									</a>
+								</td>
+								<?php //-- Select & delete
+								if (KT_USER_GEDCOM_ADMIN) { ?>
+									<td>
+										<div class="delete_src">
+											<input type="checkbox" name="del_places[]" class="check" value="<?php echo $row->dna_id; ?>" title="<?php echo KT_I18N::translate('Delete'); ?>">
+										</div>
+									</td>
+								<?php } ?>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			<?php } else {
+				echo KT_I18N::translate('No results found');
+			} ?>
 		</div>
 		<?php
 	}

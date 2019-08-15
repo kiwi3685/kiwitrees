@@ -1327,7 +1327,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 				load_gedcom_settings(KT_GED_ID);
 				echo '</div>'; //#search-result-tabs
 			} elseif (isset ($this->query)) {
-				echo '<br><div class="warning center"><em>'.KT_I18N::translate('No results found.').'</em><br>';
+				echo '<br><div class="warning center"><em>'.KT_I18N::translate('No results found').'</em><br>';
 				if (!isset ($this->srindi) && !isset ($this->srfams) && !isset ($this->srsour) && !isset ($this->srnote)) {
 					echo '<em>'.KT_I18N::translate('Be sure to select an option to search for.').'</em><br>';
 				}
