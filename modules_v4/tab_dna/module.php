@@ -34,7 +34,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 
 	// Extend KT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "Facts and events" module */ KT_I18N::translate('A tab listing all recorded DNA links for an individual.');
+		return /* I18N: Description of the "Facts and events" module */ KT_I18N::translate('A list of all recorded DNA links for an individual.');
 	}
 
 	// Implement KT_Module_Tab
@@ -112,6 +112,8 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 			#dnaTable td {padding: 6px;}
 			#dnaTable td.dt-body-right {text-align: right; padding-right: 15px;}
 			#dnaTable td.dt-body-center {text-align: center;}
+			.help_content h5 {display: inline-block; margin: 0 10px 10px; font-size: 12px; font-style: normal;}
+			.help_content .hidden {display: none; margin: 0 10px;}
 		</style>
 		<div id="tab_dna_content">
 			<!-- Show header Links -->
@@ -132,7 +134,9 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 						<h5><?php echo $this->getDescription(); ?></h5>
 						<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 						<div class="hidden">
-							<?php echo /* I18N: help for report facts and events module */ KT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+							<?php echo $this->DNAhelp('cms'); ?>
+							<br>
+							<?php echo $this->DNAhelp('seg'); ?>
 						</div>
 					</div>
 				</div>
@@ -309,6 +313,9 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 
 
 		?>
+		<style>
+			.help_content .hidden {display: none; margin: 0 10px; font-weight: normal;}
+		</style>
 		<div id="edit_interface-page">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<form name="adddna_form" method="post" action="">
@@ -323,13 +330,31 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 						</div>
 					</div>
 					<div id="adddna2_factdiv">
-						<label><?php echo KT_I18N::translate('CentiMorgans'); ?></label>
+						<label><?php echo KT_I18N::translate('CentiMorgans'); ?>
+							<span class="help_text">
+								<span class="help_content">
+									<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+									<span class="hidden">
+										<?php echo $this->DNAhelp('cms'); ?>
+									</span>
+								</span>
+							</span>
+						</label>
 						<div class="input">
 							<input class="addDna_form" type="text" name="cms" id="cms" value="<?php echo $cms; ?>">
 						</div>
 					</div>
 					<div id="adddna3_factdiv">
-						<label><?php echo KT_I18N::translate('Segments'); ?></label>
+						<label><?php echo KT_I18N::translate('Segments'); ?>
+							<span class="help_text">
+								<span class="help_content">
+									<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+									<span class="hidden">
+										<?php echo $this->DNAhelp('seg'); ?>
+									</span>
+								</span>
+							</span>
+						</label>
 						<div class="input">
 							<input class="addDna_form" type="text" name="seg" id="seg" value="<?php echo $seg; ?>">
 						</div>
@@ -473,5 +498,26 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 			die($ex);
 		}
 	}
+
+	// Help texts for this module
+	public function DNAhelp($item) {
+		switch ($item) {
+			case 'cms':
+				return /* I18N: help for DNA tab module */ KT_I18N::translate('
+					A centiMorgan (cM) is a unit of measure for DNA. It tells you how much DNA you share with another match. In general, the more DNA you share with a match the higher the cM number will be and the more closely related you are.
+					<br>
+					Ref: https://www.yourdnaguide.com/scp
+				');
+				break;
+			case 'seg':
+				return /* I18N: help for DNA tab module */ KT_I18N::translate('
+					A DNA segment is a block, chunk, piece, string of DNA on a chromosome. It is typically determined by a start location and an end location on a chromosome. A segment refers to all the DNA in between and including the start and end locations.
+					<br>
+					Ref: https://segmentology.org/2015/05/07/what-is-a-segment/
+				');
+				break;
+		}
+	}
+
 
 }
