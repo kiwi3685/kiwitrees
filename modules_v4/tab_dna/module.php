@@ -198,7 +198,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 										</a>
 									<?php } ?>
 								</td>
-								<td><?php echo $row->note; ?></td>
+								<td style="font-style: italic; font-size: 95%;"><?php echo $row->note; ?></td>
 								<td>
 									<?php echo timestamp_to_gedcom_date(strtotime($row->date))->Display(); ?>
 								</td>
@@ -370,7 +370,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 					<div id="adddna5_factdiv">
 						<label><?php echo KT_I18N::translate('Note'); ?></label>
 						<div class="input">
-							<textarea id="note" name="note" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 32px;" value="<?php echo $note; ?>"></textarea>
+							<textarea id="note" name="note" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 32px;" value=""><?php echo $note; ?></textarea>
 						</div>
 					</div>
 				</div>
