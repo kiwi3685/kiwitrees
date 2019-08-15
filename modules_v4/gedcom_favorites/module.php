@@ -331,7 +331,7 @@ class gedcom_favorites_KT_Module extends KT_Module implements KT_Module_Block {
 	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {
-			KT_DB::updateSchema(KT_ROOT.KT_MODULES_DIR . 'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
+			KT_DB::updateSchema(KT_ROOT . KT_MODULES_DIR . 'gedcom_favorites/db_schema/', 'GF_SCHEMA_VERSION', 4); 
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
 			die($ex);

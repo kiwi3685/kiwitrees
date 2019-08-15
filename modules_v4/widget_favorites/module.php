@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -311,7 +311,7 @@ class widget_favorites_KT_Module extends KT_Module implements KT_Module_Widget {
 	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {
-			KT_DB::updateSchema(KT_ROOT.KT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
+			KT_DB::updateSchema(KT_ROOT . KT_MODULES_DIR . 'gedcom_favorites/db_schema/', 'WF_SCHEMA_VERSION', 4);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
 			die($ex);
