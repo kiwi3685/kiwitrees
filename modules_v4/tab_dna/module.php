@@ -174,8 +174,8 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 									echo KT_I18N::translate('No relationship found');
 								} ?>
 							</td>
-							<td><?php echo $row->cms; ?></td>
-							<td><?php echo $row->seg; ?></td>
+							<td><?php echo KT_I18N::number($row->cms); ?></td>
+							<td><?php echo KT_I18N::number($row->seg); ?></td>
 							<td>
 								<?php echo $this->findCommonAncestor($person, $personA); ?>
 							<td>
