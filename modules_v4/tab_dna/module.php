@@ -325,7 +325,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 					<div id="adddna1_factdiv">
 						<label><?php echo KT_I18N::translate('Person connected by DNA'); ?></label>
 						<div class="input">
-							<input class="addDna_form" data-autocomplete-type="INDI" type="text" name="dna_id_b" id="dna_id_b" value="<?php echo $dna_id_b; ?>" autocomplete="off">
+							<input class="addDna_form" data-autocomplete-type="INDI" type="text" name="dna_id_b" id="dna_id_b" value="<?php echo $dna_id_b; ?>" autocomplete="off" autofocus>
 							<div class="autocomplete_label"><?php echo $dna_id_b ? $person_b->getLifespanName() : ''; ?></div>
 						</div>
 					</div>
