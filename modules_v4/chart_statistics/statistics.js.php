@@ -27,6 +27,7 @@
 }
 
 ?>
+
 <script>
 
 	// VERTICAL BAR CHART
@@ -186,6 +187,7 @@
 		var svg = d3.select(element).append("svg")
 			.attr("preserveAspectRatio", "xMinYMin meet")
 			.attr("viewBox", viewportSize)
+			.attr("class", "horizontalChart")
 			.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -234,7 +236,7 @@
 				var data = "";
 		}
 
-		var margin = {top: 10, right: 30, bottom: 50, left: 30},
+		var margin = {top: 30, right: 30, bottom: 50, left: 30},
 			w = width - margin.left - margin.right,
 			h = height - margin.top - margin.bottom;
 
@@ -362,8 +364,8 @@
 		var margin = {top: 0, right: 30, bottom: 0, left: 10},
 			w = width - margin.left - margin.right,
 			h = height - margin.top - margin.bottom;
-		var padding	= 50;
-		var radius	= Math.min(width - padding, height - padding) / 2;
+		var padding		= 50;
+		var radius		= Math.min(width - padding, height - padding) / 2;
 
 		var svg = d3.select(element)
 			.append("svg")
@@ -372,7 +374,7 @@
 				.attr("viewBox", viewportSize);
 
 		var g = svg.append("g")
-			.attr("transform", "translate(" + (w / 2) + "," + (h / 2 - 20) + ")");
+			.attr("transform", "translate(" + (w / 2) + "," + (h / 2 - 10) + ")");
 
 		var arc = d3.arc()
 			.innerRadius(0)
@@ -390,26 +392,60 @@
 					.attr("class", function(d){ return "bar-" +  d.data.color; }) // css over-rides fill color if d.data.color exists
 					.attr("d", arc);
 
-		// Legend
-		var legend = svg.append("g")
-			.selectAll("g")
-	  		    .data(pie(data))
-			    .enter().append("g")
-					  .attr("transform", function (d,i) { return "translate(" + (0 + i * 100) + "," + (h - 20) + ")";});
-			legend.append("circle")
-	  		    .attr("cx", 0)
-	  		    .attr("cy", -4)
-	  		    .attr("r", 5)
-				.attr("fill", function(d, i) { return color(i); } )
-				.attr("class", function(d){ return "bar-" +  d.data.color; }); // css over-rides fill color if d.data.color exists
+		//new legend code
+		var legendCircRad = 5;
+		var legendSpacing = 4;
 
-			legend.append("text")
-				.attr("x", 8)
-				.attr("y", 0)
-				.style("text-anchor", "start")
-				.style("font-size", "8")
-				.text(function(d){ return d.data.category + " (" + d.data.percent + ")"; });
+		var legendWrap = svg.append('g')
+		.attr('class', 'legendwrap')
+		.attr("transform", function (d,i) { return "translate(" + (5) + "," + (h - 20) + ")";});
 
+		var legend = svg.select('.legendwrap').selectAll('.legend')
+			.data(pie(data))
+			.enter()
+			.append('g')
+			.attr('class', 'legend');
+
+		legend.append('circle')
+			.attr("cx", 0)
+			.attr("cy", 0)
+			.attr("r", legendCircRad)
+			.attr("fill", function(d, i) { return color(i); } )
+			.attr("class", function(d){ return "bar-" +  d.data.color; }); // css over-rides fill color if d.data.color exists
+
+		legend.append('text')
+			.attr('x', legendCircRad + legendSpacing)
+			.attr('y', legendCircRad - legendSpacing + 2)
+			.style("text-anchor", "start")
+			.style("font-size", "8")
+			.text(function(d){ return d.data.category + " (" + d.data.percent + ")"; });
+
+		var ypos = 0, newxpos = 0, rowOffsets = [];
+		var legendItemsCount = svg.selectAll('.legend').size();
+
+		legend.attr("transform", function (d, index) {
+		var length = d3.select(this).select("text").node().getComputedTextLength() + (legendCircRad + legendSpacing * 3);
+
+		if (width < newxpos + length) {
+			rowOffsets.push((width - newxpos) / 2);
+			newxpos = 0;
+			ypos += 15;
+		}
+
+		d.x = newxpos;
+		d.y = ypos;
+		d.rowNo = rowOffsets.length;
+		newxpos += length;
+
+		if (index === legendItemsCount - 1)
+			rowOffsets.push((width - newxpos) / 2);
+		});
+
+		legend.attr("transform", function (d, i) {
+			var x = d.x + rowOffsets[d.rowNo];
+			return 'translate(' + x + ',' + d.y + ')';
+		});
+		// end
 	}
 
 	// MAP CHART
