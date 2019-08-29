@@ -298,7 +298,7 @@ class chart_statistics_KT_Module extends KT_Module implements KT_Module_Chart {
 							</tr>
 							<tr>
 								<td class="facts_value" align="center">
-									<a href="indilist.php?show_all=yes&ged=<?php echo $GEDCOM; ?>"><?php echo $stats->totalSurnames(); ?></a>
+									<?php echo $stats->totalSurnames(); ?>
 								</td>
 								<td class="facts_value" align="center"><?php echo $stats->totalGivennames(); ?></td>
 							</tr>

@@ -40,7 +40,7 @@ $option	= KT_Filter::get('option');
 switch ($table) {
 	case 'totalIndis':
 		$title 		= KT_I18N::translate('Total individuals');
-		$content	= format_indi_table(KT_Stats::individualsList($ged_id, 'male'));
+		$content	= format_indi_table(KT_Stats::individualsList($ged_id));
 		switch ($option){
 			case 'male':
 				$title 		= KT_I18N::translate('Total males');
