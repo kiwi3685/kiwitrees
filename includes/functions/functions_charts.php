@@ -907,12 +907,9 @@ function print_children($famid, $childid = "", $personcount="1") {
 			}
 	// message 'no children'
 	} else {
-		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
-			echo '<div><i class="icon-childless"></i> '.KT_I18N::translate('This family remained childless').'</div>';
-			echo '<div class="fam_child">';
-				print_pedigree_person(KT_Person::getInstance($childid), 3, 0, $personcount);
-				$personcount++;
-			echo '</div>';
+		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1] == 0) {
+			echo '<div><i class="icon-childless"></i> ' . KT_I18N::translate('This family remained childless') . '</div>';
+			echo '<div class="fam_child"></div>';
 		}
 	}
 }
