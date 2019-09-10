@@ -124,7 +124,7 @@
 			svg.selectAll(".text")
 				.data(data)
 					.enter().append("text")
-						.style("font-size", "10")
+						.style("font-size", "10px")
 						.style("text-anchor", "middle")
 						.attr("x", (function(d) { return x(d.category) + (x.bandwidth() / 2) ; }  ))
 						.attr("y", function(d) { return y(d.count) - 5; })
@@ -209,12 +209,12 @@
 					.enter().append("text")
 						.attr("y", (function(d) { return y(d.category) + (y.bandwidth() / 2 + 5) ; }  ))
 						.attr("x", function(d) { return x(d.count) + 5; })
-						.style("font-size", "8")
+						.style("font-size", "8px")
 						.text(function(d) { return d.percent; });
 
 		    // add the y Axis
 		    svg.append("g")
-				.style("font-size", "8")
+				.style("font-size", "8px")
 		        .call(d3.axisLeft(y).tickSize(0));
 		}
 	}
@@ -302,13 +302,13 @@
 			// x-axis
 			svg.append("g")
 				.attr("transform", "translate(0," + h + ")")
-				.style("font-size", "11")
+				.style("font-size", "11px")
 				.call(d3.axisBottom(x0));
 
 			// y-axis
 			svg.append("g")
 				.attr("y", y(y.ticks().pop()) + 1)
-				.style("font-size", "11")
+				.style("font-size", "11px")
 				.call(d3.axisLeft(y).ticks());
 
 			// Legend
@@ -327,7 +327,7 @@
 					.attr("x", 8)
 					.attr("y", 0)
 					.style("text-anchor", "start")
-					.style("font-size", "11")
+					.style("font-size", "11px")
 					.text(function(d) { return d; });
 		}
 
@@ -425,7 +425,7 @@
 				.attr('x', legendCircRad + legendSpacing)
 				.attr('y', legendCircRad - legendSpacing + 2)
 				.style("text-anchor", "start")
-				.style("font-size", "8")
+				.style("font-size", "8px")
 				.text(function(d){ return d.data.category + " (" + d.data.percent + ")"; });
 
 			var ypos = 0, newxpos = 0, rowOffsets = [];
@@ -538,9 +538,9 @@
 				svg.append("circle").attr("cx",0).attr("cy",276).attr("r", 7).style("fill", "<?php echo $KT_STATS_CHART_COLOR1; ?>")
 				svg.append("circle").attr("cx",150).attr("cy",276).attr("r", 7).style("fill", "<?php echo $KT_STATS_CHART_COLOR2; ?>")
 				svg.append("circle").attr("cx",300).attr("cy",276).attr("r", 7).style("fill", "<?php echo $KT_STATS_CHART_COLOR3; ?>")
-				svg.append("text").attr("x", 20).attr("y", 280).text("<?php echo KT_I18N::translate('High population'); ?>").style("text-anchor", "start").style("font-size", "12")
-				svg.append("text").attr("x", 170).attr("y", 280).text("<?php echo KT_I18N::translate('Low population'); ?>").style("text-anchor", "start").style("font-size", "12")
-				svg.append("text").attr("x", 320).attr("y", 280).text("<?php echo KT_I18N::translate('Nobody at all'); ?>").style("text-anchor", "start").style("font-size", "12")
+				svg.append("text").attr("x", 20).attr("y", 280).text("<?php echo KT_I18N::translate('High population'); ?>").style("text-anchor", "start").style("font-size", "12px")
+				svg.append("text").attr("x", 170).attr("y", 280).text("<?php echo KT_I18N::translate('Low population'); ?>").style("text-anchor", "start").style("font-size", "12px")
+				svg.append("text").attr("x", 320).attr("y", 280).text("<?php echo KT_I18N::translate('Nobody at all'); ?>").style("text-anchor", "start").style("font-size", "12px")
 
 			});
 		}
