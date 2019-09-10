@@ -618,13 +618,13 @@ function format_fam_table($datalist, $option = '') {
 	');
 
 	$stats = new KT_Stats($GEDCOM);
-	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge())+1;
+	$max_age = max((int) $stats->oldestMarriageMaleAge(), (int) $stats->oldestMarriageFemaleAge()) + 1;
 
 	//-- init chart data
-	for ($age=0; $age<=$max_age; $age++) {
+	for ($age = 0; $age <= $max_age; $age++) {
 		$marr_by_age[$age] = '';
 	}
-	for ($year = 1550; $year<2030; $year+=10) {
+	for ($year = 1550; $year < 2030; $year += 10) {
 		$birt_by_decade[$year] = '';
 		$marr_by_decade[$year] = '';
 	}
