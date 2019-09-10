@@ -77,6 +77,7 @@ class chart_statistics_KT_Module extends KT_Module implements KT_Module_Chart {
 
 		$controller
 			->restrictAccess(KT_Module::isActiveChart(KT_GED_ID, $this->getName(), KT_USER_ACCESS_LEVEL))
+			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addExternalJavascript(KT_D3_JS)
