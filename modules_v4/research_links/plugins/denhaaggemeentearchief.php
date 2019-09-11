@@ -30,7 +30,7 @@ class denhaaggemeentearchief_plugin extends research_base_plugin {
 			"Geboorteakte"		  => "archieven-mais/overzicht?mivast=59&mizig=100&miadt=59&miq=1&milang=nl&misort=an%7Casc&mip1='$surname'&mip3='$givn'&mif1=113&miview=tbl",
 			"Huwelijksakte"		  => "archieven-mais/overzicht?mivast=59&mizig=100&miadt=59&miq=1&milang=nl&misort=an%7Casc&mip1='$surname'&mip3='$givn'&mif1=109&miview=tbl",
 			"Notariele Akte"	  => "archieven-mais/overzicht?mivast=59&mizig=100&miadt=59&miq=1&milang=nl&misort=an%7Casc&mip1='$surname'&mip3='$givn'&mif1=224&miview=tbl",
-			"Geboorteakte"		  => "archieven-mais/overzicht?mivast=59&mizig=100&miadt=59&miq=1&milang=nl&misort=an%7Casc&mip1='$surname'&mip3='$givn'&mif1=114&miview=tbl",
+			"Overlijdensakte"	  => "archieven-mais/overzicht?mivast=59&mizig=100&miadt=59&miq=1&milang=nl&misort=an%7Casc&mip1='$surname'&mip3='$givn'&mif1=114&miview=tbl",
 			"Bevolkingsregister"  => "archieven-mais/overzicht?mivast=59&mizig=100&miadt=59&miq=1&milang=nl&misort=an%7Casc&mip1='$surname'&mip3='$givn'&mif1=388&miview=tbl",
 		);
 

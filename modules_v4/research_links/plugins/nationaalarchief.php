@@ -19,7 +19,7 @@ class nationaalarchief_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return $link = 'http://www.gahetna.nl/zoeken/q/zoekterm/' . $givn . '%20' . $surn;
+		return $link = 'https://www.nationaalarchief.nl/onderzoeken/zoeken?searchTerm=%22' . $givn . '%20' . $surn . '%22';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
