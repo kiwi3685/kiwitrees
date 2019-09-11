@@ -124,9 +124,9 @@
 			svg.selectAll(".text")
 				.data(data)
 					.enter().append("text")
-						.style("font-size", "10px")
 						.style("text-anchor", "middle")
-						.attr("x", (function(d) { return x(d.category) + (x.bandwidth() / 2) ; }  ))
+						.style("font-size", "10px")
+						.attr("x", (function(d) { return x(d.category) + (x.bandwidth() / 2) ; }))
 						.attr("y", function(d) { return y(d.count) - 5; })
 						.text(function(d) { return d.percent; });
 
