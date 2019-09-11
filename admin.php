@@ -1613,7 +1613,7 @@ function old_paths() {
 		// Removed in kiwitrees 3.3.3
 		KT_ROOT . 'modules_v4/research_links/plugins/vlaardingengeschiedenis.php', // archive no longer exists
 		KT_ROOT . 'statistics.php', // moved to modules
-		KT_ROOT . 'js\d3.v4.custom.min.js', //replaced by standard version
+		KT_ROOT . 'js/d3.v4.custom.min.js', //replaced by standard version
 	);
 }
 
