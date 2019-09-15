@@ -295,9 +295,10 @@
 						return keys.map(function(key) { return { key: key, value: d[key] }; });
 					})
 					.enter().append("text")
-					.attr("x", function(d) { return x1(d.key) + x1.bandwidth() / 2; })
+					.attr("x", function(d) { return x1(d.key) + x1.bandwidth() / 2 - 10; })
 					.attr("y", function(d) { return y(d.value) - 5; })
 					.text(function(d) { return d.value; })
+					.style("font-size", "11px")
 
 			// x-axis
 			svg.append("g")
