@@ -44,7 +44,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 
 	// Extend class KT_Module
 	public function defaultAccessLevel() {
-		return false;
+		return KT_PRIV_USER; // default privacy = "members"
 	}
 
 	// Extend KT_Module
