@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,108 +61,108 @@ class widget_stats_KT_Module extends KT_Module implements KT_Module_Widget {
 		if ($cfg) {
 			foreach (array('stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
 
-		$id=$this->getName().$widget_id;
-		$class=$this->getName();
+		$id		= $this->getName().$widget_id;
+		$class	= $this->getName();
 
 		if (KT_USER_GEDCOM_ADMIN) {
-			$title='<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+			$title = '<i class="icon-admin" title="' . KT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $widget_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.=$this->getTitle();
-		$stats=new KT_Stats(KT_GEDCOM);
+		$title	.= $this->getTitle();
+		$stats	 = new KT_Stats(KT_GEDCOM);
 
-		$content = '<h3>'.KT_TREE_TITLE.'</h3>';
+		$content = '<h3>' . KT_TREE_TITLE.'</h3>';
 		if ($show_last_update) {
-			$content .= '<div>'./* I18N: %s is a date */ KT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())).'</div>';
+			$content .= '<div>' . /* I18N: %s is a date */ KT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) . '</div>';
 		}
 		$content .= '<ul>';
 			if ($stat_indi) {
 				$content.='
 					<li>
-						<span class="inset">'.KT_I18N::translate('Individuals').'</span>
+						<span class="inset">' . KT_I18N::translate('Individuals') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data"><a href="'."indilist.php?surname_sublist=no&amp;ged=".KT_GEDURL.'">'.$stats->totalIndividuals().'</a></span>
+						<span class="stats_data"><a href="'."indilist.php?surname_sublist=no&amp;ged=".KT_GEDURL.'">' . $stats->totalIndividuals() . '</a></span>
 					</li>
 					<li>
-						<span class="inset">'.KT_I18N::translate('Males').'</span>
+						<span class="inset">' . KT_I18N::translate('Males') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data">'.$stats->totalSexMales() . ' (' . $stats->totalSexMalesPercentage().')</span>
+						<span class="stats_data">' . $stats->totalSexMales() . ' (' . $stats->totalSexMalesPercentage() . ')</span>
 					</li>
 					<li>
-						<span class="inset">'.KT_I18N::translate('Females').'</span>
+						<span class="inset">' . KT_I18N::translate('Females') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data">'.$stats->totalSexFemales() . ' (' . $stats->totalSexFemalesPercentage().')</span>
+						<span class="stats_data">' . $stats->totalSexFemales() . ' (' . $stats->totalSexFemalesPercentage() . ')</span>
 					</li>
 				';
 			}
 			if ($stat_surname) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Total surnames').'</span>
+						<span class="inset">' . KT_I18N::translate('Total surnames') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.KT_GEDURL.'">'.$stats->totalSurnames().'</a></span>
+						<span class="stats_data"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . KT_GEDURL.'">' . $stats->totalSurnames() . '</a></span>
 					</li>
 				';
 			}
 			if ($stat_fam) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Families').'</span>
+						<span class="inset">' . KT_I18N::translate('Families') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data"><a href="famlist.php?ged='.KT_GEDURL.'">'.$stats->totalFamilies().'</a></span>
+						<span class="stats_data"><a href="famlist.php?ged=' . KT_GEDURL.'">' . $stats->totalFamilies() . '</a></span>
 					</li>
 				';
 			}
 			if ($stat_sour) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Sources').'</span>
+						<span class="inset">' . KT_I18N::translate('Sources') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data"><a href="sourcelist.php?ged='.KT_GEDURL.'">'.$stats->totalSources().'</a></span>
+						<span class="stats_data"><a href="sourcelist.php?ged=' . KT_GEDURL.'">' . $stats->totalSources() . '</a></span>
 					</li>
 				';
 			}
 			if ($stat_media) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Media objects').'</span>
+						<span class="inset">' . KT_I18N::translate('Media objects') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data"><a href="medialist.php?ged='.KT_GEDURL.'">'.$stats->totalMedia().'</a></span>
+						<span class="stats_data"><a href="medialist.php?ged=' . KT_GEDURL.'">' . $stats->totalMedia() . '</a></span>
 					</li>
 				';
 			}
 			if ($stat_repo) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Repositories').'</span>
+						<span class="inset">' . KT_I18N::translate('Repositories') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data"><a href="repolist.php?ged='.KT_GEDURL.'">'.$stats->totalRepositories().'</a></span>
+						<span class="stats_data"><a href="repolist.php?ged=' . KT_GEDURL.'">' . $stats->totalRepositories() . '</a></span>
 					</li>
 				';
 			}
 			if ($stat_events) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Total events').'</span>
+						<span class="inset">' . KT_I18N::translate('Total events') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data">'.$stats->totalEvents().'</span>
+						<span class="stats_data">' . $stats->totalEvents() . '</span>
 					</li>
 				';
 			}
 			if ($stat_users) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Total users').'</span>
+						<span class="inset">' . KT_I18N::translate('Total users') . '</span>
 						<span class="filler">&nbsp;</span>
 						<span class="stats_data">';
 							if (KT_USER_GEDCOM_ADMIN) {
-								$content .= '<a href="admin_users.php">'.$stats->totalUsers().'</a>';
+								$content .= '<a href="admin_users.php">' . $stats->totalUsers() . '</a>';
 							} else {
 								$content .= $stats->totalUsers();
 							}
@@ -173,74 +173,74 @@ class widget_stats_KT_Module extends KT_Module implements KT_Module_Widget {
 			if ($stat_first_birth) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Earliest birth year').'</span>
+						<span class="inset">' . KT_I18N::translate('Earliest birth year') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data">'.$stats->firstBirthYear().'</span>
-						<p class="stats_record">'.$stats->firstBirth().'</p>
+						<span class="stats_data">' . $stats->firstBirthYear() . '</span>
+						<p class="stats_record">' . $stats->firstBirth() . '</p>
 					</li>
 				';
 			}
 			if ($stat_last_birth) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Latest birth year').'</span>
+						<span class="inset">' . KT_I18N::translate('Latest birth year') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data">'.$stats->lastBirthYear().'</span>
-						<p class="stats_record">'.$stats->lastBirth().'</p>
+						<span class="stats_data">' . $stats->lastBirthYear() . '</span>
+						<p class="stats_record">' . $stats->lastBirth() . '</p>
 					</li>
 				';
 			}
 			if ($stat_first_death) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Earliest death year').'</span>
+						<span class="inset">' . KT_I18N::translate('Earliest death year') . '</span>
 						<span class="filler">&nbsp;</span>
-						<span class="stats_data">'.$stats->firstDeathYear().'</span>
-						<p class="stats_record">'.$stats->firstDeath().'</p>
+						<span class="stats_data">' . $stats->firstDeathYear() . '</span>
+						<p class="stats_record">' . $stats->firstDeath() . '</p>
 					</li>
 				';
 			}
 			if ($stat_last_death) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Latest death year').'</span>
-						<span class="filler">&nbsp;</span><span class="stats_data">'.$stats->lastDeathYear().' </span>
-						<p class="stats_record">'.$stats->lastDeath().'</p>
+						<span class="inset">' . KT_I18N::translate('Latest death year') . '</span>
+						<span class="filler">&nbsp;</span><span class="stats_data">' . $stats->lastDeathYear() . ' </span>
+						<p class="stats_record">' . $stats->lastDeath() . '</p>
 					</li>
 				';
 			}
 			if ($stat_long_life) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Person who lived the longest').'</span>
-						<span class="filler">&nbsp;</span><span class="stats_data">'.$stats->LongestLifeAge().'</span>
-						<p class="stats_record">'.$stats->LongestLife().'</p>
+						<span class="inset">' . KT_I18N::translate('Person who lived the longest') . '</span>
+						<span class="filler">&nbsp;</span><span class="stats_data">' . $stats->LongestLifeAge() . '</span>
+						<p class="stats_record">' . $stats->LongestLife() . '</p>
 					</li>
 				';
 			}
 			if ($stat_avg_life) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Average age at death').'</span>
-						<span class="filler">&nbsp;</span><span class="stats_data">'.$stats->averageLifespan().'</span>
-						<p class="stats_record">'.KT_I18N::translate('Males').':&nbsp;'.$stats->averageLifespanMale().'&nbsp;&nbsp;&nbsp;'.KT_I18N::translate('Females').':&nbsp;'.$stats->averageLifespanFemale().'</p>
+						<span class="inset">' . KT_I18N::translate('Average age at death') . '</span>
+						<span class="filler">&nbsp;</span><span class="stats_data">' . $stats->averageLifespan() . '</span>
+						<p class="stats_record">' . KT_I18N::translate('Males') . ':&nbsp;' . $stats->averageLifespanMale() . '&nbsp;&nbsp;&nbsp;' . KT_I18N::translate('Females') . ':&nbsp;' . $stats->averageLifespanFemale() . '</p>
 					</li>
 				';
 			}
 			if ($stat_most_chil) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Family with the most children').'</span>
-						<span class="filler">&nbsp;</span><span class="stats_data">'.$stats->largestFamilySize().'</span>
-						<p class="stats_record">'.$stats->largestFamily().'</p>
+						<span class="inset">' . KT_I18N::translate('Family with the most children') . '</span>
+						<span class="filler">&nbsp;</span><span class="stats_data">' . $stats->largestFamilySize() . '</span>
+						<p class="stats_record">' . $stats->largestFamily() . '</p>
 					</li>
 				';
 			}
 			if ($stat_avg_chil) {
 				$content .= '
 					<li>
-						<span class="inset">'.KT_I18N::translate('Average number of children per family').'</span>
-						<span class="filler">&nbsp;</span><span class="stats_data">'.$stats->averageChildren().'</span>
+						<span class="inset">' . KT_I18N::translate('Average number of children per family') . '</span>
+						<span class="filler">&nbsp;</span><span class="stats_data">' . $stats->averageChildren() . '</span>
 					</li>
 				';
 			}
@@ -248,13 +248,13 @@ class widget_stats_KT_Module extends KT_Module implements KT_Module_Widget {
 		if ($stat_link) {
 			$content .= '
 				<h3>
-					<a href="statistics.php?ged='.KT_GEDURL.'">'.KT_I18N::translate('View statistics as graphs').'</a>
+					<a href="module.php?mod=chart_statistics&mod_action=show&ged=' . KT_GEDURL . '">' . KT_I18N::translate('View statistics as graphs') . '</a>
 				</h3>
 			';
 		}
 
 		if ($template) {
-			require KT_THEME_DIR.'templates/widget_template.php';
+			require KT_THEME_DIR . 'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -302,7 +302,7 @@ class widget_stats_KT_Module extends KT_Module implements KT_Module_Widget {
 
 		require_once KT_ROOT.'includes/functions/functions_edit.php';
 
-		$show_last_update=get_block_setting($widget_id, 'show_last_update', true);
+		$show_last_update = get_block_setting($widget_id, 'show_last_update', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for yes/no option */ KT_I18N::translate('Show date of last update?');
 		echo '</td><td class="optionbox">';
