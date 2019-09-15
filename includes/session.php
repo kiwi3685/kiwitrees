@@ -28,11 +28,11 @@ if (!defined('KT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('KT_KIWITREES',		'Kiwitrees');
-define('KT_VERSION',		'3.3.6');
+define('KT_VERSION',		'3.3.7');
 define('KT_VERSION_TEXT',	trim(KT_VERSION));
 
 // External URLs
-define('KT_KIWITREES_URL',    'https://kiwitrees.net/');
+define('KT_KIWITREES_URL',   'https://kiwitrees.net/');
 define('KT_TRANSLATORS_URL', 'https://kiwitrees.net/forums/forum/support-forum/translation/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
