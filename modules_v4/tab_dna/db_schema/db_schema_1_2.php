@@ -26,20 +26,16 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
-KT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##dna` (
-		`dna_id`	int(11) NOT NULL AUTO_INCREMENT,
-	    `id_a`		varchar(20) NOT NULL,
-	    `id_b`		varchar(20) NOT NULL,
-	    `cms`		int(10) NOT NULL,
-	    `seg`		int(10) NOT NULL,
-	    `source`	varchar(20) DEFAULT NULL,
-	    `note`		varchar(256) DEFAULT NULL,
-		`date`		timestamp NOT NULL DEFAULT current_timestamp(),
-	    UNIQUE KEY dna_id (dna_id),
-	    KEY id_a (id_a,id_b)
-	) COLLATE utf8_unicode_ci ENGINE=InnoDB"
-);
+try {
+	self::exec("
+		ALTER TABLE `##dna`
+			ADD COLUMN `percent` VARCHAR(10) DEFAULT NULL AFTER `seg`,
+			CHANGE `cms` `cms` VARCHAR(10) NULL,
+			CHANGE `seg` `seg` VARCHAR(10) NULL;
+	");
+} catch (PDOException $ex) {
+	// If this fails, it has probably already been done.
+}
 
 // Update the version to indicate success
 KT_Site::preference($schema_name, $next_version);

@@ -92,12 +92,13 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 					/*  1 relationship		*/ { },
 					/*  2 cms				*/ { className: "dt-body-right" },
 					/*  3 segments			*/ { className: "dt-body-right" },
-					/*  4 common ancestor	*/ null,
-					/*  5 source			*/ null,
-					/*  6 note				*/ null,
-					/*  7 date added		*/ null,
-					/*  8 edit				*/ { className: "dt-body-center" },
-					/*  9 delete			*/ { className: "dt-body-center" },
+					/*  4 percent			*/ { className: "dt-body-right" },
+					/*  5 common ancestor	*/ null,
+					/*  6 source			*/ null,
+					/*  7 note				*/ null,
+					/*  9 date added		*/ null,
+					/*  9 edit				*/ { className: "dt-body-center" },
+					/* 10 delete			*/ { className: "dt-body-center" },
 				],
 				stateSave: true,
 				stateDuration: -1,
@@ -137,6 +138,8 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 							<?php echo $this->DNAhelp('cms'); ?>
 							<br>
 							<?php echo $this->DNAhelp('seg'); ?>
+							<br>
+							<?php echo $this->DNAhelp('dnaShared'); ?>
 						</div>
 					</div>
 				</div>
@@ -147,6 +150,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 							<th><?php echo KT_I18N::translate('Relationship'); ?></th>
 							<th><?php echo KT_I18N::translate('cMs'); ?></th>
 							<th><?php echo KT_I18N::translate('Segments'); ?></th>
+							<th><?php echo KT_I18N::translate('%% DNA'); ?></th>
 							<th><?php echo KT_I18N::translate('Common ancestors'); ?></th>
 							<th><?php echo KT_I18N::translate('Source'); ?></th>
 							<th><?php echo KT_I18N::translate('Note'); ?></th>
@@ -168,34 +172,46 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 					<tbody>
 						<?php $rows = $this->getData($xref);
 						foreach ($rows as $row) {
-							($xref == $row->id_a) ? $personA = KT_Person::getInstance($row->id_b) : $personA = KT_Person::getInstance($row->id_a);
-							if (!$personA) {continue;} ?>
+							$relationship = '';
+							($xref == $row->id_a) ? $xrefA = $row->id_b : $xrefA = $row->id_a;
+							$personA = KT_Person::getInstance($xrefA); ?>
 							<tr>
 								<td>
-									<a href="<?php echo $personA->getHtmlUrl(); ?>" target="_blank">
-										<?php echo $personA->getFullName(); ?>
-									</a>
+									<?php if ($personA) { ?>
+										<a href="<?php echo $personA->getHtmlUrl(); ?>" target="_blank">
+											<?php echo $personA->getFullName(); ?>
+										</a>
+									<?php } else { ?>
+										<span class="error" title="<?php echo KT_I18N::translate('Invalid reference'); ?>"><?php echo $xrefA; ?></span>
+									<?php } ?>
 								</td>
 								<td>
-									<?php $relationship = ucfirst($this->findRelationship($person, $personA));
-									if ($relationship){ ?>
+									<?php $relationship = $this->findRelationship($person, $personA);
+									if ($relationship) { ?>
 										<a href="relationship.php?pid1=<?php echo $person->getXref(); ?>&amp;pid2=<?php echo $personA->getXref(); ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;find=1" target="_blank">
-											<?php echo $relationship; ?>
+											<?php echo ucfirst($relationship); ?>
 										</a>
 									<?php } else {
 										echo KT_I18N::translate('No relationship found');
 									} ?>
 								</td>
-								<td><?php echo KT_I18N::number($row->cms); ?></td>
-								<td><?php echo KT_I18N::number($row->seg); ?></td>
+								<td><?php echo $row->cms ? KT_I18N::number($row->cms) : ''; ?></td>
+								<td><?php echo $row->seg ? KT_I18N::number($row->seg) : ''; ?></td>
+								<td><?php echo $row->percent ? KT_I18N::percentage($row->percent / 100, 2) : ''; ?></td>
 								<td>
-									<?php echo $this->findCommonAncestor($person, $personA); ?>
+									<?php if ($relationship == KT_I18N::translate('father') || $relationship == KT_I18N::translate('mother') || $relationship == KT_I18N::translate('parent')) {
+										echo KT_I18N::translate('Not applicable');
+									} else {
+										echo $this->findCommonAncestor($person, $personA);
+									} ?>
 								<td>
 									<?php $source = KT_Source::getInstance($row->source);
 									if ($source) { ?>
 										<a href="<?php echo $source->getHtmlUrl(); ?>" target="_blank">
 											<?php echo$source->getFullName(); ?>
 										</a>
+									<?php } else { ?>
+										<span class="error" title="<?php echo KT_I18N::translate('Invalid reference'); ?>"><?php echo $row->source; ?></span>
 									<?php } ?>
 								</td>
 								<td style="font-style: italic; font-size: 95%;"><?php echo $row->note; ?></td>
@@ -236,29 +252,37 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 		$fullname	= $person->getFullName();
 		$xref		= $person->getXref();
 		$action		= KT_Filter::post('action');
-		$dna_id_b	= $cms = $seg = $source = $note = '';
+		$dna_id_b	= $cms = $seg = $percent = $source = $note = '';
 
 		$controller	= new KT_Controller_Page;
 		$controller
 			->pageHeader()
 			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
-			->addInlineJavascript('autocomplete();');
+			->addInlineJavascript('autocomplete();'); ?>
 
-		switch ($type) {
+		<style>
+			.help_content .hidden {display: none; margin: 0 10px; font-weight: normal;}
+		</style>
+		<?php switch ($type) {
 			case 'add':
 				$controller->setPageTitle(KT_I18N::translate('Add DNA data') . ' - ' . $person->getLifespanName());
+				$dna_id_a	= $pid;
+				$dna_id_b	= KT_Filter::post('dna_id_b');
+				$cms		= KT_Filter::post('cms', NULL,'');
+				$seg		= KT_Filter::post('seg', NULL,'');
+				$percent	= str_replace('%', '', KT_Filter::post('percent', NULL, ''));
+				$source		= KT_Filter::post('source');
+				$note		= KT_Filter::post('note');
+
+				$person_b	= '';
+				$source_b	= '';
+
 				if ($action == 'update_dna') {
-					$dna_id_a	= $pid;
-					$dna_id_b	= KT_Filter::post('dna_id_b');
-					$cms		= KT_Filter::post('cms');
-					$seg		= KT_Filter::post('seg');
-					$source		= KT_Filter::post('source');
-					$note		= KT_Filter::post('note');
 
 					KT_DB::prepare(
-						"INSERT INTO `##dna` (id_a, id_b, cms, seg, source, note) VALUES (?, ?, ?, ?, ?, ?)"
+						"INSERT INTO `##dna` (id_a, id_b, cms, seg, percent, source, note) VALUES (?, ?, ?, ?, ?, ?, ?)"
 					)->execute(array(
-						$dna_id_a, $dna_id_b, $cms, $seg, $source, $note
+						$dna_id_a, $dna_id_b, $cms, $seg, $percent, $source, $note
 					));
 
 					echo "
@@ -267,19 +291,45 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 							window.close();
 						</script>
 					";
+				} ?>
 
-				}
-				break;
+				<div id="edit_interface-page">
+					<h2><?php echo $controller->getPageTitle(); ?></h2>
+					<form name="adddna_form" method="post" action="">
+						<input type="hidden" name="action" value="update_dna">
+						<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+						<div id="add_facts">
+							<div id="adddna1_factdiv">
+								<label><?php echo KT_I18N::translate('Person connected by DNA'); ?></label>
+								<div class="input">
+									<input class="addDna_form" data-autocomplete-type="INDI" type="text" name="dna_id_b" id="dna_id_b" value="" autocomplete="off" autofocus>
+									<div class="autocomplete_label">
+										<?php echo ($person_b ? $person_b->getLifespanName() : ''); ?>
+									</div>
+								</div>
+							</div>
+							<div id="adddna2_factdiv">
+								<label><?php echo KT_I18N::translate('Source'); ?></label>
+								<div class="input">
+									<input class="addDna_form" data-autocomplete-type="SOUR" type="text" name="source" id="source" value="" autocomplete="off">
+									<a href="#" onclick="addnewsource(document.getElementById('SOUR')); return false;" class="icon-button_addsource" title="Create a new source"></a>
+									<div class="autocomplete_label">
+										<?php echo ($source_b ? strip_tags($source_b->getFullName()) : ''); ?>
+									</div>
+								</div>
+							</div>
+			<?php break;
 
 			case 'edit':
 				$controller->setPageTitle(KT_I18N::translate('Edit DNA data') . ' - ' . $person->getLifespanName());
-				$dna_id_b	= $cms = $seg = $source = $note = '';
+				$dna_id_b	= $cms = $seg = $percent = $source = $note = '';
 
 				$dna_id		= KT_Filter::get('dna-id');
 				$row		= $this->getData($pid, $dna_id);
-				$dna_id_b	= KT_Filter::post('id_b', NULL, $row->id_b);
+				$dna_id_b	= KT_Filter::post('dna_id_b', NULL, $row->id_b);
 				$cms		= KT_Filter::post('cms', NULL, $row->cms);
 				$seg		= KT_Filter::post('seg', NULL, $row->seg);
+				$percent	= str_replace('%', '', KT_Filter::post('percent', NULL, $row->percent));
 				$source		= KT_Filter::post('source', NULL, $row->source);
 				$note		= KT_Filter::post('note', NULL, $row->note);
 
@@ -287,51 +337,65 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 				$source_b	= KT_Source::getInstance($source, KT_GED_ID);
 
 				if ($action == 'update_dna') {
-
 					KT_DB::prepare(
 						"UPDATE `##dna`
 							SET
 								id_b		= ?,
 								cms			= ?,
 								seg			= ?,
+								percent		= ?,
 								source		= ?,
 								note		= ?
 							WHERE dna_id	= ?
 						"
-					)->execute(array($dna_id_b, $cms, $seg, $source, $note, $dna_id));
-
+					)->execute(array($dna_id_b, $cms, $seg, $percent, $source, $note, $dna_id));
 					echo "
 						<script>
 							opener.location.reload();
 							window.close();
 						</script>
 					";
+				}?>
 
-				}
-				break;
-		}
+				<div id="edit_interface-page">
+					<h2><?php echo $controller->getPageTitle(); ?></h2>
+					<form name="adddna_form" method="post" action="">
+						<input type="hidden" name="action" value="update_dna">
+						<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+						<div id="add_facts">
+							<div id="adddna1_factdiv">
+								<label><?php echo KT_I18N::translate('Person connected by DNA'); ?></label>
+								<div class="input">
+									<?php if ($person_b) { ?>
+										<input class="addDna_form" data-autocomplete-type="INDI" type="text" name="dna_id_b" id="dna_id_b" value="<?php echo $dna_id_b; ?>" autocomplete="off" autofocus>
+									<?php } else { ?>
+										<input class="addDna_form error" data-autocomplete-type="INDI" type="text" name="dna_id_b" id="dna_id_b" value="<?php echo $dna_id_b; ?>" autocomplete="off">
+									<?php }?>
+									<div class="autocomplete_label">
+										<?php echo ($person_b ? $person_b->getLifespanName() : ''); ?>
+									</div>
+								</div>
+							</div>
+							<div id="adddna2_factdiv">
+								<label><?php echo KT_I18N::translate('Source'); ?></label>
+								<div class="input">
+									<?php if ($source_b) { ?>
+										<input class="addDna_form" data-autocomplete-type="SOUR" type="text" name="source" id="source" value="<?php echo $row->source; ?>" autocomplete="off">
+									<?php } else { ?>
+										<input class="addDna_form error" data-autocomplete-type="SOUR" type="text" name="source" id="source" value="<?php echo $row->source; ?>" autocomplete="off">
+									<?php }?>
+									<a href="#" onclick="addnewsource(document.getElementById('SOUR')); return false;" class="icon-button_addsource" title="Create a new source"></a>
+									<div class="autocomplete_label">
+										<?php echo ($source_b ? strip_tags($source_b->getFullName()) : ''); ?>
+									</div>
+								</div>
+							</div>
 
-
-		?>
-		<style>
-			.help_content .hidden {display: none; margin: 0 10px; font-weight: normal;}
-		</style>
-		<div id="edit_interface-page">
-			<h2><?php echo $controller->getPageTitle(); ?></h2>
-			<form name="adddna_form" method="post" action="">
-				<input type="hidden" name="action" value="update_dna">
-				<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-				<div id="add_facts">
-					<div id="adddna1_factdiv">
-						<label><?php echo KT_I18N::translate('Person connected by DNA'); ?></label>
-						<div class="input">
-							<input class="addDna_form" data-autocomplete-type="INDI" type="text" name="dna_id_b" id="dna_id_b" value="<?php echo $dna_id_b; ?>" autocomplete="off" autofocus>
-							<div class="autocomplete_label"><?php echo $dna_id_b ? $person_b->getLifespanName() : ''; ?></div>
-						</div>
-					</div>
-					<div id="adddna2_factdiv">
+			<?php break;
+		} ?>
+					<div id="adddna3_factdiv">
 						<label><?php echo KT_I18N::translate('CentiMorgans'); ?>
-							<span class="help_text">
+							<span class="help_text" style="display: inline;">
 								<span class="help_content">
 									<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 									<span class="hidden">
@@ -344,9 +408,9 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 							<input class="addDna_form" type="text" name="cms" id="cms" value="<?php echo $cms; ?>">
 						</div>
 					</div>
-					<div id="adddna3_factdiv">
+					<div id="adddna4_factdiv">
 						<label><?php echo KT_I18N::translate('Segments'); ?>
-							<span class="help_text">
+							<span class="help_text" style="display: inline;">
 								<span class="help_content">
 									<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 									<span class="hidden">
@@ -359,15 +423,22 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 							<input class="addDna_form" type="text" name="seg" id="seg" value="<?php echo $seg; ?>">
 						</div>
 					</div>
-					<div id="adddna4_factdiv">
-						<label><?php echo KT_I18N::translate('Source'); ?></label>
+					<div id="adddna5_factdiv">
+						<label><?php echo KT_I18N::translate('Percentage DNA shared'); ?>
+							<span class="help_text" style="display: inline;">
+								<span class="help_content">
+									<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+									<span class="hidden">
+										<?php echo $this->DNAhelp('dnaShared'); ?>
+									</span>
+								</span>
+							</span>
+						</label>
 						<div class="input">
-							<input class="addDna_form" data-autocomplete-type="SOUR" type="text" name="source" id="source" value="<?php echo $source; ?>" autocomplete="off">
-							<a href="#" onclick="addnewsource(document.getElementById('SOUR')); return false;" class="icon-button_addsource" title="Create a new source"></a>
-							<div class="autocomplete_label"><?php echo $source ? strip_tags($source_b->getFullName()) : ''; ?></div>
+							<input class="addDna_form" type="text" name="percent" id="percent" value="<?php echo $percent; ?>">
 						</div>
 					</div>
-					<div id="adddna5_factdiv">
+					<div id="adddna6_factdiv">
 						<label><?php echo KT_I18N::translate('Note'); ?></label>
 						<div class="input">
 							<textarea id="note" name="note" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 32px;" value=""><?php echo $note; ?></textarea>
@@ -436,55 +507,62 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 
 	// check relationship between two individuals
 	public function findRelationship($person, $personA) {
-		$controller	 = new KT_Controller_Relationship();
-		$paths		 = $controller->calculateRelationships_123456($person, $personA, 1, 0);
-		foreach ($paths as $path) {
-			$relationships = $controller->oldStyleRelationshipPath($path);
-			if (empty($relationships)) {
-				// Cannot see one of the families/individuals, due to privacy;
-				continue;
+		if ($person && $personA) {
+			$controller	 = new KT_Controller_Relationship();
+			$paths		 = $controller->calculateRelationships_123456($person, $personA, 1, 0);
+			foreach ($paths as $path) {
+				$relationships = $controller->oldStyleRelationshipPath($path);
+				if (empty($relationships)) {
+					// Cannot see one of the families/individuals, due to privacy;
+					continue;
+				}
+				return get_relationship_name_from_path(implode('', $relationships), $person, $personA);
 			}
-			return get_relationship_name_from_path(implode('', $relationships), $person, $personA);
-
+		} else {
+			return false;
 		}
 	}
 
 	// find common ancestor for two individuals
 	public function findCommonAncestor($person, $personA) {
-		global $GEDCOM_ID_PREFIX;
-		$slcaController = new KT_Controller_Relationship;
-		$caAndPaths = $slcaController->calculateCaAndPaths_123456($person, $personA, 1, 0, false);
-		$html = '';
-		foreach ($caAndPaths as $caAndPath) {
-			$slcaKey = $caAndPath->getCommonAncestor();
-			if (substr($slcaKey, 0, 1) === $GEDCOM_ID_PREFIX) {
-				$indi = KT_Person::getInstance($slcaKey, KT_GED_ID);
-				if (($person !== $indi) && ($personA !== $indi)) {
-					$html = '';
-					$html .= '<a href="' . $indi->getHtmlUrl() . '" title="' . strip_tags($indi->getFullName()) . '">';
-					$html .= highlight_search_hits($indi->getFullName()) . '</a>';
-				}
-			} else {
-				$fam = KT_Family::getInstance($slcaKey, KT_GED_ID);
-				$names = array();
-				foreach ($fam->getSpouses() as $indi) {
-					$html = '';
-					$html .= '<a href="' . $indi->getHtmlUrl() . '" title="' . strip_tags($indi->getFullName()) . '">';
-					$html .= highlight_search_hits($indi->getFullName()) . '</a>';
+		if ($person && $personA) {
+			global $GEDCOM_ID_PREFIX;
+			$slcaController = new KT_Controller_Relationship;
+			$caAndPaths = $slcaController->calculateCaAndPaths_123456($person, $personA, 1, 0, false);
+			$html = '';
+			foreach ($caAndPaths as $caAndPath) {
+				$slcaKey = $caAndPath->getCommonAncestor();
+				if (substr($slcaKey, 0, 1) === $GEDCOM_ID_PREFIX) {
+					$indi = KT_Person::getInstance($slcaKey, KT_GED_ID);
+					if (($person !== $indi) && ($personA !== $indi)) {
+						$html = '';
+						$html .= '<a href="' . $indi->getHtmlUrl() . '" title="' . strip_tags($indi->getFullName()) . '">';
+						$html .= highlight_search_hits($indi->getFullName()) . '</a>';
+					}
+				} else {
+					$fam = KT_Family::getInstance($slcaKey, KT_GED_ID);
+					$names = array();
+					foreach ($fam->getSpouses() as $indi) {
+						$html = '';
+						$html .= '<a href="' . $indi->getHtmlUrl() . '" title="' . strip_tags($indi->getFullName()) . '">';
+						$html .= highlight_search_hits($indi->getFullName()) . '</a>';
 
-					$names[] = $indi->getFullName();
+						$names[] = $indi->getFullName();
+					}
+					$famName = implode(' & ', $names);
+					$html = '';
+					$html .= '<a href="' . $fam->getHtmlUrl() . '" title="' . strip_tags($famName) . '">';
+					$html .= highlight_search_hits($famName) . '</a>';
 				}
-				$famName = implode(' & ', $names);
-				$html = '';
-				$html .= '<a href="' . $fam->getHtmlUrl() . '" title="' . strip_tags($famName) . '">';
-				$html .= highlight_search_hits($famName) . '</a>';
 			}
-		}
 
-		if ($html) {
-			return $html;
+			if ($html) {
+				return $html;
+			} else {
+				return KT_I18N::translate('No common ancestor found');
+			}
 		} else {
-			return KT_I18N::translate('No common ancestor found');
+			return false;
 		}
 
 	}
@@ -492,7 +570,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {
-			KT_DB::updateSchema(KT_ROOT . KT_MODULES_DIR . 'tab_dna/db_schema/', 'DNA_SCHEMA_VERSION', 1);
+			KT_DB::updateSchema(KT_ROOT . KT_MODULES_DIR . 'tab_dna/db_schema/', 'DNA_SCHEMA_VERSION', 2);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
 			die($ex);
@@ -508,14 +586,22 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 					<br>
 					Ref: https://www.yourdnaguide.com/scp
 				');
-				break;
+			break;
 			case 'seg':
 				return /* I18N: help for DNA tab module */ KT_I18N::translate('
 					A DNA segment is a block, chunk, piece, string of DNA on a chromosome. It is typically determined by a start location and an end location on a chromosome. A segment refers to all the DNA in between and including the start and end locations.
 					<br>
 					Ref: https://segmentology.org/2015/05/07/what-is-a-segment/
 				');
-				break;
+			break;
+			case 'dnaShared':
+				return /* I18N: help for DNA tab module */ KT_I18N::translate('
+					An alternative to Shared cMs as a way of describing DNA relationships. Used by some DNA testing companies, but not all.
+					<br>
+					Ref: https://isogg.org/wiki/Autosomal_DNA_statistics
+				');
+			break;
+
 		}
 	}
 
