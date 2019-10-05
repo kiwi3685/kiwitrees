@@ -133,7 +133,7 @@ textarea {
 	border-style: inset;
 }
 
-button {
+button.btn {
 	cursor: pointer;
 	margin: 0 1px;
 	min-width: 100px;
