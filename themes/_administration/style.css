@@ -43,7 +43,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 table {border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
 i.fa {margin:0 5px;}
-button {
+button.btn {
 	cursor: pointer;
 	float: left;
 	margin: 10px;
