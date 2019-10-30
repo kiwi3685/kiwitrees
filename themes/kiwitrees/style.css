@@ -6712,6 +6712,7 @@ table.ca td {
 	border: 1px solid #aaa;
 	font-size: 90%;
 	padding: 4px 8px;
+	white-space: pre;
 }
 table.ca th {
 	background: #ddd;

@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2018 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,18 +58,10 @@ class KT_Census_CensusOfUnitedStates1910 extends KT_Census_CensusOfUnitedStates 
 			new KT_Census_CensusColumnNull($this, 'Lang', 'Whether able to speak English, of if not, give language spoken'),
 			new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Trade or profession of, or particular kind of work done by this person', 'width: 200px;'),
 			new KT_Census_CensusColumnNull($this, 'Ind', 'General nature of industry'),
-			new KT_Census_CensusColumnNull($this, 'Emp', 'Whether an employer, employee, or work on own account'),
-			new KT_Census_CensusColumnNull($this, 'Unemp', 'Whether out of work on April 15, 1910'),
-			new KT_Census_CensusColumnNull($this, 'Unemp', 'Number of weeks out of work in 1909'),
-			new KT_Census_CensusColumnNull($this, 'R', 'Whether able to read'),
-			new KT_Census_CensusColumnNull($this, 'W', 'Whether able to write'),
+			new KT_Census_CensusColumnNull($this, 'Read/Write', 'Can read and/or write'),
 			new KT_Census_CensusColumnNull($this, 'Sch', 'Attended school since September 1, 1909'),
-			new KT_Census_CensusColumnNull($this, 'Home', 'Owned or rented'),
-			new KT_Census_CensusColumnNull($this, 'Mort', 'Owned free or mortgaged'),
-			new KT_Census_CensusColumnNull($this, 'Farm', 'Farm or house'),
 			new KT_Census_CensusColumnNull($this, 'CW', 'Whether a survivor of the Union or Confederate Army or Navy'),
-			new KT_Census_CensusColumnNull($this, 'Blind', 'Whether blind (both eyes)'),
-			new KT_Census_CensusColumnNull($this, 'Deaf', 'Whether deaf and dumb'),
+			new KT_Census_CensusColumnNull($this, 'Disability', 'Whether deaf, dumb, or blind (both eyes)'),
 		);
 	}
 }
