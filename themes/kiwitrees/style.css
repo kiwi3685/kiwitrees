@@ -3256,12 +3256,17 @@ span.link_text {
 
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
+#personal_facts_content {
+	overflow-x: hidden;	
+}
 #personal_facts_content .fact_NOTE,
 #personal_facts_content .fact_SOUR,
 #family-table .fact_NOTE,
 #family-table .fact_SOUR {
-	margin: 5px 3px 5px 0;
 	clear: both;
+	margin: 5px 3px 5px 0;
+	max-width: 90%;
+	overflow-x: auto;
 }
 
 #personal_facts_content .facts_table .descriptionbox .editfacts a {
