@@ -991,6 +991,11 @@ function print_main_notes(KT_Event $fact, $level) {
 				// If Census assistant installed,
 				if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 					$text = census_assistant_KT_Module::formatCensusNote($note);
+
+					if (preg_match('/<span id="title">.*<\/span>/', $text, $match)) {
+						$first_line	= '<a href="' . $note->getHtmlUrl() . '">' . $match[0] . '</a>';
+						$text		= preg_replace('/<span id="title">.*<\/span>/', $first_line, $text);
+					}
 				} else {
 					$text = KT_Filter::formatText($note->getNote());
 				}
