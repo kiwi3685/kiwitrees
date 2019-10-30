@@ -113,7 +113,7 @@ class census_assistant_KT_Module extends KT_Module {
 	 * @return string
 	 */
 	public static function formatCensusNote(KT_Note $note) {
-		global $KT_TREE;
+		global $KT_TREE, $EXPAND_NOTES;
 
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
@@ -192,9 +192,17 @@ class census_assistant_KT_Module extends KT_Module {
 				$tbody .= '</tr>';
 			}
 
+			if ($EXPAND_NOTES) {
+				// Special case required to display title for census-assistant shared notes when expanded by default
+				// The title span here is removed and added to the note title in includes/functions/functions_print.php/function print_note_record(...)
+				$preamble = '<span id="title">' . $title . '</span><p>' . $preamble . '</p>';
+			} else {
+				$preamble = '<p>' . $preamble . '</p>';
+			}
+
 			return
-				'<div class="census_text">
-					<p>' . $preamble . '</p>
+				'<div class="census_text">' .
+					$preamble . '
 					<table class="ca">
 						<thead>' . $thead . '</thead>
 						<tbody>' . $tbody . '</tbody>

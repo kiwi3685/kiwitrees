@@ -435,6 +435,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	}
 
 	$text_cont = get_cont($nlevel, $nrec);
+	$first_line = '';
 
 	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @(' . KT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
@@ -442,24 +443,46 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$label = 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
 		if (KT_Module::getModuleByName('census_assistant')) {
-			$html = census_assistant_KT_Module::formatCensusNote($note);
+			$html	= census_assistant_KT_Module::formatCensusNote($note);
 		} else {
-			$html = KT_Filter::formatText($note->getNote());
+			$html	= KT_Filter::formatText($note->getNote());
 		}
 	} else {
 		$note	= null;
 		$label	= 'NOTE';
 		$html	= $text . $text_cont;
 	}
+
 	if ($textOnly) {
 		return strip_tags($html);
 	}
+
 	if (strpos($text . $text_cont, $returnChar) === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
 		return KT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
 	} elseif ($EXPAND_NOTES) {
 		// A multi-line note, and we're expanding notes by default
-		return KT_Gedcom_Tag::getLabelValue($label, $html);
+		$element_id = 'N-' . (int)(microtime(true)*1000000);
+
+		// special case required to display title for census shared notes when expanded by default
+		if (preg_match('/<span id="title">.*<\/span>/', $html, $match)) {
+			if (KT_SCRIPT_NAME === 'note.php') {
+				$first_line = $match[0];
+			} else {
+				$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $match[0] . '</a>';			
+			}
+			$html = preg_replace('/<span id="title">.*<\/span>/', '', $html);
+		}
+
+		return
+			'<div class="fact_NOTE">
+				<span class="label">
+					' . KT_Gedcom_Tag::getLabel($label) . ':&nbsp;
+				</span>' .
+				$first_line . '
+				<div class="note_details" id="' . $element_id . '">' . $html . '</div>
+			</div>
+		';
 	} else {
 		// A multi-line note, with an expand/collapse option
 		$element_id = 'N-' . (int)(microtime(true)*1000000);
@@ -483,11 +506,13 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			';
 			$expand2 = '" style="display:none"';
 		}
+
 		return
 			'<div class="fact_NOTE">
 				<span class="label">
 					' . KT_Gedcom_Tag::getLabel($label) . ':&nbsp;
-				</span>
+				</span>' .
+				$first_line . '
 				<span id="' . $element_id . '-alt">' . $first_line . $expand1 . '</span>
 				<div class="note_details" id="' . $element_id . '"' . $expand2 . '>' . $html . '</div>
 			</div>
