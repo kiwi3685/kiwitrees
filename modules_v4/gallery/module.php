@@ -304,28 +304,6 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 										echo '</label>';
 										?>
 									</div>
-									<div id="googlephotos-div">
-										<p>
-											<?php
-											echo '<input id="googlephotos-radio" type="radio" name="plugin" value="googlephotos"';
-											if ($plugin == 'googlephotos') {
-												echo ' checked ';
-											}
-											echo ' onclick="hide_fields();">' . KT_I18N::translate('Google Photos');
-											?>
-										</p>
-										<?php
-										echo '<label class="vis"';
-											if ($plugin == 'googlephotos') {
-												echo ' style="visibility:visible;">';
-											} else {
-												echo ' style="visibility:hidden;">';
-											}
-											echo KT_I18N::translate('Google Photos album ID');
-											echo '<input id="googlephotos" type="text" name="gallery_folder_p" tabindex="1" value="' . htmlspecialchars($item_folder_p) . '">';
-										echo '</label>';
-										?>
-									</div>
 								</td>
 							</tr>
 						</table>
@@ -448,7 +426,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 			ckeditor_KT_Module::enableEditor($controller);
 		}
 
-		$action = safe_POST('action');
+		$action = KT_Filter::post('action');
 
 		if ($action == 'update') {
 			set_module_setting($this->getName(), 'HEADER_TITLE',		safe_POST('NEW_HEADER_TITLE'));
@@ -609,15 +587,15 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 
 	private function getJavaScript($item_id) {
 		$theme	= get_module_setting($this->getName(), 'THEME_DIR', 'classic');
-		$plugin=get_block_setting($item_id, 'plugin');
+		$plugin	= get_block_setting($item_id, 'plugin');
 
-		$js='Galleria.loadTheme("'.KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/themes/'.$theme.'/galleria.'.$theme.'.min.js");';
-			switch ($plugin) {
+		$js		= 'Galleria.loadTheme("' . KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/galleria/themes/' . $theme . '/galleria.' . $theme . '.min.js");';
+		switch ($plugin) {
 			case 'flickr':
 			$flickr_set = get_block_setting($item_id, 'gallery_folder_f');
-			$js.='
+			$js	.= '
 				Galleria.run("#galleria", {
-					flickr: "set:'.$flickr_set.'",
+					flickr: "set:' . $flickr_set . '",
 					flickrOptions: {
 						sort: "date-posted-asc",
 						description: true,
@@ -628,40 +606,26 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 				});
 			';
 			break;
-			case 'googlephotos':
-			$googlephotos_set = get_block_setting($item_id, 'gallery_folder_p');
-			$js.='
-				Galleria.run("#galleria", {
-					googlephotos: "photos.google.com/share/' . $googlephotos_set . '",
-//					googlephotosOptions: {
-//						sort: "date-posted-asc",
-//						imageSize: "original"
-//					},
-					_showCaption: false,
-					imageCrop: false
-				});
-			';
-			break;
 			default:
-			$js.='
+			$js	.='
 				Galleria.ready(function(options) {
 					this.bind("image", function(e) {
 						data = e.galleriaData;
-						$("#links_bar").html(data.layer);
+						jQuery("#links_bar").html(data.layer);
 					});
 				});
 				Galleria.run("#galleria", {
 					imageCrop: false,
 					_showCaption: false,
 					_locale: {
-						show_captions:		"'.KT_I18N::translate('Show descriptions').'",
-						hide_captions:		"'.KT_I18N::translate('Hide descriptions').'",
-						play:				"'.KT_I18N::translate('Play slideshow').'",
-						pause:				"'.KT_I18N::translate('Pause slideshow').'",
-						enter_fullscreen:	"'.KT_I18N::translate('Enter fullscreen').'",
-						exit_fullscreen:	"'.KT_I18N::translate('Exit fullscreen').'",
-						next:				"'.KT_I18N::translate('Next image').'",
-						prev:				"'.KT_I18N::translate('Previous image').'",
+						show_captions:		"' . KT_I18N::translate('Show descriptions') . '",
+						hide_captions:		"' . KT_I18N::translate('Hide descriptions') . '",
+						play:				"' . KT_I18N::translate('Play slideshow') . '",
+						pause:				"' . KT_I18N::translate('Pause slideshow') . '",
+						enter_fullscreen:	"' . KT_I18N::translate('Enter fullscreen') . '",
+						exit_fullscreen:	"' . KT_I18N::translate('Exit fullscreen') . '",
+						next:				"' . KT_I18N::translate('Next image') . '",
+						prev:				"' . KT_I18N::translate('Previous image') . '",
 						showing_image:		"" // counter not compatible with I18N of kiwitrees
 					}
 				});
@@ -733,14 +697,13 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 	private function show() {
 		global $MEDIA_DIRECTORY, $controller;
 		$item_id	= KT_Filter::get('gallery_id');
-		$version	= '1.5.7';
+		$version	= '1.6.1';
 		$controller = new KT_Controller_Page();
 		$controller
 			->setPageTitle($this->getMenuTitle())
 			->pageHeader()
-			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/galleria-' . $version . '.min.js')
-			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/plugins/flickr/galleria.flickr.min.js')
-			->addExternalJavaScript(KT_STATIC_URL.KT_MODULES_DIR.$this->getName().'/galleria/plugins/googlephotos/galleria.googlephotos.js')
+			->addExternalJavaScript(KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/galleria/galleria.min.js')
+			->addExternalJavaScript(KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/galleria/plugins/flickr/galleria.flickr.min.js')
 			->addInlineJavaScript($this->getJavaScript($item_id));
 		?>
 
@@ -752,7 +715,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 				<div id="gallery_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 					<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 						<?php
-						$item_list=$this->getAlbumList();
+						$item_list = $this->getAlbumList();
 						foreach ($item_list as $item) {
 							$languages=get_block_setting($item->block_id, 'languages');
 							if ((!$languages || in_array(KT_LOCALE, explode(',', $languages))) && $item->gallery_access >= KT_USER_ACCESS_LEVEL) { ?>
@@ -767,7 +730,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 					<div id="outer_gallery_container">
 						<?php
 						foreach ($item_list as $item) {
-							$languages=get_block_setting($item->block_id, 'languages');
+							$languages = get_block_setting($item->block_id, 'languages');
 							if ((!$languages || in_array(KT_LOCALE, explode(',', $languages))) && $item_id==$item->block_id && $item->gallery_access>=KT_USER_ACCESS_LEVEL) {
 								$item_gallery = '
 									<h4>' . KT_I18N::translate($item->gallery_description) . '</h4>' .
@@ -789,17 +752,17 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 	// Print the gallery display
 	private function mediaDisplay($sub_folder, $item_id, $version) {
 		global $MEDIA_DIRECTORY;
-		$plugin = get_block_setting($item_id, 'plugin');
-		$images = '';
-		$media_links = '';
+		$plugin			= get_block_setting($item_id, 'plugin');
+		$images			= '';
+		$media_links 	= '';
 		// Get the related media items
-		$sub_folder=str_replace($MEDIA_DIRECTORY, "",$sub_folder);
-		$sql = "SELECT * FROM ##media WHERE m_filename LIKE '%" . $sub_folder . "%' ORDER BY m_filename";
-		$rows = KT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
+		$sub_folder	= str_replace($MEDIA_DIRECTORY, "",$sub_folder);
+		$sql		= "SELECT * FROM ##media WHERE m_filename LIKE '%" . $sub_folder . "%' ORDER BY m_filename";
+		$rows		= KT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
 		if ($plugin == 'kiwitrees') {
 			foreach ($rows as $rowm) {
 				// Get info on how to handle this media file
-				$media=KT_Media::getInstance($rowm['m_id']);
+				$media	= KT_Media::getInstance($rowm['m_id']);
 				if ($media->canDisplayDetails()) {
 					$links = array_merge(
 						$media->fetchLinkedIndividuals(),
@@ -809,21 +772,21 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 					$rawTitle = $rowm['m_titl'];
 					if (empty($rawTitle)) $rawTitle = get_gedcom_value('TITL', 2, $rowm['m_gedcom']);
 					if (empty($rawTitle)) $rawTitle = basename($rowm['m_filename']);
-					$mediaTitle = htmlspecialchars(strip_tags($rawTitle));
-					$rawUrl = $media->getHtmlUrlDirect();
-					$thumbUrl = $media->getHtmlUrlDirect('thumb');
-					$media_notes = $this->FormatGalleryNotes($rowm['m_gedcom']);
-					$mime_type = $media->mimeType();
-					$gallery_links='';
+					$mediaTitle		= htmlspecialchars(strip_tags($rawTitle));
+					$rawUrl			= $media->getHtmlUrlDirect();
+					$thumbUrl		= $media->getHtmlUrlDirect('thumb');
+					$media_notes	= $this->FormatGalleryNotes($rowm['m_gedcom']);
+					$mime_type		= $media->mimeType();
+					$gallery_links	= '';
 					if (KT_USER_CAN_EDIT) {
-						$gallery_links.='<div class="edit_links">';
-							$gallery_links .='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.KT_THEME_URL.'images/edit.png" title="'.KT_I18N::translate('Edit').'"></a></div>';
+						$gallery_links .= '<div class="edit_links">';
+							$gallery_links .= '<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.KT_THEME_URL.'images/edit.png" title="' . KT_I18N::translate('Edit').'"></a></div>';
 							if (KT_USER_GEDCOM_ADMIN) {
 								if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 									$gallery_links.='<div class="image_option"><a href="inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . KT_GEDCOM . '" target="_blank" rel="noopener noreferrer"><img src="' . KT_THEME_URL . 'images/link.png" title="' . KT_I18N::translate('Manage links') . '"></a></div>';
 								}
 							}
-						$gallery_links.='</div><hr>';// close .edit_links
+						$gallery_links .= '</div><hr>';// close .edit_links
 					}
 					if ($links) {
 						$gallery_links .= '<h4>'.KT_I18N::translate('Linked to:').'</h4>';
@@ -873,7 +836,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 		$themes = array();
 		$d = dir(KT_MODULES_DIR.$this->getName(). '/galleria/themes/');
 		while (false !== ($folder = $d->read())) {
-			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(KT_MODULES_DIR.$this->getName(). '/galleria/themes/'.$folder)) {
+			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(KT_MODULES_DIR . $this->getName() . '/galleria/themes/' . $folder)) {
 				$themes[] = $folder;
 			}
 		}

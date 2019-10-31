@@ -61,9 +61,7 @@ case 'gallery_source':
 	'<br><br>'.
 	'For Flickr (www.flickr.com), enter the <strong>Set</strong> number of your images, usually a long number like <strong>72157633272831222</strong>. Nothing else is required in this field.'.
 	'<br><br>'.
-	'For Picassa (picasaweb.google.com) enter your user name and user album, in the format <strong>username/album</strong> like <strong>kiwi3685/NZImages</strong>'.
-	'<br><br>'.
-	'The module will add these references to the correct URLs to link to your Flickr or Picasa sites.');
+	'The module will add these references to the correct URLs to link to your Flickr site.');
 	break;
 
 case 'gallery_theme':
@@ -76,6 +74,6 @@ case 'gallery_theme':
 	'<br><br>'.
 	'To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the kiwitrees /modules_vX/gallery/galleria/themes/ folder.'.
 	'<br>'.
-	'You should then add a 250px x 140px thumbnail image to suit in the kiwitrees /modules_vX/gallery/images folder, named to match the theme and of type png (like azur.png).');
+	'You should then add a 250px x 140px thumbnail image to suit in the kiwitrees /modules_vX/gallery/images folder, named to match the theme and of type png (like classic.png).');
 	break;
 }

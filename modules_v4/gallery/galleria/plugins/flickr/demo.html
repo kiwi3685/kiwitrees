@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Galleria Picasa Plugin</title>
+        <title>Galleria Flickr Plugin</title>
         <style>
 
             /* Demo styles */
@@ -23,31 +23,38 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 
         <!-- load Galleria -->
-        <script src="../../galleria-1.5.7.min.js"></script>
+        <script src="../../galleria.js"></script>
 
-        <!-- load picasa plugin -->
-        <script src="galleria.picasa.min.js"></script>
+        <!-- load flickr plugin -->
+        <script src="galleria.flickr.js"></script>
 
     </head>
 <body>
     <div class="content">
-        <h1>Galleria Picasa Plugin Demo</h1>
-        <p>Demonstrating a basic gallery example with photos from a Picasa album.</p>
+        <h1>Galleria Flickr Plugin Demo</h1>
+        <p>Demonstrating a basic gallery example with a Flickr search.</p>
 
-        <!-- Adding gallery images. This is just a container for the dynamic picasa images -->
+        <!-- Adding gallery images. This is just a container for the dynamic flickr images -->
 
         <div id="galleria"></div>
 
-        <p class="cred">Made by <a href="http://galleria.io">Galleria</a>.</p>
+        <a href="#" id="close">close</a>
     </div>
     <script>
     $(function() {
         // Load the classic theme
-        Galleria.loadTheme('../../themes/classic/galleria.classic.min.js');
+        Galleria.loadTheme('../../themes/classic/galleria.classic.js');
 
+        // Initialize Galleria
         Galleria.run('#galleria', {
-            // The user & album. This example fetches the album "Demo" from the user "galleriajs"
-            picasa: 'useralbum:galleriajs/Demo'
+
+            // search flickr for "galleria"
+            flickr: 'search:galleria',
+
+            flickrOptions: {
+                // sort by interestingness
+                sort: 'interestingness-desc'
+            }
         });
     });
     </script>

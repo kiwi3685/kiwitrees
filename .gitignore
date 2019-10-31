@@ -22,7 +22,10 @@
 /modules_v4/advent
 /modules_v4/database_backup/vendor/r23/msd/work
 /modules_v4/gallery/galleria/themes/azur
+/modules_v4/gallery/galleria/themes/folio
 /modules_v4/gallery/galleria/themes/fullscreen
+/modules_v4/gallery/galleria/themes/miniml
+/modules_v4/gallery/galleria/themes/twelve
 
 /modules_v4/pages_*
 /themes/levy
