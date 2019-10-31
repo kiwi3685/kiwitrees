@@ -192,23 +192,18 @@ class census_assistant_KT_Module extends KT_Module {
 				$tbody .= '</tr>';
 			}
 
-			if ($EXPAND_NOTES) {
-				// Special case required to display title for census-assistant shared notes when expanded by default
-				// The title span here is removed and added to the note title in includes/functions/functions_print.php/function print_note_record(...)
-				$preamble = '<span id="title">' . $title . '</span><p>' . $preamble . '</p>';
-			} else {
-				$preamble = '<p>' . $preamble . '</p>';
-			}
-
 			return
-				'<div class="census_text">' .
-					$preamble . '
+				'<div class="census_text">
+					<span id="title">' . $title . '</span>
+					<p>' . $preamble . '</p>
 					<table class="ca">
 						<thead>' . $thead . '</thead>
 						<tbody>' . $tbody . '</tbody>
 					</table>
 					<p>' . $postamble . '</p>
-				</div>';
+				</div>
+			';
+
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return KT_Filter::formatText($note->getNote());
