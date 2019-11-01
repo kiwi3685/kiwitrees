@@ -491,12 +491,18 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			}
 		}
 
+		if ($EXPAND_NOTES) {
+			$plusminus='icon-minus';
+		} else {
+			$plusminus='icon-plus';
+		}
+		$expand1 = '
+			<a href="#" onclick="expand_layer(\'' . $element_id . '\');">
+				<i id="' . $element_id . '_img" class="' . $plusminus . '"></i>
+			</a>
+		';
+
 		if (!$EXPAND_NOTES && KT_SCRIPT_NAME !== 'note.php') {
-			$expand1 = '
-				<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;">
-					<i id="' . $element_id . '_img" class="icon-plus"></i>
-				</a>
-			';
 			$expand2 = '" style="display:none"';
 		}
 
