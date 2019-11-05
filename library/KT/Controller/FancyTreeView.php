@@ -294,7 +294,7 @@ class KT_Controller_FancyTreeView {
 		if ($this->checkPrivacy($this->generation, true)) {
 			$html .= $this->printPrivateBlock();
 		} else {
-			$html .= $this->printBlockContent($module);
+			$html .= $this->printBlockContent($module, $i);
 		}
 
 		$html .= '</li>';
@@ -330,7 +330,7 @@ class KT_Controller_FancyTreeView {
 	 *
 	 * @return string
 	 */
-	protected function printBlockContent($module) {
+	protected function printBlockContent($module, $i) {
 		$html = '<ol class="blockcontent generation">';
 		foreach (array_unique($this->generation) as $pid) {
 			$person = $this->getPerson($pid);
@@ -344,7 +344,7 @@ class KT_Controller_FancyTreeView {
 					} // Added prefix (S = Single) to prevent double id's.
 				}
 				$class = $person->canDisplayDetails() ? 'family' : 'family private';
-				$html .= '<li id="' . $id . '" class="' . $class . '">' . $this->printPerson($person, $module) . '</li>';
+				$html .= '<li id="' . $id . '" class="' . $class . '">' . $this->printPerson($person, $module, $i) . '</li>';
 			}
 		}
 		$html .= '</ol>';
@@ -382,7 +382,7 @@ class KT_Controller_FancyTreeView {
 	 * @param type $module
 	 * @return string (html)
 	 */
-	public function printPerson($person, $module) {
+	public function printPerson($person, $module, $i) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		if ($person->canDisplayDetails()) {
@@ -433,8 +433,9 @@ class KT_Controller_FancyTreeView {
 				}
 
 				// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
-				// print only print children once per couple on the ancestors version, if the "show children" option is selected.
-				if ($module == 'fancy_treeview_descendants' || ($module == 'fancy_treeview_ancestors' && $person->getSex() === 'F' && $this->options($module, 'show_chil'))) {
+				// print children only once per couple on the ancestors version, if the "show children" option is selected.
+				// do not print children of gen 1 ($i) couple if this is ancestors report
+				if ($module == 'fancy_treeview_descendants' || ($module == 'fancy_treeview_ancestors' && $i > 1 && $person->getSex() === 'F' && $this->options($module, 'show_chil'))) {
 					foreach ($person->getSpouseFamilies(KT_PRIV_HIDE) as $family) {
 						$spouse = $family->getSpouse($person);
 						$html .= $this->printChildren($family, $person, $spouse, $module);
