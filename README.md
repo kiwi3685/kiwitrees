@@ -44,8 +44,10 @@ You should have received a copy of the GNU General Public License along with Ki
 *   Approximately 65MB of disk space for the application files, plus whatever is needed for your multi-media files, GEDCOM files and database.
 
 ### PHP
-*   PHP 5.6.0 or later. Note that many web hosts offer *both* PHP4 and PHP5, typically with PHP4 as the default. If this is the case, you will be able to switch between the two using a control panel or a configuration file. Refer to your web host's support documentation for details. <span style="color: #008000;">_**PHP 7+** can also be used. However testing on this platform is not complete so bugs may still exist. Please use the **support forum** to report and discuss these. They will be fixed as soon as we are aware of any new ones._</span>
-    *   PHP should be configured with the PHP/PDO library for MySQL. This is a server configuration option. It is enabled by default on most hosts. See [http://php.net/pdo](http://php.net/pdo)
+*   PHP 7.0 or later
+    *   PHP must be configured with the following libraries:
+		*   PDO and pdo_mysql to enable access to MySQL. These are enabled by default on most hosts. See http://php.net/pdo,
+		* 	php_gd(v2) for images
     *   PHP should be configured to allow sufficient server resources (memory and execution time) for the size of your system. Typical requirements are:
         *   Small systems (500 individuals): 16-32MB, 10-20 seconds
         *   Medium systems (5000 individuals): 32-64MB, 20-40 seconds
