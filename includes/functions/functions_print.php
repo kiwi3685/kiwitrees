@@ -452,7 +452,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	} else {
 		$note	= null;
 		$label	= 'NOTE';
-		$html	= $text . $text_cont;
+		$html	= KT_Filter::formatText($text . $text_cont);
 	}
 
 	if ($textOnly) {
@@ -486,7 +486,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			if (strlen($text) > 100) {
 				$first_line = mb_substr($text, 0, 100) . KT_I18N::translate('…');
 			} else {
-				$first_line	= $text;
+				$first_line	= KT_Filter::formatText($text);
 				$html		= $text_cont;
 			}
 		}

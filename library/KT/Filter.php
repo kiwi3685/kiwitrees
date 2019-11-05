@@ -104,7 +104,7 @@ class KT_Filter {
 	 * @return string
 	 */
 	public static function formatText($text) {
-		return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
+		return '<div style="display: inline; white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
 	}
 
 	/**
