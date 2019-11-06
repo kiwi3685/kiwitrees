@@ -179,6 +179,7 @@ abstract class KT_Module {
 		return $array;
 	}
 
+	// LIST ACTIVE MODULES
 	// Get a list of all the active, authorised blocks
 	static public function getActiveBlocks($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $blocks = null;
@@ -204,15 +205,6 @@ abstract class KT_Module {
 			$lists = self::getActiveModulesByComponent('list', $ged_id, $access_level);
 		}
 		return $lists;
-	}
-	// Get a list of modules which (a) provide a list and (b) we have permission to see.
-	public static function isActiveList($ged_id = KT_GED_ID, $module, $access_level) {
-		return array_key_exists($module, self::getActiveModulesByComponent('list', $ged_id, $access_level));
-	}
-
-	// Get a list of modules which (a) provide a chart and (b) we have permission to see.
-	public static function isActiveChart($ged_id = KT_GED_ID, $module, $access_level) {
-		return array_key_exists($module, self::getActiveModulesByComponent('chart', $ged_id, $access_level));
 	}
 
 	// Get a list of all the active, authorised menus
@@ -258,6 +250,22 @@ abstract class KT_Module {
 			$widgets = self::getActiveModulesByComponent('widget', $ged_id, $access_level);
 		}
 		return $widgets;
+	}
+
+	// CHECK MODULE ACCESS
+	// Check module (a) provides a list and (b) we have permission to see.
+	public static function isActiveList($ged_id = KT_GED_ID, $module, $access_level) {
+		return array_key_exists($module, self::getActiveModulesByComponent('list', $ged_id, $access_level));
+	}
+
+	// Check module (a) provides a chart and (b) we have permission to see.
+	public static function isActiveChart($ged_id = KT_GED_ID, $module, $access_level) {
+		return array_key_exists($module, self::getActiveModulesByComponent('chart', $ged_id, $access_level));
+	}
+
+	// heck module (a) provides a sidebar and (b) we have permission to see.
+	public static function isActiveSidebar($ged_id = KT_GED_ID, $module, $access_level) {
+		return array_key_exists($module, self::getActiveModulesByComponent('sidebar', $ged_id, $access_level));
 	}
 
 	/**
