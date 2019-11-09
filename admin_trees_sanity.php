@@ -394,7 +394,7 @@ $controller
 				<div>' . $data['html'] . '</div>';
 			}
 			if (KT_Filter::post('age')) {
-				$data = invalid_tag('AGE');
+				$data = invalid_age();
 				echo '<h5>' . KT_I18N::translate('%s individuals or families have age incorrectly recorded', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>

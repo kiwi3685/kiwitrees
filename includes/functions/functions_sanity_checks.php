@@ -162,22 +162,31 @@ function missing_tag($tag) {
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
 
-function invalid_tag($tag) {
-	$html	= '<ul>';
-	$count	= 0;
-	$start	= microtime(true);
+function invalid_age() {
+	$html		= '<ul>';
+	$count		= 0;
+	$start		= microtime(true);
+
 	// Individuals
 	$rows	= KT_DB::prepare("
 		SELECT i_id AS xref, i_gedcom AS gedrec
 			FROM `##individuals`
 			WHERE `i_file` = ?
-			AND `i_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n') COLLATE utf8_bin
-		")->execute(array(KT_GED_ID, $tag))->fetchAll();
+			AND `i_gedcom` REGEXP CONCAT('[0-9] ', 'AGE') COLLATE utf8_bin
+			AND `i_gedcom` NOT REGEXP CONCAT('[0-9] ', 'AGE', ' [0-9]{1,3}[a-z]{1}') COLLATE utf8_bin
+		")->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
+		$gedrec	= '';
 		$person = KT_Person::getInstance($row->xref);
+		if (preg_match('/\n\d AGE.*\n/i', $row->gedrec, $match)) {
+			$gedrec = preg_replace('/\d AGE /', '', $match[0]);
+		}
 		$html 	.= '
 			<li>
 				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>
+				&nbsp;(
+				<span>' . $gedrec . '</span>
+				&nbsp;)
 			</li>';
 		$count	++;
 	}
@@ -186,13 +195,23 @@ function invalid_tag($tag) {
 		SELECT f_id AS xref, f_gedcom AS gedrec
 			FROM `##families`
 			WHERE `f_file` = ?
-			AND BINARY `f_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n') COLLATE utf8_bin
-		")->execute(array(KT_GED_ID, $tag))->fetchAll();
+			AND BINARY `f_gedcom` REGEXP CONCAT('\n[0-9] ', 'AGE') COLLATE utf8_bin
+			AND BINARY `f_gedcom` NOT REGEXP CONCAT('[0-9] ', 'AGE', ' [0-9]{1,3}[a-z]{1}') COLLATE utf8_bin
+		")->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
+		$gedrec	= '';
 		$family = KT_Family::getInstance($row->xref);
+		if (preg_match_all('/\n\d AGE.*/', $row->gedrec, $match)) {
+			foreach ($match[0] as $value) {
+				$gedrec .= preg_replace('/\d AGE /', '', $value);
+			}
+		}
 		$html 	.= '
 			<li>
 				<a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a>
+				&nbsp;(
+				<span>' . $gedrec . '</span>
+				&nbsp;)
 			</li>';
 		$count	++;
 	}
