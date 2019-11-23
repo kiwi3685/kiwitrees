@@ -411,14 +411,15 @@ function report_findfact($fact, $type='') {
 	return $list;
 }
 
-function filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $type=false) {
+function filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $type = false) {
 	if ($year_from || $year_to || $place || $detail || $type) {
 		$result_place	= format_fact_place($item, true);
 		$result_date	= format_fact_date($item, $person, false, true, false);
 		$result_detail	= print_resourcefactDetails($item, $person);
+		$result_type	= false;
 		if ($type) {
 			$ct = preg_match("/2 TYPE (.*)/", $item->getGedcomRecord(), $ematch);
-			if ($ct>0) {
+			if ($ct > 0) {
 				$result_type = trim($ematch[1]);
 			}
 		}

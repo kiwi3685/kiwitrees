@@ -113,7 +113,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 
 		// set list of facts that have level 2 TYPE subtag
 		$typefacts = array();
-		foreach ($level2_tags as $key=>$value) {
+		foreach ($level2_tags as $key => $value) {
 			$key == 'TYPE' ? $typefacts[] = $value : '';
 		}
 		$typefacts = array_values(array_intersect(call_user_func_array('array_merge', $typefacts), $indifacts));
@@ -154,10 +154,10 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 				    var form = this.form;
 					if (jQuery.inArray(this.value, typefacts) !== -1) {
 				        form.elements.type.disabled = false;
-						jQuery("#disable_type").css("opacity", "initial");
+						jQuery("#disable_type input").css("opacity", "initial");
 				    } else {
 				        form.elements.type.disabled = true;
-						jQuery("#disable_type").css("opacity", "0.4");
+						jQuery("#disable_type input").css("opacity", "0.4");
 				    }
 				};
 				fact.onchange();
@@ -204,7 +204,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 						</div>
 						<div class="chart_options" id="disable_type">
 							<label for="type"><?php echo KT_I18N::translate('Type'); ?></label>
-							<input type="text" data-autocomplete-type="EVEN_TYPE" id="type" name="type" value="<?php echo $type; ?>" <?php ($fact !== 'EVEN' || $fact !== 'FACT' ? '' : 'disabled'); ?>>
+							<input type="text" data-autocomplete-type="EF_TYPE" id="type" name="type" value="<?php echo $type; ?>" <?php ($fact !== 'EVEN' || $fact !== 'FACT' ? '' : 'disabled'); ?>>
 						</div>
 						<div class="chart_options">
 							<label for="detail"><?php echo KT_I18N::translate('Details'); ?></label>

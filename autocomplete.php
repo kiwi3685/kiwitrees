@@ -177,6 +177,30 @@ switch ($type) {
 		echo json_encode($data);
 	exit;
 
+	case 'EF_TYPE': // Event OR Fact types
+		$data = array();
+		// Fetch all data, regardless of privacy
+		$rows=
+			KT_DB::prepare(
+				"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+				" FROM `##individuals`".
+				" WHERE i_gedcom REGEXP '(.*)\n1 [EVEN FACT].*\n2 TYPE ([^\n]*)" . $term . "*[^\n]*' AND i_file=?".
+				" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 TYPE ', -1) COLLATE '" . KT_I18N::$collation . "'"
+			)
+			->execute(array(KT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+		// Filter for privacy
+		foreach ($rows as $row) {
+			$person = KT_Person::getInstance($row);
+			if (preg_match('/\n2 TYPE (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
+				if (!in_array($match[1], $data)) {
+					$data[] = $match[1];
+				}
+			}
+		}
+		echo json_encode($data);
+	exit;
+
 	case 'FAM': // Families, whose name contains the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
