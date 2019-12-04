@@ -87,8 +87,8 @@ if (
 		<p><?php echo /* I18N: %s is a URL/link to the project website */ KT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net forums</a>'); ?></p>
 
 		<?php
-		// Latest version info
 		if (KT_USER_IS_ADMIN) {
+			// Latest version info
 			if ($latest_version) {
 				if (version_compare(KT_VERSION, $latest_version) < 0) {
 					echo '<p>' ,  /* I18N: %s is a URL/link to the project website */ KT_I18N::translate('Version %s of kiwitrees is now available at %s.', $latest_version, ' <a class="current" href="http://kiwitrees.net/services/downloads/">kiwitrees.net downloads</a>'), '</p>';
@@ -98,6 +98,19 @@ if (
 			} else {
 				echo '<p>' , KT_I18N::translate('No upgrade information is available.') , '</p>';
 			}
+
+			// PHP version info
+			echo '<p>' , KT_I18N::translate('You are using PHP version %s.', phpversion()), '<span>&nbsp;';
+			if (version_compare(phpversion(), '7.4', '<')) {
+				if (version_compare(phpversion(), '5.6', '<')) {
+					echo  KT_I18N::translate('Kiwitrees is no longer compatible with versions of PHP older than 7.0');
+				} else {
+					echo  KT_I18N::translate('Kiwitrees is compatible with this version.');
+				}
+			} else {
+				echo  KT_I18N::translate('Kiwitrees is not yet tested for compatability with your version of PHP. It might work, but if you find any issues please report them on the <a class="current" href="%s" target="_blank">kiwtreees support forum</a>', KT_SUPPORT_URL);
+			}
+			echo '</span></p>';
 		}
 		?>
 
