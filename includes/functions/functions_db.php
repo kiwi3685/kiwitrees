@@ -1354,18 +1354,25 @@ function rename_user($user_id, $new_username) {
 }
 
 function delete_user($user_id) {
-	// Don't delete the logs.
+	$exists_pending = false;
+	// Don't delete the logs, set user id to NULL instead.
 	KT_DB::prepare("UPDATE `##log` SET user_id=NULL   WHERE user_id =?")->execute(array($user_id));
-	// Take over the user's pending changes.
-	// TODO: perhaps we should prevent deletion of users with pending changes?
-	KT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($user_id));
-	KT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(KT_USER_ID, $user_id));
 
-	KT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($user_id));
-	KT_DB::prepare("DELETE FROM `##block`               WHERE user_id=?"    )->execute(array($user_id));
-	KT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?"    )->execute(array($user_id));
-	KT_DB::prepare("DELETE FROM `##user_setting`        WHERE user_id=?"    )->execute(array($user_id));
-	KT_DB::prepare("DELETE FROM `##user`                WHERE user_id=?"    )->execute(array($user_id));
+	// Prevent deletion of users with pending changes.
+	$exists_pending = KT_DB::prepare("SELECT 1 FROM `##change` WHERE user_id=? AND status='pending'")->execute(array($user_id))->fetchOne();
+	if (!$exists_pending) {
+		KT_DB::prepare("DELETE FROM `##change`WHERE user_id=? AND status='rejected'")->execute(array($user_id));
+		KT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($user_id));
+		KT_DB::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array($user_id));
+		KT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($user_id));
+		KT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array((string) $user_id));
+		KT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute(array($user_id));
+		KT_DB::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($user_id));
+		KT_DB::prepare("DELETE FROM `##user` WHERE user_id=?")->execute(array($user_id));
+	} else {
+		KT_FlashMessages::addMessage(KT_I18N::translate('<span class="error">Unable to delete user. This user has pending data changes.</span>'));
+	}
+
 }
 
 function get_all_users($order='ASC', $key='realname') {
