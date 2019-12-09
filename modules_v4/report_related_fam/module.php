@@ -196,11 +196,11 @@ class report_related_fam_KT_Module extends KT_Module implements KT_Module_Report
 			<!-- end of form -->
 			<?php
 			$person = KT_Person::getInstance($rootid);
+			$list = array();
 			if ($person && $person->canDisplayDetails()) { ?>
 				<h2><?php echo /* I18N: heading for report on related individuals */ KT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
 				<?php
 				// collect list of relatives
-				$list = array();
 				switch ($choose_relatives) {
 					case "child-family":
 						foreach ($person->getChildFamilies() as $family) {
