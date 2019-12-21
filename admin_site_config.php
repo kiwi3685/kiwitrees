@@ -92,6 +92,7 @@ switch (KT_Filter::post('action')) {
 		KT_Site::preference('USE_REGISTRATION_MODULE',		KT_Filter::postBool('USE_REGISTRATION_MODULE'));
 		KT_Site::preference('SHOW_REGISTER_CAUTION',		KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
 		KT_Site::preference('LANGUAGES', implode(',',		KT_Filter::postArray('LANGUAGES')));
+		KT_Site::preference('VERIFY_DAYS',					KT_Filter::post('VERIFY_DAYS'));
 
 		if (KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')) {
 			$emails = explode(',', str_replace(array(' ', "\n", "\r"), '', KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')));
@@ -392,6 +393,15 @@ $controller
 							<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', KT_Site::preference('USE_REGISTRATION_MODULE')); ?>
 							<div class="helpcontent">
 								<?php echo KT_I18N::translate('Gives visitors the option of registering themselves for an account on the site. The visitor will receive an email message with a code to verify their application for an account. After verification the Administrator will have to approve the registration before it becomes active.'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Days allowed for new user to verify email address'); ?></label>
+						<div class="input_group">
+							<input type="text" name="VERIFY_DAYS" dir="ltr" value="<?php echo KT_Site::preference('VERIFY_DAYS'); ?>" pattern="[0-9]*" placeholder="7" maxlength="3">
+							<div class="helpcontent">
+								<?php echo /* I18N: Help text for the “Days allowed to verify” site configuration setting */ KT_I18N::translate('The number of days a new user has to verify their email address before their request to register is highlighted as an error'); ?>
 							</div>
 						</div>
 					</div>

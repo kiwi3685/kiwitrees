@@ -40,6 +40,10 @@ $ALL_EDIT_OPTIONS = array(
 	'admin' => /* I18N: Listbox entry; name of a role */ KT_I18N::translate('Manager')
 );
 
+// convert days to seconds
+$days = (KT_Site::preference('VERIFY_DAYS') ? KT_Site::preference('VERIFY_DAYS') : 7);
+$time = $days * 60 * 60 * 24;
+
 // Form actions
 switch (KT_Filter::post('action')) {
 
@@ -241,8 +245,8 @@ switch (KT_Filter::get('action')) {
 			}
 			// $aData[6] is the sortable registration timestamp
 			$aData[7] = $aData[7] ? format_timestamp($aData[7]) : '';
-			if (date("U") - $aData[6] > 604800 && !$aData[10]) {
-				$aData[7] = '<span class="red">' . $aData[7] . '</span>'; // display in red if user does not verify within 7 days (604800 secs)
+			if (date("U") - $aData[6] > $time && !$aData[10]) {
+				$aData[7] = '<span class="red">' . $aData[7] . '</span>'; // display in red if user does not verify within number of days set at login & registration settings
 			}
 			// $aData[8] is the sortable last-login timestamp
 			if ($aData[8]) {
@@ -670,8 +674,8 @@ switch (KT_Filter::get('action')) {
 		<form name="cleanupform" method="post" action="admin_users.php?action=cleanup2">
 		<table id="clean">
 		<?php
+
 		// Check for idle users
-		//if (!isset($month)) $month = 1;
 		$month = safe_GET_integer('month', 1, 12, 6);
 		echo "<tr><th>", KT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
 		echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
@@ -684,6 +688,7 @@ switch (KT_Filter::get('action')) {
 		?>
 		<tr><th colspan="2"><?php echo KT_I18N::translate('Options:'); ?></th></tr>
 		<?php
+
 		// Check users not logged in too long
 		$ucnt = 0;
 		foreach (get_all_users() as $user_id=>$username) {
@@ -701,13 +706,19 @@ switch (KT_Filter::get('action')) {
 		}
 
 		// Check unverified users
-		foreach (get_all_users() as $user_id=>$username) {
-			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
-				$userName = getUserFullName($user_id);
-				?><tr><td><?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::translate('User didn\'t verify within 7 days.');
-				$ucnt++;
-				?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $username); ?>" value="1"></td></tr><?php
-			}
+		foreach (get_all_users() as $user_id => $username) {
+			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > $time) && !get_user_setting($user_id, 'verified')) {
+				$userName = getUserFullName($user_id); ?>
+				<tr>
+					<td>
+						<?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::plural('User didn\'t verify within %s day.', 'User didn\'t verify within %s days.', $days, $days);
+						$ucnt++; ?>
+					</td>
+					<td>
+						<input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $username); ?>" value="1">
+					</td>
+				</tr>
+			<?php }
 		}
 
 		// Check users not verified by admin
