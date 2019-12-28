@@ -669,88 +669,123 @@ switch (KT_Filter::get('action')) {
 		return;
 
 	case 'cleanup':
-		$controller->pageHeader();
-		?>
+		$controller->pageHeader(); ?>
+
 		<form name="cleanupform" method="post" action="admin_users.php?action=cleanup2">
-		<table id="clean">
-		<?php
-
-		// Check for idle users
-		$month = safe_GET_integer('month', 1, 12, 6);
-		echo "<tr><th>", KT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
-		echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
-		for ($i=1; $i<=12; $i++) {
-			echo "<option value=\"admin_users.php?action=cleanup&amp;month=$i\"";
-			if ($i == $month) echo " selected=\"selected\"";
-			echo ">", $i, "</option>";
-		}
-		echo "</select></td></tr>";
-		?>
-		<tr><th colspan="2"><?php echo KT_I18N::translate('Options:'); ?></th></tr>
-		<?php
-
-		// Check users not logged in too long
-		$ucnt = 0;
-		foreach (get_all_users() as $user_id=>$username) {
-			$userName = getUserFullName($user_id);
-			if ((int)get_user_setting($user_id, 'sessiontime') == "0")
-				$datelogin = (int)get_user_setting($user_id, 'reg_timestamp');
-			else
-				$datelogin = (int)get_user_setting($user_id, 'sessiontime');
-			if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
-				?><tr><td><?php echo $username, " - <p>", $userName, "</p>", KT_I18N::translate('User\'s account has been inactive too long: ');
-				echo timestamp_to_gedcom_date($datelogin)->Display(false);
-				$ucnt++;
-				?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $username); ?>" value="1"></td></tr><?php
-			}
-		}
-
-		// Check unverified users
-		foreach (get_all_users() as $user_id => $username) {
-			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > $time) && !get_user_setting($user_id, 'verified')) {
-				$userName = getUserFullName($user_id); ?>
+			<table id="clean">
+				<!-- Check for idle users -->
+				<?php $month = safe_GET_integer('month', 1, 12, 6); ?>
 				<tr>
+					<th>
+						<?php echo KT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '); ?>
+					</th>
 					<td>
-						<?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::plural('User didn\'t verify within %s day.', 'User didn\'t verify within %s days.', $days, $days);
-						$ucnt++; ?>
-					</td>
-					<td>
-						<input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $username); ?>" value="1">
+						<select onchange="document.location=options[selectedIndex].value;\">
+							<?php for ($i=1; $i<=12; $i++) { ?>
+								<option value="admin_users.php?action=cleanup&amp;month = <?php echo $i; ?>"
+									<?php if ($i == $month) { ?>
+										selected="selected"
+									<?php } ?>
+									> <?php echo $i; ?>
+								</option>
+							<?php } ?>
+						</select>
 					</td>
 				</tr>
-			<?php }
-		}
+				<tr>
+					<th colspan="2">
+						<?php echo KT_I18N::translate('Options:'); ?>
+					</th>
+				</tr>
 
-		// Check users not verified by admin
-		foreach (get_all_users() as $user_id=>$username) {
-			if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
-				$userName = getUserFullName($user_id);
-				?><tr><td><?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::translate('User not verified by administrator.');
-				?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $username); ?>" value="1"></td></tr><?php
-				$ucnt++;
-			}
-		}
-		if ($ucnt == 0) {
-			echo "<tr><td class=\"accepted\" colspan=\"2\">";
-			echo KT_I18N::translate('Nothing found to cleanup'), "</td></tr>";
-		} ?>
-		</table>
-		<p>
+				<!-- Check users not logged in too long -->
+				<?php
+				$ucnt = 0;
+				foreach (get_all_users() as $user_id=>$username) {
+					$userName = getUserFullName($user_id);
+					if ((int)get_user_setting($user_id, 'sessiontime') == "0")
+						$datelogin = (int)get_user_setting($user_id, 'reg_timestamp');
+					else
+						$datelogin = (int)get_user_setting($user_id, 'sessiontime');
+					if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) { ?>
+						<tr>
+							<td>
+								<?php echo $username; ?>
+								 - <span>
+									 <?php echo $userName; ?>
+								 </span>
+								  - <span>
+									<?php echo KT_I18N::translate('User\'s account has been inactive too long: ');
+									echo timestamp_to_gedcom_date($datelogin)->Display(false);
+									$ucnt++; ?>
+								</span>
+							</td>
+							<td>
+								<input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $username); ?>" value="1">
+							</td>
+						</tr>
+					<?php }
+				}
+
+				// Check unverified users
+				foreach (get_all_users() as $user_id => $username) {
+					if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > $time) && !get_user_setting($user_id, 'verified')) {
+						$userName = getUserFullName($user_id); ?>
+						<hr>
+						<tr>
+							<td>
+								<?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::plural('User didn\'t verify within %s day.', 'User didn\'t verify within %s days.', $days, $days);
+								$ucnt++; ?>
+							</td>
+							<td>
+								<input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $username); ?>" value="1">
+							</td>
+						</tr>
+					<?php }
+				}
+
+				// Check users not verified by admin
+				foreach (get_all_users() as $user_id => $username) {
+					if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
+						$userName = getUserFullName($user_id); ?>
+						<hr>
+						<tr>
+							<td>
+								<?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::translate('User not verified by administrator.'); ?>
+							</td>
+							<td>
+								<input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $username); ?>" value="1">
+							</td>
+						</tr>
+						<?php
+						$ucnt++;
+					}
+				}
+				if ($ucnt == 0) { ?>
+					<tr>
+						<td class=\"accepted\" colspan=\"2\">
+							<?php echo KT_I18N::translate('Nothing found to cleanup'); ?>
+						</td>
+					</tr>
+				<?php } ?>
+			</table>
+			<p>
+				<?php if ($ucnt >0) {
+					?><input type="submit" value="<?php echo KT_I18N::translate('continue'); ?>">&nbsp;&nbsp;<?php
+				} ?>
+			</p>
+		</form>
 		<?php
-		if ($ucnt >0) {
-			?><input type="submit" value="<?php echo KT_I18N::translate('continue'); ?>">&nbsp;&nbsp;<?php
-		} ?>
-		</p>
-		</form><?php
 		break;
 
 	case 'cleanup2':
-		foreach (get_all_users() as $user_id=>$username) {
-			$var = "del_".str_replace(array(".", "-", " "), array("_", "_", "_"), $username);
-			if (safe_POST($var)=='1') {
+		foreach (get_all_users() as $user_id => $username) {
+			$var = "del_" . str_replace(array(".", "-", " "), array("_", "_", "_"), $username);
+			if (safe_POST($var) == '1') {
 				delete_user($user_id);
 				AddToLog("deleted user ->{$username}<-", 'auth');
-				echo KT_I18N::translate('Deleted user: '); echo $username, "<br>";
+				echo KT_I18N::translate('Deleted user: ');
+				echo $username, "<br>";
 			}
 		}
 		break;
