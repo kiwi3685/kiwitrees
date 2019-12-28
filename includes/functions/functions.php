@@ -1206,432 +1206,432 @@ function get_relationship_name_from_path($path, KT_Person $person1 = null, KT_Pe
 	}
 
 	switch ($path) {
-	case '': return KT_I18N::translate('self');
+		case '': return KT_I18N::translate('self');
 
-	//  Level One relationships
-	case 'mot': return KT_I18N::translate('mother');
-	case 'fat': return KT_I18N::translate('father');
-	case 'par': return KT_I18N::translate('parent');
-	case 'hus':
-	if ($person1 && $person1) {
-		foreach ($person1->getSpouseFamilies() as $family) {
-			if ($person2 === $family->getSpouse($person1)) {
-				if ($family->isMarried()) {
-					if($family->isDivorced()) {
-						return KT_I18N::translate('ex-husband');
-					}
-					return KT_I18N::translate('husband');
-				}
-				if($family->isDivorced()) {
-					return KT_I18N::translate_c('MALE', 'ex-partner');
-				}
-			}
-		}
-	}
-	return KT_I18N::translate_c('MALE', 'partner');
-	case 'wif':
-		if ($person1 && $person1) {
+		//  Level One relationships
+		case 'mot': return KT_I18N::translate('mother');
+		case 'fat': return KT_I18N::translate('father');
+		case 'par': return KT_I18N::translate('parent');
+		case 'hus':
+		if ($person1 && $person2) {
 			foreach ($person1->getSpouseFamilies() as $family) {
 				if ($person2 === $family->getSpouse($person1)) {
-					if ($family->isMarried()) {
+					if ($family->isNotMarried()) {
 						if($family->isDivorced()) {
+							KT_I18N::translate_c('MALE', 'ex-partner');
+						} else {
+							KT_I18N::translate_c('MALE', 'partner');
+						}
+					} elseif($family->isDivorced()) {
+						return KT_I18N::translate('ex-husband');
+					}
+				}
+			}
+		}
+		return KT_I18N::translate('husband');
+		case 'wif':
+			if ($person1 && $person2) {
+				foreach ($person1->getSpouseFamilies() as $family) {
+					if ($person2 === $family->getSpouse($person1)) {
+						if ($family->isNotMarried()) {
+							if($family->isDivorced()) {
+								KT_I18N::translate_c('FEMALE', 'ex-partner');
+							} else {
+								KT_I18N::translate_c('FEMALE', 'partner');
+							}
+						} elseif($family->isDivorced()) {
 							return KT_I18N::translate('ex-wife');
 						}
-						return KT_I18N::translate('wife');
-					}
-					if($family->isDivorced()) {
-						return KT_I18N::translate_c('FEMALE', 'ex-partner');
 					}
 				}
 			}
-		}
-		return KT_I18N::translate_c('FEMALE', 'partner');
-	case 'spo':
-	if ($person1 && $person1) {
-		foreach ($person1->getSpouseFamilies() as $family) {
-			if ($person2 === $family->getSpouse($person1)) {
-				if ($family->isMarried()) {
-					if($family->isDivorced()) {
-						return KT_I18N::translate('ex-spouse');
+			return KT_I18N::translate('wife');
+		case 'spo':
+			if ($person1 && $person2) {
+				foreach ($person1->getSpouseFamilies() as $family) {
+					if ($person2 === $family->getSpouse($person1)) {
+						if ($family->isNotMarried()) {
+							if($family->isDivorced()) {
+								KT_I18N::translate('ex-partner');
+							} else {
+								KT_I18N::translate('partner');
+							}
+						} elseif($family->isDivorced()) {
+							return KT_I18N::translate('ex-spouse');
+						}
 					}
-					return KT_I18N::translate('spouse');
-				}
-				if($family->isDivorced()) {
-					return KT_I18N::translate('ex-partner');
 				}
 			}
-		}
-	}
-	return KT_I18N::translate('partner');
-	case 'son': return KT_I18N::translate('son');
-	case 'dau': return KT_I18N::translate('daughter');
-	case 'chi': return KT_I18N::translate('child');
-	case 'bro':
-		if ($person1 && $person2) {
-			$dob1 = $person1->getBirthDate();
-			$dob2 = $person2->getBirthDate();
-			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
-					return KT_I18N::translate('twin brother');
-				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
-					return KT_I18N::translate('younger brother');
-				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
-					return KT_I18N::translate('elder brother');
+			return KT_I18N::translate('spouse');
+		case 'son': return KT_I18N::translate('son');
+		case 'dau': return KT_I18N::translate('daughter');
+		case 'chi': return KT_I18N::translate('child');
+		case 'bro':
+			if ($person1 && $person2) {
+				$dob1 = $person1->getBirthDate();
+				$dob2 = $person2->getBirthDate();
+				if ($dob1->isOK() && $dob2->isOK()) {
+					if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
+						return KT_I18N::translate('twin brother');
+					} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
+						return KT_I18N::translate('younger brother');
+					} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
+						return KT_I18N::translate('elder brother');
+					}
 				}
 			}
-		}
-		return KT_I18N::translate('brother');
-	case 'sis':
-		if ($person1 && $person2) {
-			$dob1 = $person1->getBirthDate();
-			$dob2 = $person2->getBirthDate();
-			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
-					return KT_I18N::translate('twin sister');
-				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
-					return KT_I18N::translate('younger sister');
-				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
-					return KT_I18N::translate('elder sister');
+			return KT_I18N::translate('brother');
+		case 'sis':
+			if ($person1 && $person2) {
+				$dob1 = $person1->getBirthDate();
+				$dob2 = $person2->getBirthDate();
+				if ($dob1->isOK() && $dob2->isOK()) {
+					if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
+						return KT_I18N::translate('twin sister');
+					} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
+						return KT_I18N::translate('younger sister');
+					} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
+						return KT_I18N::translate('elder sister');
+					}
 				}
 			}
-		}
-		return KT_I18N::translate('sister');
-	case 'sib':
-		if ($person1 && $person2) {
-			$dob1 = $person1->getBirthDate();
-			$dob2 = $person2->getBirthDate();
-			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
-					return KT_I18N::translate('twin sibling');
-				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
-					return KT_I18N::translate('younger sibling');
-				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
-					return KT_I18N::translate('elder sibling');
+			return KT_I18N::translate('sister');
+		case 'sib':
+			if ($person1 && $person2) {
+				$dob1 = $person1->getBirthDate();
+				$dob2 = $person2->getBirthDate();
+				if ($dob1->isOK() && $dob2->isOK()) {
+					if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->MinDate()->d !== 0 && !$dob2->MinDate()->d !== 0) { // Exclude BEF, AFT, etc.
+						return KT_I18N::translate('twin sibling');
+					} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
+						return KT_I18N::translate('younger sibling');
+					} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
+						return KT_I18N::translate('elder sibling');
+					}
 				}
 			}
-		}
-		return KT_I18N::translate('sibling');
+			return KT_I18N::translate('sibling');
 
-	// Level Two relationships
-	case 'brochi': return KT_I18N::translate_c('brother\'s child', 'nephew/niece');
-	case 'brodau': return KT_I18N::translate_c('brother\'s daughter', 'niece');
-	case 'broson': return KT_I18N::translate_c('brother\'s son', 'nephew');
-	case 'browif': return KT_I18N::translate_c('brother\'s wife', 'sister-in-law');
-	case 'chichi': return KT_I18N::translate_c('child\'s child', 'grandchild');
-	case 'chidau': return KT_I18N::translate_c('child\'s daughter', 'granddaughter');
-	case 'chihus': return KT_I18N::translate_c('child\'s husband', 'son-in-law');
-	case 'chison': return KT_I18N::translate_c('child\'s son', 'grandson');
-	case 'chispo': return KT_I18N::translate_c('child\'s spouse', 'son/daughter-in-law');
-	case 'chiwif': return KT_I18N::translate_c('child\'s wife', 'daughter-in-law');
-	case 'dauchi': return KT_I18N::translate_c('daughter\'s child', 'grandchild');
-	case 'daudau': return KT_I18N::translate_c('daughter\'s daughter', 'granddaughter');
-	case 'dauhus': return KT_I18N::translate_c('daughter\'s husband', 'son-in-law');
-	case 'dauson': return KT_I18N::translate_c('daughter\'s son', 'grandson');
-	case 'fatbro': return KT_I18N::translate_c('father\'s brother', 'uncle');
-	case 'fatchi': return KT_I18N::translate_c('father\'s child', 'half-sibling');
-	case 'fatdau': return KT_I18N::translate_c('father\'s daughter', 'half-sister');
-	case 'fatfat': return KT_I18N::translate_c('father\'s father', 'paternal grandfather');
-	case 'fatmot': return KT_I18N::translate_c('father\'s mother', 'paternal grandmother');
-	case 'fatpar': return KT_I18N::translate_c('father\'s parent', 'paternal grandparent');
-	case 'fatsib': return KT_I18N::translate_c('father\'s sibling', 'aunt/uncle');
-	case 'fatsis': return KT_I18N::translate_c('father\'s sister', 'aunt');
-	case 'fatson': return KT_I18N::translate_c('father\'s son', 'half-brother');
-	case 'fatwif': return KT_I18N::translate_c('father\'s wife', 'step-mother');
-	case 'husbro': return KT_I18N::translate_c('husband\'s brother', 'brother-in-law');
-	case 'huschi': return KT_I18N::translate_c('husband\'s child', 'step-child');
-	case 'husdau': return KT_I18N::translate_c('husband\'s daughter', 'step-daughter');
-	case 'husfat': return KT_I18N::translate_c('husband\'s father', 'father-in-law');
-	case 'husmot': return KT_I18N::translate_c('husband\'s mother', 'mother-in-law');
-	case 'hussib': return KT_I18N::translate_c('husband\'s sibling', 'brother/sister-in-law');
-	case 'hussis': return KT_I18N::translate_c('husband\'s sister', 'sister-in-law');
-	case 'husson': return KT_I18N::translate_c('husband\'s son', 'step-son');
-	case 'motbro': return KT_I18N::translate_c('mother\'s brother', 'uncle');
-	case 'motchi': return KT_I18N::translate_c('mother\'s child', 'half-sibling');
-	case 'motdau': return KT_I18N::translate_c('mother\'s daughter', 'half-sister');
-	case 'motfat': return KT_I18N::translate_c('mother\'s father', 'maternal grandfather');
-	case 'mothus': return KT_I18N::translate_c('mother\'s husband', 'step-father');
-	case 'motmot': return KT_I18N::translate_c('mother\'s mother', 'maternal grandmother');
-	case 'motpar': return KT_I18N::translate_c('mother\'s parent', 'maternal grandparent');
-	case 'motsib': return KT_I18N::translate_c('mother\'s sibling', 'aunt/uncle');
-	case 'motsis': return KT_I18N::translate_c('mother\'s sister', 'aunt');
-	case 'motson': return KT_I18N::translate_c('mother\'s son', 'half-brother');
-	case 'parbro': return KT_I18N::translate_c('parent\'s brother', 'uncle');
-	case 'parchi': return KT_I18N::translate_c('parent\'s child', 'half-sibling');
-	case 'pardau': return KT_I18N::translate_c('parent\'s daughter', 'half-sister');
-	case 'parfat': return KT_I18N::translate_c('parent\'s father', 'grandfather');
-	case 'parmot': return KT_I18N::translate_c('parent\'s mother', 'grandmother');
-	case 'parpar': return KT_I18N::translate_c('parent\'s parent', 'grandparent');
-	case 'parsib': return KT_I18N::translate_c('parent\'s sibling', 'aunt/uncle');
-	case 'parsis': return KT_I18N::translate_c('parent\'s sister', 'aunt');
-	case 'parson': return KT_I18N::translate_c('parent\'s son', 'half-brother');
-	case 'parspo': return KT_I18N::translate_c('parent\'s spouse', 'step-parent');
-	case 'sibchi': return KT_I18N::translate_c('sibling\'s child', 'nephew/niece');
-	case 'sibdau': return KT_I18N::translate_c('sibling\'s daughter', 'niece');
-	case 'sibson': return KT_I18N::translate_c('sibling\'s son', 'nephew');
-	case 'sibspo': return KT_I18N::translate_c('sibling\'s spouse', 'brother/sister-in-law');
-	case 'sischi': return KT_I18N::translate_c('sister\'s child', 'nephew/niece');
-	case 'sisdau': return KT_I18N::translate_c('sister\'s daughter', 'niece');
-	case 'sishus': return KT_I18N::translate_c('sister\'s husband', 'brother-in-law');
-	case 'sisson': return KT_I18N::translate_c('sister\'s son', 'nephew');
-	case 'sonchi': return KT_I18N::translate_c('son\'s child', 'grandchild');
-	case 'sondau': return KT_I18N::translate_c('son\'s daughter', 'granddaughter');
-	case 'sonson': return KT_I18N::translate_c('son\'s son', 'grandson');
-	case 'sonwif': return KT_I18N::translate_c('son\'s wife', 'daughter-in-law');
-	case 'spobro': return KT_I18N::translate_c('spouses\'s brother', 'brother-in-law');
-	case 'spochi': return KT_I18N::translate_c('spouses\'s child', 'step-child');
-	case 'spodau': return KT_I18N::translate_c('spouses\'s daughter', 'step-daughter');
-	case 'spofat': return KT_I18N::translate_c('spouses\'s father', 'father-in-law');
-	case 'spomot': return KT_I18N::translate_c('spouses\'s mother', 'mother-in-law');
-	case 'sposis': return KT_I18N::translate_c('spouses\'s sister', 'sister-in-law');
-	case 'sposon': return KT_I18N::translate_c('spouses\'s son', 'step-son');
-	case 'spopar': return KT_I18N::translate_c('spouses\'s parent', 'mother/father-in-law');
-	case 'sposib': return KT_I18N::translate_c('spouses\'s sibling', 'brother/sister-in-law');
-	case 'wifbro': return KT_I18N::translate_c('wife\'s brother', 'brother-in-law');
-	case 'wifchi': return KT_I18N::translate_c('wife\'s child', 'step-child');
-	case 'wifdau': return KT_I18N::translate_c('wife\'s daughter', 'step-daughter');
-	case 'wiffat': return KT_I18N::translate_c('wife\'s father', 'father-in-law');
-	case 'wifmot': return KT_I18N::translate_c('wife\'s mother', 'mother-in-law');
-	case 'wifsib': return KT_I18N::translate_c('wife\'s sibling', 'brother/sister-in-law');
-	case 'wifsis': return KT_I18N::translate_c('wife\'s sister', 'sister-in-law');
-	case 'wifson': return KT_I18N::translate_c('wife\'s son', 'step-son');
+		// Level Two relationships
+		case 'brochi': return KT_I18N::translate_c('brother\'s child', 'nephew/niece');
+		case 'brodau': return KT_I18N::translate_c('brother\'s daughter', 'niece');
+		case 'broson': return KT_I18N::translate_c('brother\'s son', 'nephew');
+		case 'browif': return KT_I18N::translate_c('brother\'s wife', 'sister-in-law');
+		case 'chichi': return KT_I18N::translate_c('child\'s child', 'grandchild');
+		case 'chidau': return KT_I18N::translate_c('child\'s daughter', 'granddaughter');
+		case 'chihus': return KT_I18N::translate_c('child\'s husband', 'son-in-law');
+		case 'chison': return KT_I18N::translate_c('child\'s son', 'grandson');
+		case 'chispo': return KT_I18N::translate_c('child\'s spouse', 'son/daughter-in-law');
+		case 'chiwif': return KT_I18N::translate_c('child\'s wife', 'daughter-in-law');
+		case 'dauchi': return KT_I18N::translate_c('daughter\'s child', 'grandchild');
+		case 'daudau': return KT_I18N::translate_c('daughter\'s daughter', 'granddaughter');
+		case 'dauhus': return KT_I18N::translate_c('daughter\'s husband', 'son-in-law');
+		case 'dauson': return KT_I18N::translate_c('daughter\'s son', 'grandson');
+		case 'fatbro': return KT_I18N::translate_c('father\'s brother', 'uncle');
+		case 'fatchi': return KT_I18N::translate_c('father\'s child', 'half-sibling');
+		case 'fatdau': return KT_I18N::translate_c('father\'s daughter', 'half-sister');
+		case 'fatfat': return KT_I18N::translate_c('father\'s father', 'paternal grandfather');
+		case 'fatmot': return KT_I18N::translate_c('father\'s mother', 'paternal grandmother');
+		case 'fatpar': return KT_I18N::translate_c('father\'s parent', 'paternal grandparent');
+		case 'fatsib': return KT_I18N::translate_c('father\'s sibling', 'aunt/uncle');
+		case 'fatsis': return KT_I18N::translate_c('father\'s sister', 'aunt');
+		case 'fatson': return KT_I18N::translate_c('father\'s son', 'half-brother');
+		case 'fatwif': return KT_I18N::translate_c('father\'s wife', 'step-mother');
+		case 'husbro': return KT_I18N::translate_c('husband\'s brother', 'brother-in-law');
+		case 'huschi': return KT_I18N::translate_c('husband\'s child', 'step-child');
+		case 'husdau': return KT_I18N::translate_c('husband\'s daughter', 'step-daughter');
+		case 'husfat': return KT_I18N::translate_c('husband\'s father', 'father-in-law');
+		case 'husmot': return KT_I18N::translate_c('husband\'s mother', 'mother-in-law');
+		case 'hussib': return KT_I18N::translate_c('husband\'s sibling', 'brother/sister-in-law');
+		case 'hussis': return KT_I18N::translate_c('husband\'s sister', 'sister-in-law');
+		case 'husson': return KT_I18N::translate_c('husband\'s son', 'step-son');
+		case 'motbro': return KT_I18N::translate_c('mother\'s brother', 'uncle');
+		case 'motchi': return KT_I18N::translate_c('mother\'s child', 'half-sibling');
+		case 'motdau': return KT_I18N::translate_c('mother\'s daughter', 'half-sister');
+		case 'motfat': return KT_I18N::translate_c('mother\'s father', 'maternal grandfather');
+		case 'mothus': return KT_I18N::translate_c('mother\'s husband', 'step-father');
+		case 'motmot': return KT_I18N::translate_c('mother\'s mother', 'maternal grandmother');
+		case 'motpar': return KT_I18N::translate_c('mother\'s parent', 'maternal grandparent');
+		case 'motsib': return KT_I18N::translate_c('mother\'s sibling', 'aunt/uncle');
+		case 'motsis': return KT_I18N::translate_c('mother\'s sister', 'aunt');
+		case 'motson': return KT_I18N::translate_c('mother\'s son', 'half-brother');
+		case 'parbro': return KT_I18N::translate_c('parent\'s brother', 'uncle');
+		case 'parchi': return KT_I18N::translate_c('parent\'s child', 'half-sibling');
+		case 'pardau': return KT_I18N::translate_c('parent\'s daughter', 'half-sister');
+		case 'parfat': return KT_I18N::translate_c('parent\'s father', 'grandfather');
+		case 'parmot': return KT_I18N::translate_c('parent\'s mother', 'grandmother');
+		case 'parpar': return KT_I18N::translate_c('parent\'s parent', 'grandparent');
+		case 'parsib': return KT_I18N::translate_c('parent\'s sibling', 'aunt/uncle');
+		case 'parsis': return KT_I18N::translate_c('parent\'s sister', 'aunt');
+		case 'parson': return KT_I18N::translate_c('parent\'s son', 'half-brother');
+		case 'parspo': return KT_I18N::translate_c('parent\'s spouse', 'step-parent');
+		case 'sibchi': return KT_I18N::translate_c('sibling\'s child', 'nephew/niece');
+		case 'sibdau': return KT_I18N::translate_c('sibling\'s daughter', 'niece');
+		case 'sibson': return KT_I18N::translate_c('sibling\'s son', 'nephew');
+		case 'sibspo': return KT_I18N::translate_c('sibling\'s spouse', 'brother/sister-in-law');
+		case 'sischi': return KT_I18N::translate_c('sister\'s child', 'nephew/niece');
+		case 'sisdau': return KT_I18N::translate_c('sister\'s daughter', 'niece');
+		case 'sishus': return KT_I18N::translate_c('sister\'s husband', 'brother-in-law');
+		case 'sisson': return KT_I18N::translate_c('sister\'s son', 'nephew');
+		case 'sonchi': return KT_I18N::translate_c('son\'s child', 'grandchild');
+		case 'sondau': return KT_I18N::translate_c('son\'s daughter', 'granddaughter');
+		case 'sonson': return KT_I18N::translate_c('son\'s son', 'grandson');
+		case 'sonwif': return KT_I18N::translate_c('son\'s wife', 'daughter-in-law');
+		case 'spobro': return KT_I18N::translate_c('spouses\'s brother', 'brother-in-law');
+		case 'spochi': return KT_I18N::translate_c('spouses\'s child', 'step-child');
+		case 'spodau': return KT_I18N::translate_c('spouses\'s daughter', 'step-daughter');
+		case 'spofat': return KT_I18N::translate_c('spouses\'s father', 'father-in-law');
+		case 'spomot': return KT_I18N::translate_c('spouses\'s mother', 'mother-in-law');
+		case 'sposis': return KT_I18N::translate_c('spouses\'s sister', 'sister-in-law');
+		case 'sposon': return KT_I18N::translate_c('spouses\'s son', 'step-son');
+		case 'spopar': return KT_I18N::translate_c('spouses\'s parent', 'mother/father-in-law');
+		case 'sposib': return KT_I18N::translate_c('spouses\'s sibling', 'brother/sister-in-law');
+		case 'wifbro': return KT_I18N::translate_c('wife\'s brother', 'brother-in-law');
+		case 'wifchi': return KT_I18N::translate_c('wife\'s child', 'step-child');
+		case 'wifdau': return KT_I18N::translate_c('wife\'s daughter', 'step-daughter');
+		case 'wiffat': return KT_I18N::translate_c('wife\'s father', 'father-in-law');
+		case 'wifmot': return KT_I18N::translate_c('wife\'s mother', 'mother-in-law');
+		case 'wifsib': return KT_I18N::translate_c('wife\'s sibling', 'brother/sister-in-law');
+		case 'wifsis': return KT_I18N::translate_c('wife\'s sister', 'sister-in-law');
+		case 'wifson': return KT_I18N::translate_c('wife\'s son', 'step-son');
 
-	// Level Three relationships
-	// I have commented out some of the unknown-sex relationships that are unlikely to to occur.
-	// Feel free to add them in, if you think they might be needed
-	case 'brochichi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s child',       'great-nephew/niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s child',     'great-nephew/niece');
-	case 'brochidau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s daughter',    'great-niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s daughter',  'great-niece');
-	case 'brochison': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s son',         'great-nephew');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s son',       'great-nephew');
-	case 'brodauchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s child',    'great-nephew/niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s child',  'great-nephew/niece');
-	case 'brodaudau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s daughter', 'great-niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s daughter', 'great-niece');
-	case 'brodauhus': return KT_I18N::translate_c('brother\'s daughter\'s husband',   'nephew-in-law');
-	case 'brodauson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s son',      'great-nephew');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s son',    'great-nephew');
-	case 'brosonchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s child',         'great-nephew/niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s child',       'great-nephew/niece');
-	case 'brosondau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s daughter',      'great-niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s daughter',    'great-niece');
-	case 'brosonson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s son',           'great-nephew');
-	                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s son',         'great-nephew');
-	case 'brosonwif': return KT_I18N::translate_c('brother\'s son\'s wife',           'niece-in-law');
-	case 'browifbro': return KT_I18N::translate_c('brother\'s wife\'s brother',       'brother-in-law');
-	case 'browifsib': return KT_I18N::translate_c('brother\'s wife\'s sibling',       'brother/sister-in-law');
-	case 'browifsis': return KT_I18N::translate_c('brother\'s wife\'s sister',        'sister-in-law');
-	case 'chichichi': return KT_I18N::translate_c('child\'s child\'s child',          'great-grandchild');
-	case 'chichidau': return KT_I18N::translate_c('child\'s child\'s daughter',       'great-granddaughter');
-	case 'chichison': return KT_I18N::translate_c('child\'s child\'s son',            'great-grandson');
-	case 'chidauchi': return KT_I18N::translate_c('child\'s daughter\'s child',       'great-grandchild');
-	case 'chidaudau': return KT_I18N::translate_c('child\'s daughter\'s daughter',    'great-granddaughter');
-	case 'chidauhus': return KT_I18N::translate_c('child\'s daughter\'s husband',     'granddaughter\'s husband');
-	case 'chidauson': return KT_I18N::translate_c('child\'s daughter\'s son',         'great-grandson');
-	case 'chisonchi': return KT_I18N::translate_c('child\'s son\'s child',            'great-grandchild');
-	case 'chisondau': return KT_I18N::translate_c('child\'s son\'s daughter',         'great-granddaughter');
-	case 'chisonson': return KT_I18N::translate_c('child\'s son\'s son',              'great-grandson');
-	case 'chisonwif': return KT_I18N::translate_c('child\'s son\'s wife',             'grandson\'s wife');
-	case 'dauchichi': return KT_I18N::translate_c('daughter\'s child\'s child',       'great-grandchild');
-	case 'dauchidau': return KT_I18N::translate_c('daughter\'s child\'s daughter',    'great-granddaughter');
-	case 'dauchison': return KT_I18N::translate_c('daughter\'s child\'s son',         'great-grandson');
-	case 'daudauchi': return KT_I18N::translate_c('daughter\'s daughter\'s child',    'great-grandchild');
-	case 'daudaudau': return KT_I18N::translate_c('daughter\'s daughter\'s daughter', 'great-granddaughter');
-	case 'daudauhus': return KT_I18N::translate_c('daughter\'s daughter\'s husband',  'granddaughter\'s husband');
-	case 'daudauson': return KT_I18N::translate_c('daughter\'s daughter\'s son',      'great-grandson');
-	case 'dauhusfat': return KT_I18N::translate_c('daughter\'s husband\'s father',    'son-in-law\'s father');
-	case 'dauhusmot': return KT_I18N::translate_c('daughter\'s husband\'s mother',    'son-in-law\'s mother');
-	case 'dauhuspar': return KT_I18N::translate_c('daughter\'s husband\'s parent',    'son-in-law\'s parent');
-	case 'dausonchi': return KT_I18N::translate_c('daughter\'s son\'s child',         'great-grandchild');
-	case 'dausondau': return KT_I18N::translate_c('daughter\'s son\'s daughter',      'great-granddaughter');
-	case 'dausonson': return KT_I18N::translate_c('daughter\'s son\'s son',           'great-grandson');
-	case 'dausonwif': return KT_I18N::translate_c('daughter\'s son\'s wife',          'grandson\'s wife');
-	case 'fatbrochi': return KT_I18N::translate_c('father\'s brother\'s child',       'first cousin');
-	case 'fatbrodau': return KT_I18N::translate_c('father\'s brother\'s daughter',    'first cousin');
-	case 'fatbroson': return KT_I18N::translate_c('father\'s brother\'s son',         'first cousin');
-	case 'fatbrowif': return KT_I18N::translate_c('father\'s brother\'s wife',        'aunt');
-	case 'fatfatbro': return KT_I18N::translate_c('father\'s father\'s brother',      'great-uncle');
-	case 'fatfatfat': return KT_I18N::translate_c('father\'s father\'s father',       'great-grandfather');
-	case 'fatfatmot': return KT_I18N::translate_c('father\'s father\'s mother',       'great-grandmother');
-	case 'fatfatpar': return KT_I18N::translate_c('father\'s father\'s parent',       'great-grandparent');
-	case 'fatfatsib': return KT_I18N::translate_c('father\'s father\'s sibling',      'great-aunt/uncle');
-	case 'fatfatsis': return KT_I18N::translate_c('father\'s father\'s sister',       'great-aunt');
-	case 'fatmotbro': return KT_I18N::translate_c('father\'s mother\'s brother',      'great-uncle');
-	case 'fatmotfat': return KT_I18N::translate_c('father\'s mother\'s father',       'great-grandfather');
-	case 'fatmotmot': return KT_I18N::translate_c('father\'s mother\'s mother',       'great-grandmother');
-	case 'fatmotpar': return KT_I18N::translate_c('father\'s mother\'s parent',       'great-grandparent');
-	case 'fatmotsib': return KT_I18N::translate_c('father\'s mother\'s sibling',      'great-aunt/uncle');
-	case 'fatmotsis': return KT_I18N::translate_c('father\'s mother\'s sister',       'great-aunt');
-	case 'fatparbro': return KT_I18N::translate_c('father\'s parent\'s brother',      'great-uncle');
-	case 'fatparfat': return KT_I18N::translate_c('father\'s parent\'s father',       'great-grandfather');
-	case 'fatparmot': return KT_I18N::translate_c('father\'s parent\'s mother',       'great-grandmother');
-	case 'fatparpar': return KT_I18N::translate_c('father\'s parent\'s parent',       'great-grandparent');
-	case 'fatparsib': return KT_I18N::translate_c('father\'s parent\'s sibling',      'great-aunt/uncle');
-	case 'fatparsis': return KT_I18N::translate_c('father\'s parent\'s sister',       'great-aunt');
-	case 'fatsischi': return KT_I18N::translate_c('father\'s sister\'s child',        'first cousin');
-	case 'fatsisdau': return KT_I18N::translate_c('father\'s sister\'s daughter',     'first cousin');
-	case 'fatsishus': return KT_I18N::translate_c('father\'s sister\'s husband',      'uncle');
-	case 'fatsisson': return KT_I18N::translate_c('father\'s sister\'s son',          'first cousin');
-	case 'fatwifchi': return KT_I18N::translate_c('father\'s wife\'s child',          'step-sibling');
-	case 'fatwifdau': return KT_I18N::translate_c('father\'s wife\'s daughter',       'step-sister');
-	case 'fatwifson': return KT_I18N::translate_c('father\'s wife\'s son',            'step-brother');
-	case 'husbrowif': return KT_I18N::translate_c('husband\'s brother\'s wife',       'sister-in-law');
-	case 'hussishus': return KT_I18N::translate_c('husband\'s sister\'s husband',     'brother-in-law');
-	case 'motbrochi': return KT_I18N::translate_c('mother\'s brother\'s child',       'first cousin');
-	case 'motbrodau': return KT_I18N::translate_c('mother\'s brother\'s daughter',    'first cousin');
-	case 'motbroson': return KT_I18N::translate_c('mother\'s brother\'s son',         'first cousin');
-	case 'motbrowif': return KT_I18N::translate_c('mother\'s brother\'s wife',        'aunt');
-	case 'motfatbro': return KT_I18N::translate_c('mother\'s father\'s brother',      'great-uncle');
-	case 'motfatfat': return KT_I18N::translate_c('mother\'s father\'s father',       'great-grandfather');
-	case 'motfatmot': return KT_I18N::translate_c('mother\'s father\'s mother',       'great-grandmother');
-	case 'motfatpar': return KT_I18N::translate_c('mother\'s father\'s parent',       'great-grandparent');
-	case 'motfatsib': return KT_I18N::translate_c('mother\'s father\'s sibling',      'great-aunt/uncle');
-	case 'motfatsis': return KT_I18N::translate_c('mother\'s father\'s sister',       'great-aunt');
-	case 'mothuschi': return KT_I18N::translate_c('mother\'s husband\'s child',       'step-sibling');
-	case 'mothusdau': return KT_I18N::translate_c('mother\'s husband\'s daughter',    'step-sister');
-	case 'mothusson': return KT_I18N::translate_c('mother\'s husband\'s son',         'step-brother');
-	case 'motmotbro': return KT_I18N::translate_c('mother\'s mother\'s brother',      'great-uncle');
-	case 'motmotfat': return KT_I18N::translate_c('mother\'s mother\'s father',       'great-grandfather');
-	case 'motmotmot': return KT_I18N::translate_c('mother\'s mother\'s mother',       'great-grandmother');
-	case 'motmotpar': return KT_I18N::translate_c('mother\'s mother\'s parent',       'great-grandparent');
-	case 'motmotsib': return KT_I18N::translate_c('mother\'s mother\'s sibling',      'great-aunt/uncle');
-	case 'motmotsis': return KT_I18N::translate_c('mother\'s mother\'s sister',       'great-aunt');
-	case 'motparbro': return KT_I18N::translate_c('mother\'s parent\'s brother',      'great-uncle');
-	case 'motparfat': return KT_I18N::translate_c('mother\'s parent\'s father',       'great-grandfather');
-	case 'motparmot': return KT_I18N::translate_c('mother\'s parent\'s mother',       'great-grandmother');
-	case 'motparpar': return KT_I18N::translate_c('mother\'s parent\'s parent',       'great-grandparent');
-	case 'motparsib': return KT_I18N::translate_c('mother\'s parent\'s sibling',      'great-aunt/uncle');
-	case 'motparsis': return KT_I18N::translate_c('mother\'s parent\'s sister',       'great-aunt');
-	case 'motsischi': return KT_I18N::translate_c('mother\'s sister\'s child',        'first cousin');
-	case 'motsisdau': return KT_I18N::translate_c('mother\'s sister\'s daughter',     'first cousin');
-	case 'motsishus': return KT_I18N::translate_c('mother\'s sister\'s husband',      'uncle');
-	case 'motsisson': return KT_I18N::translate_c('mother\'s sister\'s son',          'first cousin');
-	case 'parbrowif': return KT_I18N::translate_c('parent\'s brother\'s wife',        'aunt');
-	case 'parfatbro': return KT_I18N::translate_c('parent\'s father\'s brother',      'great-uncle');
-	case 'parfatfat': return KT_I18N::translate_c('parent\'s father\'s father',       'great-grandfather');
-	case 'parfatmot': return KT_I18N::translate_c('parent\'s father\'s mother',       'great-grandmother');
-	case 'parfatpar': return KT_I18N::translate_c('parent\'s father\'s parent',       'great-grandparent');
-	case 'parfatsib': return KT_I18N::translate_c('parent\'s father\'s sibling',      'great-aunt/uncle');
-	case 'parfatsis': return KT_I18N::translate_c('parent\'s father\'s sister',       'great-aunt');
-	case 'parmotbro': return KT_I18N::translate_c('parent\'s mother\'s brother',      'great-uncle');
-	case 'parmotfat': return KT_I18N::translate_c('parent\'s mother\'s father',       'great-grandfather');
-	case 'parmotmot': return KT_I18N::translate_c('parent\'s mother\'s mother',       'great-grandmother');
-	case 'parmotpar': return KT_I18N::translate_c('parent\'s mother\'s parent',       'great-grandparent');
-	case 'parmotsib': return KT_I18N::translate_c('parent\'s mother\'s sibling',      'great-aunt/uncle');
-	case 'parmotsis': return KT_I18N::translate_c('parent\'s mother\'s sister',       'great-aunt');
-	case 'parparbro': return KT_I18N::translate_c('parent\'s parent\'s brother',      'great-uncle');
-	case 'parparfat': return KT_I18N::translate_c('parent\'s parent\'s father',       'great-grandfather');
-	case 'parparmot': return KT_I18N::translate_c('parent\'s parent\'s mother',       'great-grandmother');
-	case 'parparpar': return KT_I18N::translate_c('parent\'s parent\'s parent',       'great-grandparent');
-	case 'parparsib': return KT_I18N::translate_c('parent\'s parent\'s sibling',      'great-aunt/uncle');
-	case 'parparsis': return KT_I18N::translate_c('parent\'s parent\'s sister',       'great-aunt');
-	case 'parsishus': return KT_I18N::translate_c('parent\'s sister\'s husband',      'uncle');
-	case 'parspochi': return KT_I18N::translate_c('parent\'s spouse\'s child',        'step-sibling');
-	case 'parspodau': return KT_I18N::translate_c('parent\'s spouse\'s daughter',     'step-sister');
-	case 'parsposon': return KT_I18N::translate_c('parent\'s spouse\'s son',          'step-brother');
-	case 'sibchichi': return KT_I18N::translate_c('sibling\'s child\'s child',        'great-nephew/niece');
-	case 'sibchidau': return KT_I18N::translate_c('sibling\'s child\'s daughter',     'great-niece');
-	case 'sibchison': return KT_I18N::translate_c('sibling\'s child\'s son',          'great-nephew');
-	case 'sibdauchi': return KT_I18N::translate_c('sibling\'s daughter\'s child',     'great-nephew/niece');
-	case 'sibdaudau': return KT_I18N::translate_c('sibling\'s daughter\'s daughter',  'great-niece');
-	case 'sibdauhus': return KT_I18N::translate_c('sibling\'s daughter\'s husband',   'nephew-in-law');
-	case 'sibdauson': return KT_I18N::translate_c('sibling\'s daughter\'s son',       'great-nephew');
-	case 'sibsonchi': return KT_I18N::translate_c('sibling\'s son\'s child',          'great-nephew/niece');
-	case 'sibsondau': return KT_I18N::translate_c('sibling\'s son\'s daughter',       'great-niece');
-	case 'sibsonson': return KT_I18N::translate_c('sibling\'s son\'s son',            'great-nephew');
-	case 'sibsonwif': return KT_I18N::translate_c('sibling\'s son\'s wife',           'niece-in-law');
-	case 'sischichi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s child',          'great-nephew/niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s child',        'great-nephew/niece');
-	case 'sischidau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s daughter',       'great-niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s daughter',     'great-niece');
-	case 'sischison': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s son',            'great-nephew');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s son',          'great-nephew');
-	case 'sisdauchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s child',       'great-nephew/niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s child',     'great-nephew/niece');
-	case 'sisdaudau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s daughter',    'great-niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s daughter',  'great-niece');
-	case 'sisdauhus': return KT_I18N::translate_c('sisters\'s daughter\'s husband',   'nephew-in-law');
-	case 'sisdauson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s son',         'great-nephew');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s son',       'great-nephew');
-	case 'sishusbro': return KT_I18N::translate_c('sister\'s husband\'s brother',     'brother-in-law');
-	case 'sishussib': return KT_I18N::translate_c('sister\'s husband\'s sibling',     'brother/sister-in-law');
-	case 'sishussis': return KT_I18N::translate_c('sister\'s husband\'s sister',      'sister-in-law');
-	case 'sissonchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s child',            'great-nephew/niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s child',          'great-nephew/niece');
-	case 'sissondau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s daughter',         'great-niece');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s daughter',       'great-niece');
-	case 'sissonson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s son',              'great-nephew');
-	                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s son',            'great-nephew');
-	case 'sissonwif': return KT_I18N::translate_c('sisters\'s son\'s wife',           'niece-in-law');
-	case 'sonchichi': return KT_I18N::translate_c('son\'s child\'s child',            'great-grandchild');
-	case 'sonchidau': return KT_I18N::translate_c('son\'s child\'s daughter',         'great-granddaughter');
-	case 'sonchison': return KT_I18N::translate_c('son\'s child\'s son',              'great-grandson');
-	case 'sondauchi': return KT_I18N::translate_c('son\'s daughter\'s child',         'great-grandchild');
-	case 'sondaudau': return KT_I18N::translate_c('son\'s daughter\'s daughter',      'great-granddaughter');
-	case 'sondauhus': return KT_I18N::translate_c('son\'s daughter\'s husband',       'granddaughter\'s husband');
-	case 'sondauson': return KT_I18N::translate_c('son\'s daughter\'s son',           'great-grandson');
-	case 'sonsonchi': return KT_I18N::translate_c('son\'s son\'s child',              'great-grandchild');
-	case 'sonsondau': return KT_I18N::translate_c('son\'s son\'s daughter',           'great-granddaughter');
-	case 'sonsonson': return KT_I18N::translate_c('son\'s son\'s son',                'great-grandson');
-	case 'sonsonwif': return KT_I18N::translate_c('son\'s son\'s wife',               'grandson\'s wife');
-	case 'sonwiffat': return KT_I18N::translate_c('son\'s wife\'s father',            'daughter-in-law\'s father');
-	case 'sonwifmot': return KT_I18N::translate_c('son\'s wife\'s mother',            'daughter-in-law\'s mother');
-	case 'sonwifpar': return KT_I18N::translate_c('son\'s wife\'s parent',            'daughter-in-law\'s parent');
-	case 'wifbrowif': return KT_I18N::translate_c('wife\'s brother\'s wife',          'sister-in-law');
-	case 'wifsishus': return KT_I18N::translate_c('wife\'s sister\'s husband',        'brother-in-law');
+		// Level Three relationships
+		// I have commented out some of the unknown-sex relationships that are unlikely to to occur.
+		// Feel free to add them in, if you think they might be needed
+		case 'brochichi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s child',       'great-nephew/niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s child',     'great-nephew/niece');
+		case 'brochidau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s daughter',    'great-niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s daughter',  'great-niece');
+		case 'brochison': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s child\'s son',         'great-nephew');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s child\'s son',       'great-nephew');
+		case 'brodauchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s child',    'great-nephew/niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s child',  'great-nephew/niece');
+		case 'brodaudau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s daughter', 'great-niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s daughter', 'great-niece');
+		case 'brodauhus': return KT_I18N::translate_c('brother\'s daughter\'s husband',   'nephew-in-law');
+		case 'brodauson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s daughter\'s son',      'great-nephew');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s daughter\'s son',    'great-nephew');
+		case 'brosonchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s child',         'great-nephew/niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s child',       'great-nephew/niece');
+		case 'brosondau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s daughter',      'great-niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s daughter',    'great-niece');
+		case 'brosonson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) brother\'s son\'s son',           'great-nephew');
+		                  else            return KT_I18N::translate_c('(a woman\'s) brother\'s son\'s son',         'great-nephew');
+		case 'brosonwif': return KT_I18N::translate_c('brother\'s son\'s wife',           'niece-in-law');
+		case 'browifbro': return KT_I18N::translate_c('brother\'s wife\'s brother',       'brother-in-law');
+		case 'browifsib': return KT_I18N::translate_c('brother\'s wife\'s sibling',       'brother/sister-in-law');
+		case 'browifsis': return KT_I18N::translate_c('brother\'s wife\'s sister',        'sister-in-law');
+		case 'chichichi': return KT_I18N::translate_c('child\'s child\'s child',          'great-grandchild');
+		case 'chichidau': return KT_I18N::translate_c('child\'s child\'s daughter',       'great-granddaughter');
+		case 'chichison': return KT_I18N::translate_c('child\'s child\'s son',            'great-grandson');
+		case 'chidauchi': return KT_I18N::translate_c('child\'s daughter\'s child',       'great-grandchild');
+		case 'chidaudau': return KT_I18N::translate_c('child\'s daughter\'s daughter',    'great-granddaughter');
+		case 'chidauhus': return KT_I18N::translate_c('child\'s daughter\'s husband',     'granddaughter\'s husband');
+		case 'chidauson': return KT_I18N::translate_c('child\'s daughter\'s son',         'great-grandson');
+		case 'chisonchi': return KT_I18N::translate_c('child\'s son\'s child',            'great-grandchild');
+		case 'chisondau': return KT_I18N::translate_c('child\'s son\'s daughter',         'great-granddaughter');
+		case 'chisonson': return KT_I18N::translate_c('child\'s son\'s son',              'great-grandson');
+		case 'chisonwif': return KT_I18N::translate_c('child\'s son\'s wife',             'grandson\'s wife');
+		case 'dauchichi': return KT_I18N::translate_c('daughter\'s child\'s child',       'great-grandchild');
+		case 'dauchidau': return KT_I18N::translate_c('daughter\'s child\'s daughter',    'great-granddaughter');
+		case 'dauchison': return KT_I18N::translate_c('daughter\'s child\'s son',         'great-grandson');
+		case 'daudauchi': return KT_I18N::translate_c('daughter\'s daughter\'s child',    'great-grandchild');
+		case 'daudaudau': return KT_I18N::translate_c('daughter\'s daughter\'s daughter', 'great-granddaughter');
+		case 'daudauhus': return KT_I18N::translate_c('daughter\'s daughter\'s husband',  'granddaughter\'s husband');
+		case 'daudauson': return KT_I18N::translate_c('daughter\'s daughter\'s son',      'great-grandson');
+		case 'dauhusfat': return KT_I18N::translate_c('daughter\'s husband\'s father',    'son-in-law\'s father');
+		case 'dauhusmot': return KT_I18N::translate_c('daughter\'s husband\'s mother',    'son-in-law\'s mother');
+		case 'dauhuspar': return KT_I18N::translate_c('daughter\'s husband\'s parent',    'son-in-law\'s parent');
+		case 'dausonchi': return KT_I18N::translate_c('daughter\'s son\'s child',         'great-grandchild');
+		case 'dausondau': return KT_I18N::translate_c('daughter\'s son\'s daughter',      'great-granddaughter');
+		case 'dausonson': return KT_I18N::translate_c('daughter\'s son\'s son',           'great-grandson');
+		case 'dausonwif': return KT_I18N::translate_c('daughter\'s son\'s wife',          'grandson\'s wife');
+		case 'fatbrochi': return KT_I18N::translate_c('father\'s brother\'s child',       'first cousin');
+		case 'fatbrodau': return KT_I18N::translate_c('father\'s brother\'s daughter',    'first cousin');
+		case 'fatbroson': return KT_I18N::translate_c('father\'s brother\'s son',         'first cousin');
+		case 'fatbrowif': return KT_I18N::translate_c('father\'s brother\'s wife',        'aunt');
+		case 'fatfatbro': return KT_I18N::translate_c('father\'s father\'s brother',      'great-uncle');
+		case 'fatfatfat': return KT_I18N::translate_c('father\'s father\'s father',       'great-grandfather');
+		case 'fatfatmot': return KT_I18N::translate_c('father\'s father\'s mother',       'great-grandmother');
+		case 'fatfatpar': return KT_I18N::translate_c('father\'s father\'s parent',       'great-grandparent');
+		case 'fatfatsib': return KT_I18N::translate_c('father\'s father\'s sibling',      'great-aunt/uncle');
+		case 'fatfatsis': return KT_I18N::translate_c('father\'s father\'s sister',       'great-aunt');
+		case 'fatmotbro': return KT_I18N::translate_c('father\'s mother\'s brother',      'great-uncle');
+		case 'fatmotfat': return KT_I18N::translate_c('father\'s mother\'s father',       'great-grandfather');
+		case 'fatmotmot': return KT_I18N::translate_c('father\'s mother\'s mother',       'great-grandmother');
+		case 'fatmotpar': return KT_I18N::translate_c('father\'s mother\'s parent',       'great-grandparent');
+		case 'fatmotsib': return KT_I18N::translate_c('father\'s mother\'s sibling',      'great-aunt/uncle');
+		case 'fatmotsis': return KT_I18N::translate_c('father\'s mother\'s sister',       'great-aunt');
+		case 'fatparbro': return KT_I18N::translate_c('father\'s parent\'s brother',      'great-uncle');
+		case 'fatparfat': return KT_I18N::translate_c('father\'s parent\'s father',       'great-grandfather');
+		case 'fatparmot': return KT_I18N::translate_c('father\'s parent\'s mother',       'great-grandmother');
+		case 'fatparpar': return KT_I18N::translate_c('father\'s parent\'s parent',       'great-grandparent');
+		case 'fatparsib': return KT_I18N::translate_c('father\'s parent\'s sibling',      'great-aunt/uncle');
+		case 'fatparsis': return KT_I18N::translate_c('father\'s parent\'s sister',       'great-aunt');
+		case 'fatsischi': return KT_I18N::translate_c('father\'s sister\'s child',        'first cousin');
+		case 'fatsisdau': return KT_I18N::translate_c('father\'s sister\'s daughter',     'first cousin');
+		case 'fatsishus': return KT_I18N::translate_c('father\'s sister\'s husband',      'uncle');
+		case 'fatsisson': return KT_I18N::translate_c('father\'s sister\'s son',          'first cousin');
+		case 'fatwifchi': return KT_I18N::translate_c('father\'s wife\'s child',          'step-sibling');
+		case 'fatwifdau': return KT_I18N::translate_c('father\'s wife\'s daughter',       'step-sister');
+		case 'fatwifson': return KT_I18N::translate_c('father\'s wife\'s son',            'step-brother');
+		case 'husbrowif': return KT_I18N::translate_c('husband\'s brother\'s wife',       'sister-in-law');
+		case 'hussishus': return KT_I18N::translate_c('husband\'s sister\'s husband',     'brother-in-law');
+		case 'motbrochi': return KT_I18N::translate_c('mother\'s brother\'s child',       'first cousin');
+		case 'motbrodau': return KT_I18N::translate_c('mother\'s brother\'s daughter',    'first cousin');
+		case 'motbroson': return KT_I18N::translate_c('mother\'s brother\'s son',         'first cousin');
+		case 'motbrowif': return KT_I18N::translate_c('mother\'s brother\'s wife',        'aunt');
+		case 'motfatbro': return KT_I18N::translate_c('mother\'s father\'s brother',      'great-uncle');
+		case 'motfatfat': return KT_I18N::translate_c('mother\'s father\'s father',       'great-grandfather');
+		case 'motfatmot': return KT_I18N::translate_c('mother\'s father\'s mother',       'great-grandmother');
+		case 'motfatpar': return KT_I18N::translate_c('mother\'s father\'s parent',       'great-grandparent');
+		case 'motfatsib': return KT_I18N::translate_c('mother\'s father\'s sibling',      'great-aunt/uncle');
+		case 'motfatsis': return KT_I18N::translate_c('mother\'s father\'s sister',       'great-aunt');
+		case 'mothuschi': return KT_I18N::translate_c('mother\'s husband\'s child',       'step-sibling');
+		case 'mothusdau': return KT_I18N::translate_c('mother\'s husband\'s daughter',    'step-sister');
+		case 'mothusson': return KT_I18N::translate_c('mother\'s husband\'s son',         'step-brother');
+		case 'motmotbro': return KT_I18N::translate_c('mother\'s mother\'s brother',      'great-uncle');
+		case 'motmotfat': return KT_I18N::translate_c('mother\'s mother\'s father',       'great-grandfather');
+		case 'motmotmot': return KT_I18N::translate_c('mother\'s mother\'s mother',       'great-grandmother');
+		case 'motmotpar': return KT_I18N::translate_c('mother\'s mother\'s parent',       'great-grandparent');
+		case 'motmotsib': return KT_I18N::translate_c('mother\'s mother\'s sibling',      'great-aunt/uncle');
+		case 'motmotsis': return KT_I18N::translate_c('mother\'s mother\'s sister',       'great-aunt');
+		case 'motparbro': return KT_I18N::translate_c('mother\'s parent\'s brother',      'great-uncle');
+		case 'motparfat': return KT_I18N::translate_c('mother\'s parent\'s father',       'great-grandfather');
+		case 'motparmot': return KT_I18N::translate_c('mother\'s parent\'s mother',       'great-grandmother');
+		case 'motparpar': return KT_I18N::translate_c('mother\'s parent\'s parent',       'great-grandparent');
+		case 'motparsib': return KT_I18N::translate_c('mother\'s parent\'s sibling',      'great-aunt/uncle');
+		case 'motparsis': return KT_I18N::translate_c('mother\'s parent\'s sister',       'great-aunt');
+		case 'motsischi': return KT_I18N::translate_c('mother\'s sister\'s child',        'first cousin');
+		case 'motsisdau': return KT_I18N::translate_c('mother\'s sister\'s daughter',     'first cousin');
+		case 'motsishus': return KT_I18N::translate_c('mother\'s sister\'s husband',      'uncle');
+		case 'motsisson': return KT_I18N::translate_c('mother\'s sister\'s son',          'first cousin');
+		case 'parbrowif': return KT_I18N::translate_c('parent\'s brother\'s wife',        'aunt');
+		case 'parfatbro': return KT_I18N::translate_c('parent\'s father\'s brother',      'great-uncle');
+		case 'parfatfat': return KT_I18N::translate_c('parent\'s father\'s father',       'great-grandfather');
+		case 'parfatmot': return KT_I18N::translate_c('parent\'s father\'s mother',       'great-grandmother');
+		case 'parfatpar': return KT_I18N::translate_c('parent\'s father\'s parent',       'great-grandparent');
+		case 'parfatsib': return KT_I18N::translate_c('parent\'s father\'s sibling',      'great-aunt/uncle');
+		case 'parfatsis': return KT_I18N::translate_c('parent\'s father\'s sister',       'great-aunt');
+		case 'parmotbro': return KT_I18N::translate_c('parent\'s mother\'s brother',      'great-uncle');
+		case 'parmotfat': return KT_I18N::translate_c('parent\'s mother\'s father',       'great-grandfather');
+		case 'parmotmot': return KT_I18N::translate_c('parent\'s mother\'s mother',       'great-grandmother');
+		case 'parmotpar': return KT_I18N::translate_c('parent\'s mother\'s parent',       'great-grandparent');
+		case 'parmotsib': return KT_I18N::translate_c('parent\'s mother\'s sibling',      'great-aunt/uncle');
+		case 'parmotsis': return KT_I18N::translate_c('parent\'s mother\'s sister',       'great-aunt');
+		case 'parparbro': return KT_I18N::translate_c('parent\'s parent\'s brother',      'great-uncle');
+		case 'parparfat': return KT_I18N::translate_c('parent\'s parent\'s father',       'great-grandfather');
+		case 'parparmot': return KT_I18N::translate_c('parent\'s parent\'s mother',       'great-grandmother');
+		case 'parparpar': return KT_I18N::translate_c('parent\'s parent\'s parent',       'great-grandparent');
+		case 'parparsib': return KT_I18N::translate_c('parent\'s parent\'s sibling',      'great-aunt/uncle');
+		case 'parparsis': return KT_I18N::translate_c('parent\'s parent\'s sister',       'great-aunt');
+		case 'parsishus': return KT_I18N::translate_c('parent\'s sister\'s husband',      'uncle');
+		case 'parspochi': return KT_I18N::translate_c('parent\'s spouse\'s child',        'step-sibling');
+		case 'parspodau': return KT_I18N::translate_c('parent\'s spouse\'s daughter',     'step-sister');
+		case 'parsposon': return KT_I18N::translate_c('parent\'s spouse\'s son',          'step-brother');
+		case 'sibchichi': return KT_I18N::translate_c('sibling\'s child\'s child',        'great-nephew/niece');
+		case 'sibchidau': return KT_I18N::translate_c('sibling\'s child\'s daughter',     'great-niece');
+		case 'sibchison': return KT_I18N::translate_c('sibling\'s child\'s son',          'great-nephew');
+		case 'sibdauchi': return KT_I18N::translate_c('sibling\'s daughter\'s child',     'great-nephew/niece');
+		case 'sibdaudau': return KT_I18N::translate_c('sibling\'s daughter\'s daughter',  'great-niece');
+		case 'sibdauhus': return KT_I18N::translate_c('sibling\'s daughter\'s husband',   'nephew-in-law');
+		case 'sibdauson': return KT_I18N::translate_c('sibling\'s daughter\'s son',       'great-nephew');
+		case 'sibsonchi': return KT_I18N::translate_c('sibling\'s son\'s child',          'great-nephew/niece');
+		case 'sibsondau': return KT_I18N::translate_c('sibling\'s son\'s daughter',       'great-niece');
+		case 'sibsonson': return KT_I18N::translate_c('sibling\'s son\'s son',            'great-nephew');
+		case 'sibsonwif': return KT_I18N::translate_c('sibling\'s son\'s wife',           'niece-in-law');
+		case 'sischichi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s child',          'great-nephew/niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s child',        'great-nephew/niece');
+		case 'sischidau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s daughter',       'great-niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s daughter',     'great-niece');
+		case 'sischison': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s child\'s son',            'great-nephew');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s child\'s son',          'great-nephew');
+		case 'sisdauchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s child',       'great-nephew/niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s child',     'great-nephew/niece');
+		case 'sisdaudau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s daughter',    'great-niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s daughter',  'great-niece');
+		case 'sisdauhus': return KT_I18N::translate_c('sisters\'s daughter\'s husband',   'nephew-in-law');
+		case 'sisdauson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s daughter\'s son',         'great-nephew');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s daughter\'s son',       'great-nephew');
+		case 'sishusbro': return KT_I18N::translate_c('sister\'s husband\'s brother',     'brother-in-law');
+		case 'sishussib': return KT_I18N::translate_c('sister\'s husband\'s sibling',     'brother/sister-in-law');
+		case 'sishussis': return KT_I18N::translate_c('sister\'s husband\'s sister',      'sister-in-law');
+		case 'sissonchi': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s child',            'great-nephew/niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s child',          'great-nephew/niece');
+		case 'sissondau': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s daughter',         'great-niece');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s daughter',       'great-niece');
+		case 'sissonson': if ($sex1 == 'M') return KT_I18N::translate_c('(a man\'s) sister\'s son\'s son',              'great-nephew');
+		                  else            return KT_I18N::translate_c('(a woman\'s) sister\'s son\'s son',            'great-nephew');
+		case 'sissonwif': return KT_I18N::translate_c('sisters\'s son\'s wife',           'niece-in-law');
+		case 'sonchichi': return KT_I18N::translate_c('son\'s child\'s child',            'great-grandchild');
+		case 'sonchidau': return KT_I18N::translate_c('son\'s child\'s daughter',         'great-granddaughter');
+		case 'sonchison': return KT_I18N::translate_c('son\'s child\'s son',              'great-grandson');
+		case 'sondauchi': return KT_I18N::translate_c('son\'s daughter\'s child',         'great-grandchild');
+		case 'sondaudau': return KT_I18N::translate_c('son\'s daughter\'s daughter',      'great-granddaughter');
+		case 'sondauhus': return KT_I18N::translate_c('son\'s daughter\'s husband',       'granddaughter\'s husband');
+		case 'sondauson': return KT_I18N::translate_c('son\'s daughter\'s son',           'great-grandson');
+		case 'sonsonchi': return KT_I18N::translate_c('son\'s son\'s child',              'great-grandchild');
+		case 'sonsondau': return KT_I18N::translate_c('son\'s son\'s daughter',           'great-granddaughter');
+		case 'sonsonson': return KT_I18N::translate_c('son\'s son\'s son',                'great-grandson');
+		case 'sonsonwif': return KT_I18N::translate_c('son\'s son\'s wife',               'grandson\'s wife');
+		case 'sonwiffat': return KT_I18N::translate_c('son\'s wife\'s father',            'daughter-in-law\'s father');
+		case 'sonwifmot': return KT_I18N::translate_c('son\'s wife\'s mother',            'daughter-in-law\'s mother');
+		case 'sonwifpar': return KT_I18N::translate_c('son\'s wife\'s parent',            'daughter-in-law\'s parent');
+		case 'wifbrowif': return KT_I18N::translate_c('wife\'s brother\'s wife',          'sister-in-law');
+		case 'wifsishus': return KT_I18N::translate_c('wife\'s sister\'s husband',        'brother-in-law');
 
-	// Some “special case” level four relationships that have specific names in certain languages
-	case 'fatfatbrowif': return KT_I18N::translate_c('father\'s father\'s brother\'s wife',    'great-aunt');
-	case 'fatfatsibspo': return KT_I18N::translate_c('father\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'fatfatsishus': return KT_I18N::translate_c('father\'s father\'s sister\'s husband',  'great-uncle');
-	case 'fatmotbrowif': return KT_I18N::translate_c('father\'s mother\'s brother\'s wife',    'great-aunt');
-	case 'fatmotsibspo': return KT_I18N::translate_c('father\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'fatmotsishus': return KT_I18N::translate_c('father\'s mother\'s sister\'s husband',  'great-uncle');
-	case 'fatparbrowif': return KT_I18N::translate_c('father\'s parent\'s brother\'s wife',    'great-aunt');
-	case 'fatparsibspo': return KT_I18N::translate_c('father\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'fatparsishus': return KT_I18N::translate_c('father\'s parent\'s sister\'s husband',  'great-uncle');
-	case 'motfatbrowif': return KT_I18N::translate_c('mother\'s father\'s brother\'s wife',    'great-aunt');
-	case 'motfatsibspo': return KT_I18N::translate_c('mother\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'motfatsishus': return KT_I18N::translate_c('mother\'s father\'s sister\'s husband',  'great-uncle');
-	case 'motmotbrowif': return KT_I18N::translate_c('mother\'s mother\'s brother\'s wife',    'great-aunt');
-	case 'motmotsibspo': return KT_I18N::translate_c('mother\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'motmotsishus': return KT_I18N::translate_c('mother\'s mother\'s sister\'s husband',  'great-uncle');
-	case 'motparbrowif': return KT_I18N::translate_c('mother\'s parent\'s brother\'s wife',    'great-aunt');
-	case 'motparsibspo': return KT_I18N::translate_c('mother\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'motparsishus': return KT_I18N::translate_c('mother\'s parent\'s sister\'s husband',  'great-uncle');
-	case 'parfatbrowif': return KT_I18N::translate_c('parent\'s father\'s brother\'s wife',    'great-aunt');
-	case 'parfatsibspo': return KT_I18N::translate_c('parent\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'parfatsishus': return KT_I18N::translate_c('parent\'s father\'s sister\'s husband',  'great-uncle');
-	case 'parmotbrowif': return KT_I18N::translate_c('parent\'s mother\'s brother\'s wife',    'great-aunt');
-	case 'parmotsibspo': return KT_I18N::translate_c('parent\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'parmotsishus': return KT_I18N::translate_c('parent\'s mother\'s sister\'s husband',  'great-uncle');
-	case 'parparbrowif': return KT_I18N::translate_c('parent\'s parent\'s brother\'s wife',    'great-aunt');
-	case 'parparsibspo': return KT_I18N::translate_c('parent\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'parparsishus': return KT_I18N::translate_c('parent\'s parent\'s sister\'s husband',  'great-uncle');
-	case 'fatfatbrodau': return KT_I18N::translate_c('father\'s father\'s brother\'s daughter','first cousin once removed ascending');
-	case 'fatfatbroson': return KT_I18N::translate_c('father\'s father\'s brother\'s son',     'first cousin once removed ascending');
-	case 'fatfatbrochi': return KT_I18N::translate_c('father\'s father\'s brother\'s child', 'first cousin once removed ascending');
-	case 'fatfatsisdau': return KT_I18N::translate_c('father\'s father\'s sister\'s daughter', 'first cousin once removed ascending');
-	case 'fatfatsisson': return KT_I18N::translate_c('father\'s father\'s sister\'s son',      'first cousin once removed ascending');
-	case 'fatfatsischi': return KT_I18N::translate_c('father\'s father\'s sister\'s child',    'first cousin once removed ascending');
-	case 'fatmotbrodau': return KT_I18N::translate_c('father\'s mother\'s brother\'s daughter','first cousin once removed ascending');
-	case 'fatmotbroson': return KT_I18N::translate_c('father\'s mother\'s brother\'s son',     'first cousin once removed ascending');
-	case 'fatmotbrochi': return KT_I18N::translate_c('father\'s mother\'s brother\'s child',   'first cousin once removed ascending');
-	case 'fatmotsisdau': return KT_I18N::translate_c('father\'s mother\'s sister\'s daughter', 'first cousin once removed ascending');
-	case 'fatmotsisson': return KT_I18N::translate_c('father\'s mother\'s sister\'s son',      'first cousin once removed ascending');
-	case 'fatmotsischi': return KT_I18N::translate_c('father\'s mother\'s sister\'s child',    'first cousin once removed ascending');
-	case 'motfatbrodau': return KT_I18N::translate_c('mother\'s father\'s brother\'s daughter','first cousin once removed ascending');
-	case 'motfatbroson': return KT_I18N::translate_c('mother\'s father\'s brother\'s son',     'first cousin once removed ascending');
-	case 'motfatbrochi': return KT_I18N::translate_c('mother\'s father\'s brother\'s child',   'first cousin once removed ascending');
-	case 'motfatsisdau': return KT_I18N::translate_c('mother\'s father\'s sister\'s daughter', 'first cousin once removed ascending');
-	case 'motfatsisson': return KT_I18N::translate_c('mother\'s father\'s sister\'s son',      'first cousin once removed ascending');
-	case 'motfatsischi': return KT_I18N::translate_c('mother\'s father\'s sister\'s child',    'first cousin once removed ascending');
-	case 'motmotbrodau': return KT_I18N::translate_c('mother\'s mother\'s brother\'s daughter','first cousin once removed ascending');
-	case 'motmotbroson': return KT_I18N::translate_c('mother\'s mother\'s brother\'s son',     'first cousin once removed ascending');
-	case 'motmotbrochi': return KT_I18N::translate_c('mother\'s mother\'s brother\'s child',   'first cousin once removed ascending');
-	case 'motmotsisdau': return KT_I18N::translate_c('mother\'s mother\'s sister\'s daughter', 'first cousin once removed ascending');
-	case 'motmotsisson': return KT_I18N::translate_c('mother\'s mother\'s sister\'s son',      'first cousin once removed ascending');
-	case 'motmotsischi': return KT_I18N::translate_c('mother\'s mother\'s sister\'s child',    'first cousin once removed ascending');
+		// Some “special case” level four relationships that have specific names in certain languages
+		case 'fatfatbrowif': return KT_I18N::translate_c('father\'s father\'s brother\'s wife',    'great-aunt');
+		case 'fatfatsibspo': return KT_I18N::translate_c('father\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'fatfatsishus': return KT_I18N::translate_c('father\'s father\'s sister\'s husband',  'great-uncle');
+		case 'fatmotbrowif': return KT_I18N::translate_c('father\'s mother\'s brother\'s wife',    'great-aunt');
+		case 'fatmotsibspo': return KT_I18N::translate_c('father\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'fatmotsishus': return KT_I18N::translate_c('father\'s mother\'s sister\'s husband',  'great-uncle');
+		case 'fatparbrowif': return KT_I18N::translate_c('father\'s parent\'s brother\'s wife',    'great-aunt');
+		case 'fatparsibspo': return KT_I18N::translate_c('father\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'fatparsishus': return KT_I18N::translate_c('father\'s parent\'s sister\'s husband',  'great-uncle');
+		case 'motfatbrowif': return KT_I18N::translate_c('mother\'s father\'s brother\'s wife',    'great-aunt');
+		case 'motfatsibspo': return KT_I18N::translate_c('mother\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'motfatsishus': return KT_I18N::translate_c('mother\'s father\'s sister\'s husband',  'great-uncle');
+		case 'motmotbrowif': return KT_I18N::translate_c('mother\'s mother\'s brother\'s wife',    'great-aunt');
+		case 'motmotsibspo': return KT_I18N::translate_c('mother\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'motmotsishus': return KT_I18N::translate_c('mother\'s mother\'s sister\'s husband',  'great-uncle');
+		case 'motparbrowif': return KT_I18N::translate_c('mother\'s parent\'s brother\'s wife',    'great-aunt');
+		case 'motparsibspo': return KT_I18N::translate_c('mother\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'motparsishus': return KT_I18N::translate_c('mother\'s parent\'s sister\'s husband',  'great-uncle');
+		case 'parfatbrowif': return KT_I18N::translate_c('parent\'s father\'s brother\'s wife',    'great-aunt');
+		case 'parfatsibspo': return KT_I18N::translate_c('parent\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'parfatsishus': return KT_I18N::translate_c('parent\'s father\'s sister\'s husband',  'great-uncle');
+		case 'parmotbrowif': return KT_I18N::translate_c('parent\'s mother\'s brother\'s wife',    'great-aunt');
+		case 'parmotsibspo': return KT_I18N::translate_c('parent\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'parmotsishus': return KT_I18N::translate_c('parent\'s mother\'s sister\'s husband',  'great-uncle');
+		case 'parparbrowif': return KT_I18N::translate_c('parent\'s parent\'s brother\'s wife',    'great-aunt');
+		case 'parparsibspo': return KT_I18N::translate_c('parent\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
+		case 'parparsishus': return KT_I18N::translate_c('parent\'s parent\'s sister\'s husband',  'great-uncle');
+		case 'fatfatbrodau': return KT_I18N::translate_c('father\'s father\'s brother\'s daughter','first cousin once removed ascending');
+		case 'fatfatbroson': return KT_I18N::translate_c('father\'s father\'s brother\'s son',     'first cousin once removed ascending');
+		case 'fatfatbrochi': return KT_I18N::translate_c('father\'s father\'s brother\'s child', 'first cousin once removed ascending');
+		case 'fatfatsisdau': return KT_I18N::translate_c('father\'s father\'s sister\'s daughter', 'first cousin once removed ascending');
+		case 'fatfatsisson': return KT_I18N::translate_c('father\'s father\'s sister\'s son',      'first cousin once removed ascending');
+		case 'fatfatsischi': return KT_I18N::translate_c('father\'s father\'s sister\'s child',    'first cousin once removed ascending');
+		case 'fatmotbrodau': return KT_I18N::translate_c('father\'s mother\'s brother\'s daughter','first cousin once removed ascending');
+		case 'fatmotbroson': return KT_I18N::translate_c('father\'s mother\'s brother\'s son',     'first cousin once removed ascending');
+		case 'fatmotbrochi': return KT_I18N::translate_c('father\'s mother\'s brother\'s child',   'first cousin once removed ascending');
+		case 'fatmotsisdau': return KT_I18N::translate_c('father\'s mother\'s sister\'s daughter', 'first cousin once removed ascending');
+		case 'fatmotsisson': return KT_I18N::translate_c('father\'s mother\'s sister\'s son',      'first cousin once removed ascending');
+		case 'fatmotsischi': return KT_I18N::translate_c('father\'s mother\'s sister\'s child',    'first cousin once removed ascending');
+		case 'motfatbrodau': return KT_I18N::translate_c('mother\'s father\'s brother\'s daughter','first cousin once removed ascending');
+		case 'motfatbroson': return KT_I18N::translate_c('mother\'s father\'s brother\'s son',     'first cousin once removed ascending');
+		case 'motfatbrochi': return KT_I18N::translate_c('mother\'s father\'s brother\'s child',   'first cousin once removed ascending');
+		case 'motfatsisdau': return KT_I18N::translate_c('mother\'s father\'s sister\'s daughter', 'first cousin once removed ascending');
+		case 'motfatsisson': return KT_I18N::translate_c('mother\'s father\'s sister\'s son',      'first cousin once removed ascending');
+		case 'motfatsischi': return KT_I18N::translate_c('mother\'s father\'s sister\'s child',    'first cousin once removed ascending');
+		case 'motmotbrodau': return KT_I18N::translate_c('mother\'s mother\'s brother\'s daughter','first cousin once removed ascending');
+		case 'motmotbroson': return KT_I18N::translate_c('mother\'s mother\'s brother\'s son',     'first cousin once removed ascending');
+		case 'motmotbrochi': return KT_I18N::translate_c('mother\'s mother\'s brother\'s child',   'first cousin once removed ascending');
+		case 'motmotsisdau': return KT_I18N::translate_c('mother\'s mother\'s sister\'s daughter', 'first cousin once removed ascending');
+		case 'motmotsisson': return KT_I18N::translate_c('mother\'s mother\'s sister\'s son',      'first cousin once removed ascending');
+		case 'motmotsischi': return KT_I18N::translate_c('mother\'s mother\'s sister\'s child',    'first cousin once removed ascending');
 	}
 
 	// Some “special case” level five relationships that have specific names in certain languages
