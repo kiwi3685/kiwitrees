@@ -90,9 +90,13 @@ switch (KT_Filter::post('action')) {
 		KT_Site::preference('WELCOME_TEXT_AUTH_MODE',		KT_Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' .		KT_LOCALE, KT_Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
 		KT_Site::preference('USE_REGISTRATION_MODULE',		KT_Filter::postBool('USE_REGISTRATION_MODULE'));
+		KT_Site::preference('USE_RECAPTCHA',				KT_Filter::post('USE_RECAPTCHA'));
+		KT_Site::preference('RECAPTCHA_SITE_KEY',			KT_Filter::post('RECAPTCHA_SITE_KEY'));
+		KT_Site::preference('RECAPTCHA_SECRET_KEY',			KT_Filter::post('RECAPTCHA_SECRET_KEY'));
+		KT_Site::preference('VERIFY_DAYS',					KT_Filter::post('VERIFY_DAYS'));
 		KT_Site::preference('SHOW_REGISTER_CAUTION',		KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
 		KT_Site::preference('LANGUAGES', implode(',',		KT_Filter::postArray('LANGUAGES')));
-		KT_Site::preference('VERIFY_DAYS',					KT_Filter::post('VERIFY_DAYS'));
+
 
 		if (KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')) {
 			$emails = explode(',', str_replace(array(' ', "\n", "\r"), '', KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')));
@@ -150,6 +154,23 @@ $controller
 				jQuery("#smtp_options").css({"display":"none"});
 			};
 		});
+
+		var selectRadio = jQuery("#recaptcha_select label input[name=USE_RECAPTCHA]:checked").val();
+		if (selectRadio == "1"){
+			jQuery("#google_recaptcha_details").css({"display":"block"});
+		} else {
+			jQuery("#google_recaptcha_details").css({"display":"none"});
+		};
+
+		jQuery("input[type=radio]").click("input[name=USE_RECAPTCHA]", function() {
+			var clickedRadio = jQuery(this).val();
+			if (clickedRadio == "1") {
+				jQuery("#google_recaptcha_details").css({"display":"block"});
+			} else {
+				jQuery("#google_recaptcha_details").css({"display":"none"});
+			};
+		});
+
 	');
 ?>
 
@@ -397,6 +418,30 @@ $controller
 						</div>
 					</div>
 					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Use Google reCAPTCHA v2'); ?></label>
+						<div class="input_group" id="recaptcha_select">
+							<?php echo edit_field_yes_no('USE_RECAPTCHA', KT_Site::preference('USE_RECAPTCHA')); ?>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('This can help limit the nember of spam attempts to register on your site.<br>It requires a pair of Google rCaptcha v2 API keys. Help to obtian this can be found on this kiwitrees FAQ page: <a href="#" target="_blank">Google reCaptcha v2</a>'); ?>
+							</div>
+						</div>
+					</div>
+					<div id="google_recaptcha_details" style="display:none;">
+						<div class="config_options">
+							<label><?php echo KT_I18N::translate('Google reCAPTCHA Site Key'); ?></label>
+							<div class="input_group">
+								<input type="text" name="RECAPTCHA_SITE_KEY" value="<?php echo KT_Site::preference('RECAPTCHA_SITE_KEY'); ?>" size="50">
+							</div>
+						</div>
+
+						<div class="config_options">
+							<label><?php echo KT_I18N::translate('Google reCAPTCHA Secret Key'); ?></label>
+							<div class="input_group">
+								<input type="text" name="RECAPTCHA_SECRET_KEY" value="<?php echo KT_Site::preference('RECAPTCHA_SECRET_KEY'); ?>" size="50">
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Days allowed for new user to verify email address'); ?></label>
 						<div class="input_group">
 							<input type="text" name="VERIFY_DAYS" dir="ltr" value="<?php echo KT_Site::preference('VERIFY_DAYS'); ?>" pattern="[0-9]*" placeholder="7" maxlength="3">
@@ -414,7 +459,6 @@ $controller
 							</div>
 						</div>
 					</div>
-
 					<div class="config_options">
 						<?php
 							$blockedEmails = KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST');

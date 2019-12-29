@@ -253,8 +253,35 @@ switch ($action) {
 
 		$controller->setPageTitle(KT_I18N::translate('Request new user account'));
 
+		if (KT_Site::preference('USE_RECAPTCHA')) { ?>
+			<script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+		<?php }
+
 		// The form parameters are mandatory, and the validation errors are shown in the client.
 		if ($KT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
+
+			if (KT_Site::preference('USE_RECAPTCHA')) {
+				if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+					// Google reCAPTCHA API secret key
+					$secretKey = KT_Site::preference('RECAPTCHA_SECRET_KEY');
+
+					// Verify the reCAPTCHA response
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_POST['g-recaptcha-response']);
+
+					// Decode json data
+					$responseData = json_decode($verifyResponse);
+
+					// If reCAPTCHA response is valid
+					if (!$responseData->success) {
+						$responseData->error-codes ? $errors = $responseData->error-codes : $errors = '';
+						AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
+						KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
+						header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
+						$captcha = false;
+						exit;
+					}
+				}
+			}
 
 			// These validation errors cannot be shown in the client.
 			if (get_user_id($user_name)) {
@@ -379,7 +406,16 @@ switch ($action) {
 
 		$controller
 			->pageHeader()
-			->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}'); ?>
+			->addInlineJavascript('
+				function regex_quote(str) {
+					return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");
+				};
+
+				function recaptcha_callback() {
+			       jQuery("#registration-submit-button").removeAttr("disabled");
+		        };
+
+		 '); ?>
 
 		<div id="login-register-page">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -434,10 +470,22 @@ switch ($action) {
 							</textarea>
 						</label>
 					</div>
-					<hr>
-					<div id="registration-submit">
-						<input type="submit" value="<?php echo KT_I18N::translate('continue'); ?>">
-					</div>
+					<?php if (KT_Site::preference('USE_RECAPTCHA')) { ?>
+						<div>
+							<label>
+								<div style="margin-left: 160px;" class="g-recaptcha" data-sitekey="<?php echo KT_Site::preference('RECAPTCHA_SITE_KEY'); ?>" data-callback="recaptcha_callback"></div>
+							</label>
+							<hr>
+							<div id="registration-submit">
+								<input id="registration-submit-button" disabled="disabled" type="submit" value="<?php echo KT_I18N::translate('continue'); ?>">
+							</div>
+						</div>
+					<?php } else { ?>
+						<hr>
+						<div id="registration-submit">
+							<input id="registration-submit-button" type="submit" value="<?php echo KT_I18N::translate('continue'); ?>">
+						</div>
+					<?php } ?>
 				</form>
 			</div>
 		</div>
