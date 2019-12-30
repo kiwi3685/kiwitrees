@@ -977,12 +977,17 @@ p.branches {display:inline;}
 .new_passwd_form h4 {font-weight:400;text-align:center;}
 
 #register-form div,#verify-form div {text-align:right;}
-#register-form label input, #verify-form label input {margin:0 10px;width:220px;}
-#register-form textarea {margin:0 10px;width:220px;}
-#register-form label select {margin:0 10px;width:225px;}
-#register-form textarea {vertical-align:top;width:212px;}
+#register-form label input, #register-form label select, #register-form textarea {width:300px; margin:0 10px;}
+#register-form textarea {vertical-align:top;}
 #register-form div#registration-submit, #verify-form div#verify-submit {text-align:center;}
 #register-form h4 {font-weight:400;text-align:center;}
+#registration-submit input:disabled,
+#registration-submit input[disabled]{
+  text-decoration: line-through;
+  text-decoration-color: #ff0000;
+  text-decoration-style: wavy;
+}
+
 
 [dir=rtl] #login-form label,[dir=rtl] .new_passwd_form label,[dir=rtl] #register-form label,[dir=rtl] #verify-form label {text-align:left;}
 

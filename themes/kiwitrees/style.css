@@ -2446,11 +2446,6 @@ table[id^='rel_'] .person_boxNN {
 	padding: 8px;
 }
 
-#register-form label select {
-	margin: 0 10px;
-	width: 228px;
-}
-
 #register-form textarea {
 	vertical-align: top;
 }
@@ -2458,6 +2453,13 @@ table[id^='rel_'] .person_boxNN {
 #register-form div#registration-submit,
 #verify-form div#verify-submit {
 	text-align: center;
+}
+
+#registration-submit input:disabled,
+#registration-submit input[disabled]{
+  text-decoration: line-through;
+  text-decoration-color: #ff0000;
+  text-decoration-style: wavy;
 }
 
 .login_block_block #login-form,
@@ -3257,7 +3259,7 @@ span.link_text {
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
 #personal_facts_content {
-	overflow-x: hidden;	
+	overflow-x: hidden;
 }
 #personal_facts_content .fact_NOTE,
 #personal_facts_content .fact_SOUR,

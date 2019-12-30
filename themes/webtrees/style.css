@@ -776,10 +776,16 @@ p.branches {display:inline;}
 #login-form label input, .new_passwd_form label input {width:140px;margin:0 10px;}
 .new_passwd_form h4, #register-form h4 {font-weight:normal;text-align:center;}
 #register-form div, #verify-form div {text-align:right;}
-#register-form label input, #register-form label select, #register-form textarea, #verify-form label input {width:220px;margin:0 10px;padding:3px;}
+#register-form label input, #register-form label select, #register-form textarea, #verify-form label input {width:300px;margin:0 10px;padding:3px;}
 #register-form label select {margin:0 10px;width:228px;}
 #register-form textarea {vertical-align:top;}
 #register-form div#registration-submit, #verify-form div#verify-submit {text-align:center;}
+#registration-submit input:disabled,
+#registration-submit input[disabled]{
+  text-decoration: line-through;
+  text-decoration-color: #ff0000;
+  text-decoration-style: wavy;
+}
 .login_block_block #login-form, .login_block_block .new_passwd_form {border:0;background:none;}
 [dir=rtl] #login-form label, [dir=rtl] .new_passwd_form label, [dir=rtl] #register-form label, [dir=rtl] #verify-form label {text-align:left;}
 [dir=rtl] #register-form div, [dir=rtl] #verify-form div {text-align:left;}
