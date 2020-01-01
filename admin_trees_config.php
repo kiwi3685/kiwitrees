@@ -574,7 +574,14 @@ $controller
 					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Age at which to assume a person is dead'); ?></label>
 						<div class="input_group">
-							<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(KT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
+							<input
+								type="number"
+								name="MAX_ALIVE_AGE"
+								value="<?php echo get_gedcom_setting(KT_GED_ID, 'MAX_ALIVE_AGE'); ?>"
+								max="9999"
+								min="1"
+								required
+							>
 							<?php echo KT_I18N::translate('years'); ?>
 							<div class="helpcontent">
 								<?php echo KT_I18N::translate('If this person has any events other than death, burial, or cremation more recent than this number of years, they are considered to be "alive". Children\'s birth dates are considered to be such events for this purpose.'); ?>
@@ -586,8 +593,8 @@ $controller
 						<div class="input_group">
 							<?php echo /* I18N: ... Extend privacy to dead people [who were] ... */ KT_I18N::translate(
 									'born in the last %1$s years or died in the last %2$s years',
-									'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(KT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
-									'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.get_gedcom_setting(KT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
+									'<input type="number" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(KT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" min="0" max="999">',
+									'<input type="number" name="KEEP_ALIVE_YEARS_DEATH" value="'.get_gedcom_setting(KT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH').'" min="0" max="999">'
 								); ?>
 							<div class="helpcontent">
 								<?php echo KT_I18N::translate('In some countries privacy laws apply not only to living people but also to those who have died recently. This option allows you to extend the privacy rules for living people to those who were born or died within a specified number of years. Leave these values at zero to disable this feature.'); ?>
