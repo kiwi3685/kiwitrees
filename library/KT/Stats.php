@@ -1128,28 +1128,33 @@ class KT_Stats {
 		default:
 			$surn_countries	= array();
 			$a_countries	= $this->_statsPlaces('INDI');
-			// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-			foreach ($a_countries as $place) {
-				$country = trim($place['country']);
-				if (array_key_exists($country, $country_to_iso3166)) {
-					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-						$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
-					} else {
-						$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
+			if ($a_countries) {
+				// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+				foreach ($a_countries as $place) {
+					$country = trim($place['country']);
+					if (array_key_exists($country, $country_to_iso3166)) {
+						if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+							$surn_countries[$country_to_iso3166[$country]] = $place['tot'];
+						} else {
+							$surn_countries[$country_to_iso3166[$country]] += $place['tot'];
+						}
 					}
 				}
 			}
 			break;
 		}
+		if ($surn_countries) {
+			foreach ($surn_countries as $country=>$count) {
+				$data[] = array (
+					'country'	=> $country,
+					'count'		=> $count,
+				);
+			}
 
-		foreach ($surn_countries as $country=>$count) {
-			$data[] = array (
-				'country'	=> $country,
-				'count'		=> $count,
-			);
+			return json_encode($data, JSON_NUMERIC_CHECK);
+		} else {
+			return false;
 		}
-
-		return json_encode($data, JSON_NUMERIC_CHECK);
 
 	}
 
