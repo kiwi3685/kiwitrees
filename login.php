@@ -40,6 +40,8 @@ $url				= KT_Filter::post('url', KT_REGEX_URL);
 $username			= KT_Filter::post('username', KT_REGEX_USERNAME);
 $password			= KT_Filter::post('password',KT_REGEX_UNSAFE); // Can use any password that was previously stored
 $usertime			= KT_Filter::post('usertime');
+$termsConditions	= KT_Filter::postBool('termsConditions');
+
 
 // These parameters may come from the URL which is emailed to users.
 if (!$action) {
@@ -271,7 +273,7 @@ switch ($action) {
 					// Decode json data
 					$responseData = json_decode($verifyResponse);
 
-					// If reCAPTCHA response is valid
+					// If reCAPTCHA response is not validated
 					if (!$responseData->success) {
 						$responseData->error-codes ? $errors = $responseData->error-codes : $errors = '';
 						AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
@@ -302,94 +304,100 @@ switch ($action) {
 			} else {
 				// Everything looks good - create the user
 				$controller->pageHeader();
-				AddToLog('User registration requested for: ' . $user_name, 'auth');
 
-				$user_id = create_user($user_name, $user_realname, $user_email, $user_password01);
+				if (!$termsConditions) {
+					AddToLog('User registration requested for: ' . $user_name, 'auth');
 
-				set_user_setting($user_id, 'language',          KT_LOCALE);
-				set_user_setting($user_id, 'verified',          0);
-				set_user_setting($user_id, 'verified_by_admin', 0);
-				set_user_setting($user_id, 'reg_timestamp',     date('U'));
-				set_user_setting($user_id, 'reg_hashcode',      md5(uniqid(rand(), true)));
-				set_user_setting($user_id, 'contactmethod',     'messaging');
-				set_user_setting($user_id, 'visibleonline',     1);
-				set_user_setting($user_id, 'auto_accept',       0);
-				set_user_setting($user_id, 'canadmin',          0);
-				set_user_setting($user_id, 'sessiontime',       0);
+					$user_id = create_user($user_name, $user_realname, $user_email, $user_password01);
 
-				// Generate an email in the admin’s language
-				$webmaster_user_id	= get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') ? get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') : get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID');
-				if (!$webmaster_user_id) {
-					$webmaster_user_id = get_admin_id(KT_GED_ID);
-				}
-				$tree_link			= '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
+					set_user_setting($user_id, 'language',          KT_LOCALE);
+					set_user_setting($user_id, 'verified',          0);
+					set_user_setting($user_id, 'verified_by_admin', 0);
+					set_user_setting($user_id, 'reg_timestamp',     date('U'));
+					set_user_setting($user_id, 'reg_hashcode',      md5(uniqid(rand(), true)));
+					set_user_setting($user_id, 'contactmethod',     'messaging');
+					set_user_setting($user_id, 'visibleonline',     1);
+					set_user_setting($user_id, 'auto_accept',       0);
+					set_user_setting($user_id, 'canadmin',          0);
+					set_user_setting($user_id, 'sessiontime',       0);
 
-				KT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
+					// Generate an email in the admin’s language
+					$webmaster_user_id	= get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') ? get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID') : get_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID');
+					if (!$webmaster_user_id) {
+						$webmaster_user_id = get_admin_id(KT_GED_ID);
+					}
+					$tree_link			= '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
 
-				$mail1_body =
-					KT_I18N::translate('Hello Administrator ...') . KT_Mail::EOL . KT_Mail::EOL .
-					/* I18N: %s is a server name/URL */
-					KT_I18N::translate('A prospective user has registered at %s.', $tree_link) . KT_Mail::EOL . KT_Mail::EOL .
-					KT_I18N::translate('Username') . ': ' . $user_name . KT_Mail::EOL .
-					KT_I18N::translate('Real name') . ': ' . $user_realname . KT_Mail::EOL .
-					KT_I18N::translate('Email Address') . ': ' . $user_email . KT_Mail::EOL . KT_Mail::EOL .
-					KT_I18N::translate('Comments') . ': ' . $user_comments . KT_Mail::EOL . KT_Mail::EOL .
-					KT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . KT_Mail::EOL . KT_Mail::EOL .
-					KT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.') . "\r\n";
+					KT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
-				$mail1_subject = /* I18N: %s is a server name/URL */ KT_I18N::translate('New registration at %s', strip_tags(KT_TREE_TITLE));
-				KT_I18N::init(KT_LOCALE); ?>
+					$mail1_body =
+						KT_I18N::translate('Hello Administrator ...') . KT_Mail::EOL . KT_Mail::EOL .
+						/* I18N: %s is a server name/URL */
+						KT_I18N::translate('A prospective user has registered at %s.', $tree_link) . KT_Mail::EOL . KT_Mail::EOL .
+						KT_I18N::translate('Username') . ': ' . $user_name . KT_Mail::EOL .
+						KT_I18N::translate('Real name') . ': ' . $user_realname . KT_Mail::EOL .
+						KT_I18N::translate('Email Address') . ': ' . $user_email . KT_Mail::EOL . KT_Mail::EOL .
+						KT_I18N::translate('Comments') . ': ' . $user_comments . KT_Mail::EOL . KT_Mail::EOL .
+						KT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . KT_Mail::EOL . KT_Mail::EOL .
+						KT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.') . "\r\n";
+
+					$mail1_subject = /* I18N: %s is a server name/URL */ KT_I18N::translate('New registration at %s', strip_tags(KT_TREE_TITLE));
+					KT_I18N::init(KT_LOCALE);
+				} else {
+					AddToLog('Robot registration caught by checkbox (user name: ' . $user_name . ' real name: ' . $user_realname . ' email: ' . $user_email . ')', 'spam');
+				}?>
 
 				<div id="login-register-page">
 					<?php
-					// Generate an email in the user’s language
-					$mail2_body =
-						KT_I18N::translate('Hello %s ...', $user_realname) . KT_Mail::EOL . KT_Mail::EOL .
-						/* I18N: %1$s is the site URL and %2$s is an email address */
-						KT_I18N::translate('You (or someone claiming to be you) registered an account at %1$s using the email address %2$s.', $tree_link, $user_email) . KT_Mail::EOL . KT_Mail::EOL .
-						KT_I18N::translate('Follow this link to verify your email address.') . KT_Mail::EOL . KT_Mail::EOL .
-						'<a href="' . KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&amp;user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify">' .
-							KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&amp;user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify' .
-						'</a>' . KT_Mail::EOL . KT_Mail::EOL .
-						KT_I18N::translate('Username') . ': ' . $user_name . KT_Mail::EOL .
-						KT_I18N::translate('Comments') . ': ' . $user_comments . KT_Mail::EOL . KT_Mail::EOL .
-						KT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . KT_Mail::EOL;
-					$mail2_subject = /* I18N: %s is a server name/URL */ KT_I18N::translate('Your registration at %s', strip_tags(KT_TREE_TITLE));
-					$mail2_to      = $user_email;
-					$mail2_from    = $KIWITREES_EMAIL;
+					if (!$termsConditions) {
+						// Generate an email in the user’s language
+						$mail2_body =
+							KT_I18N::translate('Hello %s ...', $user_realname) . KT_Mail::EOL . KT_Mail::EOL .
+							/* I18N: %1$s is the site URL and %2$s is an email address */
+							KT_I18N::translate('You (or someone claiming to be you) registered an account at %1$s using the email address %2$s.', $tree_link, $user_email) . KT_Mail::EOL . KT_Mail::EOL .
+							KT_I18N::translate('Follow this link to verify your email address.') . KT_Mail::EOL . KT_Mail::EOL .
+							'<a href="' . KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&amp;user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify">' .
+								KT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&amp;user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&amp;action=userverify' .
+							'</a>' . KT_Mail::EOL . KT_Mail::EOL .
+							KT_I18N::translate('Username') . ': ' . $user_name . KT_Mail::EOL .
+							KT_I18N::translate('Comments') . ': ' . $user_comments . KT_Mail::EOL . KT_Mail::EOL .
+							KT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . KT_Mail::EOL;
+						$mail2_subject = /* I18N: %s is a server name/URL */ KT_I18N::translate('Your registration at %s', strip_tags(KT_TREE_TITLE));
+						$mail2_to      = $user_email;
+						$mail2_from    = $KIWITREES_EMAIL;
 
-					// Send user message by email only
-					KT_Mail::send(
-						// “From:” header
-						$KT_TREE,
-						// “To:” header
-						$mail2_to,
-						$mail2_to,
-						// “Reply-To:” header
-						$mail2_from,
-						$mail2_from,
-						// Message body
-						$mail2_subject,
-						// Message content
-						$mail2_body
-					);
+						// Send user message by email only
+						KT_Mail::send(
+							// “From:” header
+							$KT_TREE,
+							// “To:” header
+							$mail2_to,
+							$mail2_to,
+							// “Reply-To:” header
+							$mail2_from,
+							$mail2_from,
+							// Message body
+							$mail2_subject,
+							// Message content
+							$mail2_body
+						);
 
-					// Send admin message
-					KT_Mail::send(
-						// “From:” header
-						$KT_TREE,
-						// “To:” header
-						getUserEmail($webmaster_user_id),
-						getUserFullName($webmaster_user_id),
-						// “Reply-To:” header
-						$KIWITREES_EMAIL,
-						$KIWITREES_EMAIL,
-						// Message subject
-						$mail1_subject,
-						// Message content
-						$mail1_body
-					);
-					?>
+						// Send admin message
+						KT_Mail::send(
+							// “From:” header
+							$KT_TREE,
+							// “To:” header
+							getUserEmail($webmaster_user_id),
+							getUserFullName($webmaster_user_id),
+							// “Reply-To:” header
+							$KIWITREES_EMAIL,
+							$KIWITREES_EMAIL,
+							// Message subject
+							$mail1_subject,
+							// Message content
+							$mail1_body
+						);
+					} ?>
 
 					<div class="confirm">
 						<p><?php echo KT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname); ?></p>
@@ -415,7 +423,19 @@ switch ($action) {
 			       jQuery("#registration-submit-button").removeAttr("disabled");
 		        };
 
-		 '); ?>
+		'); ?>
+
+		<style>
+		    .regValidate {
+		        opacity: 0;
+		        position: absolute;
+		        top: 0;
+		        left: 0;
+		        height: 0;
+		        width: 0;
+		        z-index: -1;
+		    }
+		</style>
 
 		<div id="login-register-page">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -465,11 +485,16 @@ switch ($action) {
 					</div>
 					<div>
 						<label for="user_comments"><?php echo KT_I18N::translate('Comments'), help_link('register_comments'); ?>
-							<textarea id="user_comments" name="user_comments">
-								<?php echo htmlspecialchars($user_comments); ?>
-							</textarea>
+							<textarea id="user_comments" name="user_comments" <?php echo (KT_Site::preference('REQUIRE_COMMENT') ? 'required' : ''); ?>><?php echo htmlspecialchars($user_comments); ?></textarea>
 						</label>
 					</div>
+					<!-- H P O T F I E L D -->
+					<div class="regValidate">
+						<label for="termsConditions">
+							<?php echo /* I18N: for security protection only */ KT_I18N::translate('Confirm your agreement to our <a href="https://www.pandadoc.com/website-standard-terms-and-conditions-template/" >Terms and Conditions.'); ?></a></label>
+						<input type="checkbox" id="termsConditions" name="termsConditions" value="">
+					</div>
+					<!-- E N D O F H P O T F I E L D -->
 					<?php if (KT_Site::preference('USE_RECAPTCHA')) { ?>
 						<div>
 							<label>

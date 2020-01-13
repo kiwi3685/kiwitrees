@@ -90,10 +90,11 @@ switch (KT_Filter::post('action')) {
 		KT_Site::preference('WELCOME_TEXT_AUTH_MODE',		KT_Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' .		KT_LOCALE, KT_Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
 		KT_Site::preference('USE_REGISTRATION_MODULE',		KT_Filter::postBool('USE_REGISTRATION_MODULE'));
-		KT_Site::preference('USE_RECAPTCHA',				KT_Filter::post('USE_RECAPTCHA'));
+		KT_Site::preference('USE_RECAPTCHA',				KT_Filter::postBool('USE_RECAPTCHA'));
 		KT_Site::preference('RECAPTCHA_SITE_KEY',			KT_Filter::post('RECAPTCHA_SITE_KEY'));
 		KT_Site::preference('RECAPTCHA_SECRET_KEY',			KT_Filter::post('RECAPTCHA_SECRET_KEY'));
 		KT_Site::preference('VERIFY_DAYS',					KT_Filter::post('VERIFY_DAYS'));
+		KT_Site::preference('REQUIRE_COMMENT',				KT_Filter::postBool('REQUIRE_COMMENT'));
 		KT_Site::preference('SHOW_REGISTER_CAUTION',		KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
 		KT_Site::preference('LANGUAGES', implode(',',		KT_Filter::postArray('LANGUAGES')));
 
@@ -433,7 +434,6 @@ $controller
 								<input type="text" name="RECAPTCHA_SITE_KEY" value="<?php echo KT_Site::preference('RECAPTCHA_SITE_KEY'); ?>" size="50">
 							</div>
 						</div>
-
 						<div class="config_options">
 							<label><?php echo KT_I18N::translate('Google reCAPTCHA Secret Key'); ?></label>
 							<div class="input_group">
@@ -447,6 +447,15 @@ $controller
 							<input type="text" name="VERIFY_DAYS" dir="ltr" value="<?php echo KT_Site::preference('VERIFY_DAYS'); ?>" pattern="[0-9]*" placeholder="7" maxlength="3">
 							<div class="helpcontent">
 								<?php echo /* I18N: Help text for the “Days allowed to verify” site configuration setting */ KT_I18N::translate('The number of days a new user has to verify their email address before their request to register is highlighted as an error'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Require comment on registration form entries'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('REQUIRE_COMMENT', KT_Site::preference('REQUIRE_COMMENT')); ?>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Require all new registrations to enter a comment in the "Comments" field'); ?>
 							</div>
 						</div>
 					</div>
