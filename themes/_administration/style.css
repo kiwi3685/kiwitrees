@@ -929,7 +929,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
  /* no styles used */
 
 /* USER CLEAN */
-#clean th {border-bottom:2px solid #d3d3d3; text-align:left; padding:5px; font-size:105%;}
+#clean th {text-align:left; padding:5px; font-size:110%;}
 [dir=rtl] #clean th {text-align:right;}
 #clean td {border-bottom:1px solid #d3d3d3; padding:3px;}
 #clean td p {font-weight:bold;}

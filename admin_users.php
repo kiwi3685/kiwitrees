@@ -669,20 +669,31 @@ switch (KT_Filter::get('action')) {
 		return;
 
 	case 'cleanup':
-		$controller->pageHeader(); ?>
+		$controller
+			->pageHeader()
+			->addInlineJavascript('
+				jQuery("#selectMonths").change(function() {
+				    window.location = "admin_users.php?action=cleanup&month=" + jQuery(this).val();
+				});
+			'); ?>
 
+		<h2><?php echo KT_I18N::translate('Delete inactive users'); ?></h2>
 		<form name="cleanupform" method="post" action="admin_users.php?action=cleanup2">
 			<table id="clean">
 				<!-- Check for idle users -->
-				<?php $month = safe_GET_integer('month', 1, 12, 6); ?>
+				<?php
+				$month		= KT_Filter::getInteger('month', 1, 60, 6);
+				$range		= "1,2,3,4,5,6,7,8,9,10,11,12,18,24,36,48,60";
+				$monthRange	= explode( ',', $range );
+				?>
 				<tr>
 					<th>
 						<?php echo KT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '); ?>
 					</th>
 					<td>
-						<select onchange="document.location=options[selectedIndex].value;\">
-							<?php for ($i=1; $i<=12; $i++) { ?>
-								<option value="admin_users.php?action=cleanup&amp;month = <?php echo $i; ?>"
+						<select id="selectMonths">
+							<?php foreach( $monthRange as $i ) { ?>
+								<option value="<?php echo $i; ?>"
 									<?php if ($i == $month) { ?>
 										selected="selected"
 									<?php } ?>
@@ -692,13 +703,18 @@ switch (KT_Filter::get('action')) {
 						</select>
 					</td>
 				</tr>
+
+				<!-- Check users inactive too long -->
+				<tr><th colspan="2">&nbsp;&nbsp;</th></tr>
 				<tr>
 					<th colspan="2">
-						<?php echo KT_I18N::translate('Options:'); ?>
+						<?php echo KT_I18N::plural(
+							'These users have not logged in for at least %s month',
+							'These users have not logged in for at least %s months',
+							$month, $month
+						); ?>
 					</th>
 				</tr>
-
-				<!-- Check users not logged in too long -->
 				<?php
 				$ucnt = 0;
 				foreach (get_all_users() as $user_id=>$username) {
@@ -715,8 +731,7 @@ switch (KT_Filter::get('action')) {
 									 <?php echo $userName; ?>
 								 </span>
 								  - <span>
-									<?php echo KT_I18N::translate('User\'s account has been inactive too long: ');
-									echo timestamp_to_gedcom_date($datelogin)->Display(false);
+									<?php echo KT_I18N::translate('Not logged in since: %s', timestamp_to_gedcom_date($datelogin)->Display(false));
 									$ucnt++; ?>
 								</span>
 							</td>
@@ -726,16 +741,34 @@ switch (KT_Filter::get('action')) {
 						</tr>
 					<?php }
 				}
+				if ($ucnt == 0) { ?>
+					<tr>
+						<td class="accepted" colspan="2">
+							<?php echo KT_I18N::translate('Nothing found to cleanup'); ?>
+						</td>
+					</tr>
+				<?php } ?>
 
-				// Check unverified users
+				<!-- Check unverified users -->
+				<tr><th colspan="2">&nbsp;&nbsp;</th></tr>
+				<tr>
+					<th colspan="2">
+						<?php echo KT_I18N::plural(
+							'These users have not verified their email address for %s day or more',
+							'These users have not verified their email address for %s days or more',
+							$days, $days
+						); ?>
+					</th>
+				</tr>
+				<?php
+				$vcnt = 0;
 				foreach (get_all_users() as $user_id => $username) {
 					if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > $time) && !get_user_setting($user_id, 'verified')) {
 						$userName = getUserFullName($user_id); ?>
-						<hr>
 						<tr>
 							<td>
-								<?php echo $username, " - ", $userName, ":&nbsp;&nbsp;", KT_I18N::plural('User didn\'t verify within %s day.', 'User didn\'t verify within %s days.', $days, $days);
-								$ucnt++; ?>
+								<?php echo $username, " - ", $userName;
+								$vcnt++; ?>
 							</td>
 							<td>
 								<input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $username); ?>" value="1">
@@ -743,8 +776,23 @@ switch (KT_Filter::get('action')) {
 						</tr>
 					<?php }
 				}
+				if ($vcnt == 0) { ?>
+					<tr>
+						<td class="accepted" colspan="2">
+							<?php echo KT_I18N::translate('Nothing found to cleanup'); ?>
+						</td>
+					</tr>
+				<?php } ?>
 
-				// Check users not verified by admin
+				<!-- Check users not verified by admin -->
+				<tr><th colspan="2">&nbsp;&nbsp;</th></tr>
+				<tr>
+					<th colspan="2">
+						<?php echo KT_I18N::translate('These users have not been verified by admin'); ?>
+					</th>
+				</tr>
+				<?php
+				$acnt = 0;
 				foreach (get_all_users() as $user_id => $username) {
 					if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
 						$userName = getUserFullName($user_id); ?>
@@ -758,12 +806,12 @@ switch (KT_Filter::get('action')) {
 							</td>
 						</tr>
 						<?php
-						$ucnt++;
+						$acnt++;
 					}
 				}
-				if ($ucnt == 0) { ?>
+				if ($acnt == 0) { ?>
 					<tr>
-						<td class=\"accepted\" colspan=\"2\">
+						<td class="accepted" colspan="2">
 							<?php echo KT_I18N::translate('Nothing found to cleanup'); ?>
 						</td>
 					</tr>
