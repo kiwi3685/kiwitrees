@@ -40,8 +40,7 @@ $url				= KT_Filter::post('url', KT_REGEX_URL);
 $username			= KT_Filter::post('username', KT_REGEX_USERNAME);
 $password			= KT_Filter::post('password',KT_REGEX_UNSAFE); // Can use any password that was previously stored
 $usertime			= KT_Filter::post('usertime');
-$termsConditions	= KT_Filter::postBool('termsConditions');
-
+$termsConditions	= KT_Filter::post('termsConditions', '1', '0');
 
 // These parameters may come from the URL which is emailed to users.
 if (!$action) {
@@ -58,6 +57,7 @@ if (!$url) {
 }
 
 $message = '';
+$days = (KT_Site::preference('VERIFY_DAYS') ? KT_Site::preference('VERIFY_DAYS') : 7);
 
 // If we are already logged in, then go to the home page
 if (KT_USER_ID && KT_GED_ID && !in_array($action, array('verify_hash', 'userverify'))) {
@@ -259,6 +259,8 @@ switch ($action) {
 			<script src="https://www.google.com/recaptcha/api.js" async defer ></script>
 		<?php }
 
+		$tree_link	= '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
+
 		// The form parameters are mandatory, and the validation errors are shown in the client.
 		if ($KT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
@@ -305,7 +307,7 @@ switch ($action) {
 				// Everything looks good - create the user
 				$controller->pageHeader();
 
-				if (!$termsConditions) {
+				if ($termsConditions == '0') {
 					AddToLog('User registration requested for: ' . $user_name, 'auth');
 
 					$user_id = create_user($user_name, $user_realname, $user_email, $user_password01);
@@ -326,8 +328,6 @@ switch ($action) {
 					if (!$webmaster_user_id) {
 						$webmaster_user_id = get_admin_id(KT_GED_ID);
 					}
-					$tree_link			= '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
-
 					KT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 					$mail1_body =
@@ -345,11 +345,11 @@ switch ($action) {
 					KT_I18N::init(KT_LOCALE);
 				} else {
 					AddToLog('Robot registration caught by checkbox (user name: ' . $user_name . ' real name: ' . $user_realname . ' email: ' . $user_email . ')', 'spam');
-				}?>
+				} ?>
 
 				<div id="login-register-page">
 					<?php
-					if (!$termsConditions) {
+					if ($termsConditions == '0') {
 						// Generate an email in the user’s language
 						$mail2_body =
 							KT_I18N::translate('Hello %s ...', $user_realname) . KT_Mail::EOL . KT_Mail::EOL .
@@ -401,7 +401,7 @@ switch ($action) {
 
 					<div class="confirm">
 						<p><?php echo KT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname); ?></p>
-						<p><?php echo KT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email); ?></p>
+						<p><?php echo KT_I18N::translate('We will now send a confirmation email to the address <b>%1$s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within %2$s days, your application will be rejected automatically. You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email, $days); ?></p>
 					</div>
 				</div>
 
@@ -423,19 +423,12 @@ switch ($action) {
 			       jQuery("#registration-submit-button").removeAttr("disabled");
 		        };
 
+				jQuery("label[for=termsConditions]").parent().css({
+					"opacity": "0",
+			        "position": "absolute",
+			        "left": "-20000",
+		        });
 		'); ?>
-
-		<style>
-		    .regValidate {
-		        opacity: 0;
-		        position: absolute;
-		        top: 0;
-		        left: 0;
-		        height: 0;
-		        width: 0;
-		        z-index: -1;
-		    }
-		</style>
 
 		<div id="login-register-page">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -488,13 +481,11 @@ switch ($action) {
 							<textarea id="user_comments" name="user_comments" <?php echo (KT_Site::preference('REQUIRE_COMMENT') ? 'required' : ''); ?>><?php echo htmlspecialchars($user_comments); ?></textarea>
 						</label>
 					</div>
-					<!-- H P O T F I E L D -->
-					<div class="regValidate">
+					<div>
 						<label for="termsConditions">
 							<?php echo /* I18N: for security protection only */ KT_I18N::translate('Confirm your agreement to our <a href="https://www.pandadoc.com/website-standard-terms-and-conditions-template/" >Terms and Conditions.'); ?></a></label>
-						<input type="checkbox" id="termsConditions" name="termsConditions" value="">
+							<?php echo checkbox("termsConditions"); ?>
 					</div>
-					<!-- E N D O F H P O T F I E L D -->
 					<?php if (KT_Site::preference('USE_RECAPTCHA')) { ?>
 						<div>
 							<label>
