@@ -72,7 +72,14 @@ class KT_MenuBar {
 			$submenu = new KT_Menu(KT_I18N::translate('My individual record'), 'individual.php?pid='.KT_USER_GEDCOM_ID.'&amp;ged='.KT_GEDURL, 'menu-myrecord');
 			$menu->addSubmenu($submenu);
 		}
-		if (KT_USER_GEDCOM_ADMIN) {
+
+		if (
+			KT_USER_GEDCOM_ADMIN
+			 && !(
+				 array_key_exists('menu_admin_main', KT_Module::getActiveMenus()) ||
+				 array_key_exists('menu_admin_other', KT_Module::getActiveMenus())
+			)
+		) {
 			//-- admin submenu
 			$submenu = new KT_Menu(KT_I18N::translate('Administration'), 'admin.php', 'menu-admin');
 			$menu->addSubmenu($submenu);
@@ -83,6 +90,12 @@ class KT_MenuBar {
 
 		return $menu;
 	}
+
+	public static function getAdminMenu() {
+		$menu = new KT_Menu(KT_I18N::translate('Administration'), 'admin.php', 'menu-admin');
+		return $menu;
+	}
+
 
 	public static function getChartsMenu() {
 		global $SEARCH_SPIDER, $controller;
