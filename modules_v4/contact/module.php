@@ -94,9 +94,18 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 	private function show() {
 		global $controller;
 		require_once KT_ROOT . 'includes/functions/functions_mail.php';
+		require KT_ROOT . 'includes/functions/functions_edit.php';
 
 		$controller = new KT_Controller_Page();
-		$controller->setPageTitle($this->getTitle());
+		$controller
+			->setPageTitle($this->getTitle())
+			->addInlineJavascript('
+				jQuery("label[for=termsConditions]").parent().css({
+					"opacity": "0",
+					"position": "absolute",
+					"left": "-20000",
+				});
+			');
 
 		if (array_key_exists('ckeditor', KT_Module::getActiveModules()) && KT_Site::preference('MAIL_FORMAT') == "1") {
 			ckeditor_KT_Module::enableBasicEditor($controller);
@@ -104,12 +113,13 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
 		// Send the message.
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$to         = KT_Filter::post('to', null, KT_Filter::get('to'));
-			$from_name  = KT_Filter::post('from_name');
-			$from_email = KT_Filter::post('from_email');
-			$subject    = KT_Filter::post('subject', null, KT_Filter::get('subject'));
-			$body       = KT_Filter::post('body');
-			$url        = KT_Filter::postUrl('url', KT_Filter::getUrl('url'));
+			$to					= KT_Filter::post('to', null, KT_Filter::get('to'));
+			$from_name			= KT_Filter::post('from_name');
+			$from_email			= KT_Filter::post('from_email');
+			$subject			= KT_Filter::post('subject', null, KT_Filter::get('subject'));
+			$body				= KT_Filter::post('body');
+			$url				= KT_Filter::postUrl('url', KT_Filter::getUrl('url'));
+			$termsConditions	= KT_Filter::post('termsConditions', '1', '0');
 
 			// Only an administration can use the distribution lists.
 			$controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || KT_USER_IS_ADMIN);
@@ -153,28 +163,35 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 					'&url=' . rawurlencode($url)
 				);
 			} else {
-				// No errors.  Send the message.
-				foreach ($recipients as $recipient) {
-					$message         		= array();
-					$message['to']   		= $to;
-					$message['from_name']	= $from_name;
-					$message['from_email']	= $from_email;
-					$message['subject']		= $subject;
-					$message['body']		= nl2br($body, false);
-					$message['url']			= $url;
+				if ($termsConditions == '1') {
+					// Robot. Display dummy 'message sent' message and record in log
+					KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));
+					AddToLog('Robot message caught by checkbox (from: ' . $from_email . ' subject: ' . $subject . ')', 'spam');
+					header('Location: ' . $url);
+				} else {
+					// No errors.  Send the message.
+					foreach ($recipients as $recipient) {
+						$message         		= array();
+						$message['to']   		= $to;
+						$message['from_name']	= $from_name;
+						$message['from_email']	= $from_email;
+						$message['subject']		= $subject;
+						$message['body']		= nl2br($body, false);
+						$message['url']			= $url;
 
-					if (addMessage($message)) {
-						KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));
-					} else {
-						KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'));
-						AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
+						if (addMessage($message)) {
+							KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));
+						} else {
+							KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'));
+							AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
+						}
 					}
+
+					header('Location: ' . $url);
 				}
 
-				header('Location: ' . $url);
+				return;
 			}
-
-			return;
 		}
 
 		$to			= KT_Filter::post('to', null, KT_Filter::get('to'));

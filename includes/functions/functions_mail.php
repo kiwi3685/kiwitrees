@@ -106,6 +106,12 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 					<label for="from_email"><?php echo KT_I18N::translate('Email address'); ?></label>
 					<input type="email" name="from_email" id="from_email" value="<?php echo $from_email; ?>" required >
 				</div>
+				<div class="option">
+					<label for="termsConditions">
+						<?php echo /* I18N: for security protection only */ KT_I18N::translate('Confirm your agreement to our <a href="https://www.pandadoc.com/website-standard-terms-and-conditions-template/" >Terms and Conditions.'); ?></a>
+					</label>
+					<?php echo checkbox("termsConditions"); ?>
+				</div>
 			<?php } ?>
 		</div>
 		<hr>
