@@ -151,6 +151,29 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 				$errors = true;
 			}
 
+			if (KT_Site::preference('USE_RECAPTCHA') && !KT_USER_ID) {
+				if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+					// Google reCAPTCHA API secret key
+					$secretKey = KT_Site::preference('RECAPTCHA_SECRET_KEY');
+
+					// Verify the reCAPTCHA response
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_POST['g-recaptcha-response']);
+
+					// Decode json data
+					$responseData = json_decode($verifyResponse);
+
+					// If reCAPTCHA response is not validated
+					if (!$responseData->success) {
+						$responseData->error-codes ? $errors = $responseData->error-codes : $errors = '';
+						AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
+						KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
+						header('Location: ' . KT_Filter::unescapeHtml($url));
+						$captcha = false;
+						exit;
+					}
+				}
+			}
+
 			if ($errors) {
 				// Errors? Go back to the form.
 				header(
