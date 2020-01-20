@@ -426,7 +426,7 @@ switch ($action) {
 				jQuery("label[for=termsConditions]").parent().css({
 					"opacity": "0",
 			        "position": "absolute",
-			        "left": "-20000",
+			        "left": "-2000px",
 		        });
 		'); ?>
 
