@@ -24,12 +24,13 @@
 define('KT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 require_once KT_ROOT . 'includes/functions/functions_mail.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new KT_Controller_Page();
 $controller
 	->setPageTitle(KT_I18N::translate('Contact us'))
 	->addInlineJavascript('
-		jQuery("label[for=termsConditions]").parent().css({
+		jQuery("#contact_page div.option label[for=termsConditions]").parent().css({
 			"opacity": "0",
 			"position": "absolute",
 			"left": "-2000px",
@@ -83,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ($errors) {
 		// Errors? Go back to the form.
 		header(
-			'Location: message.php' .
-			'?to=' . rawurlencode($to) .
+			'Location: module.php?mod=' . $this->getName() . '&mod_action=show' .
+			'&to=' . rawurlencode($to) .
 			'&from_name=' . rawurlencode($from_name) .
 			'&from_email=' . rawurlencode($from_email) .
 			'&subject=' . rawurlencode($subject) .
@@ -101,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// No errors.  Send the message.
 			foreach ($recipients as $recipient) {
 				$message         		= array();
-				$message['to']			= $to;
+				$message['to']   		= $to;
 				$message['from_name']	= $from_name;
 				$message['from_email']	= $from_email;
 				$message['subject']		= $subject;
@@ -110,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 				if (addMessage($message)) {
 					KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));
+					AddToLog('Message sent FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'auth');
 				} else {
 					KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'));
 					AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
@@ -117,10 +119,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			}
 			header('Location: ' . KT_Filter::unescapeHtml($url));
 		}
-		return
+		return;
 	}
-
 }
+
+$to			= KT_Filter::post('to', null, KT_Filter::get('to'));
+$from_name 	= KT_Filter::post('from_name');
+$from_email	= KT_Filter::post('from_email');
+$subject	= KT_Filter::post('subject', null, KT_Filter::get('subject'));
+$body		= KT_Filter::post('body');
+$url		= KT_Filter::postUrl('url', KT_Filter::getUrl('url'));
+
 
 // Only an administrator can use the distribution lists.
 $controller->restrictAccess(!in_array($to, ['all', 'never_logged', 'last_6mo']) || KT_USER_IS_ADMIN);
