@@ -297,10 +297,10 @@ switch ($action) {
 					KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 					KT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
 				);
-				AddToLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '", comments="' . $user_comments . '"', 'spam');
+				AddToLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '", comments="' . mb_strimwidth($user_comments, 0, 100, "...") . '"', 'spam');
 			} elseif (in_array($user_email, explode(',', KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST')))) {
 				// This type of validation error should not be shown in the client.
-				AddToLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '", comments="' . $user_comments . '"', 'spam');
+				AddToLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '", comments="' . mb_strimwidth($user_comments, 0, 100, "...") . '"', 'spam');
 				header('Location: '. KT_SERVER_NAME . KT_SCRIPT_PATH);
 				exit;
 			} else {

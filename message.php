@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$errors = true;
 	} elseif (preg_match($urlRegex, $subject . $body, $match)) {
 		KT_FlashMessages::addMessage(KT_I18N::translate('You are not allowed to send messages that contain external links.'));
-		AddToLog('Attempt to include external links (' . $match[1] . ') by: ' . $from_email, 'spam');
+		AddToLog('Attempt to include external links (' . mb_strimwidth($match[1], 0, 100, "...") . ') by: ' . $from_email, 'spam');
 		$errors = true;
 	} elseif (empty($recipients)) {
 		$errors = true;
