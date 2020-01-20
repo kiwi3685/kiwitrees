@@ -32,7 +32,7 @@ $controller
 		jQuery("label[for=termsConditions]").parent().css({
 			"opacity": "0",
 			"position": "absolute",
-			"left": "-20000",
+			"left": "-2000px",
 		});
 	');
 
@@ -115,11 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
 				}
 			}
-
 			header('Location: ' . KT_Filter::unescapeHtml($url));
-
 		}
 	}
+	return
 
 }
 

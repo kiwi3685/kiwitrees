@@ -103,7 +103,7 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 				jQuery("label[for=termsConditions]").parent().css({
 					"opacity": "0",
 					"position": "absolute",
-					"left": "-20000",
+					"left": "-2000px",
 				});
 			');
 
@@ -181,15 +181,14 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
 						if (addMessage($message)) {
 							KT_FlashMessages::addMessage(KT_I18N::translate('The message was successfully sent to %s.', KT_Filter::escapeHtml($to)));
+							AddToLog('Message sent FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'auth');
 						} else {
 							KT_FlashMessages::addMessage(KT_I18N::translate('The message was not sent.'));
 							AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
 						}
 					}
-
-					header('Location: ' . $url);
+					header('Location: ' . KT_Filter::unescapeHtml($url));
 				}
-
 				return;
 			}
 		}
