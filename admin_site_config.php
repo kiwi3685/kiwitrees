@@ -192,6 +192,9 @@ $controller
 					<a href="#login"><span><?php echo KT_I18N::translate('Login & registration'); ?></span></a>
 				</li>
 				<li>
+					<a href="#spam"><span><?php echo KT_I18N::translate('Anti-spam'); ?></span></a>
+				</li>
+				<li>
 					<a href="#lang"><span><?php echo KT_I18N::translate('Languages'); ?></span></a>
 				</li>
 			</ul>
@@ -419,6 +422,34 @@ $controller
 						</div>
 					</div>
 					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Show acceptable use agreement on «Request new user account» page'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', KT_Site::preference('SHOW_REGISTER_CAUTION')); ?>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class="list_value_wrap"><div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<?php
+							$blockedEmails = KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST');
+							if (!$blockedEmails) {
+								$blockedEmails = 'youremail@gmail.com';
+							}
+ 						?>
+						<label><?php echo KT_I18N::translate('Blocked email address list'); ?></label>
+						<div class="input_group">
+							<textarea id="BLOCKED_EMAIL_ADDRESS_LIST" name="BLOCKED_EMAIL_ADDRESS_LIST" rows="3"><?php echo $blockedEmails; ?></textarea>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log.'); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ANTI-SPAM -->
+				<h3 class="accordion"><?php echo KT_I18N::translate('Anti-spam'); ?></h3>
+				<div id="spam">
+					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Use Google reCAPTCHA v2'); ?></label>
 						<div class="input_group" id="recaptcha_select">
 							<?php echo edit_field_yes_no('USE_RECAPTCHA', KT_Site::preference('USE_RECAPTCHA')); ?>
@@ -459,33 +490,8 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="config_options">
-						<label><?php echo KT_I18N::translate('Show acceptable use agreement on «Request new user account» page'); ?></label>
-						<div class="input_group">
-							<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', KT_Site::preference('SHOW_REGISTER_CAUTION')); ?>
-							<div class="helpcontent">
-								<?php echo KT_I18N::translate('When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class="list_value_wrap"><div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>'); ?>
-							</div>
-						</div>
-					</div>
-					<div class="config_options">
-						<?php
-							$blockedEmails = KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST');
-							if (!$blockedEmails) {
-								$blockedEmails = 'youremail@gmail.com';
-							}
- 						?>
-						<label><?php echo KT_I18N::translate('Blocked email address list'); ?></label>
-						<div class="input_group">
-							<textarea id="BLOCKED_EMAIL_ADDRESS_LIST" name="BLOCKED_EMAIL_ADDRESS_LIST" rows="3"><?php echo $blockedEmails; ?></textarea>
-							<div class="helpcontent">
-								<?php echo KT_I18N::translate('Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log.'); ?>
-							</div>
-						</div>
-					</div>
-
-
 				</div>
+				<!-- LANGUAGES -->
 				<h3 class="accordion"><?php echo KT_I18N::translate('Languages'); ?></h3>
 				<div id="lang">
 					<h4><?php echo KT_I18N::translate('Select the languages your site will use'); ?></h4>
