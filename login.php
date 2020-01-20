@@ -483,8 +483,9 @@ switch ($action) {
 					</div>
 					<div>
 						<label for="termsConditions">
-							<?php echo /* I18N: for security protection only */ KT_I18N::translate('Confirm your agreement to our <a href="https://www.pandadoc.com/website-standard-terms-and-conditions-template/" >Terms and Conditions.'); ?></a></label>
-							<?php echo checkbox("termsConditions"); ?>
+							<?php echo /* I18N: for security protection only */ KT_I18N::translate('Confirm your agreement to our <a href="https://www.pandadoc.com/website-standard-terms-and-conditions-template/" >Terms and Conditions.'); ?></a>
+						</label>
+						<?php echo checkbox("termsConditions"); ?>
 					</div>
 					<?php if (KT_Site::preference('USE_RECAPTCHA')) { ?>
 						<div>
