@@ -72,7 +72,7 @@ class KT_MenuBar {
 			$submenu = new KT_Menu(KT_I18N::translate('My individual record'), 'individual.php?pid='.KT_USER_GEDCOM_ID.'&amp;ged='.KT_GEDURL, 'menu-myrecord');
 			$menu->addSubmenu($submenu);
 		}
-
+		//-- admin submenu (only if not already included in main or other menu)
 		if (
 			KT_USER_GEDCOM_ADMIN
 			 && !(
@@ -80,7 +80,6 @@ class KT_MenuBar {
 				 array_key_exists('menu_admin_other', KT_Module::getActiveMenus())
 			)
 		) {
-			//-- admin submenu
 			$submenu = new KT_Menu(KT_I18N::translate('Administration'), 'admin.php', 'menu-admin');
 			$menu->addSubmenu($submenu);
 		}
