@@ -68,12 +68,14 @@ switch (KT_Filter::post('action')) {
 		} else {
 			KT_FlashMessages::addMessage(KT_I18N::translate('The folder %s does not exist, and it could not be created.', KT_Filter::escapeHtml($INDEX_DIRECTORY)));
 		}
+		// site config
 		KT_Site::preference('MEMORY_LIMIT',					KT_Filter::post('MEMORY_LIMIT'));
 		KT_Site::preference('MAX_EXECUTION_TIME',			KT_Filter::post('MAX_EXECUTION_TIME'));
 		KT_Site::preference('ALLOW_CHANGE_GEDCOM',			KT_Filter::postBool('ALLOW_CHANGE_GEDCOM'));
 		KT_Site::preference('SESSION_TIME',					KT_Filter::post('SESSION_TIME'));
 		KT_Site::preference('SERVER_URL',					KT_Filter::post('SERVER_URL'));
 		KT_Site::preference('MAINTENANCE',					KT_Filter::postBool('MAINTENANCE'));
+		// mail configuration
 		KT_Site::preference('SMTP_ACTIVE',					KT_Filter::post('SMTP_ACTIVE'));
 		KT_Site::preference('MAIL_FORMAT',					KT_Filter::postBool('MAIL_FORMAT'));
 		KT_Site::preference('SMTP_FROM_NAME',				KT_Filter::post('SMTP_FROM_NAME'));
@@ -86,19 +88,19 @@ switch (KT_Filter::post('action')) {
 		if (KT_Filter::post('SMTP_AUTH_PASS')) {
 			KT_Site::preference('SMTP_AUTH_PASS',			KT_Filter::post('SMTP_AUTH_PASS'));
 		}
+		// login & registration
 		KT_Site::preference('LOGIN_URL',					KT_Filter::post('LOGIN_URL'));
 		KT_Site::preference('WELCOME_TEXT_AUTH_MODE',		KT_Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' .		KT_LOCALE, KT_Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
+		KT_Site::preference('SHOW_REGISTER_CAUTION',		KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
 		KT_Site::preference('USE_REGISTRATION_MODULE',		KT_Filter::postBool('USE_REGISTRATION_MODULE'));
+		// anti-spam
+		KT_Site::preference('USE_HONEYPOT',					KT_Filter::postBool('USE_HONEYPOT'));
 		KT_Site::preference('USE_RECAPTCHA',				KT_Filter::postBool('USE_RECAPTCHA'));
 		KT_Site::preference('RECAPTCHA_SITE_KEY',			KT_Filter::post('RECAPTCHA_SITE_KEY'));
 		KT_Site::preference('RECAPTCHA_SECRET_KEY',			KT_Filter::post('RECAPTCHA_SECRET_KEY'));
 		KT_Site::preference('VERIFY_DAYS',					KT_Filter::post('VERIFY_DAYS'));
 		KT_Site::preference('REQUIRE_COMMENT',				KT_Filter::postBool('REQUIRE_COMMENT'));
-		KT_Site::preference('SHOW_REGISTER_CAUTION',		KT_Filter::postBool('SHOW_REGISTER_CAUTION'));
-		KT_Site::preference('LANGUAGES', implode(',',		KT_Filter::postArray('LANGUAGES')));
-
-
 		if (KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')) {
 			$emails = explode(',', str_replace(array(' ', "\n", "\r"), '', KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')));
 			foreach ($emails as $email) {
@@ -112,6 +114,8 @@ switch (KT_Filter::post('action')) {
 			}
 			KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST', str_replace(array(' ', "\n", "\r"), '', KT_Filter::post('BLOCKED_EMAIL_ADDRESS_LIST')));
 		}
+		//languages
+		KT_Site::preference('LANGUAGES', implode(',',		KT_Filter::postArray('LANGUAGES')));
 
 		// Reload the page, so that the settings take effect immediately.
 		Zend_Session::writeClose();
@@ -430,25 +434,20 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="config_options">
-						<?php
-							$blockedEmails = KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST');
-							if (!$blockedEmails) {
-								$blockedEmails = 'youremail@gmail.com';
-							}
- 						?>
-						<label><?php echo KT_I18N::translate('Blocked email address list'); ?></label>
-						<div class="input_group">
-							<textarea id="BLOCKED_EMAIL_ADDRESS_LIST" name="BLOCKED_EMAIL_ADDRESS_LIST" rows="3"><?php echo $blockedEmails; ?></textarea>
-							<div class="helpcontent">
-								<?php echo KT_I18N::translate('Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log.'); ?>
-							</div>
-						</div>
-					</div>
 				</div>
 				<!-- ANTI-SPAM -->
 				<h3 class="accordion"><?php echo KT_I18N::translate('Anti-spam'); ?></h3>
 				<div id="spam">
+					<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Use secret field'); ?></label>
+						<div class="input_group" id="honeypot">
+							<?php echo edit_field_yes_no('USE_HONEYPOT', KT_Site::preference('USE_HONEYPOT')); ?>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('This will create a secret field that only internet robots will see and complete. If they do, then their entry will be ignored.'); ?>
+							</div>
+						</div>
+					</div>
 					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Use Google reCAPTCHA v2'); ?></label>
 						<div class="input_group" id="recaptcha_select">
@@ -487,6 +486,21 @@ $controller
 							<?php echo edit_field_yes_no('REQUIRE_COMMENT', KT_Site::preference('REQUIRE_COMMENT')); ?>
 							<div class="helpcontent">
 								<?php echo KT_I18N::translate('Require all new registrations to enter a comment in the "Comments" field'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<?php
+							$blockedEmails = KT_Site::preference('BLOCKED_EMAIL_ADDRESS_LIST');
+							if (!$blockedEmails) {
+								$blockedEmails = 'youremail@gmail.com';
+							}
+ 						?>
+						<label><?php echo KT_I18N::translate('Blocked email address list'); ?></label>
+						<div class="input_group">
+							<textarea id="BLOCKED_EMAIL_ADDRESS_LIST" name="BLOCKED_EMAIL_ADDRESS_LIST" rows="3"><?php echo $blockedEmails; ?></textarea>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('Add email addresses to this list to prevent them being used to register on this site. Separate each address with a comma. Whenever a visitor tries to use one of these addresses to register, their attempt will be ignored and a message added to the site error log.'); ?>
 							</div>
 						</div>
 					</div>
