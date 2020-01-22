@@ -368,7 +368,7 @@ function user_contact_link($user_id) {
 	case 'mailto':
 		return '<a href="mailto:' . KT_Filter::escapeHtml(getUserEmail($user_id)) . '">' . getUserFullName($user_id) . '</a>';
 	default:
-		return '<a href="message.php?to=' . KT_Filter::escapeHtml(get_user_name($user_id)) . '&amp;url=' . addslashes(urlencode(get_query_url())) . '" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('Send Message') . '">' . getUserFullName($user_id) . '</a>';
+		return '<a href="#" onclick="window.open(\'message.php?to=' . KT_Filter::escapeHtml(get_user_name($user_id)) . '&amp;url=' . addslashes(urlencode(get_query_url())) . '\', \'_blank\')" rel="noopener noreferrer" title="' . KT_I18N::translate('Send Message') . '">' . getUserFullName($user_id) . '</a>';
 	}
 }
 

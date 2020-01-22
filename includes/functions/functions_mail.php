@@ -150,6 +150,10 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 							<i class="fa fa-envelope-o"></i>
 							<?php echo KT_I18N::translate('Send'); ?>
 						</button>
+						<button class="btn btn-primary" type="button" onclick="window.close('<?php echo $url; ?>');">
+							<i class="fa fa-times"></i>
+							<?php echo KT_I18N::translate('Cancel'); ?>
+						</button>
 					</p>
 				</div>
 				<?php if ($style <= 1) {
