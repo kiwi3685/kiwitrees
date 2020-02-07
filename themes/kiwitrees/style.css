@@ -445,6 +445,7 @@ textarea:required:invalid {
 #main-menu li a {
 	margin: 0;
 	width: 100%;
+	font-size: 0.8rem;
 }
 
 #main-menu li a:hover {
@@ -7139,6 +7140,10 @@ table.ca td.under {
 }
 
 @media (min-width: 780px) and (max-width: 1680px) {
+	#topMenu #main-menu li a {
+    font-size: 0.9rem;
+}
+
  	.media-list-item {
  		width: 45%; /* two per row */
  	}
@@ -7185,6 +7190,10 @@ table.ca td.under {
 }
 
 @media print {
+	html {
+	    background-color: #fff;
+	}
+
 	#header,
 	#footer,
 	#topMenu,

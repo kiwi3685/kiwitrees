@@ -84,7 +84,7 @@ $chart7 = ($find == 7) || (boolval(get_gedcom_setting(KT_GED_ID, 'CHART_7', '0')
 	<h2>
 		<?php echo $controller->getPageTitle() ?>
 		<?php if (KT_USER_IS_ADMIN) { ?>
-			<a href="module.php?mod=chart_relationship&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer">
+			<a href="module.php?mod=chart_relationship&amp;mod_action=admin_config" class="noprint" target="_blank" rel="noopener noreferrer">
 				<i class="fa fa-cog"></i>
 			</a>
 		<?php } ?>
