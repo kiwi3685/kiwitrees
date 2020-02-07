@@ -270,13 +270,15 @@ switch ($action) {
 					$secretKey = KT_Site::preference('RECAPTCHA_SECRET_KEY');
 
 					// Verify the reCAPTCHA response
-					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_POST['g-recaptcha-response']);
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $_POST['g-recaptcha-response']);
 
 					// Decode json data
 					$responseData = json_decode($verifyResponse);
 
-					// If reCAPTCHA response is not validated
-					if (!$responseData->success) {
+					// Check reCAPTCHA response
+					if ($responseData->success) {
+						AddToLog('Google reCaptcha valid response from "' . $user_name . '"/"' . $user_email . '", response ="' . $responseData->success . '"', 'auth');
+					} else {
 						$responseData->error-codes ? $errors = $responseData->error-codes : $errors = '';
 						AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
 						KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
