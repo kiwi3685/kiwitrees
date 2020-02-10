@@ -224,7 +224,7 @@ if ($controller->record->canDisplayDetails()) {
 		KT_USER_ID &&
 		get_gedcom_setting(KT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0
 	) {
-		echo '<div id="indi_relationship" class="fam_rela">', printIndiRelationship(), '</div>';
+		echo '<div id="indi_relationship" class="indi_rela">', printIndiRelationship(), '</div>';
 	}
 
 	echo '</div>'; // close header_accordion1
