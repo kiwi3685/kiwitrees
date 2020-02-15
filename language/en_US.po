@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2020-02-15 17:34+1300\n"
-"PO-Revision-Date: 2020-02-15 17:38+1300\n"
+"POT-Creation-Date: 2020-02-16 10:30+1300\n"
+"PO-Revision-Date: 2020-02-16 10:30+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -414,11 +414,11 @@ msgstr "Kiwitrees is compatible with this version."
 msgid ""
 "Kiwitrees is not yet tested for compatability with your version of PHP. It "
 "might work, but if you find any issues please report them on the <a class="
-"\"current\" href=\"%s\" target=\"_blank\">kiwtreees support forum</a>"
+"\"current\" href=\"%s\" target=\"_blank\">kiwtrees support forum</a>"
 msgstr ""
 "Kiwitrees is not yet tested for compatability with your version of PHP. It "
 "might work, but if you find any issues please report them on the <a class="
-"\"current\" href=\"%s\" target=\"_blank\">kiwtreees support forum</a>"
+"\"current\" href=\"%s\" target=\"_blank\">kiwtrees support forum</a>"
 
 #: admin.php:120 admin_site_info.php:30 themes/_administration/header.php:138
 msgid "Server information"
@@ -1521,15 +1521,17 @@ msgstr "Use Google reCAPTCHA v2"
 
 #: admin_site_config.php:457
 msgid ""
-"This can help limit the nember of spam attempts to register on your site."
-"<br>It requires a pair of Google rCaptcha v2 API keys. Help to obtian this "
+"This can help limit the number of spam attempts to register on your site."
+"<br>It requires a pair of Google reCaptcha v2 API keys. Help to obtain these "
 "can be found on this kiwitrees FAQ page: <a href=\"https://kiwitrees.net/"
-"faqs/administration/site_admin/\" target=\"_blank\">Google reCaptcha v2</a>"
+"faqs/administration/site_admin/anti-spam/\" target=\"_blank\">Google "
+"reCaptcha v2</a>"
 msgstr ""
-"This can help limit the nember of spam attempts to register on your site."
-"<br>It requires a pair of Google rCaptcha v2 API keys. Help to obtian this "
+"This can help limit the number of spam attempts to register on your site."
+"<br>It requires a pair of Google reCaptcha v2 API keys. Help to obtain these "
 "can be found on this kiwitrees FAQ page: <a href=\"https://kiwitrees.net/"
-"faqs/administration/site_admin/\" target=\"_blank\">Google reCaptcha v2</a>"
+"faqs/administration/site_admin/anti-spam/\" target=\"_blank\">Google "
+"reCaptcha v2</a>"
 
 #: admin_site_config.php:463
 msgid "Google reCAPTCHA Site Key"
@@ -5165,7 +5167,6 @@ msgstr ""
 
 #: admin_users.php:712
 #, php-format
-#| msgid "Send message to users who have not logged in for 6 months"
 msgid "These users have not logged in for at least %s month"
 msgid_plural "These users have not logged in for at least %s months"
 msgstr[0] "These users have not logged in for at least %s month"
@@ -5173,7 +5174,6 @@ msgstr[1] "These users have not logged in for at least %s months"
 
 #: admin_users.php:734
 #, php-format
-#| msgid "Logged in as "
 msgid "Not logged in since: %s"
 msgstr "Not logged in since: %s"
 
@@ -5192,7 +5192,6 @@ msgstr[1] ""
 "These users have not verified their email address for %s days or more"
 
 #: admin_users.php:791
-#| msgid "User not verified by administrator."
 msgid "These users have not been verified by admin"
 msgstr "These users have not been verified by admin"
 
@@ -19875,15 +19874,6 @@ msgstr "Hello %s ...<br />Thank you for your registration."
 
 #: login.php:406
 #, php-format
-#| msgid ""
-#| "We will now send a confirmation email to the address <b>%s</b>. You must "
-#| "verify your account request by following instructions in the confirmation "
-#| "email. If you do not confirm your account request within seven days, your "
-#| "application will be rejected automatically. You will have to apply again."
-#| "<br /><br />After you have followed the instructions in the confirmation "
-#| "email, the administrator still has to approve your request before your "
-#| "account can be used.<br /><br />To login to this site, you will need to "
-#| "know your user name and password."
 msgid ""
 "We will now send a confirmation email to the address <b>%1$s</b>. You must "
 "verify your account request by following instructions in the confirmation "
@@ -25881,24 +25871,6 @@ msgid "Gallery themes"
 msgstr "Gallery themes"
 
 #: modules_v4/gallery/help_text.php:69
-#| msgid ""
-#| "There are TWO types of theme in operation for this module.<br><br>The "
-#| "first is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea "
-#| "etc). This controls the overall container for the gallery and the menu "
-#| "images in each of the kiwitrees themes. These are switched automatically "
-#| "when you change the main kiwitrees theme.<br><br>In addition, there is "
-#| "the Galleria theme that controls the actual image display area. This "
-#| "module includes three default themes for this, two supplied by Galleria "
-#| "(called \"classic\" and \"azur\"), and an alternative \"simpl_galleria\" "
-#| "one designed to compliment the colors of the blue-based themes such as "
-#| "clouds and xenea. There are also other themes available <u>for purchase</"
-#| "u> from the Galleria website. Switch between the \"Azur\", \"Classic\" "
-#| "and \"Simpl_galleria\" by selecting them on the configuration page."
-#| "<br><br>To add other Galleria themes, download them from their website "
-#| "(www.galleria.io/), and copy them to the kiwitrees /modules_vX/gallery/"
-#| "galleria/themes/ folder.<br>You should then add a 250px x 140px thumbnail "
-#| "image to suit in the kiwitrees /modules_vX/gallery/images folder, named "
-#| "to match the theme and of type png (like azur.png)."
 msgid ""
 "There are TWO types of theme in operation for this module.<br><br>The first "
 "is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea etc). This "
@@ -26969,13 +26941,11 @@ msgstr "Administration"
 
 #. I18N: Description of the languages module
 #: modules_v4/menu_admin_main/module.php:37
-#| msgid "The Login menu item (other menus)"
 msgid "The Administration menu item (main menus)"
 msgstr "The Administration menu item (main menus)"
 
 #. I18N: Description of the languages module
 #: modules_v4/menu_admin_other/module.php:37
-#| msgid "The Login menu item (other menus)"
 msgid "The Administration menu item (other menus)"
 msgstr "The Administration menu item (other menus)"
 
@@ -28372,7 +28342,6 @@ msgid "Date added"
 msgstr "Date added"
 
 #: modules_v4/tab_dna/module.php:185 modules_v4/tab_dna/module.php:214
-#| msgid "Internal reference "
 msgid "Invalid reference"
 msgstr "Invalid reference"
 
@@ -28381,7 +28350,6 @@ msgid "No relationship found"
 msgstr "No relationship found"
 
 #: modules_v4/tab_dna/module.php:203
-#| msgid "No family available"
 msgid "Not applicable"
 msgstr "Not applicable"
 
