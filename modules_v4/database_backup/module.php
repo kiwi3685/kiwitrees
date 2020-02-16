@@ -2,7 +2,7 @@
 /*
  * webtrees - simpl_menu module
  * Version 1.1
- * Copyright (C) 2010-2011 Nigel Osborne and kiwtrees.net. All rights reserved.
+ * Copyright (C) 2010-2011 Nigel Osborne and kiwitrees.net. All rights reserved.
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2011 webtrees development team.

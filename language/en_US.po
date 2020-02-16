@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2020-02-16 10:30+1300\n"
-"PO-Revision-Date: 2020-02-16 10:30+1300\n"
+"POT-Creation-Date: 2020-02-17 10:07+1300\n"
+"PO-Revision-Date: 2020-02-17 10:08+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -411,14 +411,18 @@ msgstr "Kiwitrees is compatible with this version."
 
 #: admin.php:111
 #, php-format
+#| msgid ""
+#| "Kiwitrees is not yet tested for compatability with your version of PHP. "
+#| "It might work, but if you find any issues please report them on the <a "
+#| "class=\"current\" href=\"%s\" target=\"_blank\">kiwtrees support forum</a>"
 msgid ""
-"Kiwitrees is not yet tested for compatability with your version of PHP. It "
+"Kiwitrees is not yet tested for compatibility with your version of PHP. It "
 "might work, but if you find any issues please report them on the <a class="
-"\"current\" href=\"%s\" target=\"_blank\">kiwtrees support forum</a>"
+"\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
 msgstr ""
-"Kiwitrees is not yet tested for compatability with your version of PHP. It "
+"Kiwitrees is not yet tested for compatibility with your version of PHP. It "
 "might work, but if you find any issues please report them on the <a class="
-"\"current\" href=\"%s\" target=\"_blank\">kiwtrees support forum</a>"
+"\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
 
 #: admin.php:120 admin_site_info.php:30 themes/_administration/header.php:138
 msgid "Server information"
@@ -1543,7 +1547,7 @@ msgstr "Google reCAPTCHA Secret Key"
 
 #: admin_site_config.php:476
 msgid "Days allowed for new user to verify email address"
-msgstr "Follow this link to verify your email address."
+msgstr "Days allowed for new user to verify email address"
 
 #. I18N: Help text for the “Days allowed to verify” site configuration setting
 #: admin_site_config.php:480

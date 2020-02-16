@@ -3585,7 +3585,7 @@ class KT_Stats {
 	static function hitCountObje($params = array()) {return self::_getHitCount('mediaviewer.php',$params);}
 
 	/*
-	* Leave for backwards compatability? Anybody using this?
+	* Leave for backwards compatibility? Anybody using this?
 	*/
 	static function _getEventType($type) {
 		$eventTypes=array(

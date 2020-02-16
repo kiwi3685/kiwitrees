@@ -108,7 +108,7 @@ if (
 					echo  KT_I18N::translate('Kiwitrees is compatible with this version.');
 				}
 			} else {
-				echo  KT_I18N::translate('Kiwitrees is not yet tested for compatability with your version of PHP. It might work, but if you find any issues please report them on the <a class="current" href="%s" target="_blank">kiwtrees support forum</a>', KT_SUPPORT_URL);
+				echo  KT_I18N::translate('Kiwitrees is not yet tested for compatibility with your version of PHP. It might work, but if you find any issues please report them on the <a class="current" href="%s" target="_blank">kiwitrees support forum</a>', KT_SUPPORT_URL);
 			}
 			echo '</span></p>';
 		}
