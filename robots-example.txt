@@ -13,7 +13,7 @@
 #e.g. "Disallow: /login.php" becomes "Disallow: /kiwitrees/login.php".
 #
 # These URLs are expensive to generate or duplicate existing content:
-User-Agent: *
+User-agent: *
 Disallow: /ancestry.php
 Disallow: /branches.php
 Disallow: /calendar.php
@@ -26,6 +26,7 @@ Disallow: /hourglass.php
 Disallow: /lifespan.php
 Disallow: /login.php
 Disallow: /medialist.php
+Disallow: /message.php
 Disallow: /notelist.php
 Disallow: /pedigree.php
 Disallow: /placelist.php
