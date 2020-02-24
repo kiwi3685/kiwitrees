@@ -18,7 +18,7 @@ It works from standard GEDCOM files, and is therefore compatible with every majo
 
 ##License
 * **Kiwitrees: Web based Family History software**
-* **Copyright (&copy;) 2012 to 2017 kiwitrees.net**
+* **Copyright (&copy;) 2012 to 2020 kiwitrees.net**
 
 Derived from webtrees (www.webtrees.net)
 
