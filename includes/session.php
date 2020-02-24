@@ -28,7 +28,7 @@ if (!defined('KT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('KT_KIWITREES',		'Kiwitrees');
-define('KT_VERSION',		'3.3.7');
+define('KT_VERSION',		'3.3.8');
 define('KT_VERSION_TEXT',	trim(KT_VERSION));
 
 // External URLs
