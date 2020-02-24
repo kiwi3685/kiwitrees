@@ -84,14 +84,14 @@ if (
 	<h2><?php echo KT_KIWITREES, ' ', KT_VERSION; ?></h2>
 	<div id="about">
 		<p><?php echo KT_I18N::translate('These pages provide access to all the configuration settings and management tools for this kiwitrees site.'); ?></p>
-		<p><?php echo /* I18N: %s is a URL/link to the project website */ KT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net forums</a>'); ?></p>
+		<p><?php echo /* I18N: %s is a URL/link to the project website */ KT_I18N::translate('Support is available at %s.', ' <a class="current" href="' . KT_KIWITREES_URL . '/forums/">kiwitrees.net forums</a>'); ?></p>
 
 		<?php
 		if (KT_USER_IS_ADMIN) {
 			// Latest version info
 			if ($latest_version) {
 				if (version_compare(KT_VERSION, $latest_version) < 0) {
-					echo '<p>' ,  /* I18N: %s is a URL/link to the project website */ KT_I18N::translate('Version %s of kiwitrees is now available at %s.', $latest_version, ' <a class="current" href="http://kiwitrees.net/services/downloads/">kiwitrees.net downloads</a>'), '</p>';
+					echo '<p>' ,  /* I18N: %s is a URL/link to the project website */ KT_I18N::translate('Version %s of kiwitrees is now available at %s.', $latest_version, ' <a class="current" href="' . KT_KIWITREES_URL . '/services/downloads/">kiwitrees.net downloads</a>'), '</p>';
 				} else {
 					echo '<p>' , KT_I18N::translate('Your version of kiwitrees is the latest available.') , '</p>';
 				}

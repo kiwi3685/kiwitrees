@@ -80,7 +80,7 @@ header('Content-Type: text/html; charset=UTF-8');
 				<li><?php /* I18N: %s is a version number */ echo KT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.6.0'); ?></li>
 			</ul>
 			<p class="good">
-				<?php echo KT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://kiwitrees.net">kiwitrees.net</a>'); ?>
+				<?php echo KT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="' . KT_KIWITREES_URL . '">kiwitrees.net</a>'); ?>
 			</p>
 		</div>
 		<!-- <?php echo PHP_VERSION; ?> -->

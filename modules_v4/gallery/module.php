@@ -459,7 +459,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 		)->execute(array($this->getName()))->fetchOne();
 		?>
 		<div id="<?php echo $this->getName();?>">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules/gallery/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="<?php echo KT_KIWITREES_URL; ?>/faqs/modules/gallery/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div id="gallery_tabs">
 				<ul>

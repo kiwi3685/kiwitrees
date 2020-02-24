@@ -50,7 +50,7 @@ $modules = KT_Module::getActiveModules(); // necessary to avoid error if no favo
 
 <div id="census_assist-page">
     <h2><?php echo $controller->getPageTitle(); ?>
-        <a class="faq_link" href="http://kiwitrees.net/faqs/modules/census-assistant/" alt="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>" target="_blank" rel="noopener noreferrer">
+        <a class="faq_link" href="<?php echo KT_KIWITREES_URL; ?>/faqs/modules/census-assistant/" alt="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>" target="_blank" rel="noopener noreferrer">
             <?php echo KT_I18N::translate('View FAQ for this page.'); ?>
             <i class="fa fa-comments-o"></i>
         </a>

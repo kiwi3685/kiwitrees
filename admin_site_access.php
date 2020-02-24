@@ -284,7 +284,7 @@ KT_DB::exec(
 ?>
 <div id="site_access_page">
 	<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ KT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></h2>
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/site-access-rules/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+	<a class="current faq_link" href="<?php echo KT_KIWITREES_URL; ?>/faqs/general/site-access-rules/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 	<p><?php echo KT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
 	<table id="site_access_rules" style="width:100%;">
 		<thead>

@@ -10,11 +10,11 @@
 
 
 ##Introduction
-Kiwitrees is among the web’s leading online collaborative genealogy applications. The project website is [kiwitrees.net](http://kiwitrees.net/).
+Kiwitrees is among the web’s leading online collaborative genealogy applications. The project website is [kiwitrees.net](https://kiwitrees.net/).
 
 It works from standard GEDCOM files, and is therefore compatible with every major desktop application. It aims to to be efficient and effective by using the right combination of third-party tools, design techniques and open standards.
 
-**For more information visit the website [FAQ pages](http://kiwitrees.net/faqs/).**
+**For more information visit the website [FAQ pages](https://kiwitrees.net/faqs/).**
 
 ##License
 * **Kiwitrees: Web based Family History software**
@@ -34,7 +34,7 @@ Kiwitrees is free software; you can redistribute it and/or modify it under the 
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with Kiwitrees.  If not, see http://www.gnu.org/licenses.
+You should have received a copy of the GNU General Public License along with Kiwitrees.  If not, see https://www.gnu.org/licenses.
 
 **[Back to top](#kiwitrees)**
 
@@ -46,7 +46,7 @@ You should have received a copy of the GNU General Public License along with Ki
 ### PHP
 *   PHP 7.0 or later
     *   PHP must be configured with the following libraries:
-		*   PDO and pdo_mysql to enable access to MySQL. These are enabled by default on most hosts. See http://php.net/pdo,
+		*   PDO and pdo_mysql to enable access to MySQL. These are enabled by default on most hosts. See https://www.php.net/pdo,
 		* 	php_gd(v2) for images
     *   PHP should be configured to allow sufficient server resources (memory and execution time) for the size of your system. Typical requirements are:
         *   Small systems (500 individuals): 16-32MB, 10-20 seconds
@@ -64,10 +64,10 @@ You should have received a copy of the GNU General Public License along with Ki
 **[Back to top](#kiwitrees)**
 
 ## Installing
-All you need to install kiwitrees is a webserver with PHP and MySQL. Almost every web hosting service provides these, but be sure to confirm that those supplied meet or exceed the minimum system requirements. Download the latest version of kiwitrees available from <span style="color: #857d50;">**[the downloads page](http://kiwitrees.net/services/downloads/)**</span>
+All you need to install kiwitrees is a webserver with PHP and MySQL. Almost every web hosting service provides these, but be sure to confirm that those supplied meet or exceed the minimum system requirements. Download the latest version of kiwitrees available from <span style="color: #857d50;">**[the downloads page](https://kiwitrees.net/services/downloads/)**</span>
 
 1.  Unzip the files and upload them to an empty directory on your web server.
-2.  Open your web browser and type the URL for your kiwitrees site (for example, http://www.yourserver.com/kiwitrees) into the address bar.
+2.  Open your web browser and type the URL for your kiwitrees site (for example, https://www.yourserver.com/kiwitrees) into the address bar.
 3.  The kiwitrees setup wizard will start automatically. Simply follow the steps, answering each question as you proceed.
 
 That's it! However, before you can use kiwitrees, you need one (or possibly more) GEDCOM (family tree) files. If you have been doing your research using a desktop program such as Family Tree Maker, you can use it's "save as GEDCOM" function to create a GEDCOM file. If you are starting from scratch, then kiwitrees can create a GEDCOM file for you. So, after installation, you'll be directed to the GEDCOM (family tree) administration page, where you'll need to select one of the following options:
@@ -86,6 +86,6 @@ There are _lots_ of configuration options. You'll probably want to review the pr
 **[Back to top](#kiwitrees)**
 
 ##Contributing
-Either visit the [project form](http://kiwitrees.net/forums/) or open an issue on [Github](https://github.com/kiwi3685/kiwitrees) first to discuss potential changes/additions.
+Either visit the [project form](https://kiwitrees.net/forums/) or open an issue on [Github](https://github.com/kiwi3685/kiwitrees) first to discuss potential changes/additions.
 
 **[Back to top](#kiwitrees)**

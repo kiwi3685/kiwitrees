@@ -769,7 +769,7 @@ $controller
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', get_gedcom_setting(KT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES')); ?>
 							<div class="helpcontent">
-								<a href="http://kiwitrees.net/highlighted-images/" target="_blank" rel="noopener noreferrer">
+								<a href="<?php echo KT_KIWITREES_URL; ?>/highlighted-images/" target="_blank" rel="noopener noreferrer">
 									<?php echo KT_I18N::translate('Click here to view more information about highlight images on the kiwitrees.net website FAQs'); ?>
 								</a>
 							</div>

@@ -268,7 +268,7 @@ class album_KT_Module extends KT_Module implements KT_Module_Tab, KT_Module_Conf
 		}
 
 		$html = '<div id="album_config">';
-			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+			$html .= '<a class="current faq_link" href="' . KT_KIWITREES_URL . '/faqs/modules-faqs/album/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 			<h2>' .$controller->getPageTitle(). '</h2>
 			<h3>' . KT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
 

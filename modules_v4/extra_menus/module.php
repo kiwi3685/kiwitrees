@@ -316,7 +316,7 @@ class extra_menus_KT_Module extends KT_Module implements KT_Module_Menu, KT_Modu
 		?>
 
 		<div id="<?php echo $this->getName();?>">
-<!--		<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a> -->
+<!--		<a class="current faq_link" href="' . KT_KIWITREES_URL . '/faqs/modules-faqs/pages/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a> -->
 			<h2><?php echo $controller->getPageTitle();?></h2>
 			<div id="menus_tabs">
 				<ul>

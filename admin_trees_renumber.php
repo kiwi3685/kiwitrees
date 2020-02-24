@@ -61,7 +61,7 @@ $xrefs = KT_DB::prepare(
 	))->fetchAssoc();
 
 echo '<h2>', $controller->getPageTitle(), ' — ', $KT_TREE->tree_title_html, '</h2>
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/merging-family-trees/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+	<a class="current faq_link" href="' . KT_KIWITREES_URL . '/faqs/modules-faqs/merging-family-trees/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 ';
 
 if (KT_Filter::get('continue')) {

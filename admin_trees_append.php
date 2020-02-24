@@ -32,7 +32,7 @@ $controller
 	->pageHeader();
 
 echo '<h2>', $controller->getPageTitle(), '</h2>
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/merging-family-trees/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+	<a class="current faq_link" href="' . KT_KIWITREES_URL . '/faqs/modules-faqs/merging-family-trees/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '">'. KT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 ';
 
 $ged1_id = KT_Filter::post('ged1_id');

@@ -104,7 +104,7 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 
 		?>
 		<div id="backup_to_dropbox-page">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules/backup-dropbox/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="<?php echo KT_KIWITREES_URL; ?>/faqs/modules/backup-dropbox/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="help_text">
 				<span class="help_content">

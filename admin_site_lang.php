@@ -79,7 +79,7 @@ $custom_lang = custom_texts($language);
 if (KT_USER_IS_ADMIN) { ?>
 	<div id="custom-language">
 		<h2><?php echo KT_I18N::translate('Manage custom translations'); ?></h2>
-		<a class="current faq_link" href="http://kiwitrees.net/kiwi-blog/custom-translations/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+		<a class="current faq_link" href="<?php echo KT_KIWITREES_URL; ?>/kiwi-blog/custom-translations/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 		<!-- SELECT LANGUAGE -->
 		<form method="post" action="">
 			<input type="hidden" name="action" value="translate">
