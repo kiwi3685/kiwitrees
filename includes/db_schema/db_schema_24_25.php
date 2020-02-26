@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2020 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,9 +29,9 @@ if (!defined('KT_KIWITREES')) {
 // Tree settings become site settings
 self::exec(
 	"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value)" .
-	" SELECT setting_name, setting_value" .
+	" SELECT setting_name, MIN(setting_value)" . // Can't use ANY_VALUE() until MySQL5.7
 	" FROM `##gedcom_setting`" .
-	" WHERE setting_name IN ('SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name like 'WELCOME_TEXT_AUTH_MODE%'" .
+	" WHERE setting_name IN ('SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name LIKE 'WELCOME_TEXT_AUTH_MODE%'" .
 	" GROUP BY setting_name"
 );
 
