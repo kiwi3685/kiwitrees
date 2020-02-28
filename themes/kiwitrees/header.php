@@ -122,7 +122,7 @@ if ($view!='simple') { ?>
 					</li>
 				<?php }
 				foreach (KT_MenuBar::getOtherMenus() as $menu) {
-					if (strpos($menu, KT_I18N::translate('Login')) && !KT_USER_ID && (array_key_exists('login_block', KT_Module::getInstalledModules('%')))) {
+					if (strpos($menu, KT_I18N::translate('Login')) && !KT_USER_ID && KT_Module::getModuleByName('login_block')) {
 						$class_name	= 'login_block_KT_Module';
 						$module		=  new $class_name; ?>
 						<li>
