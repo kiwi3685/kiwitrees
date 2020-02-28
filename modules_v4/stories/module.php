@@ -123,7 +123,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 				 FROM ##block, ##block_setting
 				 WHERE ##block.module_name=?
 				 AND ##block.block_id = ##block_setting.block_id
-				 AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')
+				 AND (##block_setting.setting_name = 'xref' AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]'))
 				 AND ##block.gedcom_id=?
 				 ORDER BY ##block.block_order
 			")->execute(array(
