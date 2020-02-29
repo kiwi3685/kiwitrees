@@ -160,15 +160,17 @@ $controller
 			};
 		});
 
-		var selectRadio = jQuery("#recaptcha_select label input[name=USE_RECAPTCHA]:checked").val();
+		// set on load
+		var selectRadio = jQuery("[id^=USE_RECAPTCHA]:checked").val();
 		if (selectRadio == "1"){
 			jQuery("#google_recaptcha_details").css({"display":"block"});
 		} else {
 			jQuery("#google_recaptcha_details").css({"display":"none"});
 		};
-
-		jQuery("input[type=radio]").click("input[name=USE_RECAPTCHA]", function() {
+		// reset on change
+		jQuery("[id^=USE_RECAPTCHA]").on("change", function() {
 			var clickedRadio = jQuery(this).val();
+			alert(clickedRadio);
 			if (clickedRadio == "1") {
 				jQuery("#google_recaptcha_details").css({"display":"block"});
 			} else {
