@@ -444,7 +444,7 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate = '') {
 	$tags = explode(':', $tag);
 	$origlevel = $level;
 	if ($level == 0) {
-		$level = (int) $gedrec{0} + 1;
+		$level = (int) $gedrec[0] + 1;
 	}
 
 	$subrec = $gedrec;
@@ -2467,7 +2467,7 @@ function get_new_xref($type = 'INDI', $ged_id = KT_GED_ID) {
 		break;
 
 	default:
-		$prefix = $type{0};
+		$prefix = $type[0];
 		break;
 	}
 

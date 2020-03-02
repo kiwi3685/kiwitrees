@@ -507,9 +507,9 @@ function remove_media_subrecord($oldrecord, $gid) {
 
 	for ($i=0; $i<count($gedlines); $i++) {
 		if (preg_match('/^\d (?:OBJE|_KT_OBJE_SORT) @' . $gid . '@$/', $gedlines[$i])) {
-			$glevel = $gedlines[$i]{0};
+			$glevel = $gedlines[$i][0];
 			$i++;
-			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) {
+			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i][0]>$glevel)) {
 				$i++;
 			}
 			$i--;
@@ -541,7 +541,7 @@ function remove_subline($oldrecord, $linenum) {
 		$i++;
 		if ($i<count($gedlines)) {
 			//-- don't put empty lines in the record
-			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
+			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i][0]>$glevel)) $i++;
 			while ($i<count($gedlines)) {
 				if (trim($gedlines[$i])!='') $newrec .= $gedlines[$i]."\n";
 				$i++;

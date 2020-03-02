@@ -530,7 +530,7 @@ class KT_GedcomRecord {
 				}
 			}
 		}
-		
+
 		return $this->_getPrimaryName;
 	}
 
@@ -795,7 +795,7 @@ class KT_GedcomRecord {
 			if (empty($line)) {
 				$line = ' ';
 			}
-			if ($i == $lct||$line{0} == 1) {
+			if ($i == $lct||$line[0] == 1) {
 				if ($i > 1) {
 					$this->facts[] = new KT_Event($factrec, $this, $linenum);
 				}
