@@ -436,12 +436,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 
 	$text_cont = get_cont($nlevel, $nrec);
 	$first_line = '';
-	$element_id = 'N-' . (int)(microtime(true)*1000000);
 	$expand1 = $expand2 = '';
 
 	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @(' . KT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
 		$note  = KT_Note::getInstance($match[1], $KT_TREE);
+		$element_id = $match[1] . '-' . (int)(microtime(true)*1000000);
 		$label = 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
 		if (KT_Module::getModuleByName('census_assistant')) {
@@ -497,7 +497,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			$plusminus='icon-plus';
 		}
 		$expand1 = '
-			<a href="#" onclick="expand_layer(\'' . $element_id . '\');">
+			<a href="#" onclick="return expand_layer(\'' . $element_id . '\');">
 				<i id="' . $element_id . '_img" class="' . $plusminus . '"></i>
 			</a>
 		';
@@ -511,7 +511,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 				<span class="label">
 					' . KT_Gedcom_Tag::getLabel($label) . ':&nbsp;
 				</span>
-				<span id="' . $element_id . '-alt">' . $first_line . $expand1 . '</span>
+				<span class="field">' . $first_line . $expand1 . '</span>
 				<div class="note_details" id="' . $element_id . '"' . $expand2 . '>' . $html . '</div>
 			</div>
 		';
