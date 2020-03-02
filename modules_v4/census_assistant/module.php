@@ -187,7 +187,7 @@ class census_assistant_KT_Module extends KT_Module {
 					strstr($column, '.b.') ? $class .= ' bold' : $class .= '';
 					$column = str_replace('.b.', '', $column);
 
-					$tbody .= '<td class="' . $class . '">' . $column . '</td>';
+					$tbody .= '<td class="' . $class . '">' . trim($column) . '</td>';
 				}
 				$tbody .= '</tr>';
 			}
