@@ -434,15 +434,17 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$returnChar = "<br>";
 	}
 
-	$text_cont = get_cont($nlevel, $nrec);
-	$first_line = '';
-	$expand1 = $expand2 = '';
+	$element_id	= '';
+	$text_cont	= get_cont($nlevel, $nrec);
+	$first_line	= '';
+	$expand1	= $expand2 = '';
 
 	// Check if shared note (we have already checked that it exists)
-	if (preg_match('/^0 @(' . KT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-		$note  = KT_Note::getInstance($match[1], $KT_TREE);
+	preg_match('/^0 @(' . KT_REGEX_XREF . ')@ NOTE/', $nrec, $match);
+	if ($match) {
 		$element_id = $match[1] . '-' . (int)(microtime(true)*1000000);
-		$label = 'SHARED_NOTE';
+		$note		= KT_Note::getInstance($match[1], $KT_TREE);
+		$label		= 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
 		if (KT_Module::getModuleByName('census_assistant')) {
 			$html	= census_assistant_KT_Module::formatCensusNote($note);
@@ -450,9 +452,9 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			$html	= KT_Filter::formatText($note->getNote());
 		}
 	} else {
-		$note	= null;
-		$label	= 'NOTE';
-		$html	= KT_Filter::formatText($text . $text_cont);
+		$note		= null;
+		$label		= 'NOTE';
+		$html		= KT_Filter::formatText($text . $text_cont);
 	}
 
 	if ($textOnly) {
