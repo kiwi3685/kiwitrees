@@ -84,7 +84,10 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 			$html.='<option value="'.htmlspecialchars($key).'" dir="auto">'.htmlspecialchars($value).'</option>';
 		}
 	}
-	return '<select id="' . $name.'" name="' . $name.'" ' . $extra .'>' . $html.'</select>';
+
+	$element_id = $name . '-' . (int)(microtime(true)*1000000);
+	
+	return '<select id="' . $element_id.'" name="' . $name.'" ' . $extra .'>' . $html.'</select>';
 }
 
 // An inline-editing version of select_edit_control()
