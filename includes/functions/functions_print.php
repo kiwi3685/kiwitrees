@@ -452,6 +452,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			$html	= KT_Filter::formatText($note->getNote());
 		}
 	} else {
+		$element_id = 'N-' . (int)(microtime(true)*1000000);
 		$note		= null;
 		$label		= 'NOTE';
 		$html		= KT_Filter::formatText($text . $text_cont);
