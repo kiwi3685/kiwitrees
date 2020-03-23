@@ -39,6 +39,7 @@ class ckeditor_KT_Module extends KT_Module {
 
 	// Convert <textarea class="html-edit"> fields to CKEditor fields
 	public static function enableEditor($controller) {
+		$rand = rand(); // generate random prefix for footnotes
 		$controller
 			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/ckeditor.js')
 			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
@@ -56,7 +57,7 @@ class ckeditor_KT_Module extends KT_Module {
 					filebrowserImageUploadUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
 					extraPlugins: "slideshow,footnotes",
 					scayt_autoStartup: true,
-					footnotesPrefix: "a",
+					footnotesPrefix: "' . $rand . '",
 					removePlugins: "emoji",
 					toolbarGroups: [
 						{ name: "document", groups: [ "mode", "document", "doctools" ] },
