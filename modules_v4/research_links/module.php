@@ -617,12 +617,12 @@ class research_links_KT_Module extends KT_Module implements KT_Module_Config, KT
 			$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
 			if (is_string($indi)) {
 				$record		= KT_Person::getInstance($indi, KT_GED_ID);
-				$record->getBirthYear() ? $birth_year = $record->getBirthYear() : $birth_year = '';
-				$record->getDeathYear() ? $death_year = $record->getDeathYear() : $death_year = '';
+				$record->getBirthYear() ? $birth_year = preg_replace("/[^0-9]/", "", $record->getBirthYear()) : $birth_year = '';
+				$record->getDeathYear() ? $death_year = preg_replace("/[^0-9]/", "", $record->getDeathYear()) : $death_year = '';
 				$record->getSex() 		? $gender	  = $record->getSex() : $gender = '';
 			} else {
-				$controller->record->getBirthYear() ? $birth_year = $controller->record->getBirthYear() : $birth_year = '';
-				$controller->record->getDeathYear() ? $death_year = $controller->record->getDeathYear() : $death_year = '';
+				$controller->record->getBirthYear() ? $birth_year = preg_replace("/[^0-9]/", "", $controller->record->getBirthYear()) : $birth_year = '';
+				$controller->record->getDeathYear() ? $death_year = preg_replace("/[^0-9]/", "", $controller->record->getDeathYear()) : $death_year = '';
 				$controller->record->getSex() 		? $gender	  = $controller->record->getSex() : $gender = '';
 			}
 		} else {
