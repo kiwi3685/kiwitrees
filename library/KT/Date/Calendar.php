@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2020 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ class KT_Date_Calendar {
 
 	function __construct($date) {
 		// Construct from an integer (a julian day number)
-		if (is_numeric($date)) {
+		if (is_integer($date)) {
 			$this->minJD=$date;
 			$this->maxJD=$date;
 			list($this->y, $this->m, $this->d)=$this->JDtoYMD($date);
