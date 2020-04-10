@@ -249,7 +249,7 @@ function addMessage($message) {
 
 	// Send a copy of the message back to the sender.
 		if (KT_USER_ID) {
-			// Switch to the sender’s language.
+			// Switch to the sender's language.
 			KT_I18N::init(get_user_setting(KT_USER_ID, 'language'));
 			// Message from a signed-in user
 			$copy_email = KT_I18N::translate('You sent the following message to <b>%1$s</b> at %2$s:', getUserFullName($recipient), strip_tags(KT_TREE_TITLE));
@@ -272,12 +272,12 @@ function addMessage($message) {
 		}
 
 		$success = $success && KT_Mail::send(
-			// “From:” header
+			// From: header
 			$KT_TREE,
-			// “To:” header
+			// To: header
 			$sender_email,
 			$sender_real_name,
-			// “Reply-To:” header
+			// Reply-To: header
 			KT_Site::preference('SMTP_FROM_NAME'),
 			$KT_TREE->tree_title,
 			// Message subject
@@ -287,7 +287,7 @@ function addMessage($message) {
 		);
 
 	// Send the message to the recipient.
-		// Switch to the recipient’s language.
+		// Switch to the recipient's language.
 		KT_I18N::init(get_user_setting($recipient, 'language'));
 		if (KT_USER_ID) {
 			$original_email = /* I18N: %s is the family tree title */ KT_I18N::translate('%s sent you the following message.', $sender_real_name);
@@ -315,12 +315,12 @@ function addMessage($message) {
 		}
 
 		$success = $success && KT_Mail::send(
-			// “From:” header
+			// From: header
 			$KT_TREE,
-			// “To:” header
+			// To: header
 			getUserEmail($recipient),
 			getUserFullName($recipient),
-			// “Reply-To:” header
+			// Reply-To: header
 			$sender_email,
 			$sender_real_name,
 			// Message subject

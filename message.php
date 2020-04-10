@@ -107,8 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if ($errors) {
 		// Errors? Go back to the form.
 		header(
-			'Location: module.php?mod=' . $this->getName() . '&mod_action=show' .
-			'&to=' . rawurlencode($to) .
+			'Location: message.php' .
+			'?to=' . rawurlencode($to) .
 			'&from_name=' . rawurlencode($from_name) .
 			'&from_email=' . rawurlencode($from_email) .
 			'&subject=' . rawurlencode($subject) .
