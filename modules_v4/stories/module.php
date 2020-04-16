@@ -233,13 +233,13 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 		global $controller;
 
 		$count_of_stories =
-			KT_DB::prepare(
-				"SELECT COUNT(##block.block_id)" .
-				" FROM ##block, ##block_setting" .
-				" WHERE ##block.module_name=?" .
-				" AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')" .
-				" AND gedcom_id=?"
-			)->execute(array(
+			KT_DB::prepare("
+				SELECT COUNT(##block.block_id)
+				 FROM ##block, ##block_setting
+				 WHERE ##block.module_name=?
+				 AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')
+				 AND gedcom_id=?
+			")->execute(array(
 				$this->getName(),
 				$xref = $controller->record->getXref(),
 				KT_GED_ID
@@ -344,7 +344,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 				}
 
 				echo '
-					<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">',
+					<form id="story" name="story" method="post">',
 						KT_Filter::getCsrf(), '
 						<input type="hidden" name="save" value="1">
 						<input type="hidden" name="block_id" value="', $block_id, '">
@@ -354,13 +354,13 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 								<th>', KT_I18N::translate('Story title'), '</th>
 							</tr>
 							<tr>
-								<td><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td>
+								<td><textarea name="title" rows="1" cols="90">', htmlspecialchars($title), '</textarea></td>
 							</tr>
 							<tr>
 								<th>' ,KT_I18N::translate('Story'), '</th>
 							</tr>
 							<tr>
-								<td><textarea name="story_body" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($story_body), '</textarea></td>
+								<td><textarea name="story_body" class="html-edit" rows="10" cols="90">', htmlspecialchars($story_body), '</textarea></td>
 							</tr>
 						</table>
 						<table id="faq_module2">
@@ -417,13 +417,13 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 								</td>
 							</tr>
 						</table>
-						<button class="btn btn-primary save" type="submit" tabindex="5">
+						<button class="btn btn-primary save" type="submit">
 							<i class="fa fa-floppy-o"></i>' .
-							KT_I18N::translate('save'). '
+							KT_I18N::translate('Save'). '
 						</button>
 						<button class="btn btn-primary cancel" type="button" onclick="window.location=\'' . $this->getConfigLink() . '\';" tabindex="6">
 							<i class="fa fa-times"></i>' .
-							KT_I18N::translate('cancel') .'
+							KT_I18N::translate('Cancel') .'
 						</button>
 					</form>';
 				exit;
