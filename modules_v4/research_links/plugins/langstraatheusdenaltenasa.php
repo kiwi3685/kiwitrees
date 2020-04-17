@@ -23,11 +23,13 @@ class langstraatheusdenaltenasa_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'http://salha.nl/';
+		$base_url = 'https://salha.nl/';
 
 		$collection = array(
-			"Genealogie"				=> "archieven-en-collecties/voorouders/genealogie/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn",
-			"Notaris-en schepenakten"	=> "archieven-en-collecties/voorouders/notaris-en-schepenakten?mivast=128&miadt=128&mizig=197&miview=tbl&milang=nl&micols=1&mires=0&mip3=$surn&mip2=$givn",
+			"Bevolkingsregister"				=> "bronnen/genealogy/personen/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22Bevolkingsregister%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+			"Burgerlijke standregister"			=> "bronnen/genealogy/personen/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22Burgerlijke%20standregister%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+			"DTB registers"			            => "bronnen/genealogy/personen/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22Doop,%20Trouw%20en%20Begraaf%20Registers%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+			"Notaris-en schepenakten"	=> "bronnen/genealogy/notaris-en-schepenakten?mivast=128&miadt=128&mizig=197&miview=tbl&milang=nl&micols=1&mip3=$surn&mip2=$givn",
 		);
 
 		foreach($collection as $key => $value) {

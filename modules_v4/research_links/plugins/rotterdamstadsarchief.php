@@ -26,15 +26,18 @@ class rotterdamstadsarchief_plugin extends research_base_plugin {
 		$base_url = 'http://www.stadsarchief.rotterdam.nl/';
 
 		$collection = array(
-			"Begraafinschrijving"			=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=158",
-			"Doopinschrijving"				=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=156",
-			"Echtscheidingsakte"			=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=140",
-			"Geboorteakte"					=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=113",
-			"Huwelijksakte"					=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=109",
-			"Overlijdensakte"				=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=114",
-			"Persoon in bevolkingsregister"	=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=112",
-			"Persoonskaart"					=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=455",
-			"Trouwinschrijving"				=> "archieven?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=157",
+			"Begraafinschrijving"			=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=158",
+			"Doopinschrijving"				=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=156",
+			"Echtscheidingsakte"			=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=140",
+			"Geboorteakte"					=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=113",
+			"Huwelijksakte"					=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=109",
+			"Overlijdensakte"				=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=114",
+			"Pagina miltaire zaken"		    => "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=765",
+			"Pagina politieregister"		=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=852",
+			"Passagierslijst"				=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=387",
+			"Persoon in bevolkingsregister"	=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=112",
+			"Persoonskaart"					=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=455",
+			"Trouwinschrijving"				=> "zoek-en-ontdek/stamboom/zoeken-op-personen/?mivast=184&miadt=184&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mib1=157",
 		);
 
 		foreach($collection as $key => $value) {

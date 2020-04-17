@@ -23,17 +23,12 @@ class delftarchief_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'http://collectie-delft.nl/';
+		$base_url = 'https://zoeken.stadsarchiefdelft.nl/';
 
 		$collection = array(
-		"Burgelijke stand"   => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/Burgerlijke%20standregister/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
-	    "DTB register"       => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/Doop%2C%20Trouw%20en%20Begraaf%20Registers/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
-	    "Bevolkingsregister" => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/Bevolkingsregister/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
-	    "Onroerend goed  "   => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/onroerend%20goed/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
-	    "Bevolking  "        => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/bevolking/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
-	    "Vergunningen  "     => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/vergunningen/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
-	    "Zorg personen  "    => "nadere-toegangen/sjabloon/index/facet_xml/personen/objecttype/personen/trefwoord/persoon_custom_s_facet_bron/zorg_personen/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn/start/0",
-		);
+		"Personen"             => "zoeken/groep=Personen/Voornaam=$givn/Achternaam=$surn/aantalpp=50/?nav_id=2-1",
+	    "Akten"                => "zoeken/groep=Akten/Voornaam=$givn/Achternaam=$surn/aantalpp=50/?nav_id=2-1",
+	    		);
 
 		foreach($collection as $key => $value) {
 			$link[] = array(

@@ -19,7 +19,7 @@ class overijsselmsmd_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return "https://www.onderzoekoverijssel.nl/resultaten.php?nav_id=3-0&Globaal=' . $givn . '%20' . $surname . '&Datum%20of%20periode_van=' . $birth_year . '&Datum%20of%20periode_tot=' . $death_year . '";
+		return "https://mijnstadmijndorp.nl/app/zoeken/collectiekeuze=1/groep=Beeld%20en%20Geluid/groep=Bibliotheek%20en%20Kranten/groep=Documenten/groep=Groepen/groep=Museale%20objecten/groep=Nieuws%20en%20evenementen/groep=Thema%27s%20en%20tijdlijnen/groep=Verhalen/groep=Collecties/groep=Woordenboek%20van%20Overijssel/Globaal=$givn%20$surn/aantalpp=12/?nav_id=2-0";
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {

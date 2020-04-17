@@ -26,11 +26,9 @@ class leeuwardenhc_plugin extends research_base_plugin {
 		$base_url = 'https://historischcentrumleeuwarden.nl/';
 
 		$collection = array(
-			"BS-Bevolkingsregister 1811-1939"	=> "genealogie/q/persoon_voornaam_t_0/" . $givn . "/q/persoon_achternaam_t_0/" . $surname . "",
-			"Overige Databases"					=> "external-sources?searchterm=" . $givn . "+" . $surname . "",
-			"Archieven"							=> "onderzoek/archievenoverzicht?mivast=76&miadt=76&mizig=0&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=" . $givn . "+" . $surname . "",
-			"Beeldbank"							=> "onderzoek/beeldmateriaal/beeldbank?q_searchfield=" . $givn . "+" . $surname . "",
-		);
+			"Personen"                  => "onderzoek/archievenoverzicht?mivast=76&miadt=76&mizig=100&miview=tbl&milang=nl&micols=1&mip1=$surn&mip3=$givn",
+			"Diverse Indexen tot 1811"	=> "onderzoek/archievenoverzicht?mivast=76&miadt=76&mizig=119&miview=ldt&milang=nl&micols=1&mip5=$givn&mip6=$surn",
+			);
 
 		foreach($collection as $key => $value) {
 			$link[] = array(

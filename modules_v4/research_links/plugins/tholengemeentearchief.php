@@ -26,13 +26,11 @@ class tholengemeentearchief_plugin extends research_base_plugin {
 		$base_url = 'http://www.archieftholen.nl/';
 
 		$collection = array(
-			"Begraafakte"		    => "onze-bronnen/voorouders/trefwoord/akte_type/begraafakte/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
-			"Doopakte"		        => "onze-bronnen/voorouders/trefwoord/akte_type/doopakte/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
-			"Inschrijving"		    => "onze-bronnen/voorouders/trefwoord/akte_type/inschrijving/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
-			"Lidmatenregistratie"	=> "onze-bronnen/voorouders/trefwoord/akte_type/lidmatenregistratie/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
-			"Transportakte"		    => "onze-bronnen/voorouders/trefwoord/akte_type/transportakte/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
-			"Trouwakte"	            => "onze-bronnen/voorouders/layout/default/sjabloon/index/facet_xml/personen/objecttype/personen/trefwoord/akte_type/trouwakte/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s/start/0",
-			"Weeskamerakte"		    => "onze-bronnen/voorouders/trefwoord/akte_type/weeskamerakte/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
+			"Bevolkingsregister"	    => "onze-bronnen/voorouders/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22bevolkingsregister%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+			"DTB-register"              => "onze-bronnen/voorouders/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22doop-,%20trouw-%20en%20begraafregister%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+			"Rechterlijk register"		=> "onze-bronnen/voorouders/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22rechterlijk%20register%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+			"Weeskamerregister"	        => "onze-bronnen/voorouders/persons?f=%7B%22search_s_register_type_title%22:%7B%22v%22:%22weeskamer%20register%22%7D%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22$surn%22,%22search_t_voornaam%22:%22$givn%22%7D%7D",
+		
 		);
 
 		foreach($collection as $key => $value) {
