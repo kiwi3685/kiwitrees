@@ -1612,6 +1612,12 @@ function get_block_location($block_id) {
 	)->execute(array($block_id))->fetchOne();;
 }
 
+function get_block_order($block_id) {
+	return KT_DB::prepare(
+		"SELECT SQL_CACHE block_order FROM `##block` WHERE block_id=?"
+	)->execute(array($block_id))->fetchOne();;
+}
+
 function get_block_setting($block_id, $setting_name, $default_value = null) {
 	static $statement;
 	if ($statement === null) {

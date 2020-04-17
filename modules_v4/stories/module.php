@@ -139,9 +139,10 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 		foreach ($block_ids as $block_id) {
 			// check how many stories can be shown in a language
 			$languages = get_block_setting($block_id, 'languages');
+			$block_order = get_block_order($block_id);
 			if (!$languages || in_array(KT_LOCALE, explode(',', $languages))) {
 				$count_stories ++;
-				$ids[] = $block_id;
+				$ids[] = $block_order;
 			}
 		}
 
@@ -204,8 +205,9 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 		<div id="story_contents">
 			<?php foreach ($block_ids as $block_id) {
 				$languages = get_block_setting($block_id, 'languages');
+				$block_order = get_block_order($block_id);
 				if (!$languages || in_array(KT_LOCALE, explode(',', $languages))) { ?>
-					<div id="stories_<?php echo $block_id; ?>" class="<?php echo $class; ?>">
+					<div id="stories_<?php echo $block_order; ?>" class="<?php echo $class; ?>">
 						<?php if (KT_USER_CAN_EDIT) { ?>
 							<div style="margin-top:15px;">
 								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $block_id; ?>">
@@ -423,7 +425,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 						</button>
 						<button class="btn btn-primary cancel" type="button" onclick="window.location=\'' . $this->getConfigLink() . '\';" tabindex="6">
 							<i class="fa fa-times"></i>' .
-							KT_I18N::translate('Cancel') .'
+							KT_I18N::translate('cancel') .'
 						</button>
 					</form>';
 				exit;
