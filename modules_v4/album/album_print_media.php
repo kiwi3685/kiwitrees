@@ -176,7 +176,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 		if ($ALBUM_GROUPS != 0) {
 			echo '<table class="facts_table">
 				<tr>
-					<td class="descriptionbox" style="width:120px; text-align:center; vertical-align:middle;">
+					<td class="descriptionbox" style="width:150px; text-align:center; vertical-align:middle;">
 						<span style="font-weight:900;">', KT_I18N::translate($tt),'</span>
 					</td>
 					<td class="optionbox">';
