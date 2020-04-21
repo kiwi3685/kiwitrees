@@ -435,7 +435,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	}
 
 	$element_id	= '';
-	$text_cont	= get_cont($nlevel, $nrec);
+	$text_cont	= get_cont($nlevel, $nrec, false);
 	$first_line	= '';
 	$expand1	= $expand2 = '';
 
