@@ -435,7 +435,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	}
 
 	$element_id	= '';
-	$text_cont	= get_cont($nlevel, $nrec, false);
+	$text_cont	= get_cont($nlevel, $nrec);
 	$first_line	= '';
 	$expand1	= $expand2 = '';
 
@@ -455,7 +455,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$element_id = 'N-' . (int)(microtime(true)*1000000);
 		$note		= null;
 		$label		= 'NOTE';
-		$html		= KT_Filter::formatText($text . $text_cont);
+		$html		= $text . $text_cont;
 	}
 
 	if ($textOnly) {
