@@ -159,12 +159,15 @@ $controller
 		array (1, 'birt_marr',		KT_I18N::translate('Birth after marriage')),
 		array (1, 'birt_chil',		KT_I18N::translate('Birth after their children') . '<span class="error">**</span>'),
 		array (1, 'buri',			KT_I18N::translate('Burial before death')),
+		array (1, 'sib_ages',		KT_I18N::translate('Sibling age differences') . '<span class="error">**</span>'),
+
 		array (2, 'bap_late',		KT_I18N::translate('Baptised after a certain age'), 'NEW_SANITY_BAPTISM', 'bap_age', $bap_age),
 		array (2, 'old_age',		KT_I18N::translate('Alive after a certain age'), 'NEW_SANITY_OLDAGE', 'oldage', $oldage),
 		array (2, 'marr_yng',		KT_I18N::translate('Married before a certain age') . '<span class="error">**</span>', 'NEW_SANITY_MARRIAGE', 'marr_age', $marr_age),
 		array (2, 'spouse_age',		KT_I18N::translate('Being much older than spouse'), 'NEW_SANITY_SPOUSE_AGE',	'spouseage', $spouseage),
 		array (2, 'child_yng',		KT_I18N::translate('Mothers having children before a certain age'), 'NEW_SANITY_CHILD_Y', 'child_y', $child_y),
 		array (2, 'child_old',		KT_I18N::translate('Mothers having children past a certain age'), 'NEW_SANITY_CHILD_O', 'child_o', $child_o),
+
 		array (3, 'dupe_birt',		KT_I18N::translate('Birth')),
 		array (3, 'dupe_bapm',		KT_I18N::translate('Baptism or christening')),
 		array (3, 'dupe_deat',		KT_I18N::translate('Death')),
@@ -172,8 +175,10 @@ $controller
 		array (3, 'dupe_buri',		KT_I18N::translate('Burial')),
 		array (3, 'dupe_sex',		KT_I18N::translate('Gender')),
 		array (3, 'dupe_name',		KT_I18N::translate('Name')),
+
 		array (4, 'dupe_marr',		KT_I18N::translate('Marriage')),
 		array (4, 'dupe_child',		KT_I18N::translate('Families with duplicately named children')),
+
 		array (5, 'birt',			KT_I18N::translate('Missing or incomplete birth'), $birthOptions),
 		array (5, 'deat',			KT_I18N::translate('Missing or incomplete death'), $deathOptions),
 		array (5, 'sex',			KT_I18N::translate('No gender recorded')),
@@ -270,6 +275,13 @@ $controller
 			if (KT_Filter::post('birt_chil')) {
 				$data = birth_comparisons(array('FAMS'), 'CHIL');
 				echo '<h5>' . KT_I18N::translate('%s born after their children', $data['count']) . '
+					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			if (KT_Filter::post('sib_ages')) {
+				$data = birth_comparisons(array('FAMS'), 'CHIL_AGES');
+				echo '<h5>' . KT_I18N::translate('%s siblings with an age difference between 1 day and 9 months', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';

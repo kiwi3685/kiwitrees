@@ -80,6 +80,45 @@ function birth_comparisons($tag_array, $tag2 = '') {
 								}
 							}
 						break;
+						case 'CHIL_AGES':
+							$families		= array();
+							$dates			= array();
+							$differences	= array();
+							foreach ($person->getSpouseFamilies() as $family) {
+								if (!in_array($family->getXref(), $families)) {
+									$families[]	= $family->getXref();
+									$children	= $family->getChildren();
+									if (count($children) > 1) {
+										foreach ($children as $child) {
+											$dates[$child->getXref()] = $child->getBirthDate()->MinJD();
+										}
+									}
+									if ($dates) {
+										asort($dates);
+										foreach ($dates as $xref => $day) {
+											$xrefs[] = $xref;
+											foreach ($dates as $xref2 => $day2) {
+												if ($xref <> $xref2 && !in_array($xref2, $xrefs)) {
+													$diff = $day2 - $day;
+													if ($diff > 1 && $diff < (365 / 12 * 9)) {
+														$months		= round($diff / (365 / 12), 0);
+														$person1	= KT_Person::getInstance($xref);
+														$person2	= KT_Person::getInstance($xref2);
+														$html .= '
+															<p>
+																<div class="first"><a href="' . $person1->getHtmlUrl(). '#relatives" target="_blank" rel="noopener noreferrer">' . $person1->getFullName() . '</a></div>
+																<div class="second"><a href="' . $person2->getHtmlUrl(). '#relatives" target="_blank" rel="noopener noreferrer">' . $person2->getFullName() . '</a></div>
+																<div class="third"><span class="label">' . KT_I18N::plural('%s month', '%s months', $months, $months) . '</div>
+															</p>';
+														$count ++;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						break;
 					}
 				break;
 				case 'FAMC':
