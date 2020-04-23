@@ -58,14 +58,14 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 	public function getSidebarContent() {
 		global $controller, $spouselinks, $parentlinks;
 		$controller->addInlineJavascript('
-			jQuery("#sb_family_nav_content")
-				.on("click", ".flyout a", function() {
-					return false;
-				})
-				.on("click", ".flyout3", function() {
-					window.location.href = jQuery(this).data("href");
-					return false;
-				});
+//			jQuery("#sb_family_nav_content")
+//				.on("click", ".flyout a", function() {
+//					return false;
+//				})
+//				.on("click", ".flyout3", function() {
+//					window.location.href = jQuery(this).data("href");
+//					return false;
+//				});
 		');
 
 		$person = KT_Person::getInstance($controller->record->getXref());
@@ -181,9 +181,9 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 	private function getParents(KT_Person $person) {
 		$father = null;
 		$mother = null;
-		$html   = '<div class="flyout2">' . KT_I18N::translate('Parents') . '</div>';
 		$family = $person->getPrimaryChildFamily();
 		if ($person->canDisplayName() && $family !== null) {
+			$html   = '<a class="flyout2" href="' . $family->getHtmlUrl() . '">' . KT_I18N::translate('Parents') . '</a>';
 			$father = $family->getHusband();
 			$mother = $family->getWife();
 			$html .= $this->getHTML($father) .
@@ -202,12 +202,12 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 				if ($stepParents) {
 					$relationship = $father instanceof KT_Person ?
 						KT_I18N::translate_c("father’s wife", "step-mother") : KT_I18N::translate_c("mother’s husband", "step-father");
-					$html .= '<div class="flyout2">' . $relationship . '</div>' . $stepParents;
+					$html .= '<a class="flyout2" href="' . $family->getHtmlUrl() . '">' . $relationship . '</div>' . $stepParents;
 				}
 			}
 		}
 		if (!($father instanceof KT_Person || $mother instanceof KT_Person)) {
-			$html .= '<div class="flyout4">(' . KT_I18N::translate_c('unknown family', 'unknown') . ')</div>';
+			$html .= '<a class="flyout4" href="#">(' . KT_I18N::translate_c('unknown family', 'unknown') . ')</a>';
 		}
 		return $html;
 	}
@@ -220,9 +220,11 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 	 * @return string
 	 */
 	private function getFamily(KT_Person $person) {
-		$html = '';
+		$html		= '';
+		$familyLink	= '';
 		if ($person->canDisplayName()) {
 			foreach ($person->getSpouseFamilies() as $family) {
+				$familyLink = $family->getHtmlUrl();
 				$spouse = $family->getSpouse($person);
 				$html .= $this->getHTML($spouse, true);
 				$children = $family->getChildren();
@@ -236,10 +238,10 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 			}
 		}
 		if (!$html) {
-			$html = '<div class="flyout4">(' . KT_I18N::translate('none') . ')</div>';;
+			$html = '<a class="flyout4" href="#">(' . KT_I18N::translate('none') . ')</div>';;
 		}
 
-		return '<div class="flyout2">' . KT_I18N::translate('Family') . '</div>' . $html;
+		return '<a class="flyout2" href="' . $familyLink . '">' . KT_I18N::translate('Family') . '</a>' . $html;
 
 	}
 
@@ -253,9 +255,9 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 	 */
 	private function getHTML($person, $showUnknown = false) {
 		if ($person instanceof KT_Person) {
-			return '<div class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</div>';
+			return '<a class="flyout3" href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
 		} elseif ($showUnknown) {
-			return '<div class="flyout4">(' . KT_I18N::translate('unknown') . ')</div>';
+			return '<a class="flyout4" href="#">(' . KT_I18N::translate('unknown') . ')</a>';
 		} else {
 			return '';
 		}
@@ -292,7 +294,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 					if ($husb || $children) {
 						if ($husb) {
 							$person_parent = true;
-							$parentlinks .= '<div class="flyout3" data-href="' . $husb->getHtmlUrl() . '">' . $husb->getFullName() . '</div>';
+							$parentlinks .= '<a class="flyout3" href="' . $husb->getHtmlUrl() . '">' . $husb->getFullName() . '</a>';
 							$natdad = true;
 						}
 					}
@@ -301,7 +303,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 					if ($wife || $children) {
 						if ($wife) {
 							$person_parent = true;
-							$parentlinks .= '<div class="flyout3" data-href="' . $wife->getHtmlUrl() . '">' . $wife->getFullName() . '</div>';
+							$parentlinks .= '<a class="flyout3" href="' . $wife->getHtmlUrl() . '">' . $wife->getFullName() . '</a>';
 							$natmom = true;
 						}
 					}
@@ -321,7 +323,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 						if ($husb || $children) {
 							if ($husb) {
 								$person_step = true;
-								$parentlinks .= '<div class="flyout3" data-href="' . $husb->getHtmlUrl() . '">' . $husb->getFullName() . '</div>';
+								$parentlinks .= '<a class="flyout3" href="' . $husb->getHtmlUrl() . '">' . $husb->getFullName() . '</a>';
 							}
 						}
 					}
@@ -331,7 +333,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 						if ($wife || $children) {
 							if ($wife) {
 								$person_step = true;
-								$parentlinks .= '<div class="flyout3" data-href="' . $wife->getHtmlUrl() . '">' . $wife->getFullName() . '</div>';
+								$parentlinks .= '<a class="flyout3" href="' . $wife->getHtmlUrl() . '">' . $wife->getFullName() . '</a>';
 							}
 						}
 					}
@@ -346,7 +348,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 				// Spouse ------------------------------
 				if ($spouse || $children) {
 					if ($spouse) {
-						$spouselinks .= '<div class="flyout3" data-href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</div>';
+						$spouselinks .= '<a class="flyout3" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
 						$persons = true;
 					}
 				}
@@ -356,7 +358,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 					$persons = true;
 					$spouselinks .= '
 						<ul class="clist">
-							<li class="flyout3" data-href="' . $child->getHtmlUrl() . '">' . $child->getFullName() . '</li>
+							<li><a class="flyout3" href="' . $child->getHtmlUrl() . '">' . $child->getFullName() . '</a></li>
 						</ul>';
 				}
 			}
