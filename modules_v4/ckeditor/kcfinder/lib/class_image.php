@@ -101,16 +101,6 @@ abstract class image {
         return false;
     }
 
-/** Replaces original each() function which causes errors in php 7.2 (https://github.com/sunhater/kcfinder/issues/169)
-  * @param $image
-  * @return array
-**/
-	function myEach(&$arr) {
-	    $key = key($arr);
-	    $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
-	    next($arr);
-	    return $result;
-	}
 
 /** Returns an array. Element 0 - image resource. Element 1 - width. Element 2 - height.
   * Returns FALSE on failure.
@@ -126,8 +116,8 @@ abstract class image {
             $img = $image->image;
 
         } elseif (is_array($image)) {
-            list($key, $width) = myEach($image);
-            list($key, $height) = myEach($image);
+            list($key, $width) = each($image);
+            list($key, $height) = each($image);
             $img = $this->getBlankImage($width, $height);
 
         } else
