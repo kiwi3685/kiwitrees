@@ -428,16 +428,11 @@ function contact_links($ged_id = KT_GED_ID) {
  */
 function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	global $KT_TREE, $EXPAND_NOTES;
-	if (strpos($text, "\n")) {
-		$returnChar = "\n";
-	} else {
-		$returnChar = "<br>";
-	}
-
 	$element_id	= '';
-	$text_cont	= get_cont($nlevel, $nrec);
 	$first_line	= '';
-	$expand1	= $expand2 = '';
+	$expand1	= '';
+	$expand2	= '';
+	$text_cont	= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
 	preg_match('/^0 @(' . KT_REGEX_XREF . ')@ NOTE/', $nrec, $match);
@@ -455,7 +450,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$element_id = 'N-' . (int)(microtime(true)*1000000);
 		$note		= null;
 		$label		= 'NOTE';
-		$html		= $text . $text_cont;
+		$html		= KT_Filter::formatText($text . $text_cont);
+
 	}
 
 	if ($textOnly) {
@@ -463,7 +459,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	}
 
 
-	if (strpos($text . $text_cont, $returnChar) === false) {
+	if (strpos($text . $text_cont, "\n") === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
 		return KT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
 	} else {
