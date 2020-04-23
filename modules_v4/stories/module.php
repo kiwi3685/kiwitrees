@@ -132,23 +132,30 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 				KT_GED_ID
 			))->fetchOneColumn();
 
-		$html	= '';
-		$class	= '';
-		$ids	= array();
-		$count_stories = 0;
+		$html			= '';
+		$class			= '';
+		$ids			= array();
+		$count_stories	= 0;
 		foreach ($block_ids as $block_id) {
+			$block_order = get_block_order($block_id);
 			// check how many stories can be shown in a language
 			$languages = get_block_setting($block_id, 'languages');
-			$block_order = get_block_order($block_id);
 			if (!$languages || in_array(KT_LOCALE, explode(',', $languages))) {
 				$count_stories ++;
 				$ids[] = $block_order;
 			}
 		}
-
+		// establish first story id from lowest block_order
+		$ids ? $first_story = min($ids) : $first_story = '';
+		foreach ($block_ids as $block_id) {
+			$block_order = get_block_order($block_id);
+			if ($block_order == $first_story) {
+				$first_story = $block_id;
+			}
+		}
 		ob_start();
 
-		if (KT_USER_GEDCOM_ADMIN) { // change to KT_USER_CAN_EDIT to allow editors to create first story. ?>
+		if (KT_USER_GEDCOM_ADMIN) { // change this to KT_USER_CAN_EDIT to allow editors to create first story. ?>
 			<div style="border-bottom:thin solid #aaa; margin:-10px; padding-bottom:2px;">
 				<span>
 					<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;xref=<?php echo $controller->record->getXref(); ?>">
@@ -167,7 +174,6 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 
 		if ($count_stories > 1) {
 			$class = 'story';
-			$first_story = min($ids);
 			$controller->addInlineJavascript('
 				// Start with all stories hidden except the first
 				jQuery("#story_contents div.story").hide();
@@ -205,9 +211,8 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 		<div id="story_contents">
 			<?php foreach ($block_ids as $block_id) {
 				$languages = get_block_setting($block_id, 'languages');
-				$block_order = get_block_order($block_id);
 				if (!$languages || in_array(KT_LOCALE, explode(',', $languages))) { ?>
-					<div id="stories_<?php echo $block_order; ?>" class="<?php echo $class; ?>">
+					<div id="stories_<?php echo $block_id; ?>" class="<?php echo $class; ?>">
 						<?php if (KT_USER_CAN_EDIT) { ?>
 							<div style="margin-top:15px;">
 								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $block_id; ?>">

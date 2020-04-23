@@ -341,16 +341,21 @@ function search_indis($query, $geds, $match) {
 	}
 
 	// Convert the query into a SQL expression
-	$querysql=array();
+	$querysq	= array();
 	// Convert the query into a regular expression
-	$queryregex=array();
+	$queryregex	= array();
 
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
 		$querysql[]="i_gedcom LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."'";
 	}
 
-	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec FROM `##individuals` WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
+	$sql="
+		SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec
+		 FROM `##individuals`
+		 WHERE (" . implode(" {$match} ", $querysql) . ") AND
+		 i_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY ged_id';
