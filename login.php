@@ -279,7 +279,8 @@ switch ($action) {
 					if ($responseData->success) {
 						AddToLog('Google reCaptcha valid response from "' . $user_name . '"/"' . $user_email . '", response ="' . $responseData->success . '"', 'auth');
 					} else {
-						$responseData->error-codes ? $errors = $responseData->error-codes : $errors = '';
+						$errors = array();
+						$responseData->error-codes ? $errors = JSON.stringify($responseData->error-codes) : $errors = '';
 						AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
 						KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
 						header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
@@ -288,6 +289,18 @@ switch ($action) {
 					}
 				}
 			}
+
+
+			$token = $_POST['g-recaptcha-response'];
+			$verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$YOUR_SECRET_KEY}&response=$token");
+			$responseData = json_decode($verifyResponse);
+			if (!$responseData->success) {
+			  //show error message
+			} else {
+			  //all is good
+			}
+
+
 
 			// These validation errors cannot be shown in the client.
 			if (get_user_id($user_name)) {
