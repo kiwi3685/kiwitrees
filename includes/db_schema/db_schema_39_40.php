@@ -37,5 +37,17 @@ try {
 	// Perhaps we have already changed this data?
 }
 
+$settings = self::prepare(
+	"SELECT gedcom_id, setting_value FROM `##gedcom_setting`"
+)->fetchAssoc();
+
+foreach ($settings as $gedcom_id=>$setting) {
+	try {
+		self::exec("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES ($gedcom_id, 'COMMON_TYPES_THRESHOLD', 6)");
+	} catch (PDOException $ex) {
+		// Perhaps we have already changed this data?
+	}
+}
+
 // Update the version to indicate success
 KT_Site::preference($schema_name, $next_version);

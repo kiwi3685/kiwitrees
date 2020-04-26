@@ -246,6 +246,7 @@ class KT_Tree {
 		set_gedcom_setting($tree_id, 'COMMON_NAMES_ADD',             '');
 		set_gedcom_setting($tree_id, 'COMMON_NAMES_REMOVE',          '');
 		set_gedcom_setting($tree_id, 'COMMON_NAMES_THRESHOLD',       '40');
+		set_gedcom_setting($tree_id, 'COMMON_TYPES_THRESHOLD',       '6');
 		set_gedcom_setting($tree_id, 'CONTACT_USER_ID',              KT_USER_ID);
 		set_gedcom_setting($tree_id, 'DEFAULT_PEDIGREE_GENERATIONS', '4');
 		set_gedcom_setting($tree_id, 'EXPAND_NOTES',                 false);

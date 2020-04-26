@@ -137,6 +137,7 @@ case 'update':
 	set_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_ADD',				str_replace(' ', '', KT_Filter::post('NEW_COMMON_NAMES_ADD')));
 	set_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_REMOVE',			str_replace(' ', '', KT_Filter::post('NEW_COMMON_NAMES_REMOVE')));
 	set_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_THRESHOLD',			KT_Filter::post('NEW_COMMON_NAMES_THRESHOLD', KT_REGEX_INTEGER, 40));
+	set_gedcom_setting(KT_GED_ID, 'COMMON_TYPES_THRESHOLD',			KT_Filter::post('NEW_COMMON_TYPES_THRESHOLD', KT_REGEX_INTEGER, 6));
 	set_gedcom_setting(KT_GED_ID, 'CONTACT_USER_ID',				KT_Filter::post('NEW_CONTACT_USER_ID'));
 	set_gedcom_setting(KT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS',	KT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
 	set_gedcom_setting(KT_GED_ID, 'EXPAND_NOTES',					KT_Filter::postBool('NEW_EXPAND_NOTES'));
@@ -930,6 +931,20 @@ $controller
 							</div>
 						 </div>
 					</div>
+
+
+					<div class="config_options">
+						<label><?php echo KT_I18N::translate('Min. no. of media per "type" to be on statistics chart'); ?></label>
+						<div class="input_group">
+							<input type="number" name="NEW_COMMON_TYPES_THRESHOLD" value="<?php echo get_gedcom_setting(KT_GED_ID, 'COMMON_TYPES_THRESHOLD'); ?>" maxlength="5" required>
+							<div class="helpcontent">
+								<?php echo KT_I18N::translate('This is the smallest size group of media objects, by type, to show as a separate column on the Statistics chart graph "Media objects by type".'); ?>
+							</div>
+						 </div>
+					</div>
+
+
+
 					<h4 class="accepted"><?php echo KT_I18N::translate('Individual pages'); ?></h4>
 					<div class="config_options">
 						<label><?php echo KT_I18N::translate('Show events of close relatives on individual page'); ?></label>
