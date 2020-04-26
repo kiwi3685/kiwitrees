@@ -207,7 +207,7 @@ class family_nav_KT_Module extends KT_Module implements KT_Module_Sidebar {
 			}
 		}
 		if (!($father instanceof KT_Person || $mother instanceof KT_Person)) {
-			$html .= '<a class="flyout4" href="#">(' . KT_I18N::translate_c('unknown family', 'unknown') . ')</a>';
+			$html = '<a class="flyout4" href="#">(' . KT_I18N::translate_c('unknown family', 'unknown') . ')</a>';
 		}
 		return $html;
 	}
