@@ -978,6 +978,7 @@ function print_main_notes(KT_Event $fact, $level) {
 			}
 		}
 		echo '</td>';
+
 		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
 			//-- print linked/shared note records
@@ -988,10 +989,9 @@ function print_main_notes(KT_Event $fact, $level) {
 				$nt		 = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
 				$line1	 = $n1match[1];
 				$text	 = get_cont(1, $noterec);
-				// If Census assistant installed,
-				if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
+				// If Census assistant installed, allow it to format the note
+				if (KT_Module::getModuleByName('census_assistant')) {
 					$text = census_assistant_KT_Module::formatCensusNote($note);
-
 					if (preg_match('/<span id="title">.*<\/span>/', $text, $match)) {
 						$first_line	= '<a href="' . $note->getHtmlUrl() . '">' . $match[0] . '</a>';
 						$text		= preg_replace('/<span id="title">.*<\/span>/', $first_line, $text);
@@ -1005,7 +1005,7 @@ function print_main_notes(KT_Event $fact, $level) {
 		} else {
 			//-- print embedded note records
 			$text = $match[$j][1] . get_cont($level + 1, $nrec);
-			$text = expand_urls($text);
+			$text = KT_Filter::formatText($text);
 		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap" align="', $TEXT_DIRECTION== "rtl"?"right": "left" , '">';
