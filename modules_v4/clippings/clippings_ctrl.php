@@ -306,7 +306,7 @@ class KT_Controller_Clippings {
 		$adminId	= get_gedcom_setting(KT_GED_ID, 'WEBMASTER_USER_ID');
 		$userName	= get_user_name(KT_USER_ID);
 		if (get_user_setting($adminId, 'notify_clipping')) {
-			global $KIWITREES_EMAIL;
+			global $KT_TREE;
 			KT_I18N::init(get_user_setting($adminId, 'language'));
 			KT_Mail::systemMessage(
 				$KT_TREE,
