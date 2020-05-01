@@ -932,11 +932,11 @@ function print_main_notes(KT_Event $fact, $level) {
 		echo ' ', $styleadd, ' width20">';
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', ', $linenum, ');" href="#" title="', KT_I18N::translate('Edit'), '">';
-			if ($level<2) {
+			if ($level < 2) {
 				if ($SHOW_FACT_ICONS) {
-					echo '<i class="icon-note"></i> ';
+					echo '<i class="icon-note"></i>';
 				}
-				if (strstr($factrec, "1 NOTE @" )) {
+				if (strstr($factrec, "1 NOTE @")) {
 					echo KT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
 					echo KT_Gedcom_Tag::getLabel('NOTE');
@@ -951,9 +951,9 @@ function print_main_notes(KT_Event $fact, $level) {
 		} else {
 			if ($level < 2) {
 				if ($SHOW_FACT_ICONS) {
-					echo '<i class="icon-note"></i> ';
+					echo '<i class="icon-note"></i>';
 				}
-				if (strstr($factrec, "1 NOTE @" )) {
+				if (strstr($factrec, "1 NOTE @")) {
 					echo KT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
 					echo KT_Gedcom_Tag::getLabel('NOTE');
@@ -966,7 +966,7 @@ function print_main_notes(KT_Event $fact, $level) {
 			if ($factname == 'EVEN' || $factname=='FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
-				if ($ct>0) {
+				if ($ct > 0) {
 					$factname = trim($ematch[1]);
 					echo $factname;
 				} else {
@@ -979,18 +979,18 @@ function print_main_notes(KT_Event $fact, $level) {
 		}
 		echo '</td>';
 
-		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
+		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j + 1);
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
 			//-- print linked/shared note records
 			$nid	= $nmatch[1];
 			$note	= KT_Note::getInstance($nid);
 			if ($note) {
-				$noterec = $note->getGedcomRecord();
-				$nt		 = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
-				$line1	 = $n1match[1];
-				$text	 = get_cont(1, $noterec);
+				$noterec	= $note->getGedcomRecord();
+				$nt			= preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
+				$line1		= $n1match[1];
+				$text		= get_cont(1, $noterec);
 				// If Census assistant installed, allow it to format the note
-				if (KT_Module::getModuleByName('census_assistant')) {
+				if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 					$text = census_assistant_KT_Module::formatCensusNote($note);
 					if (preg_match('/<span id="title">.*<\/span>/', $text, $match)) {
 						$first_line	= '<a href="' . $note->getHtmlUrl() . '">' . $match[0] . '</a>';
@@ -1004,7 +1004,7 @@ function print_main_notes(KT_Event $fact, $level) {
 			}
 		} else {
 			//-- print embedded note records
-			$text = $match[$j][1] . get_cont($level + 1, $nrec);
+			$text = trim($match[$j][1]) . get_cont($level + 1, $nrec);
 			$text = KT_Filter::formatText($text);
 		}
 

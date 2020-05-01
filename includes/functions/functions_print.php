@@ -441,7 +441,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$note		= KT_Note::getInstance($match[1], $KT_TREE);
 		$label		= 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
-		if (KT_Module::getModuleByName('census_assistant')) {
+		if (array_key_exists('census_assistant', KT_Module::getActiveModules())) {
 			$html	= census_assistant_KT_Module::formatCensusNote($note);
 		} else {
 			$html	= KT_Filter::formatText($note->getNote());
@@ -486,7 +486,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 				$first_line = mb_substr($text, 0, 100) . KT_I18N::translate('…');
 			} else {
 				$first_line	= KT_Filter::formatText($text);
-				$html		= $text_cont;
+				$html		= KT_Filter::formatText($text_cont);
 			}
 		}
 

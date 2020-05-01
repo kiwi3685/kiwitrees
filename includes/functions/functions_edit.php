@@ -86,7 +86,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	}
 
 	$element_id = $name . '-' . (int)(microtime(true)*1000000);
-	
+
 	return '<select id="' . $element_id.'" name="' . $name.'" ' . $extra .'>' . $html.'</select>';
 }
 
@@ -1417,7 +1417,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		}
 
 		if ($fact === 'CENS' && $value === 'Y') {
-			if (KT_Module::getModuleByName('census_assistant') && KT_GedcomRecord::getInstance($pid) instanceof KT_Person) {
+			if (array_key_exists('census_assistant', KT_Module::getActiveModules()) && KT_GedcomRecord::getInstance($pid) instanceof KT_Person) {
 				echo censusDateSelector(KT_LOCALE, $pid);
 				echo '
 					<div>
