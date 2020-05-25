@@ -82,9 +82,15 @@ switch (KT_Filter::post('action')) {
 			} else {
 				if ($user_id && $username && $realname) {
 					setUserFullName ($user_id, $realname);
-					setUserEmail    ($user_id, $email);
 					setUserName	($user_id, $username);
-					if ($pass1 !== null && $pass1 === $pass2) {
+                    if (findByEmail($email) && KT_USER_IS_ADMIN) {
+    					KT_FlashMessages::addMessage(KT_I18N::translate('Duplicate email address. A user with that email already exists.'));
+    				} else {
+					    setUserEmail    ($user_id, $email);
+                    }
+                    if ($pass1 !== null && $pass1 === $pass2) {
+                        KT_FlashMessages::addMessage(KT_I18N::translate('The passwords do not match.'));
+                    } else {
 						set_user_password($user_id, $pass1);
 					}
 				}
