@@ -26,8 +26,9 @@
 /modules_v4/gallery/galleria/themes/fullscreen
 /modules_v4/gallery/galleria/themes/miniml
 /modules_v4/gallery/galleria/themes/twelve
-
 /modules_v4/pages_*
+/modules_v4/batch_update/plugins/jamies_edit.php
+
 /themes/levy
 
 /uploads
