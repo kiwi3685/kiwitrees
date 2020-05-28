@@ -1058,6 +1058,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	border: 1px solid;
 	margin: 0;
 	padding: 5px;
+    white-space: pre-wrap;
 }
 .added_text {
 	background:#ffff00;
