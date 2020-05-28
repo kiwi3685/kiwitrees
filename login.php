@@ -140,7 +140,13 @@ switch ($action) {
                     echo KT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page. If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved.');
                     break;
                 case 4:
-                    echo '<p style="white-space: pre-wrap;">', KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE), '</p>';
+                    // use the default language of the tree if the user's language does not exist
+                    if (KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE) && KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE) !== '') {
+                        echo '<p style="white-space: pre-wrap;">', KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE), '</p>';
+                    } else {
+                        $lang = get_gedcom_setting(KT_GED_ID, 'LANGUAGE');
+                        echo '<p style="white-space: pre-wrap;">', KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . $lang), '</p>';
+                    }
                     break;
                 } ?>
 

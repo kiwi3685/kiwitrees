@@ -482,7 +482,7 @@ try {
 	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##site_setting` (".
 		" setting_name  VARCHAR(32)  NOT NULL,".
-		" setting_value VARCHAR(255) NOT NULL,".
+		" setting_value VARCHAR(2000) NOT NULL,".
 		" PRIMARY KEY (setting_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);

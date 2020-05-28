@@ -411,9 +411,9 @@ $controller
                     <div class="config_options">
                         <label><?php echo KT_I18N::translate('Custom welcome text'); ?></label>
                         <div class="input_group">
-                            <textarea maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?php echo KT_Filter::escapeHtml(KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE)) ?></textarea>
+                            <textarea maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4"><?php echo KT_Filter::escapeHtml(KT_Site::preference('WELCOME_TEXT_AUTH_MODE_' . KT_LOCALE)) ?></textarea>
                             <div class="helpcontent">
-                                <?php echo KT_I18N::translate('If you have opted for custom welcome text, you can type that text here. To set this text for other languages you must switch to that language and visit this page again.'); ?>
+                                <?php echo KT_I18N::translate('If you have opted for custom welcome text, you can type that text here. To set this text for other languages you must switch to that language and visit this page again. You can enter up to 2000 characters.'); ?>
                             </div>
                         </div>
                     </div>
