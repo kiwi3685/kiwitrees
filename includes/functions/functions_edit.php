@@ -2729,3 +2729,38 @@ function no_update_chan(KT_GedcomRecord $record) {
 		return '';
 	}
 }
+
+/**
+ * Remove a complete directory
+ * used in site-clean and
+ * in custom language pages
+ */
+ function full_rmdir($dir) {
+ 	if (!is_writable($dir)) {
+ 		if (!@chmod($dir, KT_PERM_EXE)) {
+ 			return false;
+ 		}
+ 	}
+
+ 	$d = dir($dir);
+ 	while (false !== ($entry = $d->read())) {
+ 		if ($entry == '.' || $entry == '..') {
+ 			continue;
+ 		}
+ 		$entry = $dir . '/' . $entry;
+ 		if (is_dir($entry)) {
+ 			if (!full_rmdir($entry)) {
+ 				return false;
+ 			}
+ 			continue;
+ 		}
+ 		if (!@unlink($entry)) {
+ 			$d->close();
+ 			return false;
+ 		}
+ 	}
+
+ 	$d->close();
+ 	rmdir($dir);
+ 	return TRUE;
+ }

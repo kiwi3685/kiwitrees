@@ -32,36 +32,6 @@ $controller
 
 require KT_ROOT.'includes/functions/functions_edit.php';
 
-function full_rmdir($dir) {
-	if (!is_writable($dir)) {
-		if (!@chmod($dir, KT_PERM_EXE)) {
-			return false;
-		}
-	}
-
-	$d = dir($dir);
-	while (false !== ($entry = $d->read())) {
-		if ($entry == '.' || $entry == '..') {
-			continue;
-		}
-		$entry = $dir . '/' . $entry;
-		if (is_dir($entry)) {
-			if (!full_rmdir($entry)) {
-				return false;
-			}
-			continue;
-		}
-		if (!@unlink($entry)) {
-			$d->close();
-			return false;
-		}
-	}
-
-	$d->close();
-	rmdir($dir);
-	return TRUE;
-}
-
 // Vars
 $ajaxdeleted		= false;
 $locked_by_context	= array('index.php', 'config.ini.php', 'language');

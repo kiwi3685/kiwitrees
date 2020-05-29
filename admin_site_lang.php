@@ -57,6 +57,13 @@ if ($delete == 'delete_item') {
 	KT_DB::exec("DELETE FROM `##custom_lang` WHERE `custom_lang_id` = {$custom_lang_id}");
 }
 
+// clear the language cache (delete the /data/cache folder) so the text change will be seen on page refresh.
+if ($action) {
+	if (is_dir(KT_DATA_DIR . 'cache')) {
+		full_rmdir(KT_DATA_DIR . 'cache');
+	}
+}
+
 $code_list = KT_Site::preference('LANGUAGES');
 if ($code_list) {
 	$languages = explode(',', $code_list);
