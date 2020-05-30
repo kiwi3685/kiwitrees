@@ -314,8 +314,11 @@ foreach (KT_Tree::GetAll() as $tree) {
 						<a class="accepted" href="index.php?ged=' . $tree->tree_name_url . '" dir="auto">' . $tree->tree_title_html . '</a>
 						<a href="admin_trees_config.php?ged=' . $tree->tree_name_html . '">
 							<i class="fa fa-cog"></i>
-						</a>
-					</th>
+						</a>';
+                        if ($tree->tree_name_url == KT_Site::preference('DEFAULT_GEDCOM')) {
+                            echo '<span><em>' . KT_I18N::translate('(Default tree)') . '</em></span>';
+                        }
+					echo '</th>
 				</tr>
 				<tr>
 					<th class="accepted">' . $tree->tree_name_html . '</th>

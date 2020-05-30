@@ -28,10 +28,8 @@ if (!defined('KT_KIWITREES')) {
 
 class KT_MenuBar {
 	public static function getGedcomMenu() {
-		if (count(KT_Tree::getAll()) === 1 || KT_Site::preference('ALLOW_CHANGE_GEDCOM') === '0') {
-			$menu = new KT_Menu(KT_I18N::translate('Home'), 'index.php?ged=' . KT_GEDURL, 'menu-tree');
-		} else {
-			$menu = new KT_Menu(KT_I18N::translate('Home'), '#', 'menu-tree');
+        $menu = new KT_Menu(KT_I18N::translate('Home'), 'index.php?ged=' . KT_GEDURL, 'menu-tree');
+		if (count(KT_Tree::getAll()) > 1 || KT_Site::preference('ALLOW_CHANGE_GEDCOM') > '0') {
 			foreach (KT_Tree::getAll() as $tree) {
 				$submenu = new KT_Menu(
 					$tree->tree_title_html,
