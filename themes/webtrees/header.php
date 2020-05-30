@@ -77,7 +77,7 @@ if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Modul
 		<![endif]-->
 
 		<?php if (file_exists(KT_THEME_URL . 'mystyle.css')) { ?>
-			<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>mystyle.css" type="text/css">
+			<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>mystyle.css<?php echo time(); ?>" type="text/css">
 		<?php } ?>
 	</head>
 	<body id="body">

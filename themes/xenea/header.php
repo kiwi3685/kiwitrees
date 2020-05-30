@@ -35,8 +35,8 @@ $this
 		widget_bar();
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
-			slideshowStart	:"'.KT_I18N::translate('Play').'",
-			slideshowStop	:"'.KT_I18N::translate('Stop').'",
+			slideshowStart	:"' . KT_I18N::translate('Play') . '",
+			slideshowStop	:"' . KT_I18N::translate('Stop') . '",
 		});
 		// Add colorbox to pdf-files
 		jQuery("body").on("click", "a.gallery", function(event) {
@@ -45,7 +45,7 @@ $this
 							var url = jQuery(this).attr("href");
 							var img_title = jQuery(this).data("title");
 							return "<a href=\"" + url + "\" target=\"_blank\">" + img_title + " - '.
-							KT_I18N::translate('Open in full browser window').'</a>";
+							KT_I18N::translate('Open in full browser window') . '</a>";
 						}
 			});
 		});
@@ -56,6 +56,7 @@ global $ALL_CAPS;
 if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
 $ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), KT_USER_ID ? 'user' : 'gedcom');
 
+
 $show_widgetbar = false;
 if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Module::getActiveWidgets()) {
 	$show_widgetbar = true;
@@ -63,76 +64,76 @@ if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Modul
 
 echo '
 	<!DOCTYPE html>
-	<html ', KT_I18N::html_markup(), '>
+	<html ' . KT_I18N::html_markup() . '>
 	<head>
 		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL), '
-		<title>', htmlspecialchars($title), '</title>
-		<link rel="icon" href="', KT_THEME_URL, 'images/favicon.png" type="image/png">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
-		<link rel="stylesheet" href="', KT_THEME_URL, 'style.css" type="text/css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">' .
+		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) . '
+		<title>' . htmlspecialchars($title) . '</title>
+		<link rel="icon" href="' . KT_THEME_URL . 'images/favicon.png" type="image/png">
+		<link rel="stylesheet" href="' . KT_THEME_URL . 'jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
+		<link rel="stylesheet" href="' . KT_THEME_URL . 'jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
+		<link rel="stylesheet" href="' . KT_THEME_URL . 'style.css" type="text/css">
 		<!--[if IE]>
-			<link type="text/css" rel="stylesheet" href="', KT_THEME_URL, 'msie.css">
+			<link type="text/css" rel="stylesheet" href="' . KT_THEME_URL . 'msie.css">
 			<![endif]-->';
 		if (file_exists(KT_THEME_URL . 'mystyle.css')) {
-			echo '<link rel="stylesheet" href="', KT_THEME_URL, 'mystyle.css" type="text/css">';
+            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' . echo time() . '" type="text/css">';
 		}
 	echo '</head>
 	<body id="body">';
 
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo '<div id="navbar">
-	<div id="header">' ,
-		KT_TREE_TITLE , KT_TREE_SUBTITLE, '
+	<div id="header">' .
+		KT_TREE_TITLE . KT_TREE_SUBTITLE . '
 		<div class="hsearch">
 			<form action="search.php" method="post">
 				<input type="hidden" name="action" value="general">
 				<input type="hidden" name="topsearch" value="yes">
-				<input type="search" name="query" size="25" placeholder="', KT_I18N::translate('Search'), '" dir="auto">
+				<input type="search" name="query" size="25" placeholder="' . KT_I18N::translate('Search') . '" dir="auto">
 				<input type="submit" name="search" value="&gt;">
 			</form>
-		</div>',
-	'</div>', // <div id="header">
-	'<div id="optionsmenu">',
+		</div>'.
+	'</div>' . // <div id="header">
+	'<div id="optionsmenu">'.
 		'<ul class="makeMenu">';
 			if (KT_USER_CAN_ACCEPT && exists_pending_change()) {
 echo			'<li>
-					<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">',
-						KT_I18N::translate('Pending changes'), '
+					<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">'.
+						KT_I18N::translate('Pending changes') . '
 					</a>
 				</li>';
 			}
 			foreach (KT_MenuBar::getOtherMenus() as $menu) {
 				echo $menu->getMenuAsList();
 			}
-echo	'</ul>',
+echo	'</ul>'.
 	'</div>';
 
 	// Print the menu bar
 	echo
-		'<div id="topMenu">',
+		'<div id="topMenu">'.
 			'<ul id="main-menu">';
 				if ($show_widgetbar) {
-					echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">', KT_I18N::translate('Widgets'), '</span></a></li>';
+					echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">' . KT_I18N::translate('Widgets') . '</span></a></li>';
 				}
 				foreach (KT_MenuBar::getMainMenus() as $menu) {
 					echo $menu->getMenuAsList();
 				}
 echo
-		'</ul>',  // <ul id="main-menu">
+		'</ul>' .  // <ul id="main-menu">
 		// select menu for responsive layouts only
 		'<select id="nav-select" onChange="window.location.href=this.value">
-			<option selected="selected" value="">', KT_I18N::translate('Choose a page'), '</option>';
+			<option selected="selected" value="">' . KT_I18N::translate('Choose a page') . '</option>';
 			foreach (KT_MenuBar::getMainMenus() as $menu) {
 				echo $menu->getResponsiveMenu();
 			}
 echo	'</select>
-		</div>', // <div id="topMenu">
+		</div>' . // <div id="topMenu">
 		KT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions
 }
-echo '</div>', $javascript, '<div id="content">';
+echo '</div>' . $javascript . '<div id="content">';
 
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
 if ($show_widgetbar) {
