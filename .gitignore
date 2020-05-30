@@ -2,6 +2,9 @@
 *.bak
 *.zip
 *.ged
+*myheader.php
+*mystyle.css
+*mytheme.php
 
 /data/config.ini.php
 /data/cache/
