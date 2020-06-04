@@ -1208,21 +1208,21 @@ function get_relationship_name_from_path($path, KT_Person $person1 = null, KT_Pe
 		case 'fat': return KT_I18N::translate('father');
 		case 'par': return KT_I18N::translate('parent');
 		case 'hus':
-		if ($person1 && $person2) {
-			foreach ($person1->getSpouseFamilies() as $family) {
-				if ($person2 === $family->getSpouse($person1)) {
-					if ($family->isNotMarried()) {
-						if($family->isDivorced()) {
-							KT_I18N::translate_c('MALE', 'ex-partner');
-						} else {
-							KT_I18N::translate_c('MALE', 'partner');
-						}
-					} elseif($family->isDivorced()) {
-						return KT_I18N::translate('ex-husband');
-					}
-				}
-			}
-		}
+    		if ($person1 && $person2) {
+    			foreach ($person1->getSpouseFamilies() as $family) {
+    				if ($person2 === $family->getSpouse($person1)) {
+    					if ($family->isNotMarried()) {
+    						if($family->isDivorced()) {
+    							return KT_I18N::translate_c('MALE', 'ex-partner');
+    						} else {
+    							return KT_I18N::translate_c('MALE', 'partner');
+    						}
+    					} elseif($family->isDivorced()) {
+    						return KT_I18N::translate('ex-husband');
+    					}
+    				}
+    			}
+    		}
 		return KT_I18N::translate('husband');
 		case 'wif':
 			if ($person1 && $person2) {
@@ -1230,9 +1230,9 @@ function get_relationship_name_from_path($path, KT_Person $person1 = null, KT_Pe
 					if ($person2 === $family->getSpouse($person1)) {
 						if ($family->isNotMarried()) {
 							if($family->isDivorced()) {
-								KT_I18N::translate_c('FEMALE', 'ex-partner');
+								return KT_I18N::translate_c('FEMALE', 'ex-partner');
 							} else {
-								KT_I18N::translate_c('FEMALE', 'partner');
+								return KT_I18N::translate_c('FEMALE', 'partner');
 							}
 						} elseif($family->isDivorced()) {
 							return KT_I18N::translate('ex-wife');
@@ -1247,9 +1247,9 @@ function get_relationship_name_from_path($path, KT_Person $person1 = null, KT_Pe
 					if ($person2 === $family->getSpouse($person1)) {
 						if ($family->isNotMarried()) {
 							if($family->isDivorced()) {
-								KT_I18N::translate('ex-partner');
+								return KT_I18N::translate('ex-partner');
 							} else {
-								KT_I18N::translate('partner');
+								return KT_I18N::translate('partner');
 							}
 						} elseif($family->isDivorced()) {
 							return KT_I18N::translate('ex-spouse');
