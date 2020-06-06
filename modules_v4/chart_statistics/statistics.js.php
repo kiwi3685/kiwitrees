@@ -26,6 +26,7 @@
 	exit;
 }
 
+get_gedcom_setting(KT_GED_ID, 'COMMON_TYPES_THRESHOLD') ? $minMediaTypes = get_gedcom_setting(KT_GED_ID, 'COMMON_TYPES_THRESHOLD') : $minMediaTypes = 6;
 ?>
 
 <script>
@@ -33,6 +34,7 @@
 	// VERTICAL BAR CHART
 	function barChart(element) {
 		var element	= "#" + element;
+		var linkUrl = "";
 		switch(element) {
 			case "#chartStatsBirth":
 				try {var data	= JSON.parse(`<?php echo $stats->statsBirth(); ?>`);}
@@ -40,6 +42,7 @@
 				var width	= 500;
 				var height	= 200;
 				var viewportSize = "0 0 500 200";
+				var linkUrl = "statisticsTables.php?ged=<?php echo $GEDCOM; ?>&table=century&tag=birt&option=";
 			break;
 			case "#chartStatsDeath":
 				try {var data	= JSON.parse(`<?php echo $stats->statsDeath(); ?>`);}
@@ -47,6 +50,7 @@
 				var width	= 500;
 				var height	= 200;
 				var viewportSize = "0 0 500 200";
+				var linkUrl = "statisticsTables.php?ged=<?php echo $GEDCOM; ?>&table=entury&tag=deat&option=";
 			break;
 			case "#chartMarr":
 				try {var data	= JSON.parse(`<?php echo $stats->statsMarr(); ?>`);}
@@ -54,6 +58,7 @@
 				var width	= 500;
 				var height	= 200;
 				var viewportSize = "0 0 500 200";
+				var linkUrl = "statisticsTables.php?ged=<?php echo $GEDCOM; ?>&table=century&tag=marr&option=";
 			break;
 			case "#chartDiv":
 				try {var data	= JSON.parse(`<?php echo $stats->statsDiv(); ?>`);}
@@ -61,13 +66,15 @@
 				var width	= 500;
 				var height	= 200;
 				var viewportSize = "0 0 500 200";
+				var linkUrl = "statisticsTables.php?ged=<?php echo $GEDCOM; ?>&table=century&tag=div&option=";
 			break;
 			case "#chartMedia":
-				try {var data	= JSON.parse(`<?php echo $stats->chartMedia(5); ?>`);}
+				try {var data	= JSON.parse(`<?php echo $stats->chartMedia($minMediaTypes); ?>`);}
 				catch(e){break;}
 				var width	= 960;
 				var height	= 200;
 				var viewportSize = "0 0 960 200";
+				var linkUrl = "medialist.php?action=filter&search=yes&folder=&subdirs=on&sortby=title&max=20&filter=&apply_filter=apply_filter&form_type=";
 			break;
 			case "#chartChild":
 				try {var data	= JSON.parse(`<?php echo $stats->statsChildren(); ?>`);}
@@ -95,7 +102,7 @@
 			var y = d3.scaleLinear().range([h, 20]);
 
 			// format the data
-				data.forEach(function(d) {
+			data.forEach(function(d) {
 				d.count = +d.count;
 			});
 
@@ -124,11 +131,15 @@
 			svg.selectAll(".text")
 				.data(data)
 					.enter().append("text")
-						.style("text-anchor", "middle")
-						.style("font-size", "10px")
 						.attr("x", (function(d) { return x(d.category) + (x.bandwidth() / 2) ; }))
 						.attr("y", function(d) { return y(d.count) - 5; })
-						.text(function(d) { return d.percent; });
+						.style("text-anchor", "middle")
+						.style("font-size", "10px")
+						.append("a")
+							.attr("xlink:href", function(d){ return linkUrl + d.type })
+							.attr("target", "blank")
+							.html(function(d) { return d.percent; })
+							.style("fill", "#3383bb");
 
 			// Add the X Axis
 			svg.append("g")

@@ -494,32 +494,55 @@ class KT_Stats {
 
 	}
 
-	function totalEvents($params = array()) {
-		$sql="SELECT SQL_CACHE COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
-		$vars=array($this->_ged_id);
+	function totalEvents($params = array(), $list = false) {
+		$vars		= array($this->_ged_id);
+		$sql_1 		= '';
+		$sql_2 		= '';
+		$no_types	= array('HEAD', 'CHAN');
+		$list ? $sql = 'SELECT SQL_CACHE d_gid AS xref' : $sql = 'SELECT SQL_CACHE COUNT(*) AS tot';
 
-		$no_types=array('HEAD', 'CHAN');
 		if ($params) {
-			$types=array();
+			$types = array();
 			foreach ($params as $type) {
-				if (substr($type, 0, 1)=='!') {
-					$no_types[]=substr($type, 1);
+				if (substr($type, 0, 1) == '!') {
+					$no_types[] = substr($type, 1);
 				} else {
-					$types[]=$type;
+					$types[] = $type;
 				}
 			}
 			if ($types) {
-				$sql.=' AND d_fact IN ('.implode(', ', array_fill(0, count($types), '?')).')';
-				$vars=array_merge($vars, $types);
+				$sql_1 .=' AND d_fact IN ('.implode(', ', array_fill(0, count($types), '?')).')';
+				$vars = array_merge($vars, $types);
 			}
 		}
-		$sql.=' AND d_fact NOT IN ('.implode(', ', array_fill(0, count($no_types), '?')).')';
-		$vars=array_merge($vars, $no_types);
-		return KT_I18N::number(KT_DB::prepare($sql)->execute($vars)->fetchOne());
+		$sql_2 .= ' AND d_fact NOT IN ('.implode(', ', array_fill(0, count($no_types), '?')).')';
+		$vars = array_merge($vars, $no_types);
+
+		$sql .= "
+			 FROM (
+				 SELECT * FROM `##dates`
+				 WHERE d_file=?";
+				 $sql .= $sql_1;
+				 $sql .= $sql_2;
+				 $sql .= "GROUP BY d_gid
+			 ) as t1
+		";
+
+		if ($list) {
+			$rows	= KT_DB::prepare($sql)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
+			$list	= array();
+			foreach ($rows as $row) {
+				$family = KT_Family::getInstance($row['xref']);
+					$list[] = clone $family;
+			}
+			return $list;
+		} else {
+			return KT_I18N::number(KT_DB::prepare($sql)->execute($vars)->fetchOne());
+		}
 	}
 
 	function totalEventsBirth() {
-		return $this->totalEvents(explode('|',KT_EVENTS_BIRT));
+		return $this->totalEvents(explode('|', KT_EVENTS_BIRT));
 	}
 
 	function totalBirths() {
@@ -573,22 +596,7 @@ class KT_Stats {
 	}
 
 	function totalMarriages() {
-		$rows = KT_DB::prepare("
-			SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedrec
-				FROM `##families` WHERE `f_file` = ?
-			")->execute(array($this->_ged_id))
-			->fetchAll();
-
-		$count = count($rows);
-
-		foreach ($rows as $row) {
-			preg_match('/\n1 MARR.*(?:\n[2-9](?:.*))*\n2 (DATE|PLAC|SOUR).*/', $row->gedrec, $match);
-			if (!$match) {
-				$count --;
-			}
-		}
-
-		return $count;
+		return $this->totalEvents(array('MARR'));
 	}
 
 	function totalEventsDivorce() {
@@ -856,7 +864,8 @@ class KT_Stats {
 				'category'	=> KT_Gedcom_Tag::getFileFormTypeValue($type),
 				'count'		=> $count,
 				'percent'	=> KT_I18N::number($count) . ' (' . KT_I18N::number(100 * $count / $tot, 1) . '%)',
-				'color'		=> 'd'
+				'color'		=> 'd',
+				'type'		=> $type
 			);
 		}
 
@@ -1303,7 +1312,8 @@ class KT_Stats {
 						'category'	=> self::_centuryName($values['century']),
 						'count'		=> $values['total'],
 						'percent'	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
-						'color'		=> 'd'
+						'color'		=> 'd',
+						'type'		=> $values['century']
 					);
 				}
 			}
@@ -1366,7 +1376,8 @@ class KT_Stats {
 						'category'	=> self::_centuryName($values['century']),
 						'count'		=> $values['total'],
 						'percent'	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
-						'color'		=> 'd'
+						'color'		=> 'd',
+						'type'		=> $values['century']
 					);
 				}
 			}
@@ -2182,14 +2193,18 @@ class KT_Stats {
 
 	function _statsMarr($simple = true, $first = false, $year1 = -1, $year2 = -1) {
 		if ($simple) {
-			$sql =
-				"SELECT SQL_CACHE FLOOR(d_year / 100 + 1) AS century, COUNT(*) AS total".
-				" FROM `##dates`".
-				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-			if ($year1 >= 0 && $year2 >= 0) {
-				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-			}
-			$sql .= " GROUP BY century ORDER BY century";
+			$sql = "
+				SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total
+					FROM (
+						SELECT * FROM `##dates`
+						 WHERE d_file=" . $this->_ged_id . " AND d_year<>0 AND d_fact = 'MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')
+						 GROUP BY d_gid";
+						if ($year1 >= 0 && $year2 >= 0) {
+							$sql .= " AND d_year BETWEEN '" . $year1 . "' AND '" . $year2 . "'";
+						}
+					$sql .= ") AS t1
+				 GROUP BY century ORDER BY century
+			";
 		} else if ($first) {
 			$years = '';
 			if ($year1 >= 0 && $year2 >= 0) {
@@ -2234,7 +2249,8 @@ class KT_Stats {
 						'category'	=> self::_centuryName($values['century']),
 						'count'		=> $values['total'],
 						'percent'	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
-						'color'		=> 'd'
+						'color'		=> 'd',
+						'type'		=> $values['century']
 					);
 				}
 			}
@@ -2250,14 +2266,18 @@ class KT_Stats {
 
 	function _statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params = array()) {
 		if ($simple) {
-			$sql =
-				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
-				" FROM `##dates`".
-				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-				if ($year1>=0 && $year2>=0) {
-					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-				}
-				$sql .= " GROUP BY century ORDER BY century";
+			$sql = "
+				SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total
+					FROM (
+						SELECT * FROM `##dates`
+						 WHERE d_file=" . $this->_ged_id . " AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')
+						 GROUP BY d_gid";
+						if ($year1 >= 0 && $year2 >= 0) {
+							$sql .= " AND d_year BETWEEN '" . $year1 . "' AND '" . $year2 . "'";
+						}
+					$sql .= ") AS t1
+				 GROUP BY century ORDER BY century
+			";
 		} else if ($first) {
 			$years = '';
 			if ($year1>=0 && $year2>=0) {
@@ -2285,7 +2305,8 @@ class KT_Stats {
 				}
 			$sql .= " GROUP BY d_month";
 		}
-		$rows=self::_runSQL($sql);
+		$rows = self::_runSQL($sql);
+
 		if ($simple) {
 			$tot = 0;
 			foreach ($rows as $values) {
@@ -2300,7 +2321,8 @@ class KT_Stats {
 						'category'	=> self::_centuryName($values['century']),
 						'count'		=> $values['total'],
 						'percent'	=> KT_I18N::number($values['total']) . ' (' . KT_I18N::number(round(100 * $values['total'] / $tot, 0)) . '%)',
-						'color'		=> 'd'
+						'color'		=> 'd',
+						'type'		=> $values['century']
 					);
 				}
 			}
@@ -4069,7 +4091,7 @@ class KT_Stats {
 	}
 
 	// century name, English => 21st, Polish => XXI, etc.
-	private static function _centuryName($century) {
+	public static function _centuryName($century) {
 		if ($century<0) {
 			return str_replace(-$century, KT_Stats::_centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ KT_I18N::translate('%s BCE', KT_I18N::number(-$century)));
 		}

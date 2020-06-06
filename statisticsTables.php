@@ -35,38 +35,105 @@ $ged_id	= get_id_from_gedcom($GEDCOM);
 $stats	= new KT_Stats($GEDCOM);
 $table	= KT_Filter::get('table');
 $option	= KT_Filter::get('option');
+$tag	= KT_Filter::get('tag');
 
 
 switch ($table) {
 	case 'totalIndis':
 		$title 		= KT_I18N::translate('Total individuals');
-		$content	= format_indi_table(KT_Stats::individualsList($ged_id));
+		$content	= format_indi_table($stats->individualsList($ged_id));
 		switch ($option){
 			case 'male':
 				$title 		= KT_I18N::translate('Total males');
-				$content	= format_indi_table(KT_Stats::individualsList($ged_id, 'male'));
+				$content	= format_indi_table($stats->individualsList($ged_id, 'male'));
 				break;
 			case 'female':
 				$title 		= KT_I18N::translate('Total females');
-				$content	= format_indi_table(KT_Stats::individualsList($ged_id, 'female'));
+				$content	= format_indi_table($stats->individualsList($ged_id, 'female'));
 				break;
 			case 'unknown':
 				$title 		= KT_I18N::translate('Total unknown gender');
-				$content	= format_indi_table(KT_Stats::individualsList($ged_id, 'unknown'));
+				$content	= format_indi_table($stats->individualsList($ged_id, 'unknown'));
 				break;
 			case 'living':
 				$title 		= KT_I18N::translate('Total living');
-				$content	= format_indi_table(KT_Stats::individualsList($ged_id, 'living'));
+				$content	= format_indi_table($stats->individualsList($ged_id, 'living'));
 				break;
 			case 'deceased':
 				$title 		= KT_I18N::translate('Total deceased');
-				$content	= format_indi_table(KT_Stats::individualsList($ged_id, 'deceased'));
+				$content	= format_indi_table($stats->individualsList($ged_id, 'deceased'));
 				break;
+		}
+	break;
+	case 'century': {
+		switch ($tag) {
+			case 'birt':
+				$gTag	= 'BIRT';
+				$label	= 'births';
+			break;
+			case 'deat':
+				$gTag	= 'DEAT';
+				$label	= 'deaths';
+			break;
+			case 'marr':
+				$gTag	= 'MARR';
+				$label	= 'marriages';
+			break;
+			case 'div':
+				$gTag	= 'DIV';
+				$label	= 'divorces';
+			break;
+		}
+
+		$year = $option * 100 - 100;
+		$rows = KT_DB::prepare("
+			SELECT DISTINCT SQL_CACHE `d_gid` FROM `##dates`
+				WHERE `d_file`=? AND
+				`d_year` >= ? AND
+				`d_year` < ? AND
+				`d_fact`='" . $gTag . "' AND
+				`d_type` IN ('@#DGREGORIAN@', '@#DJULIAN@')
+		")->execute(array($ged_id, $year, $year + 100))->fetchAll(PDO::FETCH_ASSOC);
+		$list	= array();
+
+		switch ($tag){
+			case 'birt':
+			case 'deat':
+				foreach ($rows as $row) {
+					$person = KT_Person::getInstance($row['d_gid']);
+						$list[] = clone $person;
+				}
+				$title 		= KT_I18N::translate('Number of %s in the %s century', $label, $stats->_centuryName($option));
+				$content	= format_indi_table($list);
+			break;
+			case 'marr':
+			case 'div':
+				foreach ($rows as $row) {
+					$family = KT_Family::getInstance($row['d_gid']);
+						$list[] = clone $family;
+				}
+				$title 		= KT_I18N::translate('Number of %s in the %s century', $label, $stats->_centuryName($option));
+				$content	= format_fam_table($list);
+			break;
+		}
+	}
+	break;
+	case 'totalFams' :
+		switch ($tag){
+			case 'marr' :
+				$title 		= KT_I18N::translate('Total marriages');
+				$content	= format_fam_table($stats->totalEvents(array('MARR'), true));
+			break;
+			case 'div' :
+				$title 		= KT_I18N::translate('Total divorces');
+				$content	= format_fam_table($stats->totalEvents(array('DIV'), true));
+			break;
 		}
 	break;
 	default:
 		$title 		= '';
 		$content	= KT_I18N::translate('No table selected');
+	break;
 }
 
 ?>
@@ -74,6 +141,13 @@ switch ($table) {
 	<h2 class="center">
 		<?php echo $title; ?>
 	</h2>
+	<?php if (!KT_USER_ID) { ?>
+		<h4 class="center">
+			<em>
+				<?php echo KT_I18N::translate('Due to privacy settings the number of items in this list may be less than the number on the statistics chart'); ?>
+			</em>
+		</h4>
+	<?php } ?>
 	<div>
 		<?php echo $content; ?>
 	</div>
