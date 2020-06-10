@@ -30,7 +30,7 @@ global $DEFAULT_PEDIGREE_GENERATIONS;
 $controller = new KT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(KT_I18N::translate('Missing data'))
+	->setPageTitle(KT_I18N::translate('Missing fact or event details'))
 	->pageHeader()
 	->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
@@ -94,9 +94,9 @@ $true	= '<i class="accepted fa fa-check"></i>';
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<div class="help_text">
 			<p class="helpcontent">
-				<?php echo /* I18N: Sub-title for missing data admin page */ KT_I18N::translate('A list of information missing from an individual and their relatives.'); ?>
+				<?php echo /* I18N: Sub-title for missing data admin page */ KT_I18N::translate('A list of information missing from events or facts of an individual and their relatives.'); ?>
 				<br>
-				<?php echo /* I18N: Help content for missing data admin page */ KT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.'); ?>
+				<?php echo /* I18N: Help content for missing data admin page */ KT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.<br><b>Limitations: </b>It is only practical for this tool to search for media objects directly linked to the selected event ("level 2 object"). Other media such as attached directly to the individual (level 1 object), or linked to a source itself linked to the event ("level 3 object"), will not be checked here.'); ?>
 			</p>
 		</div>
 		<form name="resource" id="resource" method="post" action="<?php echo KT_SCRIPT_NAME; ?>">
@@ -108,8 +108,8 @@ $true	= '<i class="accepted fa fa-check"></i>';
 				</div>
 				<div class="input">
 					<label for = "fact"><?php echo KT_I18N::translate('Fact or event'); ?></label>
-					<select name="fact" id="fact">
-						<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ KT_I18N::translate('Select'); ?></option>
+					<select name="fact" id="fact" required>
+						<option value="" disabled selected><?php echo /* I18N: first/default option in a drop-down listbox */ KT_I18N::translate('Select'); ?></option>
 						<?php foreach ($translated_facts as $key=>$fact_name) {
 							if ($key !== 'EVEN' && $key !== 'FACT') {
 								echo '<option value="' . $key . '"' . ($key == $fact ? ' selected ' : '') . '>' . $fact_name . '</option>';
@@ -132,9 +132,9 @@ $true	= '<i class="accepted fa fa-check"></i>';
 					<label for = "generations"><?php echo KT_I18N::translate('Generations'); ?></label>
 					<?php echo select_edit_control('generations', $generations, null, $maxgen); ?>
 				</div>
-				<button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>">
+				<button class="btn btn-primary" type="submit" value="">
 					<i class="fa fa-check"></i>
-					<?php echo $controller->getPageTitle(); ?>
+					<?php echo KT_I18N::translate('Show'); ?>
 				</button>
 			</div>
 		</form>
