@@ -666,7 +666,15 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_mother, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $husb_mother, '\', \'HUSB\', \'', $upfamid, '\');"';
+                                    }
+                                    echo '><i class="icon-sex_m_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
 						  	</div>
 					</div>';
 				}
@@ -678,7 +686,16 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_father, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $husb_father, '\', \'WIFE\', \'', $upfamid, '\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_f_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
 						  	</div>
 					</div>';
 				}
@@ -697,12 +714,30 @@ function print_parents($famid, $personcount=1) {
 					echo '<p></p>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'HUSB\', \'new\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_m_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
 						  	</div>
 					</div>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'WIFE\', \'new\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_f_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
 						  	</div>
 					</div>';
 			echo '</div>';
@@ -733,9 +768,18 @@ function print_parents($famid, $personcount=1) {
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
-						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_father, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
-						  	</div>
+                            <div class="person_box empty_parent">
+                                <a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $wife_father, '\', \'HUSB\', \'', $upfamid, '\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_m_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
+                            </div>
 					</div>';
 				}
 				// wife's mother
@@ -746,7 +790,16 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_mother, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+                                <a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $wife_mother, '\', \'WIFE\', \'', $upfamid, '\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_f_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
 						  	</div>
 					</div>';
 				}
@@ -765,12 +818,33 @@ function print_parents($famid, $personcount=1) {
 					echo '<p></p>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+                                <a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'HUSB\', \'new\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_m_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
+
+
+
 						  	</div>
 					</div>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', KT_I18N::translate('Add new'), '</span></a>
+                                <a href="#" ';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo 'onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'WIFE\', \'new\');"';
+                                    }
+                                    echo '>
+                                    <i class="icon-sex_f_15x15"></i>';
+                                    if (KT_USER_CAN_EDIT) {
+                                        echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                                    }
+                                echo '</a>
 						  	</div>
 					</div>';
 			echo '</div>';
@@ -793,10 +867,16 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="parent_husb">
 				<div id="family_lines2"></div>
 				<div class="person_box empty_parent">
-					<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">
-						<i class="icon-sex_m_15x15"></i>
-						<span>', KT_I18N::translate('Add new'), '</span>
-					</a>
+                    <a href="#" ';
+                        if (KT_USER_CAN_EDIT) {
+                            echo 'onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"';
+                        }
+                        echo '>
+                        <i class="icon-sex_m_15x15"></i>';
+                        if (KT_USER_CAN_EDIT) {
+                            echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                        }
+                    echo '</a>
 				</div>';
 		}
 		echo '</div>';
@@ -813,10 +893,16 @@ function print_parents($famid, $personcount=1) {
 			echo '<div class="parent_wife">
 				<div id="family_lines2"></div>
 				<div class="person_boxF empty_parent">
-					<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">
-						<i class="icon-sex_f_15x15"></i>
-						<span>', KT_I18N::translate('Add new'), '</span>
-					</a>
+                    <a href="#" ';
+                        if (KT_USER_CAN_EDIT) {
+                            echo 'onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"';
+                        }
+                        echo '>
+                        <i class="icon-sex_f_15x15"></i>';
+                        if (KT_USER_CAN_EDIT) {
+                            echo '<span>', KT_I18N::translate('Add new'), '</span>';
+                        }
+                    echo '</a>
 				</div>';
 		}
 		echo '</div>';
