@@ -296,11 +296,12 @@ switch ($action) {
                 }
             }
 
-            // These validation errors cannot be shown in the client.
             if (get_user_id($user_name)) {
                 KT_FlashMessages::addMessage(KT_I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+                AddToLog('Attempted registration using an existing user name. "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '"', 'spam');
             } elseif (findByEmail($user_email)) {
                 KT_FlashMessages::addMessage(KT_I18N::translate('Duplicate email address. A user with that email already exists.'));
+                AddToLog('Attempted registration using an existing email address. "' . $user_name . '"/"' . $user_email . '", IP="' . $KT_REQUEST->getClientIp() . '"', 'spam');
             } elseif (preg_match('/(?!' . preg_quote(KT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
                 KT_FlashMessages::addMessage(
                     KT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
