@@ -59,18 +59,16 @@ class widget_quicklinks_KT_Module extends KT_Module implements KT_Module_Widget 
 //			$title = '';
 //		}
 
-        $save = $currPage = $existingBookmarks = $bookmarkTitle = $bookmarks = $content = $list = $split = '';
+        $currPage  = $existingBookmarks = $bookmarkTitle = $bookmarks = $content = $list = $split = '';
+        $save      = 0;
+        $currPage  = get_query_url();
         get_user_setting(KT_USER_ID, 'bookmarks') ? $existingBookmarks  = get_user_setting(KT_USER_ID, 'bookmarks') : $existingBookmarks = '';
-
-        $currPage = addslashes(get_query_url());
-//        if ($existingBookmarks && strpos($existingBookmarks, $currPage)) {$currPage = '';}
-
         KT_Filter::post('bookmarkTitle') ? $bookmarkTitle = preg_replace( '/[^A-Za-z0-9 ]/', '', KT_Filter::post('bookmarkTitle')) : $bookmarkTitle = '';
 
-        if ($existingBookmarks && $bookmarkTitle && KT_Filter::postBool('save')==1 && $currPage) {
+        if ($existingBookmarks && $bookmarkTitle && KT_Filter::postBool('save') == 1) {
             set_user_setting(KT_USER_ID, 'bookmarks', $bookmarkTitle . '&&' . $currPage . '|' . get_user_setting(KT_USER_ID, 'bookmarks'));
             $existingBookmarks  = get_user_setting(KT_USER_ID, 'bookmarks');
-        } elseif (!$existingBookmarks && $bookmarkTitle && KT_Filter::postBool('save')==1 && $currPage) {
+        } elseif (!$existingBookmarks && $bookmarkTitle && KT_Filter::postBool('save') == 1) {
             set_user_setting(KT_USER_ID, 'bookmarks', $bookmarkTitle . '&&' . $currPage);
             $existingBookmarks  = get_user_setting(KT_USER_ID, 'bookmarks');
         }
