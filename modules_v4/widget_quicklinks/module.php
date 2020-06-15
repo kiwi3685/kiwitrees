@@ -51,16 +51,31 @@ class widget_quicklinks_KT_Module extends KT_Module implements KT_Module_Widget 
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		$id		= $this->getName();
 		$class	= $this->getName();
-		$title	= '';
+		$title	= $this->getTitle();
 
 //		if (KT_USER_GEDCOM_ADMIN) { - FOR FUTURE DEVELOPMENT
 //			$title = '<i class="icon-admin" title="'.KT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 //		} else {
 //			$title = '';
 //		}
-		$title	.= $this->getTitle();
 
-		$content= '
+        $save = $currPage = $existingBookmarks = $bookmarkTitle = $bookmarks = $content = $list = $split = '';
+        get_user_setting(KT_USER_ID, 'bookmarks') ? $existingBookmarks  = get_user_setting(KT_USER_ID, 'bookmarks') : $existingBookmarks = '';
+
+        $currPage = addslashes(get_query_url());
+//        if ($existingBookmarks && strpos($existingBookmarks, $currPage)) {$currPage = '';}
+
+        KT_Filter::post('bookmarkTitle') ? $bookmarkTitle = preg_replace( '/[^A-Za-z0-9 ]/', '', KT_Filter::post('bookmarkTitle')) : $bookmarkTitle = '';
+
+        if ($existingBookmarks && $bookmarkTitle && KT_Filter::postBool('save')==1 && $currPage) {
+            set_user_setting(KT_USER_ID, 'bookmarks', $bookmarkTitle . '&&' . $currPage . '|' . get_user_setting(KT_USER_ID, 'bookmarks'));
+            $existingBookmarks  = get_user_setting(KT_USER_ID, 'bookmarks');
+        } elseif (!$existingBookmarks && $bookmarkTitle && KT_Filter::postBool('save')==1 && $currPage) {
+            set_user_setting(KT_USER_ID, 'bookmarks', $bookmarkTitle . '&&' . $currPage);
+            $existingBookmarks  = get_user_setting(KT_USER_ID, 'bookmarks');
+        }
+
+		$content = '
 			<table>
 				<tr>
 					<td><a href="edituser.php"><i class="icon-myaccount"></i><br>' . KT_I18N::translate('My account') . '</a></td>';
@@ -72,15 +87,56 @@ class widget_quicklinks_KT_Module extends KT_Module implements KT_Module_Widget 
 					if (KT_USER_IS_ADMIN) {
 						$content .= '<td><a href="admin.php"><i class="icon-admin"></i><br>' . KT_I18N::translate('Administration') . '</a></td>';
 					}
-		$content .= '
-				</tr>
-			</table>';
+        		$content .= '</tr>
+            </table>
+        ';
+
+        $content .= '
+            <table>';
+                if (!strpos($existingBookmarks, $currPage)) {
+                    $content .= '
+                        <tr>
+                            <td>
+                                <form id="addBookmark" method="post" style="text-align: initial;border: 1px solid; padding: 5px;">
+                                    <p style="font-weight: 700; margin: 3px 0;">' . KT_I18N::translate('Bookmark current page') . '</p>
+                                    <label style="width: 10%; display: inline-block; font-weight: 700;">' . KT_I18N::translate('Title') . '</label>
+                                    <input type="text" name="bookmarkTitle" style="width: 65%; margin: 0 8px;" placeholder="' . KT_I18N::translate('Ex.: “Johns pedigree”. No puncutation.') . '" required>
+                                    <button type="submit" name="save" value="1">' . KT_I18N::translate('Save') . '</button>
+                                </form>
+                            </td>
+                        </tr>';
+                }
+                if ($existingBookmarks) {
+                    $bookmarks = explode("|", $existingBookmarks);
+                    $content .= '<tr>
+                        <td style="text-align: initial;">
+                            <h4>' . KT_I18N::translate('Bookmarks') . '</h4>
+                            <ul>';
+                                foreach($bookmarks as $list) {
+                                    $split    = explode("&&", $list);
+                                    $content .= '<li style="background-color: #e5e5e5; margin: 5px; padding: 0 8px;">
+                                        <a href="' . $split[1] . '" style="display: inline-block; width: 91%; vertical-align: middle;">' . $split[0] . '</a>
+                                        <a href="#"
+                                           style="vertical-align: middle; font-size: 95%;"
+                                           onclick="if (confirm(\'' . htmlspecialchars(KT_I18N::translate('Are you sure you want to delete the bookmark “%s”?', $split[0])).'\')) jQuery.post(\'action.php\',{action:\'deleteBookmark\', mark:\'' . $list . '\', user:\'' . KT_USER_ID . '\'},function(){location.reload();})"
+                                        >
+                                            <i class="icon-delete"></i>
+                                        </a>
+                                    </li>';
+                                }
+                            $content .= '</ul>
+                        </td>
+                    </tr>';
+                }
+		    $content .= '</table>
+        ';
 
 		if ($template) {
 			require KT_THEME_DIR . 'templates/widget_template.php';
 		} else {
 			return $content;
 		}
+
 	}
 
 	// Implement class KT_Module_Widget

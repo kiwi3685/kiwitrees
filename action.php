@@ -184,5 +184,18 @@ switch (safe_POST('action')) {
 		KT_FlashMessages::addMessage(KT_I18N::translate('DNA data deleted'));
 		break;
 
+    case 'deleteBookmark':
+        $bookMark       = KT_Filter::post('mark');
+        $user           = KT_Filter::post('user');
+        $setting_value  = get_user_setting($user, 'bookmarks');
+
+        $update   = str_replace($bookMark, '', $setting_value);
+        $update   = str_replace('||', '|', $update);
+        $update   = preg_replace('/^\|/',  '', $update);
+        $update   = preg_replace('/\|$/',  '', $update);
+
+        set_user_setting($user, 'bookmarks', $update);
+        break;
+
 }
 Zend_Session::writeClose();

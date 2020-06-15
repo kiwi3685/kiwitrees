@@ -3338,6 +3338,7 @@ div[id^="caldiv"] td {
 	display: block;
 }
 
+.ui-widget-content a,
 .ui-widget-content #outer_pages_container a {
 	color: #3383bb;
 }
