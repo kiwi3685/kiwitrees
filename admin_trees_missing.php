@@ -121,7 +121,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 					</select>
 				</div>
 				<div class="input">
-					<label for = "rootid"><?php echo KT_I18N::translate('Individual'); ?></label>
+					<label for = "root_id"><?php echo KT_I18N::translate('Individual'); ?></label>
 					<input data-autocomplete-type="INDI" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>" required>
 				</div>
 				<div class="input">
