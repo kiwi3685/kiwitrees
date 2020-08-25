@@ -430,7 +430,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 						</button>
 						<button class="btn btn-primary cancel" type="button" onclick="window.location=\'' . $this->getConfigLink() . '\';" tabindex="6">
 							<i class="fa fa-times"></i>' .
-							KT_I18N::translate('cancel') .'
+							KT_I18N::translate('Cancel') .'
 						</button>
 					</form>';
 				exit;
@@ -500,9 +500,9 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 				<input type="hidden" name="mod", value="<?php echo $this->getName(); ?>">
 				<input type="hidden" name="mod_action", value="admin_config">
 				<?php echo select_edit_control('ged', KT_Tree::getNameList(), null, KT_GEDCOM); ?>
-				<button class="btn btn-primary show" type="submit">
+				<button class="btn btn-primary show" type="submit" style="float:none;">
 					<i class="fa fa-eye"></i>
-					<?php echo KT_I18N::translate('show'); ?>
+					<?php echo KT_I18N::translate('Show'); ?>
 				</button>
 			</form>
 			<?php
@@ -557,7 +557,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 				}
 				echo '<button class="btn btn-primary save" type="submit">
 					<i class="fa fa-floppy-o"></i>' .
-					KT_I18N::translate('save'). '
+					KT_I18N::translate('Save'). '
 				</button>
 			</form>
 		</div>';
