@@ -78,7 +78,7 @@ echo '
 			<link type="text/css" rel="stylesheet" href="' . KT_THEME_URL . 'msie.css">
 			<![endif]-->';
 		if (file_exists(KT_THEME_URL . 'mystyle.css')) {
-            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' . echo time() . '" type="text/css">';
+            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' .  time() . '" type="text/css">';
 		}
 	echo '</head>
 	<body id="body">';
