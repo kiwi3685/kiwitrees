@@ -23,7 +23,7 @@
 
 define('KT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
-require KT_ROOT.'includes/functions/functions_edit.php';
+require KT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new KT_Controller_Pedigree();
 $controller
@@ -36,7 +36,7 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<!-- print the form to change the number of displayed generations -->
 		<form name="people" id="people" method="get" action="?">
-			<input type="hidden" name="show_full" value="'. $controller->show_full. '">
+			<input type="hidden" name="show_full" value="' . $controller->show_full . '">
 			<div class="chart_options">
 				<label for = "rootid" style="display:block; font-weight:900;"><?php echo KT_I18N::translate('Individual'); ?></label>
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->rootid; ?>">
@@ -143,7 +143,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	} else {
 		echo $controller->treeid[$i];
 	}
-	echo '.1'.$iref;
+	echo '.1' . $iref;
 	if ($TEXT_DIRECTION=="rtl") {echo '" style="right:';} else {echo '" style="left:';}
 	//Correct box spacing for different layouts
 	if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}
@@ -160,11 +160,11 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		if ($TEXT_DIRECTION=="rtl") {$posn = 'right'; $arrow = 'icon-larrow';} else {$posn = 'left';	$arrow = 'icon-rarrow';	}
 		if ($talloffset==3) {
 			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
-				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
+				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS=' . $controller->PEDIGREE_GENERATIONS . '&amp;rootid=' . $controller->treeid[$did] . '&amp;show_full=' . $controller->show_full . '&amp;talloffset=' . $controller->talloffset . ' class="icon-darrow noprint"></a>';
 			echo '</div>';
 		} elseif ($talloffset < 2) {
 			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth+5, 'px; top:', ($controller->pbheight/2-10), 'px;">';
-			echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'" class=" ',$arrow,' noprint"></a>';
+			echo '<a href="pedigree.php?PEDIGREE_GENERATIONS=' . $controller->PEDIGREE_GENERATIONS . '&amp;rootid=' . $controller->treeid[$did] . '&amp;show_full=' . $controller->show_full . '&amp;talloffset=' . $talloffset . '" class=" ',$arrow,' noprint"></a>';
 			echo '</div>';
 		}
 	}
@@ -211,7 +211,7 @@ if (count($famids)>0) {
 	foreach ($famids as $family) {
 		$spouse=$family->getSpouse($controller->root);
 		if ($spouse) {
-			echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+			echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=" . $spouse->getXref() . "&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 			$name = $spouse->getFullName();
 			echo 'class="name1">';
 			echo $name;
@@ -219,7 +219,7 @@ if (count($famids)>0) {
 		}
 		$children = $family->getChildren();
 		foreach ($children as $child) {
-			echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+			echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=" . $child->getXref() . "&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 			$name = $child->getFullName();
 			echo "class=\"name1\">&lt; ";
 			echo $name;
@@ -238,7 +238,7 @@ if (count($famids)>0) {
 			}
 			foreach ($children as $child) {
 				if (!$controller->root->equals($child) && !is_null($child)) {
-					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=" . $child->getXref() . "&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					$name = $child->getFullName();
 					echo 'class="name1"> ';
 					echo $name;
@@ -255,7 +255,7 @@ if ($talloffset < 2) {
 } else {
 	$canvaswidth = pow(2,$PEDIGREE_GENERATIONS-1)*($controller->pbwidth+20);
 }
-echo '<canvas id="pedigree_canvas" width="'.(int)($canvaswidth).'" height="'.(int)($maxyoffset).'"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
+echo '<canvas id="pedigree_canvas" width="'.(int)($canvaswidth) . '" height="' . (int)($maxyoffset) . '"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
 
@@ -263,7 +263,7 @@ echo '</div>'; //close #pedigree-page
 $controller->addInlineJavascript('
 	content_div = document.getElementById("content");
 	if (content_div) {
-		content_div.style.height="'.($maxyoffset+30).'px";
+		content_div.style.height="' . ($maxyoffset+30) . 'px";
 	}
 
 	// Draw joining lines in <canvas>
@@ -284,18 +284,18 @@ $controller->addInlineJavascript('
 	// Set variables
 		var c=document.getElementById("pedigree_canvas");
 		var ctx=c.getContext("2d");
-		var textdirection = "'.$TEXT_DIRECTION.'";
-		var talloffset = '.$talloffset.';
-		var canvaswidth = '.($canvaswidth).';
+		var textdirection = "' . $TEXT_DIRECTION . '";
+		var talloffset = ' . $talloffset . ';
+		var canvaswidth = ' . ($canvaswidth) . ';
 		var offset_x = 20;
-		var offset_y = '.$controller->pbheight.'/2+'.$controller->linewidth.';
-		var lineDrawx = new Array("'. join(array_reverse ($lineDrawx),'","'). '");
-		var lineDrawy = new Array("'. join(array_reverse ($lineDrawy),'","'). '");
-		var offset_x2 = '.$controller->pbwidth.'/2+'.$controller->linewidth.';
-		var offset_y2 = '.$controller->pbheight.'*2;
-		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
-		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
-		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
+		var offset_y = ' . $controller->pbheight . '/2+' . $controller->linewidth . ';
+		var lineDrawx = new Array("' . join('","', array_reverse($lineDrawx)) . '");
+		var lineDrawy = new Array("' . join('","', array_reverse($lineDrawy)) . '");
+		var offset_x2 = ' . $controller->pbwidth . '/2+' . $controller->linewidth . ';
+		var offset_y2 = ' . $controller->pbheight . '*2;
+		var lineDrawx2 = new Array("' . join('","', $lineDrawx) . '");
+		var lineDrawy2 = new Array("' . join('","', $lineDrawy) . '");
+		var maxjoins = Math . pow(2,' . $PEDIGREE_GENERATIONS . ');
 	//Draw the lines
 		if (talloffset < 2) { // landscape and portrait styles
 			for (var i = 0; i <= maxjoins-3; i++) {
@@ -343,10 +343,10 @@ $controller->addInlineJavascript('
 		}
 		// Set line styles
 		ctx.strokeStyle = getStyle(document.getElementById("pedigree_canvas"), "color");
-		ctx.lineWidth = '.$controller->linewidth.';
-		ctx.shadowColor = "'.$controller->shadowcolor.'";
-		ctx.shadowBlur = '.$controller->shadowblur.';
-		ctx.shadowOffsetX = '.$controller->shadowoffsetX.';
-		ctx.shadowOffsetY = '.$controller->shadowoffsetY.';
+		ctx.lineWidth = ' . $controller->linewidth . ';
+		ctx.shadowColor = "' . $controller->shadowcolor . '";
+		ctx.shadowBlur = ' . $controller->shadowblur . ';
+		ctx.shadowOffsetX = ' . $controller->shadowoffsetX . ';
+		ctx.shadowOffsetY = ' . $controller->shadowoffsetY . ';
 		ctx.stroke();
 ');

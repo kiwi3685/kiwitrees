@@ -44,17 +44,17 @@ $earliest=KT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execu
 $latest  =KT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
 
 // Filtering
-$action=safe_GET('action');
-$from  =safe_GET('from', '\d\d\d\d-\d\d-\d\d', $earliest);
-$to    =safe_GET('to',   '\d\d\d\d-\d\d-\d\d', $latest);
-$type  =safe_GET('type', array_keys($statuses));
-$oldged=safe_GET('oldged');
-$newged=safe_GET('newged');
-$xref  =safe_GET('xref');
-$user  =safe_GET('user');
+$action=KT_Filter::get('action');
+$from  =KT_Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
+$to    =KT_Filter::get('to',   '\d\d\d\d-\d\d-\d\d', $latest);
+$type  =KT_Filter::get('type', 'accepted|rejected|pending');
+$oldged=KT_Filter::get('oldged');
+$newged=KT_Filter::get('newged');
+$xref  =KT_Filter::get('xref');
+$user  =KT_Filter::get('user');
 if (KT_USER_IS_ADMIN) {
 	// Administrators can see all logs
-	$gedc=safe_GET('gedc');
+	$gedc=KT_Filter::get('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
 	$gedc=KT_GEDCOM;
@@ -142,33 +142,33 @@ case 'export':
 	exit;
 case 'load_json':
 	Zend_Session::writeClose();
-	$iDisplayStart =(int)safe_GET('iDisplayStart');
-	$iDisplayLength=(int)safe_GET('iDisplayLength');
+	$iDisplayStart =(int)KT_Filter::get('iDisplayStart');
+	$iDisplayLength=(int)KT_Filter::get('iDisplayLength');
 	set_user_setting(KT_USER_ID, 'admin_site_change_page_size', $iDisplayLength);
 	if ($iDisplayLength>0) {
 		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 	} else {
 		$LIMIT="";
 	}
-	$iSortingCols=safe_GET('iSortingCols');
+	$iSortingCols=KT_Filter::get('iSortingCols');
 	if ($iSortingCols) {
 		$ORDER_BY=' ORDER BY ';
 		for ($i=0; $i<$iSortingCols; ++$i) {
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (safe_GET('sSortDir_'.$i)) {
+			switch (KT_Filter::get('sSortDir_'.$i)) {
 			case 'asc':
-				if ((int)safe_GET('iSortCol_'.$i)==0) {
+				if ((int)KT_Filter::get('iSortCol_'.$i)==0) {
 					$ORDER_BY.='change_id ASC '; // column 0 is "timestamp", using change_id gives the correct order for events in the same second
 				} else {
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY.=(1+(int)KT_Filter::get('iSortCol_'.$i)).' ASC ';
 				}
 				break;
 			case 'desc':
-				if ((int)safe_GET('iSortCol_'.$i)==0) {
+				if ((int)KT_Filter::get('iSortCol_'.$i)==0) {
 					$ORDER_BY.='change_id DESC ';
 				} else {
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY.=(1+(int)KT_Filter::get('iSortCol_'.$i)).' DESC ';
 				}
 				break;
 			}
@@ -211,7 +211,7 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'               =>(int)safe_GET('sEcho'),
+		'sEcho'               =>(int)KT_Filter::get('sEcho'),
 		'iTotalRecords'       =>$iTotalRecords,
 		'iTotalDisplayRecords'=>$iTotalDisplayRecords,
 		'aaData'              =>$aaData

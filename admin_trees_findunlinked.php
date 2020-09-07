@@ -37,9 +37,9 @@ $controller
 		jQuery("#unlinked_accordion").css("visibility", "visible");
 	');
 
-$action		= KT_Filter::post('action');
-$gedcom_id	= KT_Filter::post('gedcom_id', null, KT_GED_ID);
-$records	= KT_Filter::postArray('records');
+$action	    = KT_Filter::post('action');
+$ged	    = KT_Filter::post('ged', null, KT_GED_ID);
+$records	= KT_Filter::post('records');
 $list		= array(
 				'Individuals',
 				'Sources',
@@ -54,7 +54,7 @@ $sql_INDI = "
 	FROM `##individuals`
 	LEFT OUTER JOIN ##link
 	 ON (##individuals.i_id = ##link.l_from AND ##individuals.i_file = ##link.l_file)
-	 WHERE ##individuals.i_file = " . $gedcom_id . "
+	 WHERE ##individuals.i_file = " . $ged . "
 	 AND ##link.l_to IS NULL
 ";
 $sql_SOUR = "
@@ -62,7 +62,7 @@ $sql_SOUR = "
 	FROM `##sources`
 	LEFT OUTER JOIN ##link
 	 ON (##sources.s_id = ##link.l_to AND ##sources.s_file = ##link.l_file)
-	 WHERE ##sources.s_file = " . $gedcom_id . "
+	 WHERE ##sources.s_file = " . $ged . "
 	 AND ##link.l_from IS NULL
 ";
 $sql_MEDIA = "
@@ -70,7 +70,7 @@ $sql_MEDIA = "
 	FROM `##media`
 	LEFT OUTER JOIN ##link
 	 ON (##media.m_id = ##link.l_to AND ##media.m_file = ##link.l_file)
-	 WHERE ##media.m_file = " . $gedcom_id . "
+	 WHERE ##media.m_file = " . $ged . "
 	 AND ##link.l_from IS NULL
 ";
 $sql_NOTE = "
@@ -78,7 +78,7 @@ $sql_NOTE = "
 	FROM `##other`
 	LEFT OUTER JOIN ##link
 	 ON (##other.o_id = ##link.l_to AND ##other.o_file = ##link.l_file)
-	 WHERE ##other.o_file = " . $gedcom_id . "
+	 WHERE ##other.o_file = " . $ged . "
 	 AND ##other.o_id LIKE '" . $NOTE_ID_PREFIX . "%'
 	 AND ##link.l_from IS NULL
 ";
@@ -87,7 +87,7 @@ $sql_REPO = "
 	FROM `##other`
 	LEFT OUTER JOIN ##link
 	 ON (##other.o_id = ##link.l_to AND ##other.o_file = ##link.l_file)
-	 WHERE ##other.o_file = " . $gedcom_id . "
+	 WHERE ##other.o_file = " . $ged . "
 	 AND ##other.o_id LIKE '" . $REPO_ID_PREFIX . "%'
 	 AND ##link.l_from IS NULL
 ";
@@ -112,11 +112,14 @@ $sql_REPO = "
 			<label class="bold"><?php echo KT_I18N::translate('Family tree'); ?></label>
 			<select name="ged">
 				<?php foreach (KT_Tree::getAll() as $tree) { ?>
-					<option value="<?php echo $tree->tree_name_html; ?>"
-					<?php if (empty($ged) && $tree->tree_id == KT_GED_ID || !empty($ged) && $ged == $tree->tree_name) { ?>
-						 selected="selected"
-					<?php } ?>
-					 dir="auto"><?php echo $tree->tree_title_html; ?></option>
+					<option value="<?php echo $tree->tree_id; ?>"
+    					<?php if (empty($ged) && $tree->tree_id == KT_GED_ID || !empty($ged) && $ged == $tree->tree_name) { ?>
+    						 selected="selected"
+    					<?php } ?>
+    					 dir="auto"
+                    >
+                        <?php echo $tree->tree_title_html; ?>
+                    </option>
 				<?php } ?>
 			</select>
 			<div class="unlinked_type">

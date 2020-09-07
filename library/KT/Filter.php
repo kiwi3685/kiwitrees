@@ -151,7 +151,7 @@ class KT_Filter {
 					},
 				)
 			);
-			return ($tmp===null || $tmp===false) ? $default : $tmp;
+			return ($tmp === null || $tmp === false) ? $default : $tmp;
 		}
 	}
 
@@ -171,7 +171,10 @@ class KT_Filter {
 					),
 				)
 			);
-			return $tmp[$variable] ?: array();
+            if ($variable && $source) {
+                return $tmp[$variable] ? : array();
+            }
+
 		} else {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
@@ -186,7 +189,10 @@ class KT_Filter {
 					),
 				)
 			);
-			return $tmp[$variable] ?: array();
+            if ($variable && $source) {
+                return $tmp[$variable] ? : array();
+            }
+
 		}
 	}
 
