@@ -58,29 +58,32 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 	// Implement KT_Module_Tab
 	public function getTabContent() {
         global $controller;
-
         require_once KT_ROOT.'library/php-diff/lib/Diff.php';
         require_once KT_ROOT.'library/php-diff/lib/Diff/Renderer/Html/SideBySide.php';
 
-        $controller
-        	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
-        	->addInlineJavascript('
+        $controller->addExternalJavascript(KT_JQUERY_DATATABLES_URL);
+		if (KT_USER_CAN_EDIT) {
+			$controller
+				->addExternalJavascript(KT_JQUERY_DT_HTML5)
+				->addExternalJavascript(KT_JQUERY_DT_BUTTONS);
+		}
+        $controller->addInlineJavascript('
                 jQuery("#changes_table").dataTable({
-                    "sDom": \'t\',
+                    "sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
     				' . KT_I18N::datatablesI18N() . ',
+    				buttons: [{extend: "csv", exportOptions: {}}],
     				jQueryUI: true,
-    				autoWidth: true,
-    				filter: false,
-    				lengthChange: false,
-    				info: true,
-    				paging: false,
-    				columns: [
+    				autoWidth: false,
+    				displayLength: 10,
+    				pagingType: "full_numbers",
+                    columns: [
     					/* 0-Timestamp */   { },
     					/* 1-User */        { },
-    					/* 2-Old Data */    { },
-    					/* 3-New Data */    { },
-                        /* 4-Status */      { },
-    				]
+    					/* 2-GEDCOM Data */ { },
+                        /* 3-Status */      { },
+    				],
+    				stateSave: true,
+    				stateDuration: -1,
     			});
         	');
 
@@ -101,7 +104,6 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
                 $row->old_gedcom = $diff->Render($renderer);
                 $row->new_gedcom = '';
             }
-
     		?>
             <style>
                 #tab_changes.ui-widget-content tbody {
@@ -144,25 +146,26 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 
     		<div id="tab_changes_content">
     			<?php if ($person && $person->canDisplayDetails()) { ?>
+                    <h3><?php echo KT_I18N::translate('All recorded data changes for this person.'); ?></h3>
+
     				<table id="changes_table" style="width: 100%;">
     					<thead>
     						<tr>
     							<th><?php echo KT_I18N::translate('Timestamp'); ?></th>
     							<th><?php echo KT_I18N::translate('User'); ?></th>
-    							<th colspan="2"><?php echo KT_I18N::translate('GEDCOM Data'); ?></th>
+    							<th><?php echo KT_I18N::translate('GEDCOM Data'); ?></th>
     							<th><?php echo KT_I18N::translate('Status'); ?></th>
     						</tr>
     					</thead>
     					<tbody>
-    						<tr>
-                                <?php foreach($rows as $row) { ?>
+                            <?php foreach($rows as $row) { ?>
+						        <tr>
         							<td><?php echo $row->change_time; ?></td>
         							<td><?php echo $row->user_name; ?></td>
         							<td><?php echo $row->old_gedcom; ?></td>
-                                    <td></td>
         							<td><?php echo $row->status; ?></td>
-                                <?php } ?>
-    						</tr>
+						        </tr>
+                            <?php } ?>
     					</tbody>
     				</table>
     			<?php } ?>
