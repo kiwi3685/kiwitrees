@@ -75,7 +75,7 @@ echo '
 		<link rel="stylesheet" href="' . KT_THEME_URL . 'jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
 		<link rel="stylesheet" href="' . KT_THEME_URL . 'jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
 		<link rel="stylesheet" href="' . KT_THEME_URL . 'css/colors.css" type="text/css">
-		<link rel="stylesheet" href="' . KT_THEME_URL,  'css/' .  $subColor,  '.css" type="text/css">';
+		<link rel="stylesheet" href="' . KT_THEME_URL, 'css/' . $subColor, '.css" type="text/css">';
 
 		if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
 			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
@@ -85,13 +85,13 @@ echo '
 			echo '<link type="text/css" rel="stylesheet" href="' . KT_THEME_URL . 'msie.css">';
 		}
 		if (file_exists(KT_THEME_URL . 'mystyle.css')) {
-            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' .  time() . '" type="text/css">';
+            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' . time() . '" type="text/css">';
 		}
 echo
 	'</head>',
 	'<body id="body">';
 
-if  ($view!='simple') { // Use "simple" headers for popup windows
+if ($view!='simple') { // Use "simple" headers for popup windows
 	global $KT_IMAGES;
 	echo '<div id="navbar">
 

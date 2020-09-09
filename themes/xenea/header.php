@@ -78,12 +78,12 @@ echo '
 			<link type="text/css" rel="stylesheet" href="' . KT_THEME_URL . 'msie.css">
 			<![endif]-->';
 		if (file_exists(KT_THEME_URL . 'mystyle.css')) {
-            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' .  time() . '" type="text/css">';
+            echo '<link rel="stylesheet" href="' . KT_THEME_URL . 'mystyle.css' . time() . '" type="text/css">';
 		}
 	echo '</head>
 	<body id="body">';
 
-if ($view!='simple') { // Use "simple" headers for popup windows
+if ($view != 'simple') { // Use "simple" headers for popup windows
 	echo '<div id="navbar">
 	<div id="header">' .
 		KT_TREE_TITLE . KT_TREE_SUBTITLE . '
@@ -122,7 +122,7 @@ echo	'</ul>'.
 					echo $menu->getMenuAsList();
 				}
 echo
-		'</ul>' .  // <ul id="main-menu">
+		'</ul>' . // <ul id="main-menu">
 		// select menu for responsive layouts only
 		'<select id="nav-select" onChange="window.location.href=this.value">
 			<option selected="selected" value="">' . KT_I18N::translate('Choose a page') . '</option>';

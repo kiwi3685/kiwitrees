@@ -26,7 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
-define('KT_JQUERY_BIGTEXT',  KT_THEME_URL.'js/jquery-bigtext.js');
+define('KT_JQUERY_BIGTEXT', KT_THEME_URL.'js/jquery-bigtext.js');
 
 // This theme uses the jQuery �colorbox� plugin to display images
 $this
@@ -90,7 +90,7 @@ if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Modul
 		<![endif]-->
 
 		<?php if (file_exists(KT_THEME_URL . 'mystyle.css')) { ?>
-			<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>mystyle.css<?php  time(); ?>" type="text/css">
+			<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>mystyle.css<?php time(); ?>" type="text/css">
 		<?php } ?>
 	</head>
 
@@ -124,7 +124,7 @@ if ($view!='simple') { ?>
 				foreach (KT_MenuBar::getOtherMenus() as $menu) {
 					if (strpos($menu, KT_I18N::translate('Login')) && !KT_USER_ID && KT_Module::getModuleByName('login_block')) {
 						$class_name	= 'login_block_KT_Module';
-						$module		=  new $class_name; ?>
+						$module		= new $class_name; ?>
 						<li>
 							<a href="#">
 								<?php echo (KT_Site::preference('USE_REGISTRATION_MODULE') ? KT_I18N::translate('Login or Register') : KT_I18N::translate('Login')); ?>
