@@ -129,9 +129,15 @@ switch (safe_POST('action')) {
 		}
 		break;
 
+    case 'delete-dna':
+		$dna_id = KT_Filter::post('dna_id');
+		$sql    = "DELETE FROM `##dna` WHERE dna_id IN ('$dna_id')";
+		KT_DB::prepare($sql)->execute();
+		KT_FlashMessages::addMessage(KT_I18N::translate('DNA data deleted'));
+		break;
+
 	case 'delete-user':
 		$user_id = safe_POST('user_id');
-
 		if (KT_USER_IS_ADMIN && KT_USER_ID != $user_id && KT_Filter::checkCsrf()) {
 			AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
 			delete_user($user_id);
@@ -172,27 +178,18 @@ switch (safe_POST('action')) {
 		} else {
 			$iname	= strip_tags(KT_GedcomRecord::getInstance($iid)->getFullName());
 		}
-
 		header('Content-Type: application/json');
 		echo json_encode($iname);
-		break;
-
-	case 'delete-dna':
-		$dna_id = KT_Filter::post('dna_id');
-		$sql = "DELETE FROM `##dna` WHERE dna_id IN ('$dna_id')";
-		KT_DB::prepare($sql)->execute();
-		KT_FlashMessages::addMessage(KT_I18N::translate('DNA data deleted'));
 		break;
 
     case 'deleteBookmark':
         $bookMark       = KT_Filter::post('mark');
         $user           = KT_Filter::post('user');
         $setting_value  = get_user_setting($user, 'bookmarks');
-
-        $update   = str_replace($bookMark, '', $setting_value);
-        $update   = str_replace('||', '|', $update);
-        $update   = preg_replace('/^\|/',  '', $update);
-        $update   = preg_replace('/\|$/',  '', $update);
+        $update         = str_replace($bookMark, '', $setting_value);
+        $update         = str_replace('||', '|', $update);
+        $update         = preg_replace('/^\|/',  '', $update);
+        $update          = preg_replace('/\|$/',  '', $update);
 
         set_user_setting($user, 'bookmarks', $update);
         break;
