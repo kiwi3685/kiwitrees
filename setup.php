@@ -72,6 +72,7 @@ require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('KT_DATA_DIR',    'data/');
 define('KT_DEBUG_SQL',   false);
 define('KT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
+define('KT_REQUIRED_MARIADB_VERSION', '10.1.21'); // For: prepared statements within stored procedures
 define('KT_MODULES_DIR', 'modules_v4/');
 define('KT_ROOT', '');
 define('KT_GED_ID', null);
@@ -261,10 +262,12 @@ try {
 		$_POST['dbpass']
 	);
 	KT_DB::exec("SET NAMES 'utf8'");
-	$row=KT_DB::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
+    $row = KT_DB::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
 	if (version_compare($row->value, KT_REQUIRED_MYSQL_VERSION, '<')) {
-		echo '<p class="bad">', KT_I18N::translate('This database is only running MySQL version %s.  You cannot install Kiwitrees here.', $row->value), '</p>';
-	} else {
+		echo '<p class="callout alert">' . KT_I18N::translate('This database is only running MySQL version %s.  You cannot install Kiwitrees-nova here.', $row->value) . '</p>';
+	} elseif (version_compare($row->value, KT_REQUIRED_MARIADB_VERSION, '<')) {
+        echo '<p class="callout alert">' . KT_I18N::translate('This database is only running MariaDB version %s.  You cannot install Kiwitrees-nova here.', $row->value) . '</p>';
+    } else {
 		$db_version_ok = true;
 	}
 } catch (PDOException $ex) {
@@ -281,7 +284,7 @@ try {
 if (empty($_POST['dbuser']) || !KT_DB::isConnected() || !$db_version_ok) {
 	echo '
 		<h2>', KT_I18N::translate('3 - Checking the connection to your database server'), '</h2>
-		<p>', KT_I18N::translate('Kiwitrees needs a MySQL database, version %s or later.', KT_REQUIRED_MYSQL_VERSION), '</p>
+		<p>', KT_I18N::translate('Kiwitrees needs a database. MySQL version %1$s or later, or MariaDB version %2$s or later.', KT_REQUIRED_MYSQL_VERSION, KT_REQUIRED_MARIADB_VERSION), '</p>
 		<p>', KT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>
 		<fieldset>
 			<legend>', KT_I18N::translate('Database connection'), '</legend>
