@@ -32,6 +32,8 @@
 /modules_v4/pages_*
 /modules_v4/batch_update/plugins/jamies_edit.php
 
+# files for levy site only
+/modules_v4/stories2
 /themes/levy
 
 /uploads
