@@ -232,7 +232,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 			} ?>
 		</div>
 
-		<?php return '<div id="stories_tab_content">' . ob_get_clean() . '</div>';
+		<?php return '<div class="stories_tab_content">' . ob_get_clean() . '</div>';
 
 	}
 
