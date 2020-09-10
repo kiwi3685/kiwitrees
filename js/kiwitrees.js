@@ -1548,20 +1548,19 @@ function checkbox_delete(type, pid = '') {
 		switch(type) {
 			case "sources":
 				jQuery.post("action.php",{action:"delete-source",xref:delete_list[i]},function(){location.reload();});
-		  	break;
+		  	    break;
 			case "notes":
 				jQuery.post("action.php",{action:"delete-note",xref:delete_list[i]},function(){location.reload();});
-		  	break;
+                break;
 			case "repos":
 				jQuery.post("action.php",{action:"delete-repository",xref:delete_list[i]},function(){location.reload();});
-		  	break;
+                break;
 			case "places":
 				window.location = location.pathname + '?mod=googlemap&mod_action=admin_places&action=DeleteRecord&deleteRecord=' + delete_list;
-		  	break;
+                break;
 			case "dna":
 				jQuery.post("action.php",{action:"delete-dna",dna_id:delete_list[i]},function(){location.reload();});
-			break;
-
+                break;
 		 }
 	}
 }
