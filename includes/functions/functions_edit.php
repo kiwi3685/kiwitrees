@@ -1250,6 +1250,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	if (empty($linkToID)) $linkToID = $pid;
 
 	$subnamefacts = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM_SURN');
+    $subsourfacts = array('TEXT', 'PAGE', 'OBJE', 'QUAY', 'DATE', 'NOTE');
+
 	preg_match('/^(?:(\d+) (' . KT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 	if ($match) {
 		list(, $level, $fact, $value) = $match;
@@ -1284,12 +1286,12 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	// label
 	echo '<div id="' . $element_id . '_factdiv" ';
-	if ($fact === 'DATA' || $fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
-		echo ' style="display:none;"';
-	}
-	if ($fact == "SOUR" || ($level > 1 && ($fact == "TEXT" || $fact == "PAGE" || $fact == "OBJE" || $fact == "QUAY" || $fact == "DATE" || $fact == "NOTE"))) {
-		echo ' class="sour_facts"';
-	}
+    	if ($fact === 'DATA' || $fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
+    		echo ' style="display:none;"';
+    	}
+        if ($fact === 'SOUR' || ($source_element_id && $level > 2 && in_array($fact, $subsourfacts))) {
+            echo ' class="sour_facts"';
+    	}
 	echo ' >';
 
 	if (in_array($fact, $subnamefacts) || $fact == "LATI" || $fact == "LONG") {
@@ -1513,6 +1515,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				case 'ASSO':
 				case '_ASSO':
 					echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="input.DATE"';
+                    $source_element_id = '';
 					break;
 				case 'CAUS':
 					echo ' data-autocomplete-type="CAUS"';
@@ -2406,7 +2409,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	global $pid, $tags, $ADVANCED_PLAC_FACTS, $date_and_time;
 	global $FULL_SOURCES;
 
-	$tags		=array();
+	$tags		= array();
 	$gedlines	= explode("\n", $gedrec); // -- find the number of lines in the record
 	if (!isset($gedlines[$linenum])) {
 		echo "<span class=\"error\">", KT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.'), "<br><br>";
