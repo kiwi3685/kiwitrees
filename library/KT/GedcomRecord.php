@@ -376,28 +376,28 @@ class KT_GedcomRecord {
 		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
-		case KT_PRIV_PUBLIC: // visitor
-			if ($this->disp_public === null) {
-				$this->disp_public = $this->_canDisplayDetails(KT_PRIV_PUBLIC);
-			}
-			return $this->disp_public;
-		case KT_PRIV_USER: // member
-			if ($this->disp_user === null) {
-				$this->disp_user = $this->_canDisplayDetails(KT_PRIV_USER);
-			}
-			return $this->disp_user;
-		case KT_PRIV_NONE: // admin
-			if ($this->disp_none === null) {
-				$this->disp_none = $this->_canDisplayDetails(KT_PRIV_NONE);
-			}
-			return $this->disp_none;
-		case KT_PRIV_HIDE: // hidden from admins
-			// We use this value to bypass privacy checks.  For example,
-			// when downloading data or when calculating privacy itself.
-			return true;
-		default:
-			// Should never get here.
-			return false;
+    		case KT_PRIV_PUBLIC: // visitor
+    			if ($this->disp_public === null) {
+    				$this->disp_public = $this->_canDisplayDetails(KT_PRIV_PUBLIC);
+    			}
+    			return $this->disp_public;
+    		case KT_PRIV_USER: // member
+    			if ($this->disp_user === null) {
+    				$this->disp_user = $this->_canDisplayDetails(KT_PRIV_USER);
+    			}
+    			return $this->disp_user;
+    		case KT_PRIV_NONE: // admin
+    			if ($this->disp_none === null) {
+    				$this->disp_none = $this->_canDisplayDetails(KT_PRIV_NONE);
+    			}
+    			return $this->disp_none;
+    		case KT_PRIV_HIDE: // hidden from admins
+    			// We use this value to bypass privacy checks.  For example,
+    			// when downloading data or when calculating privacy itself.
+    			return true;
+    		default:
+    			// Should never get here.
+    			return false;
 		}
 	}
 
