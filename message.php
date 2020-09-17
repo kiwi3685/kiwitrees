@@ -93,8 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$responseData = json_decode($verifyResponse);
 
 			// If reCAPTCHA response is not validated
-			if (!$responseData->success) {
-				$responseData->error-codes ? $errors = $responseData->error-codes : $errors = '';
+            if (!$responseData["success"]) {
+                $responseData["error-codes"] ? $errors = $responseData["error-codes"] : $errors = '';
 				AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
 				KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
 				header('Location: ' . KT_Filter::unescapeHtml($url));

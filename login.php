@@ -282,11 +282,11 @@ switch ($action) {
                     $responseData = json_decode($verifyResponse);
 
                     // Check reCAPTCHA response
-                    if ($responseData->success) {
+                    if ($responseData["success"]) {
                         AddToLog('Google reCaptcha valid response from "' . $user_name . '"/"' . $user_email . '", response ="' . $responseData->success . '"', 'auth');
                     } else {
                         $errors = array();
-                        $responseData->error - codes ? $errors = JSON . stringify($responseData->error - codes) : $errors = '';
+						$responseData["error-codes"] ? $errors = $responseData["error-codes"] : $errors = '';
                         AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
                         KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
                         header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
