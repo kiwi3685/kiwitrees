@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2020 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,13 +63,13 @@ class login_block_KT_Module extends KT_Module implements KT_Module_Block {
 				<input type="hidden" name="pid" value="'; if (isset($pid)) $content.= htmlspecialchars($pid); $content.= '">
 				<input type="hidden" name="usertime" value="">';
 			$content.= '<div>
-				<label for="username">'. KT_I18N::translate('Username').
-					'<input type="text" id="username" name="username" class="formField">
+				<label for="moduleUsername">'. KT_I18N::translate('Username').
+					'<input type="text" id="moduleUsername" name="username" class="formField">
 				</label>
 				</div>
 				<div>
-					<label for="password">'. KT_I18N::translate('Password').
-						'<input type="password" id="password" name="password" class="formField">
+					<label for="modulePassword">'. KT_I18N::translate('Password').
+						'<input type="password" id="modulePassword" name="password" class="formField">
 					</label>
 				</div>
 				<div>

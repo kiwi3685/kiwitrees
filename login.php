@@ -158,13 +158,13 @@ switch ($action) {
                     <input type="hidden" name="usertime" value="">
                     <?php if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>'; ?>
                     <div>
-                        <label for="username"><?php echo KT_I18N::translate('Username'); ?>
-                        <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" class="formField" autofocus>
+                        <label for="loginUsername"><?php echo KT_I18N::translate('Username'); ?>
+                        <input type="text" id="loginUsername" name="username" value="<?php echo htmlspecialchars($username); ?>" class="formField" autofocus>
                         </label>
                     </div>
                     <div>
-                        <label for="password"><?php echo KT_I18N::translate('Password'); ?>
-                            <input type="password" id="password" name="password" class="formField">
+                        <label for="loginPassword"><?php echo KT_I18N::translate('Password'); ?>
+                            <input type="loginPassword" name="password" class="formField">
                         </label>
                     </div>
                     <div>
@@ -262,7 +262,7 @@ switch ($action) {
         $controller->setPageTitle(KT_I18N::translate('Request new user account'));
 
         if (KT_Site::preference('USE_RECAPTCHA')) { ?>
-            <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <?php }
 
         $tree_link = '<a href="' . KT_SERVER_NAME . KT_SCRIPT_PATH . '?ged=' . KT_GEDCOM . '"><strong>' . strip_tags(KT_TREE_TITLE) . '</strong></a>';
@@ -282,12 +282,10 @@ switch ($action) {
                     $responseData = json_decode($verifyResponse);
 
                     // Check reCAPTCHA response
-                    if ($responseData["success"]) {
+                    if ($responseData->success) {
                         AddToLog('Google reCaptcha valid response from "' . $user_name . '"/"' . $user_email . '", response ="' . $responseData->success . '"', 'auth');
                     } else {
-                        $errors = array();
-						$responseData["error-codes"] ? $errors = $responseData["error-codes"] : $errors = '';
-                        AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
+                        AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '"', 'spam');
                         KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
                         header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
                         $captcha = false;

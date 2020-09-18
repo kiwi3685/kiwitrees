@@ -92,14 +92,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Decode json data
 			$responseData = json_decode($verifyResponse);
 
-			// If reCAPTCHA response is not validated
-            if (!$responseData["success"]) {
-                $responseData["error-codes"] ? $errors = $responseData["error-codes"] : $errors = '';
-				AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '", error="' . $errors . '"', 'spam');
-				KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
-				header('Location: ' . KT_Filter::unescapeHtml($url));
-				$captcha = false;
-				exit;
+            // Check reCAPTCHA response
+            if ($responseData->success) {
+                AddToLog('Google reCaptcha valid response from "' . $user_name . '"/"' . $user_email . '", response ="' . $responseData->success . '"', 'auth');
+            } else {
+                AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '"', 'spam');
+                KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
+                header('Location: ' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME);
+                $captcha = false;
+                exit;
 			}
 		}
 	}
