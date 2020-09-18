@@ -914,13 +914,13 @@ function print_main_notes(KT_Event $fact, $level) {
 
 	if ($fact->getIsNew()) {
 		$styleadd = ' change_new';
-		$can_edit = $level==1 && $fact->canEdit();
+		$can_edit = $level == 1 && $fact->canEdit();
 	} elseif ($fact->getIsOld()) {
 		$styleadd =' change_old';
 		$can_edit = false;
 	} else {
 		$styleadd='';
-		$can_edit = $level==1 && $fact->canEdit();
+		$can_edit = $level == 1 && $fact->canEdit();
 	}
 
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
@@ -963,7 +963,7 @@ function print_main_notes(KT_Event $fact, $level) {
 			$factwords	= explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname	= $factwords[1]; // BIRT
 			$parent		= KT_GedcomRecord::getInstance($pid);
-			if ($factname == 'EVEN' || $factname=='FACT') {
+			if ($factname == 'EVEN' || $factname == 'FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
 				if ($ct > 0) {
@@ -1040,7 +1040,7 @@ function print_main_notes(KT_Event $fact, $level) {
 			}
 		}
 		echo '<br>';
-		print_fact_sources($nrec, $level+1);
+		print_fact_sources($nrec, $level + 1);
 		echo '</td></tr>';
 	}
 }
