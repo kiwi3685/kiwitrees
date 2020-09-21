@@ -336,7 +336,7 @@ switch ($action) {
 			$oldServerFile  = $media->getServerFilename('main');
 			$oldServerThumb = $media->getServerFilename('thumb');
 
-			$newmedia = new KT_Media("0 @xxx@ OBJE\n1 FILE " . $newFilename);
+			$newmedia       = new KT_Media("0 @xxx@ OBJE\n1 FILE " . $newFilename);
 			$newServerFile  = $newmedia->getServerFilename('main');
 			$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -344,12 +344,10 @@ switch ($action) {
 			if ($oldServerFile != $newServerFile) {
 				//-- check if the file is used in more than one gedcom
 				//-- do not allow it to be moved or renamed if it is
-				$multi_gedcom=!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), KT_GED_ID);
-				if ($multi_gedcom) {
-					KT_FlashMessages::addMessage(KT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
+				if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), KT_GED_ID)) {
+					KT_FlashMessages::addMessage(KT_I18N::translate('This file is linked to one or more family trees on this server. It cannot be deleted, moved, or renamed until all links have been removed.'));
 					break;
 				}
-
 				if (!file_exists($newServerFile) || @md5_file($oldServerFile)==md5_file($newServerFile)) {
 					if (@rename($oldServerFile, $newServerFile)) {
 						KT_FlashMessages::addMessage(KT_I18N::translate('Media file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
