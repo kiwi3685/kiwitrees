@@ -6250,6 +6250,7 @@ div.widget {
 
 #page button {
 	display: inline-block;
+    height: 30px;
 	margin-top: 15px;
 	vertical-align: top;
 }
