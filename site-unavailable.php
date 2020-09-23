@@ -82,7 +82,7 @@ echo '<li>', /* I18N: [you should check that:] ... */ KT_I18N::translate('the da
 echo '<li>', /* I18N: [you should check that:] ... */ KT_I18N::translate('the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them'), '</li>';
 echo '<li>', /* I18N: [you should check that:] ... */ KT_I18N::translate('you can connect to the database using other applications, such as phpmyadmin'), '</li>';
 echo '</ol>';
-echo '<p class="good">', KT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="' . KT_KIWITREES_URL . '/forums/">Kiwitrees.net</a>'), '</p>';
+echo '<p class="good">', KT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="%s/forums/">kiwitrees.net</a>', KT_KIWITREES_URL), '</p>';
 echo '</div>';
 echo '</body>';
 echo '</html>';

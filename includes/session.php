@@ -32,9 +32,9 @@ define('KT_VERSION',		'3.3.8');
 define('KT_VERSION_TEXT',	trim(KT_VERSION));
 
 // External URLs
-define('KT_KIWITREES_URL',		'https://kiwitrees.net/');
-define('KT_SUPPORT_URL', 		'https://kiwitrees.net/forums/forum/support-forum/');
-define('KT_TRANSLATORS_URL',	'https://kiwitrees.net/forums/forum/support-forum/translation/');
+define('KT_KIWITREES_URL',		'https://www.kiwitrees.net/');
+define('KT_SUPPORT_URL', 		'https://www.kiwitrees.net/forums/forum/support-forum/');
+define('KT_TRANSLATORS_URL',	'https://www.kiwitrees.net/forums/forum/support-forum/translation/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/kiwitrees-static-1.3.1/
