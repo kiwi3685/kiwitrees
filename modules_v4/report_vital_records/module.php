@@ -136,7 +136,31 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
             $show_source  = 1;
         }
 
-        ?>
+        // Check if sources can generally be displayed.
+        // Specific sources, by tag and or source id, are checked separately
+        $sourcePriv = KT_DB::prepare(
+            "SELECT `resn`
+             FROM `##default_resn`
+             WHERE `tag_type` = 'SOUR'
+             AND `xref` IS NULL
+             AND `gedcom_id` = ?"
+        )->execute(array(KT_GED_ID))->fetchOne();
+
+        switch($sourcePriv) {
+            case 'privacy':
+                KT_USER_ID ? $sourceOptions = true : $sourceOptions = false;
+                break;
+            case 'confidential':
+                (KT_USER_ID && KT_USER_GEDCOM_ID) ? $sourceOptions = true : $sourceOptions = false;
+                break;
+            case 'hidden':
+                KT_USER_IS_ADMIN ? $sourceOptions = true : $sourceOptions = false;
+                break;
+            case 'none':
+            default:
+                $sourceOptions = true;
+        } ?>
+
         <div id="page" class="vital_records">
             <h2><?php echo $this->getTitle(); ?></h2>
             <div class="noprint">
@@ -183,10 +207,13 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
                         <label><?php echo KT_I18N::translate('Include parent details'); ?></label>
                         <?php echo edit_field_yes_no('show_parents', $show_parents); ?>
                     </div>
-                    <div class="chart_options">
-                        <label><?php echo KT_I18N::translate('Include source data'); ?></label>
-                        <?php echo edit_field_yes_no('show_source', $show_source); ?>
-                    </div>
+                    <?php if ($sourceOptions) { ?>
+                        <div class="chart_options">
+                            <label><?php echo KT_I18N::translate('Include source data'); ?></label>
+                            <?php echo edit_field_yes_no('show_source', $show_source); ?>
+                        </div>
+                    <?php } ?>
+                    <br>
                      <button class="btn btn-primary" type="submit" value="<?php echo KT_I18N::translate('show'); ?>" onclick="return checkform()">
                         <i class="fa fa-eye"></i>
                         <?php echo KT_I18N::translate('show'); ?>
