@@ -142,7 +142,7 @@ class descendancy_KT_Module extends KT_Module implements KT_Module_Sidebar {
 		$lifespan = $person->canDisplayDetails() ? '(' . $person->getLifeSpan() . ')' : '';
 		$spouses = $generations > 0 ? $this->loadSpouses($person, 0) : '';
 		return sprintf('<li class="sb_desc_indi_li">
-		                  <a class="sb_desc_indi" href="module.php?mod=%s&amp;mod_action=descendants&amp;xref=%s"><i class="plusminus %s"></i>%s %s %s</a>
+		                  <a class="sb_desc_indi" href="module.php?mod=%s&amp;mod_action=descendants&amp;xref=%s" rel="nofollow"><i class="plusminus %s"></i>%s %s %s</a>
 		                  <a class="icon-button_indi" href="%s"></a>
 		                  %s
 		                  <div>%s</div>
@@ -152,10 +152,10 @@ class descendancy_KT_Module extends KT_Module implements KT_Module_Sidebar {
 	public function getFamilyLi(KT_Family $family, KT_Person $person, $generations = 0) {
 		$marryear = $family->getMarriageYear();
 		$marr = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
-		$fam = '<a href="' . $family->getHtmlUrl() . '" class="icon-button_family"></a>';
+		$fam = '<a href="' . $family->getHtmlUrl() . '" class="icon-button_family" rel="nofollow"></a>';
 		$kids = $this->loadChildren($family, $generations);
 		return sprintf('<li class="sb_desc_indi_li">
-		                  <a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>%s %s %s</a>
+		                  <a class="sb_desc_indi" href="#" rel="nofollow"><i class="plusminus icon-minus"></i>%s %s %s</a>
 		                  <a class="icon-button_indi" href="%s"></a>
 		                  %s
 		                  <div>%s</div>

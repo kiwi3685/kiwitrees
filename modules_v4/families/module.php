@@ -160,7 +160,7 @@ class families_KT_Module extends KT_Module implements KT_Module_Sidebar {
 					$html=$letter;
 					break;
 			}
-			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.$html.'</a>';
+			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter" rel="nofollow">'.$html.'</a>';
 			$out .= $html." ";
 		}
 
