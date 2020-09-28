@@ -39,7 +39,9 @@ class ckeditor_KT_Module extends KT_Module {
 
 	// Convert <textarea class="html-edit"> fields to CKEditor fields
 	public static function enableEditor($controller) {
-		$rand = rand(); // generate random prefix for footnotes
+        $themedir = 'themes/' . get_gedcom_setting(KT_GED_ID, 'THEME_DIR'); // get current theme dir for css
+        $mystyles = file_exists($themedir . '/mystyle.css') ? $themedir . '/mystyle.css' : '';
+		$rand     = rand(); // generate random prefix for footnotes
 		$controller
 			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/ckeditor.js')
 			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
@@ -48,8 +50,8 @@ class ckeditor_KT_Module extends KT_Module {
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
-					contentsCss: "' . KT_MODULES_DIR . 'ckeditor/kt_ckeditor.css",
-					skin : "moono-lisa",
+                    contentsCss: ["' . $themedir . '/style.css", "' . $mystyles . '"],
+					skin: "moono-lisa",
 					allowedContent: true,
 					width: "100%",
 					height: "400px",
