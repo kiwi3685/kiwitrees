@@ -155,7 +155,7 @@ class KT_Filter {
 		}
 	}
 
-	private static function _inputArray($source, $variable, $regexp=null, $default=null) {
+	private static function _inputArray($source, $variable, $regexp = null, $default = null) {
 		if ($regexp) {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
@@ -171,9 +171,8 @@ class KT_Filter {
 					),
 				)
 			);
-            if ($variable && $source) {
-                return $tmp[$variable] ? : array();
-            }
+
+            return null !== $tmp && null !== $tmp[$variable] ? $tmp[$variable] : array();
 
 		} else {
 			// PHP5.3 requires the $tmp variable
@@ -189,9 +188,8 @@ class KT_Filter {
 					),
 				)
 			);
-            if ($variable && $source) {
-                return $tmp[$variable] ? : array();
-            }
+
+            return null !== $tmp && null !== $tmp[$variable] ? $tmp[$variable] : array();
 
 		}
 	}

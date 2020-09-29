@@ -511,38 +511,6 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate = '') {
 }
 
 /**
- * create CONT lines
- *
- * Break input GEDCOM subrecord into pieces not more than 255 chars long,
- * with CONC and CONT lines as needed.  Routine also pays attention to the
- * word wrapped Notes option.  Routine also avoids splitting UTF-8 encoded
- * characters between lines.
- *
- * @param string $newline Input GEDCOM subrecord to be worked on
- * @return string $newged Output string with all necessary CONC and CONT lines
- */
-function breakConts($newline) {
-	global $WORD_WRAPPED_NOTES;
-
-	// Determine level number of CONC and CONT lines
-	$level = substr($newline, 0, 1);
-	$tag = substr($newline, 1, 6);
-	if ($tag!=" CONC " && $tag!=" CONT ") {
-		$level ++;
-	}
-
-	$newged = "";
-	$newlines = preg_split("/\n/", rtrim($newline));
-	for ($k = 0; $k<count($newlines); $k++) {
-		if ($k>0) {
-			$newlines[$k] = "{$level} CONT " . $newlines[$k];
-		}
-		$newged .= trim($newlines[$k]) . "\n";
-	}
-	return $newged;
-}
-
-/**
  * get CONT lines
  *
  * get the N+1 CONT or CONC lines of a gedcom subrecord

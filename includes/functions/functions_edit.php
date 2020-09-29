@@ -2256,47 +2256,43 @@ function updateRest($inputRec, $levelOverride="no") {
 * @param int $levelOverride Override GEDCOM level specified in $glevels[0]
 * @return string The updated gedcom record
 */
-function handle_updates($newged, $levelOverride="no") {
-	global $glevels, $islink, $tag, $uploaded_files, $text, $NOTE, $WORD_WRAPPED_NOTES;
+function handle_updates($newged, $levelOverride = "no") {
+	global $glevels, $islink, $tag, $uploaded_files, $text;
 
-	if ($levelOverride == "no" || count($glevels) == 0) $levelAdjust = 0;
-	else $levelAdjust = $levelOverride - $glevels[0];
+	if ($levelOverride == "no" || count($glevels) == 0) {
+        $levelAdjust = 0;
+    } else {
+        $levelAdjust = $levelOverride - $glevels[0];
+    }
 
-	for ($j=0; $j<count($glevels); $j++) {
+    // Assume all arrays are the same size.
+    $count = count($glevels);
 
+	for ($j = 0; $j < $count; $j++) {
 		// Look for empty SOUR reference with non-empty sub-records.
 		// This can happen when the SOUR entry is deleted but its sub-records
 		// were incorrectly left intact.
 		// The sub-records should be deleted.
-		if ($tag[$j] == "SOUR" && ($text[$j] == "@@" || $text[$j] == '')) {
+		if ($tag[$j] === "SOUR" && ($text[$j] === "@@" || $text[$j] === '')) {
 			$text[$j] = '';
-			$k = $j+1;
-			while (($k<count($glevels))&&($glevels[$k]>$glevels[$j])) {
+			$k        = $j + 1;
+			while ($k < $count && $glevels[$k] > $glevels[$j]) {
 				$text[$k] = '';
 				$k++;
 			}
 		}
 
-		if (trim($text[$j])!='') {
+		if (trim($text[$j]) != '') {
 			$pass = true;
-		}
-		else {
+		} else {
 			//-- for facts with empty values they must have sub records
 			//-- this section checks if they have subrecords
-			$k=$j+1;
-			$pass=false;
-			while (($k<count($glevels))&&($glevels[$k]>$glevels[$j])) {
-				if ($text[$k]!='') {
-					if (($tag[$j] != "OBJE")||($tag[$k] == "FILE")) {
-						$pass=true;
-						break;
-					}
-				}
-				if (($tag[$k] == "FILE")&&(count($uploaded_files)>0)) {
-					$filename = array_shift($uploaded_files);
-					if (!empty($filename)) {
-						$text[$k] = $filename;
-						$pass=true;
+			$k    = $j + 1;
+			$pass = false;
+			while ($k < $count && $glevels[$k] > $glevels[$j]) {
+				if ($text[$k] !== '') {
+					if (($tag[$j] !== "OBJE") || ($tag[$k] === "FILE")) {
+						$pass = true;
 						break;
 					}
 				}
@@ -2306,19 +2302,18 @@ function handle_updates($newged, $levelOverride="no") {
 
 		//-- if the value is not empty or it has sub lines
 		//--- then write the line to the gedcom record
-		//if ((($text[trim($j)]!='')||($pass == true)) && (strlen($text[$j]) > 0)) {
 		//-- we have to let some emtpy text lines pass through... (DEAT, BIRT, etc)
-		if ($pass == true) {
-			$newline = $glevels[$j]+$levelAdjust.' '.$tag[$j];
-			//-- check and translate the incoming dates
-			if ($tag[$j] == "DATE" && $text[$j]!='') {
-			}
-			// echo $newline;
-			if ($text[$j]!='') {
-				if ($islink[$j]) $newline .= " @".$text[$j]."@";
-				else $newline .= ' '.$text[$j];
-			}
-			$newged .= "\n".breakConts($newline);
+		if ($pass) {
+			$newline = (int) $glevels[$j] + $levelAdjust . ' ' . $tag[$j];
+			if ($text[$j] !== '') {
+				if ($islink[$j]) {
+                    $newline .= ' @' . $text[$j] . '@';
+                } else {
+                    $newline .= ' ' . $text[$j];
+			    }
+            }
+            $newged .= "\n" . str_replace("\n", "\n" . (1 + substr($newline, 0, 1)) . ' CONT ', $newline);
+
 		}
 	}
 
