@@ -4954,6 +4954,10 @@ div#outer_pages_container {
 	padding: 1em;
 }
 
+div#pages-summary {
+    font-size: 1.1em;
+}
+
 
 /* Styling for simpl_privacy module */
 #privacy_status {

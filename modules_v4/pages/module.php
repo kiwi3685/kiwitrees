@@ -379,8 +379,10 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 		}
 		?>
 		<div id="pages-container">
-			<h2><?php echo $HEADER_TITLE; ?></h2>
-			<?php echo $HEADER_DESCRIPTION; ?>
+            <div id="pages-summary">
+    			<h2><?php echo $HEADER_TITLE; ?></h2>
+    			<?php echo $HEADER_DESCRIPTION; ?>
+            </div>
 			<div class="clearfloat"></div>
 			<div id="pages_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 				<?php if ($count_items > 1) { ?>
