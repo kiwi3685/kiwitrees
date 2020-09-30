@@ -1486,24 +1486,24 @@ table#story_table {width: 99%;}
 	padding: .5em .5em .5em 2.0em;
 }
 
-/* Styling for simpl_pages module */
-#simpl_pages .label {
+/* Styling for pages_pages module */
+#pages_pages .label {
     line-height: 25px;
     margin-top: 20px;
 }
-#simpl_pages #pages_pages form {margin: 20px auto;}
-#simpl_pages .save {clear: both; margin: 20px 0;}
+#pages_pages form {margin: 20px auto;}
+#pages_pages .save {clear: both; margin: 20px 0;}
 #pages_pages select {height: 34px; min-width: 175px; vertical-align: middle;}
 #pages_pages button {color: initial; float: none;}
 
-#simpl_pages #pages_module {width:100%;}
-#simpl_pages #pages_module th, #simpl_pages #pages_module td {vertical-align:top; text-align:left;}
-#simpl_pages #pages_module th {min-width: 150px;}
-#simpl_pages #pages_tabs, #simpl_pages #pages_config_tabs, #simpl_pages #pages_pages form {margin:20px auto; overflow: hidden;}
-#simpl_pages .label{line-height:25px;margin-top: 20px;}
-#simpl_pages .value input.long{width:500px; height:100px;}
-#simpl_pages .value2{}
-#simpl_pages .save{margin: 20px 0;}
+#pages_pages #pages_module {width:100%;}
+#pages_pages #pages_module th, #pages_pages #pages_module td {vertical-align:top; text-align:left;}
+#pages_pages #pages_module th {min-width: 150px;}
+#pages_pages #pages_tabs, #pages_pages #pages_config_tabs, #pages_pages form {margin:20px auto; overflow: hidden;}
+#pages_pages .label{line-height:25px;margin-top: 20px;}
+#pages_pages .value input.long{width:500px; height:100px;}
+#pages_pages .value2{}
+#pages_pages .save{margin: 20px 0;}
 html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:right;}
 #cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
