@@ -98,7 +98,7 @@ class widget_quicklinks_KT_Module extends KT_Module implements KT_Module_Widget 
                                 <form id="addBookmark" method="post" style="text-align: initial;border: 1px solid; padding: 5px;">
                                     <p style="font-weight: 700; margin: 3px 0;">' . KT_I18N::translate('Bookmark current page') . '</p>
                                     <label style="width: 10%; display: inline-block; font-weight: 700;">' . KT_I18N::translate('Title') . '</label>
-                                    <input type="text" name="bookmarkTitle" style="width: 65%; margin: 0 8px;" placeholder="' . KT_I18N::translate('Ex.: “Johns pedigree”. No puncutation.') . '" required>
+                                    <input type="text" name="bookmarkTitle" style="width: 65%; margin: 0 8px;" placeholder="' . KT_I18N::translate('Ex.: “Johns pedigree”. No punctuation.') . '" required>
                                     <button type="submit" name="save" value="1">' . KT_I18N::translate('Save') . '</button>
                                 </form>
                             </td>
