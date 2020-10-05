@@ -102,6 +102,7 @@ button.btn {
 .ui-progressbar .ui-widget-header {background: #cefdce;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 0.25em 1em;}
+.ui-tabs .ui-tabs-panel {overflow-x: auto;}
 .css_right {float:right;}
 [dir=rtl] .css_right {float:left;}
 [dir=rtl] input {padding-right:3px; padding-left:0;}
