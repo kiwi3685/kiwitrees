@@ -85,8 +85,9 @@ $controller
 				}
 			});
 	');
-  
-$linked_sour = $controller->record->fetchLinkedSources();
+
+$linked_sour  = $controller->record->fetchLinkedSources();
+$repo_changes = KT_Module::getModuleByName('tab_changes');
 
 echo '<div id="repo-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
@@ -96,7 +97,10 @@ echo '<div id="repo-tabs">
 		if ($linked_sour) {
 			echo '<li><a href="#source-repo"><span id="reposource">', KT_I18N::translate('Sources'), '</span></a></li>';
 		}
-		echo '</ul>';
+        if ($repo_changes) {
+            echo '<li><a href="#changes-repo"><span id="changes">', KT_I18N::translate('Changes'), '</span></a></li>';
+        }
+	echo '</ul>';
 
 	// Shared Note details ---------------------
 	echo '<div id="repo-edit">';
@@ -119,6 +123,11 @@ echo '<div id="repo-tabs">
 		echo format_sour_table($linked_sour, $controller->record->getFullName());
 		echo '</div>'; //close "source-repo"
 	}
-
+    // Repository changes
+	if ($repo_changes) {
+		echo '<div id="changes-repo">';
+        echo KT_Module::getModuleByName('tab_changes')->getTabContent();
+		echo '</div>'; //close "changes-repo"
+	}
 echo '</div>'; //close div "repo-tabs"
 echo '</div>'; //close div "repo-details-page"

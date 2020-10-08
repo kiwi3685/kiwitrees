@@ -85,10 +85,11 @@ $controller
 				}
 			});
 	');
-$linked_indi = $controller->record->fetchLinkedIndividuals();
-$linked_fam  = $controller->record->fetchLinkedFamilies();
-$linked_obje = $controller->record->fetchLinkedMedia();
-$linked_note = $controller->record->fetchLinkedNotes();
+$linked_indi  = $controller->record->fetchLinkedIndividuals();
+$linked_fam   = $controller->record->fetchLinkedFamilies();
+$linked_obje  = $controller->record->fetchLinkedMedia();
+$linked_note  = $controller->record->fetchLinkedNotes();
+$sour_changes = KT_Module::getModuleByName('tab_changes');
 
 echo '<div id="source-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
@@ -107,7 +108,10 @@ echo '<div id="source-tabs">
 		if ($linked_note) {
 			echo '<li><a href="#note-sources"><span id="notesource">', KT_I18N::translate('Notes'), '</span></a></li>';
 		}
-		echo '</ul>';
+        if ($sour_changes) {
+            echo '<li><a href="#changes-sour"><span id="changes">', KT_I18N::translate('Changes'), '</span></a></li>';
+        }
+	echo '</ul>';
 	// Edit this source
 	echo '<div id="source-edit">';
 		echo '<table class="facts_table">';
@@ -160,6 +164,12 @@ echo '<div id="source-tabs">
 		echo '<div id="note-sources">';
 		echo format_note_table($linked_note, $controller->record->getFullName());
 		echo '</div>'; //close "note-sources"
+	}
+    // Source changes
+	if ($sour_changes) {
+		echo '<div id="changes-sour">';
+        echo KT_Module::getModuleByName('tab_changes')->getTabContent();
+		echo '</div>'; //close "changes-sour"
 	}
 echo '</div>'; //close div "source-tabs"
 echo '</div>'; //close div "source-details-page"

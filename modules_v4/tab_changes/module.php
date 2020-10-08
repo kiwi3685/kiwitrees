@@ -39,15 +39,7 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 
 	// Implement KT_Module_Tab
 	public function defaultTabOrder() {
-		return 300;
-	}
-
-	// Implement KT_Module_Tab
-	public function isGrayedOut() {
-        global $controller;
-        $person		= $controller->getSignificantIndividual();
-        $xref		= $person->getXref();
-        return $this->getChangeList($xref) == null;
+		return 30;
 	}
 
 	// Extend class KT_Module
@@ -68,27 +60,39 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 				->addExternalJavascript(KT_JQUERY_DT_BUTTONS);
 		}
         $controller->addInlineJavascript('
-                jQuery("#changes_table").dataTable({
-                    "sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-    				' . KT_I18N::datatablesI18N() . ',
-    				buttons: [{extend: "csv", exportOptions: {}}],
-    				jQueryUI: true,
-    				autoWidth: false,
-    				displayLength: 10,
-    				pagingType: "full_numbers",
-                    columns: [
-    					/* 0-Timestamp */   { },
-    					/* 1-User */        { },
-    					/* 2-GEDCOM Data */ { },
-                        /* 3-Status */      { },
-    				],
-    				stateSave: true,
-    				stateDuration: -1,
-    			});
-        	');
+            jQuery("#changes_table").dataTable({
+                "sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+				' . KT_I18N::datatablesI18N() . ',
+				buttons: [{extend: "csv", exportOptions: {}}],
+				jQueryUI: true,
+				autoWidth: false,
+				displayLength: 10,
+				pagingType: "full_numbers",
+                columns: [
+					/* 0-Timestamp */   { },
+					/* 1-User */        { },
+					/* 2-GEDCOM Data */ { },
+                    /* 3-Status */      { },
+				],
+				stateSave: true,
+				stateDuration: -1,
+			});
+    	');
 
-		$person		= $controller->getSignificantIndividual();
-		$xref		= $person->getXref();
+        switch (KT_SCRIPT_NAME) {
+            case 'individual.php':
+            	$item  = $controller->getSignificantIndividual();
+                $title = KT_I18N::translate('All recorded data changes for this person.');
+            break;
+			case 'note.php':
+            case 'source.php':
+            case 'repo.php':
+            case 'mediaviewer.php':
+                $item  = $controller->record;
+                $title = '';
+            break;
+		}
+        $xref		= $item->getXref();
         $rows       = $this->getChangeList($xref);
 
         if ($rows) {
@@ -145,9 +149,8 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
             </style>
 
     		<div id="tab_changes_content">
-    			<?php if ($person && $person->canDisplayDetails()) { ?>
-                    <h3><?php echo KT_I18N::translate('All recorded data changes for this person.'); ?></h3>
-
+    			<?php if ($item && $item->canDisplayDetails()) { ?>
+                    <h3><?php echo $title; ?></h3>
     				<table id="changes_table" style="width: 100%;">
     					<thead>
     						<tr>
@@ -180,6 +183,11 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 		return KT_USER_CAN_EDIT || $this->getChangeList();
 	}
 
+    // Implement KT_Module_Tab
+	public function isGrayedOut() {
+        return count($this->getChangeList()) == 0;
+	}
+
 	// Implement KT_Module_Tab
 	public function canLoadAjax() {
 		return false;
@@ -190,8 +198,7 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 		return '';
 	}
 
-	private function getChangeList($xref) {
-
+	private function getChangeList($xref = '') {
         $sql =
         	"SELECT *, `user_name` FROM `##change`
              LEFT JOIN `##user` USING (user_id)

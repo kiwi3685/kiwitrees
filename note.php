@@ -86,10 +86,11 @@ $controller
 			});
 	');
 
-$linked_indi = $controller->record->fetchLinkedIndividuals();
-$linked_fam  = $controller->record->fetchLinkedFamilies();
-$linked_obje = $controller->record->fetchLinkedMedia();
-$linked_sour = $controller->record->fetchLinkedSources();
+$linked_indi  = $controller->record->fetchLinkedIndividuals();
+$linked_fam   = $controller->record->fetchLinkedFamilies();
+$linked_obje  = $controller->record->fetchLinkedMedia();
+$linked_sour  = $controller->record->fetchLinkedSources();
+$note_changes = KT_Module::getModuleByName('tab_changes');
 
 echo '<div id="note-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
@@ -108,7 +109,10 @@ echo '<div id="note-tabs">
 		if ($linked_sour) {
 			echo '<li><a href="#source-note"><span id="notesource">', KT_I18N::translate('Sources'), '</span></a></li>';
 		}
-		echo '</ul>';
+        if ($note_changes) {
+            echo '<li><a href="#changes-note"><span id="changes">', KT_I18N::translate('Changes'), '</span></a></li>';
+        }
+	echo '</ul>';
 
 	// Shared Note details ---------------------
 	$noterec=$controller->record->getGedcomRecord();
@@ -172,6 +176,12 @@ echo '<div id="note-tabs">
 		echo '<div id="source-note">';
 		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-note"
+	}
+    // Note changes
+	if ($note_changes) {
+		echo '<div id="changes-note">';
+        echo KT_Module::getModuleByName('tab_changes')->getTabContent();
+		echo '</div>'; //close "changes-note"
 	}
 echo '</div>'; //close div "note-tabs"
 echo '</div>'; //close div "note-details-page"

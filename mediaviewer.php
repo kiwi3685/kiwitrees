@@ -84,11 +84,13 @@ $controller
 			});
 	');
 
-$linked_indi = $controller->record->fetchLinkedIndividuals();
-$linked_fam  = $controller->record->fetchLinkedFamilies();
-$linked_sour = $controller->record->fetchLinkedSources();
-$linked_repo = $controller->record->fetchLinkedRepositories();
-$linked_note = $controller->record->fetchLinkedNotes();
+$linked_indi   = $controller->record->fetchLinkedIndividuals();
+$linked_fam    = $controller->record->fetchLinkedFamilies();
+$linked_sour   = $controller->record->fetchLinkedSources();
+$linked_repo   = $controller->record->fetchLinkedRepositories();
+$linked_note   = $controller->record->fetchLinkedNotes();
+$media_changes = KT_Module::getModuleByName('tab_changes');
+
 
 echo '<div id="media-details-page">';
 echo '<h2>', $controller->record->getFullName(), ' ', $controller->record->getAddName(), '</h2>';
@@ -145,7 +147,10 @@ echo '<div id="media-tabs">';
 		if ($linked_note) {
 			echo '<li><a href="#notes-media"><span id="notemedia">', KT_I18N::translate('Notes'), '</span></a></li>';
 		}
-	echo '</ul>';
+        if ($media_changes) {
+            echo '<li><a href="#changes-media"><span id="changes">', KT_I18N::translate('Changes'), '</span></a></li>';
+        }
+echo '</ul>';
 
 	// Individuals linked to this media object
 	if ($linked_indi) {
@@ -153,33 +158,36 @@ echo '<div id="media-tabs">';
 		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
 		echo '</div>'; //close "indi-media"
 	}
-
 	// Families linked to this media object
 	if ($linked_fam) {
 		echo '<div id="fam-media">';
 		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
 		echo '</div>'; //close "fam-media"
 	}
-
 	// Sources linked to this media object
 	if ($linked_sour) {
 		echo '<div id="sources-media">';
 		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-media"
 	}
-
 	// Repositories linked to this media object
 	if ($linked_repo) {
 		echo '<div id="repo-media">';
 		echo format_repo_table($controller->record->fetchLinkedRepositories(), $controller->record->getFullName());
 		echo '</div>'; //close "repo-media"
 	}
-
 	// medias linked to this media object
 	if ($linked_note) {
 		echo '<div id="notes-media">';
 		echo format_note_table($controller->record->fetchLinkedNotes(), $controller->record->getFullName());
 		echo '</div>'; //close "notes-media"
 	}
+    // Media changes
+	if ($media_changes) {
+		echo '<div id="changes-media">';
+        echo KT_Module::getModuleByName('tab_changes')->getTabContent();
+		echo '</div>'; //close "changes-media"
+	}
+
 echo '</div>'; //close div "media-tabs"
 echo '</div>'; //close div "media-details"
