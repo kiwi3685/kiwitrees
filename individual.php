@@ -92,7 +92,11 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 $linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
 // Get tab IDs
-$tab_ids = KT_DB::prepare("SELECT module_name, tab_order FROM `##module` WHERE tab_order IS NOT NULL AND status = 'enabled'")->fetchAssoc();
+$tab_ids = KT_DB::prepare("
+            SELECT module_name, tab_order
+            FROM `##module`
+            WHERE tab_order IS NOT NULL AND status = 'enabled'
+        ")->fetchAssoc();
 
 $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
@@ -264,7 +268,10 @@ echo '
 									// Non-AJAX tabs load immediately
 									echo ' href="#', $tab->getName() . '"';
 								}
-								echo ' title="', $tab->getDescription(), '">', $tab->getTitle(), '
+								echo '
+                                    title="', $tab->getDescription(), '"
+                            >',
+                                $tab->getTitle(), '
 							</a>
 						</li>';
 				}
