@@ -79,6 +79,16 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
 $show_full = '1';
+$fam_changes = KT_Module::getModuleByName('tab_changes');
+
+$controller->addInlineJavascript('
+    jQuery("#fam-tabs")
+        .tabs({
+            create: function(e, ui){
+                jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+            }
+        });
+');
 
 echo '
 	<div id="family-page">
@@ -100,14 +110,27 @@ echo '
 			echo '<div id="children">',
 				print_children($controller->record->getXref()), '
 			</div>
-		</div>
-		<div id="fam_info">
-			<div class="subheaders">', KT_I18N::translate('Family Group Information'), '</div>';
-				if ($controller->record->canDisplayDetails()) {
-					echo '<div>';
-					$controller->printFamilyFacts();
-					echo '</div>';
-				} else {
-					echo '<p class="ui-state-highlight">', KT_I18N::translate('The details of this family are private.'), '</p>';
-				}
-		echo '</div>';
+		</div>';
+        // Tabbed additional content
+		if ($controller->record->canDisplayDetails()) {
+    		echo '<div id="fam-tabs">
+                <ul>
+            		<li><a href="#fam-edit"><span>', KT_I18N::translate('Details'), '</span></a></li>';
+                    if ($fam_changes) {
+                        echo '<li><a href="#tab_changes_content"><span id="changes">' . KT_I18N::translate('Changes') . '</span></a></li>';
+                    }
+            	echo '</ul>
+                <div id="fam-edit">
+                    <h3>' . KT_I18N::translate('Family Group Information') . '</h3>';
+				    $controller->printFamilyFacts();
+				echo '</div>';
+                if ($fam_changes) {
+            		echo KT_Module::getModuleByName('tab_changes')->getTabContent();
+                }
+    		echo '</div>';
+        } else {
+            echo '<p class="ui-state-highlight">' . KT_I18N::translate('The details of this family are private.') . '</p>';
+        }
+
+    echo '</div>
+';

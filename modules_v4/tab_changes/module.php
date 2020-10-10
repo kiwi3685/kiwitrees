@@ -84,6 +84,7 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
             	$item  = $controller->getSignificantIndividual();
                 $title = KT_I18N::translate('All recorded data changes for this person.');
             break;
+            case 'family.php':
 			case 'note.php':
             case 'source.php':
             case 'repo.php':
