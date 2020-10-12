@@ -223,6 +223,7 @@ class KT_Gedcom_Tag {
 		case 'FAMS:CENS:DATE': return KT_I18N::translate('Spouse census date');
 		case 'FAMS:CENS:PLAC': return KT_I18N::translate('Spouse census place');
 		case 'FAMS:DIV:DATE': return KT_I18N::translate('Date of divorce');
+        case 'FAMS:DIV:PLAC': return KT_I18N::translate('Place of divorce');
 		case 'FAMS:MARR:DATE': return KT_I18N::translate('Date of marriage');
 		case 'FAMS:MARR:PLAC': return KT_I18N::translate('Place of marriage');
 		case 'FAMS:NOTE': return KT_I18N::translate('Spouse note');

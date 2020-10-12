@@ -318,7 +318,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 			'EVEN', 'EVEN:TYPE', 'EVEN:DATE', 'EVEN:PLAC',
  			'FACT', 'FACT:TYPE',
  			'FAMS:CENS:DATE','FAMS:CENS:PLAC',
-			'FAMS:DIV:DATE',
+			'FAMS:DIV:DATE','FAMS:DIV:PLAC',
 			'FAMS:NOTE',
 			'FAMS:SLGS:DATE','FAMS:SLGS:PLAC',
 			'FAX',
@@ -1019,17 +1019,26 @@ class KT_Controller_Search extends KT_Controller_Page {
 				$date = new KT_Date($value);
 				if ($date->isOK()) {
 					$jd1 = $date->date1->minJD;
-					if ($date->date2) $jd2 = $date->date2->maxJD;
-					else $jd2 = $date->date1->maxJD;
-					if (!empty($this->plusminus[$i])) {
+					if ($date->date2) {
+                        $jd2 = $date->date2->maxJD;
+                    } else {
+                    $jd2 = $date->date1->maxJD;
+                    }
+                    if (!empty($this->plusminus[$i]) && $this->plusminus[$i] != 'BEF' && $this->plusminus[$i] != 'AFT') {
 						$adjd = $this->plusminus[$i]*365;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
-					$bind[]=$parts[1];
-					$bind[]=$jd1;
-					$bind[]=$jd2;
+                    if ($this->plusminus[$i] == 'BEF') {
+						$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1<? AND f_d.d_julianday2<?";
+					} elseif ($this->plusminus[$i] == 'AFT') {
+						$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>? AND f_d.d_julianday2>?";
+					} else {
+						$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
+					}
+					$bind[] = $parts[1];
+					$bind[] = $jd1;
+					$bind[] = $jd2;
 				}
 			} elseif ($parts[1] == 'PLAC') {
 				$pfct ++;
