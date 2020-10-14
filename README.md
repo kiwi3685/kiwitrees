@@ -44,7 +44,7 @@ You should have received a copy of the GNU General Public License along with Ki
 *   Approximately 65MB of disk space for the application files, plus whatever is needed for your multi-media files, GEDCOM files and database.
 
 ### PHP
-*   PHP 7.0 or later
+*   PHP 7.0 to PHP 7.4
     *   PHP must be configured with the following libraries:
 		*   PDO and pdo_mysql to enable access to MySQL. These are enabled by default on most hosts. See https://www.php.net/pdo,
 		* 	php_gd(v2) for images
