@@ -413,7 +413,7 @@ switch ($type) {
 
 		foreach (KT_Place::findPlaces($term, KT_GED_ID) as $place) {
 			if ($newPlace) {
-				$newPlace = ucfirst(strtolower($newPlace));
+				$newPlace = ucwords(strtolower($newPlace));
 				$data[] = $newPlace . ', ' . $place->getGedcomName();
 			} else {
 				$data[] = $place->getGedcomName();
