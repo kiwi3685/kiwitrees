@@ -528,7 +528,7 @@ switch ($type) {
 
 	exit;
 
-	case 'SOUR_PAGE': // Citation details, for a given source, that contain the search term
+	case 'SOUR_PAGE': // Citation details, for a given source, that contain the search term, in INDI, FAM and OBJE records
 		$data = array();
 		$sid  = KT_Filter::get('extra', KT_REGEX_XREF);
 
@@ -571,6 +571,26 @@ switch ($type) {
 			}
 			if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $family->getGedcomRecord(), $match)) {
 				$data[] = $match[1];
+			}
+		}
+
+        // Fetch all data, regardless of privacy
+		$rows=
+			KT_DB::prepare("
+				SELECT SQL_CACHE 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec
+				 FROM `##media`
+				 WHERE m_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%', REPLACE(?, ' ', '%'), '%') AND m_file=?
+			")
+			->execute(array($sid, $term, KT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+
+		// Filter for privacy
+		foreach ($rows as $row) {
+			if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $row['gedrec'], $match)) {
+				$data[] = $match[1];
+			}
+			if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $row['gedrec'], $match)) {
+				$data[] = $match[0];
 			}
 		}
 
