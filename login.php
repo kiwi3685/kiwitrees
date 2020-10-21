@@ -163,8 +163,8 @@ switch ($action) {
                         </label>
                     </div>
                     <div>
-                        <label for="loginPassword"><?php echo KT_I18N::translate('Password'); ?>
-                            <input type="loginPassword" name="password" class="formField">
+                        <label for="password"><?php echo KT_I18N::translate('Password'); ?>
+                            <input type="password" name="password" id="password" class="formField">
                         </label>
                     </div>
                     <div>
