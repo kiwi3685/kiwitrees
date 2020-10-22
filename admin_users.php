@@ -83,10 +83,10 @@ switch (KT_Filter::post('action')) {
 				if ($user_id && $username && $realname) {
 					setUserFullName ($user_id, $realname);
 					setUserName	($user_id, $username);
-                    if (findByEmail($email) && KT_USER_IS_ADMIN) {
+                    if (findByEmail($email) && findByEmail($email) != $user_id) {
     					KT_FlashMessages::addMessage(KT_I18N::translate('Duplicate email address. A user with that email already exists.'));
     				} else {
-					    setUserEmail    ($user_id, $email);
+					    setUserEmail ($user_id, $email);
                     }
                     if ($pass1 !== null && $pass1 === $pass2) {
                         KT_FlashMessages::addMessage(KT_I18N::translate('The passwords do not match.'));
