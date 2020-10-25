@@ -556,22 +556,24 @@ $controller ->addInlineJavascript('
 
 <?php
 function search_trees() {
+    global $controller;
 	// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
 	if ((count(KT_Tree::getAll()) > 1) && KT_Site::preference('ALLOW_CHANGE_GEDCOM')) {
-		// More Than 3 Gedcom Filess enable elect all & select none buttons
-		if (count(KT_Tree::getAll())>3) {
+		// More Than 3 Gedcom Files enable select all & select none buttons
+		if (count(KT_Tree::getAll()) > 3) {
 			echo '<div class="label">&nbsp;</div>
 				<div class="value">
 				<input type="button" value="', /* I18N: select all (of the family trees) */ KT_I18N::translate('select all'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', true);});return false;">
 					<input type="button" value="', /* I18N: select none (of the family trees) */ KT_I18N::translate('select none'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', false);});return false;">';
 					// More Than 10 Gedcom Files enable invert selection button
-					if (count(KT_Tree::getAll())>10) {
+					if (count(KT_Tree::getAll()) > 10) {
 						echo '<input type="button" value="', KT_I18N::translate('invert selection'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', !jQuery(this).attr(\'checked\'));});return false;">';
 					}
 				echo '</div>';
 		}
 		echo '<div class="label">' , KT_I18N::translate('Family trees'), '</div>
 		<div id="search_trees" class="value">';
+
 			//-- sorting menu by gedcom filename
 			foreach (KT_Tree::getAll() as $tree) {
 				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $tree->tree_name);
