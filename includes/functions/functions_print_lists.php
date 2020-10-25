@@ -127,7 +127,7 @@ function format_indi_table($datalist, $option='') {
 	$stats = new KT_Stats($GEDCOM);
 
 	// Bad data can cause "longest life" to be huge, blowing memory limits
-	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge()) + 1;
+	$max_age = min($MAX_ALIVE_AGE, (int) $stats->LongestLifeAge()) + 1;
 
 	// Inititialise chart data
 	for ($age = 0; $age <= $max_age; $age ++) {
