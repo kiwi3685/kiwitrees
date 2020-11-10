@@ -266,12 +266,12 @@ echo '
 									echo  ' href="' . $controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName() . '" rel="nofollow"';
 								} else {
 									// Non-AJAX tabs load immediately
-									echo ' href="#', $tab->getName() . '"';
+									echo ' href="#' . $tab->getName() . '"';
 								}
 								echo '
-                                    title="', $tab->getDescription(), '"
-                            >',
-                                $tab->getTitle(), '
+                                    title="' . $tab->getDescription() . '"
+                            >
+                                <span>' . $tab->getTitle() . '</span>
 							</a>
 						</li>';
 				}
