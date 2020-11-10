@@ -340,7 +340,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
@@ -394,7 +394,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
@@ -496,10 +496,10 @@ class KT_Stats {
 
 	function totalEvents($params = array(), $list = false) {
 		$vars		= array($this->_ged_id);
-		$sql_1 		= '';
-		$sql_2 		= '';
+//		$sql_1 		= '';
+//		$sql_2 		= '';
 		$no_types	= array('HEAD', 'CHAN');
-		$list ? $sql = 'SELECT SQL_CACHE d_gid AS xref' : $sql = 'SELECT SQL_CACHE COUNT(*) AS tot';
+		$list ? $sql = 'SELECT SQL_CACHE d_gid AS xref' : $sql = 'SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?';
 
 		if ($params) {
 			$types = array();
@@ -511,13 +511,16 @@ class KT_Stats {
 				}
 			}
 			if ($types) {
-				$sql_1 .=' AND d_fact IN ('.implode(', ', array_fill(0, count($types), '?')).')';
+//				$sql_1 .=' AND d_fact IN ('.implode(', ', array_fill(0, count($types), '?')).')';
+                $sql .=' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')).')';
 				$vars = array_merge($vars, $types);
 			}
 		}
-		$sql_2 .= ' AND d_fact NOT IN ('.implode(', ', array_fill(0, count($no_types), '?')).')';
+//		$sql_2 .= ' AND d_fact NOT IN ('.implode(', ', array_fill(0, count($no_types), '?')).')';
+        $sql .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')).')';
+//        $sql .= ' GROUP BY d_gid';
 		$vars = array_merge($vars, $no_types);
-
+/*
 		$sql .= "
 			 FROM (
 				 SELECT * FROM `##dates`
@@ -527,7 +530,7 @@ class KT_Stats {
 				 $sql .= "GROUP BY d_gid
 			 ) as t1
 		";
-
+*/
 		if ($list) {
 			$rows	= KT_DB::prepare($sql)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 			$list	= array();
@@ -690,7 +693,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 	}
 
 	// The totalLiving/totalDeceased queries assume that every dead person will
@@ -750,7 +753,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
@@ -869,7 +872,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
@@ -1160,7 +1163,7 @@ class KT_Stats {
 				);
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 		} else {
 			return false;
 		}
@@ -1318,7 +1321,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		}
 
@@ -1382,7 +1385,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		}
 
@@ -1705,7 +1708,7 @@ class KT_Stats {
 				);
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		} else {
 			$sex_search = '';
@@ -2255,7 +2258,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		}
 
@@ -2327,7 +2330,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		}
 
@@ -2423,7 +2426,7 @@ class KT_Stats {
 				);
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		} else {
 			if ($year1>=0 && $year2>=0) {
@@ -2932,7 +2935,7 @@ class KT_Stats {
 				}
 			}
 
-			return json_encode($data, JSON_NUMERIC_CHECK);
+			return json_encode($data);
 
 		} else {
 			if ($sex=='M') {
@@ -3078,7 +3081,7 @@ class KT_Stats {
 			}
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
@@ -3232,7 +3235,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
@@ -3402,7 +3405,7 @@ class KT_Stats {
 			);
 		}
 
-		return json_encode($data, JSON_NUMERIC_CHECK);
+		return json_encode($data);
 
 	}
 
