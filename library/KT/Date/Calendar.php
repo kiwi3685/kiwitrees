@@ -54,24 +54,33 @@ class KT_Date_Calendar {
 		}
 
 		// Construct from an equivalent xxxxDate object
-		if (get_class($this)==get_class($date)) {
+		if (get_class($this) == get_class($date)) {
 			// NOTE - can't copy whole object - need to be able to copy Hebrew to Jewish, etc.
-			$this->y=$date->y;
-			$this->m=$date->m;
-			$this->d=$date->d;
-			$this->minJD=$date->minJD;
-			$this->maxJD=$date->maxJD;
+			$this->y     = $date->y;
+			$this->m     = $date->m;
+			$this->d     = $date->d;
+			$this->minJD = $date->minJD;
+			$this->maxJD = $date->maxJD;
 			return;
 		}
 
+        // Not all dates can be converted
+        if (!$this->inValidRange()) {
+            $this->y = 0;
+            $this->m = 0;
+            $this->d = 0;
+
+            return;
+        }
+
 		// ...else construct an inequivalent xxxxDate object
-		if ($date->y==0) {
+		if ($date->y == 0) {
 			// Incomplete date - convert on basis of anniversary in current year
-			$today=$date->TodayYMD();
-			$jd=$date->YMDtoJD($today[0], $date->m, $date->d==0?$today[2]:$date->d);
+			$today   = $date->TodayYMD();
+			$jd      = $date->YMDtoJD($today[0], $date->m, $date->d == 0 ? $today[2]:$date->d);
 		} else {
 			// Complete date
-			$jd=(int)(($date->maxJD+$date->minJD)/2);
+			$jd = (int)(($date->maxJD + $date->minJD) / 2);
 		}
 		list($this->y, $this->m, $this->d)=$this->JDtoYMD($jd);
 		// New date has same precision as original date
