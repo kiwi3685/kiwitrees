@@ -54,7 +54,7 @@
 	padding: 0;
 	margin: 0;
 	background: none;
-	font-size: 11px;
+	font-size: 14px;
 }
 .tv_in table.tv_tree {
 	border-collapse: collapse;
@@ -158,22 +158,24 @@ table#tvTreeBorder td,
 	margin-top: 2px;
 	margin-bottom: 2px;
 	padding: 0;
-	width: 180px; /* customizable:initial box width */
+	width: 280px; /* customizable:initial box width */
 	cursor: help; /* customizable */
 	border-collapse: collapse; /* required */
 	border-radius: 4px; /* customizable */
 	box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
 }
 #tv_tree div.boxExpanded {
-	width: 250px; /* customizable:initial expanded box width */
+	width: 280px; /* customizable:initial expanded box width */
 }
 #tv_tree div.tv_box div.tvM {
 	background: #f5fdff; /* customizable */
 	color: #220000; /* customizable */
+    padding: 5px;
 }
 #tv_tree div.tv_box div.tvF {
 	background: #fff8f5; /* customizable */
 	color: #000022; /* customizable */
+    padding: 5px;
 }
 #tv_tree div.tv_box span.tvSexSymbol {
 	font-weight: bold;
@@ -359,4 +361,9 @@ table#tvTreeBorder td,
 }
 .tvfs-full-screen .tvfs-switch-full-screen:before {
   content: "\2193";
+}
+
+#tv_tree div.tv_box.rootPerson {
+	border-width: medium!important;
+    font-weight: 600!important;
 }

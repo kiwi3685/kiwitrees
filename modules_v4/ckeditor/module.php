@@ -43,24 +43,25 @@ class ckeditor_KT_Module extends KT_Module {
         $mystyles = file_exists($themedir . '/mystyle.css') ? $themedir . '/mystyle.css' : '';
 		$rand     = rand(); // generate random prefix for footnotes
 		$controller
-			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/ckeditor.js')
-			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
 			// Need to specify the path before we load the libary
 			->addInlineJavascript('var CKEDITOR_BASEPATH="' . KT_MODULES_DIR . 'ckeditor/";', KT_Controller_Base::JS_PRIORITY_HIGH)
+			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/ckeditor.js')
+			->addExternalJavascript(KT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
+                    extraPlugins: "slideshow,footnotes",
                     contentsCss: ["' . $themedir . '/style.css", "' . $mystyles . '"],
-					skin: "moono-lisa",
+					skin: "moonocolor",
 					allowedContent: true,
 					width: "100%",
 					height: "400px",
-					filebrowserImageBrowseUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
-					filebrowserImageUploadUrl:	"' . KT_MODULES_DIR . 'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
-					extraPlugins: "slideshow,footnotes",
 					scayt_autoStartup: true,
 					footnotesPrefix: "' . $rand . '",
 					removePlugins: "emoji",
+                    filebrowserBrowseUrl:"' . KT_MODULES_DIR . 'ckeditor/fileman/index.html",
+                    filebrowserImageBrowseUrl:"' . KT_MODULES_DIR . 'ckeditor/fileman/index.html?type=image",
+                    removeDialogTabs: "link:upload;image:upload",
 					toolbarGroups: [
 						{ name: "document", groups: [ "mode", "document", "doctools" ] },
 						{ name: "clipboard", groups: [ "clipboard", "undo" ] },
