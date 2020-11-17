@@ -92,7 +92,7 @@ class ckeditor_KT_Module extends KT_Module {
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
-					skin : "moono-lisa",
+					skin : "moonocolor",
 					width: "100%",
 					height: "150px",
 					enterMode: CKEDITOR.ENTER_BR,
