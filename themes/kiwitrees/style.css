@@ -4990,7 +4990,7 @@ div#pages-summary {
 
 /* Styling for stories module */
 #story_table_wrapper {
-	margin: auto;
+	margin: 30px auto;
 	width: 80%;
 }
 
@@ -7383,4 +7383,10 @@ display: none !important;
 /* New css for fullscreen view */
 .tvfs-full-screen {
   top: 118px!important;
+}
+
+/* Changes to ckEditor admin styles */
+.ckeditable hr {
+    color: #555;
+    width: 100%;
 }
