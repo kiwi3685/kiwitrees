@@ -210,13 +210,15 @@ switch ($action) {
             $user_id = KT_DB::prepare(
                 "SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
             )->execute(array($user_name))->fetchOne();
+
             if ($user_id) {
+                // random password generator
                 $passchars   = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                $max         = strlen($passchars);
                 $user_new_pw = '';
-                $max         = strlen($passchars) - 1;
-                for ($i = 0; $i < 8; $i++) {
-                    $index = rand(0,$max);
-                    $user_new_pw .= $passchars($index);
+                for ($i = 0; $i < KT_MINIMUM_PASSWORD_LENGTH + 2; $i++) {
+                    $index = rand(0, $max);
+                    $user_new_pw .= $passchars[rand(0, $max - 1)];
                 }
 
                 set_user_password($user_id, $user_new_pw);
