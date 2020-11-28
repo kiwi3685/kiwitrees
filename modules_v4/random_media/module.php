@@ -121,7 +121,7 @@ class random_media_KT_Module extends KT_Module implements KT_Module_Block {
 		while ($all_media) {
 			$n = array_rand($all_media);
 			$media = KT_Media::getInstance($all_media[$n]);
-			if ($media->canDisplayDetails() && !$media->isExternal()) {
+			if ($media->canDisplayDetails() && file_exists($media->getServerFilename('thumb')) && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
 					if (
