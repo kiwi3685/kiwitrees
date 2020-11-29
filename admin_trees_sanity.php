@@ -55,6 +55,7 @@ $controller
     $Main		= 1;
     $Thum		= 1;
     $Zero		= 1;
+    $Link       = 1;
 
 	if (KT_Filter::postBool('reset')) {
 		set_gedcom_setting(KT_GED_ID, 'SANITY_BAPTISM', $bap_age);
@@ -69,9 +70,10 @@ $controller
 		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DD', $dDate);
 		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DP', $dPlac);
 		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DS', $dSour);
-        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_M', $Main);
-        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_T', $Thum);
-        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_Z', $Zero);
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_M', $Main);
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_T', $Thum);
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_Z', $Zero);
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_L', $Link);
 
 		AddToLog($controller->getPageTitle() .' set to default values', 'config');
 	}
@@ -90,9 +92,10 @@ $controller
 		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DD',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_DD', $dDate));
 		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DP',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_DP', $dPlac));
 		set_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DS',	KT_Filter::postBool('NEW_SANITY_INCOMPLETE_DS', $dSour));
-        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_M',	        KT_Filter::postBool('NEW_MEDIA_ISSSUE_M', $Main));
-        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_T',	        KT_Filter::postBool('NEW_MEDIA_ISSSUE_T', $Thum));
-        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_Z',	        KT_Filter::postBool('NEW_MEDIA_ISSSUE_Z', $Zero));
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_M',	        KT_Filter::postBool('NEW_MEDIA_ISSUE_M', $Main));
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_T',	        KT_Filter::postBool('NEW_MEDIA_ISSUE_T', $Thum));
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_Z',	        KT_Filter::postBool('NEW_MEDIA_ISSUE_Z', $Zero));
+        set_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_L',	        KT_Filter::postBool('NEW_MEDIA_ISSUE_L', $Link));
 
 		AddToLog($controller->getPageTitle() .' set to new values', 'config');
 	}
@@ -110,9 +113,10 @@ $controller
 	$dDate		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DD');
 	$dPlac		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DP');
 	$dSour		= get_gedcom_setting(KT_GED_ID, 'SANITY_INCOMPLETE_DS');
-    $Main		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_M');
-    $Thum		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_T');
-    $Zero		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSSUE_Z');
+    $Main		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_M');
+    $Thum		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_T');
+    $Zero		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_Z');
+    $Link		= get_gedcom_setting(KT_GED_ID, 'MEDIA_ISSUE_L');
 
 	/**
 	 * Array of sanity check groupings
@@ -162,17 +166,20 @@ $controller
      * Array of options required to include as Media Issues
      */
     $mediaOptions = array(
-        'NEW_MEDIA_ISSSUE_M',
+        'NEW_MEDIA_ISSUE_M',
         $Main,
-        'NEW_MEDIA_ISSSUE_T',
+        'NEW_MEDIA_ISSUE_T',
         $Thum,
-        'NEW_MEDIA_ISSSUE_Z',
-        $Zero
+        'NEW_MEDIA_ISSUE_Z',
+        $Zero,
+        'NEW_MEDIA_ISSUE_L',
+        $Link
     );
 
-    $Main = $Main ? 'MAIN' : '';
-	$Thum = $Thum ? 'THUM' : '';
-	$Zero = $Zero ? 'ZERO' : '';
+//    $Main = $Main ? 'MAIN' : '';
+//	$Thum = $Thum ? 'THUM' : '';
+//	$Zero = $Zero ? 'ZERO' : '';
+//    $Link = $Link ? 'LINK' : '';
 
 
 	/**
@@ -254,9 +261,10 @@ $controller
 										<input type="checkbox" name="<?php echo $deathOptions[2]; ?>" value="1" <?php echo $deathOptions[3] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Place'); ?>
 										<input type="checkbox" name="<?php echo $deathOptions[4]; ?>" value="1" <?php echo $deathOptions[5] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Source'); ?>
                                     <?php } elseif ($checks[$row][3] == $mediaOptions) { ?>
-										<input type="checkbox" name="<?php echo $mediaOptions[0]; ?>" value="1" <?php echo $mediaOptions[1] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Main image'); ?>
-										<input type="checkbox" name="<?php echo $mediaOptions[2]; ?>" value="1" <?php echo $mediaOptions[3] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Thumbnail'); ?>
-										<input type="checkbox" name="<?php echo $mediaOptions[4]; ?>" value="1" <?php echo $mediaOptions[5] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Zero bytes'); ?>
+										<input type="checkbox" name="<?php echo $mediaOptions[0]; ?>" value="1" <?php echo $mediaOptions[1] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Main'); ?>
+										<input type="checkbox" name="<?php echo $mediaOptions[2]; ?>" value="1" <?php echo $mediaOptions[3] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Thumb'); ?>
+										<input type="checkbox" name="<?php echo $mediaOptions[4]; ?>" value="1" <?php echo $mediaOptions[5] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Zero'); ?>
+                                        <input type="checkbox" name="<?php echo $mediaOptions[6]; ?>" value="1" <?php echo $mediaOptions[7] ? ' checked="checked"' : ''; ?>><?php echo KT_I18N::translate('Link'); ?>
 									<?php } else { ?>
 										<input name="<?php echo $checks[$row][3]; ?>" id="<?php echo $checks[$row][4]; ?>" type="text" value="<?php echo $checks[$row][5]; ?>" >
 									<?php }
@@ -482,7 +490,7 @@ $controller
 				<div>' . $data['html'] . '</div>';
 			}
             if (KT_Filter::post('media_issues')) {
-				$data = media_issues($Main, $Thum, $Zero);
+				$data = media_issues($Main, $Thum, $Zero, $Link);
 				echo '<h5>' . KT_I18N::translate('%s objects have one or more issues', $data['count']) . '
 					<span>' . KT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>

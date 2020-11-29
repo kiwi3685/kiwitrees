@@ -815,14 +815,30 @@ function missing_vital($tag, $DateTag, $PlacTag, $SourTag) {
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
 
-function media_issues($Main, $Thum, $Zero) {
+function media_issues($Main, $Thum, $Zero, $Link) {
     $html	= '<ul>';
 	$count	= 0;
 	$start	= microtime(true);
+
 	$rows	= KT_DB::prepare("
 		SELECT m_id as xref
         FROM `##media`
-	")->execute()->fetchAll();
+        WHERE m_file = ?
+	")->execute(array(KT_GED_ID))->fetchAll();
+
+    if ($Link) {
+        $links  = KT_DB::prepare("
+            SELECT m_id AS xref
+            FROM `##media`
+            WHERE m_file = ?
+            AND  m_id NOT IN (
+                 SELECT l_to
+                 FROM `##link`
+                 WHERE l_type='OBJE'
+                 AND m_file = l_file
+            )
+    	")->execute(array(KT_GED_ID))->fetchAll();
+    }
 
 	foreach ($rows as $row) {
         $media = KT_Media::getInstance($row->xref);
@@ -833,45 +849,54 @@ function media_issues($Main, $Thum, $Zero) {
 
             switch ($which) {
                 case 0 :
-                    if ($Zero && $media->getFilesizeraw('thumb') == 0) {
+                    if ($Zero && $media->getFilesize('main') === 0) {
                         $html .= '
                 			<li>
                 				<a href="' . $media->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . KT_I18N::translate('%1s %2s - Media object has 0 Bytes', $media->getXref(), $media->getFullName()) . '</a>
                 			</li>';
                 		$count	++;
                     }
-                break;
-
-
+                    break;
                 case 1 :
                     $html .= '
             			<li>
             				<a href="' . $media->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . KT_I18N::translate('%1s %2s - Missing main image', $media->getXref(), $media->getFullName()) . '</a>
             			</li>';
             		$count	++;
-                break;
-
+                    break;
                 case 2 :
                     $html .= '
             			<li>
             				<a href="' . $media->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . KT_I18N::translate('%1s %2s - Missing thumbnail image', $media->getXref(), $media->getFullName()) . '</a>
             			</li>';
             		$count	++;
-                break;
-
+                    break;
                 case 3 :
                     $html .= '
                         <li>
                             <a href="' . $media->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . KT_I18N::translate('%1s %2s - Missing main and thumbnail images', $media->getXref(), $media->getFullName()) . '</a>
                         </li>';
                     $count	++;
-                break;
-
+                    break;
                 default :
-                break;
+                    break;
             }
         }
 	}
+
+    if ($Link) {
+        foreach ($links as $link) {
+            $media = KT_Media::getInstance($link->xref);
+            if ($media && !$media->isExternal()) {
+                $html .= '
+                    <li>
+                        <a href="' . $media->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . KT_I18N::translate('%1s %2s - Media object not linked', $media->getXref(), $media->getFullName()) . '</a>
+                    </li>';
+                $count	++;
+            }
+        }
+    }
+
 	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
