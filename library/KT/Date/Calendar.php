@@ -33,28 +33,28 @@ class KT_Date_Calendar {
 	function __construct($date) {
 		// Construct from an integer (a julian day number)
 		if (is_integer($date)) {
-			$this->minJD=$date;
-			$this->maxJD=$date;
-			list($this->y, $this->m, $this->d)=$this->JDtoYMD($date);
+			$this->minJD = $date;
+			$this->maxJD = $date;
+			list($this->y, $this->m, $this->d) = $this->JDtoYMD($date);
 			return;
 		}
 
 		// Construct from an array (of three gedcom-style strings: "1900", "feb", "4")
 		if (is_array($date)) {
-			$this->d=(int)$date[2];
+			$this->d = (int)$date[2];
 			if (!is_null($this->MONTH_TO_NUM($date[1]))) {
-				$this->m=$this->MONTH_TO_NUM($date[1]);
+				$this->m = $this->MONTH_TO_NUM($date[1]);
 			} else {
-				$this->m=0;
-				$this->d=0;
+				$this->m = 0;
+				$this->d = 0;
 			}
-			$this->y=$this->ExtractYear($date[0]);
+			$this->y = $this->ExtractYear($date[0]);
 			$this->SetJDfromYMD();
 			return;
 		}
 
 		// Construct from an equivalent xxxxDate object
-		if (get_class($this) == get_class($date)) {
+		if (get_class($this) === get_class($date)) {
 			// NOTE - can't copy whole object - need to be able to copy Hebrew to Jewish, etc.
 			$this->y     = $date->y;
 			$this->m     = $date->m;
