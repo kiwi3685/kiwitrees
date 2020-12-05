@@ -47,7 +47,7 @@ require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
-switch (safe_POST('action')) {
+switch (KT_Filter::post('action')) {
 	case 'accept-changes':
 		// Accept all the pending changes for a record
 		require KT_ROOT . 'includes/functions/functions_edit.php';
@@ -127,6 +127,12 @@ switch (safe_POST('action')) {
 		} else {
 			header('HTTP/1.0 406 Not Acceptable');
 		}
+		break;
+
+    case 'delete-unusedmedia':
+		$media_filename = KT_Filter::post('media_filenames');
+		$tmp = KT_DATA_DIR . $media_filename;
+		@unlink($tmp);
 		break;
 
     case 'delete-dna':

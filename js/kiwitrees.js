@@ -1544,6 +1544,7 @@ function checkbox_delete(type, pid = '') {
 			delete_list.push(input_obj[i].value);
 		}
 	}
+
 	for (i = 0; i < counter; i++) {
 		switch(type) {
 			case "sources":
@@ -1560,6 +1561,9 @@ function checkbox_delete(type, pid = '') {
                 break;
 			case "dna":
 				jQuery.post("action.php",{action:"delete-dna",dna_id:delete_list[i]},function(){location.reload();});
+                break;
+            case "unusedmedia":
+                jQuery.post("action.php",{action:"delete-unusedmedia",media_filenames:delete_list[i]},function(){location.reload();});
                 break;
 		 }
 	}

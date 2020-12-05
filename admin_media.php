@@ -30,7 +30,7 @@ $files = safe_GET('files', array('local', 'external', 'unused'), 'local');
 
 // family tree setting MEDIA_DIRECTORY
 $media_folders = all_media_folders();
-$media_folder  = safe_GET('media_folder', KT_REGEX_UNSAFE);
+$media_folder  = KT_Filter::get('media_folder', KT_REGEX_UNSAFE);
 // User folders may contain special characters.  Restrict to actual folders.
 if (!array_key_exists($media_folder, $media_folders)) {
 	$media_folder = reset($media_folders);
@@ -38,7 +38,7 @@ if (!array_key_exists($media_folder, $media_folders)) {
 
 // prefix to filename
 $media_paths = media_paths($media_folder);
-$media_path  = safe_GET('media_path', KT_REGEX_UNSAFE);
+$media_path  = KT_Filter::get('media_path', KT_REGEX_UNSAFE);
 // User paths may contain special characters.  Restrict to actual paths.
 if (!array_key_exists($media_path, $media_paths)) {
 	$media_path = reset($media_paths);
@@ -46,16 +46,16 @@ if (!array_key_exists($media_path, $media_paths)) {
 
 // subfolders within $media_path
 $subfolders = safe_GET('subfolders', array('include', 'exclude'), 'include');
-$action     = safe_GET('action');
+$action     = KT_Filter::get('action');
 
 ////////////////////////////////////////////////////////////////////////////////
 // POST callback for file deletion
 ////////////////////////////////////////////////////////////////////////////////
-$delete_file = safe_POST('delete', KT_REGEX_UNSAFE);
+$delete_file = KT_Filter::post('delete', KT_REGEX_UNSAFE);
 if ($delete_file) {
 	$controller = new KT_Controller_Ajax;
 	// Only delete valid (i.e. unused) media files
-	$media_folder = safe_POST('media_folder', KT_REGEX_UNSAFE);
+	$media_folder = KT_Filter::post('media_folder', KT_REGEX_UNSAFE);
 	$disk_files = all_disk_files ($media_folder, '', 'include', '');
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = KT_DATA_DIR . $media_folder . $delete_file;
@@ -86,9 +86,9 @@ if ($delete_file) {
 switch($action) {
 case 'load_json':
 	Zend_Session::writeClose();
-	$sSearch        = safe_GET('sSearch');
-	$iDisplayStart  = (int)safe_GET('iDisplayStart');
-	$iDisplayLength = (int)safe_GET('iDisplayLength');
+	$sSearch        = KT_Filter::get('sSearch');
+	$iDisplayStart  = (int)KT_Filter::get('iDisplayStart');
+	$iDisplayLength = (int)KT_Filter::get('iDisplayLength');
 
 	switch ($files) {
 	case 'local':
@@ -128,18 +128,18 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols = safe_GET('iSortingCols');
+		$iSortingCols = KT_Filter::get('iSortingCols');
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (safe_GET('sSortDir_' . $i)) {
+				switch (KT_Filter::get('sSortDir_' . $i)) {
 				case 'asc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' ASC ';
+					$ORDER_BY .= (1+(int)KT_Filter::get('iSortCol_' . $i)).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' DESC ';
+					$ORDER_BY .= (1+(int)KT_Filter::get('iSortCol_' . $i)).' DESC ';
 					break;
 				}
 				if ($i<$iSortingCols-1) {
@@ -169,12 +169,16 @@ case 'load_json':
 				$highlight = '';
 				break;
 			}
+
+            // table array
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $row['media_path']),
 				$media->displayImage(),
 				media_object_info($media),
 				$highlight,
 				KT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
+                '',
+                $media_path . $row['media_path']
 			);
 		}
 		break;
@@ -199,18 +203,18 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols = safe_GET('iSortingCols');
+		$iSortingCols = KT_Filter::get('iSortingCols');
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (safe_GET('sSortDir_' . $i)) {
+				switch (KT_Filter::get('sSortDir_' . $i)) {
 				case 'asc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' ASC ';
+					$ORDER_BY .= (1+(int)KT_Filter::get('iSortCol_' . $i)).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' DESC ';
+					$ORDER_BY .= (1+(int)KT_Filter::get('iSortCol_' . $i)).' DESC ';
 					break;
 				}
 				if ($i<$iSortingCols-1) {
@@ -240,12 +244,16 @@ case 'load_json':
 				$highlight = '';
 				break;
 			}
+
+            // table array
 			$aaData[] = array(
 			 	KT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
 				$media->displayImage(),
 				media_object_info($media),
 				$highlight,
 				KT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
+                '',
+                KT_Gedcom_Tag::getLabelValue('URL', $row['m_filename'])
 			);
 		}
 		break;
@@ -274,7 +282,7 @@ case 'load_json':
 
 		// Sort files - only option is column 0
 		sort($unused_files);
-		if (safe_GET('sSortDir_0')=='desc') {
+		if (KT_Filter::get('sSortDir_0') == 'desc') {
 			$unused_files = array_reverse($unused_files);
 		}
 
@@ -322,29 +330,30 @@ case 'load_json':
 				}
 			}
 
-			$conf        = KT_Filter::escapeJS(KT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file)));
+            //-- Select & delete
 			$delete_link = '
-				<p>
-					<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' .
-						KT_I18N::Translate('Delete') . '
-					</a>
-				</p>
-			';
+                <div class="delete_src">
+				    <input type="checkbox" name="del_places[]" class="check" value="' . addslashes($media_folder . $media_path . $unused_file) . '" title="'. KT_I18N::translate('Delete'). '">
+				</div>
+            ';
 
+            // table array
 			$aaData[] = array(
-				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
+				media_file_info($media_folder, $media_path, $unused_file),
 				$img,
 				$create_form,
 				'',
 				'',
-			);
+                $delete_link,
+                $media_path . $unused_file //for csv only
+		    );
 		}
 		break;
 	}
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => (int)safe_GET('sEcho'),
+		'sEcho'                => (int)KT_Filter::get('sEcho'),
 		'iTotalRecords'        => $iTotalRecords,
 		'iTotalDisplayRecords' => $iTotalDisplayRecords,
 		'aaData'               => $aaData
@@ -529,14 +538,17 @@ $controller
 	->restrictAccess(KT_USER_IS_ADMIN)
 	->setPageTitle(KT_I18N::translate('Media'))
 	->addExternalJavascript(KT_JQUERY_DATATABLES_URL)
+    ->addExternalJavascript(KT_JQUERY_DT_HTML5)
+    ->addExternalJavascript(KT_JQUERY_DT_BUTTONS)
 	->pageHeader()
 	->addInlineJavascript('
 		jQuery("#media-table-' . $table_id . '").dataTable({
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
 			processing: true,
 			serverSide: true,
 			ajaxSource: "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 			' . KT_I18N::datatablesI18N(array(1, 5, 10, 20, 50, 100, 500, 1000, -1)) . ',
+            buttons: [{extend: "csv", exportOptions: {columns: [6] }}],
 			jQueryUI: true,
 			autoWidth:false,
 			pageLength: 10,
@@ -548,7 +560,9 @@ $controller
 				/*1 - media object */	{sortable: false, class: "center"},
 				/*2 - media name */		{sortable: ' . ($files === 'unused' ? 'false' : 'true') . '},
 				/*3 - highlighted? */	{},
-				/*4 - media type */		{}
+				/*4 - media type */		{},
+                /*5 - DELETE    */      { visible: ' . (KT_USER_GEDCOM_ADMIN && $files === 'unused' ? 'true' : 'false') . ', sortable: false, class: "center" },
+                /*6 - path for CSV only*/ { visible: false}
 			]
 		});
 	');
@@ -625,6 +639,14 @@ $controller
 			<th><?php echo KT_I18N::translate('Media object'); ?></th>
 			<th><?php echo KT_I18N::translate('Highlight'); ?></th>
 			<th><?php echo KT_I18N::translate('Media type'); ?></th>
+            <?php if (KT_USER_GEDCOM_ADMIN && $files === 'unused') { ?>
+                <th>
+                    <div class="delete_src">
+                        <input type="button" value="<?php echo KT_I18N::translate('Delete'); ?>" onclick="if (confirm('<?php echo htmlspecialchars(KT_I18N::translate('Permanently delete these records?')); ?>')) {return checkbox_delete('unusedmedia');} else {return false;}">
+                        <input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+                    </div>
+                </th>
+            <?php } ?>
 		</tr>
 	</thead>
 	<tbody>
