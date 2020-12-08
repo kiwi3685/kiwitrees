@@ -165,9 +165,9 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 
                     // Check reCAPTCHA response
                     if ($responseData->success) {
-                        AddToLog('Google reCaptcha valid response from "' . $user_name . '"/"' . $user_email . '", response ="' . $responseData->success . '"', 'auth');
+                        AddToLog('Google reCaptcha valid response from "' . $from_name . '"/"' . $from_email . '", response ="' . $responseData->success . '"', 'auth');
                     } else {
-                        AddToLog('Failed Google reCaptcha response from "' . $user_name . '"/"' . $user_email . '"', 'spam');
+                        AddToLog('Failed Google reCaptcha response from "' . $from_name . '"/"' . $from_email . '"', 'spam');
 						KT_FlashMessages::addMessage(KT_I18N::translate('Google reCaptcha robot verification failed, please try again.'));
 						header('Location: ' . KT_Filter::unescapeHtml($url));
 						$captcha = false;
