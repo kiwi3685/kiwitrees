@@ -312,7 +312,7 @@ case 'PAGE':
 
 case 'PEDI':
 	$title = KT_Gedcom_Tag::getLabel('PEDI');
-	$text = KT_I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed.');
+	$text = KT_I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed. For this reason it is common to not add any selection here.');
 	break;
 
 case 'PHON':

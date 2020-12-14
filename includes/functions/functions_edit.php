@@ -2442,7 +2442,8 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		'SOUR'=>array('PAGE', 'DATA', 'OBJE'),
 		'DATA'=>array('TEXT'),
 		'PLAC'=>array('MAP'),
-		'MAP' =>array('LATI', 'LONG')
+		'MAP' =>array('LATI', 'LONG'),
+		'BIRT'=>array('PEDI')
 	);
 	if ($FULL_SOURCES) {
 		$expected_subtags['SOUR'][] = 'QUAY';
