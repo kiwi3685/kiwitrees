@@ -1677,7 +1677,7 @@ function update_favorites($xref_from, $xref_to, $ged_id=KT_GED_ID) {
 // server space functions
 //=================================
 function db_size () {
-	$sql = 'SHOW TABLE STATUS';
+	$sql  = 'SHOW TABLE STATUS';
 	$size = 0;
 	$rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -1713,4 +1713,14 @@ function format_size($size) {
 			return KT_I18N::number(($size / 1024000000), 2) . ' GB';
 			break;
 	}
+}
+
+function table_exists ($table) {
+    $sql  = 'SELECT * FROM `##placelocation`';
+    try {
+        $rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return true;
+    } catch (PDOException $ex) {
+    	return false;
+    }
 }
