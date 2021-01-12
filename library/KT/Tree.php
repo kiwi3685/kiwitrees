@@ -241,6 +241,7 @@ class KT_Tree {
 		set_gedcom_setting($tree_id, 'ABBREVIATE_CHART_LABELS',      false);
 		set_gedcom_setting($tree_id, 'ADVANCED_NAME_FACTS',          'NICK,_AKA');
 		set_gedcom_setting($tree_id, 'ADVANCED_PLAC_FACTS',          '');
+        set_gedcom_setting($tree_id, 'AUTOCOMPLETE_PLACES',          'Advanced');
 		set_gedcom_setting($tree_id, 'CALENDAR_FORMAT',              'gregorian');
 		set_gedcom_setting($tree_id, 'CHART_BOX_TAGS',               '');
 		set_gedcom_setting($tree_id, 'COMMON_NAMES_ADD',             '');

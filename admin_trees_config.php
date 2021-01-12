@@ -133,6 +133,7 @@ case 'update':
         KT_Filter::post('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
     ))));
     set_gedcom_setting(KT_GED_ID, 'ALL_CAPS',                     KT_Filter::postBool('NEW_ALL_CAPS'));
+    set_gedcom_setting(KT_GED_ID, 'AUTOCOMPLETE_PLACES',          KT_Filter::post('NEW_AUTOCOMPLETE_PLACES', null,'advanced'));
     set_gedcom_setting(KT_GED_ID, 'CHART_BOX_TAGS',               KT_Filter::post('NEW_CHART_BOX_TAGS'));
     set_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', KT_Filter::post('NEW_COMMON_NAMES_ADD')));
     set_gedcom_setting(KT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', KT_Filter::post('NEW_COMMON_NAMES_REMOVE')));
@@ -1367,6 +1368,19 @@ $controller
                             <?php echo edit_field_yes_no('NEW_USE_GEONAMES', get_gedcom_setting(KT_GED_ID, 'USE_GEONAMES')); ?>
                             <div class="helpcontent">
                                 <?php echo KT_I18N::translate('Should the GeoNames database (http://www.geonames.org/) be used to provide more suggestions for place names?<p>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered. When set to <b>No</b>, only existing places in the current family tree database will be searched. As you enter more of the place name, the suggestion will become more precise. This option can slow down data entry, particularly if your Internet connection is slow.</p><p>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.</p>'); ?>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="config_options">
+                        <label><?php echo KT_I18N::translate('Options for autocomplete on places'); ?></label>
+                        <div class="input_group">
+                            <?php echo radio_buttons('NEW_AUTOCOMPLETE_PLACES', array('basic'=>KT_I18N::translate('basic'), 'advanced'=>KT_I18N::translate('advanced')), get_gedcom_setting(KT_GED_ID, 'AUTOCOMPLETE_PLACES'), 'class="radio_inline"'); ?>
+                            <div class="helpcontent">
+                                <?php echo KT_I18N::translate('The "basic" autocomplete simply searches your existing place names for those that exactly match the first characters as you type them. No other assistance is provided. <br><br>
+                                The "advanced" alternative starts the same, but also provides further features: <br><br>
+                                1) after typing a comma it will start the search again but using subsequent levels of your existing places. This allows, for example, a new town to be added to an existing state or county without re-typing the existing data, and <br><br>
+                                2) place names are capitalised automatically using "word caps", or capitalising every separate word. This enables faster typing by allowing you to type just lowercase characters. <br><br>
+                                These extra features are not necessarily compatible with every site\'s preferred naming style.'); ?>
                             </div>
                          </div>
                     </div>

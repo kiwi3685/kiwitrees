@@ -216,6 +216,7 @@ function load_gedcom_settings($ged_id =  KT_GED_ID) {
 	global $ABBREVIATE_CHART_LABELS;      $ABBREVIATE_CHART_LABELS      = get_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS');
 	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          = get_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS');
 	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          = get_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS');
+    global $AUTOCOMPLETE_PLACES;          $AUTOCOMPLETE_PLACES          = get_gedcom_setting($ged_id, 'AUTOCOMPLETE_PLACES');
 	global $ALL_CAPS;                     $ALL_CAPS                     = get_gedcom_setting($ged_id, 'ALL_CAPS');
 	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              = get_gedcom_setting($ged_id, 'CALENDAR_FORMAT');
 	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               = get_gedcom_setting($ged_id, 'CHART_BOX_TAGS');

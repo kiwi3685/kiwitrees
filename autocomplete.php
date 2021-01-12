@@ -403,9 +403,10 @@ switch ($type) {
 
 	case 'PLAC': // Place names (with hierarchy), that include the search term
 		// Do not filter by privacy.  Place names on their own do not identify individuals.
+
 		$data = array();
 		$newPlace = false;
-		if (strpos($term, ',')) {
+		if (strpos($term, ', ') && $type != 'basic') {
 			$places	= preg_split('/,\s/', $term);
 			$term = array_pop($places);
 			$newPlace = implode(', ', $places);
