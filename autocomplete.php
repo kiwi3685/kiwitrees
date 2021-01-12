@@ -403,23 +403,34 @@ switch ($type) {
 
 	case 'PLAC': // Place names (with hierarchy), that include the search term
 		// Do not filter by privacy.  Place names on their own do not identify individuals.
-
 		$data = array();
-		$newPlace = false;
-		if (strpos($term, ', ') && $type != 'basic') {
-			$places	= preg_split('/,\s/', $term);
-			$term = array_pop($places);
-			$newPlace = implode(', ', $places);
-		}
 
-		foreach (KT_Place::findPlaces($term, KT_GED_ID) as $place) {
-			if ($newPlace) {
-				$newPlace = ucwords(strtolower($newPlace));
-				$data[] = $newPlace . ', ' . $place->getGedcomName();
-			} else {
-				$data[] = $place->getGedcomName();
-			}
-		}
+        switch(get_gedcom_setting(KT_GED_ID, 'AUTOCOMPLETE_PLACES')) {
+            case 'basic':
+                foreach (KT_Place::findPlacesInitial($term, KT_GED_ID) as $place) {
+                    $data[] = $place->getGedcomName();
+                }
+            break;
+            case 'advanced':
+            default:
+                $newPlace = false;
+
+        		if (strpos($term, ', ')) {
+        			$places	= preg_split('/,\s/', $term);
+        			$term = array_pop($places);
+        			$newPlace = implode(', ', $places);
+        		}
+
+        		foreach (KT_Place::findPlacesInitial($term, KT_GED_ID) as $place) {
+        			if ($newPlace) {
+        				$newPlace = ucwords(strtolower($newPlace), ". \t\r\n\f\v");
+        				$data[] = $newPlace . ', ' . $place->getGedcomName();
+        			} else {
+        				$data[] = $place->getGedcomName();
+        			}
+        		}
+            break;
+        }
 
 		if (!$data && get_gedcom_setting(KT_GED_ID, 'USE_GEONAMES')) {
 			// No place found?  Use an external gazetteer

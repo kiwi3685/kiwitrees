@@ -1376,11 +1376,11 @@ $controller
                         <div class="input_group">
                             <?php echo radio_buttons('NEW_AUTOCOMPLETE_PLACES', array('basic'=>KT_I18N::translate('basic'), 'advanced'=>KT_I18N::translate('advanced')), get_gedcom_setting(KT_GED_ID, 'AUTOCOMPLETE_PLACES'), 'class="radio_inline"'); ?>
                             <div class="helpcontent">
-                                <?php echo KT_I18N::translate('The "basic" autocomplete simply searches your existing place names for those that exactly match the first characters as you type them. No other assistance is provided. <br><br>
-                                The "advanced" alternative starts the same, but also provides further features: <br><br>
-                                1) after typing a comma it will start the search again but using subsequent levels of your existing places. This allows, for example, a new town to be added to an existing state or county without re-typing the existing data, and <br><br>
-                                2) place names are capitalised automatically using "word caps", or capitalising every separate word. This enables faster typing by allowing you to type just lowercase characters. <br><br>
-                                These extra features are not necessarily compatible with every site\'s preferred naming style.'); ?>
+                                <?php echo KT_I18N::translate('The "basic" autocomplete simply searches your existing place names for any that start with the string of characters you type, updating as you add characters. No other assistance is provided. <br><br>
+                                The "advanced" alternative starts the same, but also provides further features, which might not be compatible with every site\'s preferred naming style.: <br><br>
+                                1) After typing a comma and a space at any point it will start the search again, but using subsequent levels of your existing places. This allows, for example, a new town to be added to an existing state or county without re-typing all the existing data. <br><br>
+                                2) Place names are capitalised automatically using "word caps", or capitalising each separate word. This enables faster typing by allowing you to type just lowercase characters. <br><br>
+                                It is important to remember that such automated help can have unintended consequences. These may need manually correcting during the editing process. '); ?>
                             </div>
                          </div>
                     </div>

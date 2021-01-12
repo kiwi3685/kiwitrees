@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2020 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -157,9 +157,15 @@ class KT_Place {
 		return $places;
 	}
 
+    /**
+     * [findPlaces description]
+     * @param  [string] $filter     [string from place name to search for. This search searches for matches containing this string.]
+     * @param  [integer] $gedcom_id [description]
+     * @return [Structured string]  [A complete place name]
+     */
 	public static function findPlaces($filter, $gedcom_id) {
-		$places=array();
-		$rows=
+		$places = array();
+		$rows   =
 			KT_DB::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)".
 				" FROM      `##places` AS p1".
@@ -177,8 +183,41 @@ class KT_Place {
 			->execute(array($filter, preg_quote($filter), $gedcom_id))
 			->fetchOneColumn();
 		foreach ($rows as $row) {
-			$places[]=new KT_Place($row, $gedcom_id);
+			$places[] = new KT_Place($row, $gedcom_id);
 		}
 		return $places;
 	}
+
+    /**
+     * [findPlacesInitial description]
+     * @param  [string] $filter     [string from place name to search for. This search only searches for matches starting with this string.]
+     * @param  [integer] $gedcom_id [description]
+     * @return [Structured string]  [A complete place name]
+     */
+    public static function findPlacesInitial($filter, $gedcom_id) {
+		$places = array();
+		$rows   =
+			KT_DB::prepare(
+				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)".
+				" FROM      `##places` AS p1".
+				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
+				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)".
+				" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)".
+				" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)".
+				" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)".
+				" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)".
+				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
+				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
+				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT(?, '%') AND p1.p_file=?".
+				" ORDER BY CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE '" . KT_I18N::$collation . "'"
+			)
+			->execute(array($filter, $gedcom_id))
+			->fetchOneColumn();
+		foreach ($rows as $row) {
+			$places[] = new KT_Place($row, $gedcom_id);
+		}
+		return $places;
+	}
+
+
 }
