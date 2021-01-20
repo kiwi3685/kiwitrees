@@ -1372,7 +1372,7 @@ function delete_user($user_id) {
 		KT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($user_id));
 		KT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array((string) $user_id));
 		KT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute(array($user_id));
-		KT_DB::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($user_id));
+		table_exists("##message") ? KT_DB::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($user_id)) : '';
 		KT_DB::prepare("DELETE FROM `##user` WHERE user_id=?")->execute(array($user_id));
 	} else {
 		KT_FlashMessages::addMessage(KT_I18N::translate('<span class="error">Unable to delete user. This user has pending data changes.</span>'));
