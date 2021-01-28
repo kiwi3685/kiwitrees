@@ -75,7 +75,7 @@ if (
     PHP_VERSION_ID < 70400 && date('Y-m-d') >= '2020-12-06'
 ) {
 	$server_warnings[] = '
-		<span class="accepted">' . KT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should should ask your web service provider to upgrade to a later version.', PHP_VERSION) . '
+		<span class="accepted">' . KT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should ask your web service provider to upgrade to a later version.', PHP_VERSION) . '
 		<a href="http://php.net/supported-versions.php" target="_blank" rel="noopener noreferrer"><i class="icon-php"></i></a>
 		<span>';
 }
