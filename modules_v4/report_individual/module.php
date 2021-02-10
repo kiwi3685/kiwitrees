@@ -161,24 +161,47 @@ class report_individual_KT_Module extends KT_Module implements KT_Module_Report 
 							}
 							break;
 						case 'all':
-							//show all level 1 images ?>
+							//show all individual images, sorted or unsorted ?>
 							<div class="images">
-								<?php $sort_current_objes = array();
-								$sort_ct = preg_match_all('/\n1 _KT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
-								for ($i = 0; $i < $sort_ct; $i++) {
-									if (!isset($sort_current_objes[$sort_match[$i][1]])) {
-										$sort_current_objes[$sort_match[$i][1]] = 1;
-									} else {
-										$sort_current_objes[$sort_match[$i][1]]++;
-									}
-									$sort_obje_links[] = $sort_match[$i][1];
-								}
-								foreach ($sort_obje_links as $media) {
-									$image = KT_Media::getInstance($media);
-									if ($image && $image->canDisplayDetails()) { ?>
-										<span><?php echo $image->displayImage(); ?></span>
-									<?php }
-								} ?>
+								<?php
+                                $sort_current_objes = array();
+                                $media_objes        = array();
+                                $obje_links         = array();
+								$sort_ct            = preg_match_all('/\n1 _KT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+                                $media_ct           = preg_match_all('/\n\d OBJE @(.*)@/', $person->getGedcomRecord(), $media_match, PREG_SET_ORDER);
+
+                                if ($sort_ct) {
+    								for ($i = 0; $i < $sort_ct; $i++) {
+    									if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+    										$sort_current_objes[$sort_match[$i][1]] = 1;
+    									} else {
+    										$sort_current_objes[$sort_match[$i][1]]++;
+    									}
+    									$obje_links[] = $sort_match[$i][1];
+    								}
+                                }
+
+                                if ($media_ct) {
+                                    for ($i = 0; $i < $media_ct; $i++) {
+    									if (!isset($media_objes[$media_match[$i][1]])) {
+    										$media_objes[$media_match[$i][1]] = 1;
+    									} else {
+    										$media_objes[$media_match[$i][1]]++;
+    									}
+                                        if (!in_array($media_match[$i][1], $obje_links)) {
+                                            $obje_links[] = $media_match[$i][1];
+                                        }
+
+    								}
+                                }
+
+                                foreach ($obje_links as $media) {
+                                    $image = KT_Media::getInstance($media);
+                                    if ($image && $image->canDisplayDetails()) { ?>
+                                        <span><?php echo $image->displayImage(); ?></span>
+                                    <?php }
+                                } ?>
+
 							</div>
 							<?php
 						break;
