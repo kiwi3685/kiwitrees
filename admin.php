@@ -1638,7 +1638,8 @@ function old_paths() {
 		KT_ROOT . 'modules_v4/research_links/plugins/rijnlandsmiddensa.php', // archive replaced
         KT_ROOT . 'modules_v4/ckeditor/kt_ckeditor.css', // remove no longer needed file
         // Removed in kiwitrees 3.3.9
-        KT_ROOT . 'modules_v4/ckeditor/kcfinder', // remove no longer needed folder - replaced by fileman
+        //KT_ROOT . 'modules_v4/ckeditor/kcfinder', // remove no longer needed folder - replaced by fileman
+        //Leave kcfinder for this upgrade, as it may contain personal image uploads
 	);
 }
 
