@@ -675,7 +675,7 @@ echo '<div id="gm_tabs">
 									<input type="checkbox" name="del_places[]" class="check" value="'.$place["place_id"].'" title="', KT_I18N::translate('Remove'), '">',
 								'</div></td>';
 							} else {
-								echo '<td><div class="col7"><i class="fa-times"></i></div></td>';
+								echo '<td><div class="col7"><i class="fa-times" title="' . $noRows . '"></i></div></td>';
 							}
 						echo '</tr>';
 					}
