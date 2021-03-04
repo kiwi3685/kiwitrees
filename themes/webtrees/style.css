@@ -1977,6 +1977,8 @@ html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
 html[dir=\'rtl\'] #privacy_status dt span{float: left;}
 
 /* Styling for stories module */
+#story_table_wrapper {margin: 30px auto; width: 80%;}
+h2.story {display: block; margin: auto; padding: 20px 0 0; text-align: initial; width: 80%;}
 #contents_list {margin:auto auto 20px auto; width:60%;}
 #contents_list ol {font-size:100%; list-style: disc;}
 #stories {padding:20px;}

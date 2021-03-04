@@ -603,7 +603,7 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 			" AND gedcom_id=?"
 		)->execute(array($this->getName(), KT_GED_ID))->fetchAll();
 
-		echo '<h2 class="center">', KT_I18N::translate('Stories'), '</h2>';
+		echo '<h2 class=" story center">', KT_I18N::translate('Stories'), '</h2>';
 		if (count($stories)>0) {
 			echo '<table id="story_table" class="width100">
 				<thead>
