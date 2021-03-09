@@ -813,7 +813,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 		if ($images) {
 			$html .= $images.
 				'</div>'.// close #galleria
-				'<a id="copy" href="http://galleria.io/" target="_blank" rel="noopener noreferrer">' . /* I18N: Copyright statement in gallery module */ KT_I18N::translate('Display by Galleria (%1s)', $version) . '</a>'.// gallery.io attribution
+				'<a id="copy" href="https://galleriajs.github.io/" target="_blank" rel="noopener noreferrer">' . /* I18N: Copyright statement in gallery module */ KT_I18N::translate('Display by Galleria (%1s)', $version) . '</a>'.// gallery.io attribution
 				'</div>'.// close #page
 				'<div style="clear: both;"></div>';
 		} else {
