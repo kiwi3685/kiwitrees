@@ -1998,6 +1998,13 @@ ul.clist {
 #statistics-page fieldset td a:hover {
 	color:#ff0000;
 }
+#statistics-page h4,
+#statistics-page h5 {
+    font-weight: normal;
+    font-style: italic;
+    margin: 5px auto;
+    text-align: center;
+}
 .statistics-page {
 	text-align: center;
 }

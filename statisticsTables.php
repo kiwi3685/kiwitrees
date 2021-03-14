@@ -145,6 +145,21 @@ switch ($table) {
         $title 		= KT_I18N::translate('Total undated births');
         $content	= format_indi_table($list['list']);
     break;
+    case 'totalDeaths' :
+        $list       = $stats->totalDeaths();
+        $title 		= KT_I18N::translate('Total deaths');
+        $content	= format_indi_table($list['list']);
+    break;
+    case 'datedDeaths' :
+        $list       = $stats->totaldatedDeaths();
+        $title 		= KT_I18N::translate('Total dated deaths');
+        $content	= format_indi_table($list['list']);
+    break;
+    case 'undatedDeaths' :
+        $list       = $stats->totalUndatedDeaths();
+        $title 		= KT_I18N::translate('Total undated deaths');
+        $content	= format_indi_table($list['list']);
+    break;
 
 	default:
 		$title 		= '';
