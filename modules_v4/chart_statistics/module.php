@@ -210,8 +210,32 @@ class chart_statistics_KT_Module extends KT_Module implements KT_Module_Chart {
                                 <td class="facts_label"><?php echo KT_I18N::translate('Total deaths'); ?></td>
                             </tr>
                             <tr>
-                                <td class="facts_value" align="center"><?php echo KT_I18n::number($stats->totalBirths()); ?></td>
-                                <td class="facts_value" align="center"><?php echo KT_I18n::number($stats->totalDeaths()); ?></td>
+                                <td class="facts_value" align="center">
+                                    <?php
+                                    $totals      = $stats->totalBirths();
+                                    $dated       = $stats->totalDatedBirths();
+                                    $undated     = $stats->totalUndatedBirths();
+                                    $totalsLink  = '<a href="statisticsTables.php?ged=' . $GEDCOM . '&amp;table=totalBirths" target="_blank">' .
+                                        KT_I18n::number($totals['count']) . '
+                                    </a>';
+                                    $datedLink   = '<a href="statisticsTables.php?ged=' . $GEDCOM . '&amp;table=datedBirths" target="_blank">' .
+                                        KT_I18n::number($dated['count']) . '
+                                    </a>';
+                                    $undatedLink = '<a href="statisticsTables.php?ged=' . $GEDCOM . '&amp;table=undatedBirths" target="_blank">' .
+                                        KT_I18n::number($undated['count']) . '
+                                    </a>'; ?>
+                                    <?php echo KT_I18N::translate('%1s (%2s with a birth date and %3s without)', $totalsLink, $datedLink, $undatedLink); ?>
+                                </td>
+                                <td class="facts_value" align="center">
+                                    <?php
+                                    $totals      = $stats->totalDeaths();
+                                    $dated       = $stats->totalDatedDeaths();
+                                    $undated     = $stats->totalUndatedDeaths();
+                                    $undatedLink = '<a href="statisticsTables.php?ged=' . $GEDCOM . '&amp;table=undatedDeaths" target="_blank">' .
+                                        KT_I18n::number($undated['count']) . '
+                                    </a>'; ?>
+                                    <?php echo KT_I18N::translate('%1s (%2s with a death date and %3s without)', KT_I18n::number($totals['count']), KT_I18n::number($dated['count']), $undatedLink); ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="facts_label"><?php echo KT_I18N::translate('Births by century'); ?></td>

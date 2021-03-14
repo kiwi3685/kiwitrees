@@ -130,6 +130,22 @@ switch ($table) {
 			break;
 		}
 	break;
+    case 'totalBirths' :
+        $list       = $stats->totalBirths();
+        $title 		= KT_I18N::translate('Total births');
+        $content	= format_indi_table($list['list']);
+    break;
+    case 'datedBirths' :
+        $list       = $stats->totaldatedBirths();
+        $title 		= KT_I18N::translate('Total dated births');
+        $content	= format_indi_table($list['list']);
+    break;
+    case 'undatedBirths' :
+        $list       = $stats->totalUndatedBirths();
+        $title 		= KT_I18N::translate('Total undated births');
+        $content	= format_indi_table($list['list']);
+    break;
+
 	default:
 		$title 		= '';
 		$content	= KT_I18N::translate('No table selected');
