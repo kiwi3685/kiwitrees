@@ -61,7 +61,7 @@ class list_calendar_KT_Module extends KT_Module implements KT_Module_List {
 		$menu  = new KT_Menu(
 			$this->getTitle(),
 			'calendar.php?ged=' . KT_GEDURL,
-			'menu-list-branches'
+			'menu-list-calendar'
 		);
 		$menus[] = $menu;
 		return $menus;
