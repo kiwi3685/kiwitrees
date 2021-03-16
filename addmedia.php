@@ -237,14 +237,14 @@ switch ($action) {
 					$controller->addInlineJavascript('openerpasteid("' . $media_id . '");');
 				}
 			}
-		} ?>
-
-		<div style="margin: 20px 50px">
+		}
+        ?>
+		<div style="margin: 20px 50px;">
 			<button class="btn btn-primary" type="button" onclick="closePopupAndReloadParent();">
 				<i class="fa fa-times"></i>
 				<?php echo KT_I18N::translate('close'); ?>
 			</button>
-			<p class="warning"><?php echo KT_I18N::translate('Click the close button to return to the manage media page.'); ?></p>
+			<p class="warning"><?php echo KT_I18N::translate('Click the close button to return to the previous page.'); ?></p>
 		</div>
 		<?php return;
 	case 'update': // Save the information from the “editmedia” action

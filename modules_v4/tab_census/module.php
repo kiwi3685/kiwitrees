@@ -82,10 +82,10 @@ class tab_census_KT_Module extends KT_Module implements KT_Module_Tab {
 			<?php if (KT_USER_CAN_EDIT) { ?>
 				<div class="descriptionbox rela">
 					<span>
-						<a href="edit_interface.php?action=add&pid=<?php echo $xref; ?>&fact=CENS&accesstime=<?php echo KT_TIMESTAMP; ?>&ged=<?php echo KT_GEDCOM; ?>" target="_blank">
-							<i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>
+                        <a href="#" onclick="add_new_record('<?php echo $xref; ?>','CENS');return false;">
+                            <i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>
 							<?php echo KT_I18N::translate('Add census'); ?>
-						</a>
+                        </a>
 					</span>
 					<?php if (!$EXPAND_SOURCES) { ?>
 						<span>

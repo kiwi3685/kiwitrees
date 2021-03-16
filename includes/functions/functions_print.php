@@ -1122,30 +1122,39 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		$translated_addfacts[$addfact] = KT_Gedcom_Tag::getLabel($addfact);
 	}
 	uasort($translated_addfacts, 'factsort');
-	echo '<tr><td class="descriptionbox">';
-	echo KT_I18N::translate('Fact or event');
-	echo help_link('add_facts'), '</td>';
-	echo '<td class="optionbox wrap">';
-	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';
-	echo '<select id="newfact" name="newfact">';
-	echo '<option value="" disabled selected>' . KT_I18N::translate('Select') . '</option>';
-	foreach ($translated_addfacts as $fact=>$fact_name) {
-		if ($fact !== 'EVEN' && $fact !== 'FACT') {
-			echo '<option value="', $fact, '">', $fact_name, '</option>';
-		}
-	}
-	if ($type == 'INDI' || $type == 'FAM') {
-		echo '<option value="EVEN">', KT_I18N::translate('Custom event'), '</option>';
-		echo '<option value="FACT">', KT_I18N::translate('Custom Fact'), '</option>';
-	}
-	echo '</select>';
-	echo '<input type="button" value="', KT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
-	echo '<span class="quickfacts">';
-		foreach ($quickfacts as $fact) {
-			echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . KT_TIMESTAMP . '&ged=' . KT_GEDCOM . '" target="_blank">', KT_Gedcom_Tag::getLabel($fact), '</a>';
-		}
-	echo '</span></form>';
-	echo '</td></tr>';
+
+    ?>
+    <tr>
+        <td class="descriptionbox">
+            <?php
+            echo KT_I18N::translate('Fact or event');
+            help_link('add_facts');
+            ?>
+        </td>
+        <td class="optionbox wrap">
+	        <form method="get" name="newfactform" action="" onsubmit="return false;">
+	            <select id="newfact" name="newfact">
+	                <option value="" disabled selected><?php echo KT_I18N::translate('Select'); ?></option>
+            	    <?php foreach ($translated_addfacts as $fact => $fact_name) { ?>
+            		    <option value="<?php echo $fact; ?>"><?php echo $fact_name; ?></option>
+            	    <?php }
+                	if ($type == 'INDI' || $type == 'FAM') { ?>
+                		<option value="EVEN"><?php echo KT_I18N::translate('Custom event'); ?></option>
+                        <option value="FACT"><?php echo KT_I18N::translate('Custom fact'); ?></option>
+                	<?php } ?>
+	            </select>
+            	<input type="button" value="<?php echo KT_I18N::translate('Add'); ?>" onclick="add_record('<?php echo $id; ?>', 'newfact');">
+            	<span class="quickfacts">
+                	<?php foreach ($quickfacts as $fact) { ?>
+                        <a href="#" onclick="add_new_record('<?php echo $id; ?>','<?php echo $fact; ?>');return false;">
+                            <?php echo KT_Gedcom_Tag::getLabel($fact); ?>
+                        </a>
+                	<?php } ?>
+            	</span>
+            </form>
+	    </td>
+    </tr>
+    <?php
 }
 
 /**
@@ -1226,29 +1235,40 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 		$translated_addfacts[$addfact] = KT_Gedcom_Tag::getLabel($addfact);
 	}
 	uasort($translated_addfacts, 'factsort');
-	echo '<tr><td class="descriptionbox">';
-	echo KT_I18N::translate('Fact or event');
-	echo help_link('add_facts'), '</td>';
-	echo '<td class="optionbox wrap">';
-	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';
-	echo '<select id="newfact2" name="newfact2">';
-	echo '<option value="" disabled selected>' . KT_I18N::translate('Select') . '</option>';
-	foreach ($translated_addfacts as $fact=>$fact_name) {
-		echo '<option value="', $fact, '">', $fact_name, '</option>';
-	}
-	if ($type == 'INDI' || $type == 'FAM') {
-		echo '<option value="EVEN">', KT_I18N::translate('Custom event'), '</option>';
-	}
-	echo '</select>';
-	echo '<input type="button" value="', KT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';
-	echo '<span class="quickfacts">';
-	foreach ($quickfacts as $fact) {
-		echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . KT_TIMESTAMP . '&ged=' . KT_GEDCOM . '" target="_blank">', KT_Gedcom_Tag::getLabel($fact), '</a>';
-	}
-	echo '</span></form>';
-	echo '</td></tr>';
-}
 
+    ?>
+    <tr>
+        <td class="descriptionbox">
+            <?php echo
+            KT_I18N::translate('Fact or event');
+            help_link('add_facts');
+            ?>
+        </td>
+        <td class="optionbox wrap">
+	        <form method="get" name="newfactform" action="" onsubmit="return false;">
+	            <select id="newfact2" name="newfact2">
+	                <option value="" disabled selected><?php echo KT_I18N::translate('Select'); ?></option>
+                	    <?php foreach ($translated_addfacts as $fact => $fact_name) { ?>
+                		<option value="<?php echo $fact; ?>"><?php echo $fact_name; ?></option>
+                	<?php }
+                	if ($type == 'INDI' || $type == 'FAM') { ?>
+                        <option value="EVEN"><?php echo KT_I18N::translate('Custom event'); ?></option>
+                        <option value="FACT"><?php echo KT_I18N::translate('Custom fact'); ?></option>
+                	<?php } ?>
+	            </select>
+                <input type="button" value="<?php echo KT_I18N::translate('Add'); ?>" onclick="add_record('<?php echo $id; ?>', 'newfact2');">
+                <span class="quickfacts">
+                	<?php foreach ($quickfacts as $fact) { ?>
+                        <a href="#" onclick="add_new_record('<?php echo $id; ?>','<?php echo $fact; ?>');return false;">
+                            <?php echo KT_Gedcom_Tag::getLabel($fact); ?>
+                        </a>
+                	<?php } ?>
+            	</span>
+            </form>
+	    </td>
+    </tr>
+    <?php
+}
 
 /**
 * javascript declaration for calendar popup
