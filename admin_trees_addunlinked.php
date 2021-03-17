@@ -68,7 +68,7 @@ $controller
 		</tr>
 		<tr>
 			<td>
-                <a href="#" onclick="window.open('addmedia.php?action=showmediaform', '_blank', null);return false;">
+                <a href="admin_media_upload.php">
 					<?php echo /* I18N: A media object that is not linked to any other record */ KT_I18N::translate('Create a new media object'); ?>
 				</a>
 			</td>
