@@ -181,6 +181,7 @@ case 'DATE':
 		'<table border="1">'.
 		'<tr><th>'.KT_I18N::translate('Date range').'</th><th>'.KT_I18N::translate('Format').'</th><th>'.KT_I18N::translate('Shortcut').'</th></tr>'.
 		'<tr><td>'.$dates['BET 1900 AND 1910'].'</td><td><tt dir="ltr" lang="en">BET 1900 AND 1910</tt></td><td><tt dir="ltr" lang="en">1900-1910</tt></td></tr>'.
+        '<tr><td><tt dir="ltr" lang="en">BET 13 06 1900 AND 21 12 1910</tt></td><td><tt dir="ltr" lang="en">BET 13 JUN 1900 AND 21 DEC 1910</tt></td><td><tt dir="ltr" lang="en">&nbsp;</tt></td></tr>'.
 		'<tr><td>'.$dates['AFT 1900'].'</td><td><tt dir="ltr" lang="en">AFT 1900</tt></td><td><tt dir="ltr" lang="en">&gt;1900</tt></td></tr>'.
 		'<tr><td>'.$dates['BEF 1910'].'</td><td><tt dir="ltr" lang="en">BEF 1910</tt></td><td><tt dir="ltr" lang="en">&lt;1910</tt></td></tr>'.
 		'<tr><td>'.$dates['BET JAN 1900 AND MAR 1900'].'</td><td><tt dir="ltr" lang="en">BET JAN 1900 AND MAR 1900</tt></td><td><tt dir="ltr" lang="en">Q1 1900</tt></td></tr>'.
@@ -192,6 +193,7 @@ case 'DATE':
 		'<table border="1">'.
 		'<tr><th>'.KT_I18N::translate('Date period').'</th><th>'.KT_I18N::translate('Format').'</th><th>'.KT_I18N::translate('Shortcut').'</th></tr>'.
 		'<tr><td>'.$dates['FROM 1900 TO 1910'].'</td><td><tt dir="ltr" lang="en">FROM 1900 TO 1910</tt></td><td><tt dir="ltr" lang="en">1900~1910</tt></td></tr>'.
+        '<tr><td><tt dir="ltr" lang="en">FROM 13 06 1900 TO 21 12 1910</tt></td><td><tt dir="ltr" lang="en">FROM 13 JUN 1900 TO 21 DEC 1910</tt></td><td><tt dir="ltr" lang="en">&nbsp;</tt></td></tr>'.
 		'<tr><td>'.$dates['FROM 1900'].'</td><td><tt dir="ltr" lang="en">FROM 1900</tt></td><td><tt dir="ltr" lang="en">1900-</tt></td></tr>'.
 		'<tr><td>'.$dates['TO 1910'].'</td><td><tt dir="ltr" lang="en">TO 1910</tt></td><td><tt dir="ltr" lang="en">-1900</tt></td></tr>'.
 		'</table>'.
