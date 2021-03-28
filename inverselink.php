@@ -233,7 +233,7 @@ if ($action == 'choose' && $paramok) {
 							<i class="fa fa-link"></i>
 							<?php echo KT_I18N::translate('Set link'); ?>
 						</button>
-						<button class="btn btn-primary" type="button" onclick="closePopupAndReloadParent();">
+						<button class="btn btn-primary" type="button" onclick="window.close();">
 							<i class="fa fa-times"></i>
 							<?php echo KT_I18N::translate('close'); ?>
 						</button>
@@ -263,7 +263,8 @@ if ($action == 'choose' && $paramok) {
 	} else {
 		linkMedia($mediaid, $linktoid, 1, $update_CHAN != 'no_change');
 	}
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
+    $controller->addInlineJavascript('window.opener.location.reload();window.close();');
+
 }
 ?>
 <script>
