@@ -263,6 +263,7 @@ if ($action == 'choose' && $paramok) {
 	} else {
 		linkMedia($mediaid, $linktoid, 1, $update_CHAN != 'no_change');
 	}
+
     $controller->addInlineJavascript('window.opener.location.reload();window.close();');
 
 }
