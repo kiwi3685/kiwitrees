@@ -377,6 +377,9 @@ function print_fact(KT_Event $fact, KT_GedcomRecord $record) {
 				echo KT_Gedcom_Tag::getLabelValue('_KT_USER', htmlspecialchars($match[2]));
 			}
 			break;
+        case 'PEDI':
+            echo KT_Gedcom_Tag::getLabelValue('PEDI', KT_Gedcom_Code_Pedi::getValue($match[2]));
+            break;
 		case 'RESN':
 			switch ($match[2]) {
 			case 'none':
