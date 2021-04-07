@@ -121,7 +121,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 			<?php if (KT_USER_CAN_EDIT) { ?>
 				<div class="descriptionbox rela">
 					<span>
-						<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=add-dna&amp;pid=<?php echo $xref; ?>&amp;ged=<?php echo KT_GEDCOM; ?>" target="_blank">
+						<a href="#" onclick="window.open('module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=add-dna&amp;pid=<?php echo $xref; ?>&amp;ged=<?php echo KT_GEDCOM; ?>', '_blank')" title="<?php echo KT_I18N::translate('Add DNA data'); ?>">
 							<i style="margin: 0 3px 0 10px;" class="icon-image_add"></i>
 							<?php echo KT_I18N::translate('Add DNA data'); ?>
 						</a>
@@ -219,7 +219,7 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 									<?php echo timestamp_to_gedcom_date(strtotime($row->date))->Display(); ?>
 								</td>
 								<td>
-									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=edit-dna&amp;pid=<?php echo $xref; ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;dna-id=<?php echo $row->dna_id; ?>" target="_blank" title="<?php echo KT_I18N::translate('Edit DNA data'); ?>">
+                                    <a href="#" onclick="window.open('module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=edit-dna&amp;pid=<?php echo $xref; ?>&amp;ged=<?php echo KT_GEDCOM; ?>&amp;dna-id=<?php echo $row->dna_id; ?>', '_blank')" title="<?php echo KT_I18N::translate('Edit DNA data'); ?>">
 										<i style="margin: 0 3px 0 10px;" class="icon-edit"></i>
 									</a>
 								</td>
@@ -285,12 +285,13 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 						$dna_id_a, $dna_id_b, $cms, $seg, $percent, $source, $note
 					));
 
-					echo "
+                    echo "
 						<script>
 							opener.location.reload();
 							window.close();
 						</script>
 					";
+
 				} ?>
 
 				<div id="edit_interface-page">
@@ -349,12 +350,14 @@ class tab_dna_KT_Module extends KT_Module implements KT_Module_Tab {
 							WHERE dna_id	= ?
 						"
 					)->execute(array($dna_id_b, $cms, $seg, $percent, $source, $note, $dna_id));
-					echo "
+
+                    echo "
 						<script>
 							opener.location.reload();
 							window.close();
 						</script>
 					";
+
 				}?>
 
 				<div id="edit_interface-page">
