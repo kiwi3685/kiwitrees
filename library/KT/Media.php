@@ -144,7 +144,7 @@ class KT_Media extends KT_GedcomRecord {
 			}
 			// Try to create a thumbnail automatically
 			$imgsize = getimagesize($main_file);
-			if ($imgsize[0] && $imgsize[1]) {
+			if ($imgsize && ($imgsize[0] && $imgsize[1])) {
 				// Image small enough to be its own thumbnail?
 				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
 					AddToLog('Thumbnail created for ' . $main_file . ' (copy of main image)', 'media');
