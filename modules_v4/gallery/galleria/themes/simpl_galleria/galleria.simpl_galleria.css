@@ -23,14 +23,14 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 40px;
+    bottom: 160px;
 	border:2px solid #b2c7d7;
 	background: url(blu_stripes.png);
 }
 .galleria-bar {
 	border: 1px solid #2694e8;
 	background: #99c2ff url(ui-bg_glass_50_99c2ff_1x400.png) 50% 50% repeat-x;
-    height: 40px;
+    height: 160px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -108,16 +108,16 @@
     float: none;
 }
 .galleria-thumbnails .galleria-image {
-    width: 27px;
-    height: 27px;
+    width: auto;
+    max-height: 150px;
     display: inline-block;
-    margin: 0 0 0 2px;
+    margin: 0 0 2px 2px;
     cursor: pointer;
-    border: 3px double #111;
-    *border: 1px solid #111;
+    border: 1px solid #111;
     opacity: .6;
     filter: alpha(opacity=60);
     background: transparent;
+    vertical-align: top;
 }
 .galleria-thumbnails .galleria-image {
     *display: inline;

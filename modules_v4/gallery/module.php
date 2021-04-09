@@ -589,44 +589,44 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 		$js		= 'Galleria.loadTheme("' . KT_STATIC_URL . KT_MODULES_DIR . $this->getName() . '/galleria/themes/' . $theme . '/galleria.' . $theme . '.min.js");';
 		switch ($plugin) {
 			case 'flickr':
-			$flickr_set = get_block_setting($item_id, 'gallery_folder_f');
-			$js	.= '
-				Galleria.run("#galleria", {
-					flickr: "set:' . $flickr_set . '",
-					flickrOptions: {
-						sort: "date-posted-asc",
-						description: true,
-						imageSize: "original"
-					},
-					_showCaption: false,
-					imageCrop: false
-				});
-			';
+    			$flickr_set = get_block_setting($item_id, 'gallery_folder_f');
+    			$js	.= '
+    				Galleria.run("#galleria", {
+    					flickr: "set:' . $flickr_set . '",
+    					flickrOptions: {
+    						sort: "date-posted-asc",
+    						description: true,
+    						imageSize: "original"
+    					},
+    					_showCaption: false,
+    					imageCrop: false
+    				});
+    			';
 			break;
 			default:
-			$js	.='
-				Galleria.ready(function(options) {
-					this.bind("image", function(e) {
-						data = e.galleriaData;
-						jQuery("#links_bar").html(data.layer);
-					});
-				});
-				Galleria.run("#galleria", {
-					imageCrop: false,
-					_showCaption: false,
-					_locale: {
-						show_captions:		"' . KT_I18N::translate('Show descriptions') . '",
-						hide_captions:		"' . KT_I18N::translate('Hide descriptions') . '",
-						play:				"' . KT_I18N::translate('Play slideshow') . '",
-						pause:				"' . KT_I18N::translate('Pause slideshow') . '",
-						enter_fullscreen:	"' . KT_I18N::translate('Enter fullscreen') . '",
-						exit_fullscreen:	"' . KT_I18N::translate('Exit fullscreen') . '",
-						next:				"' . KT_I18N::translate('Next image') . '",
-						prev:				"' . KT_I18N::translate('Previous image') . '",
-						showing_image:		"" // counter not compatible with I18N of kiwitrees
-					}
-				});
-			';
+    			$js	.='
+    				Galleria.ready(function(options) {
+    					this.bind("image", function(e) {
+    						data = e.galleriaData;
+    						jQuery("#links_bar").html(data.layer);
+    					});
+    				});
+    				Galleria.run("#galleria", {
+    					imageCrop: false,
+    					_showCaption: false,
+    					_locale: {
+    						show_captions:		"' . KT_I18N::translate('Show descriptions') . '",
+    						hide_captions:		"' . KT_I18N::translate('Hide descriptions') . '",
+    						play:				"' . KT_I18N::translate('Play slideshow') . '",
+    						pause:				"' . KT_I18N::translate('Pause slideshow') . '",
+    						enter_fullscreen:	"' . KT_I18N::translate('Enter fullscreen') . '",
+    						exit_fullscreen:	"' . KT_I18N::translate('Exit fullscreen') . '",
+    						next:				"' . KT_I18N::translate('Next image') . '",
+    						prev:				"' . KT_I18N::translate('Previous image') . '",
+    						showing_image:		"" // counter not compatible with I18N of kiwitrees
+    					}
+    				});
+    			';
 			break;
 		}
 		return $js;
@@ -800,8 +800,8 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 			}
 			if (KT_USER_CAN_ACCESS || $media_links != '') {
 				$html =
-					'<div id="links_bar"></div>'.
-					'<div id="galleria" style="width:80%;">';
+					'<div id="links_bar"  style="width:14%;"></div>'.
+					'<div id="galleria" style="width:85%; height: 720px;">';
 			} else {
 				$html =
 					'<div id="galleria" style="width:100%;">';
