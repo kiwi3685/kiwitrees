@@ -194,7 +194,7 @@ $host		= KT_Filter::server('SERVER_NAME', null, $host);
 $port		= KT_Filter::server('SERVER_PORT', null, '80');
 $port		= KT_Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
 // Ignore the default port.
-if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
+if ($protocol === 'http' && $port === '80' || $protocol === 'https' && in_array($port, array('443', '80'))) {
 	$port = '';
 } else {
 	$port = ':' . $port;
