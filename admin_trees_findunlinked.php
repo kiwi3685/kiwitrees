@@ -195,7 +195,7 @@ $sql_REPO = "
 						<div>
 							<?php foreach ($rows_NOTE as $row) {
                                 $id = $row['xref'];
-								$record = KT_Note::getInstance($id);
+								$record = KT_Note::getInstance($row);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
