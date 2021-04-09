@@ -34,11 +34,10 @@ $controller
 	->pageHeader()
 	->addInlineJavascript('
 		jQuery("#unlinked_accordion").accordion({heightStyle: "content", collapsible: true, active: 0, header: "h3.drop"});
-		jQuery("#unlinked_accordion").css("visibility", "visible");
 	');
 
 $action	    = KT_Filter::post('action');
-$ged	    = KT_Filter::post('ged', null, KT_GED_ID);
+$ged	    = KT_Filter::post('ged');
 $records	= KT_Filter::post('records');
 $list		= array(
 				'Individuals',
@@ -50,7 +49,7 @@ $list		= array(
 
 // the sql queries used to identify unlinked indis
 $sql_INDI = "
-	SELECT i_id
+	SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec
 	FROM `##individuals`
 	LEFT OUTER JOIN ##link
 	 ON (##individuals.i_id = ##link.l_from AND ##individuals.i_file = ##link.l_file)
@@ -58,7 +57,7 @@ $sql_INDI = "
 	 AND ##link.l_to IS NULL
 ";
 $sql_SOUR = "
-	SELECT s_id
+    SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec
 	FROM `##sources`
 	LEFT OUTER JOIN ##link
 	 ON (##sources.s_id = ##link.l_to AND ##sources.s_file = ##link.l_file)
@@ -66,7 +65,7 @@ $sql_SOUR = "
 	 AND ##link.l_from IS NULL
 ";
 $sql_MEDIA = "
-	SELECT m_id, m_filename
+    SELECT m_type AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename, m_titl
 	FROM `##media`
 	LEFT OUTER JOIN ##link
 	 ON (##media.m_id = ##link.l_to AND ##media.m_file = ##link.l_file)
@@ -74,7 +73,7 @@ $sql_MEDIA = "
 	 AND ##link.l_from IS NULL
 ";
 $sql_NOTE = "
-	SELECT o_id
+    SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec
 	FROM `##other`
 	LEFT OUTER JOIN ##link
 	 ON (##other.o_id = ##link.l_to AND ##other.o_file = ##link.l_file)
@@ -83,7 +82,7 @@ $sql_NOTE = "
 	 AND ##link.l_from IS NULL
 ";
 $sql_REPO = "
-	SELECT o_id
+    SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec
 	FROM `##other`
 	LEFT OUTER JOIN ##link
 	 ON (##other.o_id = ##link.l_to AND ##other.o_file = ##link.l_file)
@@ -113,7 +112,7 @@ $sql_REPO = "
 			<select name="ged">
 				<?php foreach (KT_Tree::getAll() as $tree) { ?>
 					<option value="<?php echo $tree->tree_id; ?>"
-    					<?php if (empty($ged) && $tree->tree_id == KT_GED_ID || !empty($ged) && $ged == $tree->tree_name) { ?>
+    					<?php if (empty($ged) && $tree->tree_id == KT_GED_ID || !empty($ged) && $ged == $tree->tree_id) { ?>
     						 selected="selected"
     					<?php } ?>
     					 dir="auto"
@@ -151,7 +150,7 @@ $sql_REPO = "
 <?php
 	// START OUTPUT
 	if ($action == 'view') { ?>
-		<div id="unlinked_accordion" style="visibility:hidden">
+		<div id="unlinked_accordion">
 			<?php
 			if ($records) {
 				// -- Individuals --
@@ -161,8 +160,8 @@ $sql_REPO = "
 						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked individual', '%s unlinked individuals', count($rows_INDI), count($rows_INDI)); ?></h3>
 						<div>
 							<?php foreach ($rows_INDI as $row) {
-								$id = $row['i_id'];
-								$record = KT_Person::getInstance($id);
+								$id = $row['xref'];
+								$record = KT_Person::getInstance($row);
 								$fullname =  $record->getLifespanName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 							<?php } ?>
@@ -178,8 +177,8 @@ $sql_REPO = "
 						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked source', '%s unlinked sources', count($rows_SOUR), count($rows_SOUR)); ?></h3>
 						<div>
 							<?php foreach ($rows_SOUR as $row) {
-								$id = $row['s_id'];
-								$record = KT_Source::getInstance($id);
+                                $id = $row['xref'];
+								$record = KT_Source::getInstance($row);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
@@ -195,7 +194,7 @@ $sql_REPO = "
 						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked note', '%s unlinked notes', count($rows_NOTE), count($rows_NOTE)); ?></h3>
 						<div>
 							<?php foreach ($rows_NOTE as $row) {
-								$id = $row['o_id'];
+                                $id = $row['xref'];
 								$record = KT_Note::getInstance($id);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
@@ -212,8 +211,8 @@ $sql_REPO = "
 						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked repository', '%s unlinked repositories', count($rows_REPO), count($rows_REPO)); ?></h3>
 						<div>
 							<?php foreach ($rows_REPO as $row) {
-								$id = $row['o_id'];
-								$record = KT_Repository::getInstance($id);
+                                $id = $row['xref'];
+								$record = KT_Repository::getInstance($row);
 								$fullname =  $record->getFullName(); ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $fullname; ?><span class="id">(<?php echo $id; ?>)</span></a>
 								<?php } ?>
@@ -229,10 +228,11 @@ $sql_REPO = "
 						<h3 class="drop"><?php echo KT_I18N::plural('%s unlinked media object', '%s unlinked media objects', count($rows_MEDIA), count($rows_MEDIA)); ?></h3>
 						<div>
 							<?php foreach ($rows_MEDIA as $row) {
-								$id = $row['m_id'];
+								$id = $row['xref'];
 								$folder = $row['m_filename'];
-								$record = KT_Media::getInstance($id);
-								$title =  $record->getTitle(); ?>
+								$title =  $row['m_titl'];
+								$record = KT_Media::getInstance($row);
+                                ?>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer">
 									<?php echo $folder; ?>
 									<span class="id">&nbsp;(<?php echo $id; ?>)&nbsp;</span>
