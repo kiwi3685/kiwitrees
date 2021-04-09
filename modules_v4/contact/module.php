@@ -85,9 +85,11 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 		if ((!$contact_user_id && !$webmaster_user_id) || (!$supportLink && !$contactLink)) {
 			return '';
 		} else {
-			$menu = new KT_Menu($this->getMenuTitle(), '#', 'menu-contact', 'down');
-			$menu->addOnclick("window.open('module.php?mod=" . $this->getName() . "&amp;mod_action=show&amp;url=" . KT_SERVER_NAME . KT_SCRIPT_PATH . addslashes(urlencode(get_query_url())) . "', '');return false;");
-			$menu->addClass('menuitem', 'menuitem_hover', '');
+			$menu = new KT_Menu(
+                $this->getMenuTitle(),
+                'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . KT_SERVER_NAME . KT_SCRIPT_PATH . addslashes(urlencode(get_query_url())),
+                'menu-contact'
+            );
 			return $menu;
 		}
 	}
