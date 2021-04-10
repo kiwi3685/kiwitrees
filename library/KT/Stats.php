@@ -536,7 +536,7 @@ class KT_Stats {
             FROM `##individuals`
             WHERE `i_file`=?
             AND `i_gedcom` REGEXP '\n1 BIRT Y\n1'
-            OR `i_gedcom` REGEXP '\n1 BIRT(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+            OR `i_gedcom` REGEXP '\n1 BIRT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
             ORDER BY i_id
         ")
         ->execute(array($this->_ged_id))
@@ -584,7 +584,7 @@ class KT_Stats {
             FROM `##individuals`
             WHERE `i_file`=?
             AND `i_gedcom` REGEXP '\n1 DEAT Y\n1'
-            OR `i_gedcom` REGEXP '\n1 DEAT(?:.)*(?:\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+            OR `i_gedcom` REGEXP '\n1 DEAT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
             ORDER BY i_id
         ")
         ->execute(array($this->_ged_id))
@@ -1107,7 +1107,7 @@ class KT_Stats {
 			$surn_countries	= array();
 			$indis			= KT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, KT_GED_ID);
 			foreach ($indis as $person) {
-				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcomRecord(), $matches)) {
+				if (preg_match_all('/^2 PLAC (.*, *)*(.*)/m', $person->getGedcomRecord(), $matches)) {
 					// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 					foreach ($matches[1] as $country) {
 						$country = trim($country);
