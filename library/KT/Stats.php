@@ -535,8 +535,7 @@ class KT_Stats {
             SELECT SQL_CACHE DISTINCT i_id
             FROM `##individuals`
             WHERE `i_file`=?
-            AND `i_gedcom` REGEXP '\n1 BIRT Y\n1'
-            OR `i_gedcom` REGEXP '\n1 BIRT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+            AND (`i_gedcom` REGEXP '\n1 BIRT Y\n1' OR `i_gedcom` REGEXP '\n1 BIRT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)')
             ORDER BY i_id
         ")
         ->execute(array($this->_ged_id))
@@ -583,8 +582,7 @@ class KT_Stats {
             SELECT SQL_CACHE DISTINCT i_id
             FROM `##individuals`
             WHERE `i_file`=?
-            AND `i_gedcom` REGEXP '\n1 DEAT Y\n1'
-            OR `i_gedcom` REGEXP '\n1 DEAT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)'
+            AND (`i_gedcom` REGEXP '\n1 DEAT Y\n1' OR `i_gedcom` REGEXP '\n1 DEAT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)')
             ORDER BY i_id
         ")
         ->execute(array($this->_ged_id))
@@ -602,7 +600,7 @@ class KT_Stats {
             SELECT SQL_CACHE DISTINCT d_gid
             FROM `##dates`
             WHERE d_file=?
-            AND d_year<>0
+            AND d_year > 0
             AND d_fact='DEAT'
             AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')
             ORDER BY d_gid
