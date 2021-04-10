@@ -553,7 +553,7 @@ class KT_Stats {
             SELECT SQL_CACHE DISTINCT d_gid
             FROM `##dates`
             WHERE d_file=?
-            AND d_year<>0
+            AND d_year > 0
             AND d_fact='BIRT'
             AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')
             ORDER BY d_gid
