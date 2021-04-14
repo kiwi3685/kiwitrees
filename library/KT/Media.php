@@ -426,7 +426,6 @@ class KT_Media extends KT_GedcomRecord {
 				' dir="'   . 'auto'								. '"' . // For the tool-tip
 				' class="' . 'icon-mime-' . $mime_type			. '"' .
 				' title="' . strip_tags($this->getFullName())	. '"' .
-				' style="' . 'font-size:1em;'					. '"' .
 				'></i>';
 		} else {
 			$imgsize = getimagesize($this->getServerFilename('thumb'));
