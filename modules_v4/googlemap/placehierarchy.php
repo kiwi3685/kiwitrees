@@ -140,7 +140,7 @@ function create_map($placelevels) {
 	if ($latlng) {
         $plzoom = $latlng['pl_zoom'];
     } else {
-        $plzoom = '';
+        $plzoom = 3;
     }
 
 	echo '
