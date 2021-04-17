@@ -1699,11 +1699,9 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 									}
 								}
 
-								if ($row['pl_id'] != '') {
-									$id = $row['pl_id'];
-								}
+								if (!empty($row['pl_id'])) { $id = $row['pl_id'];}
 
-								if ($row['pl_place'] != '') {
+								if (!empty($row['pl_place'])) {
 									$placestr2 = $mapstr_edit . $id . '&amp;level=' . $level . $mapstr3 . $mapstr5 . KT_I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
 									if ($row['pl_place'] == 'unknown')
 										$matched[$x]++;
@@ -1726,25 +1724,27 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 									$plac[$z] = '<td>' . $placestr2 . '</td>';
 								}
 
-								if ($row['pl_lati'] == '0') {
+								if (!empty($row['pl_lati']) && $row['pl_lati'] == '0') {
 									$lati[$z] = '<td class="error"><strong>' . $row['pl_lati'] . '</strong></td>';
-								} elseif ($row['pl_lati'] != '') {
+								} elseif (!empty($row['pl_lati']) && $row['pl_lati'] <> '0') {
 									$lati[$z] = '<td>' . $row['pl_lati'] . '</td>';
 								} else {
 									$lati[$z] = '<td class="error center"><strong>X</strong></td>';
 									$prev_lati = 0;
 									$matched[$x]++;
 								}
-								if ($row['pl_long'] == '0') {
+								if (!empty($row['pl_long']) && $row['pl_long'] == '0') {
 									$long[$z] = '<td class="error"><strong>' . $row['pl_long'] . '</strong></td>';
-								} elseif ($row['pl_long']!='') {
+								} elseif (!empty($row['pl_long'])  && $row['pl_long'] <> '0') {
 									$long[$z] = '<td>' . $row['pl_long'] . '</td>';
 								} else {
 									$long[$z] = '<td class="error center"><strong>X</strong></td>';
 									$matched[$x]++;
 								}
 								$level++;
-								$mapstr3 = $mapstr3 . '&amp;parent[' . $z . ']=' . addslashes($row['pl_placerequested']);
+                                if (!empty($row['pl_placerequested'])) {
+								    $mapstr3 = $mapstr3 . '&amp;parent[' . $z . ']=' . addslashes($row['pl_placerequested']);
+                                }
 								$mapstr4 = $mapstr4 . '&amp;parent[' . $z . ']=' . addslashes(rtrim(ltrim($levels[$z])));
 								$z++;
 							}

@@ -110,7 +110,7 @@ function set_levelm($level, $parent) {
 		$levelm=0;
 	else {
 		for ($i=1; $i<=$level; $i++) {
-			if ($parent[$level-$i]!="")
+			if (!empty($parent[$level-$i]))
 				$fullplace .= $parent[$level-$i].", ";
 			else
 				$fullplace .= "Unknown, ";
@@ -128,7 +128,7 @@ function create_map($placelevels) {
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
-	$parent = safe_GET('parent', KT_REGEX_UNSAFE);
+	$parent = KT_Filter::get('parent', KT_REGEX_UNSAFE);
 
 	// create the map
 	$levelm = set_levelm($level, $parent);
@@ -136,7 +136,12 @@ function create_map($placelevels) {
 		KT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 		->execute(array($levelm))
 		->fetch(PDO::FETCH_ASSOC);
-	$plzoom	= $latlng['pl_zoom'];// Map zoom level
+	// Map zoom level
+	if ($latlng) {
+        $plzoom = $latlng['pl_zoom'];
+    } else {
+        $plzoom = '';
+    }
 
 	echo '
 		<div id="place_map">
@@ -145,18 +150,19 @@ function create_map($placelevels) {
 		</div>';
 
 	if (KT_USER_IS_ADMIN) {
+        $placecheck_url = $update_places_url = $adminplaces_url = '';
 		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
 		if ($parent && isset($parent[0]) ) {
 			$placecheck_url .= '&amp;country=' . $parent[0];
 			if (isset($parent[1])) {
 				$placecheck_url .= '&amp;state=' . $parent[1];
 			}
+    		$update_places_url = 'admin_trees_places.php?ged=' . KT_GEDCOM . '&amp;search=' . $parent[0];
 		}
 		$adminplaces_url = 'module.php?mod=googlemap&amp;mod_action=admin_places';
 		if ($latlng && isset($latlng['pl_id'])) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
-		$update_places_url = 'admin_trees_places.php?ged=' . KT_GEDCOM . '&amp;search=' . $parent[0];
 		echo '<p id="gm_links">
 			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', KT_I18N::translate('Google Maps™ preferences'), '</a>
 			&nbsp;|&nbsp;
@@ -182,7 +188,7 @@ function create_map($placelevels) {
 		'); ?>
 		<div id="streetview">
 			<?php
-			$parent = safe_GET('parent');
+			$parent = KT_Filter::get('parent');
 			global $TBLPREFIX, $pl_lati, $pl_long;
 			if ($level>=1) {
 				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// KT_placelocation lati
