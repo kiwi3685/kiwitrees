@@ -238,15 +238,7 @@ switch ($action) {
 				}
 			}
 		}
-        ?>
-		<div style="margin: 20px 50px;">
-			<button class="btn btn-primary" type="button" onclick="closePopupAndReloadParent();">
-				<i class="fa fa-times"></i>
-				<?php echo KT_I18N::translate('close'); ?>
-			</button>
-			<p class="warning"><?php echo KT_I18N::translate('Click the close button to return to the previous page.'); ?></p>
-		</div>
-		<?php return;
+        return;
 	case 'update': // Save the information from the “editmedia” action
 		$controller->setPageTitle(KT_I18N::translate('Edit media object'));
 
