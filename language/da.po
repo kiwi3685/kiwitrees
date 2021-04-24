@@ -10,8 +10,9 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 # Jamie Jaconelli, 2014-2017
-# Jamie Jaconelli, 2018-2020
+# Jamie Jaconelli, 2018-2021
 # Nigel Osborne <kiwi3685@me.com>, 2014
 # Nigel Osborne <kiwi3685@me.com>, 2014,2016-2017
 # ohmadsen <ole@vends-herred.dk>, 2014-2015
@@ -20,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2021-02-19 10:28+1300\n"
-"PO-Revision-Date: 2021-02-27 15:45+1300\n"
+"PO-Revision-Date: 2021-04-20 10:08+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -253,9 +254,9 @@ msgstr "Din webserver bruger PHP version %s, som ikke længere modtager sikkerhe
 
 #: admin.php:78
 #, php-format
-#| msgid "eb server is using PHP version %s, which is no longer maintained.   uld should ask your web service provider to upgrade to a later sion."
+#| msgid "server is using PHP version %s, which is no longer maintained.   uld uld ask your web service provider to upgrade to a later sion."
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should ask your web service provider to upgrade to a later version."
-msgstr ""
+msgstr "Din webserver bruger PHP version %s, som ikke længere bliver vedligeholdt. Du bør bede din udbyder om at opgradere til en nyere version så hurtigt som muligt"
 
 #: admin.php:91
 msgid "These pages provide access to all the configuration settings and management tools for this kiwitrees site."
@@ -2184,17 +2185,17 @@ msgstr "Skal GeoNames databasen (http://www.geonames.org/) bruges til at give fl
 #: admin_trees_config.php:1375
 #| msgid "Use GeoNames database for autocomplete on places"
 msgid "Options for autocomplete on places"
-msgstr ""
+msgstr "Indstillinger for autoudførsler for steder"
 
 #: admin_trees_config.php:1377
 #| msgid "Basic"
 msgid "basic"
-msgstr ""
+msgstr "Standard"
 
 #: admin_trees_config.php:1377
 #| msgid "Advanced"
 msgid "advanced"
-msgstr ""
+msgstr "Avanceret"
 
 #: admin_trees_config.php:1379
 msgid ""
@@ -2204,6 +2205,11 @@ msgid ""
 "                                2) Place names are capitalised automatically using \"word caps\", or capitalising each separate word. This enables faster typing by allowing you to type just lowercase characters. <br><br>\n"
 "                                It is important to remember that such automated help can have unintended consequences. These may need manually correcting during the editing process. "
 msgstr ""
+"Den \"grundlæggende\" autofuldførelse søger i dine eksisterende stednavne efter alle, der starter med den række af tegn, du skriver, og opdateres, når du tilføjer tegn. Der ydes ingen anden hjælp. <br><br>\n"
+"                                Det \"avancerede\" alternativ starter det samme, men giver også yderligere funktioner, som muligvis ikke er kompatible med hvert websteds foretrukne navngivningsstil: <br><br>\n"
+"                                1) Efter at have skrevet et komma og et mellemrum på et hvilket som helst tidspunkt vil det starte søgningen igen, men ved hjælp af efterfølgende niveauer af dine eksisterende steder. Dette gør det f.eks. muligt at tilføje en ny by til en eksisterende region eller amt uden at indtaste alle eksisterende data igen. <br><br>\n"
+"                                2) Stednavne aktiveres automatisk med store bogstaver ved hjælp af \"word caps\" eller store bogstaver i hvert enkelt ord. Dette muliggør hurtigere skrivning ved bare at skrive bare små bogstaver. <br><br>\n"
+"                                Det er vigtigt at huske, at automatiseret hjælp kan få utilsigtede resultater. Disse skal muligvis korrigeres manuelt under redigeringsprocessen."
 
 #: admin_trees_config.php:1388 edit_interface.php:210 edit_interface.php:776 edit_interface.php:916 edit_interface.php:1045 edit_interface.php:1127 edit_interface.php:1256 help_text.php:561 includes/functions/functions_edit.php:956 includes/functions/functions_edit.php:2721
 msgid "Do not update the “last change” record"
@@ -3007,7 +3013,7 @@ msgstr "Familier ikke sorteret efter vielsesdato"
 #: admin_trees_sanity.php:225
 #| msgid "Media objects"
 msgid "Media object issues"
-msgstr ""
+msgstr "Problemer med medieobjekter"
 
 #: admin_trees_sanity.php:233
 #, php-format
@@ -3024,11 +3030,11 @@ msgstr "Hjem"
 
 #: admin_trees_sanity.php:265
 msgid "Thumb"
-msgstr ""
+msgstr "Miniature"
 
 #: admin_trees_sanity.php:266
 msgid "Zero"
-msgstr ""
+msgstr "Nul"
 
 #: admin_trees_sanity.php:267 modules_v4/stories/module.php:524
 msgid "Link"
@@ -3190,7 +3196,7 @@ msgstr "%s har manglende eller forkert dødsdato"
 #: admin_trees_sanity.php:494
 #, php-format
 msgid "%s objects have one or more issues"
-msgstr ""
+msgstr "%s medier har et eller flere problemer"
 
 #: admin_trees_source.php:33
 msgid "Facts or events"
@@ -4414,9 +4420,9 @@ msgid "In the Citation Details field you would enter the page number or other in
 msgstr "I feltet for henvisningsdetaljer kan du angive sidenummer eller anden information, der kan hjælpe med til at finde frem til oplysningerne i kilden."
 
 #: help_text.php:315
-#| msgid "d may have more than one set of parents.  The relationship between  childd the parents can be biological, legal, or based on local ture and dition.  If no pedigree is specified, then a biological ationship will besumed."
+#| msgid "ay have more than one set of parents.  The relationship between  childd  parents can be biological, legal, or based on local ture and dition.  If pedigree is specified, then a biological ationship will besumed."
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed. For this reason it is common to not add any selection here."
-msgstr ""
+msgstr "Et barn kan have mere end ét sæt forældre. Forholdet mellem barn og forældre kan være biologisk, juridisk, eller baseret på lokal kultur og tradition. Hvis der ikke er angivet en afstamning, antages det for en biologisk sammenhæng."
 
 #: help_text.php:320
 msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
@@ -9107,29 +9113,29 @@ msgstr "Ingen %s data"
 #, php-format
 #| msgid "%s Media objects"
 msgid "%1s %2s - Media object has 0 Bytes"
-msgstr ""
+msgstr "%1s %2s - Medie objekt har 0 Bytes"
 
 #: includes/functions/functions_sanity_checks.php:863
 #, php-format
 msgid "%1s %2s - Missing main image"
-msgstr ""
+msgstr "%1s %2s - Mangler hoved billede"
 
 #: includes/functions/functions_sanity_checks.php:870
 #, php-format
 #| msgid "creating thumbnails of images"
 msgid "%1s %2s - Missing thumbnail image"
-msgstr ""
+msgstr "%1s %2s - Mangler miniature billede"
 
 #: includes/functions/functions_sanity_checks.php:877
 #, php-format
 msgid "%1s %2s - Missing main and thumbnail images"
-msgstr ""
+msgstr "%1s %2s - Mangler både hovedbilleder og miniaturer"
 
 #: includes/functions/functions_sanity_checks.php:893
 #, php-format
 #| msgid "%s media objects found"
 msgid "%1s %2s - Media object not linked"
-msgstr ""
+msgstr "%1s %2s - Medie objekt er ikke linket"
 
 #: includes/media_reorder.php:66
 msgid "Click a row then drag-and-drop to re-order media."
@@ -13596,7 +13602,7 @@ msgstr "Dato for skilsmisse"
 #: library/KT/Gedcom/Tag.php:226
 #| msgid "Date of divorce"
 msgid "Place of divorce"
-msgstr ""
+msgstr "Sted for skilsmisse"
 
 #: library/KT/Gedcom/Tag.php:227 library/KT/Gedcom/Tag.php:263
 msgid "Date of marriage"
