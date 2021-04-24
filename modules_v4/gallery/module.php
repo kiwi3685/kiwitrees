@@ -751,13 +751,13 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 		$media_links 	= '';
 		// Get the related media items
 		$sub_folder	= str_replace($MEDIA_DIRECTORY, "",$sub_folder);
-		$sql		= "SELECT * FROM ##media WHERE m_filename LIKE '%" . $sub_folder . "%' ORDER BY m_filename";
+		$sql		= "SELECT * FROM ##media WHERE m_filename LIKE '" . $sub_folder . "%' ORDER BY m_filename";
 		$rows		= KT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
 		if ($plugin == 'kiwitrees') {
 			foreach ($rows as $rowm) {
 				// Get info on how to handle this media file
 				$media	= KT_Media::getInstance($rowm['m_id']);
-				if ($media->canDisplayDetails()) {
+				if ($media && $media->canDisplayDetails()) {
 					$links = array_merge(
 						$media->fetchLinkedIndividuals(),
 						$media->fetchLinkedFamilies(),
