@@ -578,7 +578,7 @@ function print_media_links($factrec, $level, $pid='') {
 	else $size=25;
 	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
 	$objectNum = 0;
-	$mediaWidth = 'auto';
+	$mediaWidth = 'width: auto';
 	if (count($omatch) > 1) {
 		$mediaWidth = ' width: ' . 90 / min(count($omatch), 4) . '%;';
         if (count($omatch) > 4) {
