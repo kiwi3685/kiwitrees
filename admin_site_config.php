@@ -439,7 +439,7 @@ $controller
                 <!-- ANTI-SPAM -->
                 <h3 class="accordion"><?php echo KT_I18N::translate('Anti-spam'); ?></h3>
                 <div id="spam">
-                    <a class="current faq_link" href="https://kiwitrees.net/faqs/administration/site_admin/anti-spam/" target="_blank" rel="noopener noreferrer" title="'. KT_I18N::translate('View FAQ for this page.'). '"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+                    <a class="current faq_link" href="https://kiwitrees.net/faqs/administration/site_admin/anti-spam/" target="_blank" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('View FAQ for this page.'); ?>"><?php echo KT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
                     <br><br>
                     <div class="config_options">
                         <label><?php echo KT_I18N::translate('Use secret field'); ?></label>
