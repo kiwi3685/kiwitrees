@@ -74,10 +74,8 @@ class KT_I18N {
 		// The translation libraries only work with a cache.
 		$cache_options = array( 'automatic_serialization' => true );
 
-		if (ini_get('apc.enabled')) {
-			self::$cache = Zend_Cache::factory('Core', 'Apc', $cache_options, array());
-		} elseif (KT_File::mkdir(KT_DATA_DIR . 'cache')) {
-			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>KT_DATA_DIR . 'cache'));
+		if (KT_File::mkdir(KT_DATA_DIR . 'cache')) {
+			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir' => KT_DATA_DIR . 'cache'));
 		} else {
 			self::$cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
 		}
