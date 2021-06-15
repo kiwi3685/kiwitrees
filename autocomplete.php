@@ -432,16 +432,17 @@ switch ($type) {
             break;
         }
 
-		if (!$data && get_gedcom_setting(KT_GED_ID, 'USE_GEONAMES')) {
+        if (!$data && get_gedcom_setting(KT_GED_ID, 'USE_GEONAMES')) {
 			// No place found?  Use an external gazetteer
-			$url = '
-				http://api.geonames.org/searchJSON
-				?name_startsWith=' . urlencode($term) . '
-				&lang=' . KT_LOCALE . '
-				&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC
-				&style=full
-				&username=kiwiwebtrees
-			'; // password qwertyuiop
+			$url =
+                "http://api.geonames.org/searchJSON" .
+                "?name_startsWith=" . urlencode($term) .
+                "&lang=" . substr(KT_LOCALE, 0, 2) .
+                "&fCode=CMTY&fCode=ADM4&fCode=PPL&fCode=PPLA&fCode=PPLC" .
+                "&style=FULL" .
+                "&maxRows=10" .
+                "&username=kiwiwebtrees";
+			// password qwertyuiop
 
 			// try to use curl when file_get_contents not allowed
 			if (ini_get('allow_url_fopen')) {
