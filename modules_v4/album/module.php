@@ -297,22 +297,22 @@ class album_KT_Module extends KT_Module implements KT_Module_Tab, KT_Module_Conf
 				<div id="album_options">
 					<label for="NEW_ALBUM_OPTIONS" class="label">'.KT_I18N::translate('Match groups to types').'</label>
 					<table>';
-						$html .= '<tr><th colspan="2" rowspan="2"></th><th colspan="4">'.KT_I18N::translate('Groups (These must always be English titles)').'</th></tr>';
+						$html .= '<tr><th colspan="2" rowspan="2"></th><th colspan="' . $ALBUM_GROUPS . '">'.KT_I18N::translate('Groups (These must always be English titles)').'</th></tr>';
 							for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
 								$html .= '<th style="min-width:130px;"><input type="input" name="NEW_ALBUM_TITLES[]" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '"></th>';
 							}
 						$html .= '</tr>';
 							$html .= '<tr><th rowspan="19" style="max-width:25px;"><span class="rotate">'.KT_I18N::translate('Types').'</span></th></tr>';
-							foreach ($ALBUM_OPTIONS as $key=>$value) {
+							foreach ($ALBUM_OPTIONS as $key => $value) {
 								$translated_type = KT_Gedcom_Tag::getFileFormTypeValue($key);
 								$html .= '
 									<tr>
 										<td>' .$translated_type. '</td>';
 										for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
 											if (isset($ALBUM_TITLES[$i]) && $value == $ALBUM_TITLES[$i]) {
-												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '" checked="checked"></td>';
+												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' . $key . ']" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '" checked="checked"></td>';
 											} else {
-												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '"></td>';
+												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' . $key . ']" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '"></td>';
 											}
 										}
 									$html .= '</tr>
