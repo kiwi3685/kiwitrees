@@ -31,14 +31,14 @@ $controller
 	->pageHeader();
 
 function siteIndividuals() {
-	$count = KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals`")
+	$count = KT_DB::prepare("SELECT COUNT(*) FROM `##individuals`")
 		->execute()
 		->fetchOne();
 	return	KT_I18N::number($count);
 }
 
 function siteMedia() {
-	$count = KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%')")
+	$count = KT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE (m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%')")
 		->execute()
 		->fetchOne();
 	return	KT_I18N::number($count);

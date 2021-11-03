@@ -33,7 +33,7 @@ if (array_key_exists('ckeditor', KT_Module::getActiveModules())) {
 
 $block_id	= KT_Filter::getInteger('block_id');
 $block		= KT_DB::prepare(
-					"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
+					"SELECT * FROM `##block` WHERE block_id=?"
 				)->execute(array($block_id))->fetchOneRow();
 
 // Check access.  (1) the block must exist, (2) gedcom blocks require

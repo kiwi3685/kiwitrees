@@ -62,7 +62,7 @@ class list_media_KT_Module extends KT_Module implements KT_Module_List {
 		}
 		// Do not show empty lists
 		$row = KT_DB::prepare(
-			"SELECT SQL_CACHE EXISTS(SELECT 1 FROM `##media` WHERE m_file=?)"
+			"SELECT EXISTS(SELECT 1 FROM `##media` WHERE m_file=?)"
 		)->execute(array(KT_GED_ID))->fetchOneRow();
 		if ($row) {
 			$menus = array();

@@ -94,7 +94,7 @@ case 'load_json':
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
+				"SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
 				" FROM  `##media`" .
 				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 				" JOIN  `##gedcom`         USING (gedcom_id)" .
@@ -107,7 +107,7 @@ case 'load_json':
 		$ARGS1 = array($media_path, $media_folder, $media_path, $sSearch, $sSearch);
 		// Unfiltered rows
 		$SELECT2 =
-				"SELECT SQL_CACHE COUNT(*)" .
+				"SELECT COUNT(*)" .
 				" FROM  `##media`" .
 				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 				" WHERE setting_value=?" .
@@ -186,14 +186,14 @@ case 'load_json':
 	case 'external':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename AS media_path, 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
+				"SELECT SQL_CALC_FOUND_ROWS m_filename AS media_path, 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
 				" FROM  `##media`" .
 				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 				" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
 		$ARGS1 = array($sSearch, $sSearch);
 		// Unfiltered rows
 		$SELECT2 =
-				"SELECT SQL_CACHE COUNT(*)" .
+				"SELECT COUNT(*)" .
 				" FROM  `##media`" .
 				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
 		$ARGS2 = array();
@@ -368,7 +368,7 @@ case 'load_json':
 // A unique list of media folders, from all trees.
 function all_media_folders() {
 	return KT_DB::prepare(
-		"SELECT SQL_CACHE setting_value, setting_value" .
+		"SELECT setting_value, setting_value" .
 		" FROM `##gedcom_setting`" .
 		" WHERE setting_name='MEDIA_DIRECTORY'" .
 		" GROUP BY 1" .
@@ -378,7 +378,7 @@ function all_media_folders() {
 
 function media_paths($media_folder) {
 	$media_paths = KT_DB::prepare(
-		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
+		"SELECT LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" WHERE setting_value=?" .
@@ -423,7 +423,7 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 }
 
 function externalMedia() {
-	$count = KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')")
+	$count = KT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')")
 		->execute()
 		->fetchOne();
 	return	$count;
@@ -432,7 +432,7 @@ function externalMedia() {
 // Fetch a list of all files on in the database
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	return KT_DB::prepare(
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
+		"SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" JOIN  `##gedcom`         USING (gedcom_id)" .

@@ -117,7 +117,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 			$LIMIT = "";
 		}
 
-		$sql = "SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file=? AND m_type=?" . $LIMIT;
+		$sql = "SELECT SQL_CALC_FOUND_ROWS m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file=? AND m_type=?" . $LIMIT;
 		$args = array($gedcom_id, 'photo');
 
 		$rows = KT_DB::prepare($sql)->execute($args)->fetchAll();
@@ -381,7 +381,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	// Get the medialist from the database
 	private function FancyImageBarMedia() {
 		$images_sql = array();
-		$sql =	"SELECT SQL_CACHE m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file='" . KT_GED_ID . "'";
+		$sql =	"SELECT m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file='" . KT_GED_ID . "'";
 				if($this->options('images') == 1) {
 					$sql .= " AND m_type='photo'";
 				} else {

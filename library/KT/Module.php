@@ -122,7 +122,7 @@ abstract class KT_Module {
 
 		if ($modules === null) {
 			$module_names = KT_DB::prepare(
-				"SELECT SQL_CACHE module_name FROM `##module` WHERE status='enabled'"
+				"SELECT module_name FROM `##module` WHERE status='enabled'"
 			)->fetchOneColumn();
 			$modules=array();
 			foreach ($module_names as $module_name) {
@@ -150,7 +150,7 @@ abstract class KT_Module {
 
 	static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
 		$module_names = KT_DB::prepare(
-			"SELECT SQL_CACHE module_name".
+			"SELECT module_name".
 			" FROM `##module`".
 			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".

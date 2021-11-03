@@ -69,7 +69,7 @@ class KT_Tree {
 		// so it is quicker to fetch them all in one go.
 		if ($this->preference === null) {
 			$this->preference = KT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
+				"SELECT setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
 			)->execute(array($this->tree_id))->fetchAssoc();
 		}
 
@@ -100,7 +100,7 @@ class KT_Tree {
 		// so it is quicker to fetch them all in one go.
 		if (!array_key_exists($user_id, $this->user_preference)) {
 			$this->user_preference[$user_id] = KT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
+				"SELECT setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
 			)->execute(array($user_id, $this->tree_id))->fetchAssoc();
 		}
 
@@ -137,7 +137,7 @@ class KT_Tree {
 		if (self::$trees === null) {
 			self::$trees=array();
 			$rows = KT_DB::prepare(
-				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported, gs3.setting_value AS tree_subtitle".
+				"SELECT g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported, gs3.setting_value AS tree_subtitle".
 				" FROM `##gedcom` g".
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
 				" LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')".

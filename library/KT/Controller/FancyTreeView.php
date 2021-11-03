@@ -189,7 +189,7 @@ class KT_Controller_FancyTreeView {
 	public function getCountryList() {
 		$list = array();
 		$countries =
-			KT_DB::prepare("SELECT SQL_CACHE p_place as country FROM `##places` WHERE p_parent_id=? AND p_file=?")
+			KT_DB::prepare("SELECT p_place as country FROM `##places` WHERE p_parent_id=? AND p_file=?")
 			->execute(array('0', KT_GED_ID))->fetchAll(PDO::FETCH_ASSOC);
 
 		if ($countries) {

@@ -62,7 +62,7 @@ class list_individuals_KT_Module extends KT_Module implements KT_Module_List {
 		}
 		// Do not show empty lists
 		$row = KT_DB::prepare(
-			"SELECT SQL_CACHE EXISTS(SELECT 1 FROM `##individuals` WHERE i_file=?)"
+			"SELECT EXISTS(SELECT 1 FROM `##individuals` WHERE i_file=?)"
 		)->execute(array(KT_GED_ID))->fetchOneRow();
 		if ($row) {
 			$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;

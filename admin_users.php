@@ -211,7 +211,7 @@ switch (KT_Filter::get('action')) {
 		}
 
 		$sql=
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value".
+			"SELECT SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value".
 			" FROM `##user` u".
 			" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')".
 			" LEFT JOIN `##user_setting` us2 ON (u.user_id=us2.user_id AND us2.setting_name='reg_timestamp')".
@@ -280,7 +280,7 @@ switch (KT_Filter::get('action')) {
 
 		// Total filtered/unfiltered rows
 		$iTotalDisplayRecords	= KT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-		$iTotalRecords			= KT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
+		$iTotalRecords			= KT_DB::prepare("SELECT COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
 		Zend_Session::writeClose();
 		header('Content-type: application/json');

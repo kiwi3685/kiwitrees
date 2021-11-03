@@ -159,7 +159,7 @@ function userCanEdit($user_id = KT_USER_ID, $ged_id = KT_GED_ID) {
 
 // Get the full name for a user
 function getUserFullName($user_id) {
-	return KT_DB::prepare("SELECT SQL_CACHE real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return KT_DB::prepare("SELECT real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the full name for a user
@@ -169,7 +169,7 @@ function setUserFullName($user_id, $real_name) {
 
 // Get the email for a user
 function getUserEmail($user_id) {
-	return KT_DB::prepare("SELECT SQL_CACHE email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return KT_DB::prepare("SELECT email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the email for a user
@@ -235,7 +235,7 @@ function addNews($news) {
 // Gets the news items for the given user or gedcom
 function getUserNews($user_id) {
 	$rows=
-		KT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
+		KT_DB::prepare("SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
 		->execute(array($user_id))
 		->fetchAll();
 
@@ -255,7 +255,7 @@ function getUserNews($user_id) {
 
 function getGedcomNews($gedcom_id) {
 	$rows=
-		KT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
+		KT_DB::prepare("SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
 		->execute(array($gedcom_id))
 		->fetchAll();
 
@@ -280,7 +280,7 @@ function getGedcomNews($gedcom_id) {
  */
 function getNewsItem($news_id) {
 	$row=
-		KT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
+		KT_DB::prepare("SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
 		->execute(array($news_id))
 		->fetchOneRow();
 

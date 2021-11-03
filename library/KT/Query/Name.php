@@ -234,7 +234,7 @@ class KT_Query_Name {
 		$alphas = array();
 
 		$sql =
-			"SELECT SQL_CACHE COUNT(n_id)" .
+			"SELECT COUNT(n_id)" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
 			" WHERE n_file=" . $ged_id .
@@ -254,7 +254,7 @@ class KT_Query_Name {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
 		$sql =
-			"SELECT SQL_CACHE initial, count FROM (SELECT UPPER(LEFT(n_surn, 1)) AS initial, COUNT(n_id) AS count" .
+			"SELECT initial, count FROM (SELECT UPPER(LEFT(n_surn, 1)) AS initial, COUNT(n_id) AS count" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
 			" WHERE n_file = :tree_id AND n_surn <> ''" .
@@ -276,7 +276,7 @@ class KT_Query_Name {
 
 		// Names with no surname
 		$sql =
-			"SELECT SQL_CACHE COUNT(n_id)" .
+			"SELECT COUNT(n_id)" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
 			" WHERE n_file = :tree_id AND n_surn = ''" .
@@ -311,7 +311,7 @@ class KT_Query_Name {
 		$alphas = array();
 
 		$sql =
-			"SELECT SQL_CACHE COUNT(DISTINCT n_id)" .
+			"SELECT COUNT(DISTINCT n_id)" .
 			" FROM `##name`" .
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
 			" WHERE n_file=" . $ged_id . " " .
@@ -341,7 +341,7 @@ class KT_Query_Name {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname
 		$sql =
-			"SELECT SQL_CACHE initial, total FROM (SELECT UPPER(LEFT(n_givn, 1)) AS initial, COUNT(DISTINCT n_id) AS total" .
+			"SELECT initial, total FROM (SELECT UPPER(LEFT(n_givn, 1)) AS initial, COUNT(DISTINCT n_id) AS total" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON (n_id = l_from AND n_file = l_file AND l_type = 'FAMS') " : "") .
 			" WHERE n_file = :tree_id" .
@@ -388,7 +388,7 @@ class KT_Query_Name {
 	////////////////////////////////////////////////////////////////////////////////
 	public static function surnames($surn, $salpha, $marnm, $fams, $ged_id) {
 		$sql =
-			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id" .
+			"SELECT n2.n_surn, n1.n_surname, n1.n_id" .
 			" FROM `##name` n1 " .
 			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
 			" JOIN (SELECT n_surn COLLATE :collate_0 AS n_surn, n_file FROM `##name`" .

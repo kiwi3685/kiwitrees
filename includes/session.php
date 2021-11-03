@@ -308,7 +308,7 @@ if (!ini_get('safe_mode')) {
 }
 
 $rule = KT_DB::prepare(
-	"SELECT SQL_CACHE rule FROM `##site_access_rule`" .
+	"SELECT rule FROM `##site_access_rule`" .
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end LIMIT 1"

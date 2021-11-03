@@ -35,7 +35,7 @@ class KT_Site {
 		// so it is quicker to fetch them all in one go.
 		if (self::$setting === null) {
 			self::$setting = KT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##site_setting`"
+				"SELECT setting_name, setting_value FROM `##site_setting`"
 			)->fetchAssoc();
 		}
 

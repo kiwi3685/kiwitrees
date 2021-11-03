@@ -30,7 +30,7 @@ class KT_Query_Media {
 	// Generate a list of all the folders in the current tree - for the media list.
 	public static function folderList() {
 		$folders = KT_DB::prepare(
-			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
+			"SELECT LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
 			" WHERE m_file = ?" .
 			"	AND   m_filename NOT LIKE 'http://%'" .
@@ -49,7 +49,7 @@ class KT_Query_Media {
 	// Generate a list of all folders from all the trees - for the media admin.
 	public static function folderListAll() {
 		$folders = KT_DB::prepare(
-			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
+			"SELECT LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
 			" WHERE m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'" .

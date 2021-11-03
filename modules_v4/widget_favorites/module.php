@@ -302,7 +302,7 @@ class widget_favorites_KT_Module extends KT_Module implements KT_Module_Widget {
 
 		return
 			KT_DB::prepare(
-				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url".
+				"SELECT favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url".
 				" FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
 			->execute(array($user_id, KT_GED_ID))
 			->fetchAll(PDO::FETCH_ASSOC);

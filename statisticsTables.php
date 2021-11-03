@@ -87,7 +87,7 @@ switch ($table) {
 
 		$year = $option * 100 - 100;
 		$rows = KT_DB::prepare("
-			SELECT DISTINCT SQL_CACHE `d_gid` FROM `##dates`
+			SELECT DISTINCT `d_gid` FROM `##dates`
 				WHERE `d_file`=? AND
 				`d_year` >= ? AND
 				`d_year` < ? AND

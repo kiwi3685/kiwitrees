@@ -62,7 +62,7 @@ class list_repositories_KT_Module extends KT_Module implements KT_Module_List {
 		}
 		// Do not show empty lists
 		$row = KT_DB::prepare(
-			"SELECT SQL_CACHE EXISTS(SELECT 1 FROM `##other` WHERE o_file=? AND o_type='REPO')"
+			"SELECT EXISTS(SELECT 1 FROM `##other` WHERE o_file=? AND o_type='REPO')"
 		)->execute(array(KT_GED_ID))->fetchOneRow();
 		if ($row) {
 			$menus = array();
