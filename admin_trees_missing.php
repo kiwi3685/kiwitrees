@@ -116,7 +116,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 							}
 						}
 						echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . KT_I18N::translate('Custom event') . '</option>';
-						echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . KT_I18N::translate('Custom Fact') . '</option>';
+						echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . KT_I18N::translate('Custom fact') . '</option>';
 						?>
 					</select>
 				</div>

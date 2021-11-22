@@ -164,7 +164,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 			');
 		?>
 
-		<div id="page" class="fact_report">
+		<div id="page" class="fact_report"> s
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="noprint">
 				<div class="help_text">
@@ -189,7 +189,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 								}
 							}
 							echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . KT_I18N::translate('Custom event') . '</option>';
-							echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . KT_I18N::translate('Custom Fact') . '</option>';
+							echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . KT_I18N::translate('Custom fact') . '</option>';
 							?>
 						</select>
 					</div>
