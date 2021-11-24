@@ -241,6 +241,11 @@ require KT_ROOT . 'includes/functions/functions_date.php';
 require KT_ROOT . 'includes/functions/functions_charts.php';
 require KT_ROOT . 'includes/functions/functions_utf-8.php';
 
+require KT_ROOT . 'library/Carbon/autoload.php';
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
+
 set_error_handler('kt_error_handler');
 
 // Load our configuration file, so we can connect to the database
@@ -355,16 +360,21 @@ session_set_save_handler(
 	// write
 	function ($id, $data) {
 		global $KT_REQUEST;
+
+		$ip_address   = $KT_REQUEST->getClientIp();
+		$session_time = Carbon::now();
+		$user_id      = KT_USER_ID;
+
 		// Only update the session table once per minute, unless the session data has actually changed.
-		KT_DB::prepare(
-			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
-			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
-			" ON DUPLICATE KEY UPDATE" .
-			" user_id      = VALUES(user_id)," .
-			" ip_address   = VALUES(ip_address)," .
-			" session_data = VALUES(session_data)," .
-			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, KT_USER_ID, $KT_REQUEST->getClientIp(), $data));
+		KT_DB::prepare("
+			INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)
+			VALUES (?, ?, ?, ?, ?)
+			ON DUPLICATE KEY UPDATE
+			user_id      = VALUES(user_id),
+			ip_address   = VALUES(ip_address),
+			session_data = VALUES(session_data),
+			session_time = ?
+		")->execute(array($id, KT_USER_ID, $ip_address , $data, $session_time, $session_time));
 
 		return true;
 	},
@@ -376,7 +386,10 @@ session_set_save_handler(
 	},
 	// gc
 	function ($maxlifetime) {
-		KT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
+		KT_DB::prepare("
+			DELETE FROM `##session`
+			WHERE session_time < ?
+		")->execute(array(Carbon::now()->subSeconds($max_lifetime)));
 
 		return true;
 	}
