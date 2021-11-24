@@ -534,8 +534,8 @@ try {
 		" log_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" log_type    ENUM('auth', 'config', 'debug', 'edit', 'error', 'media', 'search', 'spam') NOT NULL,".
-		" log_message TEXT         NOT NULL,".
-		" ip_address  VARCHAR(40)  NOT NULL,".
+		" log_message LONGTEXT         NOT NULL,".
+		" ip_address  VARCHAR(45)  NOT NULL,".
 		" user_id     INTEGER          NULL,".
 		" gedcom_id   INTEGER          NULL,".
 		" PRIMARY KEY             (log_id),".
@@ -800,11 +800,11 @@ try {
 	);
 	KT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##session` (".
-		" session_id   CHAR(128)   NOT NULL,".
+		" session_id   CHAR(32)   NOT NULL,".
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
 		" user_id      INTEGER     NOT NULL,".
-		" ip_address   VARCHAR(32) NOT NULL,".
-		" session_data MEDIUMBLOB  NOT NULL,".
+		" ip_address   VARCHAR(45) NOT NULL,".
+		" session_data LONGBLOB  NOT NULL,".
 		" PRIMARY KEY                 (session_id),".
 		"         KEY `##session_ix1` (session_time),".
 		"         KEY `##session_ix2` (user_id, ip_address)".
