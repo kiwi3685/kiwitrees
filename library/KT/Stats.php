@@ -3577,7 +3577,7 @@ class KT_Stats {
 			case 'loggedin':
 				if (is_array($params) && isset($params[0]) && $params[0] != '') {$yes = $params[0];} else {$yes = KT_I18N::translate('yes');}
 				if (is_array($params) && isset($params[1]) && $params[1] != '') {$no = $params[1];} else {$no = KT_I18N::translate('no');}
-				return KT_DB::prepare("SELECT SQL_NO_CACHE 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user_id))->fetchOne() ? $yes : $no;
+				return KT_DB::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user_id))->fetchOne() ? $yes : $no;
 		}
 	}
 
@@ -3642,7 +3642,7 @@ class KT_Stats {
 		}
 
 		$count=KT_DB::prepare(
-			"SELECT SQL_NO_CACHE page_count FROM `##hit_counter`".
+			"SELECT page_count FROM `##hit_counter`".
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 		)->execute(array(KT_GED_ID, $page_name, $page_parameter))->fetchOne();
 		return '<span class="hit-counter">'.KT_I18N::number($count).'</span>';

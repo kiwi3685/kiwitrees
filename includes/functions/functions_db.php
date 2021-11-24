@@ -1463,7 +1463,7 @@ function get_logged_in_users() {
 	// multiple rows.  fetchAssoc() will eliminate the duplicates
 	return
 		KT_DB::prepare(
-			"SELECT SQL_NO_CACHE user_id, user_name".
+			"SELECT user_id, user_name".
 			" FROM `##user` u".
 			" JOIN `##session` USING (user_id)"
 		)

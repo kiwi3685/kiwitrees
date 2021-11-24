@@ -289,7 +289,7 @@ class gedcom_favorites_KT_Module extends KT_Module implements KT_Module_Block {
 		}
 
 		//-- make sure this is not a duplicate entry
-		$sql = "SELECT SQL_NO_CACHE 1 FROM `##favorite` WHERE";
+		$sql = "SELECT 1 FROM `##favorite` WHERE";
 		if (!empty($favorite['gid'])) {
 			$sql	.= " xref=?";
 			$vars	= array($favorite['gid']);
