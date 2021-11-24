@@ -3,6 +3,7 @@
 *.zip
 *.ged
 .DS_Store
+developer_tips.txt
 
 *myheader.php
 *mystyle.css
@@ -24,6 +25,8 @@
 /library/swiftmailer/tests
 /library/swiftmailer/doc
 /library/php-diff/example
+
+/library/Carbon/vendor*
 
 /modules_v4/advent
 /modules_v4/database_backup/vendor/r23/msd/work
