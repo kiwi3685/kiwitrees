@@ -512,7 +512,7 @@ if (empty($KIWITREES_EMAIL)) {
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('KT_TIMESTAMP', (int)KT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
+define('KT_TIMESTAMP', Carbon::now()->getTimestamp());
 
 // Server timezone is defined in php.ini
 define('KT_SERVER_TIMESTAMP', KT_TIMESTAMP + (int)date('Z'));
