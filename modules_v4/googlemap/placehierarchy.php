@@ -128,7 +128,7 @@ function create_map($placelevels) {
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
-	$parent = KT_Filter::get('parent', KT_REGEX_UNSAFE);
+	$parent = KT_Filter::get('parent');
 
 	// create the map
 	$levelm = set_levelm($level, $parent);
