@@ -373,7 +373,7 @@ function all_media_folders() {
 		" WHERE setting_name='MEDIA_DIRECTORY'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array(KT_GED_ID))->fetchAssoc();
+	)->fetchAssoc();
 }
 
 function media_paths($media_folder) {
