@@ -64,7 +64,7 @@ define('KT_PASSWORDSCHECK',			KT_STATIC_URL . 'js/passwordscheck.js');			// Inst
 define('KT_D3_JS',					KT_STATIC_URL . 'js/d3.min.js');			// v4
 
 // Loation of our own javascript libraries
-define('KT_KIWITREES_JS_URL',		KT_STATIC_URL . 'js/kiwitrees.js');					// used system wide, via Pages WT class
+define('KT_KIWITREES_JS_URL',		KT_STATIC_URL . 'js/kiwitrees.js');					// used system wide, via Pages KT class
 define('KT_AUTOCOMPLETE_JS_URL',	KT_STATIC_URL . 'js/autocomplete.js');				// used system wide
 define('KT_JQUERY_TREEVIEW_JS_URL',	KT_STATIC_URL . 'js/jquery.treeview.js');			// used in branches.php
 define('KT_FANCY_TREEVIEW_JS_URL',	KT_STATIC_URL . 'js/fancytreeview.js');				// used in fancy_treeview_descendants & fancy_treeview_ancestors

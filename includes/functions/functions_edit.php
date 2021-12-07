@@ -333,7 +333,7 @@ function edit_field_rela($name, $selected='', $extra='') {
 */
 function checkChangeTime($pid, $gedrec, $last_time) {
 	$change=KT_DB::prepare(
-		"SELECT UNIX_TIMESTAMP(change_time) AS change_time, user_name".
+		"SELECT change_time, user_name".
 		" FROM `##change`".
 		" JOIN `##user` USING (user_id)".
 		" WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?".
