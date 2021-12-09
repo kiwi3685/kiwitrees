@@ -28,6 +28,9 @@ if (!defined('KT_KIWITREES')) {
 
 require_once KT_ROOT.'includes/functions/functions_import.php';
 
+// Invoke the Carbon Autoloader, to make any Carbon date class available
+require KT_ROOT . 'library/Carbon/autoload.php';
+use Carbon\Carbon;
 
 // Create an edit control for inline editing using jeditable
 function edit_field_inline($name, $value, $controller=null) {
@@ -331,31 +334,35 @@ function edit_field_rela($name, $selected='', $extra='') {
 *
 * @param string $pid The gedcom id of the record to check
 */
-function checkChangeTime($pid, $gedrec, $last_time) {
-	$change=KT_DB::prepare(
-		"SELECT change_time, user_name".
-		" FROM `##change`".
-		" JOIN `##user` USING (user_id)".
-		" WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?".
-		" ORDER BY change_id DESC".
-		" LIMIT 1"
-	)->execute(array(KT_GED_ID, $pid, $last_time))->fetchOneRow();
+function checkChangeTime($pid, $gedrec) {
+	$lastTime = Carbon::createFromTimestamp(KT_TIMESTAMP)->toDateTimeString();
+
+	$change = KT_DB::prepare("
+		SELECT change_time, user_name
+		FROM `##change`
+		JOIN `##user` USING (user_id)
+		WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?
+		ORDER BY change_id DESC
+		LIMIT 1
+	")->execute(array(KT_GED_ID, $pid, $lastTime))->fetchOneRow();
 
 	if ($change) {
-		$changeTime=$change->change_time;
-		$changeUser=$change->user_name;
+		$changeTime = $change->change_time;
+		$changeUser = $change->user_name;
 	} else {
 		$changeTime = 0;
 		$changeUser = '';
 	}
-	if (isset($_REQUEST['linenum']) && $changeTime!=0 && $last_time && $changeTime > $last_time) {
+
+	if (isset($_REQUEST['linenum']) && $changeTime != 0 && $lastTime && $changeTime > $lastTime) {
 		global $controller;
 		$controller->pageHeader();
-		echo '<p class="error">', KT_I18N::translate('The record with id %s was changed by another user since you last accessed it.', $pid), '</p>';
+		echo '<p class="error">', KT_I18N::translate('The record with id %s was changed by another user since you last accessed it.', $pid) . '</p>';
 		if (!empty($changeUser)) {
-			echo '<p>', /* I18N: %s placeholders are a user-ID and a timestamp */ KT_I18N::translate('This record was last changed by <i>%s</i> at %s', $changeUser, date("d M Y H:i:s", $changeTime)), '</p>';
+			echo '<p>' . KT_I18N::translate('This record was last changed by <i>%s</i> at %s', $changeUser, $changeTime), '</p>';
+			echo '<p>' . KT_I18N::translate('Current time is %s', $lastTime) . '</p>';
 		}
-		echo '<p>', KT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</p>";
+		echo '<p>' . KT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.') . "</p>";
 		exit;
 	}
 }

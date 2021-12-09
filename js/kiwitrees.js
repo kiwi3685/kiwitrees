@@ -310,7 +310,7 @@ function edit_interface(params, windowspecs, pastefield) {
 //	var features = windowspecs || edit_window_specs;
 	var features = '';
 	window.pastefield = pastefield;
-	var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + KT_GEDCOM;
+	var url = 'edit_interface.php?' + jQuery.param(params)+ '&ged=' + KT_GEDCOM;
 	window.open(url, '_blank', features);
 	return false;
 }

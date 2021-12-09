@@ -63,14 +63,14 @@ $edit = false;
 if (!empty($pid)) {
 	if (($pid != "newsour") && ($pid != "newrepo") && ($noteid != "newnote")) {
 		$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
-		$ct = preg_match("/^0 @$pid@ (.*)/i", $gedrec, $match);
-		if ($ct>0) {
+		$ct		= preg_match("/^0 @$pid@ (.*)/i", $gedrec, $match);
+		if ($ct > 0) {
 			$type = trim($match[1]);
 			$tmp  = KT_GedcomRecord::getInstance($pid);
 			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
-		checkChangeTime($pid, $gedrec, safe_GET('accesstime', KT_REGEX_INTEGER));
+		checkChangeTime($pid, $gedrec, KT_Filter::get('accesstime', KT_REGEX_INTEGER));
 	} else {
 		$edit = true;
 	}
@@ -84,7 +84,7 @@ if (!empty($pid)) {
 			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
-		checkChangeTime($famid, $gedrec, safe_GET('accesstime', KT_REGEX_INTEGER));
+		checkChangeTime($famid, $gedrec, KT_Filter::get('accesstime', KT_REGEX_INTEGER));
 	}
 } else {
 	$edit = true;
@@ -125,14 +125,14 @@ case 'delete':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editraw':
-	$pid    = safe_GET('pid', KT_REGEX_XREF); // print_indi_form() uses this
+	$pid    = KT_Filter::get('pid', KT_REGEX_XREF); // print_indi_form() uses this
 	$record = KT_GedcomRecord::getInstance($pid);
 	$controller->addInlineJavascript('
 		display_help();
 	');
 
 	// Hide the private data
-	list($gedrec) = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+	[$gedrec] = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 	// Remove the first line of the gedrec - things go wrong when users change either the TYPE or XREF
 	// Notes are special - they may contain data on the first line
@@ -177,7 +177,7 @@ case 'editraw':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'edit':
-	$pid    = safe_GET('pid', KT_REGEX_XREF);
+	$pid    = KT_Filter::get('pid', KT_REGEX_XREF);
 	$record = KT_GedcomRecord::getInstance($pid);
 
 	$controller
@@ -185,7 +185,7 @@ case 'edit':
 		->pageHeader();
 
 	// Hide the private data
-	list($gedrec) = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+	[$gedrec] = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 	?>
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -336,9 +336,9 @@ case 'add':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addchild':
-	$gender = safe_GET('gender', '[MF]', 'U');
-	$famid  = safe_GET('famid',  KT_REGEX_XREF);
-	$pid    = safe_GET('pid',    KT_REGEX_XREF); // print_indi_form() uses this
+	$gender = KT_Filter::get('gender', '[MF]', 'U');
+	$famid  = KT_Filter::get('famid',  KT_REGEX_XREF);
+	$pid    = KT_Filter::get('pid',    KT_REGEX_XREF); // print_indi_form() uses this
 	$family = KT_Family::getInstance($famid);
 
 	if ($family) {
@@ -358,8 +358,8 @@ case 'addchild':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addspouse':
-	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
-	$famid  = safe_GET('famid',  KT_REGEX_XREF);
+	$famtag = KT_Filter::get('famtag', '(HUSB|WIFE)');
+	$famid  = KT_Filter::get('famid',  KT_REGEX_XREF);
 
 	if ($famtag=='WIFE') {
 		$controller->setPageTitle(KT_I18N::translate('Add a wife'));
@@ -377,9 +377,9 @@ case 'addspouse':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewparent':
-	$famtag = safe_GET('famtag', '(HUSB|WIFE)');
-	$famid  = safe_GET('famid',  KT_REGEX_XREF);
-	$pid    = safe_GET('pid',    KT_REGEX_XREF); // print_indi_form() uses this
+	$famtag = KT_Filter::get('famtag', '(HUSB|WIFE)');
+	$famid  = KT_Filter::get('famid',  KT_REGEX_XREF);
+	$pid    = KT_Filter::get('pid',    KT_REGEX_XREF); // print_indi_form() uses this
 	$person = KT_Person::getInstance($pid);
 
 	if ($person) {
@@ -407,8 +407,8 @@ case 'addnewparent':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addopfchild':
-	$pid    = safe_GET('pid',   KT_REGEX_XREF);
-	$famid  = safe_GET('famid', KT_REGEX_XREF);
+	$pid    = KT_Filter::get('pid',   KT_REGEX_XREF);
+	$famid  = KT_Filter::get('famid', KT_REGEX_XREF);
 	$person = KT_Person::getInstance($pid);
 
 	$controller
@@ -983,11 +983,11 @@ case 'addmedia_links':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editsource':
-	$pid    = safe_GET('pid', KT_REGEX_XREF);
+	$pid    = KT_Filter::get('pid', KT_REGEX_XREF);
 	$source = KT_Source::getInstance($pid);
 
 	// Hide the private data
-	list($gedrec) = $source->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+	[$gedrec] = $source->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
 	$uniquefacts = preg_split("/[, ;:]+/", get_gedcom_setting(KT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
@@ -1072,11 +1072,11 @@ case 'editsource':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editnote':
-	$pid  = safe_GET('pid', KT_REGEX_XREF);
+	$pid  = KT_Filter::get('pid', KT_REGEX_XREF);
 	$note = KT_Note::getInstance($pid);
 
 	// Hide the private data
-	list($gedrec) = $note->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+	[$gedrec] = $note->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 	if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
 		$note_content=$n1match[1].get_cont(1, $gedrec, false);
@@ -1946,7 +1946,7 @@ case 'addopfchildaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editname':
-	$pid    = safe_GET('pid', KT_REGEX_XREF); // print_indi_form() needs this global
+	$pid    = KT_Filter::get('pid', KT_REGEX_XREF); // print_indi_form() needs this global
 	$person = KT_Person::getInstance($pid);
 
 	$controller
@@ -1957,7 +1957,7 @@ case 'editname':
 		<h2> <?php echo $controller->getPageTitle(); ?></h2>
 
 		<?php // Hide the private data
-		list($gedrec)	= $person->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+		[$gedrec]	= $person->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 		$gedlines		= explode("\n", trim($gedrec));
 		$fields			= explode(' ', $gedlines[$linenum]);
 		$glevel			= $fields[0];

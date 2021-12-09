@@ -363,7 +363,7 @@ session_set_save_handler(
 
 		$ip_address   = $KT_REQUEST->getClientIp();
 		$session_time = Carbon::now();
-		$user_id      = KT_USER_ID;
+		$user_id      = (int) KT_USER_ID;
 
 		// Only update the session table once per minute, unless the session data has actually changed.
 		KT_DB::prepare("
@@ -512,7 +512,7 @@ if (empty($KIWITREES_EMAIL)) {
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('KT_TIMESTAMP', Carbon::now()->getTimestamp());
+define('KT_TIMESTAMP', Carbon::now()->timestamp);
 
 // Server timezone is defined in php.ini
 define('KT_SERVER_TIMESTAMP', KT_TIMESTAMP + (int)date('Z'));
