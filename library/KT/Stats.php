@@ -882,6 +882,7 @@ class KT_Stats {
 	function totalMediaUnknown()     {return KT_I18N::number($this->_totalMediaType('unknown'));}
 
 	function chartMedia($minimum = 0) {
+		$data = array();
 		$tot = $this->_totalMediaType('all');
 		// Beware divide by zero
 		if ($tot == 0) return KT_I18N::translate('None');
@@ -3132,7 +3133,7 @@ class KT_Stats {
 			WHERE
 				f_numchil = 0 AND
 				fam.f_file = {$this->_ged_id} AND
-			$years.
+				{$years}
 				married.d_fact = 'MARR' AND
 				married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')
 			GROUP BY fam.f_id, married.d_year ;
