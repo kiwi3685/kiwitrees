@@ -853,8 +853,8 @@ class KT_Controller_Search extends KT_Controller_Page {
 				   SELECT i_d.d_gid
 				   FROM `##individuals` ind
 				   JOIN `##dates` i_d ON (i_d.d_file=ind.i_file AND i_d.d_gid=ind.i_id)
-				   WHERE ind.i_file=?";
-				   $bind[] = KT_GED_ID;
+				   WHERE ind.i_file=?)";
+				$bind[] = KT_GED_ID;
 			}
 
 			if ($pfct > 0 && $parts[1] == 'PLAC' && $value != '') {
@@ -874,8 +874,8 @@ class KT_Controller_Search extends KT_Controller_Page {
 						LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)
 						LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)
 					) AS i_p ON (i_p.file =ind.i_file AND i_pl.pl_p_id= i_p.id)
-					WHERE ind.i_file=?";
-				   $bind[] = KT_GED_ID;
+					WHERE ind.i_file=?)";
+				  $bind[] = KT_GED_ID;
 			}
 
 			if ($parts[0] == 'NAME') {
@@ -1192,7 +1192,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 	function printResults() {
 		require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 		global $GEDCOM;
-		$somethingPrinted = false; // whether anything printed
+		$somethingPrinted	= false; // whether anything printed
 		// ---- section to search and display results on a general keyword search
 		if ($this->action == "general" || $this->action == "soundex" || $this->action == "replace" || $this->action == "advanced") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist || $this->mystorieslist) {
@@ -1335,9 +1335,10 @@ class KT_Controller_Search extends KT_Controller_Page {
 				$GEDCOM = KT_GEDCOM;
 				load_gedcom_settings(KT_GED_ID);
 				echo '</div>'; //#search-result-tabs
-			} elseif (isset ($this->query)) {
+			} elseif (isset($this->query) || ($this->action == 'advanced' && !$this->myindilist)) {
 				echo '<br><div class="warning center"><em>'.KT_I18N::translate('No results found').'</em><br>';
-				if (!isset ($this->srindi) && !isset ($this->srfams) && !isset ($this->srsour) && !isset ($this->srnote)) {
+
+				if (!isset($this->srindi) && !isset($this->srfams) && !isset($this->srsour) && !isset($this->srnote) && !$this->action == 'advanced') {
 					echo '<em>'.KT_I18N::translate('Be sure to select an option to search for.').'</em><br>';
 				}
 				echo '</div>';
