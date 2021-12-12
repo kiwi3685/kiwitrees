@@ -251,7 +251,7 @@ function edit_field_language_inline($name, $selected=false, $controller=null) {
 }
 
 // Print an edit control for a range of integers
-function edit_field_integers($name, $selected='', $min, $max, $extra='') {
+function edit_field_integers($name, $min, $max, $selected=false, $extra=false) {
 	$array=array();
 	for ($i=$min; $i<=$max; ++$i) {
 		$array[$i]=KT_I18N::number($i);
