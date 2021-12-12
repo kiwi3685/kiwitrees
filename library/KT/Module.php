@@ -181,7 +181,7 @@ abstract class KT_Module {
 
 	// LIST ACTIVE MODULES
 	// Get a list of all the active, authorised blocks
-	static public function getActiveBlocks($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveBlocks($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $blocks = null;
 		if ($blocks === null) {
 			$blocks = self::getActiveModulesByComponent('block', $ged_id, $access_level);
@@ -190,7 +190,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised charts
-	static public function getActiveCharts($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveCharts($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $charts = null;
 		if ($charts === null) {
 			$charts = self::getActiveModulesByComponent('chart', $ged_id, $access_level);
@@ -199,7 +199,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised lists
-	static public function getActiveLists($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveLists($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $lists = null;
 		if ($lists === null) {
 			$lists = self::getActiveModulesByComponent('list', $ged_id, $access_level);
@@ -208,7 +208,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised menus
-	static public function getActiveMenus($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveMenus($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $menus = null;
 		if ($menus === null) {
 			$menus = self::getActiveModulesByComponent('menu', $ged_id, $access_level);
@@ -217,7 +217,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised reports
-	static public function getActiveReports($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveReports($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $reports = null;
 		if ($reports === null) {
 			$reports = self::getActiveModulesByComponent('report', $ged_id, $access_level);
@@ -226,7 +226,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised sidebars
-	static public function getActiveSidebars($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveSidebars($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $sidebars = null;
 		if ($sidebars === null) {
 			$sidebars = self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
@@ -235,7 +235,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised tabs
-	static public function getActiveTabs($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveTabs($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $tabs = null;
 		if ($tabs === null) {
 			$tabs = self::getActiveModulesByComponent('tab', $ged_id, $access_level);
@@ -244,7 +244,7 @@ abstract class KT_Module {
 	}
 
 	// Get a list of all the active, authorised widgets
-	static public function getActiveWidgets($ged_id = KT_GED_ID, $access_level = KT_USER_ACCESS_LEVEL) {
+	static public function getActiveWidgets($ged_id, $access_level = KT_USER_ACCESS_LEVEL) {
 		static $widgets = null;
 		if ($widgets === null) {
 			$widgets = self::getActiveModulesByComponent('widget', $ged_id, $access_level);
