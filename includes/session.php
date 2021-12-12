@@ -585,7 +585,7 @@ if (substr(KT_SCRIPT_NAME, 0, 5) == 'admin' || KT_SCRIPT_NAME == 'module.php' &&
 			$THEME_DIR = 'kiwitrees';
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			list($THEME_DIR) = get_theme_names();
+			[$THEME_DIR] = get_theme_names();
 		}
 	}
 	define('KT_THEME_DIR', KT_THEMES_DIR . $THEME_DIR.'/');

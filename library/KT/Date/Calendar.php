@@ -27,25 +27,28 @@ if (!defined('KT_KIWITREES')) {
 }
 
 class KT_Date_Calendar {
-	var $y, $m, $d;     // Numeric year/month/day
-	var $minJD, $maxJD; // Julian Day numbers
+	var int $y;
+	var int $m;
+	var int $d;
+	var int $minJD;
+	var int $maxJD;
 
 	function __construct($date) {
 		// Construct from an integer (a julian day number)
-		if (is_integer($date)) {
+		if (is_int($date)) {
 			$this->minJD = $date;
 			$this->maxJD = $date;
-			list($this->y, $this->m, $this->d) = $this->JDtoYMD($date);
+			[$this->y, $this->m, $this->d] = $this->JDtoYMD($date);
 			return;
 		}
 
 		// Construct from an array (of three gedcom-style strings: "1900", "feb", "4")
 		if (is_array($date)) {
 			$this->d = (int)$date[2];
-			if (!is_null($this->MONTH_TO_NUM($date[1]))) {
-				$this->m = $this->MONTH_TO_NUM($date[1]);
-			} else {
-				$this->m = 0;
+			$this->m = $this->MONTH_TO_NUM($date[1]);
+
+
+           		 if ($this->m === 0) {
 				$this->d = 0;
 			}
 			$this->y = $this->ExtractYear($date[0]);
@@ -53,14 +56,16 @@ class KT_Date_Calendar {
 			return;
 		}
 
+		// Construct from a CalendarDate
+		$this->minJD = $date->minJD;
+		$this->maxJD = $date->maxJD;
 		// Construct from an equivalent xxxxDate object
 		if (get_class($this) === get_class($date)) {
 			// NOTE - can't copy whole object - need to be able to copy Hebrew to Jewish, etc.
 			$this->y     = $date->y;
 			$this->m     = $date->m;
 			$this->d     = $date->d;
-			$this->minJD = $date->minJD;
-			$this->maxJD = $date->maxJD;
+
 			return;
 		}
 
@@ -77,31 +82,37 @@ class KT_Date_Calendar {
 		if ($date->y == 0) {
 			// Incomplete date - convert on basis of anniversary in current year
 			$today   = $date->TodayYMD();
-			$jd      = $date->YMDtoJD($today[0], $date->m, $date->d == 0 ? $today[2]:$date->d);
+			$jd      = $date->YMDtoJD($today[0], $date->m, $date->d === 0 ? $today[2]:$date->d);
 		} else {
 			// Complete date
-			$jd = (int)(($date->maxJD + $date->minJD) / 2);
+			$jd = intdiv($date->maxJD + $date->minJD, 2);
 		}
-		list($this->y, $this->m, $this->d)=$this->JDtoYMD($jd);
+		[$this->y, $this->m, $this->d] = $this->JDtoYMD($jd);
 		// New date has same precision as original date
-		if ($date->y==0) $this->y=0;
-		if ($date->m==0) $this->m=0;
-		if ($date->d==0) $this->d=0;
+		if ($date->y == 0) {
+			$this->y = 0;
+		}
+		if ($date->m == 0) {
+			$this->m = 0;
+		}
+		if ($date->d == 0) {
+			$this->d = 0;
+		}
 		$this->SetJDfromYMD();
 	}
 
 	// Set the object's JD from a potentially incomplete YMD
 	function SetJDfromYMD() {
-		if ($this->y==0) {
+		if ($this->y === 0) {
 			$this->minJD=0;
 			$this->maxJD=0;
 		} else
-			if ($this->m==0) {
+			if ($this->m === 0) {
 				$this->minJD=$this->YMDtoJD($this->y, 1, 1);
 				$this->maxJD=$this->YMDtoJD($this->NextYear($this->y), 1, 1)-1;
 			} else {
 				if ($this->d==0) {
-					list($ny,$nm)=$this->NextMonth();
+					[$ny, $nm] = $this->NextMonth();
 					$this->minJD=$this->YMDtoJD($this->y, $this->m,  1);
 					$this->maxJD=$this->YMDtoJD($ny, $nm, 1)-1;
 				} else {

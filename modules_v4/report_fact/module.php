@@ -83,7 +83,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 		$names   = $person->getAllNames();
 		$primary = $person->getPrimaryName();
 
-		list($surn, $givn) = explode(',', $names[$primary]['sort']);
+		[$surn, $givn] = explode(',', $names[$primary]['sort']);
 
 		$givn = str_replace('@P.N.', 'AAAA', $givn);
 		$surn = str_replace('@N.N.', 'AAAA', $surn);
@@ -257,7 +257,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 										if ($num == $person->getPrimaryName()) {
 											$class =' class="name2"';
 											$sex_image = $person->getSexImage();
-											list($surn, $givn) = explode(',', $name['sort']);
+											[$surn, $givn] = explode(',', $name['sort']);
 										} else {
 											$class = '';
 											$sex_image = '';

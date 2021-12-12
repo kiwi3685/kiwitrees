@@ -175,7 +175,7 @@ class KT_Date {
 		$conv1 = '';
 		$conv2 = '';
 		foreach ($cal_fmts as $cal_fmt) {
-			if ($cal_fmt != 'none') {
+			if ($cal_fmt !== 'none') {
 				$d1conv = $this->date1->convert_to_cal($cal_fmt);
 				if ($d1conv->InValidRange()) {
 					$d1tmp = $d1conv->Format($date_fmt, $this->qual1);
@@ -194,22 +194,22 @@ class KT_Date {
 					}
 				}
 				// If the date is different to the unconverted date, add it to the date string.
-				if ($d1 != $d1tmp /*&& $d1tmp != ''*/) {
+				if ($d1 != $d1tmp && $d1tmp != '') {
 					if ($url) {
-						if ($CALENDAR_FORMAT != "none") {
-							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="'.$d1conv->CalendarURL($date_fmt).'">'.$d1tmp.'</a>)</span>';
+						if ($$cal_fmt != "none") {
+							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d1conv->CalendarURL($date_fmt) . '">' . $d1tmp . '</a>)</span>';
 						} else {
-							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '"><br><a href="'.$d1conv->CalendarURL($date_fmt).'">'.$d1tmp.'</a></span>';
+							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '"><br><a href="' . $d1conv->CalendarURL($date_fmt) . '">' . $d1tmp . '</a></span>';
 						}
 					} else {
-						$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">('.$d1tmp.')</span>';
+						$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(' . $d1tmp . ')</span>';
 					}
 				}
-				if (!is_null($this->date2) && $d2 != $d2tmp && $d1tmp != '') {
+				if ($this->date2 !== null && $d2 != $d2tmp && $d1tmp != '') {
 					if ($url) {
-						$conv2 .= ' <span dir="'.$TEXT_DIRECTION.'">(<a href="'.$d2conv->CalendarURL($date_fmt).'">'.$d2tmp.'</a>)</span>';
+						$conv2 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d2conv->CalendarURL($date_fmt) . '">' . $d2tmp . '</a>)</span>';
 					} else {
-						$conv2 .= ' <span dir="'.$TEXT_DIRECTION.'">('.$d2tmp.')</span>';
+						$conv2 .= ' <span dir="' . $TEXT_DIRECTION . '">(' . $d2tmp . ')</span>';
 					}
 				}
 			}
@@ -217,9 +217,9 @@ class KT_Date {
 
 		// Add URLs, if requested
 		if ($url) {
-			$d1 = '<a href="' . $this->date1->CalendarURL($date_fmt).'" rel="nofollow">' . $d1 . '</a>';
-			if (!is_null($this->date2))
-				$d2 = '<a href="'.$this->date2->CalendarURL($date_fmt).'" rel="nofollow">' . $d2 . '</a>';
+			$d1 = '<a href="' . $this->date1->CalendarURL($date_fmt) . '" rel="nofollow">' . $d1 . '</a>';
+			if ($this->date2 instanceof KT_Date)
+				$d2 = '<a href="' . $this->date2->CalendarURL($date_fmt) . '" rel="nofollow">' . $d2 . '</a>';
 		}
 
 		// Localise the date
@@ -233,8 +233,8 @@ class KT_Date {
 		case 'AFT':    /* I18N: Gedcom AFT dates     */ $tmp = KT_I18N::translate('after %s',				$d1 . $conv1); break;
 		case 'FROM':   /* I18N: Gedcom FROM dates    */ $tmp = KT_I18N::translate('from %s',				$d1 . $conv1); break;
 		case 'TO':     /* I18N: Gedcom TO dates      */ $tmp = KT_I18N::translate('to %s',					$d1 . $conv1); break;
-		case 'BETAND': /* I18N: Gedcom BET-AND dates */ $tmp = KT_I18N::translate('between %s and %s',		$d1 . $conv1, $d2.$conv2); break;
-		case 'FROMTO': /* I18N: Gedcom FROM-TO dates */ $tmp = KT_I18N::translate('from %s to %s',			$d1 . $conv1, $d2.$conv2); break;
+		case 'BETAND': /* I18N: Gedcom BET-AND dates */ $tmp = KT_I18N::translate('between %s and %s',		$d1 . $conv1, $d2 . $conv2); break;
+		case 'FROMTO': /* I18N: Gedcom FROM-TO dates */ $tmp = KT_I18N::translate('from %s to %s',			$d1  .  $conv1, $d2 . $conv2); break;
 		default: $tmp = '<span class="error">' . KT_I18N::translate('Invalid date') . '</span>'; break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
@@ -244,9 +244,9 @@ class KT_Date {
 		// Return at least one printable character, for better formatting in tables.
 		if (strip_tags($tmp) === '') {
 			return '&nbsp;';
-		} else {
-			return '<span class="date">' . $tmp . '</span>';
 		}
+
+		return '<span class="date">' . $tmp . '</span>';
 	}
 
 	// Get the earliest/latest date/JD from this date
@@ -268,7 +268,7 @@ class KT_Date {
 		return $tmp->maxJD;
 	}
 	function JD() {
-		return (int) (($this->MinJD() + $this->MaxJD()) / 2);
+		return intdiv($this->MinJD() + $this->MaxJD(), 2);
 	}
 
 	// Offset this date by N years, and round to the whole year
@@ -287,6 +287,7 @@ class KT_Date {
 	// Calculate the the age of a person, on a date.
 	// If $d2 is null, today's date is used.
 	static function getAge(KT_Date $d1, KT_Date $d2=null, $format) {
+		global $iconStyle;
 		if ($d2) {
 			if ($d2->MaxJD() >= $d1->MinJD() && $d2->MinJD() <= $d1->MinJD()) {
 				// Overlapping dates
@@ -315,8 +316,8 @@ class KT_Date {
 			}
 		case 2: // Just years, in local digits, with warning for negative/
 			if ($jd && $d1->MinJD()) {
-				if ($d1->MinJD()>$jd) {
-					return '<i class="icon-warning"></i>';
+				if ($d1->MinJD() > $jd) {
+					return '<i class="' . $iconStyle . ' fa-exclamation-triangle warning"></i>';
 				} else {
 					return KT_I18N::number($d1->MinDate()->GetAge(false, $jd));
 				}

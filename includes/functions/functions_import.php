@@ -46,7 +46,7 @@ function reformat_record_import($rec) {
 	// Process the record line-by-line
 	$newrec='';
 	foreach ($matches as $n=>$match) {
-		list(, $level, $xref, $tag, $data)=$match;
+		[$level, $xref, $tag, $data]=$match;
 		$tag=strtoupper($tag); // Tags should always be upper case
 		switch ($tag) {
 		// Convert PGV tags to WT
@@ -180,7 +180,7 @@ function reformat_record_import($rec) {
 		case 'DATE':
 			// Preserve text from INT dates
 			if (strpos($data, '(')!==false) {
-				list($date, $text)=explode('(', $data, 2);
+				[$date, $text]=explode('(', $data, 2);
 				$text=' ('.$text;
 			} else {
 				$date=$data;
@@ -631,7 +631,7 @@ function import_record($gedrec, $ged_id, $update) {
 
 	// import different types of records
 	if (preg_match('/^0 @('.KT_REGEX_XREF.')@ ('.KT_REGEX_TAG.')/', $gedrec, $match) > 0) {
-		list(,$xref, $type) = $match;
+		[$xref, $type] = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID ".uuid();
@@ -1062,7 +1062,7 @@ function update_record($gedrec, $ged_id, $delete) {
 	global $GEDCOM;
 
 	if (preg_match('/^0 @('.KT_REGEX_XREF.')@ ('.KT_REGEX_TAG.')/', $gedrec, $match)) {
-		list(,$gid, $type)=$match;
+		[$gid, $type]=$match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
 		return false;

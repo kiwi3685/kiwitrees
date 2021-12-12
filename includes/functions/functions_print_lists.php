@@ -334,7 +334,7 @@ function format_indi_table($datalist, $option='') {
 			if ($num == $person->getPrimaryName()) {
 				$class =' class="name2"';
 				$sex_image = $person->getSexImage();
-				list($surn, $givn)=explode(',', $name['sort']);
+				[$surn, $givn]=explode(',', $name['sort']);
 			} else {
 				$class = '';
 				$sex_image = '';
@@ -813,7 +813,7 @@ function format_fam_table($datalist, $option = '') {
 			if ($num==$husb->getPrimaryName()) {
 				$class=' class="name2"';
 				$sex_image=$husb->getSexImage();
-				list($surn, $givn)=explode(',', $name['sort']);
+				[$surn, $givn]=explode(',', $name['sort']);
 			} else {
 				$class='';
 				$sex_image='';
@@ -858,7 +858,7 @@ function format_fam_table($datalist, $option = '') {
 			if ($num == $wife->getPrimaryName()) {
 				$class = ' class="name2"';
 				$sex_image = $wife->getSexImage();
-				list($surn, $givn)=explode(',', $name['sort']);
+				[$surn, $givn]=explode(',', $name['sort']);
 			} else {
 				$class='';
 				$sex_image='';

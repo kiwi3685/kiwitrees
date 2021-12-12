@@ -1261,7 +1261,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	preg_match('/^(?:(\d+) (' . KT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 	if ($match) {
-		list(, $level, $fact, $value) = $match;
+		[$level, $fact, $value] = $match;
 	}
 
 	// element name : used to POST data

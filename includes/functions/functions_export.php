@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2021 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,7 @@ function reformat_record_export($rec) {
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
 		// Use quick strlen() check before using slower utf8_strlen() check
 		if (strlen($line)>KT_GEDCOM_LINE_LENGTH && utf8_strlen($line)>KT_GEDCOM_LINE_LENGTH) {
-			list($level, $tag)=explode(' ', $line, 3);
+			[$level, $tag] = explode(' ', $line, 3);
 			if ($tag!='CONT' && $tag!='CONC') {
 				$level++;
 			}
@@ -202,7 +202,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = KT_Person::getInstance($row)->privatizeGedcom($access_level);
+		[$rec] = KT_Person::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec = utf8_decode($rec);
 		}
@@ -218,7 +218,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		" FROM `##families` WHERE f_file=? ORDER BY f_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = KT_Family::getInstance($row)->privatizeGedcom($access_level);
+		[$rec] = KT_Family::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
 			$rec = utf8_decode($rec);
 		}
@@ -234,7 +234,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		" FROM `##sources` WHERE s_file=? ORDER BY s_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = KT_Source::getInstance($row)->privatizeGedcom($access_level);
+		[$rec] = KT_Source::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI'] == "yes") {
 			$rec = utf8_decode($rec);
 		}
@@ -250,7 +250,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		" FROM `##other` WHERE o_file=? AND o_type!=? AND o_type!=? ORDER BY o_id"
 	)->execute(array($ged_id, 'HEAD', 'TRLR'))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = KT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
+		[$rec] = KT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI'] == "yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -266,7 +266,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		" FROM `##media` WHERE m_file=? ORDER BY m_id"
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		list($rec) = KT_Media::getInstance($row)->privatizeGedcom($access_level);
+		[$rec] = KT_Media::getInstance($row)->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path']);
 		if ($exportOptions['toANSI'] == "yes") {
 			$rec=utf8_decode($rec);
