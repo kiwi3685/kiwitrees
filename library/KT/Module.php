@@ -254,17 +254,17 @@ abstract class KT_Module {
 
 	// CHECK MODULE ACCESS
 	// Check module (a) provides a list and (b) we have permission to see.
-	public static function isActiveList($ged_id = KT_GED_ID, $module, $access_level) {
+	public static function isActiveList($ged_id, $module, $access_level) {
 		return array_key_exists($module, self::getActiveModulesByComponent('list', $ged_id, $access_level));
 	}
 
 	// Check module (a) provides a chart and (b) we have permission to see.
-	public static function isActiveChart($ged_id = KT_GED_ID, $module, $access_level) {
+	public static function isActiveChart($ged_id, $module, $access_level) {
 		return array_key_exists($module, self::getActiveModulesByComponent('chart', $ged_id, $access_level));
 	}
 
 	// heck module (a) provides a sidebar and (b) we have permission to see.
-	public static function isActiveSidebar($ged_id = KT_GED_ID, $module, $access_level) {
+	public static function isActiveSidebar($ged_id, $module, $access_level) {
 		return array_key_exists($module, self::getActiveModulesByComponent('sidebar', $ged_id, $access_level));
 	}
 
