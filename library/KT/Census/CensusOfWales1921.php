@@ -51,7 +51,7 @@ class KT_Census_CensusOfWales1921 extends KT_Census_CensusOfWales implements KT_
 			new KT_Census_CensusColumnOccupation($this, 'Occupation', 'Personal Occupation or Schooling', 'width: 100px;'),
 			new KT_Census_CensusColumnNull($this, 'Emp', 'Employment'),
 			new KT_Census_CensusColumnNull($this, 'Work place', 'Place of Work'),
-			new KT_Census_CensusColumnChildrenLiving($this, 'ChL', 'No. of living children, total and by age'),
+			new KT_Census_CensusColumnNull($this, 'ChL', 'No. of living children, total and by age'),
 		);
 	}
 }
