@@ -24,28 +24,7 @@
 define('KT_SCRIPT_NAME', 'setup.php');
 define('KT_CONFIG_FILE', 'config.ini.php');
 
-// magic quotes were deprecated in PHP5.3.0
-if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	set_magic_quotes_runtime(0);
-	// magic_quotes_gpc can’t be disabled at run-time, so clean them up as necessary.
-	if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ||
-		ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
-		$in = array(&$_POST);
-		foreach ($in as $k => $v) {
-			foreach ($v as $key => $val) {
-				if (!is_array($val)) {
-					$in[$k][$key] = stripslashes($val);
-					continue;
-				}
-				$in[] =& $in[$k][$key];
-			}
-		}
-		unset($in);
-	}
-}
-
-
-if (version_compare(PHP_VERSION, '5.6') < 0) {
+if (version_compare(PHP_VERSION, '7.0') < 0) {
 	// Our translation system requires PHP 5.6, so we cannot translate this message :-(
 	header('Content-Type: text/html; charset=UTF-8');
 	echo
@@ -56,10 +35,7 @@ if (version_compare(PHP_VERSION, '5.6') < 0) {
 		'<title>Kiwitrees setup wizard</title>',
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
-		'<p><b>Kiwitrees</b> requires PHP 5.6 or later.  PHP 5.5 is recommended.</p>';
-	if (version_compare(PHP_VERSION, '5.0') < 0) {
-		echo '<p>Many servers offer both PHP4 and PHP5.  You may be able to change your default to PHP5 using a control panel or a configuration setting.</p>';
-	}
+		'<p><b>Kiwitrees</b> requires PHP from 7.0 to 8.0.</p>';
 	exit;
 }
 
