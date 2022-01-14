@@ -27,11 +27,11 @@ if (!defined('KT_KIWITREES')) {
 }
 
 class KT_Date_Calendar {
-	var int $y;
-	var int $m;
-	var int $d;
-	var int $minJD;
-	var int $maxJD;
+	var $y;
+	var $m;
+	var $d;
+	var $minJD;
+	var $maxJD;
 
 	function __construct($date) {
 		// Construct from an integer (a julian day number)
