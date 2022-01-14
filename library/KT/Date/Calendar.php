@@ -319,7 +319,7 @@ class KT_Date_Calendar {
 		if ($warn_on_negative && $jd<$this->minJD) {
 			return '<i class="icon-warning"></i>';
 		}
-		list($y,$m,$d)=$this->JDtoYMD($jd);
+		[$y,$m,$d] = $this->JDtoYMD($jd);
 		$dy=$y-$this->y;
 		$dm=$m-max($this->m,1);
 		$dd=$d-max($this->d,1);
@@ -372,7 +372,7 @@ class KT_Date_Calendar {
 
 	// How many days in the current month
 	function DaysInMonth() {
-		list($ny,$nm)=$this->NextMonth();
+		[$ny,$nm] = $this->NextMonth();
 		return $this->YMDtoJD($ny, $nm, 1) - $this->YMDtoJD($this->y, $this->m, 1);
 	}
 

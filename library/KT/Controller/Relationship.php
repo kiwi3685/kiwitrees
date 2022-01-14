@@ -948,7 +948,7 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 				// Insert the paths into the queue, with an exclusion list.
 				$queue[] = array('path' => $path, 'exclude' => array());
 				// While there are un-extended paths
-				while (list(, $next) = each($queue)) {
+				while ([, $next] = each($queue)) {
 					// For each family on the path
 					for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
 						$exclude   = $next['exclude'];
@@ -1054,7 +1054,7 @@ class KT_Controller_Relationship extends KT_Controller_Page {
 			// Insert the paths into the queue, with an exclusion list.
 			$queue[] = array('path' => $path, 'exclude' => array());
 			// While there are un-extended paths
-			//while (list(, $next) = each($queue)) {
+			//while ([, $next] = each($queue)) {
 			foreach ($queue as $next) {
 				// For each family on the path
 				for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {

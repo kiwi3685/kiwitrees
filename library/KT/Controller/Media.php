@@ -49,7 +49,7 @@ class KT_Controller_Media extends KT_Controller_GedcomRecord {
 			} else {
 				// Create a dummy record from the first line of the new record.
 				// We need it for diffMerge(), getXref(), etc.
-				list($gedrec) = explode("\n", $newrec);
+				[$gedrec] = explode("\n", $newrec);
 			}
 		}
 

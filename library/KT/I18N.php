@@ -191,13 +191,13 @@ class KT_I18N {
 		$TIME_FORMAT=self::noop('%H:%i:%s');
 		global $ALPHABET_upper; // Alphabetic sorting sequence (upper-case letters), used by kiwitrees to sort strings
 		$ALPHABET_upper=self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-		list(, $ALPHABET_upper)=explode('=', $ALPHABET_upper);
+		[, $ALPHABET_upper] = explode('=', $ALPHABET_upper);
 		global $ALPHABET_lower; // Alphabetic sorting sequence (lower-case letters), used by kiwitrees to sort strings
 		$ALPHABET_lower=self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz');
-		list(, $ALPHABET_lower)=explode('=', $ALPHABET_lower);
+		[, $ALPHABET_lower] = explode('=', $ALPHABET_lower);
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 		$WEEK_START=self::noop('WEEK_START=0');
-		list(, $WEEK_START)=explode('=', $WEEK_START);
+		[, $WEEK_START] = explode('=', $WEEK_START);
 
 		global $TEXT_DIRECTION;
 		$TEXT_DIRECTION = KT_I18N::scriptDirection(KT_I18N::languageScript($locale));
@@ -256,9 +256,9 @@ class KT_I18N {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.
 				if (substr($value, -1) == '|') {
-					list($value,) = explode('|', $value);
+					[$value,] = explode('|', $value);
 				} else {
-					list(,$value) = explode('|', $value);
+					[,$value] = explode('|', $value);
 				}
 			}
 			self::$cache->save($installed_languages, $cache_key);

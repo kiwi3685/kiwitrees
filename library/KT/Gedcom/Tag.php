@@ -852,7 +852,7 @@ class KT_Gedcom_Tag {
 		default:
 			// If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
 			if (strpos($tag, ':')) {
-				list(, $tag)=explode(':', $tag, 2);
+				[, $tag] = explode(':', $tag, 2);
 				return self::getLabel($tag, $record);
 			}
 			// Still no translation? Highlight this as an error

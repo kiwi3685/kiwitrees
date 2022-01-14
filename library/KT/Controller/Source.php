@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2021 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,7 +48,7 @@ class KT_Controller_Source extends KT_Controller_GedcomRecord {
 			} else {
 				// Create a dummy record from the first line of the new record.
 				// We need it for diffMerge(), getXref(), etc.
-				list($gedrec)=explode("\n", $newrec);
+				[$gedrec] = explode("\n", $newrec);
 			}
 		}
 

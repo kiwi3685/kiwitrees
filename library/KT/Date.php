@@ -408,7 +408,7 @@ class KT_Date {
 	// such as the ancestry.com search interface or the dated fact icons.
 	function gregorianYear() {
 		if ($this->isOK()) {
-			list($y) = KT_Date_Gregorian::JDtoYMD($this->JD());
+			[$y] = KT_Date_Gregorian::JDtoYMD($this->JD());
 			return $y;
 		} else {
 			return 0;

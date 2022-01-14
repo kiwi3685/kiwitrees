@@ -360,8 +360,8 @@ class KT_Controller_Search extends KT_Controller_Page {
 	}
 
 	public static function tagSort($x, $y) {
-		list($x1) = explode(':', $x.':');
-		list($y1) = explode(':', $y.':');
+		[$x1] = explode(':', $x.':');
+		[$y1] = explode(':', $y.':');
 		$tmp = utf8_strcasecmp(KT_Gedcom_Tag::getLabel($x1), KT_Gedcom_Tag::getLabel($y1));
 		if ($tmp) {
 			return $tmp;

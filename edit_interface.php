@@ -108,7 +108,7 @@ case 'delete':
 
 	// Retrieve the private data
 	$record = new KT_GedcomRecord($gedrec);
-	list($gedcom, $private_gedrec)=$record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+	[$gedcom, $private_gedrec] = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 	// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
 	if ($linenum=='OBJE') {
@@ -116,7 +116,7 @@ case 'delete':
 	} else {
 		$newged = remove_subline($gedrec, $linenum);
 	}
-	$success = replace_gedrec($pid, KT_GED_ID, $newged.$private_gedrec, $update_CHAN);
+	$success = replace_gedrec($pid, KT_GED_ID, $newged . $private_gedrec, $update_CHAN);
 
 	if ($success && !KT_DEBUG) {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -137,7 +137,7 @@ case 'editraw':
 	// Remove the first line of the gedrec - things go wrong when users change either the TYPE or XREF
 	// Notes are special - they may contain data on the first line
 	$gedrec = preg_replace('/^(0 @'.KT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
-	list($gedrec1, $gedrec2) = explode("\n", $gedrec, 2);
+	[$gedrec1, $gedrec2] = explode("\n", $gedrec, 2);
 
 	$controller
 		->setPageTitle(KT_I18N::translate('Edit raw GEDCOM record') . ' - ' . ($type == 'INDI' ? $record->getLifespanName() : $record->getFullName()))
@@ -1324,7 +1324,7 @@ case 'updateraw':
 	$record = KT_GedcomRecord::getInstance($pid);
 
 	// Retrieve the private data
-	list(, $private_gedrec) = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+	[, $private_gedrec] = $record->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 	$newgedrec	= $_POST['newgedrec1'] . "\n" . $_POST['newgedrec2'] . $private_gedrec;
 	$success	= replace_gedrec($pid, KT_GED_ID, $newgedrec, !safe_POST_bool('preserve_last_changed'));
@@ -1374,7 +1374,7 @@ case 'update':
 
 		// Retrieve the private data
 		$tmp = new KT_GedcomRecord($gedrec);
-		list($gedrec, $private_gedrec) = $tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
+		[$gedrec, $private_gedrec] = $tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
 		if ($text[0] == 'Y') {

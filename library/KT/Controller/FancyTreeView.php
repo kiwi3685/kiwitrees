@@ -1278,7 +1278,7 @@ class KT_Controller_FancyTreeView {
 			$mimetype = $mediaobject->mimeType();
 			if ($mimetype === 'image/jpeg' || $mimetype === 'image/png' || $mimetype === 'image/gif') {
 
-				if (!list($imagewidth, $imageheight) = getimagesize($mediasrc)) {
+				if (![$imagewidth, $imageheight] = getimagesize($mediasrc)) {
 					return null;
 				}
 

@@ -758,7 +758,7 @@ class KT_Controller_Individual extends KT_Controller_GedcomRecord {
 	// charts and reports to initialise with the same records
 	public function getSignificantSurname() {
 		if ($this->record) {
-			list($surn)=explode(',', $this->record->getSortname());
+			[$surn] = explode(',', $this->record->getSortname());
 			return $surn;
 		} else {
 			return '';

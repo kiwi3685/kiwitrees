@@ -181,7 +181,7 @@ class KT_Controller_Family extends KT_Controller_GedcomRecord {
 	// charts and reports to initialise with the same records
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
-			list($surn) = explode(',', $this->record->getHusband()->getSortname());
+			[$surn] = explode(',', $this->record->getHusband()->getSortname());
 			return $surn;
 		} else {
 			return '';
