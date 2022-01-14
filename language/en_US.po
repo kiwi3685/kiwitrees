@@ -31,10 +31,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-"X-Poedit-SearchPathExcluded-1: modules_v4/stories2\n"
-"X-Poedit-SearchPathExcluded-2: modules_v4/batch_update/plugins/jamies_edit."
-"php\n"
-"X-Poedit-SearchPathExcluded-3: modules_v4/pages_*\n"
+"X-Poedit-SearchPathExcluded-1: library/Carbon\n"
+"X-Poedit-SearchPathExcluded-2: modules_v4/stories2\n"
+"X-Poedit-SearchPathExcluded-3: modules_v4/batch_update/plugins/jamies_edit.php\n"
+"X-Poedit-SearchPathExcluded-4: modules_v4/pages_*\n"
 
 #: action.php:56
 #, php-format
