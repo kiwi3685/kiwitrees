@@ -146,25 +146,10 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 			->addExternalJavascript(KT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
-
-				var form = document.getElementById("resource"),
-				fact = form.elements.fact;
-				var typefacts = ' . json_encode($typefacts) . ';
-				fact.onchange = function () {
-				    var form = this.form;
-					if (jQuery.inArray(this.value, typefacts) !== -1) {
-				        form.elements.type.disabled = false;
-						jQuery("#disable_type input").css("opacity", "initial");
-				    } else {
-				        form.elements.type.disabled = true;
-						jQuery("#disable_type input").css("opacity", "0.4");
-				    }
-				};
-				fact.onchange();
 			');
 		?>
 
-		<div id="page" class="fact_report"> s
+		<div id="page" class="fact_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="noprint">
 				<div class="help_text">
@@ -204,7 +189,7 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 						</div>
 						<div class="chart_options" id="disable_type">
 							<label for="type"><?php echo KT_I18N::translate('Type'); ?></label>
-							<input type="text" data-autocomplete-type="EF_TYPE" id="type" name="type" value="<?php echo $type; ?>" <?php ($fact !== 'EVEN' || $fact !== 'FACT' ? '' : 'disabled'); ?>>
+							<input type="text" data-autocomplete-type="EF_TYPE" id="type" name="type" value="<?php echo $type; ?>">
 						</div>
 						<div class="chart_options">
 							<label for="detail"><?php echo KT_I18N::translate('Details'); ?></label>
@@ -225,6 +210,9 @@ class report_fact_KT_Module extends KT_Module implements KT_Module_Report {
 			<?php if ($go == 1) {
 				// prepare data.
 				$rows = report_findfact($fact);
+				if(!$rows) {
+					echo KT_I18N::translate('No matching records found');
+				}
 				$data = array();
 				$x = 0;
 				$count_type = false;
