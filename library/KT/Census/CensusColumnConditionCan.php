@@ -30,16 +30,16 @@ class KT_Census_CensusColumnConditionCan extends KT_Census_CensusColumnCondition
 	protected $wife    = 'M';
 
 	/* Text to display for unmarried individuals */
-	protected $bachelor = '-';
-	protected $spinster = '-';
+	protected $bachelor = 'S';
+	protected $spinster = 'S';
 
 	/* Text to display for children */
 	protected $boy  = '-';
 	protected $girl = '-';
 
 	/* Text to display for divorced individuals */
-	protected $divorce  = '-';
-	protected $divorcee = '-';
+	protected $divorce  = 'S';
+	protected $divorcee = 'S';
 
 	/* Text to display for widowed individuals */
 	protected $widower = 'W';
