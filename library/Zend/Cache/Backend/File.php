@@ -987,7 +987,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         if (!is_file($file)) {
             return false;
         }
-        $f = @fopen($file, 'rb');
+        $f = fopen($file, 'rb');
         if ($f) {
             if ($this->_options['file_locking']) @flock($f, LOCK_SH);
             $result = stream_get_contents($f);
@@ -1007,7 +1007,10 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     protected function _filePutContents($file, $string)
     {
         $result = false;
-        $f = @fopen($file, 'ab+');
+        if (!is_file($file)) {
+            return false;
+        }
+        $f = fopen($file, 'ab+');
         if ($f) {
             if ($this->_options['file_locking']) @flock($f, LOCK_EX);
             fseek($f, 0);
