@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2021-11-23 11:03+1300\n"
-"PO-Revision-Date: 2021-11-23 11:05+1300\n"
+"POT-Creation-Date: 2022-01-18 14:44+1300\n"
+"PO-Revision-Date: 2022-01-18 14:44+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -33,7 +33,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SearchPathExcluded-1: library/Carbon\n"
 "X-Poedit-SearchPathExcluded-2: modules_v4/stories2\n"
-"X-Poedit-SearchPathExcluded-3: modules_v4/batch_update/plugins/jamies_edit.php\n"
+"X-Poedit-SearchPathExcluded-3: modules_v4/batch_update/plugins/jamies_edit."
+"php\n"
 "X-Poedit-SearchPathExcluded-4: modules_v4/pages_*\n"
 
 #: action.php:56
@@ -166,7 +167,7 @@ msgstr "Thumbnail file %s does not exist."
 #: edit_interface.php:928 edit_interface.php:1065 edit_interface.php:1141
 #: edit_interface.php:1268 edit_interface.php:2167 edit_interface.php:2321
 #: edit_interface.php:2588 edit_interface.php:2702 find.php:732
-#: includes/functions/functions_edit.php:977 includes/media_reorder.php:165
+#: includes/functions/functions_edit.php:983 includes/media_reorder.php:165
 #: inverselink.php:209 inverselink.php:238 modules_v4/album/module.php:338
 #: modules_v4/census_assistant/census-edit.php:127
 #: modules_v4/census_assistant/module.php:100
@@ -322,7 +323,7 @@ msgstr ""
 #: edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137
 #: edit_interface.php:1264 edit_interface.php:2159 edit_interface.php:2317
 #: edit_interface.php:2580 edituser.php:191 find.php:502
-#: includes/functions/functions_edit.php:967 includes/media_reorder.php:161
+#: includes/functions/functions_edit.php:973 includes/media_reorder.php:161
 #: index_edit.php:337 inverselink.php:205
 #: modules_v4/calendar_utilities/module.php:167
 #: modules_v4/census_assistant/census-edit.php:123
@@ -347,7 +348,7 @@ msgstr "Save"
 msgid "Administration"
 msgstr "Administration"
 
-#: admin.php:66
+#: admin.php:65
 #, php-format
 msgid ""
 "Your web server is using PHP version %s, which is no longer receiving "
@@ -358,7 +359,7 @@ msgstr ""
 "security updates.  You should ask your web service provider to upgrade to a "
 "later version as soon as possible."
 
-#: admin.php:78
+#: admin.php:75
 #, php-format
 msgid ""
 "Your web server is using PHP version %s, which is no longer maintained.  You "
@@ -367,7 +368,7 @@ msgstr ""
 "Your web server is using PHP version %s, which is no longer maintained.  You "
 "should ask your web service provider to upgrade to a later version."
 
-#: admin.php:91
+#: admin.php:88
 msgid ""
 "These pages provide access to all the configuration settings and management "
 "tools for this kiwitrees site."
@@ -375,38 +376,41 @@ msgstr ""
 "These pages provide access to all the configuration settings and management "
 "tools for this kiwitrees site."
 
-#: admin.php:92
+#: admin.php:89
 #, php-format
 msgid "Support is available at %s."
 msgstr "Support is available at %s."
 
-#: admin.php:99
+#: admin.php:96
 #, php-format
 msgid "Version %s of kiwitrees is now available at %s."
 msgstr "Version %s of kiwitrees is now available at %s."
 
-#: admin.php:101
+#: admin.php:98
 msgid "Your version of kiwitrees is the latest available."
 msgstr "Your version of kiwitrees is the latest available."
 
-#: admin.php:104
+#: admin.php:101
 msgid "No upgrade information is available."
 msgstr "No upgrade information is available."
 
-#: admin.php:108
+#: admin.php:105
 #, php-format
 msgid "You are using PHP version %s."
 msgstr "You are using PHP version %s."
 
-#: admin.php:111
-msgid "Kiwitrees is no longer compatible with versions of PHP older than 7.0"
+#: admin.php:108
+#, fuzzy
+#| msgid ""
+#| "Kiwitrees is no longer compatible with versions of PHP older than 7.0"
+msgid "Kiwitrees is no longer compatible with versions of PHP older than 7.3"
 msgstr "Kiwitrees is no longer compatible with versions of PHP older than 7.0"
 
-#: admin.php:113
+#: admin.php:110
 msgid "Kiwitrees is compatible with this version."
 msgstr "Kiwitrees is compatible with this version."
 
-#: admin.php:116
+#: admin.php:113
 #, php-format
 msgid ""
 "Kiwitrees is not yet tested for compatibility with your version of PHP. It "
@@ -417,15 +421,15 @@ msgstr ""
 "might work, but if you find any issues please report them on the <a class="
 "\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
 
-#: admin.php:125 admin_site_info.php:30 themes/_administration/header.php:138
+#: admin.php:122 admin_site_info.php:30 themes/_administration/header.php:138
 msgid "Server information"
 msgstr "Server information"
 
-#: admin.php:148
+#: admin.php:145
 msgid "Old files found"
 msgstr "Old files found"
 
-#: admin.php:150
+#: admin.php:147
 msgid ""
 "Files have been found from a previous version of kiwitrees.  Old files can "
 "sometimes be a security risk.  You should delete them."
@@ -433,43 +437,43 @@ msgstr ""
 "Files have been found from a previous version of kiwitrees.  Old files can "
 "sometimes be a security risk.  You should delete them."
 
-#: admin.php:201 themes/_administration/header.php:195
+#: admin.php:198 themes/_administration/header.php:195
 msgid "Users"
 msgstr "Users"
 
-#: admin.php:204
+#: admin.php:201
 msgid "Total number of users"
 msgstr "Total number of users"
 
-#: admin.php:209
+#: admin.php:206
 msgid "Administrators"
 msgstr "Administrators"
 
-#: admin.php:214
+#: admin.php:211
 msgid "Managers"
 msgstr "Managers"
 
-#: admin.php:228
+#: admin.php:225
 msgid "Unverified by User"
 msgstr "Unverified by User"
 
-#: admin.php:233
+#: admin.php:230
 msgid "Unverified by Administrator"
 msgstr "Unverified by Administrator"
 
-#: admin.php:238
+#: admin.php:235
 msgid "Users' languages"
 msgstr "Users' languages"
 
-#: admin.php:252
+#: admin.php:249
 msgid "Users Logged In"
 msgstr "Users Logged In"
 
-#: admin.php:263
+#: admin.php:260
 msgid "Family tree statistics"
 msgstr "Family tree statistics"
 
-#: admin.php:275 admin.php:325 ancestry.php:93 calendar.php:377
+#: admin.php:272 admin.php:322 ancestry.php:93 calendar.php:377
 #: calendar.php:556 descendancy.php:66
 #: includes/functions/functions_print_lists.php:1117
 #: includes/functions/functions_print_lists.php:1290
@@ -486,7 +490,7 @@ msgstr "Family tree statistics"
 msgid "Individuals"
 msgstr "Individuals"
 
-#: admin.php:280 admin.php:326 ancestry.php:99 calendar.php:378
+#: admin.php:277 admin.php:323 ancestry.php:99 calendar.php:378
 #: calendar.php:557 descendancy.php:71 famlist.php:134 famlist.php:139
 #: includes/functions/functions_print_lists.php:1119
 #: includes/functions/functions_print_lists.php:1292
@@ -505,14 +509,14 @@ msgstr "Individuals"
 msgid "Families"
 msgstr "Families"
 
-#: admin.php:285 admin.php:327
+#: admin.php:282 admin.php:324
 #: includes/functions/functions_print_lists.php:1296
 #: includes/functions/functions_print_lists.php:1520
 #: includes/functions/functions_print_lists.php:1643
 #: library/KT/Controller/Search.php:1207 mediaviewer.php:142
 #: modules_v4/album/album_print_media.php:314
-#: modules_v4/chart_statistics/module.php:547
-#: modules_v4/chart_statistics/module.php:584
+#: modules_v4/chart_statistics/module.php:542
+#: modules_v4/chart_statistics/module.php:579
 #: modules_v4/gedcom_stats/module.php:107
 #: modules_v4/gedcom_stats/module.php:323 modules_v4/html/module.php:184
 #: modules_v4/list_sources/module.php:33
@@ -526,8 +530,8 @@ msgstr "Families"
 msgid "Sources"
 msgstr "Sources"
 
-#: admin.php:290 admin.php:328 mediaviewer.php:145
-#: modules_v4/chart_statistics/module.php:549
+#: admin.php:287 admin.php:325 mediaviewer.php:145
+#: modules_v4/chart_statistics/module.php:544
 #: modules_v4/gedcom_stats/module.php:113
 #: modules_v4/gedcom_stats/module.php:339 modules_v4/html/module.php:192
 #: modules_v4/list_repositories/module.php:33
@@ -536,11 +540,11 @@ msgstr "Sources"
 msgid "Repositories"
 msgstr "Repositories"
 
-#: admin.php:295 admin.php:329
+#: admin.php:292 admin.php:326
 #: includes/functions/functions_print_lists.php:1121
 #: includes/functions/functions_print_lists.php:1294 medialist.php:33
-#: modules_v4/chart_statistics/module.php:546
-#: modules_v4/chart_statistics/module.php:571
+#: modules_v4/chart_statistics/module.php:541
+#: modules_v4/chart_statistics/module.php:566
 #: modules_v4/gedcom_stats/module.php:110
 #: modules_v4/gedcom_stats/module.php:331 modules_v4/html/module.php:188
 #: modules_v4/list_media/module.php:33 modules_v4/widget_stats/module.php:134
@@ -548,19 +552,19 @@ msgstr "Repositories"
 msgid "Media objects"
 msgstr "Media objects"
 
-#: admin.php:300 includes/functions/functions_print_lists.php:1123
+#: admin.php:297 includes/functions/functions_print_lists.php:1123
 #: modules_v4/list_shared_notes/module.php:33 notelist.php:31 notelist.php:35
 #: search.php:148
 msgid "Shared notes"
 msgstr "Shared notes"
 
-#: admin.php:312 modules_v4/recent_changes/module.php:35
+#: admin.php:309 modules_v4/recent_changes/module.php:35
 #: modules_v4/report_changes/module.php:268
 #: modules_v4/widget_recent_changes/module.php:35
 msgid "Recent changes"
 msgstr "Recent changes"
 
-#: admin.php:324 calendar.php:144 calendar.php:346
+#: admin.php:321 calendar.php:144 calendar.php:346
 #: modules_v4/calendar_utilities/plugins/calculators.php:76
 #: modules_v4/calendar_utilities/plugins/old_new.php:86
 #: modules_v4/calendar_utilities/plugins/old_new.php:120
@@ -568,21 +572,21 @@ msgstr "Recent changes"
 msgid "Day"
 msgstr "Day"
 
-#: admin.php:324
+#: admin.php:321
 msgid "Week"
 msgstr "Week"
 
-#: admin.php:324 calendar.php:164 calendar.php:347
+#: admin.php:321 calendar.php:164 calendar.php:347
 #: modules_v4/calendar_utilities/plugins/calculators.php:85
 #: modules_v4/calendar_utilities/plugins/old_new.php:77
 #: modules_v4/calendar_utilities/plugins/old_new.php:111
 msgid "Month"
 msgstr "Month"
 
-#: admin.php:330 library/KT/Controller/Search.php:1208 mediaviewer.php:148
+#: admin.php:327 library/KT/Controller/Search.php:1208 mediaviewer.php:148
 #: modules_v4/calendar_utilities/plugins/regnal_years.php:140
 #: modules_v4/census_assistant/census-edit.php:106
-#: modules_v4/chart_statistics/module.php:548 modules_v4/notes/module.php:32
+#: modules_v4/chart_statistics/module.php:543 modules_v4/notes/module.php:32
 #: modules_v4/report_family/module.php:353
 #: modules_v4/report_individual/module.php:282
 #: modules_v4/report_related_fam/module.php:342
@@ -602,25 +606,25 @@ msgstr "The file %s could not be deleted."
 
 #: admin_media.php:163 admin_media.php:238 admin_trees_duplicates.php:284
 #: admin_users.php:263 admin_users.php:264 branches.php:191
-#: includes/functions/functions_edit.php:139
-#: includes/functions/functions_edit.php:1418
-#: includes/functions/functions_edit.php:1465
+#: includes/functions/functions_edit.php:142
+#: includes/functions/functions_edit.php:1424
+#: includes/functions/functions_edit.php:1471
 #: includes/functions/functions_print.php:922
 #: includes/functions/functions_print_facts.php:1293
 #: includes/functions/functions_print_lists.php:424
 #: includes/functions/functions_print_lists.php:925
-#: includes/functions/functions_resource.php:569 library/KT/Stats.php:3578
+#: includes/functions/functions_resource.php:568 library/KT/Stats.php:3648
 #: medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375
 #: modules_v4/charts/module.php:215 modules_v4/relatives/module.php:258
 msgid "yes"
 msgstr "yes"
 
 #: admin_media.php:166 admin_media.php:241 admin_users.php:263
-#: admin_users.php:264 includes/functions/functions_edit.php:139
-#: includes/functions/functions_edit.php:1462
+#: admin_users.php:264 includes/functions/functions_edit.php:142
+#: includes/functions/functions_edit.php:1468
 #: includes/functions/functions_print_facts.php:1296
 #: includes/functions/functions_print_lists.php:927
-#: library/KT/Controller/FancyTreeView.php:626 library/KT/Stats.php:3579
+#: library/KT/Controller/FancyTreeView.php:626 library/KT/Stats.php:3649
 #: medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374
 #: modules_v4/charts/module.php:214
 msgid "no"
@@ -701,7 +705,7 @@ msgstr "This media object is not linked to any other record."
 #: admin_trees_missing.php:265 admin_trees_source.php:163
 #: admin_trees_source.php:278 admin_trees_sourcecite.php:145
 #: includes/functions/functions_print_lists.php:1636 inverselink.php:90
-#: inverselink.php:214 modules_v4/chart_statistics/module.php:578
+#: inverselink.php:214 modules_v4/chart_statistics/module.php:573
 #: modules_v4/tab_census/module.php:113 themes/_administration/header.php:202
 msgid "Media"
 msgstr "Media"
@@ -1237,7 +1241,7 @@ msgstr ""
 msgid "SMTP mail server settings"
 msgstr "SMTP mail server settings"
 
-#: admin_site_config.php:323 setup.php:292
+#: admin_site_config.php:323 setup.php:268
 msgid "Server name"
 msgstr "Server name"
 
@@ -1249,7 +1253,7 @@ msgstr ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
 
-#: admin_site_config.php:332 setup.php:297
+#: admin_site_config.php:332 setup.php:273
 msgid "Port number"
 msgstr "Port number"
 
@@ -1280,7 +1284,7 @@ msgstr "The user name required for authentication with the SMTP server."
 
 #: admin_site_config.php:359 admin_users.php:371 edituser.php:161
 #: help_text.php:573 login.php:166 login.php:236 login.php:546
-#: modules_v4/login_block/module.php:71 setup.php:442
+#: modules_v4/login_block/module.php:71 setup.php:418
 msgid "Password"
 msgstr "Password"
 
@@ -1603,7 +1607,7 @@ msgstr "From %s to %s"
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:164
 #: includes/functions/functions_print_facts.php:616
 #: library/KT/Gedcom/Tag.php:348 medialist.php:107
-#: modules_v4/report_fact/module.php:206 modules_v4/report_fact/module.php:358
+#: modules_v4/report_fact/module.php:191 modules_v4/report_fact/module.php:346
 msgid "Type"
 msgstr "Type"
 
@@ -1700,7 +1704,7 @@ msgid "Create a new note"
 msgstr "Create a new note"
 
 #: admin_trees_addunlinked.php:58 edit_interface.php:651 edit_interface.php:831
-#: includes/functions/functions_edit.php:1185
+#: includes/functions/functions_edit.php:1191
 msgid "Create a new source"
 msgstr "Create a new source"
 
@@ -1740,8 +1744,8 @@ msgstr "Copy all the records from %1$s into %2$s"
 #: admin_trees_append.php:177 admin_trees_download.php:106
 #: admin_trees_download.php:165 admin_trees_manage.php:293
 #: admin_trees_renumber.php:283 admin_users.php:828 login.php:194 login.php:505
-#: login.php:511 modules_v4/login_block/module.php:97 setup.php:214
-#: setup.php:238 setup.php:312 setup.php:398 setup.php:457
+#: login.php:511 modules_v4/login_block/module.php:97 setup.php:190
+#: setup.php:214 setup.php:288 setup.php:374 setup.php:433
 msgid "continue"
 msgstr "continue"
 
@@ -1848,8 +1852,8 @@ msgid "Family tree configuration"
 msgstr "Family tree configuration"
 
 #: admin_trees_config.php:54 admin_trees_config.php:61
-#: includes/functions/functions_edit.php:190
-#: includes/functions/functions_edit.php:210
+#: includes/functions/functions_edit.php:193
+#: includes/functions/functions_edit.php:213
 #: includes/functions/functions_print_facts.php:222
 #: includes/functions/functions_print_facts.php:388
 #: includes/functions/functions_print_facts.php:781
@@ -1859,9 +1863,9 @@ msgid "Show to visitors"
 msgstr "Show to visitors"
 
 #: admin_trees_config.php:55 admin_trees_config.php:62
-#: includes/functions/functions_edit.php:191
-#: includes/functions/functions_edit.php:197
-#: includes/functions/functions_edit.php:211
+#: includes/functions/functions_edit.php:194
+#: includes/functions/functions_edit.php:200
+#: includes/functions/functions_edit.php:214
 #: includes/functions/functions_print_facts.php:225
 #: includes/functions/functions_print_facts.php:391
 #: includes/functions/functions_print_facts.php:784
@@ -1871,9 +1875,9 @@ msgid "Show to members"
 msgstr "Show to members"
 
 #: admin_trees_config.php:56 admin_trees_config.php:63
-#: includes/functions/functions_edit.php:192
-#: includes/functions/functions_edit.php:198
-#: includes/functions/functions_edit.php:212
+#: includes/functions/functions_edit.php:195
+#: includes/functions/functions_edit.php:201
+#: includes/functions/functions_edit.php:215
 #: includes/functions/functions_print_facts.php:228
 #: includes/functions/functions_print_facts.php:394
 #: includes/functions/functions_print_facts.php:787
@@ -1883,8 +1887,8 @@ msgid "Show to managers"
 msgstr "Show to managers"
 
 #: admin_trees_config.php:57 admin_trees_config.php:64
-#: includes/functions/functions_edit.php:193
-#: includes/functions/functions_edit.php:199
+#: includes/functions/functions_edit.php:196
+#: includes/functions/functions_edit.php:202
 msgid "Hide from everyone"
 msgstr "Hide from everyone"
 
@@ -2080,7 +2084,7 @@ msgstr "Prefixes"
 #: admin_trees_source.php:155 admin_trees_source.php:270
 #: admin_trees_sourcecite.php:137 ancestry.php:44 compact.php:40
 #: descendancy.php:40 familybook.php:40 hourglass.php:49
-#: includes/functions/functions_edit.php:1746
+#: includes/functions/functions_edit.php:1752
 #: includes/functions/functions_print_lists.php:1421 inverselink.php:221
 #: library/KT/Gedcom/Tag.php:250 modules_v4/chart_fanchart/module.php:109
 #: modules_v4/charts/module.php:220
@@ -2098,7 +2102,7 @@ msgstr "Individual"
 
 #: admin_trees_config.php:445 admin_trees_source.php:159
 #: admin_trees_source.php:274 admin_trees_sourcecite.php:141
-#: edit_interface.php:448 includes/functions/functions_edit.php:1777
+#: edit_interface.php:448 includes/functions/functions_edit.php:1783
 #: library/KT/Gedcom/Tag.php:219 media_links.php:382 media_links.php:389
 #: modules_v4/family_nav/module.php:244 modules_v4/family_nav/module.php:282
 #: modules_v4/report_family/module.php:31
@@ -2348,7 +2352,7 @@ msgstr ""
 #: admin_trees_config.php:651 admin_trees_missing-source.php:124
 #: admin_trees_missing.php:110 includes/functions/functions_print.php:1130
 #: includes/functions/functions_print.php:1243
-#: modules_v4/report_fact/module.php:183
+#: modules_v4/report_fact/module.php:168
 msgid "Fact or event"
 msgstr "Fact or event"
 
@@ -2506,7 +2510,7 @@ msgstr ""
 "Preferred URL link to an external image editor provided for members use when "
 "uploading media images. The default link is %s>"
 
-#: admin_trees_config.php:824 modules_v4/chart_statistics/module.php:322
+#: admin_trees_config.php:824 modules_v4/chart_statistics/module.php:317
 msgid "Names"
 msgstr "Names"
 
@@ -2633,7 +2637,6 @@ msgstr "hide"
 #: admin_trees_config.php:1062 admin_trees_config.php:1084
 #: admin_trees_config.php:1121 admin_trees_config.php:1130
 #: admin_trees_duplicates.php:200 admin_trees_missing-source.php:137
-#: modules_v4/chart_statistics/module.php:896
 #: modules_v4/extra_menus/module.php:347
 #: modules_v4/fancy_treeview_ancestors/module.php:215
 #: modules_v4/fancy_treeview_descendants/module.php:225
@@ -2641,7 +2644,7 @@ msgstr "hide"
 #: modules_v4/googlemap/module.php:267 modules_v4/pages/module.php:492
 #: modules_v4/report_census/module.php:183
 #: modules_v4/report_changes/module.php:202
-#: modules_v4/report_fact/module.php:213 modules_v4/report_fact/module.php:215
+#: modules_v4/report_fact/module.php:198 modules_v4/report_fact/module.php:200
 #: modules_v4/report_family/module.php:153
 #: modules_v4/report_family/module.php:155
 #: modules_v4/report_individual/module.php:138
@@ -2747,7 +2750,7 @@ msgstr "Individual pages"
 msgid "Show events of close relatives on individual page"
 msgstr "Show events of close relatives on individual page"
 
-#: admin_trees_config.php:981 modules_v4/chart_statistics/module.php:616
+#: admin_trees_config.php:981 modules_v4/chart_statistics/module.php:611
 #: placelist.php:99
 msgid "Places"
 msgstr "Places"
@@ -3339,10 +3342,30 @@ msgid "advanced"
 msgstr "advanced"
 
 #: admin_trees_config.php:1379
+#, fuzzy
+#| msgid ""
+#| "The \"basic\" autocomplete simply searches your existing place names for "
+#| "any that start with the string of characters you type, updating as you "
+#| "add characters. No other assistance is provided. <br><br>\n"
+#| "                                The \"advanced\" alternative starts the "
+#| "same, but also provides further features, which might not be compatible "
+#| "with every site's preferred naming style.: <br><br>\n"
+#| "                                1) After typing a comma and a space at "
+#| "any point it will start the search again, but using subsequent levels of "
+#| "your existing places. This allows, for example, a new town to be added to "
+#| "an existing state or county without re-typing all the existing data. "
+#| "<br><br>\n"
+#| "                                2) Place names are capitalised "
+#| "automatically using \"word caps\", or capitalising each separate word. "
+#| "This enables faster typing by allowing you to type just lowercase "
+#| "characters. <br><br>\n"
+#| "                                It is important to remember that such "
+#| "automated help can have unintended consequences. These may need manually "
+#| "correcting during the editing process. "
 msgid ""
-"The \"basic\" autocomplete simply searches your existing place names for any "
-"that start with the string of characters you type, updating as you add "
-"characters. No other assistance is provided. <br><br>\n"
+"The “basic” autocomplete simply searches existing place levels for any that "
+"contain a word starting with the string of characters you type, updating as "
+"you add characters. No other assistance is provided. <br><br>\n"
 "                                The \"advanced\" alternative starts the "
 "same, but also provides further features, which might not be compatible with "
 "every site's preferred naming style.: <br><br>\n"
@@ -3377,13 +3400,13 @@ msgstr ""
 #: admin_trees_config.php:1388 edit_interface.php:210 edit_interface.php:776
 #: edit_interface.php:916 edit_interface.php:1045 edit_interface.php:1127
 #: edit_interface.php:1256 help_text.php:563
-#: includes/functions/functions_edit.php:956
-#: includes/functions/functions_edit.php:2721
+#: includes/functions/functions_edit.php:962
+#: includes/functions/functions_edit.php:2727
 msgid "Do not update the “last change” record"
 msgstr "Do not update the “last change” record"
 
 #: admin_trees_config.php:1392 help_text.php:564
-#: includes/functions/functions_edit.php:2723
+#: includes/functions/functions_edit.php:2729
 msgid ""
 "Administrators sometimes need to clean up and correct the data submitted by "
 "users.<br>When Administrators make such corrections information about the "
@@ -3431,7 +3454,7 @@ msgid "Apply privacy settings?"
 msgstr "Apply privacy settings?"
 
 #: admin_trees_download.php:129 famlist.php:113 famlist.php:149
-#: indilist.php:113 indilist.php:147 library/KT/Stats.php:863
+#: indilist.php:113 indilist.php:147 library/KT/Stats.php:888
 #: modules_v4/clippings/module.php:255 modules_v4/clippings/module.php:662
 #: modules_v4/families/module.php:154 modules_v4/individuals/module.php:153
 #: modules_v4/report_family/module.php:132
@@ -3535,26 +3558,26 @@ msgid "Any"
 msgstr "Any"
 
 #: admin_trees_duplicates.php:178 calendar.php:670
-#: includes/functions/functions_edit.php:1470
+#: includes/functions/functions_edit.php:1476
 #: library/KT/Controller/Individual.php:266
-#: library/KT/Controller/Individual.php:269 library/KT/Stats.php:3400
+#: library/KT/Controller/Individual.php:269 library/KT/Stats.php:3469
 #: statisticsplot.php:792 timeline.php:238
 msgid "Male"
 msgstr "Male"
 
 #: admin_trees_duplicates.php:182 calendar.php:674
-#: includes/functions/functions_edit.php:1472
+#: includes/functions/functions_edit.php:1478
 #: library/KT/Controller/Individual.php:275
-#: library/KT/Controller/Individual.php:278 library/KT/Stats.php:3400
+#: library/KT/Controller/Individual.php:278 library/KT/Stats.php:3469
 #: statisticsplot.php:793 timeline.php:240
 msgid "Female"
 msgstr "Female"
 
 #: admin_trees_duplicates.php:186 calendar.php:678
-#: includes/functions/functions_edit.php:1474
+#: includes/functions/functions_edit.php:1480
 #: library/KT/Controller/Individual.php:284
 #: library/KT/Controller/Individual.php:287
-#: library/KT/Controller/Individual.php:293 library/KT/Stats.php:3400
+#: library/KT/Controller/Individual.php:293 library/KT/Stats.php:3469
 #: timeline.php:242
 msgctxt "unknown gender"
 msgid "Unknown"
@@ -3568,7 +3591,7 @@ msgstr "Include married names: "
 #: admin_trees_missing.php:260 admin_trees_sanity.php:213
 #: edit_interface.php:2672 inverselink.php:112 inverselink.php:186
 #: library/KT/Controller/Individual.php:173 library/KT/Gedcom/Tag.php:276
-#: library/KT/Stats.php:3401 modules_v4/report_marriages/module.php:223
+#: library/KT/Stats.php:3470 modules_v4/report_marriages/module.php:223
 #: modules_v4/report_related_indi/module.php:236
 #: modules_v4/report_vital_records/module.php:286
 #: modules_v4/research_links/module.php:164 modules_v4/tab_dna/module.php:149
@@ -3599,7 +3622,7 @@ msgstr "Merge selected"
 #: admin_trees_missing.php:262 admin_trees_sanity.php:256
 #: admin_trees_sanity.php:260 edit_changes.php:166 help_text.php:170
 #: help_text.php:202 library/KT/Gedcom/Tag.php:188
-#: modules_v4/report_fact/module.php:197 modules_v4/report_fact/module.php:356
+#: modules_v4/report_fact/module.php:182 modules_v4/report_fact/module.php:344
 #: modules_v4/report_marriages/module.php:224
 #: modules_v4/report_vital_records/module.php:324
 #: modules_v4/report_vital_records/module.php:365
@@ -3618,7 +3641,7 @@ msgstr "Date"
 #: modules_v4/googlemap/admin_places.php:179
 #: modules_v4/googlemap/admin_places.php:180
 #: modules_v4/googlemap/admin_places.php:181
-#: modules_v4/report_fact/module.php:202 modules_v4/report_fact/module.php:357
+#: modules_v4/report_fact/module.php:187 modules_v4/report_fact/module.php:345
 #: modules_v4/report_marriages/module.php:226
 #: modules_v4/report_related_indi/module.php:239
 #: modules_v4/report_related_indi/module.php:242
@@ -4041,7 +4064,7 @@ msgstr ""
 #: includes/functions/functions_print.php:1137
 #: includes/functions/functions_print.php:1250
 #: modules_v4/googlemap/module.php:1497 modules_v4/googlemap/module.php:1513
-#: modules_v4/report_fact/module.php:185
+#: modules_v4/report_fact/module.php:170
 #: modules_v4/widget_user_contacts/module.php:68
 msgid "Select"
 msgstr "Select"
@@ -4049,15 +4072,14 @@ msgstr "Select"
 #: admin_trees_missing-source.php:132 admin_trees_missing.php:118
 #: calendar.php:296 includes/functions/functions_print.php:1142
 #: includes/functions/functions_print.php:1255
-#: modules_v4/report_fact/module.php:191
+#: modules_v4/report_fact/module.php:176
 msgid "Custom event"
 msgstr "Custom event"
 
 #: admin_trees_missing-source.php:133 admin_trees_missing.php:119
 #: includes/functions/functions_print.php:1143
 #: includes/functions/functions_print.php:1256
-#: modules_v4/report_fact/module.php:192
-#| msgid "Custom Fact"
+#: modules_v4/report_fact/module.php:177
 msgid "Custom fact"
 msgstr "Custom fact"
 
@@ -4117,7 +4139,7 @@ msgstr "All relatives"
 #: famlist.php:75 famlist.php:169 famlist.php:171 famlist.php:255
 #: famlist.php:257 indilist.php:63 indilist.php:69 indilist.php:75
 #: indilist.php:167 indilist.php:169 indilist.php:253 indilist.php:255
-#: library/KT/I18N.php:675 library/KT/Stats.php:3400
+#: library/KT/I18N.php:675 library/KT/Stats.php:3469
 #: modules_v4/extra_menus/help_text.php:45
 #: modules_v4/extra_menus/module.php:367
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:288
@@ -4488,9 +4510,8 @@ msgid "Link"
 msgstr "Link"
 
 #: admin_trees_sanity.php:287 medialist.php:143 modules_v4/album/module.php:330
-#: modules_v4/chart_statistics/module.php:897
 #: modules_v4/fancy_imagebar/module.php:364
-#: modules_v4/googlemap/module.php:2077 modules_v4/report_fact/module.php:219
+#: modules_v4/googlemap/module.php:2077 modules_v4/report_fact/module.php:204
 #: modules_v4/research_links/module.php:420
 msgid "Reset"
 msgstr "Reset"
@@ -4667,7 +4688,7 @@ msgstr "%s objects have one or more issues"
 msgid "Facts or events"
 msgstr "Facts or events"
 
-#: admin_trees_source.php:34 modules_v4/chart_statistics/module.php:543
+#: admin_trees_source.php:34 modules_v4/chart_statistics/module.php:538
 #: search.php:131
 msgid "Records"
 msgstr "Records"
@@ -4767,7 +4788,7 @@ msgstr ""
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "Duplicate email address. A user with that email already exists."
 
-#: admin_users.php:75 admin_users.php:92 setup.php:421
+#: admin_users.php:75 admin_users.php:92 setup.php:397
 msgid "The passwords do not match."
 msgstr "The passwords do not match."
 
@@ -4793,7 +4814,7 @@ msgstr "Edit user"
 #: admin_users.php:246 edit_changes.php:186
 #: includes/functions/functions_print.php:346
 #: includes/functions/functions_print.php:371
-#: includes/functions/functions_print.php:602 library/KT/Stats.php:3509
+#: includes/functions/functions_print.php:602 library/KT/Stats.php:3579
 #: themes/colors/footer.php:35 themes/kiwitrees/footer.php:35
 #: themes/webtrees/footer.php:35 themes/xenea/footer.php:35
 msgid "Send Message"
@@ -4825,7 +4846,7 @@ msgstr ""
 msgid "Real name"
 msgstr "Real name"
 
-#: admin_users.php:352 help_text.php:625 setup.php:434
+#: admin_users.php:352 help_text.php:625 setup.php:410
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "This is your real name, as you would like it displayed on screen."
 
@@ -4879,7 +4900,7 @@ msgstr "Type the password again."
 #: admin_users.php:399 edituser.php:181 help_text.php:508
 #: includes/functions/functions_mail.php:110 library/KT/Gedcom/Tag.php:201
 #: library/KT/Gedcom/Tag.php:202 library/KT/Gedcom/Tag.php:203
-#: library/KT/Gedcom/Tag.php:725 login.php:460 setup.php:452
+#: library/KT/Gedcom/Tag.php:725 login.php:460 setup.php:428
 msgid "Email address"
 msgstr "Email address"
 
@@ -5348,11 +5369,11 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Recent Years (&lt; 100 yrs)"
 
 #: calendar.php:239 calendar.php:242 calendar.php:408 calendar.php:592
-#: includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:720
-#: library/KT/Stats.php:1753 library/KT/Stats.php:2471
-#: modules_v4/chart_statistics/module.php:280
-#: modules_v4/chart_statistics/module.php:299
-#: modules_v4/chart_statistics/module.php:312
+#: includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:744
+#: library/KT/Stats.php:1778 library/KT/Stats.php:2504
+#: modules_v4/chart_statistics/module.php:275
+#: modules_v4/chart_statistics/module.php:294
+#: modules_v4/chart_statistics/module.php:307
 #: modules_v4/gedcom_stats/module.php:97 modules_v4/gedcom_stats/module.php:169
 #: modules_v4/html/module.php:168 modules_v4/top10_givnnames/module.php:87
 #: modules_v4/widget_givnnames/module.php:86
@@ -5361,11 +5382,11 @@ msgid "Males"
 msgstr "Males"
 
 #: calendar.php:246 calendar.php:248 calendar.php:409 calendar.php:593
-#: includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:714
-#: library/KT/Stats.php:1754 library/KT/Stats.php:2472
-#: modules_v4/chart_statistics/module.php:281
-#: modules_v4/chart_statistics/module.php:300
-#: modules_v4/chart_statistics/module.php:313
+#: includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:738
+#: library/KT/Stats.php:1779 library/KT/Stats.php:2505
+#: modules_v4/chart_statistics/module.php:276
+#: modules_v4/chart_statistics/module.php:295
+#: modules_v4/chart_statistics/module.php:308
 #: modules_v4/gedcom_stats/module.php:98 modules_v4/gedcom_stats/module.php:170
 #: modules_v4/html/module.php:172 modules_v4/top10_givnnames/module.php:82
 #: modules_v4/widget_givnnames/module.php:81
@@ -5388,13 +5409,13 @@ msgid "On this day"
 msgstr "On this day"
 
 #: calendar.php:406 calendar.php:590 find.php:523
-#: modules_v4/chart_statistics/module.php:153
+#: modules_v4/chart_statistics/module.php:148
 #, php-format
 msgid "Total individuals: %s"
 msgstr "Total individuals: %s"
 
 #: calendar.php:414 calendar.php:598 find.php:548
-#: modules_v4/chart_statistics/module.php:368
+#: modules_v4/chart_statistics/module.php:363
 #, php-format
 msgid "Total families: %s"
 msgstr "Total families: %s"
@@ -5430,7 +5451,7 @@ msgstr "Descendants of %s"
 msgid "Error"
 msgstr "Error"
 
-#: downloadbackup.php:34 includes/session.php:611
+#: downloadbackup.php:34 includes/session.php:624
 msgid "You do not have permission to view this page."
 msgstr "You do not have permission to view this page."
 
@@ -5438,7 +5459,7 @@ msgstr "You do not have permission to view this page."
 #: modules_v4/report_changes/module.php:252
 #: modules_v4/review_changes/module.php:32
 #: modules_v4/widget_review_changes/module.php:32
-#: themes/_administration/header.php:109 themes/colors/header.php:113
+#: themes/_administration/header.php:109 themes/colors/header.php:117
 #: themes/kiwitrees/header.php:120 themes/webtrees/header.php:97
 #: themes/xenea/header.php:104
 msgid "Pending changes"
@@ -5577,7 +5598,7 @@ msgid "Select Events"
 msgstr "Select Events"
 
 #: edit_interface.php:881 edit_interface.php:939
-#: includes/functions/functions_edit.php:1172
+#: includes/functions/functions_edit.php:1178
 msgid "Create a new Shared Note"
 msgstr "Create a new Shared Note"
 
@@ -5602,7 +5623,7 @@ msgid "Edit Shared Note"
 msgstr "Edit Shared Note"
 
 #: edit_interface.php:1152 edit_interface.php:1279
-#: includes/functions/functions_edit.php:1168
+#: includes/functions/functions_edit.php:1174
 msgid "Create Repository"
 msgstr "Create Repository"
 
@@ -5622,7 +5643,7 @@ msgstr "Add child"
 msgid "Add a spouse"
 msgstr "Add a spouse"
 
-#: edit_interface.php:1953 includes/functions/functions_edit.php:1494
+#: edit_interface.php:1953 includes/functions/functions_edit.php:1500
 #: library/KT/Controller/Individual.php:187
 msgid "Edit name"
 msgstr "Edit name"
@@ -5794,9 +5815,9 @@ msgstr "Title:"
 msgid "Entry Text:"
 msgstr "Entry Text:"
 
-#: editnews.php:68 edituser.php:191 includes/functions/functions_edit.php:35
-#: includes/functions/functions_edit.php:49
-#: includes/functions/functions_edit.php:106 modules_v4/album/module.php:325
+#: editnews.php:68 edituser.php:191 includes/functions/functions_edit.php:38
+#: includes/functions/functions_edit.php:52
+#: includes/functions/functions_edit.php:109 modules_v4/album/module.php:325
 #: modules_v4/custom_js/module.php:86
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:280
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:389
@@ -5840,7 +5861,7 @@ msgstr "Passwords must contain at least 6 characters."
 msgid "My account"
 msgstr "My account"
 
-#: edituser.php:145 library/KT/Stats.php:3874
+#: edituser.php:145 library/KT/Stats.php:3944
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -5859,8 +5880,8 @@ msgstr "Delete your account"
 #: library/KT/Note.php:63 library/KT/Person.php:119 library/KT/Person.php:334
 #: library/KT/Person.php:357 library/KT/Person.php:380
 #: library/KT/Person.php:417 library/KT/Person.php:440
-#: library/KT/Person.php:1926 library/KT/Repository.php:55
-#: library/KT/Source.php:47 library/KT/Stats.php:972 library/KT/Stats.php:1912
+#: library/KT/Person.php:1931 library/KT/Repository.php:55
+#: library/KT/Source.php:47 library/KT/Stats.php:997 library/KT/Stats.php:1937
 #: media_links.php:86 media_links.php:109 media_links.php:141
 #: media_links.php:183 media_links.php:210 media_links.php:237
 #: media_links.php:275 media_links.php:300 media_links.php:323
@@ -5874,9 +5895,9 @@ msgstr "Private"
 #: includes/functions/functions_print_facts.php:635
 #: includes/functions/functions_print_facts.php:1287
 #: library/KT/Controller/Ancestry.php:141
-#: library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2714
-#: library/KT/Stats.php:2740 library/KT/Stats.php:2751
-#: library/KT/Stats.php:2760 modules_v4/relatives/module.php:80
+#: library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2747
+#: library/KT/Stats.php:2773 library/KT/Stats.php:2784
+#: library/KT/Stats.php:2793 modules_v4/relatives/module.php:80
 msgid "Edit family"
 msgstr "Edit family"
 
@@ -5884,9 +5905,9 @@ msgstr "Edit family"
 #: includes/functions/functions_print_facts.php:635
 #: includes/functions/functions_print_facts.php:1287
 #: library/KT/Controller/Ancestry.php:141
-#: library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2714
-#: library/KT/Stats.php:2740 library/KT/Stats.php:2751
-#: library/KT/Stats.php:2760 medialist.php:290
+#: library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2747
+#: library/KT/Stats.php:2773 library/KT/Stats.php:2784
+#: library/KT/Stats.php:2793 medialist.php:290
 #: modules_v4/relatives/module.php:80
 msgid "View family"
 msgstr "View family"
@@ -5951,8 +5972,8 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "This family does not exist or you do not have permission to view it."
 
-#: family.php:118 modules_v4/report_fact/module.php:210
-#: modules_v4/report_fact/module.php:359 note.php:99 repo.php:96 source.php:98
+#: family.php:118 modules_v4/report_fact/module.php:195
+#: modules_v4/report_fact/module.php:347 note.php:99 repo.php:96 source.php:98
 msgid "Details"
 msgstr "Details"
 
@@ -6165,7 +6186,7 @@ msgstr ""
 "Date ranges are used to indicate that an event, such as a birth, happened on "
 "a unknown date within a possible range."
 
-#: help_text.php:182 modules_v4/chart_statistics/module.php:867
+#: help_text.php:182
 msgid "Date range"
 msgstr "Date range"
 
@@ -6645,7 +6666,7 @@ msgstr ""
 "helpful when entering similar facts, such as census facts, for many "
 "individuals or families."
 
-#: help_text.php:433 includes/functions/functions_edit.php:1948
+#: help_text.php:433 includes/functions/functions_edit.php:1954
 #: library/KT/Controller/Family.php:228 modules_v4/notes/module.php:93
 msgid "Add a note"
 msgstr "Add a note"
@@ -6662,7 +6683,7 @@ msgstr ""
 "note.  When you are finished typing, just click the button below the box, "
 "close the window, and that's all."
 
-#: help_text.php:439 includes/functions/functions_edit.php:1958
+#: help_text.php:439 includes/functions/functions_edit.php:1964
 #: library/KT/Controller/Family.php:235 modules_v4/notes/module.php:102
 msgid "Add a shared note"
 msgstr "Add a shared note"
@@ -6677,7 +6698,7 @@ msgstr ""
 "You can choose to link to an existing shared note, or you can create a new "
 "shared note and at the same time create a link to it."
 
-#: help_text.php:445 includes/functions/functions_edit.php:1899
+#: help_text.php:445 includes/functions/functions_edit.php:1905
 #: library/KT/Controller/Family.php:253 modules_v4/sources_tab/module.php:84
 msgid "Add a source citation"
 msgstr "Add a source citation"
@@ -6885,7 +6906,7 @@ msgstr ""
 "This is a link to your own record in the family tree.  If this is the wrong "
 "person, contact an administrator."
 
-#: help_text.php:509 setup.php:454
+#: help_text.php:509 setup.php:430
 msgid ""
 "This email address will be used to send you password reminders, site "
 "notifications, and messages from other family members who are registered on "
@@ -7074,7 +7095,7 @@ msgstr ""
 "must be at least 6 characters long and are case-sensitive, so that “secret” "
 "is different to “SECRET”."
 
-#: help_text.php:579 help_text.php:589 setup.php:449
+#: help_text.php:579 help_text.php:589 setup.php:425
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Type your password again, to make sure you have typed it correctly."
 
@@ -10719,13 +10740,13 @@ msgstr ""
 "<span class=\"error\">Unable to delete user. This user has pending data "
 "changes.</span>"
 
-#: includes/functions/functions_edit.php:35
-#: includes/functions/functions_edit.php:49
-#: includes/functions/functions_edit.php:106
+#: includes/functions/functions_edit.php:38
+#: includes/functions/functions_edit.php:52
+#: includes/functions/functions_edit.php:109
 msgid "click to edit"
 msgstr "click to edit"
 
-#: includes/functions/functions_edit.php:213
+#: includes/functions/functions_edit.php:216
 #: includes/functions/functions_print_facts.php:231
 #: includes/functions/functions_print_facts.php:397
 #: includes/functions/functions_print_facts.php:790
@@ -10734,36 +10755,41 @@ msgstr "click to edit"
 msgid "Only managers can edit"
 msgstr "Only managers can edit"
 
-#: includes/functions/functions_edit.php:222
-#: includes/functions/functions_edit.php:231
+#: includes/functions/functions_edit.php:225
+#: includes/functions/functions_edit.php:234
 msgid "Kiwitrees sends emails"
 msgstr "Kiwitrees sends emails"
 
-#: includes/functions/functions_edit.php:223
-#: includes/functions/functions_edit.php:232
+#: includes/functions/functions_edit.php:226
+#: includes/functions/functions_edit.php:235
 msgid "Mailto link"
 msgstr "Mailto link"
 
-#: includes/functions/functions_edit.php:224
-#: includes/functions/functions_edit.php:233
+#: includes/functions/functions_edit.php:227
+#: includes/functions/functions_edit.php:236
 msgid "No contact"
 msgstr "No contact"
 
-#: includes/functions/functions_edit.php:354
+#: includes/functions/functions_edit.php:359
 #, php-format
 msgid ""
 "The record with id %s was changed by another user since you last accessed it."
 msgstr ""
 "The record with id %s was changed by another user since you last accessed it."
 
-#: includes/functions/functions_edit.php:356
+#: includes/functions/functions_edit.php:361
 #, php-format
 msgid "This record was last changed by <i>%s</i> at %s"
 msgstr "This record was last changed by <i>%s</i> at %s"
 
-#: includes/functions/functions_edit.php:358
-#: includes/functions/functions_edit.php:2411
-#: includes/functions/functions_edit.php:2420
+#: includes/functions/functions_edit.php:362
+#, php-format
+msgid "Current time is %s"
+msgstr ""
+
+#: includes/functions/functions_edit.php:364
+#: includes/functions/functions_edit.php:2417
+#: includes/functions/functions_edit.php:2426
 msgid ""
 "Please reload the previous page to make sure you are working with the most "
 "recent record."
@@ -10771,69 +10797,69 @@ msgstr ""
 "Please reload the previous page to make sure you are working with the most "
 "recent record."
 
-#: includes/functions/functions_edit.php:972
+#: includes/functions/functions_edit.php:978
 msgid "go to new individual"
 msgstr "go to new individual"
 
-#: includes/functions/functions_edit.php:979
+#: includes/functions/functions_edit.php:985
 msgid "Check for possible duplicates"
 msgstr "Check for possible duplicates"
 
-#: includes/functions/functions_edit.php:981
+#: includes/functions/functions_edit.php:987
 msgid "check"
 msgstr "check"
 
-#: includes/functions/functions_edit.php:1159
+#: includes/functions/functions_edit.php:1165
 msgid "Select a date"
 msgstr "Select a date"
 
-#: includes/functions/functions_edit.php:1164
-#: includes/functions/functions_edit.php:1968
+#: includes/functions/functions_edit.php:1170
+#: includes/functions/functions_edit.php:1974
 #: library/KT/Controller/Family.php:243 modules_v4/album/module.php:96
 #: source.php:135
 msgid "Add a media object"
 msgstr "Add a media object"
 
-#: includes/functions/functions_edit.php:1177
+#: includes/functions/functions_edit.php:1183
 msgid "Create a new Shared Note using Assistant"
 msgstr "Create a new Shared Note using Assistant"
 
-#: includes/functions/functions_edit.php:1181
+#: includes/functions/functions_edit.php:1187
 msgid "Edit shared note"
 msgstr "Edit shared note"
 
-#: includes/functions/functions_edit.php:1427
-#: includes/functions/functions_edit.php:1684
+#: includes/functions/functions_edit.php:1433
+#: includes/functions/functions_edit.php:1690
 #: modules_v4/census_assistant/census-edit.php:44
 #: modules_v4/census_assistant/census-save.php:49
 msgid "Create a shared note using the census assistant"
 msgstr "Create a shared note using the census assistant"
 
-#: includes/functions/functions_edit.php:1435
+#: includes/functions/functions_edit.php:1441
 msgid "No Temple - Living Ordinance"
 msgstr "No Temple - Living Ordinance"
 
-#: includes/functions/functions_edit.php:1730
+#: includes/functions/functions_edit.php:1736
 msgid "Link this source to these records"
 msgstr "Link this source to these records"
 
-#: includes/functions/functions_edit.php:1866 library/KT/Gedcom/Tag.php:160
+#: includes/functions/functions_edit.php:1872 library/KT/Gedcom/Tag.php:160
 #: modules_v4/census_assistant/census-edit.php:86
 #: modules_v4/report_census/module.php:149
 msgid "Census date"
 msgstr "Census date"
 
-#: includes/functions/functions_edit.php:1927
-#: includes/functions/functions_edit.php:1931
+#: includes/functions/functions_edit.php:1933
+#: includes/functions/functions_edit.php:1937
 msgid "Add an associate"
 msgstr "Add an associate"
 
-#: includes/functions/functions_edit.php:1977
+#: includes/functions/functions_edit.php:1983
 msgid "Add a restriction"
 msgstr "Add a restriction"
 
-#: includes/functions/functions_edit.php:2410
-#: includes/functions/functions_edit.php:2419
+#: includes/functions/functions_edit.php:2416
+#: includes/functions/functions_edit.php:2425
 msgid ""
 "An error occurred while creating the Edit form.  Another user may have "
 "changed this record since you previously viewed it."
@@ -10841,88 +10867,88 @@ msgstr ""
 "An error occurred while creating the Edit form.  Another user may have "
 "changed this record since you previously viewed it."
 
-#: includes/functions/functions_edit.php:2668
+#: includes/functions/functions_edit.php:2674
 msgctxt "Surname tradition"
 msgid "paternal"
 msgstr "paternal"
 
-#: includes/functions/functions_edit.php:2669
-#: includes/functions/functions_edit.php:2673
-#: includes/functions/functions_edit.php:2688
-#: includes/functions/functions_edit.php:2693
+#: includes/functions/functions_edit.php:2675
+#: includes/functions/functions_edit.php:2679
+#: includes/functions/functions_edit.php:2694
+#: includes/functions/functions_edit.php:2699
 msgid "Children take their father’s surname."
 msgstr "Children take their father’s surname."
 
-#: includes/functions/functions_edit.php:2670
-#: includes/functions/functions_edit.php:2689
-#: includes/functions/functions_edit.php:2694
+#: includes/functions/functions_edit.php:2676
+#: includes/functions/functions_edit.php:2695
+#: includes/functions/functions_edit.php:2700
 msgid "Wives take their husband’s surname."
 msgstr "Wives take their husband’s surname."
 
-#: includes/functions/functions_edit.php:2672
+#: includes/functions/functions_edit.php:2678
 msgid "patrilineal"
 msgstr "patrilineal"
 
-#: includes/functions/functions_edit.php:2675
+#: includes/functions/functions_edit.php:2681
 msgid "matrilineal"
 msgstr "matrilineal"
 
-#: includes/functions/functions_edit.php:2676
+#: includes/functions/functions_edit.php:2682
 msgid "Children take their mother’s surname."
 msgstr "Children take their mother’s surname."
 
-#: includes/functions/functions_edit.php:2678
+#: includes/functions/functions_edit.php:2684
 msgctxt "Surname tradition"
 msgid "Spanish"
 msgstr "Spanish"
 
-#: includes/functions/functions_edit.php:2679
+#: includes/functions/functions_edit.php:2685
 msgid ""
 "Children take one surname from the father and one surname from the mother."
 msgstr ""
 "Children take one surname from the father and one surname from the mother."
 
-#: includes/functions/functions_edit.php:2681
+#: includes/functions/functions_edit.php:2687
 msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portuguese"
 
-#: includes/functions/functions_edit.php:2682
+#: includes/functions/functions_edit.php:2688
 msgid ""
 "Children take one surname from the mother and one surname from the father."
 msgstr ""
 "Children take one surname from the mother and one surname from the father."
 
-#: includes/functions/functions_edit.php:2684
+#: includes/functions/functions_edit.php:2690
 msgctxt "Surname tradition"
 msgid "Icelandic"
 msgstr "Icelandic"
 
-#: includes/functions/functions_edit.php:2685
+#: includes/functions/functions_edit.php:2691
 msgid "Children take a patronym instead of a surname."
 msgstr "Children take a patronym instead of a surname."
 
-#: includes/functions/functions_edit.php:2687
+#: includes/functions/functions_edit.php:2693
 msgctxt "Surname tradition"
 msgid "Polish"
 msgstr "Polish"
 
-#: includes/functions/functions_edit.php:2690
+#: includes/functions/functions_edit.php:2696
 msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Surnames are inflected to indicate an individual’s gender."
 
-#: includes/functions/functions_edit.php:2692
+#: includes/functions/functions_edit.php:2698
 msgctxt "Surname tradition"
 msgid "Lithuanian"
 msgstr "Lithuanian"
 
-#: includes/functions/functions_edit.php:2695
+#: includes/functions/functions_edit.php:2701
 msgid ""
 "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
 "Surnames are inflected to indicate an individual’s gender and marital status."
 
-#: includes/functions/functions_edit.php:2697
+#: includes/functions/functions_edit.php:2703
 msgctxt "Surname tradition"
 msgid "none"
 msgstr "none"
@@ -10979,7 +11005,7 @@ msgstr ""
 "relatives. If you are submitting changes to the genealogical data, please "
 "include the sources where you obtained the data."
 
-#: includes/functions/functions_mail.php:101 setup.php:432
+#: includes/functions/functions_mail.php:101 setup.php:408
 msgid "Your name"
 msgstr "Your name"
 
@@ -11098,14 +11124,14 @@ msgstr "Login"
 msgid "Logout"
 msgstr "Logout"
 
-#: includes/functions/functions_print.php:322 library/KT/Stats.php:3482
+#: includes/functions/functions_print.php:322 library/KT/Stats.php:3552
 #, php-format
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] "%d anonymous logged-in user"
 msgstr[1] "%d anonymous logged-in users"
 
-#: includes/functions/functions_print.php:328 library/KT/Stats.php:3492
+#: includes/functions/functions_print.php:328 library/KT/Stats.php:3562
 #, php-format
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
@@ -11131,11 +11157,11 @@ msgstr "For help with genealogy questions please contact %s"
 msgid "…"
 msgstr "…"
 
-#: includes/functions/functions_print.php:593 library/KT/Stats.php:957
-#: library/KT/Stats.php:1520 library/KT/Stats.php:1606
-#: library/KT/Stats.php:1890 library/KT/Stats.php:1989
-#: library/KT/Stats.php:2220 library/KT/Stats.php:2615
-#: library/KT/Stats.php:2716 library/KT/Stats.php:2763
+#: includes/functions/functions_print.php:593 library/KT/Stats.php:982
+#: library/KT/Stats.php:1545 library/KT/Stats.php:1631
+#: library/KT/Stats.php:1915 library/KT/Stats.php:2014
+#: library/KT/Stats.php:2254 library/KT/Stats.php:2648
+#: library/KT/Stats.php:2749 library/KT/Stats.php:2796
 msgid "This information is private and cannot be shown."
 msgstr "This information is private and cannot be shown."
 
@@ -11202,91 +11228,91 @@ msgstr "LDS Temple"
 msgid "Add"
 msgstr "Add"
 
-#: includes/functions/functions_print.php:1283 library/KT/Date/Calendar.php:133
+#: includes/functions/functions_print.php:1283 library/KT/Date/Calendar.php:144
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "January"
 
-#: includes/functions/functions_print.php:1284 library/KT/Date/Calendar.php:134
+#: includes/functions/functions_print.php:1284 library/KT/Date/Calendar.php:145
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "February"
 
-#: includes/functions/functions_print.php:1285 library/KT/Date/Calendar.php:135
+#: includes/functions/functions_print.php:1285 library/KT/Date/Calendar.php:146
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "March"
 
-#: includes/functions/functions_print.php:1286 library/KT/Date/Calendar.php:136
+#: includes/functions/functions_print.php:1286 library/KT/Date/Calendar.php:147
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "April"
 
-#: includes/functions/functions_print.php:1287 library/KT/Date/Calendar.php:137
+#: includes/functions/functions_print.php:1287 library/KT/Date/Calendar.php:148
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "May"
 
-#: includes/functions/functions_print.php:1288 library/KT/Date/Calendar.php:138
+#: includes/functions/functions_print.php:1288 library/KT/Date/Calendar.php:149
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "June"
 
-#: includes/functions/functions_print.php:1289 library/KT/Date/Calendar.php:139
+#: includes/functions/functions_print.php:1289 library/KT/Date/Calendar.php:150
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "July"
 
-#: includes/functions/functions_print.php:1290 library/KT/Date/Calendar.php:140
+#: includes/functions/functions_print.php:1290 library/KT/Date/Calendar.php:151
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "August"
 
-#: includes/functions/functions_print.php:1291 library/KT/Date/Calendar.php:141
+#: includes/functions/functions_print.php:1291 library/KT/Date/Calendar.php:152
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "September"
 
-#: includes/functions/functions_print.php:1292 library/KT/Date/Calendar.php:142
+#: includes/functions/functions_print.php:1292 library/KT/Date/Calendar.php:153
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "October"
 
-#: includes/functions/functions_print.php:1293 library/KT/Date/Calendar.php:143
+#: includes/functions/functions_print.php:1293 library/KT/Date/Calendar.php:154
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "November"
 
-#: includes/functions/functions_print.php:1294 library/KT/Date/Calendar.php:144
+#: includes/functions/functions_print.php:1294 library/KT/Date/Calendar.php:155
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "December"
 
-#: includes/functions/functions_print.php:1297 library/KT/Date/Calendar.php:261
+#: includes/functions/functions_print.php:1297 library/KT/Date/Calendar.php:272
 msgid "Sun"
 msgstr "Sun"
 
-#: includes/functions/functions_print.php:1298 library/KT/Date/Calendar.php:255
+#: includes/functions/functions_print.php:1298 library/KT/Date/Calendar.php:266
 msgid "Mon"
 msgstr "Mon"
 
-#: includes/functions/functions_print.php:1299 library/KT/Date/Calendar.php:256
+#: includes/functions/functions_print.php:1299 library/KT/Date/Calendar.php:267
 msgid "Tue"
 msgstr "Tue"
 
-#: includes/functions/functions_print.php:1300 library/KT/Date/Calendar.php:257
+#: includes/functions/functions_print.php:1300 library/KT/Date/Calendar.php:268
 msgid "Wed"
 msgstr "Wed"
 
-#: includes/functions/functions_print.php:1301 library/KT/Date/Calendar.php:258
+#: includes/functions/functions_print.php:1301 library/KT/Date/Calendar.php:269
 msgid "Thu"
 msgstr "Thu"
 
-#: includes/functions/functions_print.php:1302 library/KT/Date/Calendar.php:259
+#: includes/functions/functions_print.php:1302 library/KT/Date/Calendar.php:270
 msgid "Fri"
 msgstr "Fri"
 
-#: includes/functions/functions_print.php:1303 library/KT/Date/Calendar.php:260
+#: includes/functions/functions_print.php:1303 library/KT/Date/Calendar.php:271
 msgid "Sat"
 msgstr "Sat"
 
@@ -11392,7 +11418,7 @@ msgid ""
 msgstr ""
 "Show individuals who are dead or couples where both partners are deceased."
 
-#: includes/functions/functions_print_lists.php:195 library/KT/Stats.php:786
+#: includes/functions/functions_print_lists.php:195 library/KT/Stats.php:810
 #: modules_v4/privacy/module.php:63
 msgid "Dead"
 msgstr "Dead"
@@ -11475,8 +11501,7 @@ msgstr "Decade of birth"
 msgid "Decade of death"
 msgstr "Decade of death"
 
-#: includes/functions/functions_print_lists.php:516
-#: modules_v4/chart_statistics/module.php:762 statisticsplot.php:912
+#: includes/functions/functions_print_lists.php:516 statisticsplot.php:912
 msgid "Age related to death year"
 msgstr "Age related to death year"
 
@@ -11533,8 +11558,7 @@ msgid "Decade of marriage"
 msgstr "Decade of marriage"
 
 #: includes/functions/functions_print_lists.php:1029
-#: modules_v4/chart_statistics/module.php:432
-#: modules_v4/chart_statistics/module.php:766 statisticsplot.php:915
+#: modules_v4/chart_statistics/module.php:427 statisticsplot.php:915
 msgid "Age in year of marriage"
 msgstr "Age in year of marriage"
 
@@ -11617,7 +11641,7 @@ msgstr "%1$s is %2$s of %3$s"
 msgid "Common ancestor: "
 msgstr "Common ancestor: "
 
-#: includes/functions/functions_resource.php:498
+#: includes/functions/functions_resource.php:497
 #: modules_v4/report_family/module.php:322
 #: modules_v4/report_individual/module.php:362
 #: modules_v4/report_related_fam/module.php:418
@@ -11625,7 +11649,7 @@ msgstr "Common ancestor: "
 msgid "Spouse"
 msgstr "Spouse"
 
-#: includes/functions/functions_resource.php:498
+#: includes/functions/functions_resource.php:497
 #: modules_v4/report_family/module.php:322
 #: modules_v4/report_individual/module.php:362
 #: modules_v4/report_related_fam/module.php:418
@@ -11706,7 +11730,7 @@ msgstr "%1s %2s - Media object not linked"
 msgid "Click a row then drag-and-drop to re-order media."
 msgstr "Click a row then drag-and-drop to re-order media."
 
-#: includes/session.php:609
+#: includes/session.php:622
 msgid "Search engine"
 msgstr "Search engine"
 
@@ -11854,9 +11878,9 @@ msgstr "Set link"
 msgid "Ancestors of %s"
 msgstr "Ancestors of %s"
 
-#: library/KT/Controller/Ancestry.php:142 library/KT/Stats.php:2712
-#: library/KT/Stats.php:2737 library/KT/Stats.php:2748
-#: library/KT/Stats.php:2758 library/KT/Stats.php:3489
+#: library/KT/Controller/Ancestry.php:142 library/KT/Stats.php:2745
+#: library/KT/Stats.php:2770 library/KT/Stats.php:2781
+#: library/KT/Stats.php:2791 library/KT/Stats.php:3559
 msgid "and"
 msgstr "and"
 
@@ -12370,8 +12394,8 @@ msgctxt "One parent/multiple children"
 msgid "had"
 msgstr "had"
 
-#: library/KT/Controller/FancyTreeView.php:648 library/KT/Stats.php:2649
-#: library/KT/Stats.php:2653
+#: library/KT/Controller/FancyTreeView.php:648 library/KT/Stats.php:2682
+#: library/KT/Stats.php:2686
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
@@ -12681,7 +12705,7 @@ msgstr "Edit repository"
 msgid "Stories"
 msgstr "Stories"
 
-#: library/KT/Controller/Search.php:1341
+#: library/KT/Controller/Search.php:1342
 msgid "Be sure to select an option to search for."
 msgstr "Be sure to select an option to search for."
 
@@ -12756,271 +12780,271 @@ msgstr "from %s to %s"
 msgid "Invalid date"
 msgstr "Invalid date"
 
-#: library/KT/Date/Calendar.php:150
+#: library/KT/Date/Calendar.php:161
 msgctxt "GENITIVE"
 msgid "January"
 msgstr "January"
 
-#: library/KT/Date/Calendar.php:151
+#: library/KT/Date/Calendar.php:162
 msgctxt "GENITIVE"
 msgid "February"
 msgstr "February"
 
-#: library/KT/Date/Calendar.php:152
+#: library/KT/Date/Calendar.php:163
 msgctxt "GENITIVE"
 msgid "March"
 msgstr "March"
 
-#: library/KT/Date/Calendar.php:153
+#: library/KT/Date/Calendar.php:164
 msgctxt "GENITIVE"
 msgid "April"
 msgstr "April"
 
-#: library/KT/Date/Calendar.php:154
+#: library/KT/Date/Calendar.php:165
 msgctxt "GENITIVE"
 msgid "May"
 msgstr "May"
 
-#: library/KT/Date/Calendar.php:155
+#: library/KT/Date/Calendar.php:166
 msgctxt "GENITIVE"
 msgid "June"
 msgstr "June"
 
-#: library/KT/Date/Calendar.php:156
+#: library/KT/Date/Calendar.php:167
 msgctxt "GENITIVE"
 msgid "July"
 msgstr "July"
 
-#: library/KT/Date/Calendar.php:157
+#: library/KT/Date/Calendar.php:168
 msgctxt "GENITIVE"
 msgid "August"
 msgstr "August"
 
-#: library/KT/Date/Calendar.php:158
+#: library/KT/Date/Calendar.php:169
 msgctxt "GENITIVE"
 msgid "September"
 msgstr "September"
 
-#: library/KT/Date/Calendar.php:159
+#: library/KT/Date/Calendar.php:170
 msgctxt "GENITIVE"
 msgid "October"
 msgstr "October"
 
-#: library/KT/Date/Calendar.php:160
+#: library/KT/Date/Calendar.php:171
 msgctxt "GENITIVE"
 msgid "November"
 msgstr "November"
 
-#: library/KT/Date/Calendar.php:161
+#: library/KT/Date/Calendar.php:172
 msgctxt "GENITIVE"
 msgid "December"
 msgstr "December"
-
-#: library/KT/Date/Calendar.php:167
-msgctxt "LOCATIVE"
-msgid "January"
-msgstr "January"
-
-#: library/KT/Date/Calendar.php:168
-msgctxt "LOCATIVE"
-msgid "February"
-msgstr "February"
-
-#: library/KT/Date/Calendar.php:169
-msgctxt "LOCATIVE"
-msgid "March"
-msgstr "March"
-
-#: library/KT/Date/Calendar.php:170
-msgctxt "LOCATIVE"
-msgid "April"
-msgstr "April"
-
-#: library/KT/Date/Calendar.php:171
-msgctxt "LOCATIVE"
-msgid "May"
-msgstr "May"
-
-#: library/KT/Date/Calendar.php:172
-msgctxt "LOCATIVE"
-msgid "June"
-msgstr "June"
-
-#: library/KT/Date/Calendar.php:173
-msgctxt "LOCATIVE"
-msgid "July"
-msgstr "July"
-
-#: library/KT/Date/Calendar.php:174
-msgctxt "LOCATIVE"
-msgid "August"
-msgstr "August"
-
-#: library/KT/Date/Calendar.php:175
-msgctxt "LOCATIVE"
-msgid "September"
-msgstr "September"
-
-#: library/KT/Date/Calendar.php:176
-msgctxt "LOCATIVE"
-msgid "October"
-msgstr "October"
-
-#: library/KT/Date/Calendar.php:177
-msgctxt "LOCATIVE"
-msgid "November"
-msgstr "November"
 
 #: library/KT/Date/Calendar.php:178
 msgctxt "LOCATIVE"
+msgid "January"
+msgstr "January"
+
+#: library/KT/Date/Calendar.php:179
+msgctxt "LOCATIVE"
+msgid "February"
+msgstr "February"
+
+#: library/KT/Date/Calendar.php:180
+msgctxt "LOCATIVE"
+msgid "March"
+msgstr "March"
+
+#: library/KT/Date/Calendar.php:181
+msgctxt "LOCATIVE"
+msgid "April"
+msgstr "April"
+
+#: library/KT/Date/Calendar.php:182
+msgctxt "LOCATIVE"
+msgid "May"
+msgstr "May"
+
+#: library/KT/Date/Calendar.php:183
+msgctxt "LOCATIVE"
+msgid "June"
+msgstr "June"
+
+#: library/KT/Date/Calendar.php:184
+msgctxt "LOCATIVE"
+msgid "July"
+msgstr "July"
+
+#: library/KT/Date/Calendar.php:185
+msgctxt "LOCATIVE"
+msgid "August"
+msgstr "August"
+
+#: library/KT/Date/Calendar.php:186
+msgctxt "LOCATIVE"
+msgid "September"
+msgstr "September"
+
+#: library/KT/Date/Calendar.php:187
+msgctxt "LOCATIVE"
+msgid "October"
+msgstr "October"
+
+#: library/KT/Date/Calendar.php:188
+msgctxt "LOCATIVE"
+msgid "November"
+msgstr "November"
+
+#: library/KT/Date/Calendar.php:189
+msgctxt "LOCATIVE"
 msgid "December"
 msgstr "December"
 
-#: library/KT/Date/Calendar.php:184
+#: library/KT/Date/Calendar.php:195
 msgctxt "INSTRUMENTAL"
 msgid "January"
 msgstr "January"
 
-#: library/KT/Date/Calendar.php:185
+#: library/KT/Date/Calendar.php:196
 msgctxt "INSTRUMENTAL"
 msgid "February"
 msgstr "February"
 
-#: library/KT/Date/Calendar.php:186
+#: library/KT/Date/Calendar.php:197
 msgctxt "INSTRUMENTAL"
 msgid "March"
 msgstr "March"
 
-#: library/KT/Date/Calendar.php:187
+#: library/KT/Date/Calendar.php:198
 msgctxt "INSTRUMENTAL"
 msgid "April"
 msgstr "April"
 
-#: library/KT/Date/Calendar.php:188
+#: library/KT/Date/Calendar.php:199
 msgctxt "INSTRUMENTAL"
 msgid "May"
 msgstr "May"
 
-#: library/KT/Date/Calendar.php:189
+#: library/KT/Date/Calendar.php:200
 msgctxt "INSTRUMENTAL"
 msgid "June"
 msgstr "June"
 
-#: library/KT/Date/Calendar.php:190
+#: library/KT/Date/Calendar.php:201
 msgctxt "INSTRUMENTAL"
 msgid "July"
 msgstr "July"
 
-#: library/KT/Date/Calendar.php:191
+#: library/KT/Date/Calendar.php:202
 msgctxt "INSTRUMENTAL"
 msgid "August"
 msgstr "August"
 
-#: library/KT/Date/Calendar.php:192
+#: library/KT/Date/Calendar.php:203
 msgctxt "INSTRUMENTAL"
 msgid "September"
 msgstr "September"
 
-#: library/KT/Date/Calendar.php:193
+#: library/KT/Date/Calendar.php:204
 msgctxt "INSTRUMENTAL"
 msgid "October"
 msgstr "October"
 
-#: library/KT/Date/Calendar.php:194
+#: library/KT/Date/Calendar.php:205
 msgctxt "INSTRUMENTAL"
 msgid "November"
 msgstr "November"
 
-#: library/KT/Date/Calendar.php:195
+#: library/KT/Date/Calendar.php:206
 msgctxt "INSTRUMENTAL"
 msgid "December"
 msgstr "December"
 
-#: library/KT/Date/Calendar.php:201
+#: library/KT/Date/Calendar.php:212
 msgctxt "Abbreviation for January"
 msgid "Jan"
 msgstr "Jan"
 
-#: library/KT/Date/Calendar.php:202
+#: library/KT/Date/Calendar.php:213
 msgctxt "Abbreviation for February"
 msgid "Feb"
 msgstr "Feb"
 
-#: library/KT/Date/Calendar.php:203
+#: library/KT/Date/Calendar.php:214
 msgctxt "Abbreviation for March"
 msgid "Mar"
 msgstr "Mar"
 
-#: library/KT/Date/Calendar.php:204
+#: library/KT/Date/Calendar.php:215
 msgctxt "Abbreviation for April"
 msgid "Apr"
 msgstr "Apr"
 
-#: library/KT/Date/Calendar.php:205
+#: library/KT/Date/Calendar.php:216
 msgctxt "Abbreviation for May"
 msgid "May"
 msgstr "May"
 
-#: library/KT/Date/Calendar.php:206
+#: library/KT/Date/Calendar.php:217
 msgctxt "Abbreviation for June"
 msgid "Jun"
 msgstr "Jun"
 
-#: library/KT/Date/Calendar.php:207
+#: library/KT/Date/Calendar.php:218
 msgctxt "Abbreviation for July"
 msgid "Jul"
 msgstr "Jul"
 
-#: library/KT/Date/Calendar.php:208
+#: library/KT/Date/Calendar.php:219
 msgctxt "Abbreviation for August"
 msgid "Aug"
 msgstr "Aug"
 
-#: library/KT/Date/Calendar.php:209
+#: library/KT/Date/Calendar.php:220
 msgctxt "Abbreviation for September"
 msgid "Sep"
 msgstr "Sep"
 
-#: library/KT/Date/Calendar.php:210
+#: library/KT/Date/Calendar.php:221
 msgctxt "Abbreviation for October"
 msgid "Oct"
 msgstr "Oct"
 
-#: library/KT/Date/Calendar.php:211
+#: library/KT/Date/Calendar.php:222
 msgctxt "Abbreviation for November"
 msgid "Nov"
 msgstr "Nov"
 
-#: library/KT/Date/Calendar.php:212
+#: library/KT/Date/Calendar.php:223
 msgctxt "Abbreviation for December"
 msgid "Dec"
 msgstr "Dec"
 
-#: library/KT/Date/Calendar.php:244
+#: library/KT/Date/Calendar.php:255
 msgid "Monday"
 msgstr "Monday"
 
-#: library/KT/Date/Calendar.php:245
+#: library/KT/Date/Calendar.php:256
 msgid "Tuesday"
 msgstr "Tuesday"
 
-#: library/KT/Date/Calendar.php:246
+#: library/KT/Date/Calendar.php:257
 msgid "Wednesday"
 msgstr "Wednesday"
 
-#: library/KT/Date/Calendar.php:247
+#: library/KT/Date/Calendar.php:258
 msgid "Thursday"
 msgstr "Thursday"
 
-#: library/KT/Date/Calendar.php:248
+#: library/KT/Date/Calendar.php:259
 msgid "Friday"
 msgstr "Friday"
 
-#: library/KT/Date/Calendar.php:249
+#: library/KT/Date/Calendar.php:260
 msgid "Saturday"
 msgstr "Saturday"
 
-#: library/KT/Date/Calendar.php:250
+#: library/KT/Date/Calendar.php:261
 msgid "Sunday"
 msgstr "Sunday"
 
@@ -15034,7 +15058,7 @@ msgstr "Helsinki, Finland"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Mexico"
 
-#: library/KT/Gedcom/Code/Temp.php:127 library/KT/Stats.php:3979
+#: library/KT/Gedcom/Code/Temp.php:127 library/KT/Stats.php:4049
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
@@ -16027,8 +16051,7 @@ msgstr "Date of naturalization"
 msgid "Place of naturalization"
 msgstr "Place of naturalization"
 
-#: library/KT/Gedcom/Tag.php:284 modules_v4/chart_statistics/module.php:774
-#: statisticsplot.php:921
+#: library/KT/Gedcom/Tag.php:284 statisticsplot.php:921
 msgid "Number of children"
 msgstr "Number of children"
 
@@ -17534,8 +17557,8 @@ msgstr "Reports"
 #: modules_v4/batch_update/plugins/search_replace.php:126
 #: modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133
 #: modules_v4/families/module.php:146 modules_v4/individuals/module.php:146
-#: search.php:31 search.php:251 search.php:542 themes/colors/header.php:105
-#: themes/colors/header.php:106 themes/webtrees/header.php:109
+#: search.php:31 search.php:251 search.php:542 themes/colors/header.php:109
+#: themes/colors/header.php:110 themes/webtrees/header.php:109
 #: themes/webtrees/header.php:114 themes/webtrees/header.php:115
 #: themes/xenea/header.php:94
 msgid "Search"
@@ -17602,7 +17625,7 @@ msgstr "Father: %s"
 msgid "Mother: %s"
 msgstr "Mother: %s"
 
-#: library/KT/Person.php:1804
+#: library/KT/Person.php:1809
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
@@ -17615,1255 +17638,1254 @@ msgstr "Embedded variable"
 msgid "Resulting value"
 msgstr "Resulting value"
 
-#: library/KT/Stats.php:329 library/KT/Stats.php:383
+#: library/KT/Stats.php:338 library/KT/Stats.php:401
 msgid "With sources"
 msgstr "With sources"
 
-#: library/KT/Stats.php:335 library/KT/Stats.php:389
+#: library/KT/Stats.php:344 library/KT/Stats.php:407
 msgid "Without sources"
 msgstr "Without sources"
 
-#: library/KT/Stats.php:726
+#: library/KT/Stats.php:750
 msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Unknown"
 
-#: library/KT/Stats.php:780 modules_v4/privacy/module.php:79
+#: library/KT/Stats.php:804 modules_v4/privacy/module.php:79
 msgid "Living"
 msgstr "Living"
 
-#: library/KT/Stats.php:1103 modules_v4/chart_statistics/module.php:833
+#: library/KT/Stats.php:1128
 msgid "Surname distribution chart"
 msgstr "Surname distribution chart"
 
-#: library/KT/Stats.php:1124 modules_v4/chart_statistics/module.php:782
+#: library/KT/Stats.php:1149
 msgid "Birth by country"
 msgstr "Birth by country"
 
-#: library/KT/Stats.php:1140 modules_v4/chart_statistics/module.php:790
+#: library/KT/Stats.php:1165
 msgid "Death by country"
 msgstr "Death by country"
 
-#: library/KT/Stats.php:1161 modules_v4/chart_statistics/module.php:786
+#: library/KT/Stats.php:1186
 msgid "Marriage by country"
 msgstr "Marriage by country"
 
-#: library/KT/Stats.php:1755 library/KT/Stats.php:2473
+#: library/KT/Stats.php:1780 library/KT/Stats.php:2506
 msgid "Average"
 msgstr "Average"
 
-#: library/KT/Stats.php:1854 library/KT/Stats.php:3665
+#: library/KT/Stats.php:1879 library/KT/Stats.php:3735
 #: modules_v4/research_links/plugins/rijksarchiefbelgie.php:28
 msgid "birth"
 msgstr "birth"
 
-#: library/KT/Stats.php:1855 library/KT/Stats.php:3666
+#: library/KT/Stats.php:1880 library/KT/Stats.php:3736
 #: modules_v4/research_links/plugins/rijksarchiefbelgie.php:32
 msgid "death"
 msgstr "death"
 
-#: library/KT/Stats.php:1856 library/KT/Stats.php:3667
+#: library/KT/Stats.php:1881 library/KT/Stats.php:3737
 msgid "marriage"
 msgstr "marriage"
 
-#: library/KT/Stats.php:1857 library/KT/Stats.php:3668
+#: library/KT/Stats.php:1882 library/KT/Stats.php:3738
 msgid "adoption"
 msgstr "adoption"
 
-#: library/KT/Stats.php:1858 library/KT/Stats.php:3669
+#: library/KT/Stats.php:1883 library/KT/Stats.php:3739
 msgid "burial"
 msgstr "burial"
 
-#: library/KT/Stats.php:1859 library/KT/Stats.php:3670
+#: library/KT/Stats.php:1884 library/KT/Stats.php:3740
 msgid "census added"
 msgstr "census added"
 
-#: library/KT/Stats.php:2883 modules_v4/chart_statistics/module.php:750
-#: statisticsplot.php:900
+#: library/KT/Stats.php:2916 statisticsplot.php:900
 msgid "Month of birth of first child in a relation"
 msgstr "Month of birth of first child in a relation"
 
-#: library/KT/Stats.php:2932 modules_v4/chart_statistics/module.php:498
+#: library/KT/Stats.php:2965 modules_v4/chart_statistics/module.php:493
 msgid "Largest families"
 msgstr "Largest families"
 
-#: library/KT/Stats.php:3166 library/KT/Stats.php:3170
+#: library/KT/Stats.php:3232 library/KT/Stats.php:3236
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s grandchild"
 msgstr[1] "%s grandchildren"
 
-#: library/KT/Stats.php:3479
+#: library/KT/Stats.php:3549
 msgid "No logged-in and no anonymous users"
 msgstr "No logged-in and no anonymous users"
 
-#: library/KT/Stats.php:3875
+#: library/KT/Stats.php:3945
 msgid "Aruba"
 msgstr "Aruba"
 
-#: library/KT/Stats.php:3876
+#: library/KT/Stats.php:3946
 msgid "Acadia"
 msgstr "Acadia"
 
-#: library/KT/Stats.php:3877
+#: library/KT/Stats.php:3947
 msgid "Afghanistan"
 msgstr "Afghanistan"
 
-#: library/KT/Stats.php:3878
+#: library/KT/Stats.php:3948
 msgid "Angola"
 msgstr "Angola"
 
-#: library/KT/Stats.php:3879
+#: library/KT/Stats.php:3949
 msgid "Anguilla"
 msgstr "Anguilla"
 
-#: library/KT/Stats.php:3880
+#: library/KT/Stats.php:3950
 msgid "Aland Islands"
 msgstr "Aland Islands"
 
-#: library/KT/Stats.php:3881
+#: library/KT/Stats.php:3951
 msgid "Albania"
 msgstr "Albania"
 
-#: library/KT/Stats.php:3882
+#: library/KT/Stats.php:3952
 msgid "Andorra"
 msgstr "Andorra"
 
-#: library/KT/Stats.php:3883
+#: library/KT/Stats.php:3953
 msgid "Netherlands Antilles"
 msgstr "Netherlands Antilles"
 
-#: library/KT/Stats.php:3884
+#: library/KT/Stats.php:3954
 msgid "United Arab Emirates"
 msgstr "United Arab Emirates"
 
-#: library/KT/Stats.php:3885
+#: library/KT/Stats.php:3955
 msgid "Argentina"
 msgstr "Argentina"
 
-#: library/KT/Stats.php:3886
+#: library/KT/Stats.php:3956
 msgid "Armenia"
 msgstr "Armenia"
 
-#: library/KT/Stats.php:3887
+#: library/KT/Stats.php:3957
 msgid "American Samoa"
 msgstr "American Samoa"
 
-#: library/KT/Stats.php:3888
+#: library/KT/Stats.php:3958
 msgid "Antarctica"
 msgstr "Antarctica"
 
-#: library/KT/Stats.php:3889
+#: library/KT/Stats.php:3959
 msgid "French Southern Territories"
 msgstr "French Southern Territories"
 
-#: library/KT/Stats.php:3890
+#: library/KT/Stats.php:3960
 msgid "Antigua and Barbuda"
 msgstr "Antigua and Barbuda"
 
-#: library/KT/Stats.php:3891
+#: library/KT/Stats.php:3961
 msgid "Australia"
 msgstr "Australia"
 
-#: library/KT/Stats.php:3892
+#: library/KT/Stats.php:3962
 msgid "Austria"
 msgstr "Austria"
 
-#: library/KT/Stats.php:3893
+#: library/KT/Stats.php:3963
 msgid "Azerbaijan"
 msgstr "Azerbaijan"
 
-#: library/KT/Stats.php:3894
+#: library/KT/Stats.php:3964
 msgid "Azores"
 msgstr "Azores"
 
-#: library/KT/Stats.php:3895
+#: library/KT/Stats.php:3965
 msgid "Burundi"
 msgstr "Burundi"
 
-#: library/KT/Stats.php:3896
+#: library/KT/Stats.php:3966
 msgid "Belgium"
 msgstr "Belgium"
 
-#: library/KT/Stats.php:3897
+#: library/KT/Stats.php:3967
 msgid "Benin"
 msgstr "Benin"
 
-#: library/KT/Stats.php:3898
+#: library/KT/Stats.php:3968
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
-#: library/KT/Stats.php:3899
+#: library/KT/Stats.php:3969
 msgid "Bangladesh"
 msgstr "Bangladesh"
 
-#: library/KT/Stats.php:3900
+#: library/KT/Stats.php:3970
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: library/KT/Stats.php:3901
+#: library/KT/Stats.php:3971
 msgid "Bahrain"
 msgstr "Bahrain"
 
-#: library/KT/Stats.php:3902
+#: library/KT/Stats.php:3972
 msgid "Bahamas"
 msgstr "Bahamas"
 
-#: library/KT/Stats.php:3903
+#: library/KT/Stats.php:3973
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnia and Herzegovina"
 
-#: library/KT/Stats.php:3904
+#: library/KT/Stats.php:3974
 msgid "Belarus"
 msgstr "Belarus"
 
-#: library/KT/Stats.php:3905
+#: library/KT/Stats.php:3975
 msgid "Belize"
 msgstr "Belize"
 
-#: library/KT/Stats.php:3906
+#: library/KT/Stats.php:3976
 msgid "Bermuda"
 msgstr "Bermuda"
 
-#: library/KT/Stats.php:3907
+#: library/KT/Stats.php:3977
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: library/KT/Stats.php:3908
+#: library/KT/Stats.php:3978
 msgid "Brazil"
 msgstr "Brazil"
 
-#: library/KT/Stats.php:3909
+#: library/KT/Stats.php:3979
 msgid "Barbados"
 msgstr "Barbados"
 
-#: library/KT/Stats.php:3910
+#: library/KT/Stats.php:3980
 msgid "Brunei Darussalam"
 msgstr "Brunei Darussalam"
 
-#: library/KT/Stats.php:3911
+#: library/KT/Stats.php:3981
 msgid "Bhutan"
 msgstr "Bhutan"
 
-#: library/KT/Stats.php:3912
+#: library/KT/Stats.php:3982
 msgid "Bouvet Island"
 msgstr "Bouvet Island"
 
-#: library/KT/Stats.php:3913
+#: library/KT/Stats.php:3983
 msgid "Botswana"
 msgstr "Botswana"
 
-#: library/KT/Stats.php:3914
+#: library/KT/Stats.php:3984
 msgid "British West Indies"
 msgstr "British West Indies"
 
-#: library/KT/Stats.php:3915
+#: library/KT/Stats.php:3985
 msgid "Central African Republic"
 msgstr "Central African Republic"
 
-#: library/KT/Stats.php:3916
+#: library/KT/Stats.php:3986
 msgid "Canada"
 msgstr "Canada"
 
-#: library/KT/Stats.php:3917
+#: library/KT/Stats.php:3987
 msgid "Cape Colony"
 msgstr "Cape Colony"
 
-#: library/KT/Stats.php:3918
+#: library/KT/Stats.php:3988
 msgid "Catalonia"
 msgstr "Catalonia"
 
-#: library/KT/Stats.php:3919
+#: library/KT/Stats.php:3989
 msgid "Cocos (Keeling) Islands"
 msgstr "Cocos (Keeling) Islands"
 
-#: library/KT/Stats.php:3920
+#: library/KT/Stats.php:3990
 msgid "Switzerland"
 msgstr "Switzerland"
 
-#: library/KT/Stats.php:3921
+#: library/KT/Stats.php:3991
 msgid "Channel Islands"
 msgstr "Channel Islands"
 
-#: library/KT/Stats.php:3922
+#: library/KT/Stats.php:3992
 msgid "Chile"
 msgstr "Chile"
 
-#: library/KT/Stats.php:3923
+#: library/KT/Stats.php:3993
 msgid "China"
 msgstr "China"
 
-#: library/KT/Stats.php:3924
+#: library/KT/Stats.php:3994
 msgid "Cote d'Ivoire"
 msgstr "Cote d'Ivoire"
 
-#: library/KT/Stats.php:3925
+#: library/KT/Stats.php:3995
 msgid "Cameroon"
 msgstr "Cameroon"
 
-#: library/KT/Stats.php:3926
+#: library/KT/Stats.php:3996
 msgid "Congo (Kinshasa)"
 msgstr "Congo (Kinshasa)"
 
-#: library/KT/Stats.php:3927
+#: library/KT/Stats.php:3997
 msgid "Congo (Brazzaville)"
 msgstr "Congo (Brazzaville)"
 
-#: library/KT/Stats.php:3928
+#: library/KT/Stats.php:3998
 msgid "Cook Islands"
 msgstr "Cook Islands"
 
-#: library/KT/Stats.php:3929
+#: library/KT/Stats.php:3999
 msgid "Colombia"
 msgstr "Colombia"
 
-#: library/KT/Stats.php:3930
+#: library/KT/Stats.php:4000
 msgid "Comoros"
 msgstr "Comoros"
 
-#: library/KT/Stats.php:3931
+#: library/KT/Stats.php:4001
 msgid "Cape Verde"
 msgstr "Cape Verde"
 
-#: library/KT/Stats.php:3932
+#: library/KT/Stats.php:4002
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: library/KT/Stats.php:3933
+#: library/KT/Stats.php:4003
 msgid "Czechoslovakia"
 msgstr "Czechoslovakia"
 
-#: library/KT/Stats.php:3934
+#: library/KT/Stats.php:4004
 msgid "Cuba"
 msgstr "Cuba"
 
-#: library/KT/Stats.php:3935
+#: library/KT/Stats.php:4005
 msgid "Christmas Island"
 msgstr "Christmas Island"
 
-#: library/KT/Stats.php:3936
+#: library/KT/Stats.php:4006
 msgid "Cayman Islands"
 msgstr "Cayman Islands"
 
-#: library/KT/Stats.php:3937
+#: library/KT/Stats.php:4007
 msgid "Cyprus"
 msgstr "Cyprus"
 
-#: library/KT/Stats.php:3938
+#: library/KT/Stats.php:4008
 msgid "Czech Republic"
 msgstr "Czech Republic"
 
-#: library/KT/Stats.php:3939
+#: library/KT/Stats.php:4009
 msgid "Germany"
 msgstr "Germany"
 
-#: library/KT/Stats.php:3940
+#: library/KT/Stats.php:4010
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: library/KT/Stats.php:3941
+#: library/KT/Stats.php:4011
 msgid "Dominica"
 msgstr "Dominica"
 
-#: library/KT/Stats.php:3942
+#: library/KT/Stats.php:4012
 msgid "Denmark"
 msgstr "Denmark"
 
-#: library/KT/Stats.php:3943
+#: library/KT/Stats.php:4013
 msgid "Dominican Republic"
 msgstr "Dominican Republic"
 
-#: library/KT/Stats.php:3944
+#: library/KT/Stats.php:4014
 msgid "Algeria"
 msgstr "Algeria"
 
-#: library/KT/Stats.php:3945
+#: library/KT/Stats.php:4015
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: library/KT/Stats.php:3946
+#: library/KT/Stats.php:4016
 msgid "Egypt"
 msgstr "Egypt"
 
-#: library/KT/Stats.php:3947
+#: library/KT/Stats.php:4017
 msgid "Eire"
 msgstr "Eire"
 
-#: library/KT/Stats.php:3948
+#: library/KT/Stats.php:4018
 msgid "England"
 msgstr "England"
 
-#: library/KT/Stats.php:3949
+#: library/KT/Stats.php:4019
 msgid "Eritrea"
 msgstr "Eritrea"
 
-#: library/KT/Stats.php:3950
+#: library/KT/Stats.php:4020
 msgid "Western Sahara"
 msgstr "Western Sahara"
 
-#: library/KT/Stats.php:3951
+#: library/KT/Stats.php:4021
 msgid "Spain"
 msgstr "Spain"
 
-#: library/KT/Stats.php:3952
+#: library/KT/Stats.php:4022
 msgid "Estonia"
 msgstr "Estonia"
 
-#: library/KT/Stats.php:3953
+#: library/KT/Stats.php:4023
 msgid "Ethiopia"
 msgstr "Ethiopia"
 
-#: library/KT/Stats.php:3954
+#: library/KT/Stats.php:4024
 msgid "Finland"
 msgstr "Finland"
 
-#: library/KT/Stats.php:3955
+#: library/KT/Stats.php:4025
 msgid "Fiji"
 msgstr "Fiji"
 
-#: library/KT/Stats.php:3956
+#: library/KT/Stats.php:4026
 msgid "Flanders"
 msgstr "Flanders"
 
-#: library/KT/Stats.php:3957
+#: library/KT/Stats.php:4027
 msgid "Falkland Islands"
 msgstr "Falkland Islands"
 
-#: library/KT/Stats.php:3958
+#: library/KT/Stats.php:4028
 msgid "France"
 msgstr "France"
 
-#: library/KT/Stats.php:3959
+#: library/KT/Stats.php:4029
 msgid "Faeroe Islands"
 msgstr "Faeroe Islands"
 
-#: library/KT/Stats.php:3960
+#: library/KT/Stats.php:4030
 msgid "Micronesia"
 msgstr "Micronesia"
 
-#: library/KT/Stats.php:3961
+#: library/KT/Stats.php:4031
 msgid "Gabon"
 msgstr "Gabon"
 
-#: library/KT/Stats.php:3962
+#: library/KT/Stats.php:4032
 msgid "United Kingdom"
 msgstr "United Kingdom"
 
-#: library/KT/Stats.php:3963
+#: library/KT/Stats.php:4033
 msgid "Georgia"
 msgstr "Georgia"
 
-#: library/KT/Stats.php:3964
+#: library/KT/Stats.php:4034
 msgid "Guernsey"
 msgstr "Guernsey"
 
-#: library/KT/Stats.php:3965
+#: library/KT/Stats.php:4035
 msgid "Ghana"
 msgstr "Ghana"
 
-#: library/KT/Stats.php:3966
+#: library/KT/Stats.php:4036
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
-#: library/KT/Stats.php:3967
+#: library/KT/Stats.php:4037
 msgid "Guinea"
 msgstr "Guinea"
 
-#: library/KT/Stats.php:3968
+#: library/KT/Stats.php:4038
 msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
-#: library/KT/Stats.php:3969
+#: library/KT/Stats.php:4039
 msgid "Gambia"
 msgstr "Gambia"
 
-#: library/KT/Stats.php:3970
+#: library/KT/Stats.php:4040
 msgid "Guinea-Bissau"
 msgstr "Guinea-Bissau"
 
-#: library/KT/Stats.php:3971
+#: library/KT/Stats.php:4041
 msgid "Equatorial Guinea"
 msgstr "Equatorial Guinea"
 
-#: library/KT/Stats.php:3972
+#: library/KT/Stats.php:4042
 msgid "Greece"
 msgstr "Greece"
 
-#: library/KT/Stats.php:3973
+#: library/KT/Stats.php:4043
 msgid "Grenada"
 msgstr "Grenada"
 
-#: library/KT/Stats.php:3974
+#: library/KT/Stats.php:4044
 msgid "Greenland"
 msgstr "Greenland"
 
-#: library/KT/Stats.php:3975
+#: library/KT/Stats.php:4045
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: library/KT/Stats.php:3976
+#: library/KT/Stats.php:4046
 msgid "French Guiana"
 msgstr "French Guiana"
 
-#: library/KT/Stats.php:3977
+#: library/KT/Stats.php:4047
 msgid "Guam"
 msgstr "Guam"
 
-#: library/KT/Stats.php:3978
+#: library/KT/Stats.php:4048
 msgid "Guyana"
 msgstr "Guyana"
 
-#: library/KT/Stats.php:3980
+#: library/KT/Stats.php:4050
 msgid "Heard Island and McDonald Islands"
 msgstr "Heard Island and McDonald Islands"
 
-#: library/KT/Stats.php:3981
+#: library/KT/Stats.php:4051
 msgid "Honduras"
 msgstr "Honduras"
 
-#: library/KT/Stats.php:3982
+#: library/KT/Stats.php:4052
 msgid "Croatia"
 msgstr "Croatia"
 
-#: library/KT/Stats.php:3983
+#: library/KT/Stats.php:4053
 msgid "Haiti"
 msgstr "Haiti"
 
-#: library/KT/Stats.php:3984
+#: library/KT/Stats.php:4054
 msgid "Hungary"
 msgstr "Hungary"
 
-#: library/KT/Stats.php:3985
+#: library/KT/Stats.php:4055
 msgid "Indonesia"
 msgstr "Indonesia"
 
-#: library/KT/Stats.php:3986
+#: library/KT/Stats.php:4056
 msgid "India"
 msgstr "India"
 
-#: library/KT/Stats.php:3987
+#: library/KT/Stats.php:4057
 msgid "Isle of Man"
 msgstr "Isle of Man"
 
-#: library/KT/Stats.php:3988
+#: library/KT/Stats.php:4058
 msgid "British Indian Ocean Territory"
 msgstr "British Indian Ocean Territory"
 
-#: library/KT/Stats.php:3989
+#: library/KT/Stats.php:4059
 msgid "Ireland"
 msgstr "Ireland"
 
-#: library/KT/Stats.php:3990
+#: library/KT/Stats.php:4060
 msgid "Iran"
 msgstr "Iran"
 
-#: library/KT/Stats.php:3991
+#: library/KT/Stats.php:4061
 msgid "Iraq"
 msgstr "Iraq"
 
-#: library/KT/Stats.php:3992
+#: library/KT/Stats.php:4062
 msgid "Iceland"
 msgstr "Iceland"
 
-#: library/KT/Stats.php:3993
+#: library/KT/Stats.php:4063
 msgid "Israel"
 msgstr "Israel"
 
-#: library/KT/Stats.php:3994
+#: library/KT/Stats.php:4064
 msgid "Italy"
 msgstr "Italy"
 
-#: library/KT/Stats.php:3995
+#: library/KT/Stats.php:4065
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: library/KT/Stats.php:3996
+#: library/KT/Stats.php:4066
 msgid "Jordan"
 msgstr "Jordan"
 
-#: library/KT/Stats.php:3997
+#: library/KT/Stats.php:4067
 msgid "Japan"
 msgstr "Japan"
 
-#: library/KT/Stats.php:3998
+#: library/KT/Stats.php:4068
 msgid "Kazakhstan"
 msgstr "Kazakhstan"
 
-#: library/KT/Stats.php:3999
+#: library/KT/Stats.php:4069
 msgid "Kenya"
 msgstr "Kenya"
 
-#: library/KT/Stats.php:4000
+#: library/KT/Stats.php:4070
 msgid "Kyrgyzstan"
 msgstr "Kyrgyzstan"
 
-#: library/KT/Stats.php:4001
+#: library/KT/Stats.php:4071
 msgid "Cambodia"
 msgstr "Cambodia"
 
-#: library/KT/Stats.php:4002
+#: library/KT/Stats.php:4072
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#: library/KT/Stats.php:4003
+#: library/KT/Stats.php:4073
 msgid "Saint Kitts and Nevis"
 msgstr "Saint Kitts and Nevis"
 
-#: library/KT/Stats.php:4004
+#: library/KT/Stats.php:4074
 msgid "Korea"
 msgstr "Korea"
 
-#: library/KT/Stats.php:4005
+#: library/KT/Stats.php:4075
 msgid "Kuwait"
 msgstr "Kuwait"
 
-#: library/KT/Stats.php:4006
+#: library/KT/Stats.php:4076
 msgid "Laos"
 msgstr "Laos"
 
-#: library/KT/Stats.php:4007
+#: library/KT/Stats.php:4077
 msgid "Lebanon"
 msgstr "Lebanon"
 
-#: library/KT/Stats.php:4008
+#: library/KT/Stats.php:4078
 msgid "Liberia"
 msgstr "Liberia"
 
-#: library/KT/Stats.php:4009
+#: library/KT/Stats.php:4079
 msgid "Libya"
 msgstr "Libya"
 
-#: library/KT/Stats.php:4010
+#: library/KT/Stats.php:4080
 msgid "Saint Lucia"
 msgstr "Saint Lucia"
 
-#: library/KT/Stats.php:4011
+#: library/KT/Stats.php:4081
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: library/KT/Stats.php:4012
+#: library/KT/Stats.php:4082
 msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
-#: library/KT/Stats.php:4013
+#: library/KT/Stats.php:4083
 msgid "Lesotho"
 msgstr "Lesotho"
 
-#: library/KT/Stats.php:4014
+#: library/KT/Stats.php:4084
 msgid "Lithuania"
 msgstr "Lithuania"
 
-#: library/KT/Stats.php:4015
+#: library/KT/Stats.php:4085
 msgid "Luxembourg"
 msgstr "Luxembourg"
 
-#: library/KT/Stats.php:4016
+#: library/KT/Stats.php:4086
 msgid "Latvia"
 msgstr "Latvia"
 
-#: library/KT/Stats.php:4017
+#: library/KT/Stats.php:4087
 msgid "Macau"
 msgstr "Macau"
 
-#: library/KT/Stats.php:4018
+#: library/KT/Stats.php:4088
 msgid "Morocco"
 msgstr "Morocco"
 
-#: library/KT/Stats.php:4019
+#: library/KT/Stats.php:4089
 msgid "Monaco"
 msgstr "Monaco"
 
-#: library/KT/Stats.php:4020
+#: library/KT/Stats.php:4090
 msgid "Moldova"
 msgstr "Moldova"
 
-#: library/KT/Stats.php:4021
+#: library/KT/Stats.php:4091
 msgid "Madagascar"
 msgstr "Madagascar"
 
-#: library/KT/Stats.php:4022
+#: library/KT/Stats.php:4092
 msgid "Maldives"
 msgstr "Maldives"
 
-#: library/KT/Stats.php:4023
+#: library/KT/Stats.php:4093
 msgid "Mexico"
 msgstr "Mexico"
 
-#: library/KT/Stats.php:4024
+#: library/KT/Stats.php:4094
 msgid "Marshall Islands"
 msgstr "Marshall Islands"
 
-#: library/KT/Stats.php:4025
+#: library/KT/Stats.php:4095
 msgid "Macedonia"
 msgstr "Macedonia"
 
-#: library/KT/Stats.php:4026
+#: library/KT/Stats.php:4096
 msgid "Mali"
 msgstr "Mali"
 
-#: library/KT/Stats.php:4027
+#: library/KT/Stats.php:4097
 msgid "Malta"
 msgstr "Malta"
 
-#: library/KT/Stats.php:4028
+#: library/KT/Stats.php:4098
 msgid "Myanmar"
 msgstr "Myanmar"
 
-#: library/KT/Stats.php:4029
+#: library/KT/Stats.php:4099
 msgid "Mongolia"
 msgstr "Mongolia"
 
-#: library/KT/Stats.php:4030
+#: library/KT/Stats.php:4100
 msgid "Northern Mariana Islands"
 msgstr "Northern Mariana Islands"
 
-#: library/KT/Stats.php:4031
+#: library/KT/Stats.php:4101
 msgid "Montenegro"
 msgstr "Montenegro"
 
-#: library/KT/Stats.php:4032
+#: library/KT/Stats.php:4102
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: library/KT/Stats.php:4033
+#: library/KT/Stats.php:4103
 msgid "Mauritania"
 msgstr "Mauritania"
 
-#: library/KT/Stats.php:4034
+#: library/KT/Stats.php:4104
 msgid "Montserrat"
 msgstr "Montserrat"
 
-#: library/KT/Stats.php:4035
+#: library/KT/Stats.php:4105
 msgid "Martinique"
 msgstr "Martinique"
 
-#: library/KT/Stats.php:4036
+#: library/KT/Stats.php:4106
 msgid "Mauritius"
 msgstr "Mauritius"
 
-#: library/KT/Stats.php:4037
+#: library/KT/Stats.php:4107
 msgid "Malawi"
 msgstr "Malawi"
 
-#: library/KT/Stats.php:4038
+#: library/KT/Stats.php:4108
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: library/KT/Stats.php:4039
+#: library/KT/Stats.php:4109
 msgid "Mayotte"
 msgstr "Mayotte"
 
-#: library/KT/Stats.php:4040
+#: library/KT/Stats.php:4110
 msgid "Namibia"
 msgstr "Namibia"
 
-#: library/KT/Stats.php:4041
+#: library/KT/Stats.php:4111
 msgid "New Caledonia"
 msgstr "New Caledonia"
 
-#: library/KT/Stats.php:4042
+#: library/KT/Stats.php:4112
 msgid "Niger"
 msgstr "Niger"
 
-#: library/KT/Stats.php:4043
+#: library/KT/Stats.php:4113
 msgid "Norfolk Island"
 msgstr "Norfolk Island"
 
-#: library/KT/Stats.php:4044
+#: library/KT/Stats.php:4114
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: library/KT/Stats.php:4045
+#: library/KT/Stats.php:4115
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: library/KT/Stats.php:4046
+#: library/KT/Stats.php:4116
 msgid "Northern Ireland"
 msgstr "Northern Ireland"
 
-#: library/KT/Stats.php:4047
+#: library/KT/Stats.php:4117
 msgid "Niue"
 msgstr "Niue"
 
-#: library/KT/Stats.php:4048
+#: library/KT/Stats.php:4118
 msgid "Netherlands"
 msgstr "Netherlands"
 
-#: library/KT/Stats.php:4049
+#: library/KT/Stats.php:4119
 msgid "Norway"
 msgstr "Norway"
 
-#: library/KT/Stats.php:4050
+#: library/KT/Stats.php:4120
 msgid "Nepal"
 msgstr "Nepal"
 
-#: library/KT/Stats.php:4051
+#: library/KT/Stats.php:4121
 msgid "Nauru"
 msgstr "Nauru"
 
-#: library/KT/Stats.php:4052
+#: library/KT/Stats.php:4122
 msgid "Neutral Zone"
 msgstr "Neutral Zone"
 
-#: library/KT/Stats.php:4053
+#: library/KT/Stats.php:4123
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: library/KT/Stats.php:4054
+#: library/KT/Stats.php:4124
 msgid "Oman"
 msgstr "Oman"
 
-#: library/KT/Stats.php:4055
+#: library/KT/Stats.php:4125
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: library/KT/Stats.php:4056
+#: library/KT/Stats.php:4126
 msgid "Panama"
 msgstr "Panama"
 
-#: library/KT/Stats.php:4057
+#: library/KT/Stats.php:4127
 msgid "Pitcairn"
 msgstr "Pitcairn"
 
-#: library/KT/Stats.php:4058
+#: library/KT/Stats.php:4128
 msgid "Peru"
 msgstr "Peru"
 
-#: library/KT/Stats.php:4059
+#: library/KT/Stats.php:4129
 msgid "Philippines"
 msgstr "Philippines"
 
-#: library/KT/Stats.php:4060
+#: library/KT/Stats.php:4130
 msgid "Palau"
 msgstr "Palau"
 
-#: library/KT/Stats.php:4061
+#: library/KT/Stats.php:4131
 msgid "Papua New Guinea"
 msgstr "Papua New Guinea"
 
-#: library/KT/Stats.php:4062
+#: library/KT/Stats.php:4132
 msgid "Poland"
 msgstr "Poland"
 
-#: library/KT/Stats.php:4063
+#: library/KT/Stats.php:4133
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
-#: library/KT/Stats.php:4064
+#: library/KT/Stats.php:4134
 msgid "North Korea"
 msgstr "North Korea"
 
-#: library/KT/Stats.php:4065
+#: library/KT/Stats.php:4135
 msgid "Portugal"
 msgstr "Portugal"
 
-#: library/KT/Stats.php:4066
+#: library/KT/Stats.php:4136
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: library/KT/Stats.php:4067
+#: library/KT/Stats.php:4137
 msgid "Occupied Palestinian Territory"
 msgstr "Occupied Palestinian Territory"
 
-#: library/KT/Stats.php:4068
+#: library/KT/Stats.php:4138
 msgid "French Polynesia"
 msgstr "French Polynesia"
 
-#: library/KT/Stats.php:4069
+#: library/KT/Stats.php:4139
 msgid "Qatar"
 msgstr "Qatar"
 
-#: library/KT/Stats.php:4070
+#: library/KT/Stats.php:4140
 msgid "Reunion"
 msgstr "Reunion"
 
-#: library/KT/Stats.php:4071
+#: library/KT/Stats.php:4141
 msgid "Rhodesia"
 msgstr "Rhodesia"
 
-#: library/KT/Stats.php:4072
+#: library/KT/Stats.php:4142
 msgid "Romania"
 msgstr "Romania"
 
-#: library/KT/Stats.php:4073
+#: library/KT/Stats.php:4143
 msgid "Russia"
 msgstr "Russia"
 
-#: library/KT/Stats.php:4074
+#: library/KT/Stats.php:4144
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: library/KT/Stats.php:4075
+#: library/KT/Stats.php:4145
 msgid "Saudi Arabia"
 msgstr "Saudi Arabia"
 
-#: library/KT/Stats.php:4076
+#: library/KT/Stats.php:4146
 msgid "Serbia and Montenegro"
 msgstr "Serbia and Montenegro"
 
-#: library/KT/Stats.php:4077
+#: library/KT/Stats.php:4147
 msgid "Scotland"
 msgstr "Scotland"
 
-#: library/KT/Stats.php:4078
+#: library/KT/Stats.php:4148
 msgid "Sudan"
 msgstr "Sudan"
 
-#: library/KT/Stats.php:4079
+#: library/KT/Stats.php:4149
 msgid "At Sea"
 msgstr "At Sea"
 
-#: library/KT/Stats.php:4080
+#: library/KT/Stats.php:4150
 msgid "Senegal"
 msgstr "Senegal"
 
-#: library/KT/Stats.php:4081
+#: library/KT/Stats.php:4151
 msgid "Serbia"
 msgstr "Serbia"
 
-#: library/KT/Stats.php:4082
+#: library/KT/Stats.php:4152
 msgid "Singapore"
 msgstr "Singapore"
 
-#: library/KT/Stats.php:4083
+#: library/KT/Stats.php:4153
 msgid "Saint Helena"
 msgstr "Saint Helena"
 
-#: library/KT/Stats.php:4084
+#: library/KT/Stats.php:4154
 msgid "Sicily"
 msgstr "Sicily"
 
-#: library/KT/Stats.php:4085
+#: library/KT/Stats.php:4155
 msgid "Svalbard and Jan Mayen Islands"
 msgstr "Svalbard and Jan Mayen Islands"
 
-#: library/KT/Stats.php:4086
+#: library/KT/Stats.php:4156
 msgid "Solomon Islands"
 msgstr "Solomon Islands"
 
-#: library/KT/Stats.php:4087
+#: library/KT/Stats.php:4157
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: library/KT/Stats.php:4088
+#: library/KT/Stats.php:4158
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: library/KT/Stats.php:4089
+#: library/KT/Stats.php:4159
 msgid "San Marino"
 msgstr "San Marino"
 
-#: library/KT/Stats.php:4090
+#: library/KT/Stats.php:4160
 msgid "Somalia"
 msgstr "Somalia"
 
-#: library/KT/Stats.php:4091
+#: library/KT/Stats.php:4161
 msgid "Saint Pierre and Miquelon"
 msgstr "Saint Pierre and Miquelon"
 
-#: library/KT/Stats.php:4092
+#: library/KT/Stats.php:4162
 msgid "South Sudan"
 msgstr "South Sudan"
 
-#: library/KT/Stats.php:4093
+#: library/KT/Stats.php:4163
 msgid "Sao Tome and Principe"
 msgstr "Sao Tome and Principe"
 
-#: library/KT/Stats.php:4094
+#: library/KT/Stats.php:4164
 msgid "USSR"
 msgstr "USSR"
 
-#: library/KT/Stats.php:4095
+#: library/KT/Stats.php:4165
 msgid "Suriname"
 msgstr "Suriname"
 
-#: library/KT/Stats.php:4096
+#: library/KT/Stats.php:4166
 msgid "Slovakia"
 msgstr "Slovakia"
 
-#: library/KT/Stats.php:4097
+#: library/KT/Stats.php:4167
 msgid "Slovenia"
 msgstr "Slovenia"
 
-#: library/KT/Stats.php:4098
+#: library/KT/Stats.php:4168
 msgid "Sweden"
 msgstr "Sweden"
 
-#: library/KT/Stats.php:4099
+#: library/KT/Stats.php:4169
 msgid "Swaziland"
 msgstr "Swaziland"
 
-#: library/KT/Stats.php:4100
+#: library/KT/Stats.php:4170
 msgid "Seychelles"
 msgstr "Seychelles"
 
-#: library/KT/Stats.php:4101
+#: library/KT/Stats.php:4171
 msgid "Syrian Arab Republic"
 msgstr "Syrian Arab Republic"
 
-#: library/KT/Stats.php:4102
+#: library/KT/Stats.php:4172
 msgid "Turks and Caicos Islands"
 msgstr "Turks and Caicos Islands"
 
-#: library/KT/Stats.php:4103
+#: library/KT/Stats.php:4173
 msgid "Chad"
 msgstr "Chad"
 
-#: library/KT/Stats.php:4104
+#: library/KT/Stats.php:4174
 msgid "Togo"
 msgstr "Togo"
 
-#: library/KT/Stats.php:4105
+#: library/KT/Stats.php:4175
 msgid "Thailand"
 msgstr "Thailand"
 
-#: library/KT/Stats.php:4106
+#: library/KT/Stats.php:4176
 msgid "Tajikistan"
 msgstr "Tajikistan"
 
-#: library/KT/Stats.php:4107
+#: library/KT/Stats.php:4177
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: library/KT/Stats.php:4108
+#: library/KT/Stats.php:4178
 msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
-#: library/KT/Stats.php:4109
+#: library/KT/Stats.php:4179
 msgid "Timor-Leste"
 msgstr "Timor-Leste"
 
-#: library/KT/Stats.php:4110
+#: library/KT/Stats.php:4180
 msgid "Tonga"
 msgstr "Tonga"
 
-#: library/KT/Stats.php:4111
+#: library/KT/Stats.php:4181
 msgid "Transylvania"
 msgstr "Transylvania"
 
-#: library/KT/Stats.php:4112
+#: library/KT/Stats.php:4182
 msgid "Trinidad and Tobago"
 msgstr "Trinidad and Tobago"
 
-#: library/KT/Stats.php:4113
+#: library/KT/Stats.php:4183
 msgid "Tunisia"
 msgstr "Tunisia"
 
-#: library/KT/Stats.php:4114
+#: library/KT/Stats.php:4184
 msgid "Turkey"
 msgstr "Turkey"
 
-#: library/KT/Stats.php:4115
+#: library/KT/Stats.php:4185
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: library/KT/Stats.php:4116
+#: library/KT/Stats.php:4186
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: library/KT/Stats.php:4117
+#: library/KT/Stats.php:4187
 msgid "Tanzania"
 msgstr "Tanzania"
 
-#: library/KT/Stats.php:4118
+#: library/KT/Stats.php:4188
 msgid "Uganda"
 msgstr "Uganda"
 
-#: library/KT/Stats.php:4119
+#: library/KT/Stats.php:4189
 msgid "Ukraine"
 msgstr "Ukraine"
 
-#: library/KT/Stats.php:4120
+#: library/KT/Stats.php:4190
 msgid "US Minor Outlying Islands"
 msgstr "US Minor Outlying Islands"
 
-#: library/KT/Stats.php:4121
+#: library/KT/Stats.php:4191
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: library/KT/Stats.php:4122
+#: library/KT/Stats.php:4192
 msgid "USA"
 msgstr "USA"
 
-#: library/KT/Stats.php:4123
+#: library/KT/Stats.php:4193
 msgid "Uzbekistan"
 msgstr "Uzbekistan"
 
-#: library/KT/Stats.php:4124
+#: library/KT/Stats.php:4194
 msgid "Vatican City"
 msgstr "Vatican City"
 
-#: library/KT/Stats.php:4125
+#: library/KT/Stats.php:4195
 msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent and the Grenadines"
 
-#: library/KT/Stats.php:4126
+#: library/KT/Stats.php:4196
 msgid "Venezuela"
 msgstr "Venezuela"
 
-#: library/KT/Stats.php:4127
+#: library/KT/Stats.php:4197
 msgid "British Virgin Islands"
 msgstr "British Virgin Islands"
 
-#: library/KT/Stats.php:4128
+#: library/KT/Stats.php:4198
 msgid "US Virgin Islands"
 msgstr "US Virgin Islands"
 
-#: library/KT/Stats.php:4129
+#: library/KT/Stats.php:4199
 msgid "Viet Nam"
 msgstr "Viet Nam"
 
-#: library/KT/Stats.php:4130
+#: library/KT/Stats.php:4200
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
-#: library/KT/Stats.php:4131
+#: library/KT/Stats.php:4201
 msgid "West Africa"
 msgstr "West Africa"
 
-#: library/KT/Stats.php:4132
+#: library/KT/Stats.php:4202
 msgid "Wallis and Futuna Islands"
 msgstr "Wallis and Futuna Islands"
 
-#: library/KT/Stats.php:4133
+#: library/KT/Stats.php:4203
 msgid "Wales"
 msgstr "Wales"
 
-#: library/KT/Stats.php:4134
+#: library/KT/Stats.php:4204
 msgid "Samoa"
 msgstr "Samoa"
 
-#: library/KT/Stats.php:4135
+#: library/KT/Stats.php:4205
 msgid "Yemen"
 msgstr "Yemen"
 
-#: library/KT/Stats.php:4136
+#: library/KT/Stats.php:4206
 msgid "Yugoslavia"
 msgstr "Yugoslavia"
 
-#: library/KT/Stats.php:4137
+#: library/KT/Stats.php:4207
 msgid "South Africa"
 msgstr "South Africa"
 
-#: library/KT/Stats.php:4138
+#: library/KT/Stats.php:4208
 msgid "Zaire"
 msgstr "Zaire"
 
-#: library/KT/Stats.php:4139
+#: library/KT/Stats.php:4209
 msgid "Zambia"
 msgstr "Zambia"
 
-#: library/KT/Stats.php:4140
+#: library/KT/Stats.php:4210
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: library/KT/Stats.php:4147
+#: library/KT/Stats.php:4217
 #, php-format
 msgid "%s BCE"
 msgstr "%s BCE"
 
-#: library/KT/Stats.php:4150
+#: library/KT/Stats.php:4220
 msgctxt "CENTURY"
 msgid "21st"
 msgstr "21st"
 
-#: library/KT/Stats.php:4151
+#: library/KT/Stats.php:4221
 msgctxt "CENTURY"
 msgid "20th"
 msgstr "20th"
 
-#: library/KT/Stats.php:4152
+#: library/KT/Stats.php:4222
 msgctxt "CENTURY"
 msgid "19th"
 msgstr "19th"
 
-#: library/KT/Stats.php:4153
+#: library/KT/Stats.php:4223
 msgctxt "CENTURY"
 msgid "18th"
 msgstr "18th"
 
-#: library/KT/Stats.php:4154
+#: library/KT/Stats.php:4224
 msgctxt "CENTURY"
 msgid "17th"
 msgstr "17th"
 
-#: library/KT/Stats.php:4155
+#: library/KT/Stats.php:4225
 msgctxt "CENTURY"
 msgid "16th"
 msgstr "16th"
 
-#: library/KT/Stats.php:4156
+#: library/KT/Stats.php:4226
 msgctxt "CENTURY"
 msgid "15th"
 msgstr "15th"
 
-#: library/KT/Stats.php:4157
+#: library/KT/Stats.php:4227
 msgctxt "CENTURY"
 msgid "14th"
 msgstr "14th"
 
-#: library/KT/Stats.php:4158
+#: library/KT/Stats.php:4228
 msgctxt "CENTURY"
 msgid "13th"
 msgstr "13th"
 
-#: library/KT/Stats.php:4159
+#: library/KT/Stats.php:4229
 msgctxt "CENTURY"
 msgid "12th"
 msgstr "12th"
 
-#: library/KT/Stats.php:4160
+#: library/KT/Stats.php:4230
 msgctxt "CENTURY"
 msgid "11th"
 msgstr "11th"
 
-#: library/KT/Stats.php:4161
+#: library/KT/Stats.php:4231
 msgctxt "CENTURY"
 msgid "10th"
 msgstr "10th"
 
-#: library/KT/Stats.php:4162
+#: library/KT/Stats.php:4232
 msgctxt "CENTURY"
 msgid "9th"
 msgstr "9th"
 
-#: library/KT/Stats.php:4163
+#: library/KT/Stats.php:4233
 msgctxt "CENTURY"
 msgid "8th"
 msgstr "8th"
 
-#: library/KT/Stats.php:4164
+#: library/KT/Stats.php:4234
 msgctxt "CENTURY"
 msgid "7th"
 msgstr "7th"
 
-#: library/KT/Stats.php:4165
+#: library/KT/Stats.php:4235
 msgctxt "CENTURY"
 msgid "6th"
 msgstr "6th"
 
-#: library/KT/Stats.php:4166
+#: library/KT/Stats.php:4236
 msgctxt "CENTURY"
 msgid "5th"
 msgstr "5th"
 
-#: library/KT/Stats.php:4167
+#: library/KT/Stats.php:4237
 msgctxt "CENTURY"
 msgid "4th"
 msgstr "4th"
 
-#: library/KT/Stats.php:4168
+#: library/KT/Stats.php:4238
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr "3rd"
 
-#: library/KT/Stats.php:4169
+#: library/KT/Stats.php:4239
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr "2nd"
 
-#: library/KT/Stats.php:4170
+#: library/KT/Stats.php:4240
 msgctxt "CENTURY"
 msgid "1st"
 msgstr "1st"
@@ -22957,7 +22979,7 @@ msgid "An individual's hourglass chart"
 msgstr "An individual's hourglass chart"
 
 #: modules_v4/chart_lifespan/module.php:33
-#: modules_v4/chart_statistics/module.php:276
+#: modules_v4/chart_statistics/module.php:271
 msgid "Lifespan"
 msgstr "Lifespan"
 
@@ -23170,87 +23192,83 @@ msgstr "(Note: large numbers can be very slow to load)"
 msgid "Others"
 msgstr "Others"
 
-#: modules_v4/chart_statistics/module.php:128
-msgid "Own charts"
-msgstr "Own charts"
-
-#: modules_v4/chart_statistics/module.php:158 statisticsTables.php:47
+#: modules_v4/chart_statistics/module.php:153 statisticsTables.php:47
 msgid "Total males"
 msgstr "Total males"
 
-#: modules_v4/chart_statistics/module.php:159 statisticsTables.php:51
+#: modules_v4/chart_statistics/module.php:154 statisticsTables.php:51
 msgid "Total females"
 msgstr "Total females"
 
-#: modules_v4/chart_statistics/module.php:160
+#: modules_v4/chart_statistics/module.php:155
 msgid "Total unknown"
 msgstr "Total unknown"
 
-#: modules_v4/chart_statistics/module.php:161 statisticsTables.php:59
+#: modules_v4/chart_statistics/module.php:156 statisticsTables.php:59
 msgid "Total living"
 msgstr "Total living"
 
-#: modules_v4/chart_statistics/module.php:162
+#: modules_v4/chart_statistics/module.php:157
 msgid "Total dead"
 msgstr "Total dead"
 
-#: modules_v4/chart_statistics/module.php:198
+#: modules_v4/chart_statistics/module.php:193
 msgid "Individuals, by gender"
 msgstr "Individuals, by gender"
 
-#: modules_v4/chart_statistics/module.php:202
+#: modules_v4/chart_statistics/module.php:197
 msgid "Individuals, by living / deceased status"
 msgstr "Individuals, by living / deceased status"
 
-#: modules_v4/chart_statistics/module.php:208
-#: modules_v4/chart_statistics/module.php:370
+#: modules_v4/chart_statistics/module.php:203
+#: modules_v4/chart_statistics/module.php:365
 #: modules_v4/googlemap/googlemap.js.php:493
 msgid "Events"
 msgstr "Events"
 
-#: modules_v4/chart_statistics/module.php:211 statisticsTables.php:135
+#: modules_v4/chart_statistics/module.php:206 statisticsTables.php:135
 msgid "Total births"
 msgstr "Total births"
 
-#: modules_v4/chart_statistics/module.php:212 statisticsTables.php:150
+#: modules_v4/chart_statistics/module.php:207 statisticsTables.php:150
 msgid "Total deaths"
 msgstr "Total deaths"
 
-#: modules_v4/chart_statistics/module.php:229
+#: modules_v4/chart_statistics/module.php:224
 #, php-format
 msgid "%1s (%2s with a birth date and %3s without)"
 msgstr "%1s (%2s with a birth date and %3s without)"
 
-#: modules_v4/chart_statistics/module.php:245
+#: modules_v4/chart_statistics/module.php:240
 #, php-format
 msgid "%1s (%2s with a death date and %3s without)"
 msgstr "%1s (%2s with a death date and %3s without)"
 
-#: modules_v4/chart_statistics/module.php:250
+#: modules_v4/chart_statistics/module.php:245
 msgid "Number of births in each century"
 msgstr "Number of births in each century"
 
-#: modules_v4/chart_statistics/module.php:254
+#: modules_v4/chart_statistics/module.php:249
 msgid "Number of deaths in each century"
 msgstr "Number of deaths in each century"
 
-#: modules_v4/chart_statistics/module.php:259
+#: modules_v4/chart_statistics/module.php:254
 msgid "Earliest birth"
 msgstr "Earliest birth"
 
-#: modules_v4/chart_statistics/module.php:260
+#: modules_v4/chart_statistics/module.php:255
 msgid "Earliest death"
 msgstr "Earliest death"
 
-#: modules_v4/chart_statistics/module.php:267
+#: modules_v4/chart_statistics/module.php:262
 msgid "Latest birth"
 msgstr "Latest birth"
 
-#: modules_v4/chart_statistics/module.php:268
+#: modules_v4/chart_statistics/module.php:263
 msgid "Latest death"
 msgstr "Latest death"
 
-#: modules_v4/chart_statistics/module.php:279
+#: modules_v4/chart_statistics/module.php:274
 #: modules_v4/gedcom_stats/module.php:167
 #: modules_v4/gedcom_stats/module.php:342 modules_v4/html/module.php:234
 #: modules_v4/widget_stats/module.php:224
@@ -23258,19 +23276,19 @@ msgstr "Latest death"
 msgid "Average age at death"
 msgstr "Average age at death"
 
-#: modules_v4/chart_statistics/module.php:290
+#: modules_v4/chart_statistics/module.php:285
 msgid "Average age at death date, by century"
 msgstr "Average age at death date, by century"
 
-#: modules_v4/chart_statistics/module.php:296
+#: modules_v4/chart_statistics/module.php:291
 msgid "Greatest age at death"
 msgstr "Greatest age at death"
 
-#: modules_v4/chart_statistics/module.php:309
+#: modules_v4/chart_statistics/module.php:304
 msgid "Oldest living people"
 msgstr "Oldest living people"
 
-#: modules_v4/chart_statistics/module.php:325
+#: modules_v4/chart_statistics/module.php:320
 #: modules_v4/gedcom_stats/module.php:101
 #: modules_v4/gedcom_stats/module.php:307 modules_v4/html/module.php:176
 #: modules_v4/widget_stats/module.php:107
@@ -23278,121 +23296,121 @@ msgstr "Oldest living people"
 msgid "Total surnames"
 msgstr "Total surnames"
 
-#: modules_v4/chart_statistics/module.php:326
+#: modules_v4/chart_statistics/module.php:321
 msgid "Total given names"
 msgstr "Total given names"
 
+#: modules_v4/chart_statistics/module.php:330
 #: modules_v4/chart_statistics/module.php:335
-#: modules_v4/chart_statistics/module.php:340
 #: modules_v4/top10_surnames/module.php:32
 #: modules_v4/widget_surnames/module.php:32
 msgid "Top surnames"
 msgstr "Top surnames"
 
-#: modules_v4/chart_statistics/module.php:336
-#: modules_v4/chart_statistics/module.php:344
+#: modules_v4/chart_statistics/module.php:331
+#: modules_v4/chart_statistics/module.php:339
 #: modules_v4/top10_givnnames/module.php:32
 #: modules_v4/widget_givnnames/module.php:32
 msgid "Top given names"
 msgstr "Top given names"
 
-#: modules_v4/chart_statistics/module.php:373 statisticsTables.php:124
+#: modules_v4/chart_statistics/module.php:368 statisticsTables.php:124
 msgid "Total marriages"
 msgstr "Total marriages"
 
-#: modules_v4/chart_statistics/module.php:374 statisticsTables.php:128
+#: modules_v4/chart_statistics/module.php:369 statisticsTables.php:128
 msgid "Total divorces"
 msgstr "Total divorces"
 
-#: modules_v4/chart_statistics/module.php:389
+#: modules_v4/chart_statistics/module.php:384
 msgid "Marriages by century"
 msgstr "Marriages by century"
 
-#: modules_v4/chart_statistics/module.php:390
+#: modules_v4/chart_statistics/module.php:385
 msgid "Divorces by century"
 msgstr "Divorces by century"
 
-#: modules_v4/chart_statistics/module.php:394
+#: modules_v4/chart_statistics/module.php:389
 msgid "Number of marriages in each century"
 msgstr "Number of marriages in each century"
 
-#: modules_v4/chart_statistics/module.php:398
+#: modules_v4/chart_statistics/module.php:393
 msgid "Number of divorces in each century"
 msgstr "Number of divorces in each century"
 
-#: modules_v4/chart_statistics/module.php:403
+#: modules_v4/chart_statistics/module.php:398
 msgid "Earliest marriage"
 msgstr "Earliest marriage"
 
-#: modules_v4/chart_statistics/module.php:404
+#: modules_v4/chart_statistics/module.php:399
 msgid "Earliest divorce"
 msgstr "Earliest divorce"
 
-#: modules_v4/chart_statistics/module.php:411
+#: modules_v4/chart_statistics/module.php:406
 msgid "Latest marriage"
 msgstr "Latest marriage"
 
-#: modules_v4/chart_statistics/module.php:412
+#: modules_v4/chart_statistics/module.php:407
 msgid "Latest divorce"
 msgstr "Latest divorce"
 
-#: modules_v4/chart_statistics/module.php:420
+#: modules_v4/chart_statistics/module.php:415
 msgid "Length of marriage"
 msgstr "Length of marriage"
 
-#: modules_v4/chart_statistics/module.php:423
+#: modules_v4/chart_statistics/module.php:418
 msgid "Longest marriage"
 msgstr "Longest marriage"
 
-#: modules_v4/chart_statistics/module.php:424
+#: modules_v4/chart_statistics/module.php:419
 msgid "Shortest marriage"
 msgstr "Shortest marriage"
 
-#: modules_v4/chart_statistics/module.php:435
+#: modules_v4/chart_statistics/module.php:430
 msgid "Youngest male"
 msgstr "Youngest male"
 
-#: modules_v4/chart_statistics/module.php:436
+#: modules_v4/chart_statistics/module.php:431
 msgid "Youngest female"
 msgstr "Youngest female"
 
-#: modules_v4/chart_statistics/module.php:443
+#: modules_v4/chart_statistics/module.php:438
 msgid "Oldest male"
 msgstr "Oldest male"
 
-#: modules_v4/chart_statistics/module.php:444
+#: modules_v4/chart_statistics/module.php:439
 msgid "Oldest female"
 msgstr "Oldest female"
 
-#: modules_v4/chart_statistics/module.php:452
+#: modules_v4/chart_statistics/module.php:447
 msgid "Average age at marriage date, by century"
 msgstr "Average age at marriage date, by century"
 
-#: modules_v4/chart_statistics/module.php:457
+#: modules_v4/chart_statistics/module.php:452
 msgid "Age at birth of child"
 msgstr "Age at birth of child"
 
-#: modules_v4/chart_statistics/module.php:460
+#: modules_v4/chart_statistics/module.php:455
 msgid "Youngest father"
 msgstr "Youngest father"
 
-#: modules_v4/chart_statistics/module.php:461
+#: modules_v4/chart_statistics/module.php:456
 msgid "Youngest mother"
 msgstr "Youngest mother"
 
-#: modules_v4/chart_statistics/module.php:468
+#: modules_v4/chart_statistics/module.php:463
 msgid "Oldest father"
 msgstr "Oldest father"
 
-#: modules_v4/chart_statistics/module.php:469
+#: modules_v4/chart_statistics/module.php:464
 msgid "Oldest mother"
 msgstr "Oldest mother"
 
-#: modules_v4/chart_statistics/module.php:477
+#: modules_v4/chart_statistics/module.php:472
 msgid "Children in family"
 msgstr "Children in family"
 
-#: modules_v4/chart_statistics/module.php:480
+#: modules_v4/chart_statistics/module.php:475
 #: modules_v4/gedcom_stats/module.php:183
 #: modules_v4/gedcom_stats/module.php:358 modules_v4/html/module.php:244
 #: modules_v4/widget_stats/module.php:242
@@ -23400,43 +23418,43 @@ msgstr "Children in family"
 msgid "Average number of children per family"
 msgstr "Average number of children per family"
 
-#: modules_v4/chart_statistics/module.php:481
+#: modules_v4/chart_statistics/module.php:476
 msgid "Number of families without children"
 msgstr "Number of families without children"
 
-#: modules_v4/chart_statistics/module.php:489
+#: modules_v4/chart_statistics/module.php:484
 msgid "Number of children per family, by century"
 msgstr "Number of children per family, by century"
 
-#: modules_v4/chart_statistics/module.php:493
+#: modules_v4/chart_statistics/module.php:488
 msgid "Number of families without children, by century"
 msgstr "Number of families without children, by century"
 
-#: modules_v4/chart_statistics/module.php:499
+#: modules_v4/chart_statistics/module.php:494
 msgid "Largest number of grandchildren"
 msgstr "Largest number of grandchildren"
 
-#: modules_v4/chart_statistics/module.php:507
+#: modules_v4/chart_statistics/module.php:502
 msgid "Age difference"
 msgstr "Age difference"
 
-#: modules_v4/chart_statistics/module.php:510
+#: modules_v4/chart_statistics/module.php:505
 msgid "Between siblings"
 msgstr "Between siblings"
 
-#: modules_v4/chart_statistics/module.php:511
+#: modules_v4/chart_statistics/module.php:506
 msgid "Greatest age between siblings"
 msgstr "Greatest age between siblings"
 
-#: modules_v4/chart_statistics/module.php:518
+#: modules_v4/chart_statistics/module.php:513
 msgid "Between husband and wife, husband older"
 msgstr "Between husband and wife, husband older"
 
-#: modules_v4/chart_statistics/module.php:519
+#: modules_v4/chart_statistics/module.php:514
 msgid "Between wife and husband, wife older"
 msgstr "Between wife and husband, wife older"
 
-#: modules_v4/chart_statistics/module.php:559
+#: modules_v4/chart_statistics/module.php:554
 #: modules_v4/gedcom_stats/module.php:116
 #: modules_v4/gedcom_stats/module.php:355 modules_v4/html/module.php:196
 #: modules_v4/widget_stats/module.php:152
@@ -23444,209 +23462,47 @@ msgstr "Between wife and husband, wife older"
 msgid "Total events"
 msgstr "Total events"
 
-#: modules_v4/chart_statistics/module.php:562
+#: modules_v4/chart_statistics/module.php:557
 msgid "First event"
 msgstr "First event"
 
-#: modules_v4/chart_statistics/module.php:563
+#: modules_v4/chart_statistics/module.php:558
 msgid "Last event"
 msgstr "Last event"
 
-#: modules_v4/chart_statistics/module.php:574
+#: modules_v4/chart_statistics/module.php:569
 msgid "Media objects by type"
 msgstr "Media objects by type"
 
-#: modules_v4/chart_statistics/module.php:587
-#: modules_v4/chart_statistics/module.php:606
+#: modules_v4/chart_statistics/module.php:582
+#: modules_v4/chart_statistics/module.php:601
 msgid "Individuals with sources"
 msgstr "Individuals with sources"
 
-#: modules_v4/chart_statistics/module.php:588
-#: modules_v4/chart_statistics/module.php:610
+#: modules_v4/chart_statistics/module.php:583
+#: modules_v4/chart_statistics/module.php:605
 msgid "Families with sources"
 msgstr "Families with sources"
 
-#: modules_v4/chart_statistics/module.php:619
+#: modules_v4/chart_statistics/module.php:614
 msgid "Birth places"
 msgstr "Birth places"
 
-#: modules_v4/chart_statistics/module.php:620
+#: modules_v4/chart_statistics/module.php:615
 msgid "Death places"
 msgstr "Death places"
 
-#: modules_v4/chart_statistics/module.php:627
+#: modules_v4/chart_statistics/module.php:622
 msgid "Marriage places"
 msgstr "Marriage places"
 
-#: modules_v4/chart_statistics/module.php:628
+#: modules_v4/chart_statistics/module.php:623
 msgid "Events in countries"
 msgstr "Events in countries"
 
-#: modules_v4/chart_statistics/module.php:636
-#: modules_v4/chart_statistics/module.php:832
+#: modules_v4/chart_statistics/module.php:631
 msgid "Individual distribution chart"
 msgstr "Individual distribution chart"
-
-#: modules_v4/chart_statistics/module.php:646
-msgid "Create your own chart"
-msgstr "Create your own chart"
-
-#: modules_v4/chart_statistics/module.php:700 statisticsplot.php:883
-msgid "Statistics plot"
-msgstr "Statistics plot"
-
-#: modules_v4/chart_statistics/module.php:729
-msgid "Select chart type:"
-msgstr "Select chart type:"
-
-#: modules_v4/chart_statistics/module.php:734 statisticsplot.php:891
-msgid "Month of birth"
-msgstr "Month of birth"
-
-#: modules_v4/chart_statistics/module.php:738 statisticsplot.php:894
-msgid "Month of death"
-msgstr "Month of death"
-
-#: modules_v4/chart_statistics/module.php:742 statisticsplot.php:897
-msgid "Month of marriage"
-msgstr "Month of marriage"
-
-#: modules_v4/chart_statistics/module.php:746 statisticsplot.php:903
-msgid "Month of first marriage"
-msgstr "Month of first marriage"
-
-#: modules_v4/chart_statistics/module.php:758 statisticsplot.php:909
-msgid "Age related to birth year"
-msgstr "Age related to birth year"
-
-#: modules_v4/chart_statistics/module.php:770 statisticsplot.php:918
-msgid "Age in year of first marriage"
-msgstr "Age in year of first marriage"
-
-#: modules_v4/chart_statistics/module.php:778
-msgid "Individual distribution"
-msgstr "Individual distribution"
-
-#: modules_v4/chart_statistics/module.php:792
-#: modules_v4/chart_statistics/module.php:803
-#: modules_v4/chart_statistics/module.php:812
-msgid "Select the desired age interval"
-msgstr "Select the desired age interval"
-
-#: modules_v4/chart_statistics/module.php:795
-#: modules_v4/chart_statistics/module.php:797
-#: modules_v4/chart_statistics/module.php:799
-#: modules_v4/chart_statistics/module.php:806
-#: modules_v4/chart_statistics/module.php:808
-#, php-format
-msgid "interval %s year"
-msgid_plural "interval %s years"
-msgstr[0] "interval %s year"
-msgstr[1] "interval %s years"
-
-#: modules_v4/chart_statistics/module.php:814
-msgid "months after marriage"
-msgstr "months after marriage"
-
-#: modules_v4/chart_statistics/module.php:815
-msgid "months before and after marriage"
-msgstr "months before and after marriage"
-
-#: modules_v4/chart_statistics/module.php:816
-msgid "quarters after marriage"
-msgstr "quarters after marriage"
-
-#: modules_v4/chart_statistics/module.php:817
-msgid "half-year after marriage"
-msgstr "half-year after marriage"
-
-#: modules_v4/chart_statistics/module.php:821
-msgid "Select the desired count interval"
-msgstr "Select the desired count interval"
-
-#: modules_v4/chart_statistics/module.php:823
-msgid "interval one child"
-msgstr "interval one child"
-
-#: modules_v4/chart_statistics/module.php:824
-msgid "interval two children"
-msgstr "interval two children"
-
-#: modules_v4/chart_statistics/module.php:830 modules_v4/charts/module.php:199
-msgid "Chart type"
-msgstr "Chart type"
-
-#: modules_v4/chart_statistics/module.php:841
-msgid "Geographical area"
-msgstr "Geographical area"
-
-#: modules_v4/chart_statistics/module.php:843
-msgid "World"
-msgstr "World"
-
-#: modules_v4/chart_statistics/module.php:844
-msgid "Europe"
-msgstr "Europe"
-
-#: modules_v4/chart_statistics/module.php:845
-msgid "United States"
-msgstr "United States"
-
-#: modules_v4/chart_statistics/module.php:846
-msgid "South America"
-msgstr "South America"
-
-#: modules_v4/chart_statistics/module.php:847
-msgid "Asia"
-msgstr "Asia"
-
-#: modules_v4/chart_statistics/module.php:848
-msgid "Middle East"
-msgstr "Middle East"
-
-#: modules_v4/chart_statistics/module.php:849
-msgid "Africa"
-msgstr "Africa"
-
-#: modules_v4/chart_statistics/module.php:853
-msgid "Categories:"
-msgstr "Categories:"
-
-#: modules_v4/chart_statistics/module.php:858
-msgid "overall"
-msgstr "overall"
-
-#: modules_v4/chart_statistics/module.php:862
-msgid "gender"
-msgstr "gender"
-
-#: modules_v4/chart_statistics/module.php:866
-msgid "date periods"
-msgstr "date periods"
-
-#: modules_v4/chart_statistics/module.php:870
-#: modules_v4/chart_statistics/module.php:872
-#: modules_v4/chart_statistics/module.php:874
-#: modules_v4/chart_statistics/module.php:876
-#: modules_v4/chart_statistics/module.php:878
-#: modules_v4/chart_statistics/module.php:880
-#, php-format
-msgid "from %1$s interval %2$s year"
-msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "from %1$s interval %2$s year"
-msgstr[1] "from %1$s interval %2$s years"
-
-#: modules_v4/chart_statistics/module.php:883
-msgid "results:"
-msgstr "results:"
-
-#: modules_v4/chart_statistics/module.php:886 statisticsplot.php:757
-msgid "numbers"
-msgstr "numbers"
-
-#: modules_v4/chart_statistics/module.php:889 statisticsplot.php:781
-msgid "percentage"
-msgstr "percentage"
 
 #: modules_v4/chart_statistics/statistics.js.php:553
 msgid "High population"
@@ -23704,6 +23560,10 @@ msgid ""
 msgstr ""
 "You must select an individual and chart type in the block configuration "
 "settings."
+
+#: modules_v4/charts/module.php:199
+msgid "Chart type"
+msgstr "Chart type"
 
 #: modules_v4/charts/module.php:238 modules_v4/gedcom_favorites/module.php:268
 #: modules_v4/gedcom_news/module.php:189
@@ -26340,13 +26200,13 @@ msgstr "Slide Show"
 msgid "Random image"
 msgstr "Random image"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:40
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:41
 #: themes/kiwitrees/header.php:42 themes/webtrees/header.php:38
 #: themes/xenea/header.php:38
 msgid "Play"
 msgstr "Play"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:41
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:42
 #: themes/kiwitrees/header.php:43 themes/webtrees/header.php:39
 #: themes/xenea/header.php:39
 msgid "Stop"
@@ -26641,7 +26501,7 @@ msgid ""
 msgstr ""
 "A report of individuals who have a selected fact or event in their record."
 
-#: modules_v4/report_fact/module.php:175
+#: modules_v4/report_fact/module.php:160
 msgid ""
 "The list of available facts and events are those set by the site "
 "administrator as \"All individual facts\" and \"Unique individual facts\" at "
@@ -26659,50 +26519,56 @@ msgstr ""
 "those data fields. The \"Type\" field is only avaiable for Custom facts and "
 "Custom events."
 
-#: modules_v4/report_fact/module.php:198
+#: modules_v4/report_fact/module.php:183
 msgid "Year from - 4 digits only"
 msgstr "Year from - 4 digits only"
 
-#: modules_v4/report_fact/module.php:199
+#: modules_v4/report_fact/module.php:184
 msgid "Year to - 4 digits only"
 msgstr "Year to - 4 digits only"
 
-#: modules_v4/report_fact/module.php:329
+#: modules_v4/report_fact/module.php:214
+#, fuzzy
+#| msgid "No missing records found"
+msgid "No matching records found"
+msgstr "No missing records found"
+
+#: modules_v4/report_fact/module.php:317
 #, php-format
 msgid "Fact or event: <span>%1s</span>"
 msgstr "Fact or event: <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:330
+#: modules_v4/report_fact/module.php:318
 #, php-format
 msgid "Date from: <span>%1s</span>"
 msgstr "Date from: <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:331
+#: modules_v4/report_fact/module.php:319
 #, php-format
 msgid "Date to <span>%1s</span>"
 msgstr "Date to <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:332
+#: modules_v4/report_fact/module.php:320
 #, php-format
 msgid "Dates between <span>%1s</span> and <span>%2s</span> "
 msgstr "Dates between <span>%1s</span> and <span>%2s</span> "
 
-#: modules_v4/report_fact/module.php:333
+#: modules_v4/report_fact/module.php:321
 #, php-format
 msgid "Place: <span>%1s</span>"
 msgstr "Place: <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:334
+#: modules_v4/report_fact/module.php:322
 #, php-format
 msgid "Type: <span>%1s</span>"
 msgstr "Type: <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:335
+#: modules_v4/report_fact/module.php:323
 #, php-format
 msgid "Details: <span>%1s</span>"
 msgstr "Details: <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:341
+#: modules_v4/report_fact/module.php:329
 #: modules_v4/report_marriages/module.php:216
 #: modules_v4/report_vital_records/module.php:279
 msgid "Listing individuals based on these filters"
@@ -27902,19 +27768,19 @@ msgstr "invert selection"
 msgid "Family trees"
 msgstr "Family trees"
 
-#: setup.php:128
+#: setup.php:104
 msgid "Installing kiwitrees"
 msgstr "Installing kiwitrees"
 
-#: setup.php:139
+#: setup.php:115
 msgid "Select your default language"
 msgstr "Select your default language"
 
-#: setup.php:142
+#: setup.php:118
 msgid "1 - Checking your server configuration"
 msgstr "1 - Checking your server configuration"
 
-#: setup.php:150
+#: setup.php:126
 #, php-format
 msgid ""
 "%s is disabled on this server.  You cannot install Kiwitrees until it is "
@@ -27923,7 +27789,7 @@ msgstr ""
 "%s is disabled on this server.  You cannot install Kiwitrees until it is "
 "enabled.  Please ask your server’s administrator to enable it."
 
-#: setup.php:157
+#: setup.php:133
 #, php-format
 msgid ""
 "PHP extension \"%s\" is disabled.  You cannot install Kiwitrees until this "
@@ -27932,19 +27798,19 @@ msgstr ""
 "PHP extension \"%s\" is disabled.  You cannot install Kiwitrees until this "
 "is enabled.  Please ask your server's administrator to enable it."
 
-#: setup.php:163
+#: setup.php:139
 msgid "jewish calendar"
 msgstr "jewish calendar"
 
-#: setup.php:164
+#: setup.php:140
 msgid "creating thumbnails of images"
 msgstr "creating thumbnails of images"
 
-#: setup.php:165 setup.php:166
+#: setup.php:141 setup.php:142
 msgid "reporting"
 msgstr "reporting"
 
-#: setup.php:169
+#: setup.php:145
 #, php-format
 msgid ""
 "PHP extension \"%1$s\" is disabled.  Without it, the following features will "
@@ -27953,11 +27819,11 @@ msgstr ""
 "PHP extension \"%1$s\" is disabled.  Without it, the following features will "
 "not work: %2$s.  Please ask your server's administrator to enable it."
 
-#: setup.php:175
+#: setup.php:151
 msgid "file upload capability"
 msgstr "file upload capability"
 
-#: setup.php:178
+#: setup.php:154
 #, php-format
 msgid ""
 "PHP setting \"%1$s\" is disabled. Without it, the following features will "
@@ -27966,15 +27832,15 @@ msgstr ""
 "PHP setting \"%1$s\" is disabled. Without it, the following features will "
 "not work: %2$s.  Please ask your server's administrator to enable it."
 
-#: setup.php:183
+#: setup.php:159
 msgid "The server configuration is OK."
 msgstr "The server configuration is OK."
 
-#: setup.php:185
+#: setup.php:161
 msgid "2 - Checking your server capacity"
 msgstr "2 - Checking your server capacity"
 
-#: setup.php:194
+#: setup.php:170
 msgid ""
 "The memory and CPU time requirements depend on the number of individuals in "
 "your family tree."
@@ -27982,30 +27848,30 @@ msgstr ""
 "The memory and CPU time requirements depend on the number of individuals in "
 "your family tree."
 
-#: setup.php:196
+#: setup.php:172
 msgid "The following list shows typical requirements."
 msgstr "The following list shows typical requirements."
 
-#: setup.php:198
+#: setup.php:174
 msgid "Small systems (500 individuals): 16-32MB, 10-20 seconds"
 msgstr "Small systems (500 individuals): 16-32MB, 10-20 seconds"
 
-#: setup.php:200
+#: setup.php:176
 msgid "Medium systems (5000 individuals): 32-64MB, 20-40 seconds"
 msgstr "Medium systems (5000 individuals): 32-64MB, 20-40 seconds"
 
-#: setup.php:202
+#: setup.php:178
 msgid "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
 msgstr "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
 
-#: setup.php:205
+#: setup.php:181
 #, php-format
 msgid ""
 "This server's memory limit is %dMB and its CPU time limit is %d seconds."
 msgstr ""
 "This server's memory limit is %dMB and its CPU time limit is %d seconds."
 
-#: setup.php:207
+#: setup.php:183
 msgid ""
 "If you try to exceed these limits, you may experience server time-outs and "
 "blank pages."
@@ -28013,7 +27879,7 @@ msgstr ""
 "If you try to exceed these limits, you may experience server time-outs and "
 "blank pages."
 
-#: setup.php:209
+#: setup.php:185
 msgid ""
 "If your server's security policy permits it, you will be able to request "
 "increased memory or CPU time using the <b>Kiwitrees</b> administration "
@@ -28023,21 +27889,21 @@ msgstr ""
 "increased memory or CPU time using the <b>Kiwitrees</b> administration "
 "page.  Otherwise, you will need to contact your server's administrator."
 
-#: setup.php:235
+#: setup.php:211
 msgid "Oops!  Kiwitrees was unable to create files in this folder."
 msgstr "Oops!  Kiwitrees was unable to create files in this folder."
 
-#: setup.php:236
+#: setup.php:212
 msgid ""
 "This usually means that you need to change the folder permissions to 777."
 msgstr ""
 "This usually means that you need to change the folder permissions to 777."
 
-#: setup.php:237
+#: setup.php:213
 msgid "You must change this before you can continue."
 msgstr "You must change this before you can continue."
 
-#: setup.php:267
+#: setup.php:243
 #, php-format
 msgid ""
 "This database is only running MySQL version %s.  You cannot install "
@@ -28046,7 +27912,7 @@ msgstr ""
 "This database is only running MySQL version %s.  You cannot install "
 "kiwitrees here."
 
-#: setup.php:269
+#: setup.php:245
 #, php-format
 msgid ""
 "This database is only running MariaDB version %s.  You cannot install "
@@ -28055,7 +27921,7 @@ msgstr ""
 "This database is only running MariaDB version %s.  You cannot install "
 "kiwitrees here."
 
-#: setup.php:278 setup.php:351
+#: setup.php:254 setup.php:327
 msgid ""
 "Unable to connect using these settings.  Your server gave the following "
 "error."
@@ -28063,15 +27929,15 @@ msgstr ""
 "Unable to connect using these settings.  Your server gave the following "
 "error."
 
-#: setup.php:280 setup.php:353
+#: setup.php:256 setup.php:329
 msgid "Check the settings and try again."
 msgstr "Check the settings and try again."
 
-#: setup.php:286
+#: setup.php:262
 msgid "3 - Checking the connection to your database server"
 msgstr "3 - Checking the connection to your database server"
 
-#: setup.php:287
+#: setup.php:263
 #, php-format
 msgid ""
 "Kiwitrees needs a database. MySQL version %1$s or later, or MariaDB version "
@@ -28080,17 +27946,17 @@ msgstr ""
 "Kiwitrees needs a database. MySQL version %1$s or later, or MariaDB version "
 "%2$s or later."
 
-#: setup.php:288
+#: setup.php:264
 msgid ""
 "Your server's administrator will provide you with the connection details."
 msgstr ""
 "Your server's administrator will provide you with the connection details."
 
-#: setup.php:290
+#: setup.php:266
 msgid "Database connection"
 msgstr "Database connection"
 
-#: setup.php:294
+#: setup.php:270
 msgid ""
 "Most sites are configured to use localhost.  This means that your database "
 "runs on the same computer as your web server."
@@ -28098,23 +27964,23 @@ msgstr ""
 "Most sites are configured to use localhost.  This means that your database "
 "runs on the same computer as your web server."
 
-#: setup.php:299
+#: setup.php:275
 msgid "Most sites are configured to use the default value of 3306."
 msgstr "Most sites are configured to use the default value of 3306."
 
-#: setup.php:302
+#: setup.php:278
 msgid "Database user account"
 msgstr "Database user account"
 
-#: setup.php:304 setup.php:309
+#: setup.php:280 setup.php:285
 msgid "This is case sensitive."
 msgstr "This is case sensitive."
 
-#: setup.php:307
+#: setup.php:283
 msgid "Database password"
 msgstr "Database password"
 
-#: setup.php:363 setup.php:374
+#: setup.php:339 setup.php:350
 msgid ""
 "This database and table-prefix appear to be used by another application.  If "
 "you have an existing PhpGedView system, you should create a new Kiwitrees "
@@ -28124,11 +27990,11 @@ msgstr ""
 "you have an existing PhpGedView system, you should create a new Kiwitrees "
 "system.  You can import your PhpGedView data and settings later."
 
-#: setup.php:383
+#: setup.php:359
 msgid "4 - Enter your database and table names"
 msgstr "4 - Enter your database and table names"
 
-#: setup.php:384
+#: setup.php:360
 msgid ""
 "A database server can store many separate databases.  You need to select an "
 "existing database (created by your server's administrator) or create a new "
@@ -28138,11 +28004,11 @@ msgstr ""
 "existing database (created by your server's administrator) or create a new "
 "one (if your database user account has sufficient privileges)."
 
-#: setup.php:386 setup.php:388
+#: setup.php:362 setup.php:364
 msgid "Database name"
 msgstr "Database name"
 
-#: setup.php:390
+#: setup.php:366
 msgid ""
 "This is case sensitive. If a database with this name does not already exist "
 "Kiwitrees will attempt to create one for you. Success will depend on "
@@ -28152,11 +28018,11 @@ msgstr ""
 "Kiwitrees will attempt to create one for you. Success will depend on "
 "permissions set for your web server, but you will be notified if this fails."
 
-#: setup.php:393
+#: setup.php:369
 msgid "Table prefix"
 msgstr "Table prefix"
 
-#: setup.php:395
+#: setup.php:371
 msgid ""
 "The prefix is optional, but recommended.  By giving the table names a unique "
 "prefix you can let several different applications share the same database. "
@@ -28166,23 +28032,23 @@ msgstr ""
 "prefix you can let several different applications share the same database. "
 "\"kt_\" is suggested, but can be anything you want."
 
-#: setup.php:419
+#: setup.php:395
 msgid "The password needs to be at least six characters long."
 msgstr "The password needs to be at least six characters long."
 
-#: setup.php:423
+#: setup.php:399
 msgid "You must enter all the administrator account fields."
 msgstr "You must enter all the administrator account fields."
 
-#: setup.php:426
+#: setup.php:402
 msgid "5 - System settings"
 msgstr "5 - System settings"
 
-#: setup.php:427 setup.php:430
+#: setup.php:403 setup.php:406
 msgid "Administrator account"
 msgstr "Administrator account"
 
-#: setup.php:428
+#: setup.php:404
 msgid ""
 "You need to set up an administrator account.  This account can control all "
 "aspects of this <b>Kiwitrees</b> installation.  Please choose a strong "
@@ -28192,23 +28058,23 @@ msgstr ""
 "aspects of this <b>Kiwitrees</b> installation.  Please choose a strong "
 "password."
 
-#: setup.php:437
+#: setup.php:413
 msgid "Login ID"
 msgstr "Login ID"
 
-#: setup.php:439
+#: setup.php:415
 msgid "You will use this to login to Kiwitrees."
 msgstr "You will use this to login to Kiwitrees."
 
-#: setup.php:444
+#: setup.php:420
 msgid "This must to be at least six characters.  It is case-sensitive."
 msgstr "This must to be at least six characters.  It is case-sensitive."
 
-#: setup.php:945
+#: setup.php:921
 msgid "An unexpected database error occurred."
 msgstr "An unexpected database error occurred."
 
-#: setup.php:947
+#: setup.php:923
 msgid ""
 "The kiwitrees developers would be very interested to learn about this "
 "error.  If you contact them, they will help you resolve the problem."
@@ -28375,22 +28241,18 @@ msgid "Number of %s in the %s century"
 msgstr "Number of %s in the %s century"
 
 #: statisticsTables.php:140
-#| msgid "Total births"
 msgid "Total dated births"
 msgstr "Total dated births"
 
 #: statisticsTables.php:145
-#| msgid "Total births"
 msgid "Total undated births"
 msgstr "Total undated births"
 
 #: statisticsTables.php:155
-#| msgid "Total deaths"
 msgid "Total dated deaths"
 msgstr "Total dated deaths"
 
 #: statisticsTables.php:160
-#| msgid "Total deaths"
 msgid "Total undated deaths"
 msgstr "Total undated deaths"
 
@@ -28419,6 +28281,14 @@ msgstr "less than"
 msgid "%s not implemented"
 msgstr "%s not implemented"
 
+#: statisticsplot.php:757
+msgid "numbers"
+msgstr "numbers"
+
+#: statisticsplot.php:781
+msgid "percentage"
+msgstr "percentage"
+
 #: statisticsplot.php:795
 msgid " per gender"
 msgstr " per gender"
@@ -28435,10 +28305,30 @@ msgstr "Counts "
 msgid "of"
 msgstr "of"
 
+#: statisticsplot.php:883
+msgid "Statistics plot"
+msgstr "Statistics plot"
+
+#: statisticsplot.php:891
+msgid "Month of birth"
+msgstr "Month of birth"
+
 #: statisticsplot.php:891 statisticsplot.php:894 statisticsplot.php:897
 #: statisticsplot.php:900 statisticsplot.php:903
 msgid "month"
 msgstr "month"
+
+#: statisticsplot.php:894
+msgid "Month of death"
+msgstr "Month of death"
+
+#: statisticsplot.php:897
+msgid "Month of marriage"
+msgstr "Month of marriage"
+
+#: statisticsplot.php:903
+msgid "Month of first marriage"
+msgstr "Month of first marriage"
 
 #: statisticsplot.php:906
 msgid "Months between marriage and first child"
@@ -28448,10 +28338,18 @@ msgstr "Months between marriage and first child"
 msgid "Months between marriage and birth of first child"
 msgstr "Months between marriage and birth of first child"
 
+#: statisticsplot.php:909
+msgid "Age related to birth year"
+msgstr "Age related to birth year"
+
 #: statisticsplot.php:909 statisticsplot.php:912 statisticsplot.php:915
 #: statisticsplot.php:918
 msgid "age"
 msgstr "age"
+
+#: statisticsplot.php:918
+msgid "Age in year of first marriage"
+msgstr "Age in year of first marriage"
 
 #: themes/_administration/footer.php:35 themes/colors/footer.php:43
 #: themes/kiwitrees/footer.php:43 themes/webtrees/footer.php:43
@@ -28546,12 +28444,12 @@ msgstr "_administration"
 msgid "If you have any questions or comments please contact us"
 msgstr "If you have any questions or comments please contact us"
 
-#: themes/colors/header.php:50 themes/kiwitrees/header.php:52
+#: themes/colors/header.php:51 themes/kiwitrees/header.php:52
 #: themes/webtrees/header.php:48 themes/xenea/header.php:48
 msgid "Open in full browser window"
 msgstr "Open in full browser window"
 
-#: themes/colors/header.php:135 themes/xenea/header.php:128
+#: themes/colors/header.php:139 themes/xenea/header.php:128
 msgid "Choose a page"
 msgstr "Choose a page"
 
@@ -28669,6 +28567,93 @@ msgstr "Show an age cursor?"
 #: timeline.php:293
 msgid "Show lifespans"
 msgstr "Show lifespans"
+
+#~ msgid "Own charts"
+#~ msgstr "Own charts"
+
+#~ msgid "Create your own chart"
+#~ msgstr "Create your own chart"
+
+#~ msgid "Select chart type:"
+#~ msgstr "Select chart type:"
+
+#~ msgid "Individual distribution"
+#~ msgstr "Individual distribution"
+
+#~ msgid "Select the desired age interval"
+#~ msgstr "Select the desired age interval"
+
+#, php-format
+#~ msgid "interval %s year"
+#~ msgid_plural "interval %s years"
+#~ msgstr[0] "interval %s year"
+#~ msgstr[1] "interval %s years"
+
+#~ msgid "months after marriage"
+#~ msgstr "months after marriage"
+
+#~ msgid "months before and after marriage"
+#~ msgstr "months before and after marriage"
+
+#~ msgid "quarters after marriage"
+#~ msgstr "quarters after marriage"
+
+#~ msgid "half-year after marriage"
+#~ msgstr "half-year after marriage"
+
+#~ msgid "Select the desired count interval"
+#~ msgstr "Select the desired count interval"
+
+#~ msgid "interval one child"
+#~ msgstr "interval one child"
+
+#~ msgid "interval two children"
+#~ msgstr "interval two children"
+
+#~ msgid "Geographical area"
+#~ msgstr "Geographical area"
+
+#~ msgid "World"
+#~ msgstr "World"
+
+#~ msgid "Europe"
+#~ msgstr "Europe"
+
+#~ msgid "United States"
+#~ msgstr "United States"
+
+#~ msgid "South America"
+#~ msgstr "South America"
+
+#~ msgid "Asia"
+#~ msgstr "Asia"
+
+#~ msgid "Middle East"
+#~ msgstr "Middle East"
+
+#~ msgid "Africa"
+#~ msgstr "Africa"
+
+#~ msgid "Categories:"
+#~ msgstr "Categories:"
+
+#~ msgid "overall"
+#~ msgstr "overall"
+
+#~ msgid "gender"
+#~ msgstr "gender"
+
+#~ msgid "date periods"
+#~ msgstr "date periods"
+
+#, php-format
+#~ msgid "from %1$s interval %2$s year"
+#~ msgid_plural "from %1$s interval %2$s years"
+#~ msgstr[0] "from %1$s interval %2$s year"
+#~ msgstr[1] "from %1$s interval %2$s years"
+
+#~ msgid "results:"
+#~ msgstr "results:"
 
 #~ msgid "Click the close button to return to the manage media page."
 #~ msgstr "Click the close button to return to the manage media page."
