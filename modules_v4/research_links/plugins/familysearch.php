@@ -19,7 +19,7 @@ class familysearch_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return $link = 'https://www.familysearch.org/search/record/results?givenname=' . $givn . '&surname=' . $surname . '&count=20';
+		return $link = 'https://www.familysearch.org/search/record/results?q.givenName=' . $givn . '&q.surname=' . $surname;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
