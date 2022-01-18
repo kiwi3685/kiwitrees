@@ -221,7 +221,7 @@ class KT_Controller_FancyTreeView {
 		$gen  		= KT_Filter::get('gen', KT_REGEX_INTEGER);
 		$pids 		= KT_Filter::get('pids');
 
-		if ($numblocks == 0) {
+		if ($numblocks) {
 			$numblocks = 99;
 		}
 
