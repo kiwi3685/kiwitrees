@@ -619,7 +619,7 @@ class Zend_Log
      * @param array $errcontext
      * @return boolean
      */
-    public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext)
+    public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext=[])
     {
         $errorLevel = error_reporting();
 
@@ -633,7 +633,7 @@ class Zend_Log
         }
 
         if ($this->_origErrorHandler !== null) {
-            return call_user_func($this->_origErrorHandler, $errno, $errstr, $errfile, $errline, $errcontext);
+            return call_user_func($this->_origErrorHandler, $errno, $errstr, $errfile, $errline, $errcontext=[]);
         }
         return false;
     }
