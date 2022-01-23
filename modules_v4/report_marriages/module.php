@@ -208,7 +208,7 @@ class report_marriages_KT_Module extends KT_Module implements KT_Module_Report {
 
 				$filter_list = $filter1 . $filter2 . $filter3 . $filter4 . $filter5;
 
-				$list = report_marriages($name, $place, $m_fromJD, $m_toJD, KT_GED_ID);
+				$list = report_marriages($place, $m_fromJD, $m_toJD, KT_GED_ID, $name);
 
 				// output display
 				?>

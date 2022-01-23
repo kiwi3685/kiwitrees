@@ -663,7 +663,7 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 }
 
 // list marriage records
-function report_marriages ($name = '', $place, $m_fromJD, $m_toJD, $ged){
+function report_marriages ($place, $m_fromJD, $m_toJD, $ged, $name = ''){
 	$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families` ";
 	$sql_join     = "";
 	$sql_where    = " WHERE f_file = " . $ged . " AND f_gedcom LIKE '%1 MARR%'";
