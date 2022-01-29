@@ -11,8 +11,9 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 # Jamie Jaconelli, 2014-2017
-# Jamie Jaconelli, 2018-2021
+# Jamie Jaconelli, 2018-2022
 # Nigel Osborne <kiwi3685@me.com>, 2014
 # Nigel Osborne <kiwi3685@me.com>, 2014,2016-2017
 # ohmadsen <ole@vends-herred.dk>, 2014-2015
@@ -21,8 +22,8 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2022-01-18 14:44+1300\n"
-"PO-Revision-Date: 2022-01-27 16:28+1300\n"
-"Last-Translator: Nigel Osborne <kiwi3685@me.com>\n"
+"PO-Revision-Date: 2022-01-29 15:35+1300\n"
+"Last-Translator: Jamie Jaconelli\n"
 "Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -276,9 +277,11 @@ msgid "You are using PHP version %s."
 msgstr "Du bruger PHP version %s."
 
 #: admin.php:108
-#| msgid "ees is no longer compatible with versions of PHP older than 7.0"
+#| msgid " is no longer compatible with versions of PHP older than 7.0"
 msgid "Kiwitrees is no longer compatible with versions of PHP older than 7.3"
 msgstr ""
+" 98% match \n"
+"Kiwitrees er ikke længere kompatibel med PHP versioner ældre end 7.3"
 
 #: admin.php:110
 msgid "Kiwitrees is compatible with this version."
@@ -2074,11 +2077,11 @@ msgstr "Avanceret"
 
 #: admin_trees_config.php:1379
 #| msgid ""
-#| "asic\" autocomplete simply searches your existing place names for  that start with the string of characters you type, updating as you  characters. No other assistance is provided. <br><br>\n"
-#| "                          The \"advanced\" alternative starts the e, but also provides further features, which might not be compatible h every site's preferred naming style.: <br><br>\n"
-#| "                          1) After typing a comma and a space at  point it will start the search again, but using subsequent levels of r existing places. This allows, for example, a new town to be added to existing state or county without re-typing all the existing data. ><br>\n"
-#| "                          2) Place names are capitalised omatically using \"word caps\", or capitalising each separate word. s enables faster typing by allowing you to type just lowercase racters. <br><br>\n"
-#| "                          It is important to remember that such omated help can have unintended consequences. These may need manually recting during the editing process. "
+#| "autocomplete simply searches your existing place names for  that start with the string of characters you type, updating as you  characters. No other assistance is provided. <br><br>\n"
+#| "                    The \"advanced\" alternative starts the e, but also provides further features, which might not be compatible h every site's preferred naming style.: <br><br>\n"
+#| "                    1) After typing a comma and a space at  point it will start the search again, but using subsequent levels of r existing places. This allows, for example, a new town to be added to existing state or county without re-typing all the existing data. ><br>\n"
+#| "                    2) Place names are capitalised omatically using \"word caps\", or capitalising each separate word. s enables faster typing by allowing you to type just lowercase racters. <br><br>\n"
+#| "                    It is important to remember that such omated help can have unintended consequences. These may need manually recting during the editing process. "
 msgid ""
 "The “basic” autocomplete simply searches existing place levels for any that contain a word starting with the string of characters you type, updating as you add characters. No other assistance is provided. <br><br>\n"
 "                                The \"advanced\" alternative starts the same, but also provides further features, which might not be compatible with every site's preferred naming style.: <br><br>\n"
@@ -2086,6 +2089,11 @@ msgid ""
 "                                2) Place names are capitalised automatically using \"word caps\", or capitalising each separate word. This enables faster typing by allowing you to type just lowercase characters. <br><br>\n"
 "                                It is important to remember that such automated help can have unintended consequences. These may need manually correcting during the editing process. "
 msgstr ""
+"Den \"grundlæggende\" autofuldførelse søger i dine eksisterende stednavne efter alle, der starter med den række af tegn, du skriver, og opdateres, når du tilføjer tegn. Der ydes ingen anden hjælp. <br><br>\n"
+"                                Det \"avancerede\" alternativ starter det samme, men giver også yderligere funktioner, som muligvis ikke er kompatible med hvert websteds foretrukne navngivningsstil: <br><br>\n"
+"                                1) Efter at have skrevet et komma og et mellemrum på et hvilket som helst tidspunkt vil det starte søgningen igen, men ved hjælp af efterfølgende niveauer af dine eksisterende steder. Dette gør det f.eks. muligt at tilføje en ny by til en eksisterende region eller amt uden at indtaste alle eksisterende data igen. <br><br>\n"
+"                                2) Stednavne aktiveres automatisk med store bogstaver ved hjælp af \"word caps\" eller store bogstaver i hvert enkelt ord. Dette muliggør hurtigere skrivning ved bare at skrive bare små bogstaver. <br><br>\n"
+"                                Det er vigtigt at huske, at automatiseret hjælp kan få utilsigtede resultater. Disse skal muligvis korrigeres manuelt under redigeringsprocessen."
 
 #: admin_trees_config.php:1388 edit_interface.php:210 edit_interface.php:776 edit_interface.php:916 edit_interface.php:1045 edit_interface.php:1127 edit_interface.php:1256 help_text.php:563 includes/functions/functions_edit.php:962 includes/functions/functions_edit.php:2727
 msgid "Do not update the “last change” record"
@@ -2542,7 +2550,7 @@ msgstr "Brugerdefineret begivenhed"
 
 #: admin_trees_missing-source.php:133 admin_trees_missing.php:119 includes/functions/functions_print.php:1143 includes/functions/functions_print.php:1256 modules_v4/report_fact/module.php:177
 msgid "Custom fact"
-msgstr ""
+msgstr "Brugerdefineret begivenhed"
 
 #: admin_trees_missing-source.php:180
 #, php-format
@@ -7913,7 +7921,7 @@ msgstr "Posten blev sidst ændret af <i>%s</i> den %s"
 #: includes/functions/functions_edit.php:362
 #, php-format
 msgid "Current time is %s"
-msgstr ""
+msgstr "Nuværende tid er %s"
 
 #: includes/functions/functions_edit.php:364 includes/functions/functions_edit.php:2417 includes/functions/functions_edit.php:2426
 msgid "Please reload the previous page to make sure you are working with the most recent record."
@@ -19276,11 +19284,11 @@ msgstr "En persons statistik diagram"
 
 #: modules_v4/chart_statistics/module.php:107
 msgid "Click on links to see more details for each statistic."
-msgstr ""
+msgstr "Klik på links for flere detaljer for hver enkel statistik."
 
 #: modules_v4/chart_statistics/module.php:108
 msgid "(Note: large numbers can be very slow to load)"
-msgstr ""
+msgstr "(Bemærk: store tal kan være længe om at blive vist)"
 
 #: modules_v4/chart_statistics/module.php:123
 msgid "Others"
@@ -19329,12 +19337,12 @@ msgstr "Antal dødsfald"
 #: modules_v4/chart_statistics/module.php:224
 #, php-format
 msgid "%1s (%2s with a birth date and %3s without)"
-msgstr ""
+msgstr "%1s (%2s med en fødselsdato og %3s uden)"
 
 #: modules_v4/chart_statistics/module.php:240
 #, php-format
 msgid "%1s (%2s with a death date and %3s without)"
-msgstr ""
+msgstr "%1s (%2s med en dødsdato og %3s uden)"
 
 #: modules_v4/chart_statistics/module.php:245
 msgid "Number of births in each century"
@@ -21755,7 +21763,7 @@ msgstr "kun 4 cifre - År til"
 #: modules_v4/report_fact/module.php:214
 #| msgid "No missing records found"
 msgid "No matching records found"
-msgstr ""
+msgstr "Ingen match fundet"
 
 #: modules_v4/report_fact/module.php:317
 #, php-format
@@ -23128,19 +23136,19 @@ msgstr "Antal %s i hvert %s århundrede"
 
 #: statisticsTables.php:140
 msgid "Total dated births"
-msgstr ""
+msgstr "Antal fødselsdatoer"
 
 #: statisticsTables.php:145
 msgid "Total undated births"
-msgstr ""
+msgstr "Antal uden fødselsdatoer"
 
 #: statisticsTables.php:155
 msgid "Total dated deaths"
-msgstr ""
+msgstr "Antal dødsfald"
 
 #: statisticsTables.php:160
 msgid "Total undated deaths"
-msgstr ""
+msgstr "Antal uden dødsdatoer"
 
 #: statisticsTables.php:166
 msgid "No table selected"
