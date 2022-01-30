@@ -7,7 +7,7 @@ if (!defined('KT_KIWITREES')) {
 
 class denboschstadsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Den Bosch Stadsarchief';
+		return 's-Hertogenbosch Erfgoed';
 	}
 
 	static function getPaySymbol() {
@@ -23,7 +23,7 @@ class denboschstadsarchief_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'http://denboschpubliek.hosting.deventit.net/zoeken.php?/';
+		$base_url = 'https://zoeken.erfgoedshertogenbosch.nl/zoeken.php?/';
 
 		$collection = array(
 		    "Begravingen"               => "zoeken%5Bbeschrijvingsgroepen%5D%5B%5D=38089355&zoeken%5Bbeschrijvingssoorten%5D%5B11313400%5D=11313400&zoeken%5Bbeschrijvingssoorten%5D%5B177483877%5D=177483877&zoeken%5Bbeschrijvingssoorten%5D%5B177484175%5D=177484175&zoeken%5Bvelden%5D%5BGlobaal%5D%5Bwaarde%5D=$givn+$surname&zoeken%5Bvelden%5D%5BSoort%5D%5Bwaarde%5D%5B%5D=Begravingen&zoeken%5Bvelden%5D%5BNaam%5D%5Bwaarde%5D=&zoeken%5Bvelden%5D%5BPeriode_van%5D%5Bwaarde%5D=&zoeken%5Bvelden%5D%5BPeriode_tot%5D%5Bwaarde%5D=&zoeken%5Bvelden%5D%5BSoort%5D%5Bfilter%5D=GelijkAan&zoeken%5Bvelden%5D%5BSoort%5D%5Bvoorwaarde%5D=GelijkAan&zoeken%5Bvelden%5D%5BToegang%5D%5Bfilter%5D=GelijkAan&zoeken%5Bvelden%5D%5BToegang%5D%5Bvoorwaarde%5D=GelijkAan&searchtype=new&btn-submit=Zoeken",

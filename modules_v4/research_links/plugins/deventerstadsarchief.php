@@ -23,17 +23,15 @@ class deventerstadsarchief_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'https://historischcentrumoverijssel.nl/';
+		$base_url = 'https://collectieoverijssel.nl/';
 
 		$collection = array(
-		"Bouwhistorisch object"         => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=276",
-        "Bronvermelding"                => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=77",
-		"Doopinschrijving"              => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=156",
-        "Persoon in akte"               => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=102",
-        "Persoon in bevolkingsregister" => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=112",
-        "Schepenakte"                   => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=225",
-        "Trouwinschrijving"             => "archieven/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=$surn&mib1=157",
-		);
+		"Bouwhistorisch object"         => "collectie/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=276",
+        "Bronvermelding"                => "collectie/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=77",
+		"Doopinschrijving"              => "collectie/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=156",
+        "Persoon in bevolkingsregister" => "collectie/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=112",
+        "Schepenakte"                   => "collectie/?mivast=20&miadt=45&mizig=100&miview=tbl&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mip1=$surn&mip3=jan&mib1=225",
+        );
 
 		foreach($collection as $key => $value) {
 			$link[] = array(

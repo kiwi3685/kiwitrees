@@ -19,7 +19,7 @@ class oorlogsbronnen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return $link = 'http://www.oorlogsbronnen.nl/zoekresultaat?n_o_m=sq&query='. $givn . '+' . $surname . '';
+		return $link = "https://www.oorlogsbronnen.nl/bronnen?term=$givn+$surname";
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {

@@ -23,21 +23,21 @@ class overijsselhistorischcentrum_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		$base_url = 'https://www.historischcentrumoverijssel.nl/';
+		$base_url = 'https://collectieoverijssel.nl/';
 
 		$collection = array(
-		"Archiefvormend persoon"      => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=133",
-		"Echtscheidingsakte"          => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=140",
-		"Emigrant"                    => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=296",
-		"Functionaris"                => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=73",
-		"Geboorteakte"                => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=113",
-		"Huwelijksakte"               => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=109",
-		"Inschrijving naamsaaneming"  => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=486",
-		"Overlijdensakte"             => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=114",
-		"Persoon"                     => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=108",
-		"Persoon bevolkingsregister"  => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=112",
-		"Persoonbeschrijving"         => "archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=211",
-		"Zwolle Generale Index"       => "archieven/?mivast=20&miadt=141&mizig=235&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$givn%20$surn",
+		"Archiefvormend persoon"      => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=133",
+		"Echtscheidingsakte"          => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=140",
+		"Emigrant"                    => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=296",
+		"Functionaris"                => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=73",
+		"Geboorteakte"                => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=113",
+		"Huwelijksakte"               => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=109",
+		"Inschrijving naamsaaneming"  => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=486",
+		"Overlijdensakte"             => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=114",
+		"Persoon"                     => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=108",
+		"Persoon bevolkingsregister"  => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=112",
+		"Persoonbeschrijving"         => "collectie/archieven/?mivast=20&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=$surn&mip1=$givn&mib1=211",
+		"Zwolle Generale Index"       => "collectie/archieven/?mivast=20&miadt=141&mizig=235&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$givn%20$surn",
 		    
 		);
 

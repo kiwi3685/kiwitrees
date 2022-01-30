@@ -26,9 +26,11 @@ class waterlandsarchief_plugin extends research_base_plugin {
 		$base_url = 'https://waterlandsarchief.nl/';
 
 		$collection = array(
-			"Persoon in bevolkingsregister"	 => "personen?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=112&miview=tbl",
-			"Foto"		                     => "personen?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=7&miview=tbl",
-			"Notariele akte"	             => "personen?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=224&miview=tbl",
+			"Bevolkingsregister"	         => "archieven?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=112&miview=tbl",
+			"Doopinschrijving"	             => "archieven?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=156&miview=tbl",
+			"Foto"		                     => "archieven?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=7&miview=tbl",
+			"Notariele akte"	             => "archieven?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=224&miview=tbl",
+			"Trouwinschrijving"	             => "archieven?mivast=131&mizig=100&miadt=131&milang=nl&misort=ach%7Casc&mip1=$surn&mip3=$givn&mif1=157&miview=tbl",
 			
 			);
 

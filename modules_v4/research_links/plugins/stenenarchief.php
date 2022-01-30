@@ -19,7 +19,7 @@ class stenenarchief_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return 'http://www.stenenarchief.nl/phpr/nik/stenen_archief/nik_list.php?a=integrated&ctlSearchFor=' . $surn . '&simpleSrchFieldsComboOpt=achternaam&simpleSrchTypeComboNot=&simpleSrchTypeComboOpt=Contains';
+		return "https://www.stenenarchief.nl/hsa_all/hsa_list.php?q=(last_name~contains~$surname)(first_name~contains~$givn)";
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {

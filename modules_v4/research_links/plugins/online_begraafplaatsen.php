@@ -24,10 +24,10 @@ class online_begraafplaatsen_plugin extends research_base_plugin {
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		// This is a post form, so it will be sent with Javascript
-		$url	 = 'http://www.online-begraafplaatsen.nl/zoeken.asp?command=zoekform';
+		$url	 = 'https://www.online-begraafplaatsen.nl/zoeken.asp?command=zoekform';
 		$params	 = array(
 			'achternaam' => $surn,
-			'voornaam'	 => $first . '*'
+			'voornaam'	 => $first . ''
 		);
 		return "postresearchform('" . $url . "'," . json_encode($params) . ")";
 	}

@@ -7,7 +7,7 @@ if (!defined('KT_KIWITREES')) {
 
 class zeeuwengezocht_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Zeeuwen Gezocht';
+		return 'Zeeuws Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,8 +19,8 @@ class zeeuwengezocht_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
-		return $link = 'http://www.zeeuwengezocht.nl/nl/zoeken?mivast=1539&miadt=239&mizig=862&miview=tbl&milang=nl&micols=1&mires=0&mip3='
-						. $surn . '&mip2=' . $prefix . '&mip1=' . $givn;
+		return $link = 'https://www.zeeuwsarchief.nl/onderzoek-het-zelf/archief/?mivast=239&miadt=239&mizig=862&miview=tbl&milang=nl&micols=1&mires=0&mip3='
+						. $surn . '&mip1=' . $givn;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
