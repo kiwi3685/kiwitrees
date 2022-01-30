@@ -63,7 +63,7 @@ if ($action == 'update_mods' && KT_Filter::checkCsrf()) {
 	}
 
 	uasort($modules, function ($x, $y) {
-		return $x->order > $y->order;
+		return $x->order <=> $y->order;
 	});
 
 }
