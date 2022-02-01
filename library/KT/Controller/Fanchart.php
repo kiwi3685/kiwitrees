@@ -1,7 +1,7 @@
 <?php
  /**
   * Kiwitrees: Web based Family History software
-  * Copyright (C) 2012 to 2021 kiwitrees.net
+  * Copyright (C) 2012 to 2022 kiwitrees.net
   *
   * Derived from webtrees (www.webtrees.net)
   * Copyright (C) 2010 to 2012 webtrees development team
