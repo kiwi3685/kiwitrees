@@ -196,7 +196,7 @@ class KT_Date {
 				// If the date is different to the unconverted date, add it to the date string.
 				if ($d1 != $d1tmp && $d1tmp != '') {
 					if ($url) {
-						if ($$cal_fmt != "none") {
+						if ($cal_fmt != "none") {
 							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d1conv->CalendarURL($date_fmt) . '">' . $d1tmp . '</a>)</span>';
 						} else {
 							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '"><br><a href="' . $d1conv->CalendarURL($date_fmt) . '">' . $d1tmp . '</a></span>';
