@@ -1377,7 +1377,7 @@ case 'update':
 		[$gedrec, $private_gedrec] = $tmp->privatizeGedcom(KT_USER_ACCESS_LEVEL);
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
-		if ($text[0] == 'Y') {
+		if ($text[0] && $text[0] == 'Y') {
 			for ($n = 1; $n < count($tag); ++ $n) {
 				if ($glevels[$n] == 2 && ($tag[$n] == 'DATE' || $tag[$n] == 'PLAC') && $text[$n]) {
 					$text[0] = '';
