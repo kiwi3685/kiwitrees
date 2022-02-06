@@ -91,7 +91,7 @@ function userLogout($user_id) {
 function getUserId() {
 	global $KT_SESSION;
 
-	return (int)($KT_SESSION->kt_user);
+	return ($KT_SESSION->kt_user);
 }
 
 function getUserName() {
