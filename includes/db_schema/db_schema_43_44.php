@@ -28,6 +28,18 @@ if (!defined('KT_KIWITREES')) {
 
 try {
 	self::exec("
+		ALTER TABLE `##session`
+		CHANGE `session_id` `session_id` VARCHAR(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+		CHANGE `session_time` `session_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		CHANGE `ip_address` `ip_address` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+		CHANGE `session_data` `session_data` LONGBLOB NOT NULL;
+	");
+} catch (PDOException $ex) {
+	// If this fails, it has probably already been done.
+}
+
+try {
+	self::exec("
 		ALTER TABLE `##log`
 		CHANGE `log_id` `log_id` INT(11) NOT NULL AUTO_INCREMENT,
 		CHANGE `log_time` `log_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
