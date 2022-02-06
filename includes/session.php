@@ -363,7 +363,6 @@ session_set_save_handler(
 
 		$ip_address   = $KT_REQUEST->getClientIp();
 		$session_time = Carbon::now();
-		$user_id      = KT_USER_ID;
 
 		// Only update the session table once per minute, unless the session data has actually changed.
 		KT_DB::prepare("
@@ -374,7 +373,7 @@ session_set_save_handler(
 			ip_address   = VALUES(ip_address),
 			session_data = VALUES(session_data),
 			session_time = ?
-		")->execute(array($id, $user_id, $ip_address , $data, $session_time, $session_time));
+		")->execute(array($id, KT_USER_ID, $ip_address , $data, $session_time, $session_time));
 
 		return true;
 	},
