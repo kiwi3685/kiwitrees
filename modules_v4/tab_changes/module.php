@@ -186,7 +186,7 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 
     // Implement KT_Module_Tab
 	public function isGrayedOut() {
-        return count($this->getChangeList()) == 0;
+        return !$this->getChangeList();
 	}
 
 	// Implement KT_Module_Tab
