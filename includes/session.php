@@ -361,19 +361,15 @@ session_set_save_handler(
 	function ($id, $data) {
 		global $KT_REQUEST;
 
-		$ip_address   = $KT_REQUEST->getClientIp();
-		$session_time = Carbon::now();
-
-		// Only update the session table once per minute, unless the session data has actually changed.
 		KT_DB::prepare("
 			INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)
-			VALUES (?, ?, ?, ?, ?)
+			VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))
 			ON DUPLICATE KEY UPDATE
 			user_id      = VALUES(user_id),
 			ip_address   = VALUES(ip_address),
 			session_data = VALUES(session_data),
-			session_time = ?
-		")->execute(array($id, KT_USER_ID, $ip_address , $data, $session_time, $session_time));
+			session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)
+		")->execute(array($id, KT_USER_ID, $KT_REQUEST->getClientIp(), $data));
 
 		return true;
 	},
@@ -387,8 +383,8 @@ session_set_save_handler(
 	function ($maxlifetime) {
 		KT_DB::prepare("
 			DELETE FROM `##session`
-			WHERE session_time < ?
-		")->execute(array(Carbon::now()->subSeconds($max_lifetime)));
+			WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)
+		")->execute(array($max_lifetime));
 
 		return true;
 	}
