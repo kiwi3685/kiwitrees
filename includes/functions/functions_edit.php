@@ -1414,7 +1414,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	}
 
 	if (in_array($fact, $emptyfacts) && ($value === '' || $value === 'Y' || $value === 'y')) {
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\">";
+		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\">";
 		if ($level <= 1) {
 			echo '<input type="checkbox" ';
 			if ($value) {
