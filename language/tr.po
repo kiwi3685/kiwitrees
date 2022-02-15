@@ -11,13 +11,14 @@
 # Translators:
 # Translators:
 # Translators:
-# Osman Öz <osmanoz50@gmail.com>, 2021
+# Translators:
+# Osman Öz <osmanoz50@gmail.com>, 2021-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2022-01-18 14:44+1300\n"
-"PO-Revision-Date: 2022-01-27 16:27+1300\n"
+"PO-Revision-Date: 2022-02-12 12:37+1300\n"
 "Last-Translator: Nigel Osborne <kiwi3685@me.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/kiwitrees/kiwitrees/language/tr/)\n"
 "Language: tr\n"
@@ -272,9 +273,9 @@ msgid "You are using PHP version %s."
 msgstr "PHP %s sürümünü kullanıyorsunuz."
 
 #: admin.php:108
-#| msgid "ees is no longer compatible with versions of PHP older than 7.0"
+#| msgid " is no longer compatible with versions of PHP older than 7.0"
 msgid "Kiwitrees is no longer compatible with versions of PHP older than 7.3"
-msgstr ""
+msgstr "Kiwitrees artık PHP'nin 7.3'ten eski sürümleriyle uyumlu değil"
 
 #: admin.php:110
 msgid "Kiwitrees is compatible with this version."
@@ -2066,11 +2067,11 @@ msgstr "gelişmiş"
 
 #: admin_trees_config.php:1379
 #| msgid ""
-#| "asic\" autocomplete simply searches your existing place names for  that start with the string of characters you type, updating as you  characters. No other assistance is provided. <br><br>\n"
-#| "                          The \"advanced\" alternative starts the e, but also provides further features, which might not be compatible h every site's preferred naming style.: <br><br>\n"
-#| "                          1) After typing a comma and a space at  point it will start the search again, but using subsequent levels of r existing places. This allows, for example, a new town to be added to existing state or county without re-typing all the existing data. ><br>\n"
-#| "                          2) Place names are capitalised omatically using \"word caps\", or capitalising each separate word. s enables faster typing by allowing you to type just lowercase racters. <br><br>\n"
-#| "                          It is important to remember that such omated help can have unintended consequences. These may need manually recting during the editing process. "
+#| "autocomplete simply searches your existing place names for  that start with the string of characters you type, updating as you  characters. No other assistance is provided. <br><br>\n"
+#| "                    The \"advanced\" alternative starts the e, but also provides further features, which might not be compatible h every site's preferred naming style.: <br><br>\n"
+#| "                    1) After typing a comma and a space at  point it will start the search again, but using subsequent levels of r existing places. This allows, for example, a new town to be added to existing state or county without re-typing all the existing data. ><br>\n"
+#| "                    2) Place names are capitalised omatically using \"word caps\", or capitalising each separate word. s enables faster typing by allowing you to type just lowercase racters. <br><br>\n"
+#| "                    It is important to remember that such omated help can have unintended consequences. These may need manually recting during the editing process. "
 msgid ""
 "The “basic” autocomplete simply searches existing place levels for any that contain a word starting with the string of characters you type, updating as you add characters. No other assistance is provided. <br><br>\n"
 "                                The \"advanced\" alternative starts the same, but also provides further features, which might not be compatible with every site's preferred naming style.: <br><br>\n"
@@ -2078,6 +2079,11 @@ msgid ""
 "                                2) Place names are capitalised automatically using \"word caps\", or capitalising each separate word. This enables faster typing by allowing you to type just lowercase characters. <br><br>\n"
 "                                It is important to remember that such automated help can have unintended consequences. These may need manually correcting during the editing process. "
 msgstr ""
+"\"Temel\" otomatik tamamlama, yazdığınız karakter dizisiyle başlayan bir kelime içeren herhangi bir yer için mevcut yer seviyelerini arar ve siz karakter ekledikçe güncellenir. Başka bir yardım sağlanmaz. <br><br>\n"
+"                                \"Gelişmiş\" alternatif aynı şekilde başlar, ancak her sitenin tercih ettiği adlandırma stiliyle uyumlu olmayabilecek başka özellikler de sağlar.: <br><br>\n"
+"                                1) Herhangi bir noktada bir virgül ve bir boşluk yazdıktan sonra, aramayı yeniden başlatır, ancak mevcut yerlerinizin sonraki seviyelerini kullanır. Bu, örneğin, mevcut tüm verileri yeniden yazmadan yeni bir kasabanın mevcut bir eyalet veya ilçeye eklenmesine izin verir. <br><br>\n"
+"                                2) Yer adları, \"kelime büyük harf\" kullanılarak otomatik olarak büyük harfle yazılır veya her bir kelime büyük harfle yazılır. Bu, yalnızca küçük harfli karakterler yazmanıza izin vererek daha hızlı yazmayı sağlar. <br><br>\n"
+"                                Bu tür otomatik yardımın istenmeyen sonuçlara yol açabileceğini hatırlamak önemlidir. Bunların düzenleme işlemi sırasında manuel olarak düzeltilmesi gerekebilir. "
 
 #: admin_trees_config.php:1388 edit_interface.php:210 edit_interface.php:776 edit_interface.php:916 edit_interface.php:1045 edit_interface.php:1127 edit_interface.php:1256 help_text.php:563 includes/functions/functions_edit.php:962 includes/functions/functions_edit.php:2727
 msgid "Do not update the “last change” record"
@@ -7905,7 +7911,7 @@ msgstr "Bu kayıt en son <i>%s</i> tarafından %s tarihinde değiştirildi"
 #: includes/functions/functions_edit.php:362
 #, php-format
 msgid "Current time is %s"
-msgstr ""
+msgstr "Geçerli saat: %s"
 
 #: includes/functions/functions_edit.php:364 includes/functions/functions_edit.php:2417 includes/functions/functions_edit.php:2426
 msgid "Please reload the previous page to make sure you are working with the most recent record."
@@ -21736,7 +21742,7 @@ msgstr "Yıl - sadece 4 basamak"
 #: modules_v4/report_fact/module.php:214
 #| msgid "No missing records found"
 msgid "No matching records found"
-msgstr ""
+msgstr "Hiçbir eşleşen kayıt bulunamadı"
 
 #: modules_v4/report_fact/module.php:317
 #, php-format
