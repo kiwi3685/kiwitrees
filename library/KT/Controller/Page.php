@@ -186,7 +186,6 @@ class KT_Controller_Page extends KT_Controller_Base {
 			var textDirection  = "' . KT_Filter::escapeJs($TEXT_DIRECTION)           . '";
 			var KT_SCRIPT_NAME = "' . KT_Filter::escapeJs(KT_SCRIPT_NAME)            . '";
 			var KT_LOCALE      = "' . KT_Filter::escapeJs(KT_LOCALE)                 . '";
-			var accesstime     = "' . KT_Filter::escapeJs(KT_TIMESTAMP)              . '";
 			var KT_CSRF_TOKEN  = "' . KT_Filter::escapeJs(KT_Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
 

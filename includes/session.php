@@ -384,7 +384,7 @@ session_set_save_handler(
 		KT_DB::prepare("
 			DELETE FROM `##session`
 			WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)
-		")->execute(array($max_lifetime));
+		")->execute(array($maxlifetime));
 
 		return true;
 	}
@@ -507,7 +507,7 @@ if (empty($KIWITREES_EMAIL)) {
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('KT_TIMESTAMP', Carbon::now()->timestamp);
+define('KT_TIMESTAMP', (int)KT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
 // Server timezone is defined in php.ini
 define('KT_SERVER_TIMESTAMP', KT_TIMESTAMP + (int)date('Z'));

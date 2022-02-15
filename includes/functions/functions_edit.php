@@ -335,9 +335,10 @@ function edit_field_rela($name, $selected='', $extra='') {
 * @param string $pid The gedcom id of the record to check
 */
 function checkChangeTime($pid, $gedrec, $lastTime) {
+	$lastTime = Carbon::createFromTimestamp($lastTime)->toDateTimeString();
 
 	$change = KT_DB::prepare("
-		SELECT change_time, user_name
+		SELECT UNIX_TIMESTAMP(change_time) AS change_time, user_name
 		FROM `##change`
 		JOIN `##user` USING (user_id)
 		WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?

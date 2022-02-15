@@ -70,7 +70,7 @@ if (!empty($pid)) {
 			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
-		checkChangeTime($pid, $gedrec, KT_Filter::get('accesstime', KT_REGEX_INTEGER));
+		checkChangeTime($pid, $gedrec, KT_TIMESTAMP);
 	} else {
 		$edit = true;
 	}
@@ -84,7 +84,7 @@ if (!empty($pid)) {
 			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
-		checkChangeTime($famid, $gedrec, KT_Filter::get('accesstime', KT_REGEX_INTEGER));
+		checkChangeTime($famid, $gedrec, KT_TIMESTAMP);
 	}
 } else {
 	$edit = true;
