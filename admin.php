@@ -119,12 +119,13 @@ if (
 		<!-- SERVER WARNINGS -->
 		<?php if ($server_warnings): ?>
 			<div class="">
-				<h3 class=""><?php echo KT_I18N::translate('Server information'); ?></h2>
+				<h3 class=""><?php echo KT_I18N::translate('Server information'); ?></h3>
 				<?php foreach ($server_warnings as $server_warning): ?>
 					<?php echo $server_warning; ?>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
+
 	</div>
 <?php
 
