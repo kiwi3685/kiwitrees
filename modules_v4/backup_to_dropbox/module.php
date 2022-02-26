@@ -320,9 +320,9 @@ class backup_to_dropbox_KT_Module extends KT_Module implements KT_Module_Config 
 		} else {
 			echo '
 				<tr>
-					<td>' . $response['name'] . '</td>
-					<td>' . $response['size'] . '</td>
-					<td>' . $response['client_modified'] . '</td>
+					<td>' . (isset($response['name']) ? $response['name'] : "") . '</td>
+					<td>' . (isset($response['size']) ? $response['size'] : "") . '</td>
+					<td>' . (isset($response['client_modified']) ? $response['client_modified'] : "") . '</td>
 				</tr>
 			';
 		}
