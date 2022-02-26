@@ -64,7 +64,7 @@ class database_backup_KT_Module extends KT_Module implements KT_Module_Config {
 			->pageHeader();
 		echo '
 			<div id="database_backup">
-				<iframe src="' . KT_MODULES_DIR . $this->getName() . '/vendor/r23/msd" width="100%" height="700">
+				<iframe src="' . KT_MODULES_DIR . $this->getName() . '/index.php" width="100%" height="700">
 					<p>Sorry, your browser does not support iframes</p>
 				</iframe>
 			</div>
