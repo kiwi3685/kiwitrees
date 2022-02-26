@@ -2257,7 +2257,7 @@ function get_query_url($overwrite = null, $separator = '&') {
 			$query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
 		} else {
 			foreach ($value as $k => $v) {
-				$query_string .= $separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
+				$query_string .= $separator . rawurlencode($k) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
 			}
 		}
 	}
