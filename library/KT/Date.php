@@ -441,6 +441,4 @@ class KT_Date {
 		}
 	}
 
-
-
 }

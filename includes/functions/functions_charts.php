@@ -855,7 +855,7 @@ function print_parents($famid, $personcount=1) {
 	echo '<div id="family_lines1"></div>';
 	echo '<div id="parents">';
 		/* husband */
-		if (isset($newparents) && $husb->getXref() != $newparents["HUSB"]) {
+		if ($newparents && $husb && ($husb->getXref() != $newparents["HUSB"])) {
 			echo '<div class="facts_valueblue parent_husb">
 				<div id="family_lines2"></div>';
 			print_pedigree_person(KT_Person::getInstance($newparents['HUSB']), 3, 2, $personcount);
@@ -881,7 +881,7 @@ function print_parents($famid, $personcount=1) {
 		}
 		echo '</div>';
 		/* wife */
-		if (isset($newparents) && $wife->getXref() != $newparents["WIFE"]) {
+		if ($newparents && $wife && ($wife->getXref() != $newparents["WIFE"])) {
 			echo '<div class="facts_valueblue parent_wife">
 				<div id="family_lines2"></div>';
 			print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 3, 3, $personcount);
