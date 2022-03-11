@@ -42,28 +42,29 @@ function getMenuAsCustomList($menu) {
 		return $menu->getMenuAsList();
 }
 
+// REDUNDANT FUNCTION
 //-- print color theme sub type change dropdown box
-function color_theme_dropdown() {
-	global $COLOR_THEME_LIST, $KT_SESSION, $subColor;
-	$menu=new KT_Menu(/* I18N: A colour scheme */ KT_I18N::translate('Colors palette'), '#', 'menu-color');
-	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
-	foreach ($COLOR_THEME_LIST as $colorChoice =>$colorName) {
-		$submenu = new KT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
-		if (isset($KT_SESSION->subColor)) {
-			if ($KT_SESSION->subColor == $colorChoice) {
-				$submenu->addClass('','','theme-active');
-			}
-		} elseif  (KT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
-			$submenu->addClass('','','theme-active');
-		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
-			if ($subColor == $colorChoice) {
-				$submenu->addClass('','','theme-active');
-			}
-		}
-		$menu->addSubMenu($submenu);
-	}
-	return $menu->getMenuAsList();
-}
+//function color_theme_dropdown() {
+//	global $COLOR_THEME_LIST, $KT_SESSION, $subColor;
+//	$menu=new KT_Menu(/* I18N: A colour scheme */ KT_I18N::translate('Colors palette'), '#', 'menu-color');
+//	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
+//	foreach ($COLOR_THEME_LIST as $colorChoice =>$colorName) {
+//		$submenu = new KT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
+//		if (isset($KT_SESSION->subColor)) {
+//			if ($KT_SESSION->subColor == $colorChoice) {
+//				$submenu->addClass('','','theme-active');
+//			}
+//		} elseif  (KT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
+//			$submenu->addClass('','','theme-active');
+//		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
+//			if ($subColor == $colorChoice) {
+//				$submenu->addClass('','','theme-active');
+//			}
+//		}
+//		$menu->addSubMenu($submenu);
+//	}
+//	return $menu->getMenuAsList();
+//}
 
 function color_palette() {
 	global $COLOR_THEME_LIST, $KT_SESSION, $subColor;
