@@ -1635,9 +1635,14 @@ function old_paths() {
 		KT_ROOT . 'modules_v4/gallery/galleria/plugins/picasa', // no longer supported
 		KT_ROOT . 'modules_v4/research_links/plugins/rijnlandsmiddensa.php', // archive replaced
         KT_ROOT . 'modules_v4/ckeditor/kt_ckeditor.css', // remove no longer needed file
-        // Removed in kiwitrees 3.3.9
-        //KT_ROOT . 'modules_v4/ckeditor/kcfinder', // remove no longer needed folder - replaced by fileman
-        //Leave kcfinder for this upgrade, as it may contain personal image uploads
+        // Removed in kiwitrees 3.3.9 - NONE
+		// Removed in kiwitrees 3.3.10 - NONE
+		// Removed in kiwitrees 3.3.11
+        KT_ROOT . 'modules_v4/ckeditor/kcfinder', // remove no longer needed folder - replaced by fileman
+		KT_ROOT . 'modules_v4/research_links/plugins/digitalestamboom.php', // very old file not previously removed
+		KT_ROOT . 'modules_v4/research_links/plugins/zoekakten.php', // very old file not previously removed
+		KT_ROOT . 'library/KT/Census/RegisterOfWales1939.php', // change of fole name
+		KT_ROOT . 'library/KT/Census/RegisterOfEngland1939.php', // change of fole name
 	);
 }
 
