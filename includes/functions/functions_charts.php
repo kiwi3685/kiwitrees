@@ -110,6 +110,9 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 		echo '<p class="name_head">' . $family->getFullName() . '</p>';
 	}
 
+	$newrec		= '';
+	$newparents	= '';
+
 	// -- get the new record and parents if in editing show changes mode
 	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, KT_USER_CAN_EDIT)) {
 		$newrec		= find_gedcom_record($famid, $ged_id, true);
@@ -633,6 +636,9 @@ function print_parents($famid, $personcount=1) {
 	if (is_null($husb)) $husb = new KT_Person('');
 	$wife = $family->getWife();
 	if (is_null($wife))	$wife = new KT_Person('');
+
+	$newrec		= '';
+	$newparents	= '';
 
 	// -- get the new record and parents if in editing show_changes mode
 	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, KT_USER_CAN_EDIT)) {
