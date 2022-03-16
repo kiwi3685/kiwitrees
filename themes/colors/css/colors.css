@@ -3480,13 +3480,15 @@ table.ca td.under {
        list-style: none;
        margin: 0;
        padding: 0 10px;
+       position: relative;
        text-align: left;
    }
    #topMenu #nav-select li {
        background-color: #fff;
        font-size: 12px;
        padding: 0 10px;
-   }
+       position: relative;
+    }
    #topMenu #nav-select ul ul li {
        display:none;
    }

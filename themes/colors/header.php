@@ -135,12 +135,12 @@ if (KT_USER_ID && KT_SCRIPT_NAME != 'index.php' && $view != 'simple' && KT_Modul
 						} ?>
 					</ul>
 					<!-- select menu for responsive layouts only -->
-					<select id="nav-select" onChange="window.location.href=this.value">
-						<option selected="selected" value=""><?php echo KT_I18N::translate('Choose a page'); ?></option>
+					<div id="nav-select" onChange="window.location.href=this.value">
+						<a href="#"><?php echo /* I18M: Menu label for responsive meny drop down */ KT_I18N::translate('Main menu'); ?></a>
 						<?php foreach (KT_MenuBar::getMainMenus() as $menu) {
 							echo $menu->getResponsiveMenu();
 						} ?>
-					</select>
+					</div>
 				</div>
 
 			<?php }
