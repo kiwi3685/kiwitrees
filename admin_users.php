@@ -655,7 +655,7 @@ switch (KT_Filter::get('action')) {
 												</option>
 												<?php endfor; ?>
 											</select>
-										</td
+										</td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
