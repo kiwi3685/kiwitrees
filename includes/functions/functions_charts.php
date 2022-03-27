@@ -152,13 +152,13 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 			$upfamid = $hfamily->getXref();
 			break;
 		}
-		if ($hparents || $sosa) {
+		if ($hparents && $hparents["HUSB"] && $sosa) {
 			// husband's father
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
-			if ($sosa > 0) print_sosa_number($sosa * 4, $hparents['HUSB'], "down");
-			if (!empty($gparid) && $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+			if ($sosa > 0) print_sosa_number($sosa * 4, $hparents["HUSB"], "down");
+			if (!empty($gparid) && $hparents["HUSB"]==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo "<td valign=\"top\">";
-			print_pedigree_person(KT_Person::getInstance($hparents['HUSB']), 1, 4, $personcount);
+			print_pedigree_person(KT_Person::getInstance($hparents["HUSB"]), 1, 4, $personcount);
 			echo "</td></tr></table>";
 		}
 		echo "</td>";
@@ -168,14 +168,14 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.KT_GEDURL : '#'.$upfamid), $upfamid, 1);
 		echo '</td>';
 	}
-	if ($hparents || $sosa) {
+	if ($hparents && $hparents["WIFE"] && $sosa) {
 		// husband's mother
 		echo "</tr><tr><td><img src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
-		if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hparents['WIFE'], "down");
-		if (!empty($gparid) && $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+		if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hparents["WIFE"], "down");
+		if (!empty($gparid) && $hparents["WIFE"]==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 		echo "<td valign=\"top\">";
-		print_pedigree_person(KT_Person::getInstance($hparents['WIFE']), 1, 5, $personcount);
+		print_pedigree_person(KT_Person::getInstance($hparents["WIFE"]), 1, 5, $personcount);
 		echo "</td></tr></table>";
 		echo "</td>";
 	}
@@ -203,7 +203,7 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 	else if ($sosa > 0) print_sosa_number($sosa * 2 + 1);
 	if ($newparents && $wife && ($wife->getXref() != $newparents["WIFE"])) {
 		echo "<td valign=\"top\" class=\"facts_valueblue\">";
-		print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 1, 3, $personcount);
+		print_pedigree_person(KT_Person::getInstance($newparents["WIFE"]), 1, 3, $personcount);
 	} else {
 		echo "<td valign=\"top\">";
 		print_pedigree_person($wife, 1, 3, $personcount);
@@ -224,13 +224,13 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 			$upfamid = $hfamily->getXref();
 			break;
 		}
-		if ($hparents || $sosa) {
+		if ($hparents && $hparents["HUSB"] && $sosa) {
 			// wife's father
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
-			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hparents['HUSB'], "down");
-			if (!empty($gparid) && $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hparents["HUSB"], "down");
+			if (!empty($gparid) && $hparents["HUSB"]==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			echo "<td valign=\"top\">";
-			print_pedigree_person(KT_Person::getInstance($hparents['HUSB']), 1, 6, $personcount);
+			print_pedigree_person(KT_Person::getInstance($hparents["HUSB"]), 1, 6, $personcount);
 			echo "</td></tr></table>";
 		}
 		echo "</td>";
@@ -240,14 +240,14 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.KT_GEDURL : '#'.$upfamid), $upfamid, 1);
 		echo '</td>';
 	}
-	if ($hparents || $sosa) {
+	if ($hparents && $hparents["WIFE"] && $sosa) {
 		// wife's mother
 		echo "</tr><tr><td><img src=\"".$KT_IMAGES["hline"]."\" alt=\"\"></td><td>";
 		echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
-		if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hparents['WIFE'], "down");
-		if (!empty($gparid) && $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
+		if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hparents["WIFE"], "down");
+		if (!empty($gparid) && $hparents["WIFE"]==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 		echo "<td valign=\"top\">";
-		print_pedigree_person(KT_Person::getInstance($hparents['WIFE']), 1, 7, $personcount);
+		print_pedigree_person(KT_Person::getInstance($hparents["WIFE"]), 1, 7, $personcount);
 		echo "</td></tr></table>";
 		echo "</td>";
 	}
@@ -658,8 +658,8 @@ function print_parents($famid, $personcount=1) {
 				break;
 			}
 			echo '<div id="husb_parents">';
-				$husb_father = KT_Person::getInstance($hparents['HUSB']);
-				$husb_mother = KT_Person::getInstance($hparents['WIFE']);
+				$husb_father = KT_Person::getInstance($hparents["HUSB"]);
+				$husb_mother = KT_Person::getInstance($hparents["WIFE"]);
 
 				if (!empty($upfamid)) {
 					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. KT_GEDURL, $upfamid, 2), '</p>';
@@ -667,7 +667,7 @@ function print_parents($famid, $personcount=1) {
 				// husbants's father
 				if ($hparents && !empty($husb_father)) {
 					echo '<div class="fam_parent">';
-						print_pedigree_person(KT_Person::getInstance($hparents['HUSB']), 3, 4, $personcount);
+						print_pedigree_person(KT_Person::getInstance($hparents["HUSB"]), 3, 4, $personcount);
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
@@ -761,8 +761,8 @@ function print_parents($famid, $personcount=1) {
 					break;
 				}
 			echo '<div id="wife_parents">';
-				$wife_father = KT_Person::getInstance($wparents['HUSB']);
-				$wife_mother = KT_Person::getInstance($wparents['WIFE']);
+				$wife_father = KT_Person::getInstance($wparents["HUSB"]);
+				$wife_mother = KT_Person::getInstance($wparents["WIFE"]);
 
 				if (!empty($upfamid)) {
 					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. KT_GEDURL, $upfamid, 2), '</p>';
@@ -770,7 +770,7 @@ function print_parents($famid, $personcount=1) {
 				// wife's father
 				if ($wparents && !empty($wife_father)) {
 					echo '<div class="fam_parent">';
-						print_pedigree_person(KT_Person::getInstance($wparents['HUSB']), 3, 4, $personcount);
+						print_pedigree_person(KT_Person::getInstance($wparents["HUSB"]), 3, 4, $personcount);
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
@@ -864,7 +864,7 @@ function print_parents($famid, $personcount=1) {
 		if ($newparents && $husb && ($husb->getXref() != $newparents["HUSB"])) {
 			echo '<div class="facts_valueblue parent_husb">
 				<div id="family_lines2"></div>';
-			print_pedigree_person(KT_Person::getInstance($newparents['HUSB']), 3, 2, $personcount);
+			print_pedigree_person(KT_Person::getInstance($newparents["HUSB"]), 3, 2, $personcount);
 		} elseif ($husb->getXref()) {
 			echo '<div class="parent_husb">
 				<div id="family_lines2"></div>';
@@ -890,7 +890,7 @@ function print_parents($famid, $personcount=1) {
 		if ($newparents && $wife && ($wife->getXref() != $newparents["WIFE"])) {
 			echo '<div class="facts_valueblue parent_wife">
 				<div id="family_lines2"></div>';
-			print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 3, 3, $personcount);
+			print_pedigree_person(KT_Person::getInstance($newparents["WIFE"]), 3, 3, $personcount);
 		} elseif ($wife->getXref()) {
 			echo '<div class="parent_wife">
 				<div id="family_lines2"></div>';
