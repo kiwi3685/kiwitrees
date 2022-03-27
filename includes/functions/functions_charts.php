@@ -129,9 +129,9 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 		else print_sosa_number($label, "", "blank");
 	}
 	else if ($sosa > 0) print_sosa_number($sosa * 2);
-	if (isset($newparents) && $husb->getXref() != $newparents["HUSB"]) {
+	if ($newparents && $husb && ($husb->getXref() != $newparents["HUSB"])) {
 		echo "<td valign=\"top\" class=\"facts_valueblue\">";
-		print_pedigree_person(KT_Person::getInstance($newparents['HUSB']), 1, 2, $personcount);
+		print_pedigree_person(KT_Person::getInstance($newparents["HUSB"]), 1, 2, $personcount);
 	} else {
 		echo "<td valign=\"top\">";
 		print_pedigree_person($husb, 1, 2, $personcount);
@@ -201,7 +201,7 @@ function print_family_parents($famid, $sosa = 0, $label = '', $parid = '', $gpar
 		else print_sosa_number($label, "", "blank");
 	}
 	else if ($sosa > 0) print_sosa_number($sosa * 2 + 1);
-	if (isset($newparents) && $wife->getXref() != $newparents["WIFE"]) {
+	if ($newparents && $wife && ($wife->getXref() != $newparents["WIFE"])) {
 		echo "<td valign=\"top\" class=\"facts_valueblue\">";
 		print_pedigree_person(KT_Person::getInstance($newparents['WIFE']), 1, 3, $personcount);
 	} else {
