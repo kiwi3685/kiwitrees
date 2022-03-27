@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2022 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,7 +61,7 @@ class chart_lifespan_KT_Module extends KT_Module implements KT_Module_Chart {
 		$menus		= array();
 		$menu		= new KT_Menu(
 			$this->getTitle(),
-			'lifespan.php?pids%5B%5D=' . $indi_xref . '&amp;addFamily=1&amp;ged=' . KT_GEDURL,
+			'lifespan.php?pids=' . $indi_xref . '&amp;addFamily=1&amp;ged=' . KT_GEDURL,
 			'menu-chart-lifespan'
 		);
 		$menus[] = $menu;
