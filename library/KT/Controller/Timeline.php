@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2022 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,7 +47,7 @@ class KT_Controller_Timeline extends KT_Controller_Page {
 		parent::__construct();
 
 		$this->setPageTitle(KT_I18N::translate('Timeline'));
-	
+
 		$this->baseyear = date("Y");
 		//-- new pid
 		$newpid=safe_GET_xref('newpid');
@@ -81,7 +81,7 @@ class KT_Controller_Timeline extends KT_Controller_Page {
 		foreach ($this->people as $p=>$indi) {
 			if (!is_null($indi) && $indi->canDisplayDetails()) {
 				//-- setup string of valid pids for links
-				$this->pidlinks .= "pids%5B%5D=".$indi->getXref()."&amp;";
+				$this->pidlinks .= "pids=" . $indi->getXref() . "&amp;";
 				$bdate = $indi->getBirthDate();
 				if ($bdate->isOK()) {
 					$date = $bdate->MinDate();
