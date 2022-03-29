@@ -111,7 +111,7 @@ class chart_fanchart_KT_Module extends KT_Module implements KT_Module_Chart {
 				</div>
 				<div class="chart_options">
 					<label for="generations"><?php echo KT_I18N::translate('Generations'); ?></label>
-					<?php echo edit_field_integers('generations', $controller->generations, 2, 10); ?>
+					<?php echo edit_field_integers('generations', 2, 10, $controller->generations); ?>
 				</div>
 				<div class="chart_options">
 					<label for="fanDegree"><?php echo KT_I18N::translate('Degrees'); ?></label>
