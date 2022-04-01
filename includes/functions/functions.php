@@ -2253,12 +2253,12 @@ function get_query_url($overwrite = null, $separator = '&') {
 
 	$query_string = '';
 	foreach ($get as $key => $value) {
-		if (!is_array($value)) {
-			$query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
-		} else {
+		if (is_array($value)) {
 			foreach ($value as $k => $v) {
-				$query_string .= $separator . http_build_query($k) . '%5B' . http_build_query($k) . '%5D=' . rawurlencode($v);
+				$query_string .= $separator . $k . '%5B' . $k . '%5D=' . rawurlencode($v);
 			}
+		} else {
+			$query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
 		}
 	}
 	$query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”
