@@ -341,7 +341,7 @@ function search_indis($query, $geds, $match) {
 	}
 
 	// Convert the query into a SQL expression
-	$querysq	= array();
+	$querysql=array();
 	// Convert the query into a regular expression
 	$queryregex	= array();
 
@@ -602,8 +602,8 @@ function search_fams($query, $geds, $match) {
 	}
 
 	$sql = "
-		SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec F
-		ROM `##families`
+		SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec 
+		FROM `##families`
 		WHERE (" . implode(" {$match} ", $querysql) . ")
 		AND f_file IN (" . implode(',', $geds) . ")
 	";
@@ -1498,12 +1498,11 @@ function get_logged_in_users() {
 	// If the user is logged in on multiple times, this query would fetch
 	// multiple rows.  fetchAssoc() will eliminate the duplicates
 	return
-		KT_DB::prepare(
-			"SELECT user_id, user_name".
-			" FROM `##user` u".
-			" JOIN `##session` USING (user_id)"
-		)
-		->fetchAssoc();
+		KT_DB::prepare("
+			SELECT user_id, user_name
+			FROM `##user` u
+			JOIN `##session` USING (user_id)
+		")->fetchAssoc();
 }
 
 // Get the ID for a username
@@ -1650,7 +1649,7 @@ function get_gedcom_blocks($gedcom_id) {
 function get_block_location($block_id) {
 	return KT_DB::prepare(
 		"SELECT location FROM `##block` WHERE block_id=?"
-	)->execute(array($block_id))->fetchOne();;
+	)->execute(array($block_id))->fetchOne();
 }
 
 function get_block_order($block_id) {
@@ -1680,12 +1679,15 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Functions to access the ##MODULE and ##MODULE_SETTING tables
+////////////////////////////////////////////////////////////////////////////////
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	static $statement;
 	if ($statement === null) {
-		$statement = KT_DB::prepare(
-			"SELECT setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
-		);
+		$statement = KT_DB::prepare("
+			SELECT setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?
+		");
 	}
 	$setting_value = $statement->execute(array($module_name, $setting_name))->fetchOne();
 	return $setting_value === null ? $default_value : $setting_value;
@@ -1701,10 +1703,16 @@ function set_module_setting($module_name, $setting_name, $setting_value) {
 	}
 }
 
+function get_widget_order($module_name) {
+	return  KT_DB::prepare("
+		SELECT widget_order FROM `##module` WHERE module_name=? AND status='enabled'
+	")->execute(array($module_name))->fetchOne();
+}
+/////////////////////////////////////////////////
 // update favorites after merging records
 function update_favorites($xref_from, $xref_to, $ged_id=KT_GED_ID) {
 	return
-		KT_DB::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")
+		KT_DB::prepare("UPDATE `##favorites` SET xref=? WHERE xref=? AND gedcom_id=?")
 		->execute(array($xref_to, $xref_from, $ged_id))
 		->rowCount();
 }
