@@ -410,10 +410,16 @@ function search_indis_names($query, $geds, $match) {
 	foreach ($query as $q) {
 		$querysql[]="n_full LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."'";
 	}
-	$sql="SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_num FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
+	$sql = "
+		SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_num
+		FROM `##individuals`
+		JOIN `##name` ON i_id=n_id AND i_file=n_file
+		WHERE (" . implode(" {$match} ", $querysql) . ")
+		AND i_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY ged_id';
+	$sql .= " ORDER BY ged_id";
 
 	$list=array();
 	$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -595,10 +601,15 @@ function search_fams($query, $geds, $match) {
 		$querysql[]="f_gedcom LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."'";
 	}
 
-	$sql="SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` WHERE (".implode(" {$match} ", $querysql).') AND f_file IN ('.implode(',', $geds).')';
+	$sql = "
+		SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec F
+		ROM `##families`
+		WHERE (" . implode(" {$match} ", $querysql) . ")
+		AND f_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY ged_id';
+	$sql .= " ORDER BY ged_id";
 
 	$list=array();
 	$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -653,10 +664,17 @@ function search_fams_names($query, $geds, $match) {
 		$querysql[]="(husb.n_full LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."' OR wife.n_full LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."')";
 	}
 
-	$sql="SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec FROM `##families` LEFT OUTER JOIN `##name` husb ON f_husb=husb.n_id AND f_file=husb.n_file LEFT OUTER JOIN `##name` wife ON f_wife=wife.n_id AND f_file=wife.n_file WHERE (".implode(" {$match} ", $querysql).') AND f_file IN ('.implode(',', $geds).')';
+	$sql  = "
+		SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec
+		FROM `##families`
+		LEFT OUTER JOIN `##name` husb ON f_husb=husb.n_id AND f_file=husb.n_file
+		LEFT OUTER JOIN `##name` wife ON f_wife=wife.n_id AND f_file=wife.n_file
+		WHERE (" . implode(" {$match} ", $querysql) . ")
+		AND f_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY ged_id';
+	$sql .= " ORDER BY ged_id";
 
 	$list=array();
 	$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -703,7 +721,12 @@ function search_sources($query, $geds, $match) {
 		$querysql[]="s_gedcom LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."'";
 	}
 
-	$sql="SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec FROM `##sources` WHERE (".implode(" {$match} ", $querysql).') AND s_file IN ('.implode(',', $geds).')';
+	$sql = "
+		SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec
+		FROM `##sources`
+		WHERE (" . implode(" {$match} ", $querysql) . ")
+		AND s_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY ged_id';
@@ -765,10 +788,15 @@ function search_notes($query, $geds, $match) {
 		$querysql[]="o_gedcom LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."'";
 	}
 
-	$sql="SELECT 'NOTE' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec FROM `##other` WHERE (".implode(" {$match} ", $querysql).") AND o_type='NOTE' AND o_file IN (".implode(',', $geds).')';
+	$sql = "
+		SELECT 'NOTE' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec
+		FROM `##other`
+		WHERE (" . implode(" {$match} ", $querysql) . ")
+		AND o_type='NOTE' AND o_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY ged_id';
+	$sql .= " ORDER BY ged_id";
 
 	$list=array();
 	$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -829,10 +857,16 @@ function search_repos($query, $geds, $match) {
 		$querysql[]="o_gedcom LIKE ".KT_DB::quote("%{$q}%")." COLLATE '".KT_I18N::$collation."'";
 	}
 
-	$sql="SELECT 'REPO' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec FROM `##other` WHERE (".implode(" {$match} ", $querysql).") AND o_type='REPO' AND o_file IN (".implode(',', $geds).')';
+	$sql = "
+		SELECT 'REPO' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec
+		FROM `##other`
+		WHERE (" . implode(" {$match} ", $querysql) . ")
+		AND o_type='REPO'
+		AND o_file IN (" . implode(',', $geds) . ")
+	";
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY ged_id';
+	$sql .= " ORDER BY ged_id";
 
 	$list=array();
 	$rows=KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -1372,7 +1406,9 @@ function delete_user($user_id) {
 		KT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($user_id));
 		KT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array((string) $user_id));
 		KT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute(array($user_id));
-		table_exists("##message") ? KT_DB::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($user_id)) : '';
+		if (table_exists("##message")) {
+			KT_DB::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($user_id));
+		}
 		KT_DB::prepare("DELETE FROM `##user` WHERE user_id=?")->execute(array($user_id));
 	} else {
 		KT_FlashMessages::addMessage(KT_I18N::translate('<span class="error">Unable to delete user. This user has pending data changes.</span>'));
@@ -1716,7 +1752,7 @@ function format_size($size) {
 }
 
 function table_exists ($table) {
-    $sql  = 'SELECT * FROM `##placelocation`';
+    $sql  = "SELECT * FROM `" . $table . "`";
     try {
         $rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
         return true;
