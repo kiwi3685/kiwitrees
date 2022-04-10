@@ -360,6 +360,8 @@ switch ($phase) {
                             'work/config/',
                             'work/log/',
                             'work/backup/',
+                            'work/cache/',
+                            'work/temp/'
         ];
         $msg = '';
         foreach ($check_dirs as $d) {
@@ -373,12 +375,15 @@ switch ($phase) {
             echo '<b>'.$msg.'</b>';
         }
 
+
         $iw[0] = IsWritable('work');
         $iw[1] = IsWritable('work/config');
         $iw[2] = IsWritable('work/log');
         $iw[3] = IsWritable('work/backup');
+        $iw[4] = IsWritable('work/cache');
+        $iw[5] = IsWritable('work/temp');
 
-        if ($iw[0] && $iw[1] && $iw[2] && $iw[3]) {
+        if ($iw[0] && $iw[1] && $iw[2] && $iw[3] && $iw[4] && $iw[5]) {
             echo '<script>';
             echo 'self.location.href=\'install.php?language='.$language.'&phase=5&connstr='.$connstr.'\'';
             echo '</script>';
@@ -390,8 +395,11 @@ switch ($phase) {
         echo '<tr><td><strong>work/config</strong></td><td>'.Rechte('work/config').'</td><td>'.(($iw[1]) ? $img_ok : $img_failed).'</td></tr>';
         echo '<tr><td><strong>work/log</strong></td><td>'.Rechte('work/log').'</td><td>'.(($iw[2]) ? $img_ok : $img_failed).'</td></tr>';
         echo '<tr><td><strong>work/backup</strong></td><td>'.Rechte('work/backup').'</td><td>'.(($iw[3]) ? $img_ok : $img_failed).'</td></tr>';
+        echo '<tr><td><strong>work/cache</strong></td><td>'.Rechte('work/cache').'</td><td>'.(($iw[4]) ? $img_ok : $img_failed).'</td></tr>';
+        echo '<tr><td><strong>work/temp</strong></td><td>'.Rechte('work/temp').'</td><td>'.(($iw[5]) ? $img_ok : $img_failed).'</td></tr>';
+
         echo '<tr><td colspan="3" align="right"><input type="hidden" name="connstr" value="'.$connstr.'"><input class="Formbutton" type="submit" name="dir_check" value=" '.$lang['L_CHECK_DIRS'].' "></td></tr>';
-        if ($iw[0] && $iw[1] && $iw[2] && $iw[3]) {
+        if ($iw[0] && $iw[1] && $iw[2] && $iw[3] && $iw[4] && $iw[5]) {
             echo '<tr><td colspan="2">'.$lang['L_DIRS_CREATED'].'<br><br><input class="Formbutton" type="Button" value=" '.$lang['L_INSTALL_CONTINUE'].' " onclick="location.href=\'install.php?language='.$language.'&phase=5&connstr='.$connstr.'\'"></td></tr>';
         }
         echo '</table></form>';

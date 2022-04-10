@@ -581,7 +581,7 @@ class RC2 extends Base
                 case $gen_hi_opt_code:
                     $keys = $this->keys;
                 default:
-                    $keys = [];
+                    $keys = array();
                     foreach ($this->keys as $k => $v) {
                         $keys[$k] = '$keys[' . $k . ']';
                     }

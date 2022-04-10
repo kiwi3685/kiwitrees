@@ -30,7 +30,7 @@ function FilelisteCombo($fpath, $selected)
         if ('.' != $filename && '..' != $filename && !is_dir($fpath.$filename)) {
             $r .= '<option value="'.$filename.'" ';
             if ($filename == $selected) {
-                $r .= ' SELECTED';
+                $r .= ' selected';
             }
             $r .= '>'.$filename.'</option>'."\n";
         }
@@ -109,6 +109,7 @@ function FileList($multi = 0)
                 $sline = fgets($fp, 5000);
                 fclose($fp);
             }
+
             $statusline = ReadStatusline($sline);
 
             $but = ExtractBUT($files[$i]['name']);

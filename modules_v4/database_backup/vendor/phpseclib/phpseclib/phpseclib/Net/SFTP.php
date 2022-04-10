@@ -90,7 +90,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $packet_types = [];
+    var $packet_types = array();
 
     /**
      * Status Codes
@@ -99,7 +99,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $status_codes = [];
+    var $status_codes = array();
 
     /**
      * The Request ID
@@ -141,7 +141,7 @@ class SFTP extends SSH2
      * @see self::_initChannel()
      * @access private
      */
-    var $extensions = [];
+    var $extensions = array();
 
     /**
      * Server SFTP version
@@ -187,7 +187,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $packet_type_log = [];
+    var $packet_type_log = array();
 
     /**
      * Packet Log
@@ -196,7 +196,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $packet_log = [];
+    var $packet_log = array();
 
     /**
      * Error information
@@ -206,7 +206,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $sftp_errors = [];
+    var $sftp_errors = array();
 
     /**
      * Stat Cache
@@ -220,7 +220,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $stat_cache = [];
+    var $stat_cache = array();
 
     /**
      * Max SFTP Packet Size
@@ -250,7 +250,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $sortOptions = [];
+    var $sortOptions = array();
 
     /**
      * Canonicalization Flag
@@ -273,7 +273,7 @@ class SFTP extends SSH2
      * @var array
      * @access private
      */
-    var $requestBuffer = [];
+    var $requestBuffer = array();
 
     /**
      * Preserve timestamps on file downloads / uploads
@@ -752,7 +752,7 @@ class SFTP extends SSH2
      */
     function clearStatCache()
     {
-        $this->stat_cache = [];
+        $this->stat_cache = array();
     }
 
     /**
@@ -907,7 +907,7 @@ class SFTP extends SSH2
         }
 
         $path = explode('/', $path);
-        $new = [];
+        $new = array();
         foreach ($path as $dir) {
             if (!strlen($dir)) {
                 continue;
@@ -1017,7 +1017,7 @@ class SFTP extends SSH2
             return $files;
         }
 
-        $result = [];
+        $result = array();
         foreach ($files as $value) {
             if ($value == '.' || $value == '..') {
                 if ($relativeDir == '') {
@@ -1124,7 +1124,7 @@ class SFTP extends SSH2
 
         $this->_update_stat_cache($dir, array());
 
-        $contents = [];
+        $contents = array();
         while (true) {
             // http://tools.ietf.org/html/draft-ietf-secsh-filexfer-13#section-8.2.2
             // why multiple SSH_FXP_READDIR packets would be sent when the response to a single one can span arbitrarily many
@@ -1291,7 +1291,7 @@ class SFTP extends SSH2
      */
     function setListOrder()
     {
-        $this->sortOptions = [];
+        $this->sortOptions = array();
         $args = func_get_args();
         if (empty($args)) {
             return;
@@ -1346,10 +1346,10 @@ class SFTP extends SSH2
             //  1. a file was deleted and changed to a directory behind phpseclib's back
             //  2. it's a symlink. when lstat is done it's unclear what it's a symlink to
             if (is_object($temp)) {
-                $temp = [];
+                $temp = array();
             }
             if (!isset($temp[$dir])) {
-                $temp[$dir] = [];
+                $temp[$dir] = array();
             }
             if ($i === $max) {
                 if (is_object($temp[$dir]) && is_object($value)) {
@@ -1724,7 +1724,7 @@ class SFTP extends SSH2
     function chgrp($filename, $gid, $recursive = false)
     {
         $attr = $this->version < 4 ?
-            pack('N3', NET_SFTP_ATTR_UIDGID, $gid, -1) :
+            pack('N3', NET_SFTP_ATTR_UIDGID, -1, $gid) :
             pack('NNa*Na*', NET_SFTP_ATTR_OWNERGROUP, 0, '', strlen($gid), $gid);
 
         return $this->_setstat($filename, $attr, $recursive);
@@ -3162,7 +3162,7 @@ class SFTP extends SSH2
             user_error('Malformed file attributes');
             return array();
         }
-        $attr = [];
+        $attr = array();
         $attr[$key] = hexdec(bin2hex($this->_string_shift($response, 8)));
         if ($flags & NET_SFTP_ATTR_SUBSECOND_TIMES) {
             $attr+= extract(unpack('N' . $key . '_nseconds', $this->_string_shift($response, 4)));
@@ -3189,7 +3189,7 @@ class SFTP extends SSH2
             $format = 'Nflags';
         }
 
-        $attr = [];
+        $attr = array();
         if (strlen($response) < $length) {
             user_error('Malformed file attributes');
             return array();
@@ -3552,7 +3552,7 @@ class SFTP extends SSH2
         parent::_reset_connection($reason);
         $this->use_request_id = false;
         $this->pwd = false;
-        $this->requestBuffer = [];
+        $this->requestBuffer = array();
     }
 
     /**

@@ -1209,7 +1209,7 @@ class DES extends Base
             0x10081108, 0x10081508, 0x11081108, 0x11081508
         );
 
-        $keys = [];
+        $keys = array();
         for ($des_round = 0; $des_round < $this->des_rounds; ++$des_round) {
             // pad the key and remove extra characters as appropriate.
             $key = str_pad(substr($this->key, $des_round * 8, 8), 8, "\0");
@@ -1363,7 +1363,7 @@ class DES extends Base
             }
 
             // Creating code for en- and decryption.
-            $crypt_block = [];
+            $crypt_block = array();
             foreach (array(self::ENCRYPT, self::DECRYPT) as $c) {
                 /* Do the initial IP permutation. */
                 $crypt_block[$c] = '

@@ -283,7 +283,7 @@ class Rijndael extends Base
         $t3   = $tables[3];
         $sbox = $tables[4];
 
-        $state = [];
+        $state = array();
         $words = unpack('N*', $in);
 
         $c = $this->c;
@@ -305,7 +305,7 @@ class Rijndael extends Base
         // equation (7.4.7) is supposed to use addition instead of subtraction, so we'll do that here, as well.
 
         // [1] http://fp.gladman.plus.com/cryptography_technology/rijndael/aes.spec.v316.pdf
-        $temp = [];
+        $temp = array();
         for ($round = 1; $round < $Nr; ++$round) {
             $i = 0; // $c[0] == 0
             $j = $c[1];
@@ -384,7 +384,7 @@ class Rijndael extends Base
         $dt3   = $invtables[3];
         $isbox = $invtables[4];
 
-        $state = [];
+        $state = array();
         $words = unpack('N*', $in);
 
         $c  = $this->c;
@@ -398,7 +398,7 @@ class Rijndael extends Base
             $state[] = $word ^ $dw[++$wc];
         }
 
-        $temp = [];
+        $temp = array();
         for ($round = $Nr - 1; $round > 0; --$round) {
             $i = 0; // $c[0] == 0
             $j = $Nb - $c[1];
@@ -527,7 +527,7 @@ class Rijndael extends Base
         //        2. Apply InvMixColumn to all Round Keys except the first and the last one."
         // also, see fips-197.pdf#page=27, "5.3.5 Equivalent Inverse Cipher"
         list($dt0, $dt1, $dt2, $dt3) = $this->_getInvTables();
-        $temp = $this->w = $this->dw = [];
+        $temp = $this->w = $this->dw = array();
         for ($i = $row = $col = 0; $i < $length; $i++, $col++) {
             if ($col == $this->Nb) {
                 if ($row == 0) {

@@ -554,7 +554,7 @@ class Hash
         // Process the message in successive 512-bit chunks
         $chunks = str_split($m, 64);
         foreach ($chunks as $chunk) {
-            $w = [];
+            $w = array();
             for ($i = 0; $i < 16; $i++) {
                 extract(unpack('Ntemp', $this->_string_shift($chunk, 4)));
                 $w[] = $temp;
@@ -691,7 +691,7 @@ class Hash
         // Process the message in successive 1024-bit chunks
         $chunks = str_split($m, 128);
         foreach ($chunks as $chunk) {
-            $w = [];
+            $w = array();
             for ($i = 0; $i < 16; $i++) {
                 $temp = new BigInteger($this->_string_shift($chunk, 8), 256);
                 $temp->setPrecision(64);

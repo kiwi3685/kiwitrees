@@ -179,9 +179,13 @@ function SetDefault($load_default = false)
         // Testverbindung - Tabelle erstellen, nachschauen, ob es geklappt hat und dann wieder löschen
         $use = mysqli_select_db($config['dbconnection'], $found_db);
         if ($use) {
+            /*
+            Undefined variable: $old_db
             if (isset($old_db) && $found_db == $old_db) {
                 $databases['db_selected_index'] = $a;
             }
+            */
+
             $databases['Name'][$a] = $found_db;
             $databases['praefix'][$a] = '';
             $databases['command_before_dump'][$a] = '';
@@ -519,20 +523,20 @@ function WriteCronScript($restore_values = false)
     $cronscript .= '$cron_smtp="'.escape_specialchars($config['cron_smtp']).'";'.$nl;
     $cronscript .= '$cron_smtp_port="'.$config['cron_smtp_port'].'";'.$nl;
 
-    $cronscript .= 'cron_db_array='.my_implode($cron_db_array);
-    $cronscript .= 'cron_dbpraefix_array='.my_implode($cron_dbpraefix_array);
-    $cronscript .= 'cron_command_before_dump='.my_implode($cron_command_before_dump);
-    $cronscript .= 'cron_command_after_dump='.my_implode($cron_command_after_dump);
+    $cronscript .= '@cron_db_array='.my_implode($cron_db_array);
+    $cronscript .= '@cron_dbpraefix_array='.my_implode($cron_dbpraefix_array);
+    $cronscript .= '@cron_command_before_dump='.my_implode($cron_command_before_dump);
+    $cronscript .= '@cron_command_after_dump='.my_implode($cron_command_after_dump);
 
-    $cronscript .= 'ftp_server='.my_implode($config['ftp_server']);
-    $cronscript .= 'ftp_port='.my_implode($config['ftp_port'], 1);
-    $cronscript .= 'ftp_mode='.my_implode($config['ftp_mode'], 1);
-    $cronscript .= 'ftp_user='.my_implode($config['ftp_user']);
-    $cronscript .= 'ftp_pass='.my_implode($config['ftp_pass']);
-    $cronscript .= 'ftp_dir='.my_implode($config['ftp_dir']);
-    $cronscript .= 'ftp_timeout='.my_implode($config['ftp_timeout'], 1);
-    $cronscript .= 'ftp_useSSL='.my_implode($config['ftp_useSSL'], 1);
-    $cronscript .= 'ftp_transfer='.my_implode($config['ftp_transfer'], 1);
+    $cronscript .= '@ftp_server='.my_implode($config['ftp_server']);
+    $cronscript .= '@ftp_port='.my_implode($config['ftp_port'], 1);
+    $cronscript .= '@ftp_mode='.my_implode($config['ftp_mode'], 1);
+    $cronscript .= '@ftp_user='.my_implode($config['ftp_user']);
+    $cronscript .= '@ftp_pass='.my_implode($config['ftp_pass']);
+    $cronscript .= '@ftp_dir='.my_implode($config['ftp_dir']);
+    $cronscript .= '@ftp_timeout='.my_implode($config['ftp_timeout'], 1);
+    $cronscript .= '@ftp_useSSL='.my_implode($config['ftp_useSSL'], 1);
+    $cronscript .= '@ftp_transfer='.my_implode($config['ftp_transfer'], 1);
     $cronscript .= '$mp='.$config['multi_part'].';'.$nl;
     $cronscript .= '$multipart_groesse='.$config['multipart_groesse'].';'.$nl;
     $cronscript .= '$email_maxsize='.$config['email_maxsize'].';'.$nl;
@@ -650,7 +654,7 @@ function CreateDirsFTP()
     // Verbindung überprüfen
     if ((!$conn_id) || (!$login_result)) {
         echo $lang['L_FTP_NOTCONNECTED'];
-        echo $lang['L_CONNWITH']." $tinstall_ftp_server ".$lang['L_ASUSER']." $install_ftp_user_name ".$lang['L_NOTPOSSIBLE'];
+        echo $lang['L_CONNWITH']." $install_ftp_server ".$lang['L_ASUSER']." $install_ftp_user_name ".$lang['L_NOTPOSSIBLE'];
         return 0;
     } else {
         if (1 == $config['ftp_mode']) {

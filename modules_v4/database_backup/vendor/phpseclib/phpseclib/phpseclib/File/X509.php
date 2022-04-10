@@ -1567,7 +1567,7 @@ class X509
         $asn1 = new ASN1();
         $asn1->loadOIDs($this->oids);
 
-        $filters = [];
+        $filters = array();
         $type_utf8_string = array('type' => ASN1::TYPE_UTF8_STRING);
         $filters['tbsCertificate']['signature']['parameters'] = $type_utf8_string;
         $filters['tbsCertificate']['signature']['issuer']['rdnSequence']['value'] = $type_utf8_string;
@@ -2743,12 +2743,12 @@ class X509
 
         $asn1 = new ASN1();
         $asn1->loadOIDs($this->oids);
-        $filters = [];
+        $filters = array();
         $filters['value'] = array('type' => ASN1::TYPE_UTF8_STRING);
         $asn1->loadFilters($filters);
         $this->_mapOutDNs($dn, 'rdnSequence', $asn1);
         $dn = $dn['rdnSequence'];
-        $result = [];
+        $result = array();
         for ($i = 0; $i < count($dn); $i++) {
             if ($dn[$i][0]['type'] == $propName) {
                 $v = $dn[$i][0]['value'];
@@ -2845,7 +2845,7 @@ class X509
             case self::DN_ASN1:
                 $asn1 = new ASN1();
                 $asn1->loadOIDs($this->oids);
-                $filters = [];
+                $filters = array();
                 $filters['rdnSequence']['value'] = array('type' => ASN1::TYPE_UTF8_STRING);
                 $asn1->loadFilters($filters);
                 $this->_mapOutDNs($dn, 'rdnSequence', $asn1);
@@ -2856,7 +2856,7 @@ class X509
                 // constructed RDNs will not be canonicalized
                 $asn1 = new ASN1();
                 $asn1->loadOIDs($this->oids);
-                $filters = [];
+                $filters = array();
                 $filters['value'] = array('type' => ASN1::TYPE_UTF8_STRING);
                 $asn1->loadFilters($filters);
                 $result = '';
@@ -2893,10 +2893,10 @@ class X509
         $start = true;
         $output = '';
 
-        $result = [];
+        $result = array();
         $asn1 = new ASN1();
         $asn1->loadOIDs($this->oids);
-        $filters = [];
+        $filters = array();
         $filters['rdnSequence']['value'] = array('type' => ASN1::TYPE_UTF8_STRING);
         $asn1->loadFilters($filters);
         $this->_mapOutDNs($dn, 'rdnSequence', $asn1);
@@ -3307,7 +3307,7 @@ class X509
 
         $asn1->loadOIDs($this->oids);
 
-        $filters = [];
+        $filters = array();
         $filters['certificationRequestInfo']['subject']['rdnSequence']['value']
             = array('type' => ASN1::TYPE_UTF8_STRING);
 
@@ -3532,7 +3532,7 @@ class X509
 
         $asn1->loadOIDs($this->oids);
 
-        $filters = [];
+        $filters = array();
         $filters['tbsCertList']['issuer']['rdnSequence']['value']
             = array('type' => ASN1::TYPE_UTF8_STRING);
         $filters['tbsCertList']['signature']['parameters']
@@ -3720,7 +3720,7 @@ class X509
             $this->setExtension('id-ce-subjectKeyIdentifier', $subject->currentKeyIdentifier);
         }
 
-        $altName = [];
+        $altName = array();
 
         if (isset($subject->domains) && count($subject->domains)) {
             $altName = array_map(array('\phpseclib\File\X509', '_dnsName'), $subject->domains);
@@ -3729,7 +3729,7 @@ class X509
         if (isset($subject->ipAddresses) && count($subject->ipAddresses)) {
             // should an IP address appear as the CN if no domain name is specified? idk
             //$ips = count($subject->domains) ? $subject->ipAddresses : array_slice($subject->ipAddresses, 1);
-            $ipAddresses = [];
+            $ipAddresses = array();
             foreach ($subject->ipAddresses as $ipAddress) {
                 $encoded = $subject->_ipAddress($ipAddress);
                 if ($encoded !== false) {
@@ -3748,7 +3748,7 @@ class X509
         if ($this->caFlag) {
             $keyUsage = $this->getExtension('id-ce-keyUsage');
             if (!$keyUsage) {
-                $keyUsage = [];
+                $keyUsage = array();
             }
 
             $this->setExtension(
@@ -3758,7 +3758,7 @@ class X509
 
             $basicConstraints = $this->getExtension('id-ce-basicConstraints');
             if (!$basicConstraints) {
-                $basicConstraints = [];
+                $basicConstraints = array();
             }
 
             $this->setExtension(
@@ -4197,7 +4197,7 @@ class X509
                     return $false;
                 }
 
-                $root[$i] = [];
+                $root[$i] = array();
             }
 
             $root = &$root[$i];
@@ -4233,7 +4233,7 @@ class X509
                     return $false;
                 }
 
-                $root[$i] = [];
+                $root[$i] = array();
             }
 
             $root = &$root[$i];
@@ -4368,7 +4368,7 @@ class X509
     function _getExtensions($cert = null, $path = null)
     {
         $exts = $this->_extensions($cert, $path);
-        $extensions = [];
+        $extensions = array();
 
         if (is_array($exts)) {
             foreach ($exts as $extension) {
@@ -4575,7 +4575,7 @@ class X509
         }
 
         $attributes = $this->_subArray($csr, 'certificationRequestInfo/attributes');
-        $attrs = [];
+        $attrs = array();
 
         if (is_array($attributes)) {
             foreach ($attributes as $attribute) {
@@ -4933,7 +4933,7 @@ class X509
             return false;
         }
 
-        $result = [];
+        $result = array();
 
         if (is_array($rclist = $this->_subArray($crl, 'tbsCertList/revokedCertificates'))) {
             foreach ($rclist as $rc) {

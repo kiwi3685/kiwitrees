@@ -102,14 +102,17 @@ if (0 == $sql_to_display_data) {
     echo SQLOutput($out);
     $skip_mysql_execution = true;
 } else {
+    // auch alle Tabellen-Namen werden lowercase -> das kann zu Problemen fuehren
+    // siehe https://dev.mysql.com/doc/refman/5.7/en/identifier-case-sensitivity.html
     $sql_temp = strtolower($sql['sql_statement']);
 
     if ('select ' == substr($sql_temp, 0, 7)) {
         if (false !== strpos($sql_temp, ' limit ')) {
-            // es wurde ein eigenes Lmit im Query angegeben - eigene Berechnung abbrechen
+            // es wurde ein eigenes Limit im Query angegeben - eigene Berechnung abbrechen
             $numrowsabs = -1;
         } else {
-            $sql_temp = 'SELECT count(*) as anzahl FROM ('.$sql_temp.') as query;';
+            // anstatt sql_temp in lowerase hier das 'original' sql_statement verwenden
+            $sql_temp = "SELECT count(*) as anzahl FROM (".$sql['sql_statement'].") as query;";
             $res = @mod_query($sql_temp, false);
             if ($res) {
                 if ($row = mysqli_fetch_object($res)) {

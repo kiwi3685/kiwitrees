@@ -317,7 +317,7 @@ class Twofish extends Base
      * @var array
      * @access private
      */
-    var $K = [];
+    var $K = array();
 
     /**
      * The Key depended S-Table 0
@@ -325,7 +325,7 @@ class Twofish extends Base
      * @var array
      * @access private
      */
-    var $S0 = [];
+    var $S0 = array();
 
     /**
      * The Key depended S-Table 1
@@ -333,7 +333,7 @@ class Twofish extends Base
      * @var array
      * @access private
      */
-    var $S1 = [];
+    var $S1 = array();
 
     /**
      * The Key depended S-Table 2
@@ -341,7 +341,7 @@ class Twofish extends Base
      * @var array
      * @access private
      */
-    var $S2 = [];
+    var $S2 = array();
 
     /**
      * The Key depended S-Table 3
@@ -349,7 +349,7 @@ class Twofish extends Base
      * @var array
      * @access private
      */
-    var $S3 = [];
+    var $S3 = array();
 
     /**
      * Holds the last used key
@@ -416,7 +416,7 @@ class Twofish extends Base
         $q0 = $this->q0;
         $q1 = $this->q1;
 
-        $K = $S0 = $S1 = $S2 = $S3 = [];
+        $K = $S0 = $S1 = $S2 = $S3 = array();
 
         switch (strlen($this->key)) {
             case 16:
@@ -704,7 +704,7 @@ class Twofish extends Base
                     ';
                     break;
                 default:
-                    $K   = [];
+                    $K   = array();
                     for ($i = 0; $i < 40; ++$i) {
                         $K[] = '$K_' . $i;
                     }

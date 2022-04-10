@@ -491,7 +491,7 @@ class Blowfish extends Base
                     ';
                     break;
                 default:
-                    $p   = [];
+                    $p   = array();
                     for ($i = 0; $i < 18; ++$i) {
                         $p[] = '$p_' . $i;
                     }

@@ -29,7 +29,7 @@
 #
 ########################################################################################
 # Script-Version
-my $pcd_version='5.0.15';
+my $pcd_version='5.0.19';
 
 ########################################################################################
 # please enter the absolute path of the config-dir
@@ -83,7 +83,7 @@ $mod_ftpssl @multipartfiles %db_tables @tablenames $tablename $opttbl $command $
 
 $memory_limit=100000;
 $mysql_commentstring="-- ";
-$character_set="utf8";
+$character_set="utf8mb4";
 $sql_text='';
 $sql_file='';
 $punktzaehler=0;
@@ -480,7 +480,7 @@ sub DoDump {
         {
 
 			#www.betanet-web.ch - 30.04.2019
-			#Erweitert mit SQL Abfrage für Ausgabe Anzahl der Einträge in der Tabelle (analog PHP)
+			#Erweitert mit SQL Abfrage fÃ¼r Ausgabe Anzahl der EintrÃ¤ge in der Tabelle (analog PHP)
 			$sql_create = "SELECT COUNT(*) FROM `$tablename`";	
 			$sth = $dbh->prepare($sql_create);
             if (!$sth)
@@ -514,9 +514,13 @@ sub DoDump {
     #    Aufbau Backupflags (1 Zeichen pro Flag, 0 oder 1, 2=unbekannt)
     #    (complete inserts)(extended inserts)(ignore inserts)(delayed inserts)(downgrade)(lock tables)(optimize tables)
     #
+	my $version=0;
+	$version=$mysql_version[0];
+	while ($version =~ s/:/--/) {} 
+	while ($my_comment =~ s/:/--/) {} 
     $status_start=$mysql_commentstring."Status:$t:$r:";
     my $flags="1$optimize_tables_beforedump";
-    $status_end=":$dbname:perl:$pcd_version:$my_comment:$mysql_version[0]:$flags";
+    $status_end=":$dbname:perl:$pcd_version:$my_comment:$version:$flags";
     $status_end.=":$command_beforedump:$command_afterdump:$character_set:EXTINFO$st_e\n".$mysql_commentstring."Dump created on $CTIME_String by PERL Cron-Script\n".$mysql_commentstring."Dump by MyOOS Dumper (https://www.oos-shop.de/)\n\n";
 
 
@@ -595,7 +599,7 @@ sub DoDump {
                 # how many rows
 		
 				#www.betanet-web.ch - 30.04.2019
-				#Erweitert mit SQL Abfrage für Ausgabe Anzahl der Einträge in der Tabelle (analog PHP)
+				#Erweitert mit SQL Abfrage fÃ¼r Ausgabe Anzahl der EintrÃ¤ge in der Tabelle (analog PHP)
 				$sql_create = "SELECT COUNT(*) FROM `$tablename`";	
 				$sth = $dbh->prepare($sql_create);
                 if (!$sth)

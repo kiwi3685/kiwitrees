@@ -263,7 +263,7 @@ if (!function_exists('phpseclib_safe_serialize')) {
         if (isset($arr['__phpseclib_marker'])) {
             return '';
         }
-        $safearr = [];
+        $safearr = array();
         $arr['__phpseclib_marker'] = true;
         foreach (array_keys($arr) as $key) {
             // do not recurse on the '__phpseclib_marker' key itself, for smaller memory usage

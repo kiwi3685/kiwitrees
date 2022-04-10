@@ -354,7 +354,7 @@ switch ($action) {
         echo '<br><table>';
         echo $tbl_abfrage;
         echo '<tr><td><label for="sel_dump_encoding">'.$lang['L_FM_CHOOSE_ENCODING'].'</label></td>';
-        echo '<td><select name="sel_dump_encoding" id="sel_dump_encoding">';
+        echo '<td><select name="sel_dump_encoding" id="sel_dump_encoding">tt';
         echo make_options($config['mysql_possible_character_sets'], $dump['sel_dump_encoding']);
         echo '</select></td></tr>';
         echo '<tr><td>'.$lang['L_MYSQL_CONNECTION_ENCODING'].':</td><td><strong>'.$config['mysql_standard_character_set'].'</strong></td></tr>';
@@ -488,6 +488,8 @@ switch ($action) {
         echo '<div>';
         echo '<input class="Formbutton" name="restore" type="submit" value="'.$lang['L_FM_RESTORE'].'" onclick="if (!confirm(\''.$lang['L_FM_ALERTRESTORE1'].' `'.$databases['db_actual'].'`  '.$lang['L_FM_ALERTRESTORE2'].' `\' + GetSelectedFilename() + \'` '.$lang['L_FM_ALERTRESTORE3'].'\')) return false;">';
         echo '<input class="Formbutton" name="restore" type="submit" value="'.$lang['L_RESTORE_OF_TABLES'].'" onclick="document.forms[0].tblfrage.value=1;">';
+
+
         echo FileList();
         echo '<input type="hidden" name="tblfrage" value="0">';
         echo '</div></form>';
@@ -503,7 +505,7 @@ switch ($action) {
         echo '<input class="Formbutton" name="deleteauto" type="submit" value="'.$lang['L_FM_DELETEAUTO'].'"	onclick="if (!confirm(\''.$lang['L_FM_ASKDELETE3'].'\')) return false;">';
         echo '<input class="Formbutton" name="deleteall" type="submit" value="'.$lang['L_FM_DELETEALL'].'"	onclick="if (!confirm(\''.$lang['L_FM_ASKDELETE4'].'\')) return false;">';
         echo '<input class="Formbutton" name="deleteallfilter" type="submit" value="'.$lang['L_FM_DELETEALLFILTER'].$databases['db_actual'].$lang['L_FM_DELETEALLFILTER2'].'"	onclick="if (!confirm(\''.$lang['L_FM_ASKDELETE5'].$databases['db_actual'].$lang['L_FM_ASKDELETE5_2'].'\')) return false;">';
-
+echo 'tt';
         echo FileList().'</form>';
 
         echo '<h6>'.$lang['L_FM_FILEUPLOAD'].'</h6>';

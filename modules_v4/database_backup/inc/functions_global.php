@@ -364,6 +364,12 @@ function DirectoryWarnings($path = '')
     if (!is_writable($config['paths']['log'])) {
         $warn .= sprintf($lang['L_WRONG_RIGHTS'], $config['paths']['log'], '0777');
     }
+    if (!is_writable($config['paths']['temp'])) {
+        $warn .= sprintf($lang['L_WRONG_RIGHTS'], $config['paths']['temp'], '0777');
+    }
+    if (!is_writable($config['paths']['cache'])) {
+        $warn .= sprintf($lang['L_WRONG_RIGHTS'], $config['paths']['cache'], '0777');
+    }
 
     if ('' != $warn) {
         $warn = '<span class="warnung"><strong>'.$warn.'</strong></span>';
@@ -384,6 +390,12 @@ function TestWorkDir()
     }
     if (true === $ret) {
         $ret = SetFileRechte($config['paths']['config']);
+    }
+    if (true === $ret) {
+        $ret = SetFileRechte($config['paths']['temp']);
+    }
+    if (true === $ret) {
+        $ret = SetFileRechte($config['paths']['cache']);
     }
 
     if (true === $ret) {
@@ -481,9 +493,19 @@ function EmptyDB($dbn)
     @mysqli_query($config['dbconnection'], 'SET FOREIGN_KEY_CHECKS=1');
 }
 
+
 function AutoDelete()
 {
-    global $del_files, $config, $lang, $out;
+    global $del_files, $config, $lang, $out, $databases;
+
+
+    $available = [];
+    if ('' == $databases['multisetting']) {
+        $available[0] = $databases['db_actual'];
+    } else {
+        $available = explode(';', $databases['multisetting']);
+    }
+
     $out = '';
     if (isset($config['max_backup_files']) && ($config['max_backup_files'] > 0)) {
         //Files einlesen
@@ -494,31 +516,38 @@ function AutoDelete()
         // Build assoc Array $db=>$timestamp=>$filenames
         while (false !== ($filename = readdir($dh))) {
             if ('.' != $filename && '..' != $filename && !is_dir($config['paths']['backup'].$filename)) {
-                //statuszeile auslesen
-                if ('gz' == substr($filename, -2)) {
-                    $fp = gzopen($config['paths']['backup'].$filename, 'r');
-                    $sline = gzgets($fp, 40960);
-                    gzclose($fp);
-                } else {
-                    $fp = fopen($config['paths']['backup'].$filename, 'r');
-                    $sline = fgets($fp, 500);
-                    fclose($fp);
-                }
-                $statusline = ReadStatusline($sline);
-                if ('unknown' != $statusline['dbname']) {
-                    $tabellenanzahl = (-1 == $statusline['tables']) ? '' : $statusline['tables'];
-                    $eintraege = (-1 == $statusline['records']) ? '' : $statusline['records'];
-                    $part = ('MP_0' == $statusline['part'] || $statusline['part'] = '') ? 0 : substr($statusline['part'], 3);
-                    $db_name = $statusline['dbname'];
-                    $datum = substr($filename, strlen($db_name) + 1);
-                    $timestamp = substr($datum, 0, 16);
-                    if (!isset($files[$db_name])) {
-                        $files[$db_name] = [];
+                foreach ($available as $item) {
+                    $pos = strpos($filename, $item);
+                    if ($pos === false) {
+                        // Der Datenbankname wurde nicht in der Konfiguration gefunden;
+                    } else {
+                        //statuszeile auslesen
+                        if ('gz' == substr($filename, -2)) {
+                            $fp = gzopen($config['paths']['backup'].$filename, 'r');
+                            $sline = gzgets($fp, 40960);
+                            gzclose($fp);
+                        } else {
+                            $fp = fopen($config['paths']['backup'].$filename, 'r');
+                            $sline = fgets($fp, 500);
+                            fclose($fp);
+                        }
+                        $statusline = ReadStatusline($sline);
+                        if ('unknown' != $statusline['dbname']) {
+                            $tabellenanzahl = (-1 == $statusline['tables']) ? '' : $statusline['tables'];
+                            $eintraege = (-1 == $statusline['records']) ? '' : $statusline['records'];
+                            $part = ('MP_0' == $statusline['part'] || $statusline['part'] = '') ? 0 : substr($statusline['part'], 3);
+                            $db_name = $statusline['dbname'];
+                            $datum = substr($filename, strlen($db_name) + 1);
+                            $timestamp = substr($datum, 0, 16);
+                            if (!isset($files[$db_name])) {
+                                $files[$db_name] = [];
+                            }
+                            if (!isset($files[$db_name][$timestamp])) {
+                                $files[$db_name][$timestamp] = [];
+                            }
+                            $files[$db_name][$timestamp][] = $filename;
+                        }
                     }
-                    if (!isset($files[$db_name][$timestamp])) {
-                        $files[$db_name][$timestamp] = [];
-                    }
-                    $files[$db_name][$timestamp][] = $filename;
                 }
             }
         }
@@ -886,7 +915,7 @@ function SendViaSFTP($i, $source_file, $conn_msg = 1)
         ])
     ));
 
-    // Upload der Datei
+    // Upload the file
     $path = $source_file;
     $source = $config['paths']['backup'].$source_file;
 
@@ -896,12 +925,12 @@ function SendViaSFTP($i, $source_file, $conn_msg = 1)
         $filesystem->write($path, $source);
     } catch (Exception $e) {
         // handle the error
-        echo 'Exception: ',  $e->getMessage(), "\n";
-        $s .= '<br><span class="error">'.$lang['L_CONN_NOT_POSSIBLE'].'</span>';
+        $out .= '<br>Exception: ' .  $e->getMessage();
+        $out .= '<br><span class="error">'.$lang['L_CONN_NOT_POSSIBLE'].'</span>';
         $pass = 3;
     }
 
-    // Upload-Status überprüfen
+    // Check upload status
     if (3 == $pass) {
         $out .= '<span class="error">'.$lang['L_FTPCONNERROR3']."<br>($source -> $path)</span><br>";
     } else {
@@ -912,7 +941,6 @@ function SendViaSFTP($i, $source_file, $conn_msg = 1)
 
 function Realpfad($p)
 {
-    global $config;
     $dir = dirname(__FILE__);
     $dir = str_replace('inc', '', $dir);
     $dir = str_replace('\\', '/', $dir);
@@ -923,16 +951,17 @@ function Realpfad($p)
     return $dir;
 }
 
-// liest die Dateiliste aller vorhanden Konfigurationsfiles
+// reads the file list of all existing configuration files
 function get_config_filelist()
 {
     global $config;
     $default = $config['config_file'];
-    clearstatcache();
-    $dh = opendir($config['paths']['config']);
+    $filters = array('..', '.');
+    $directory = $config['paths']['config'];
+    $dirs = array_diff(scandir($directory), $filters);
     $r = '';
-    while (false !== ($filename = readdir($dh))) {
-        if ('.' != $filename && '..' != $filename && !is_dir($config['paths']['config'].$filename) && '.conf.php' == substr($filename, -9)) {
+    foreach ($dirs as $filename) {
+        if (!is_dir($config['paths']['config'].$filename) && '.conf.php' == substr($filename, -9)) {
             $f = substr($filename, 0, strlen($filename) - 9);
             $r .= '<option value="'.$f.'" ';
             if ($f == $default) {
@@ -954,7 +983,7 @@ function GetThemes()
         if ('.' != $filename && '..' != $filename && is_dir($config['paths']['root'].'css/'.$filename) && '.' != substr($filename, 0, 1) && '_' != substr($filename, 0, 1)) {
             $r .= '<option value="'.$filename.'" ';
             if ($filename == $default) {
-                $r .= ' SELECTED';
+                $r .= ' selected';
             }
             $r .= '>&nbsp;&nbsp;'.$filename.'&nbsp;&nbsp;</option>'."\n";
         }
@@ -980,7 +1009,7 @@ function GetLanguageCombo($k = 'op', $class = '', $name = '', $start = '', $end 
         if ('op' == $k) {
             $r .= $start.'<option value="'.$filename.'" ';
             if ($filename == $default) {
-                $r .= ' SELECTED';
+                $r .= ' selected';
             }
             $r .= ' class="'.$class.'">&nbsp;&nbsp;'.$lang[$filename].'&nbsp;&nbsp;</option>'.$end."\n";
         } elseif ('radio' == $k) {

@@ -332,7 +332,7 @@ function BrowseInput(el)
     echo '<br><br><br>';
     echo MODFooter();
     ob_end_flush();
-	exit();
+    exit();
 }
 
 function FormHiddenParams()

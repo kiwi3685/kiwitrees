@@ -67,7 +67,7 @@ $lang['L_WRONG_RIGHTS'] = "Die Datei oder das Verzeichnis '%s' ist für mich nic
 Entweder hat sie/es den falschen Besitzer (Owner) oder die falschen Rechte (Chmod).<br>
 Bitte setze die richtigen Attribute mit Deinem FTP-Programm. <br>
 Die Datei oder das Verzeichnis benötigt die Rechte %s.<br>";
-$lang['L_CANT_CREATE_DIR'] = "Ich konntes das Verzeichnis '%s' nicht erstellen.
+$lang['L_CANT_CREATE_DIR'] = "Ich konnte das Verzeichnis '%s' nicht erstellen.
 Bitte erstelle es mit Deinem FTP-Programm.";
 $lang['L_CANT_CREATE_DIR'] = "Ich konnte das '%s'-Verzeichnis nicht erstellen.
 Bitte mit Deinem FTP-Programm erstellen.";
@@ -75,9 +75,16 @@ $lang['L_TABLE_TYPE'] = 'Typ';
 $lang['L_CHECK'] = 'prüfen';
 $lang['L_OS'] = 'Betriebssystem';
 $lang['L_MOD_VERSION'] = 'MyOOS [Dumper] - Version';
+$lang['L_NEW_MOD_VERSION'] = 'Neue Version';
+$lang['L_NEW_MOD_VERSION_INFO'] = 'Es ist eine neue Version von MyOOS [Dumper] verfügbar.';
+$lang['L_UPDATED_IMPORTANT'] = 'Wichtig: Sichere vor der Aktualisierung bitte Deine Dateien.';
+$lang['L_UPDATE'] = 'Jetzt aktualisieren';
 $lang['L_MYSQL_VERSION'] = 'MySQL-Version';
 $lang['L_PHP_VERSION'] = 'PHP-Version';
 $lang['L_MAX_EXECUTION_TIME'] = 'Maximale Ausführungszeit';
 $lang['L_PHP_EXTENSIONS'] = 'PHP-Erweiterungen';
 $lang['L_MEMORY'] = 'Speicher';
-$lang['L_FILE_MISSING'] = 'konnte Datei nicht finden';
+$lang['L_INSTALLING_UPDATES'] = 'Installation von Updates';
+$lang['L_UPDATE_SUCCESSFUL'] = 'Aktualisierung erfolgreich';
+$lang['L_UPDATE_FAILED'] = 'Aktualisierung fehlgeschlagen';
+$lang['L_UP_TO_DATE'] = 'Aktuelle Version ist auf dem neuesten Stand';

@@ -245,7 +245,7 @@ class MODTemplate
         {
                $filename = $this->root.'/'.$filename;
         }
-*/
+        */
         if (!file_exists($filename)) {
             exit("Template->make_filename(): Error - file $filename does not exist");
         }

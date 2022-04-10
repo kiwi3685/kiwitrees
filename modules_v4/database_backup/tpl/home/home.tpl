@@ -1,7 +1,16 @@
 <h5>{L_STATUSINFORMATIONEN}</h5>
 <!-- BEGIN DIRECTORY_WARNINGS -->
-	{DIRECTORY_WARNINGS.MSG}
+	{DIRECTORY_WARNINGS.MSG}<br>
 <!-- END DIRECTORY_WARNINGS -->
+
+<!-- BEGIN NEW_VERSION_EXISTS -->
+	<br>
+	<span class="error">{L_NEW_MOD_VERSION_INFO}</span><br>
+	<span class="warnung"><strong>{L_UPDATED_IMPORTANT}</strong></span><br>
+	<br>
+	<a href="main.php?action=update" class="Formbutton">{L_UPDATE}</a><br>
+	<br>
+<!-- END NEW_VERSION_EXISTS -->
 
 <!-- BEGIN DIRECTORY_PROTECTION_STATUS -->
 	{DIRECTORY_PROTECTION_STATUS.MSG}<br>
@@ -25,6 +34,11 @@
 <h6>{L_VERSIONSINFORMATIONEN}</h6>
 <img src="css/{THEME}/pics/loveyourdata.gif" align="right" alt="love your data" title="love your data">
 {L_MOD_VERSION}: <strong>{MOD_VERSION}</strong><br>
+
+<!-- BEGIN UPDATE_INFO -->
+	<span class="error">{UPDATE_INFO.MSG}</span><br>
+<!-- END UPDATE_INFO -->
+
 {L_OS}: <strong>{OS}</strong> ({OS_EXT})<br>
 {L_MYSQL_VERSION}: <strong>{MYSQL_VERSION}</strong><br>
 {L_PHP_VERSION}: <strong>{PHP_VERSION}</strong>&nbsp;&nbsp;{L_MEMORY}: <strong>{MEMORY}</strong>&nbsp;&nbsp;

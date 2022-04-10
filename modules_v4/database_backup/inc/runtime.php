@@ -23,7 +23,7 @@ if (function_exists('date_default_timezone_set')) {
 }
 //Konstanten
 if (!defined('MOD_VERSION')) {
-    define('MOD_VERSION', '5.0.15');
+    define('MOD_VERSION', '5.0.19');
 }
 if (!defined('MOD_OS')) {
     define('MOD_OS', PHP_OS);
@@ -44,7 +44,10 @@ $config['paths']['work'] = 'work/';
 $config['paths']['backup'] = $config['paths']['work'].'backup/';
 $config['paths']['log'] = $config['paths']['work'].'log/';
 $config['paths']['config'] = $config['paths']['work'].'config/';
+$config['paths']['temp'] = $config['paths']['root'].$config['paths']['work'].'temp/';
+$config['paths']['cache'] = $config['paths']['root'].$config['paths']['work'].'cache/';
 $config['paths']['perlexec'] = 'mod_cron/';
+
 
 if (isset($_SESSION['config_file'])) {
     $config['config_file'] = $_SESSION['config_file'];

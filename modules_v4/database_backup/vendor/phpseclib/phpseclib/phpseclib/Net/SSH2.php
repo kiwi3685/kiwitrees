@@ -61,23 +61,6 @@ use phpseclib\Crypt\Twofish;
 use phpseclib\Math\BigInteger; // Used to do Diffie-Hellman key exchange and DSA/RSA signature verification.
 use phpseclib\System\SSH\Agent;
 
-/**#@+
- * @access private
- */
-/**
- * No compression
- */
-define('NET_SSH2_COMPRESSION_NONE',  1);
-/**
- * zlib compression
- */
-define('NET_SSH2_COMPRESSION_ZLIB', 2);
-/**
- * zlib@openssh.com
- */
-define('NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH', 3);
-/**#@-*/
-
 /**
  * Pure-PHP implementation of SSHv2.
  *
@@ -87,6 +70,25 @@ define('NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH', 3);
  */
 class SSH2
 {
+    /**#@+
+     * Compression Types
+     *
+     * @access private
+     */
+    /**
+     * No compression
+     */
+    const NET_SSH2_COMPRESSION_NONE = 1;
+    /**
+     * zlib compression
+     */
+    const NET_SSH2_COMPRESSION_ZLIB = 2;
+    /**
+     * zlib@openssh.com
+     */
+    const NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH = 3;
+    /**#@-*/
+
     /**#@+
      * Execution Bitmap Masks
      *
@@ -206,7 +208,7 @@ class SSH2
      * @var string
      * @access private
      */
-    var $errors = [];
+    var $errors = array();
 
     /**
      * Server Identifier
@@ -350,7 +352,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $preferred = [];
+    var $preferred = array();
 
     /**
      * Block Size for Server to Client Encryption
@@ -470,7 +472,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $message_numbers = [];
+    var $message_numbers = array();
 
     /**
      * Disconnection Message 'reason codes' defined in RFC4253
@@ -479,7 +481,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $disconnect_reasons = [];
+    var $disconnect_reasons = array();
 
     /**
      * SSH_MSG_CHANNEL_OPEN_FAILURE 'reason codes', defined in RFC4254
@@ -488,7 +490,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $channel_open_failure_reasons = [];
+    var $channel_open_failure_reasons = array();
 
     /**
      * Terminal Modes
@@ -498,7 +500,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $terminal_modes = [];
+    var $terminal_modes = array();
 
     /**
      * SSH_MSG_CHANNEL_EXTENDED_DATA's data_type_codes
@@ -508,7 +510,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $channel_extended_data_type_codes = [];
+    var $channel_extended_data_type_codes = array();
 
     /**
      * Send Sequence Number
@@ -542,7 +544,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $server_channels = [];
+    var $server_channels = array();
 
     /**
      * Channel Buffers
@@ -555,7 +557,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $channel_buffers = [];
+    var $channel_buffers = array();
 
     /**
      * Channel Status
@@ -566,7 +568,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $channel_status = [];
+    var $channel_status = array();
 
     /**
      * Packet Size
@@ -577,7 +579,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $packet_size_client_to_server = [];
+    var $packet_size_client_to_server = array();
 
     /**
      * Message Number Log
@@ -586,7 +588,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $message_number_log = [];
+    var $message_number_log = array();
 
     /**
      * Message Log
@@ -595,7 +597,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $message_log = [];
+    var $message_log = array();
 
     /**
      * The Window Size
@@ -632,7 +634,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $window_size_server_to_client = [];
+    var $window_size_server_to_client = array();
 
     /**
      * Window size, client to server
@@ -643,7 +645,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $window_size_client_to_server = [];
+    var $window_size_client_to_server = array();
 
     /**
      * Server signature
@@ -820,7 +822,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $keyboard_requests_responses = [];
+    var $keyboard_requests_responses = array();
 
     /**
      * Banner Message
@@ -985,7 +987,7 @@ class SSH2
      * @var array
      * @access private
      */
-    var $auth = [];
+    var $auth = array();
 
     /**
      * The authentication methods that may productively continue authentication.
@@ -1002,7 +1004,7 @@ class SSH2
      * @var int
      * @access private
      */
-    var $compress = NET_SSH2_COMPRESSION_NONE;
+    var $compress = self::NET_SSH2_COMPRESSION_NONE;
 
     /**
      * Decompression method
@@ -1010,7 +1012,7 @@ class SSH2
      * @var resource|object
      * @access private
      */
-    var $decompress = NET_SSH2_COMPRESSION_NONE;
+    var $decompress = self::NET_SSH2_COMPRESSION_NONE;
 
     /**
      * Compression context
@@ -1292,8 +1294,8 @@ class SSH2
                     $read = array($this->fsock);
                     $write = $except = null;
                     $start = microtime(true);
-                    $sec = floor($this->curTimeout);
-                    $usec = 1000000 * ($this->curTimeout - $sec);
+                    $sec = (int) floor($this->curTimeout);
+                    $usec = (int) (1000000 * ($this->curTimeout - $sec));
                     // on windows this returns a "Warning: Invalid CRT parameters detected" error
                     // the !count() is done as a workaround for <https://bugs.php.net/42682>
                     if (!@stream_select($read, $write, $except, $sec, $usec) && !count($read)) {
@@ -1308,6 +1310,7 @@ class SSH2
                 if (strlen($temp) == 255) {
                     continue;
                 }
+
                 if ($temp === false) {
                     return false;
                 }
@@ -1396,7 +1399,7 @@ class SSH2
     {
         $identifier = 'SSH-2.0-phpseclib_2.0';
 
-        $ext = [];
+        $ext = array();
         if (function_exists('sodium_crypto_box_publickey_from_secretkey')) {
             $ext[] = 'libsodium';
         }
@@ -1644,9 +1647,9 @@ class SSH2
         }
 
         $compression_map = array(
-            'none' => NET_SSH2_COMPRESSION_NONE,
-            'zlib' => NET_SSH2_COMPRESSION_ZLIB,
-            'zlib@openssh.com' => NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH
+            'none' => self::NET_SSH2_COMPRESSION_NONE,
+            'zlib' => self::NET_SSH2_COMPRESSION_ZLIB,
+            'zlib@openssh.com' => self::NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH
         );
 
         $compression_algorithm_out = $this->_array_intersect_first($c2s_compression_algorithms, $this->compression_algorithms_client_to_server);
@@ -2259,9 +2262,9 @@ class SSH2
         while (count($args)) {
             if (!$this->auth_methods_to_continue || !$this->smartMFA) {
                 $newargs = $args;
-                $args = [];
+                $args = array();
             } else {
-                $newargs = [];
+                $newargs = array();
                 foreach ($this->auth_methods_to_continue as $method) {
                     switch ($method) {
                         case 'publickey':
@@ -2301,6 +2304,10 @@ class SSH2
                             }
                     }
                 }
+            }
+
+            if (!count($newargs)) {
+                return false;
             }
 
             foreach ($newargs as $arg) {
@@ -3497,8 +3504,8 @@ class SSH2
                     $this->curTimeout-= $elapsed;
                 }
 
-                $sec = floor($this->curTimeout);
-                $usec = 1000000 * ($this->curTimeout - $sec);
+                $sec = (int)floor($this->curTimeout);
+                $usec = (int)(1000000 * ($this->curTimeout - $sec));
 
                 // on windows this returns a "Warning: Invalid CRT parameters detected" error
                 if (!@stream_select($read, $write, $except, $sec, $usec) && !count($read)) {
@@ -3585,11 +3592,11 @@ class SSH2
         }
 
         switch ($this->decompress) {
-            case NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH:
+            case self::NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH:
                 if (!$this->isAuthenticated()) {
                     break;
                 }
-            case NET_SSH2_COMPRESSION_ZLIB:
+            case self::NET_SSH2_COMPRESSION_ZLIB:
                 if ($this->regenerate_decompression_context) {
                     $this->regenerate_decompression_context = false;
 
@@ -4177,16 +4184,16 @@ class SSH2
         }
 
         switch ($this->compress) {
-            case NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH:
+            case self::NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH:
                 if (!$this->isAuthenticated()) {
                     break;
                 }
-            case NET_SSH2_COMPRESSION_ZLIB:
+            case self::NET_SSH2_COMPRESSION_ZLIB:
                 if (!$this->regenerate_compression_context) {
                     $header = '';
                 } else {
                     $this->regenerate_compression_context = false;
-                    $this->compress_context = deflate_init(ZLIB_ENCODING_RAW, ['window' => 15]);
+                    $this->compress_context = deflate_init(ZLIB_ENCODING_RAW, array('window' => 15));
                     $header = "\x78\x9C";
                 }
                 if ($this->compress_context) {
@@ -4866,7 +4873,7 @@ class SSH2
             );
         }
 
-        $ciphers = [];
+        $ciphers = array();
         foreach ($engines as $engine) {
             foreach ($algos as $algo) {
                 $obj = $this->_encryption_algorithm_to_crypt_instance($algo);
@@ -4939,9 +4946,9 @@ class SSH2
         $this->_connect();
 
         $compression_map = array(
-            NET_SSH2_COMPRESSION_NONE => 'none',
-            NET_SSH2_COMPRESSION_ZLIB => 'zlib',
-            NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH => 'zlib@openssh.com'
+            self::NET_SSH2_COMPRESSION_NONE => 'none',
+            self::NET_SSH2_COMPRESSION_ZLIB => 'zlib',
+            self::NET_SSH2_COMPRESSION_ZLIB_AT_OPENSSH => 'zlib@openssh.com'
         );
 
         return array(
