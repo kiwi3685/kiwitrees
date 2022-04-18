@@ -113,6 +113,11 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 	}
 
 	// Implement KT_Module_Tab
+	public function defaultAccessLevel() {
+		return KT_PRIV_PUBLIC;
+	}
+
+	// Implement KT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
 		require_once KT_ROOT . KT_MODULES_DIR . 'googlemap/googlemap.php';
@@ -1789,8 +1794,9 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			->execute(array(KT_GED_ID))
 			->fetchOne();
 	}
+
 	private function street_view() {
-	header('Content-type: text/html; charset=UTF-8');
+		header('Content-type: text/html; charset=UTF-8');
 
 		?>
 		<html>
@@ -2092,9 +2098,5 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 		<?php
 	}
 
-	// Implement KT_Module_Tab
-	public function defaultAccessLevel() {
-		return KT_PRIV_PUBLIC;
-	}
 
 }
