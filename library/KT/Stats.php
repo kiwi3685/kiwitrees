@@ -555,12 +555,12 @@ class KT_Stats {
 	}
 
 	function totalBirths() {
+		$list = array();
+
         $rows = KT_DB::prepare("
-            SELECT DISTINCT i_id
+            SELECT i_id
             FROM `##individuals`
             WHERE `i_file`=?
-            AND (`i_gedcom` REGEXP '\n1 BIRT Y\n1' OR `i_gedcom` REGEXP '\n1 BIRT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)')
-            ORDER BY i_id
         ")
         ->execute(array($this->_ged_id))
         ->fetchAll();
@@ -569,10 +569,17 @@ class KT_Stats {
             $list[] = $row->i_id;
         }
 
-		return array('list' => $list, 'count' => count($list));
+		if ($list != NULL) {
+			return array('list' => $list, 'count' => count($list));
+		} else {
+			return array('list' => KT_I18N::translate('None recorded'), 'count' => 0);
+		}
+
 	}
 
     function totalDatedBirths() {
+		$list = array();
+
         $rows = KT_DB::prepare("
             SELECT DISTINCT d_gid
             FROM `##dates`
@@ -588,7 +595,11 @@ class KT_Stats {
             $list[] = $row->d_gid;
         }
 
-		return array('list' => $list, 'count' => count($list));
+		if ($list != NULL) {
+			return array('list' => $list, 'count' => count($list));
+		} else {
+			return array('list' => KT_I18N::translate('None recorded'), 'count' => 0);
+		}
 
 	}
 
@@ -596,17 +607,27 @@ class KT_Stats {
         $total = $this->totalBirths();
         $dated = $this->totalDatedBirths();
 
-        $undated = array_diff($total['list'], $dated['list']);
+		if ($total != NULL && $dated != NULL && !is_string($total['list']) && !is_string($dated['list'])) {
+			$undated = array_diff($total['list'], $dated['list']);
 
-		return array('list' => $undated, 'count' => count($undated));
+			return array('list' => $undated, 'count' => count($undated));
+
+		} else {
+
+			return array('list' => KT_I18N::translate('None recorded'), 'count' => 0);
+
+		}
+
 	}
 
 	function totalDeaths() {
+		$list = array();
+
         $rows = KT_DB::prepare("
             SELECT DISTINCT i_id
             FROM `##individuals`
             WHERE `i_file`=?
-            AND (`i_gedcom` REGEXP '\n1 DEAT Y\n1' OR `i_gedcom` REGEXP '\n1 DEAT(.)*(\n[2-9].+)*\n2 (DATE|PLAC|SOUR)')
+			AND (`i_gedcom` REGEXP '\n1 DEAT Y\n' OR `i_gedcom` REGEXP '\n1 DEAT.*\n(([2-9] .*\n)*)?2 (DATE|PLAC|SOUR)')
             ORDER BY i_id
         ")
         ->execute(array($this->_ged_id))
@@ -616,10 +637,17 @@ class KT_Stats {
             $list[] = $row->i_id;
         }
 
-		return array('list' => $list, 'count' => count($list));
+		if ($list != NULL) {
+			return array('list' => $list, 'count' => count($list));
+		} else {
+			return array('list' => KT_I18N::translate('None recorded'), 'count' => 0);
+		}
+
 	}
 
     function totalDatedDeaths() {
+		$list = array();
+
         $rows = KT_DB::prepare("
             SELECT DISTINCT d_gid
             FROM `##dates`
@@ -635,17 +663,28 @@ class KT_Stats {
             $list[] = $row->d_gid;
         }
 
-		return array('list' => $list, 'count' => count($list));
+		if ($list != NULL) {
+			return array('list' => $list, 'count' => count($list));
+		} else {
+			return array('list' => KT_I18N::translate('None recorded'), 'count' => 0);
+		}
 
 	}
 
     function totalUndatedDeaths() {
         $total = $this->totalDeaths();
         $dated = $this->totalDatedDeaths();
-        $list  = array();
-        $undated = array_diff($total['list'], $dated['list']);
 
-		return array('list'=>$undated, 'count'=>count($undated));
+		if ($total != NULL && $dated != NULL && !is_string($total['list']) && !is_string($dated['list'])) {
+			$undated = array_diff($total['list'], $dated['list']);
+
+			return array('list' => $undated, 'count' => count($undated));
+
+		} else {
+
+			return array('list' => KT_I18N::translate('None recorded'), 'count' => 0);
+
+		}
 	}
 
     function totalEventsBirth() {
@@ -765,7 +804,7 @@ class KT_Stats {
 	// However, SQL cannot provide the same logic used by Person::isDead().
 	function _totalLiving() {
 		return
-			KT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (".KT_EVENTS_DEAT.")'")
+			KT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\n1 (".KT_EVENTS_DEAT.")'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -4246,8 +4285,8 @@ class KT_Stats {
 	// LISTS                                                                     //
 	///////////////////////////////////////////////////////////////////////////////
 
-	static function individualsList($ged_id, $option = '') {
-		$sql	= "SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=" . $ged_id;
+	static function individualsList($ged_id, $option = false) {
+		$sql	= "SELECT i_id AS xref FROM `##individuals` WHERE i_file=" . $ged_id;
 		if ($option) {
 			switch ($option){
 				case 'male':
@@ -4260,10 +4299,10 @@ class KT_Stats {
 					$sql .= " AND i_gedcom NOT LIKE '%1 SEX M%' AND i_gedcom NOT LIKE '%1 SEX F%'";
 					break;
 				case 'living':
-					$sql .= " AND i_gedcom NOT REGEXP '\\n1 (" . KT_EVENTS_DEAT . ")'";
+					$sql .= " AND i_gedcom NOT REGEXP '\n1 (" . KT_EVENTS_DEAT . ")'";
 					break;
 				case 'deceased':
-					$sql .= " AND i_gedcom REGEXP '\\n1 (" . KT_EVENTS_DEAT . ")'";
+					$sql .= " AND i_gedcom REGEXP '\n1 (" . KT_EVENTS_DEAT . ")'";
 					break;
 				case 'withsour':
 					$sql = "
@@ -4295,7 +4334,7 @@ class KT_Stats {
 		$list	= array();
 		foreach ($rows as $row) {
 			$person = KT_Person::getInstance($row['xref']);
-				$list[] = clone $person;
+			$list[] = clone $person;
 		}
 		return $list;
 

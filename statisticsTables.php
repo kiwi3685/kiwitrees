@@ -40,29 +40,32 @@ $tag	= KT_Filter::get('tag');
 
 switch ($table) {
 	case 'totalIndis':
-		$title 		= KT_I18N::translate('Total individuals');
-		$content	= format_indi_table($stats->individualsList($ged_id));
-		switch ($option){
-			case 'male':
-				$title 		= KT_I18N::translate('Total males');
-				$content	= format_indi_table($stats->individualsList($ged_id, 'male'));
-				break;
-			case 'female':
-				$title 		= KT_I18N::translate('Total females');
-				$content	= format_indi_table($stats->individualsList($ged_id, 'female'));
-				break;
-			case 'unknown':
-				$title 		= KT_I18N::translate('Total unknown gender');
-				$content	= format_indi_table($stats->individualsList($ged_id, 'unknown'));
-				break;
-			case 'living':
-				$title 		= KT_I18N::translate('Total living');
-				$content	= format_indi_table($stats->individualsList($ged_id, 'living'));
-				break;
-			case 'deceased':
-				$title 		= KT_I18N::translate('Total deceased');
-				$content	= format_indi_table($stats->individualsList($ged_id, 'deceased'));
-				break;
+		if ($option == NULL) {
+			$title 		= KT_I18N::translate('Total individuals');
+			$content	= format_indi_table($stats->individualsList($ged_id));
+		} else {
+			switch ($option){
+				case 'male':
+					$title 		= KT_I18N::translate('Total males');
+					$content	= format_indi_table($stats->individualsList($ged_id, 'male'));
+					break;
+				case 'female':
+					$title 		= KT_I18N::translate('Total females');
+					$content	= format_indi_table($stats->individualsList($ged_id, 'female'));
+					break;
+				case 'unknown':
+					$title 		= KT_I18N::translate('Total unknown gender');
+					$content	= format_indi_table($stats->individualsList($ged_id, 'unknown'));
+					break;
+				case 'living':
+					$title 		= KT_I18N::translate('Total living');
+					$content	= format_indi_table($stats->individualsList($ged_id, 'living'));
+					break;
+				case 'deceased':
+					$title 		= KT_I18N::translate('Total deceased');
+					$content	= format_indi_table($stats->individualsList($ged_id, 'deceased'));
+					break;
+			}
 		}
 	break;
 	case 'century': {
@@ -168,6 +171,7 @@ switch ($table) {
 }
 
 ?>
+
 <div id="statTables-page">
 	<h2 class="center">
 		<?php echo $title; ?>
@@ -183,3 +187,5 @@ switch ($table) {
 		<?php echo $content; ?>
 	</div>
 </div>
+
+<?php
