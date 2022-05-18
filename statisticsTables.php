@@ -37,7 +37,6 @@ $table	= KT_Filter::get('table');
 $option	= KT_Filter::get('option');
 $tag	= KT_Filter::get('tag');
 
-
 switch ($table) {
 	case 'totalIndis':
 		if ($option == NULL) {
@@ -137,6 +136,7 @@ switch ($table) {
         $list       = $stats->totalBirths();
         $title 		= KT_I18N::translate('Total births');
         $content	= format_indi_table($list['list']);
+		$content	= format_indi_table($list['list']);
     break;
     case 'datedBirths' :
         $list       = $stats->totaldatedBirths();
