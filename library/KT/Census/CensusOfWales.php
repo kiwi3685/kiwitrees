@@ -41,7 +41,7 @@ class KT_Census_CensusOfWales extends KT_Census_Census implements KT_Census_Cens
 			new KT_Census_CensusOfWales1901(),
 			new KT_Census_CensusOfWales1911(),
 			new KT_Census_CensusOfWales1921(),
-			new KT_Census_RegisterOfWales1939(),
+			new KT_Census_CensusOfWales1939(),
 		);
 	}
 

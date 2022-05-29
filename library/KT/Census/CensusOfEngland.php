@@ -41,7 +41,7 @@ class KT_Census_CensusOfEngland extends KT_Census_Census implements KT_Census_Ce
 			new KT_Census_CensusOfEngland1901(),
 			new KT_Census_CensusOfEngland1911(),
 			new KT_Census_CensusOfEngland1921(),
-			new KT_Census_RegisterOfEngland1939(),
+			new KT_Census_CensusOfEngland1939(),
 		);
 	}
 
