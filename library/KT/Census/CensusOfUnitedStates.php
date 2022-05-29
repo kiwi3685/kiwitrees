@@ -48,6 +48,7 @@ class KT_Census_CensusOfUnitedStates extends KT_Census_Census implements KT_Cens
 			new KT_Census_CensusOfUnitedStates1920(),
 			new KT_Census_CensusOfUnitedStates1930(),
 			new KT_Census_CensusOfUnitedStates1940(),
+			new KT_Census_CensusOfUnitedStates1950(),
 		);
 	}
 
