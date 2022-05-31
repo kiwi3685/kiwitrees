@@ -30,7 +30,7 @@ var find_window_specs	= 'width=550,height=600,left=250,top=150,resizable=1,scrol
 var chan_window_specs	= 'width=600,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs	= 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var link_window_specs	= 'width=950,height=750,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
-var assist_window_specs	= ''; // edit_interface.php, used for census assistant
+//var assist_window_specs	= ''; // edit_interface.php, used for census assistant
 var gmap_window_specs	= 'width=580,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
 var pastefield, nameElement, remElement; // Elements to paste to
 
@@ -542,7 +542,7 @@ function addnewnote_assisted(field, xref, census) {
 		"noteid": "newnote",
 		"xref": xref,
 		"census": census
-	}, assist_window_specs, field);
+    }, null, field);
 }
 
 function addmedia_links(field, iid, iname) {
