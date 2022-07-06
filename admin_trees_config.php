@@ -1134,7 +1134,7 @@ $controller
                          </div>
                     </div>
                 </div>
-                <!-- EDIT -->
+                <!-- EDIT options -->
                 <h3 class="accordion"><?php echo KT_I18N::translate('Edit options'); ?></h3>
                 <div id="edit-options">
                     <h4 class="accepted"><?php echo KT_I18N::translate('Facts for Individual records'); ?></h4>
