@@ -854,6 +854,41 @@ function get_REPO_rows($term) {
 		->fetchAll(PDO::FETCH_ASSOC);
 }
 
+
+function get_REPO_rows($term) {
+	global $REPO_ID_PREFIX;
+
+	// Fetch all data, regardless of privacy
+	// Don't search until a minimum number of characters are entered or search uses an id number
+	if (strlen($term) >= 2 && substr($term,0,1) === $REPO_ID_PREFIX && is_numeric(substr($term,1,1))) {
+		// Search for Xref only
+		return KT_DB::prepare("
+			SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec
+			FROM `##other`
+			WHERE o_id LIKE ?
+			AND o_type='REPO'
+			AND o_file = ?
+		")
+		->execute(array($term, KT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+
+	} elseif (strlen($term) >= 3 && !is_numeric(substr($term,1,1))) {
+		KT_DB::prepare("
+			SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full
+			FROM `##other`
+			JOIN `##name` ON (o_id=n_id AND o_file=n_file)
+			WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')
+			AND o_file = ?
+			AND o_type LIKE 'REPO'
+			ORDER BY n_full COLLATE '" . KT_I18N::$collation . "'
+		")
+		->execute(array($term, KT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+}
+
+
 function get_SOUR_rows($term) {
 	return
 		KT_DB::prepare("
