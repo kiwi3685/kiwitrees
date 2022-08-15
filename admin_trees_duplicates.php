@@ -89,46 +89,51 @@ $controller
 		}
 	');
 
-$action		= safe_get('action','go', '');
+$action		= KT_Filter::get('action','go', '');
 $gedcom_id	= safe_get('gedcom_id', array_keys(KT_Tree::getAll()), KT_GED_ID);
 $surn		= KT_Filter::get('surname', '[^<>&%{};]*');
 $givn		= KT_Filter::get('given', '[^<>&%{};]*');
-$exact_givn	= safe_GET_bool('exact_givn');
-$exact_surn	= safe_GET_bool('exact_surn');
-$married	= safe_GET_bool('married');
-$gender		= safe_GET('gender');
+$exact_givn	= KT_Filter::getBool('exact_givn');
+$exact_surn	= KT_Filter::getBool('exact_surn');
+$married	= KT_Filter::getBool('married');
+$gender		= KT_Filter::get('gender');
+$date 		= KT_Filter::getInteger('date');
+$range 		= KT_Filter::getInteger('range');
 
 // the sql query used to identify duplicates
 $sql = '
-	SELECT n_id, n_full, n_surn, n_givn, n_type, n_sort
-	FROM `##name` ';
-	if ($exact_surn) {
-		$sql .= 'WHERE n_surn = "' . $surn  . '" ';
-	} else {
-		$sql .= 'WHERE n_surn LIKE "%' . $surn . '%"';
-	}
-	if ($exact_givn) {
-		$sql .= 'AND n_givn = "' . $givn  . '" ';
-	} else {
-		$sql .= 'AND n_givn LIKE "%' . $givn . '%"';
-	}
-	if (!$married) {
-		$sql .= 'AND n_type NOT LIKE "_MARNM" ';
-	}
-	$sql .= 'AND n_file = '. $gedcom_id. ' ';
-	$sql .= 'AND n_full IN (
-		SELECT n_full
-		FROM `##name`
-		GROUP BY n_full
-		HAVING count(n_full) > 1
-		)
-	ORDER BY n_sort ASC';
+	SELECT DISTINCT n_id, n_full, n_type, n_sort
+	FROM `##name`
+	INNER JOIN `##dates` ON d_gid = n_id
+	WHERE n_file = '. $gedcom_id . ' ';
+if ($date) {
+	$sql .= 'AND (
+		(d_fact="BIRT" AND d_year <= ' . $date + $range . ' AND d_year >= ' . $date - $range . ')
+		 OR
+		(d_fact="DEAT" AND d_year <= ' . $date + $range . ' AND d_year >= ' . $date - $range . ')
+	)';
+}
+if ($exact_surn) {
+	$sql .= 'AND n_surn = "' . $surn  . '" ';
+} else {
+	$sql .= 'AND n_surn LIKE "%' . $surn . '%" ';
+}
+if ($exact_givn) {
+	$sql .= 'AND n_givn = "' . $givn  . '" ';
+} else {
+	$sql .= 'AND n_givn LIKE "%' . $givn . '%" ';
+}
+if (!$married) {
+	$sql .= 'AND n_type NOT LIKE "_MARNM" ';
+}
+$sql .= 'ORDER BY n_sort ASC';
 
 $SHOW_EST_LIST_DATES=get_gedcom_setting(KT_GED_ID, 'SHOW_EST_LIST_DATES');
 
 echo '<div id="admin_dup">
-	<h2>' .$controller->getPageTitle(). '</h2>
+	<h2>' . $controller->getPageTitle() . '</h2>
 	<form method="get" name="duplicates_form" action="', KT_SCRIPT_NAME, '">
+		<input type="hidden" name="action" value="go">
 		<div class="gm_check">
 			<div id="famtree">
 				<label>', KT_I18N::translate('Family tree'), '</label>
@@ -166,6 +171,7 @@ echo '<div id="admin_dup">
 						KT_I18N::translate('Tick for exact match'), '
 					</div>
 			</div>
+			<hr>
 			<div id="gender">
 				<label>', KT_I18N::translate('Gender'), '</label>
 				<select name="gender">
@@ -188,53 +194,70 @@ echo '<div id="admin_dup">
 				</select>
 			</div>
 			<div id="marname">
-				<label>', KT_I18N::translate('Include married names: '), '</label>
+				<label>', KT_I18N::translate('Include married names'), '</label>
 				<input type="checkbox" name="married" value="1"';
 				if ($married) {
 					echo ' checked="checked"';
 				}
 				echo '>
 			</div>
+			<hr>
+			<div id="date_range">
+				<label>' . KT_I18N::translate('Enter a birth or death year, and a range either side of that') .'</label>
+				<div id="date">
+					<label for="date">', KT_I18N::translate('Date'), '</label>
+					<input type="number" value="' . $date . '" id="date" name="date" placeholder="' . KT_I18N::translate('4-digit year') . '">
+				</div>
+				<div id="range">
+					<label for="range">' . KT_I18N::translate('Range of years (plus / minus)') . '</label>
+					<input type="number" value="' . $range . '" name="range" id="range" min="0" max="10">
+				</div>
+			</div>
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-eye"></i>' ,
-				KT_I18N::translate('show'), '
+				KT_I18N::translate('Show'), '
 			</button>
 		</div>
 	</form>';
 	// START OUTPUT
-	if ($surn) {
+	if ($action == 'go') {
 		$rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
-		if ($rows) {
+		$count = 0;
+		foreach ($rows as $row) {
+			$count ++;
+		}
+		if ($rows && $count > 1) {
 			$name1 = '';
 			$name2 = '';
-			echo '<div class="scrollableContainer">
+			echo '<h3>' . KT_I18N::translate('%s possible duplicates found', $count) . '</h3>
+				<div class="scrollableContainer">
 				<div class="scrollingArea">
 					<table id="duplicates_table">
 						<thead>
 							<tr>
-								<th rowspan="2"><div class="col1">',KT_I18N::translate('Name'),'</div></th>
-								<th colspan="2">',KT_I18N::translate('Birth'),'</th>
-								<th colspan="2">',KT_I18N::translate('Death'),'</th>
+								<th rowspan="2"><div class="col1">' . KT_I18N::translate('Name') . '</div></th>
+								<th colspan="2">' . KT_I18N::translate('Birth') . '</th>
+								<th colspan="2">' . KT_I18N::translate('Death') . '</th>
 								<th rowspan="2">
-									<div class="col6">
-										<input type="button" value="',KT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();">
+									<div class="col6" style="min-width: 50px;">
+										<input type="button" value="' . KT_I18N::translate('Merge selected') . '" onclick="return checkbox_test();">
 									</div>
 								</th>
 							</tr>
 							<tr>
-								<th><div class="col2">',KT_I18N::translate('Date'),'</div></th>
-								<th><div class="col3">',KT_I18N::translate('Place'),'</div></th>
-								<th><div class="col4">',KT_I18N::translate('Date'),'</div></th>
-								<th><div class="col5">',KT_I18N::translate('Place'),'</div></th>
+								<th><div class="col2">' . KT_I18N::translate('Date') . '</div></th>
+								<th><div class="col3">' . KT_I18N::translate('Place') . '</div></th>
+								<th><div class="col4">' . KT_I18N::translate('Date') . '</div></th>
+								<th><div class="col5">' . KT_I18N::translate('Place') . '</div></th>
 							</tr>
 						</thead>
 						<tbody>';
 							$i = 0;
 							foreach ($rows as $row) {
 								$i++;
-								$bdate	= '';
+								$bdate	= '&nbsp;';
 								$bplace	= '';
-								$ddate	= '';
+								$ddate	= '&nbsp;';
 								$dplace	= '';
 								$name1	= $row['n_full'];
 								if ($row['n_type'] == '_MARNM') {
@@ -253,7 +276,6 @@ echo '<div id="admin_dup">
 										}
 									} else {
 										$birth_date	= $person->getEstimatedBirthDate();
-										$birth_jd	= $birth_date->JD();
 										if ($SHOW_EST_LIST_DATES) {
 											$bdate .= $birth_date->Display();
 										} else {
@@ -277,7 +299,6 @@ echo '<div id="admin_dup">
 										}
 									} else {
 										$death_date	= $person->getEstimatedDeathDate();
-										$death_jd	= $death_date->JD();
 										if ($SHOW_EST_LIST_DATES) {
 											$ddate .= $death_date->Display();
 										} else if ($person->isDead()) {
@@ -296,26 +317,28 @@ echo '<div id="admin_dup">
 									}
 
 									//output result rows, grouping exact matches (on full name)
-									if ($name2 == $name1) {
-										echo '<tr>
-											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $name1. ' '. $marr. '</a></td>
-											<td><div class="col2">' . $bdate . '</div></td>
-											<td><div class="col3">'. $bplace. '</div></td>
-											<td><div class="col4">' . $ddate . '</div></td>
-											<td><div class="col5">'. $dplace. '</div></td>
-											<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
-											</tr>';
-									} else {
-										$name2 = $row['n_full'];
-										echo '<tr><td colspan="5" style="border:0;">&nbsp;</td></tr>
-											<tr>
-											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $name2. ' '. $marr. '</a></div></td>
-											<td><div class="col2">' . $bdate . '</div></td>
-											<td><div class="col3">'. $bplace. '</div></td>
-											<td><div class="col4">' . $ddate . '</div></td>
-											<td><div class="col5">'. $dplace. '</div></td>
-											<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
-											</tr>';
+									if ($bdate !== '&nbsp;' && $ddate !== '&nbsp;') {
+										if ($name2 == $name1) {
+											echo '<tr>
+												<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $name1. ' '. $marr. '</a></td>
+												<td><div class="col2">' . $bdate . '</div></td>
+												<td><div class="col3">'. $bplace. '</div></td>
+												<td><div class="col4">' . $ddate . '</div></td>
+												<td><div class="col5">'. $dplace. '</div></td>
+												<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
+												</tr>';
+										} else {
+											$name2 = $row['n_full'];
+											echo '<tr><td colspan="5" style="border:0;">&nbsp;</td></tr>
+												<tr>
+												<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $name2. ' '. $marr. '</a></div></td>
+												<td><div class="col2">' . $bdate . '</div></td>
+												<td><div class="col3">'. $bplace. '</div></td>
+												<td><div class="col4">' . $ddate . '</div></td>
+												<td><div class="col5">'. $dplace. '</div></td>
+												<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
+												</tr>';
+										}
 									}
 								}
 							}
@@ -324,7 +347,7 @@ echo '<div id="admin_dup">
 				</div>
 			</div>';
 		} else {
-			echo '<h4>', KT_I18N::translate('No duplicates to display'), '</h4>';
+			echo '<h4>' . KT_I18N::translate('No duplicates to display') . '</h4>';
 		}
 	}
 echo '</div>';

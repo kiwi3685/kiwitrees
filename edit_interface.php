@@ -2627,16 +2627,12 @@ case 'checkduplicates':
 
 	// the sql query used to identify simple duplicates
 	$sql = '
-		SELECT n_id, n_full, n_surn, n_givn, d_year
+		SELECT n_id, n_full, n_surn, n_givn
 		FROM `##name`
-		 INNER JOIN `##dates` ON d_gid = n_id
 		 WHERE n_surn LIKE "%' . $surn . '%"
 		 AND n_type NOT LIKE "_MARNM"
 		 AND n_givn LIKE "%' . $givn . '%"
 		 AND n_file = '. KT_GED_ID . '
-		 AND d_file = '. KT_GED_ID . '
-		 AND d_fact = "BIRT"
-		 ORDER BY d_year ASC
 	';
 	$rows = KT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -2653,6 +2649,7 @@ case 'checkduplicates':
 				filter: false,
 				lengthChange: false,
 				info: true,
+				order: [[1, "asc"]],
 				paging: false
 			});
 		');
@@ -2680,7 +2677,7 @@ case 'checkduplicates':
 							$name = $row['n_full'];
 							$person = KT_Person::getInstance($id);
 							$birthplace	= $person->getBirthPlace() ? '<span>' . $person->getBirthPlace() . '</span>' : '';
-							$birthyear	= $row['d_year'];
+							$birthyear	= $person->getBirthYear() ? '<span>' . $person->getBirthYear() . '</span>' : '';
 							$html .= '
 									<tr>
 										<td><a href="'. $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $name . '</a></td>
