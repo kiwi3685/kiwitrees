@@ -382,17 +382,19 @@ function report_findfact($fact, $type='') {
 	$list = array();
 	// Fetch all data, regardless of privacy
 	if ($fact == 'EVEN' || $fact == 'FACT'){
-		$sql = "SELECT i_id AS xref
-					FROM `##individuals`
-					WHERE `i_gedcom` REGEXP '(.*)\n1 {$fact}.*\n2 TYPE ([^\n]*){$type}*[^\n]*'
-					AND i_file=?
-				";
+		$sql = "
+			SELECT i_id AS xref
+			FROM `##individuals`
+			WHERE `i_gedcom` REGEXP '(.*)\n1 " . $fact . ".*\n2 TYPE ([^\n]*)" . $type . "*[^\n]*'
+			AND i_file=?
+		";
 	} else {
-		$sql = "SELECT i_id AS xref
-					FROM `##individuals`
-					WHERE `i_gedcom` REGEXP '(.*)\n1 {$fact}'
-					AND i_file=?
-				";
+		$sql = "
+			SELECT i_id AS xref, i_file
+			FROM `##individuals`
+			WHERE `i_gedcom` REGEXP '(.*)\n1 " . $fact . "'
+			AND i_file=?
+		";
 	}
 	$rows = KT_DB::prepare($sql)->execute(array(KT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
