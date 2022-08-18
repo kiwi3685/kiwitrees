@@ -35,6 +35,16 @@ class KT_Census_CensusOfCanada1916 extends KT_Census_CensusOfCanada implements K
 	}
 
 	/**
+	 * Where did this census occur, in GEDCOM format.
+	 * Usen in census menus, and shared note title.
+	 * Added in this file it over-rides the default in CensusOfCanada.php
+	 * @return string
+	 */
+	public function censusPlace() {
+		return 'Canada (Prairie Provinces)';
+	}
+
+	/**
 	 * The columns of the census.
 	 *
 	 * @return CensusColumnInterface[]
