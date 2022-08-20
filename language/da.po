@@ -15,22 +15,22 @@
 # Jamie Jaconelli, 2014-2017
 # Jamie Jaconelli, 2018-2022
 # Nigel Osborne <kiwi3685@me.com>, 2014
-# Nigel Osborne <kiwi3685@me.com>, 2014,2016-2017
+# Nigel Osborne <kiwi3685@me.com>, 2014,2016-2017,2022
 # ohmadsen <ole@vends-herred.dk>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2022-01-18 14:44+1300\n"
-"PO-Revision-Date: 2022-01-29 15:35+1300\n"
-"Last-Translator: Jamie Jaconelli\n"
+"POT-Creation-Date: 2022-06-02 16:25+1200\n"
+"PO-Revision-Date: 2022-08-21 11:13+1200\n"
+"Last-Translator: Nigel Osborne <kiwi3685@me.com>, 2014,2016-2017,2022\n"
 "Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -153,7 +153,7 @@ msgstr "Miniaturefilen %1$s kunne ikke omdøbes til %2$s."
 msgid "Thumbnail file %s does not exist."
 msgstr "Miniaturefilen %s eksisterer ikke."
 
-#: addmedia.php:400 addmedia.php:812 edit_changes.php:241 edit_interface.php:170 edit_interface.php:270 edit_interface.php:329 edit_interface.php:488 edit_interface.php:559 edit_interface.php:820 edit_interface.php:928 edit_interface.php:1065 edit_interface.php:1141 edit_interface.php:1268 edit_interface.php:2167 edit_interface.php:2321 edit_interface.php:2588 edit_interface.php:2702 find.php:732 includes/functions/functions_edit.php:983 includes/media_reorder.php:165 inverselink.php:209 inverselink.php:238 modules_v4/album/module.php:338 modules_v4/census_assistant/census-edit.php:127 modules_v4/census_assistant/module.php:100 modules_v4/googlemap/admin_places_edit.php:83 modules_v4/googlemap/admin_places_edit.php:101 modules_v4/googlemap/admin_places_edit.php:358 modules_v4/googlemap/module.php:624 modules_v4/googlemap/module.php:692 modules_v4/tab_dna/module.php:458
+#: addmedia.php:400 addmedia.php:812 edit_changes.php:241 edit_interface.php:170 edit_interface.php:270 edit_interface.php:329 edit_interface.php:488 edit_interface.php:559 edit_interface.php:820 edit_interface.php:928 edit_interface.php:1065 edit_interface.php:1141 edit_interface.php:1268 edit_interface.php:2167 edit_interface.php:2321 edit_interface.php:2588 edit_interface.php:2702 find.php:732 includes/functions/functions_edit.php:984 includes/media_reorder.php:165 inverselink.php:209 inverselink.php:238 modules_v4/album/module.php:338 modules_v4/census_assistant/census-edit.php:127 modules_v4/census_assistant/module.php:100 modules_v4/googlemap/admin_places_edit.php:83 modules_v4/googlemap/admin_places_edit.php:101 modules_v4/googlemap/admin_places_edit.php:358 modules_v4/googlemap/module.php:629 modules_v4/googlemap/module.php:697 modules_v4/tab_dna/module.php:458
 msgid "close"
 msgstr "luk"
 
@@ -231,7 +231,7 @@ msgstr "Hvis du har et stort antal mediefiler, kan du samle dem i mapper og unde
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
 msgstr "Brug dette felt til at angive at dette billede (mediefil) er hovedbilledet for den person, det er knyttet til.  Hovedbilledet er det, der bliver anvendt i slægtstræer og på siden med personoplysninger for den pågældende person."
 
-#: addmedia.php:808 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:138 admin_module_reports.php:109 admin_module_sidebar.php:138 admin_module_tabs.php:138 admin_module_widgets.php:139 admin_modules.php:203 admin_site_config.php:556 admin_site_lang.php:127 admin_site_lang.php:155 admin_trees_config.php:1439 admin_trees_manage.php:402 admin_trees_merge.php:196 admin_users.php:668 block_edit.php:66 edit_interface.php:166 edit_interface.php:266 edit_interface.php:325 edit_interface.php:484 edit_interface.php:555 edit_interface.php:816 edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137 edit_interface.php:1264 edit_interface.php:2159 edit_interface.php:2317 edit_interface.php:2580 edituser.php:191 find.php:502 includes/functions/functions_edit.php:973 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/calendar_utilities/module.php:167 modules_v4/census_assistant/census-edit.php:123 modules_v4/chart_relationship/module.php:426 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/fancy_imagebar/module.php:360 modules_v4/faq/module.php:226 modules_v4/faq/module.php:448 modules_v4/gallery/module.php:335 modules_v4/gallery/module.php:494 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:620 modules_v4/googlemap/module.php:688 modules_v4/googlemap/placehierarchy.php:239 modules_v4/pages/module.php:258 modules_v4/pages/module.php:484 modules_v4/stories/module.php:429 modules_v4/stories/module.php:560 modules_v4/tab_dna/module.php:454 modules_v4/widget_quicklinks/module.php:102
+#: addmedia.php:808 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:138 admin_module_reports.php:109 admin_module_sidebar.php:138 admin_module_tabs.php:138 admin_module_widgets.php:139 admin_modules.php:203 admin_site_config.php:556 admin_site_lang.php:127 admin_site_lang.php:155 admin_trees_config.php:1439 admin_trees_manage.php:402 admin_trees_merge.php:196 admin_users.php:668 block_edit.php:66 edit_interface.php:166 edit_interface.php:266 edit_interface.php:325 edit_interface.php:484 edit_interface.php:555 edit_interface.php:816 edit_interface.php:924 edit_interface.php:1061 edit_interface.php:1137 edit_interface.php:1264 edit_interface.php:2159 edit_interface.php:2317 edit_interface.php:2580 edituser.php:191 find.php:502 includes/functions/functions_edit.php:974 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/calendar_utilities/module.php:167 modules_v4/census_assistant/census-edit.php:123 modules_v4/chart_relationship/module.php:426 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/fancy_imagebar/module.php:360 modules_v4/faq/module.php:226 modules_v4/faq/module.php:448 modules_v4/gallery/module.php:335 modules_v4/gallery/module.php:494 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:460 modules_v4/googlemap/module.php:625 modules_v4/googlemap/module.php:693 modules_v4/googlemap/placehierarchy.php:239 modules_v4/pages/module.php:258 modules_v4/pages/module.php:484 modules_v4/stories/module.php:429 modules_v4/stories/module.php:560 modules_v4/tab_dna/module.php:454 modules_v4/widget_quicklinks/module.php:102
 msgid "Save"
 msgstr "Gem"
 
@@ -277,7 +277,6 @@ msgid "You are using PHP version %s."
 msgstr "Du bruger PHP version %s."
 
 #: admin.php:108
-#| msgid " is no longer compatible with versions of PHP older than 7.0"
 msgid "Kiwitrees is no longer compatible with versions of PHP older than 7.3"
 msgstr ""
 " 98% match \n"
@@ -296,91 +295,91 @@ msgstr "Kiwitrees er ikke testet som kompatibel med din PHP version. Det vil mul
 msgid "Server information"
 msgstr "Server information"
 
-#: admin.php:145
+#: admin.php:146
 msgid "Old files found"
 msgstr "Der er fundet gamle filer"
 
-#: admin.php:147
+#: admin.php:148
 msgid "Files have been found from a previous version of kiwitrees.  Old files can sometimes be a security risk.  You should delete them."
 msgstr "Der er fundet filer fra tidligere version. Ældre filer kan nogle gange forårsage sikkerhedsrisiko. Du bør slette dem"
 
-#: admin.php:198 themes/_administration/header.php:195
+#: admin.php:199 themes/_administration/header.php:195
 msgid "Users"
 msgstr "Brugere"
 
-#: admin.php:201
+#: admin.php:202
 msgid "Total number of users"
 msgstr "Total antal brugere"
 
-#: admin.php:206
+#: admin.php:207
 msgid "Administrators"
 msgstr "Administratorer"
 
-#: admin.php:211
+#: admin.php:212
 msgid "Managers"
 msgstr "Bestyrerer"
 
-#: admin.php:225
+#: admin.php:226
 msgid "Unverified by User"
 msgstr "Ikke verficeret af bruger"
 
-#: admin.php:230
+#: admin.php:231
 msgid "Unverified by Administrator"
 msgstr "Ikke godkendt af administrator"
 
-#: admin.php:235
+#: admin.php:236
 msgid "Users' languages"
 msgstr "Brugerens sprog"
 
-#: admin.php:249
+#: admin.php:250
 msgid "Users Logged In"
 msgstr "Online brugere"
 
-#: admin.php:260
+#: admin.php:261
 msgid "Family tree statistics"
 msgstr "Familietræ statistik"
 
-#: admin.php:272 admin.php:322 ancestry.php:93 calendar.php:377 calendar.php:556 descendancy.php:66 includes/functions/functions_print_lists.php:1117 includes/functions/functions_print_lists.php:1290 includes/functions/functions_print_lists.php:1639 includes/functions/functions_print_lists.php:1740 indilist.php:132 indilist.php:137 library/KT/Controller/Search.php:1205 mediaviewer.php:136 modules_v4/chart_statistics/module.php:113 modules_v4/gedcom_stats/module.php:96 modules_v4/gedcom_stats/module.php:299 modules_v4/googlemap/placehierarchy.php:282 modules_v4/html/module.php:164 modules_v4/list_individuals/module.php:33 modules_v4/random_media/module.php:296 modules_v4/widget_stats/module.php:88 modules_v4/widget_stats/module.php:338 note.php:101 placelist.php:230 search.php:136 search.php:260 source.php:100 statisticsplot.php:777
+#: admin.php:273 admin.php:323 ancestry.php:93 calendar.php:377 calendar.php:556 descendancy.php:66 includes/functions/functions_print_lists.php:1117 includes/functions/functions_print_lists.php:1290 includes/functions/functions_print_lists.php:1639 includes/functions/functions_print_lists.php:1740 indilist.php:132 indilist.php:137 library/KT/Controller/Search.php:1205 mediaviewer.php:136 modules_v4/chart_statistics/module.php:113 modules_v4/gedcom_stats/module.php:96 modules_v4/gedcom_stats/module.php:299 modules_v4/googlemap/placehierarchy.php:282 modules_v4/html/module.php:164 modules_v4/list_individuals/module.php:33 modules_v4/random_media/module.php:296 modules_v4/widget_stats/module.php:88 modules_v4/widget_stats/module.php:338 note.php:101 placelist.php:230 search.php:136 search.php:260 source.php:100 statisticsplot.php:777
 msgid "Individuals"
 msgstr "Individer"
 
-#: admin.php:277 admin.php:323 ancestry.php:99 calendar.php:378 calendar.php:557 descendancy.php:71 famlist.php:134 famlist.php:139 includes/functions/functions_print_lists.php:1119 includes/functions/functions_print_lists.php:1292 includes/functions/functions_print_lists.php:1641 library/KT/Controller/Search.php:1206 mediaviewer.php:139 modules_v4/chart_statistics/module.php:118 modules_v4/gedcom_stats/module.php:104 modules_v4/gedcom_stats/module.php:315 modules_v4/googlemap/placehierarchy.php:282 modules_v4/html/module.php:180 modules_v4/list_families/module.php:33 modules_v4/relatives/module.php:32 modules_v4/report_individual/module.php:293 modules_v4/report_related_fam/module.php:353 modules_v4/widget_stats/module.php:116 modules_v4/widget_stats/module.php:354 note.php:104 placelist.php:233 search.php:140 source.php:103 statisticsplot.php:773
+#: admin.php:278 admin.php:324 ancestry.php:99 calendar.php:378 calendar.php:557 descendancy.php:71 famlist.php:134 famlist.php:139 includes/functions/functions_print_lists.php:1119 includes/functions/functions_print_lists.php:1292 includes/functions/functions_print_lists.php:1641 library/KT/Controller/Search.php:1206 mediaviewer.php:139 modules_v4/chart_statistics/module.php:118 modules_v4/gedcom_stats/module.php:104 modules_v4/gedcom_stats/module.php:315 modules_v4/googlemap/placehierarchy.php:282 modules_v4/html/module.php:180 modules_v4/list_families/module.php:33 modules_v4/relatives/module.php:32 modules_v4/report_individual/module.php:293 modules_v4/report_related_fam/module.php:353 modules_v4/widget_stats/module.php:116 modules_v4/widget_stats/module.php:354 note.php:104 placelist.php:233 search.php:140 source.php:103 statisticsplot.php:773
 msgid "Families"
 msgstr "Familier"
 
-#: admin.php:282 admin.php:324 includes/functions/functions_print_lists.php:1296 includes/functions/functions_print_lists.php:1520 includes/functions/functions_print_lists.php:1643 library/KT/Controller/Search.php:1207 mediaviewer.php:142 modules_v4/album/album_print_media.php:314 modules_v4/chart_statistics/module.php:542 modules_v4/chart_statistics/module.php:579 modules_v4/gedcom_stats/module.php:107 modules_v4/gedcom_stats/module.php:323 modules_v4/html/module.php:184 modules_v4/list_sources/module.php:33 modules_v4/report_family/module.php:372 modules_v4/report_individual/module.php:398 modules_v4/report_related_fam/module.php:462 modules_v4/sources_tab/module.php:32 modules_v4/tab_census/module.php:112 modules_v4/widget_stats/module.php:125 modules_v4/widget_stats/module.php:362 note.php:110 repo.php:98 search.php:144 sourcelist.php:31 sourcelist.php:35
+#: admin.php:283 admin.php:325 includes/functions/functions_print_lists.php:1296 includes/functions/functions_print_lists.php:1520 includes/functions/functions_print_lists.php:1643 library/KT/Controller/Search.php:1207 mediaviewer.php:142 modules_v4/album/album_print_media.php:314 modules_v4/chart_statistics/module.php:542 modules_v4/chart_statistics/module.php:579 modules_v4/gedcom_stats/module.php:107 modules_v4/gedcom_stats/module.php:323 modules_v4/html/module.php:184 modules_v4/list_sources/module.php:33 modules_v4/report_family/module.php:372 modules_v4/report_individual/module.php:398 modules_v4/report_related_fam/module.php:462 modules_v4/sources_tab/module.php:32 modules_v4/tab_census/module.php:112 modules_v4/widget_stats/module.php:125 modules_v4/widget_stats/module.php:362 note.php:110 repo.php:98 search.php:144 sourcelist.php:31 sourcelist.php:35
 msgid "Sources"
 msgstr "Kilder"
 
-#: admin.php:287 admin.php:325 mediaviewer.php:145 modules_v4/chart_statistics/module.php:544 modules_v4/gedcom_stats/module.php:113 modules_v4/gedcom_stats/module.php:339 modules_v4/html/module.php:192 modules_v4/list_repositories/module.php:33 modules_v4/widget_stats/module.php:143 modules_v4/widget_stats/module.php:378 repolist.php:31 repolist.php:35
+#: admin.php:288 admin.php:326 mediaviewer.php:145 modules_v4/chart_statistics/module.php:544 modules_v4/gedcom_stats/module.php:113 modules_v4/gedcom_stats/module.php:339 modules_v4/html/module.php:192 modules_v4/list_repositories/module.php:33 modules_v4/widget_stats/module.php:143 modules_v4/widget_stats/module.php:378 repolist.php:31 repolist.php:35
 msgid "Repositories"
 msgstr "Opbevaringssteder"
 
-#: admin.php:292 admin.php:326 includes/functions/functions_print_lists.php:1121 includes/functions/functions_print_lists.php:1294 medialist.php:33 modules_v4/chart_statistics/module.php:541 modules_v4/chart_statistics/module.php:566 modules_v4/gedcom_stats/module.php:110 modules_v4/gedcom_stats/module.php:331 modules_v4/html/module.php:188 modules_v4/list_media/module.php:33 modules_v4/widget_stats/module.php:134 modules_v4/widget_stats/module.php:370 note.php:107 source.php:106
+#: admin.php:293 admin.php:327 includes/functions/functions_print_lists.php:1121 includes/functions/functions_print_lists.php:1294 medialist.php:33 modules_v4/chart_statistics/module.php:541 modules_v4/chart_statistics/module.php:566 modules_v4/gedcom_stats/module.php:110 modules_v4/gedcom_stats/module.php:331 modules_v4/html/module.php:188 modules_v4/list_media/module.php:33 modules_v4/widget_stats/module.php:134 modules_v4/widget_stats/module.php:370 note.php:107 source.php:106
 msgid "Media objects"
 msgstr "Medieobjekter"
 
-#: admin.php:297 includes/functions/functions_print_lists.php:1123 modules_v4/list_shared_notes/module.php:33 notelist.php:31 notelist.php:35 search.php:148
+#: admin.php:298 includes/functions/functions_print_lists.php:1123 modules_v4/list_shared_notes/module.php:33 notelist.php:31 notelist.php:35 search.php:148
 msgid "Shared notes"
 msgstr "Delte noter"
 
-#: admin.php:309 modules_v4/recent_changes/module.php:35 modules_v4/report_changes/module.php:268 modules_v4/widget_recent_changes/module.php:35
+#: admin.php:310 modules_v4/recent_changes/module.php:35 modules_v4/report_changes/module.php:268 modules_v4/widget_recent_changes/module.php:35
 msgid "Recent changes"
 msgstr "Seneste Ændringer"
 
-#: admin.php:321 calendar.php:144 calendar.php:346 modules_v4/calendar_utilities/plugins/calculators.php:76 modules_v4/calendar_utilities/plugins/old_new.php:86 modules_v4/calendar_utilities/plugins/old_new.php:120 modules_v4/calendar_utilities/plugins/regnal_years.php:75
+#: admin.php:322 calendar.php:144 calendar.php:346 modules_v4/calendar_utilities/plugins/calculators.php:76 modules_v4/calendar_utilities/plugins/old_new.php:86 modules_v4/calendar_utilities/plugins/old_new.php:120 modules_v4/calendar_utilities/plugins/regnal_years.php:75
 msgid "Day"
 msgstr "Dag"
 
-#: admin.php:321
+#: admin.php:322
 msgid "Week"
 msgstr "Uge"
 
-#: admin.php:321 calendar.php:164 calendar.php:347 modules_v4/calendar_utilities/plugins/calculators.php:85 modules_v4/calendar_utilities/plugins/old_new.php:77 modules_v4/calendar_utilities/plugins/old_new.php:111
+#: admin.php:322 calendar.php:164 calendar.php:347 modules_v4/calendar_utilities/plugins/calculators.php:85 modules_v4/calendar_utilities/plugins/old_new.php:77 modules_v4/calendar_utilities/plugins/old_new.php:111
 msgid "Month"
 msgstr "Måned"
 
-#: admin.php:327 library/KT/Controller/Search.php:1208 mediaviewer.php:148 modules_v4/calendar_utilities/plugins/regnal_years.php:140 modules_v4/census_assistant/census-edit.php:106 modules_v4/chart_statistics/module.php:543 modules_v4/notes/module.php:32 modules_v4/report_family/module.php:353 modules_v4/report_individual/module.php:282 modules_v4/report_related_fam/module.php:342 modules_v4/tab_census/module.php:111 source.php:109
+#: admin.php:328 library/KT/Controller/Search.php:1208 mediaviewer.php:148 modules_v4/calendar_utilities/plugins/regnal_years.php:140 modules_v4/census_assistant/census-edit.php:106 modules_v4/chart_statistics/module.php:543 modules_v4/notes/module.php:32 modules_v4/report_family/module.php:353 modules_v4/report_individual/module.php:282 modules_v4/report_related_fam/module.php:342 modules_v4/tab_census/module.php:111 source.php:109
 msgid "Notes"
 msgstr "Noter"
 
@@ -394,11 +393,11 @@ msgstr "Filen %s blev slettet."
 msgid "The file %s could not be deleted."
 msgstr "Filen %s kunne ikke slettes."
 
-#: admin_media.php:163 admin_media.php:238 admin_trees_duplicates.php:284 admin_users.php:263 admin_users.php:264 branches.php:191 includes/functions/functions_edit.php:142 includes/functions/functions_edit.php:1424 includes/functions/functions_edit.php:1471 includes/functions/functions_print.php:922 includes/functions/functions_print_facts.php:1293 includes/functions/functions_print_lists.php:424 includes/functions/functions_print_lists.php:925 includes/functions/functions_resource.php:568 library/KT/Stats.php:3648 medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375 modules_v4/charts/module.php:215 modules_v4/relatives/module.php:258
+#: admin_media.php:163 admin_media.php:238 admin_trees_duplicates.php:284 admin_users.php:263 admin_users.php:264 branches.php:191 includes/functions/functions_edit.php:142 includes/functions/functions_edit.php:1425 includes/functions/functions_edit.php:1472 includes/functions/functions_print.php:922 includes/functions/functions_print_facts.php:1293 includes/functions/functions_print_lists.php:424 includes/functions/functions_print_lists.php:925 includes/functions/functions_resource.php:568 library/KT/Stats.php:3689 medialist.php:263 modules_v4/batch_update/admin_batch_update.php:375 modules_v4/charts/module.php:215 modules_v4/relatives/module.php:258
 msgid "yes"
 msgstr "ja"
 
-#: admin_media.php:166 admin_media.php:241 admin_users.php:263 admin_users.php:264 includes/functions/functions_edit.php:142 includes/functions/functions_edit.php:1468 includes/functions/functions_print_facts.php:1296 includes/functions/functions_print_lists.php:927 library/KT/Controller/FancyTreeView.php:626 library/KT/Stats.php:3649 medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374 modules_v4/charts/module.php:214
+#: admin_media.php:166 admin_media.php:241 admin_users.php:263 admin_users.php:264 includes/functions/functions_edit.php:142 includes/functions/functions_edit.php:1469 includes/functions/functions_print_facts.php:1296 includes/functions/functions_print_lists.php:927 library/KT/Controller/FancyTreeView.php:626 library/KT/Stats.php:3690 medialist.php:266 modules_v4/batch_update/admin_batch_update.php:374 modules_v4/charts/module.php:214
 msgid "no"
 msgstr "nej"
 
@@ -433,7 +432,7 @@ msgstr "Denne mediefil eksisterer ikke."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Er du sikker på at du ønsker at slette “%s“?"
 
-#: admin_media.php:482 admin_trees_findunlinked.php:144 ancestry.php:103 compact.php:47 descendancy.php:73 familybook.php:54 hourglass.php:69 modules_v4/googlemap/module.php:749 pedigree.php:73
+#: admin_media.php:482 admin_trees_findunlinked.php:144 ancestry.php:103 compact.php:47 descendancy.php:73 familybook.php:54 hourglass.php:69 modules_v4/googlemap/module.php:754 pedigree.php:73
 msgid "View"
 msgstr "Vis"
 
@@ -1044,7 +1043,7 @@ msgstr "Besked"
 msgid "User"
 msgstr "Bruger"
 
-#: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286 admin_trees_change.php:310 admin_trees_duplicates.php:134 admin_trees_findunlinked.php:111 admin_trees_manage.php:312 admin_trees_missing-source.php:120 admin_trees_missing.php:106 admin_trees_places.php:103 admin_trees_sanity.php:241 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_users.php:618 edit_changes.php:167 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:204 modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:305 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:455 modules_v4/faq/module.php:479 modules_v4/gallery/module.php:500 modules_v4/gallery/module.php:524 modules_v4/googlemap/module.php:1493 modules_v4/html/module.php:288 modules_v4/pages/module.php:488 modules_v4/stories/module.php:499 modules_v4/widget_html/module.php:171
+#: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286 admin_trees_change.php:310 admin_trees_duplicates.php:134 admin_trees_findunlinked.php:111 admin_trees_manage.php:312 admin_trees_missing-source.php:120 admin_trees_missing.php:106 admin_trees_places.php:103 admin_trees_sanity.php:241 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_users.php:618 edit_changes.php:167 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:204 modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:305 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:455 modules_v4/faq/module.php:479 modules_v4/gallery/module.php:500 modules_v4/gallery/module.php:524 modules_v4/googlemap/module.php:1498 modules_v4/html/module.php:288 modules_v4/pages/module.php:488 modules_v4/stories/module.php:499 modules_v4/widget_html/module.php:171
 msgid "Family tree"
 msgstr "Anetræ"
 
@@ -1105,7 +1104,7 @@ msgstr "Opret et nyt individ"
 msgid "Create a new note"
 msgstr "Opret en ny note"
 
-#: admin_trees_addunlinked.php:58 edit_interface.php:651 edit_interface.php:831 includes/functions/functions_edit.php:1191
+#: admin_trees_addunlinked.php:58 edit_interface.php:651 edit_interface.php:831 includes/functions/functions_edit.php:1192
 msgid "Create a new source"
 msgstr "Opret en ny kilde"
 
@@ -1193,35 +1192,35 @@ msgstr "Dette kan muligvis blive et problem for andre programmer"
 msgid "This may be a mistake in your data."
 msgstr "Der er muligvis fejl i dine data"
 
-#: admin_trees_check.php:162
+#: admin_trees_check.php:168
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
 msgstr "%1$s eksisterer ikke. Mente du %2$s?"
 
-#: admin_trees_check.php:168
+#: admin_trees_check.php:174
 #, php-format
 msgid "%1$s does not exist."
 msgstr "%1$s eksisterer ikke."
 
-#: admin_trees_check.php:177 admin_trees_check.php:182
+#: admin_trees_check.php:183 admin_trees_check.php:188
 msgid "This type of link is not allowed here."
 msgstr "Denne type link er ikke tilladt her"
 
-#: admin_trees_check.php:188
+#: admin_trees_check.php:194
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s er en %2$s men %3$s var forventet."
 
-#: admin_trees_check.php:199
+#: admin_trees_check.php:205
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s linker ikke tilbage til %2$s."
 
-#: admin_trees_check.php:205
+#: admin_trees_check.php:211
 msgid "No errors were found."
 msgstr "Ingen fejl fundet"
 
-#: admin_trees_check.php:215
+#: admin_trees_check.php:221
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s har et %3$s link til %4$s."
@@ -1359,11 +1358,11 @@ msgstr "<b>GUID</b> er i denne sammenhæng en forkortelse for «Globally Unique 
 msgid "XREF prefixes"
 msgstr "Præfikser"
 
-#: admin_trees_config.php:441 admin_trees_missing.php:124 admin_trees_source.php:155 admin_trees_source.php:270 admin_trees_sourcecite.php:137 ancestry.php:44 compact.php:40 descendancy.php:40 familybook.php:40 hourglass.php:49 includes/functions/functions_edit.php:1752 includes/functions/functions_print_lists.php:1421 inverselink.php:221 library/KT/Gedcom/Tag.php:250 modules_v4/chart_fanchart/module.php:109 modules_v4/charts/module.php:220 modules_v4/fancy_treeview_ancestors/module.php:210 modules_v4/fancy_treeview_descendants/module.php:220 modules_v4/googlemap/module.php:729 modules_v4/report_individual/module.php:33 modules_v4/report_individual/module.php:109 modules_v4/report_related_fam/module.php:140 modules_v4/report_related_indi/module.php:112 modules_v4/stories/module.php:375 modules_v4/stories/module.php:521 modules_v4/stories/module.php:612 pedigree.php:41
+#: admin_trees_config.php:441 admin_trees_missing.php:124 admin_trees_source.php:155 admin_trees_source.php:270 admin_trees_sourcecite.php:137 ancestry.php:44 compact.php:40 descendancy.php:40 familybook.php:40 hourglass.php:49 includes/functions/functions_edit.php:1753 includes/functions/functions_print_lists.php:1421 inverselink.php:221 library/KT/Gedcom/Tag.php:250 modules_v4/chart_fanchart/module.php:109 modules_v4/charts/module.php:220 modules_v4/fancy_treeview_ancestors/module.php:210 modules_v4/fancy_treeview_descendants/module.php:220 modules_v4/googlemap/module.php:734 modules_v4/report_individual/module.php:33 modules_v4/report_individual/module.php:109 modules_v4/report_related_fam/module.php:140 modules_v4/report_related_indi/module.php:112 modules_v4/stories/module.php:375 modules_v4/stories/module.php:521 modules_v4/stories/module.php:612 pedigree.php:41
 msgid "Individual"
 msgstr "Individ"
 
-#: admin_trees_config.php:445 admin_trees_source.php:159 admin_trees_source.php:274 admin_trees_sourcecite.php:141 edit_interface.php:448 includes/functions/functions_edit.php:1783 library/KT/Gedcom/Tag.php:219 media_links.php:382 media_links.php:389 modules_v4/family_nav/module.php:244 modules_v4/family_nav/module.php:282 modules_v4/report_family/module.php:31 modules_v4/report_family/module.php:106
+#: admin_trees_config.php:445 admin_trees_source.php:159 admin_trees_source.php:274 admin_trees_sourcecite.php:141 edit_interface.php:448 includes/functions/functions_edit.php:1784 library/KT/Gedcom/Tag.php:219 media_links.php:382 media_links.php:389 modules_v4/family_nav/module.php:244 modules_v4/family_nav/module.php:282 modules_v4/report_family/module.php:31 modules_v4/report_family/module.php:106
 msgid "Family"
 msgstr "Familie"
 
@@ -1672,11 +1671,11 @@ msgstr "Lange personlister hvor det samme navn forekommer mange gange kan opdele
 msgid "Estimated dates for birth and death"
 msgstr "Beregnede datoer for fødsel og død"
 
-#: admin_trees_config.php:881 admin_trees_config.php:890 admin_trees_config.php:1044 admin_trees_config.php:1053 admin_trees_config.php:1062 admin_trees_config.php:1084 admin_trees_config.php:1121 admin_trees_config.php:1130 modules_v4/googlemap/module.php:267
+#: admin_trees_config.php:881 admin_trees_config.php:890 admin_trees_config.php:1044 admin_trees_config.php:1053 admin_trees_config.php:1062 admin_trees_config.php:1084 admin_trees_config.php:1121 admin_trees_config.php:1130 modules_v4/googlemap/module.php:272
 msgid "hide"
 msgstr "skjul"
 
-#: admin_trees_config.php:881 admin_trees_config.php:890 admin_trees_config.php:1044 admin_trees_config.php:1053 admin_trees_config.php:1062 admin_trees_config.php:1084 admin_trees_config.php:1121 admin_trees_config.php:1130 admin_trees_duplicates.php:200 admin_trees_missing-source.php:137 modules_v4/extra_menus/module.php:347 modules_v4/fancy_treeview_ancestors/module.php:215 modules_v4/fancy_treeview_descendants/module.php:225 modules_v4/faq/module.php:461 modules_v4/gallery/module.php:506 modules_v4/googlemap/module.php:267 modules_v4/pages/module.php:492 modules_v4/report_census/module.php:183 modules_v4/report_changes/module.php:202 modules_v4/report_fact/module.php:198 modules_v4/report_fact/module.php:200 modules_v4/report_family/module.php:153 modules_v4/report_family/module.php:155 modules_v4/report_individual/module.php:138 modules_v4/report_individual/module.php:140 modules_v4/report_marriages/module.php:158 modules_v4/report_marriages/module.php:160 modules_v4/report_related_fam/module.php:189 modules_v4/report_related_fam/module.php:191 modules_v4/report_related_indi/module.php:125 modules_v4/report_related_indi/module.php:127 modules_v4/report_todo/module.php:133 modules_v4/report_vital_records/module.php:217 modules_v4/report_vital_records/module.php:219
+#: admin_trees_config.php:881 admin_trees_config.php:890 admin_trees_config.php:1044 admin_trees_config.php:1053 admin_trees_config.php:1062 admin_trees_config.php:1084 admin_trees_config.php:1121 admin_trees_config.php:1130 admin_trees_duplicates.php:200 admin_trees_missing-source.php:137 modules_v4/extra_menus/module.php:347 modules_v4/fancy_treeview_ancestors/module.php:215 modules_v4/fancy_treeview_descendants/module.php:225 modules_v4/faq/module.php:461 modules_v4/gallery/module.php:506 modules_v4/googlemap/module.php:272 modules_v4/pages/module.php:492 modules_v4/report_census/module.php:183 modules_v4/report_changes/module.php:202 modules_v4/report_fact/module.php:198 modules_v4/report_fact/module.php:200 modules_v4/report_family/module.php:153 modules_v4/report_family/module.php:155 modules_v4/report_individual/module.php:138 modules_v4/report_individual/module.php:140 modules_v4/report_marriages/module.php:158 modules_v4/report_marriages/module.php:160 modules_v4/report_related_fam/module.php:189 modules_v4/report_related_fam/module.php:191 modules_v4/report_related_indi/module.php:125 modules_v4/report_related_indi/module.php:127 modules_v4/report_todo/module.php:133 modules_v4/report_vital_records/module.php:217 modules_v4/report_vital_records/module.php:219
 msgid "show"
 msgstr "vis"
 
@@ -2076,12 +2075,6 @@ msgid "advanced"
 msgstr "Avanceret"
 
 #: admin_trees_config.php:1379
-#| msgid ""
-#| "autocomplete simply searches your existing place names for  that start with the string of characters you type, updating as you  characters. No other assistance is provided. <br><br>\n"
-#| "                    The \"advanced\" alternative starts the e, but also provides further features, which might not be compatible h every site's preferred naming style.: <br><br>\n"
-#| "                    1) After typing a comma and a space at  point it will start the search again, but using subsequent levels of r existing places. This allows, for example, a new town to be added to existing state or county without re-typing all the existing data. ><br>\n"
-#| "                    2) Place names are capitalised omatically using \"word caps\", or capitalising each separate word. s enables faster typing by allowing you to type just lowercase racters. <br><br>\n"
-#| "                    It is important to remember that such omated help can have unintended consequences. These may need manually recting during the editing process. "
 msgid ""
 "The “basic” autocomplete simply searches existing place levels for any that contain a word starting with the string of characters you type, updating as you add characters. No other assistance is provided. <br><br>\n"
 "                                The \"advanced\" alternative starts the same, but also provides further features, which might not be compatible with every site's preferred naming style.: <br><br>\n"
@@ -2095,11 +2088,11 @@ msgstr ""
 "                                2) Stednavne aktiveres automatisk med store bogstaver ved hjælp af \"word caps\" eller store bogstaver i hvert enkelt ord. Dette muliggør hurtigere skrivning ved bare at skrive bare små bogstaver. <br><br>\n"
 "                                Det er vigtigt at huske, at automatiseret hjælp kan få utilsigtede resultater. Disse skal muligvis korrigeres manuelt under redigeringsprocessen."
 
-#: admin_trees_config.php:1388 edit_interface.php:210 edit_interface.php:776 edit_interface.php:916 edit_interface.php:1045 edit_interface.php:1127 edit_interface.php:1256 help_text.php:563 includes/functions/functions_edit.php:962 includes/functions/functions_edit.php:2727
+#: admin_trees_config.php:1388 edit_interface.php:210 edit_interface.php:776 edit_interface.php:916 edit_interface.php:1045 edit_interface.php:1127 edit_interface.php:1256 help_text.php:563 includes/functions/functions_edit.php:963 includes/functions/functions_edit.php:2728
 msgid "Do not update the “last change” record"
 msgstr "Opdatér ikke den sidst ændret post"
 
-#: admin_trees_config.php:1392 help_text.php:564 includes/functions/functions_edit.php:2729
+#: admin_trees_config.php:1392 help_text.php:564 includes/functions/functions_edit.php:2730
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it."
 msgstr "Administratorer er af og til nødt til at rense og korrigere i de data som brugerne kommer med. <br>Når administratorer foretager sådanne korrektioner bliver de oprindelige data erstattet. <br> Ved valg af dette vil kiwitrees bevare de originale data i stedet for at erstatte dem."
 
@@ -2131,7 +2124,7 @@ msgstr "For at reducere størrelsen af download, kan du komprimere data til en .
 msgid "Apply privacy settings?"
 msgstr "Anvend privatlivsindstillinger?"
 
-#: admin_trees_download.php:129 famlist.php:113 famlist.php:149 indilist.php:113 indilist.php:147 library/KT/Stats.php:888 modules_v4/clippings/module.php:255 modules_v4/clippings/module.php:662 modules_v4/families/module.php:154 modules_v4/individuals/module.php:153 modules_v4/report_family/module.php:132 modules_v4/report_family/module.php:144 modules_v4/report_individual/module.php:129 modules_v4/report_related_fam/module.php:160
+#: admin_trees_download.php:129 famlist.php:113 famlist.php:149 indilist.php:113 indilist.php:147 library/KT/Stats.php:929 modules_v4/clippings/module.php:255 modules_v4/clippings/module.php:662 modules_v4/families/module.php:154 modules_v4/individuals/module.php:153 modules_v4/report_family/module.php:132 modules_v4/report_family/module.php:144 modules_v4/report_individual/module.php:129 modules_v4/report_related_fam/module.php:160
 msgid "None"
 msgstr "Ingen"
 
@@ -2196,15 +2189,15 @@ msgstr "Køn"
 msgid "Any"
 msgstr "Alle"
 
-#: admin_trees_duplicates.php:178 calendar.php:670 includes/functions/functions_edit.php:1476 library/KT/Controller/Individual.php:266 library/KT/Controller/Individual.php:269 library/KT/Stats.php:3469 statisticsplot.php:792 timeline.php:238
+#: admin_trees_duplicates.php:178 calendar.php:670 includes/functions/functions_edit.php:1477 library/KT/Controller/Individual.php:266 library/KT/Controller/Individual.php:269 library/KT/Stats.php:3510 statisticsplot.php:792 timeline.php:238
 msgid "Male"
 msgstr "Mand"
 
-#: admin_trees_duplicates.php:182 calendar.php:674 includes/functions/functions_edit.php:1478 library/KT/Controller/Individual.php:275 library/KT/Controller/Individual.php:278 library/KT/Stats.php:3469 statisticsplot.php:793 timeline.php:240
+#: admin_trees_duplicates.php:182 calendar.php:674 includes/functions/functions_edit.php:1479 library/KT/Controller/Individual.php:275 library/KT/Controller/Individual.php:278 library/KT/Stats.php:3510 statisticsplot.php:793 timeline.php:240
 msgid "Female"
 msgstr "Kvinde"
 
-#: admin_trees_duplicates.php:186 calendar.php:678 includes/functions/functions_edit.php:1480 library/KT/Controller/Individual.php:284 library/KT/Controller/Individual.php:287 library/KT/Controller/Individual.php:293 library/KT/Stats.php:3469 timeline.php:242
+#: admin_trees_duplicates.php:186 calendar.php:678 includes/functions/functions_edit.php:1481 library/KT/Controller/Individual.php:284 library/KT/Controller/Individual.php:287 library/KT/Controller/Individual.php:293 library/KT/Stats.php:3510 timeline.php:242
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Ukendt"
@@ -2213,11 +2206,11 @@ msgstr "Ukendt"
 msgid "Include married names: "
 msgstr "Inkl. vielsesnavn"
 
-#: admin_trees_duplicates.php:215 admin_trees_missing-source.php:185 admin_trees_missing.php:260 admin_trees_sanity.php:213 edit_interface.php:2672 inverselink.php:112 inverselink.php:186 library/KT/Controller/Individual.php:173 library/KT/Gedcom/Tag.php:276 library/KT/Stats.php:3470 modules_v4/report_marriages/module.php:223 modules_v4/report_related_indi/module.php:236 modules_v4/report_vital_records/module.php:286 modules_v4/research_links/module.php:164 modules_v4/tab_dna/module.php:149
+#: admin_trees_duplicates.php:215 admin_trees_missing-source.php:185 admin_trees_missing.php:260 admin_trees_sanity.php:213 edit_interface.php:2672 inverselink.php:112 inverselink.php:186 library/KT/Controller/Individual.php:173 library/KT/Gedcom/Tag.php:276 library/KT/Stats.php:3511 modules_v4/report_marriages/module.php:223 modules_v4/report_related_indi/module.php:236 modules_v4/report_vital_records/module.php:286 modules_v4/research_links/module.php:164 modules_v4/tab_dna/module.php:149
 msgid "Name"
 msgstr "Navn"
 
-#: admin_trees_duplicates.php:216 admin_trees_sanity.php:207 admin_trees_source.php:131 admin_trees_source.php:248 library/KT/Controller/FancyTreeView.php:918 library/KT/Gedcom/Tag.php:144 modules_v4/googlemap/module.php:1284 modules_v4/report_related_indi/module.php:237 modules_v4/report_vital_records/module.php:287
+#: admin_trees_duplicates.php:216 admin_trees_sanity.php:207 admin_trees_source.php:131 admin_trees_source.php:248 library/KT/Controller/FancyTreeView.php:918 library/KT/Gedcom/Tag.php:144 modules_v4/googlemap/module.php:1289 modules_v4/report_related_indi/module.php:237 modules_v4/report_vital_records/module.php:287
 msgid "Birth"
 msgstr "Født"
 
@@ -2540,7 +2533,7 @@ msgstr "En liste af individer som har den valgte hændelse eller begivenhed i fa
 msgid "Whenever possible names are followed by the individual's lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as \"Religion\" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for."
 msgstr "Når det er muligt er navne efterfulgt af individuelle levetid datoer for nem identifikation. Bemærk, at disse kan indeholde datoer for dåb, barnedåb, begravelse og ligbrænding, hvis der mangler data om fødsel og død.<br>Listen ignorerer også eventuelle skøn over datoer eller alder, så levende mennesker vil blive opført med manlgende død datoer og steder.<br>Nogle fakta såsom \"Religion\"har normalt ikke sub-tags som dato, sted eller kilde, så her kun det begivenheden, der kontrolleres for."
 
-#: admin_trees_missing-source.php:126 admin_trees_missing.php:112 includes/functions/functions_print.php:1137 includes/functions/functions_print.php:1250 modules_v4/googlemap/module.php:1497 modules_v4/googlemap/module.php:1513 modules_v4/report_fact/module.php:170 modules_v4/widget_user_contacts/module.php:68
+#: admin_trees_missing-source.php:126 admin_trees_missing.php:112 includes/functions/functions_print.php:1137 includes/functions/functions_print.php:1250 modules_v4/googlemap/module.php:1502 modules_v4/googlemap/module.php:1518 modules_v4/report_fact/module.php:170 modules_v4/widget_user_contacts/module.php:68
 msgid "Select"
 msgstr "Vælg"
 
@@ -2594,7 +2587,7 @@ msgstr "Efterkommere"
 msgid "All relatives"
 msgstr "Alle relationer"
 
-#: admin_trees_missing.php:85 calendar.php:257 famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:169 famlist.php:171 famlist.php:255 famlist.php:257 indilist.php:63 indilist.php:69 indilist.php:75 indilist.php:167 indilist.php:169 indilist.php:253 indilist.php:255 library/KT/I18N.php:675 library/KT/Stats.php:3469 modules_v4/extra_menus/help_text.php:45 modules_v4/extra_menus/module.php:367 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:288 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:302 modules_v4/faq/module.php:219 modules_v4/faq/module.php:481 modules_v4/gallery/help_text.php:38 modules_v4/gallery/module.php:526 modules_v4/googlemap/admin_places.php:607 modules_v4/googlemap/admin_places.php:759 modules_v4/googlemap/module.php:1498 modules_v4/googlemap/module.php:1514 modules_v4/pages/help_text.php:38 modules_v4/pages/module.php:503 modules_v4/random_media/module.php:296 modules_v4/report_census/module.php:206 modules_v4/report_family/module.php:134 modules_v4/report_family/module.php:145 modules_v4/report_individual/module.php:130 modules_v4/report_related_fam/module.php:130 modules_v4/report_related_fam/module.php:161
+#: admin_trees_missing.php:85 calendar.php:257 famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:169 famlist.php:171 famlist.php:255 famlist.php:257 indilist.php:63 indilist.php:69 indilist.php:75 indilist.php:167 indilist.php:169 indilist.php:253 indilist.php:255 library/KT/I18N.php:675 library/KT/Stats.php:3510 modules_v4/extra_menus/help_text.php:45 modules_v4/extra_menus/module.php:367 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:288 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:302 modules_v4/faq/module.php:219 modules_v4/faq/module.php:481 modules_v4/gallery/help_text.php:38 modules_v4/gallery/module.php:526 modules_v4/googlemap/admin_places.php:607 modules_v4/googlemap/admin_places.php:759 modules_v4/googlemap/module.php:1503 modules_v4/googlemap/module.php:1519 modules_v4/pages/help_text.php:38 modules_v4/pages/module.php:503 modules_v4/random_media/module.php:296 modules_v4/report_census/module.php:206 modules_v4/report_family/module.php:134 modules_v4/report_family/module.php:145 modules_v4/report_individual/module.php:130 modules_v4/report_related_fam/module.php:130 modules_v4/report_related_fam/module.php:161
 msgid "All"
 msgstr "Alle"
 
@@ -2610,7 +2603,7 @@ msgstr "Når det er muligt er navne efterfulgt af individuelle levetid datoer fo
 msgid "Choose relatives"
 msgstr "Vælg relationer"
 
-#: admin_trees_missing.php:132 ancestry.php:108 descendancy.php:76 familybook.php:59 hourglass.php:74 modules_v4/chart_fanchart/module.php:113 modules_v4/googlemap/module.php:734 modules_v4/report_related_fam/module.php:180 pedigree.php:46
+#: admin_trees_missing.php:132 ancestry.php:108 descendancy.php:76 familybook.php:59 hourglass.php:74 modules_v4/chart_fanchart/module.php:113 modules_v4/googlemap/module.php:739 modules_v4/report_related_fam/module.php:180 pedigree.php:46
 msgid "Generations"
 msgstr "Generationer"
 
@@ -2876,7 +2869,7 @@ msgstr "Nul"
 msgid "Link"
 msgstr "Links"
 
-#: admin_trees_sanity.php:287 medialist.php:143 modules_v4/album/module.php:330 modules_v4/fancy_imagebar/module.php:364 modules_v4/googlemap/module.php:2077 modules_v4/report_fact/module.php:204 modules_v4/research_links/module.php:420
+#: admin_trees_sanity.php:287 medialist.php:143 modules_v4/album/module.php:330 modules_v4/fancy_imagebar/module.php:364 modules_v4/googlemap/module.php:2083 modules_v4/report_fact/module.php:204 modules_v4/research_links/module.php:420
 msgid "Reset"
 msgstr "Nulstil"
 
@@ -3123,7 +3116,7 @@ msgstr "Administratoren %1s har godkendt din ansøgning om en konto.<br><br>Du k
 msgid "Edit user"
 msgstr "Rediger bruger"
 
-#: admin_users.php:246 edit_changes.php:186 includes/functions/functions_print.php:346 includes/functions/functions_print.php:371 includes/functions/functions_print.php:602 library/KT/Stats.php:3579 themes/colors/footer.php:35 themes/kiwitrees/footer.php:35 themes/webtrees/footer.php:35 themes/xenea/footer.php:35
+#: admin_users.php:246 edit_changes.php:186 includes/functions/functions_print.php:346 includes/functions/functions_print.php:371 includes/functions/functions_print.php:602 library/KT/Stats.php:3620 themes/colors/footer.php:35 themes/kiwitrees/footer.php:35 themes/webtrees/footer.php:35 themes/xenea/footer.php:35
 msgid "Send Message"
 msgstr "Send besked"
 
@@ -3510,11 +3503,11 @@ msgstr "Nulevende personer"
 msgid "Recent Years (&lt; 100 yrs)"
 msgstr "De sidste 100 år"
 
-#: calendar.php:239 calendar.php:242 calendar.php:408 calendar.php:592 includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:744 library/KT/Stats.php:1778 library/KT/Stats.php:2504 modules_v4/chart_statistics/module.php:275 modules_v4/chart_statistics/module.php:294 modules_v4/chart_statistics/module.php:307 modules_v4/gedcom_stats/module.php:97 modules_v4/gedcom_stats/module.php:169 modules_v4/html/module.php:168 modules_v4/top10_givnnames/module.php:87 modules_v4/widget_givnnames/module.php:86 modules_v4/widget_stats/module.php:93 modules_v4/widget_stats/module.php:226
+#: calendar.php:239 calendar.php:242 calendar.php:408 calendar.php:592 includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:785 library/KT/Stats.php:1819 library/KT/Stats.php:2545 modules_v4/chart_statistics/module.php:275 modules_v4/chart_statistics/module.php:294 modules_v4/chart_statistics/module.php:307 modules_v4/gedcom_stats/module.php:97 modules_v4/gedcom_stats/module.php:169 modules_v4/html/module.php:168 modules_v4/top10_givnnames/module.php:87 modules_v4/widget_givnnames/module.php:86 modules_v4/widget_stats/module.php:93 modules_v4/widget_stats/module.php:226
 msgid "Males"
 msgstr "Mænd"
 
-#: calendar.php:246 calendar.php:248 calendar.php:409 calendar.php:593 includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:738 library/KT/Stats.php:1779 library/KT/Stats.php:2505 modules_v4/chart_statistics/module.php:276 modules_v4/chart_statistics/module.php:295 modules_v4/chart_statistics/module.php:308 modules_v4/gedcom_stats/module.php:98 modules_v4/gedcom_stats/module.php:170 modules_v4/html/module.php:172 modules_v4/top10_givnnames/module.php:82 modules_v4/widget_givnnames/module.php:81 modules_v4/widget_stats/module.php:98 modules_v4/widget_stats/module.php:226
+#: calendar.php:246 calendar.php:248 calendar.php:409 calendar.php:593 includes/functions/functions_print_lists.php:2368 library/KT/Stats.php:779 library/KT/Stats.php:1820 library/KT/Stats.php:2546 modules_v4/chart_statistics/module.php:276 modules_v4/chart_statistics/module.php:295 modules_v4/chart_statistics/module.php:308 modules_v4/gedcom_stats/module.php:98 modules_v4/gedcom_stats/module.php:170 modules_v4/html/module.php:172 modules_v4/top10_givnnames/module.php:82 modules_v4/widget_givnnames/module.php:81 modules_v4/widget_stats/module.php:98 modules_v4/widget_stats/module.php:226
 msgid "Females"
 msgstr "Kvinder"
 
@@ -3566,11 +3559,11 @@ msgstr "Efterkommere af %s"
 msgid "Error"
 msgstr "Fejl"
 
-#: downloadbackup.php:34 includes/session.php:624
+#: downloadbackup.php:34 includes/session.php:619
 msgid "You do not have permission to view this page."
 msgstr "Du har ikke tilladelse til at se denne side."
 
-#: edit_changes.php:31 help_text.php:603 modules_v4/report_changes/module.php:252 modules_v4/review_changes/module.php:32 modules_v4/widget_review_changes/module.php:32 themes/_administration/header.php:109 themes/colors/header.php:117 themes/kiwitrees/header.php:120 themes/webtrees/header.php:97 themes/xenea/header.php:104
+#: edit_changes.php:31 help_text.php:603 modules_v4/report_changes/module.php:252 modules_v4/review_changes/module.php:32 modules_v4/widget_review_changes/module.php:32 themes/_administration/header.php:109 themes/colors/header.php:117 themes/kiwitrees/header.php:120 themes/levy/header.php:106 themes/webtrees/header.php:97 themes/xenea/header.php:104
 msgid "Pending changes"
 msgstr "Ventende ændringer"
 
@@ -3694,7 +3687,7 @@ msgstr "Tilknyt hændelser med denne kilde"
 msgid "Select Events"
 msgstr "Vælg hændelser"
 
-#: edit_interface.php:881 edit_interface.php:939 includes/functions/functions_edit.php:1178
+#: edit_interface.php:881 edit_interface.php:939 includes/functions/functions_edit.php:1179
 msgid "Create a new Shared Note"
 msgstr "Opret en ny delt note"
 
@@ -3710,7 +3703,7 @@ msgstr "Delt note"
 msgid "Edit Shared Note"
 msgstr "Redigér delt note"
 
-#: edit_interface.php:1152 edit_interface.php:1279 includes/functions/functions_edit.php:1174
+#: edit_interface.php:1152 edit_interface.php:1279 includes/functions/functions_edit.php:1175
 msgid "Create Repository"
 msgstr "Opret nyt opbevaringssted"
 
@@ -3730,7 +3723,7 @@ msgstr "Tilføj barn"
 msgid "Add a spouse"
 msgstr "Tilføj en ægtefælle"
 
-#: edit_interface.php:1953 includes/functions/functions_edit.php:1500 library/KT/Controller/Individual.php:187
+#: edit_interface.php:1953 includes/functions/functions_edit.php:1501 library/KT/Controller/Individual.php:187
 msgid "Edit name"
 msgstr "Rediger navn"
 
@@ -3798,11 +3791,11 @@ msgstr "hustru"
 msgid "spouse"
 msgstr "ægtefælle"
 
-#: edit_interface.php:2288 includes/functions/functions.php:1230 includes/functions/functions_charts.php:284 includes/functions/functions_charts.php:944 modules_v4/googlemap/googlemap.php:294 modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341 relationship.php:384
+#: edit_interface.php:2288 includes/functions/functions.php:1230 includes/functions/functions_charts.php:287 includes/functions/functions_charts.php:950 modules_v4/googlemap/googlemap.php:294 modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341 relationship.php:384
 msgid "son"
 msgstr "søn"
 
-#: edit_interface.php:2289 includes/functions/functions.php:1231 includes/functions/functions_charts.php:285 includes/functions/functions_charts.php:945 modules_v4/googlemap/googlemap.php:289 modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342 relationship.php:387
+#: edit_interface.php:2289 includes/functions/functions.php:1231 includes/functions/functions_charts.php:288 includes/functions/functions_charts.php:951 modules_v4/googlemap/googlemap.php:289 modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342 relationship.php:387
 msgid "daughter"
 msgstr "datter"
 
@@ -3879,7 +3872,7 @@ msgstr "Adgangskoden skal indeholde mindst 6 tegn."
 msgid "My account"
 msgstr "Min konto"
 
-#: edituser.php:145 library/KT/Stats.php:3944
+#: edituser.php:145 library/KT/Stats.php:3985
 msgid "Unknown"
 msgstr "Ukendt"
 
@@ -3887,15 +3880,15 @@ msgstr "Ukendt"
 msgid "Delete your account"
 msgstr "Slet din konto"
 
-#: expand_view.php:32 includes/functions/functions.php:2666 includes/functions/functions.php:2689 includes/functions/functions.php:2721 includes/functions/functions.php:2763 includes/functions/functions.php:2790 includes/functions/functions.php:2817 includes/functions/functions.php:2855 includes/functions/functions.php:2880 includes/functions/functions.php:2903 library/KT/Controller/FancyTreeView.php:721 library/KT/Controller/GedcomRecord.php:50 library/KT/GedcomRecord.php:450 library/KT/GedcomRecord.php:498 library/KT/GedcomRecord.php:611 library/KT/Note.php:63 library/KT/Person.php:119 library/KT/Person.php:334 library/KT/Person.php:357 library/KT/Person.php:380 library/KT/Person.php:417 library/KT/Person.php:440 library/KT/Person.php:1931 library/KT/Repository.php:55 library/KT/Source.php:47 library/KT/Stats.php:997 library/KT/Stats.php:1937 media_links.php:86 media_links.php:109 media_links.php:141 media_links.php:183 media_links.php:210 media_links.php:237 media_links.php:275 media_links.php:300 media_links.php:323 media_links.php:441 media_links.php:477 media_links.php:510 media_links.php:530 media_links.php:584 media_links.php:633 modules_v4/googlemap/module.php:769
+#: expand_view.php:32 includes/functions/functions.php:2666 includes/functions/functions.php:2689 includes/functions/functions.php:2721 includes/functions/functions.php:2763 includes/functions/functions.php:2790 includes/functions/functions.php:2817 includes/functions/functions.php:2855 includes/functions/functions.php:2880 includes/functions/functions.php:2903 library/KT/Controller/FancyTreeView.php:721 library/KT/Controller/GedcomRecord.php:50 library/KT/GedcomRecord.php:450 library/KT/GedcomRecord.php:498 library/KT/GedcomRecord.php:611 library/KT/Note.php:63 library/KT/Person.php:119 library/KT/Person.php:334 library/KT/Person.php:357 library/KT/Person.php:380 library/KT/Person.php:417 library/KT/Person.php:440 library/KT/Person.php:1931 library/KT/Repository.php:55 library/KT/Source.php:47 library/KT/Stats.php:1038 library/KT/Stats.php:1978 media_links.php:86 media_links.php:109 media_links.php:141 media_links.php:183 media_links.php:210 media_links.php:237 media_links.php:275 media_links.php:300 media_links.php:323 media_links.php:441 media_links.php:477 media_links.php:510 media_links.php:530 media_links.php:584 media_links.php:633 modules_v4/googlemap/module.php:774
 msgid "Private"
 msgstr "Privat"
 
-#: expand_view.php:90 includes/functions/functions_print_facts.php:192 includes/functions/functions_print_facts.php:635 includes/functions/functions_print_facts.php:1287 library/KT/Controller/Ancestry.php:141 library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2747 library/KT/Stats.php:2773 library/KT/Stats.php:2784 library/KT/Stats.php:2793 modules_v4/relatives/module.php:80
+#: expand_view.php:90 includes/functions/functions_print_facts.php:192 includes/functions/functions_print_facts.php:635 includes/functions/functions_print_facts.php:1287 library/KT/Controller/Ancestry.php:141 library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2788 library/KT/Stats.php:2814 library/KT/Stats.php:2825 library/KT/Stats.php:2834 modules_v4/relatives/module.php:80
 msgid "Edit family"
 msgstr "Redigér familie"
 
-#: expand_view.php:90 includes/functions/functions_print_facts.php:192 includes/functions/functions_print_facts.php:635 includes/functions/functions_print_facts.php:1287 library/KT/Controller/Ancestry.php:141 library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2747 library/KT/Stats.php:2773 library/KT/Stats.php:2784 library/KT/Stats.php:2793 medialist.php:290 modules_v4/relatives/module.php:80
+#: expand_view.php:90 includes/functions/functions_print_facts.php:192 includes/functions/functions_print_facts.php:635 includes/functions/functions_print_facts.php:1287 library/KT/Controller/Ancestry.php:141 library/KT/Controller/Descendancy.php:206 library/KT/Stats.php:2788 library/KT/Stats.php:2814 library/KT/Stats.php:2825 library/KT/Stats.php:2834 medialist.php:290 modules_v4/relatives/module.php:80
 msgid "View family"
 msgstr "Vis familie"
 
@@ -4311,7 +4304,7 @@ msgstr "Her kan du tilføje fakta for en eller flere personer.<br /><br />Vælg 
 msgid "Kiwitrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
 msgstr "I <b>kiwitrees</b> kan du kopiere op til 10 fakta, inklusive alle detaljer, til en kopiholder. Kopiholderen er forskellig fra udklipsholderen som du bruger til eksportere dele af din database med.<br /><br />Du kan vælge enhver fakta fra kopiholderen og kopiere det til den post du er ved at redigere. Imidlertid kan du ikke kopiere en faktatype til en helt anden faktatype. Du kan fx ikke kopiere vielsesfakta ind i poster til kilder eller personer, da vielser kun er tilknyttet familieposter.<br /><br />Kopiholderen er meget nyttig når man skal bruge de samme fakta til mange personer eller familier."
 
-#: help_text.php:433 includes/functions/functions_edit.php:1954 library/KT/Controller/Family.php:228 modules_v4/notes/module.php:93
+#: help_text.php:433 includes/functions/functions_edit.php:1955 library/KT/Controller/Family.php:228 modules_v4/notes/module.php:93
 msgid "Add a note"
 msgstr "Tilføj en ny note"
 
@@ -4319,7 +4312,7 @@ msgstr "Tilføj en ny note"
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that's all."
 msgstr "Hvis du har en note du vil tilføje til denne post, er dette stedet at gøre det.<br /><br />Klik på linket og der åbnes et vindue hvor du kan skrive din note. Når du er færdig klikker du på knappen \"tilføj\". Derefter gemmes noten og vinduet lukkes."
 
-#: help_text.php:439 includes/functions/functions_edit.php:1964 library/KT/Controller/Family.php:235 modules_v4/notes/module.php:102
+#: help_text.php:439 includes/functions/functions_edit.php:1965 library/KT/Controller/Family.php:235 modules_v4/notes/module.php:102
 msgid "Add a shared note"
 msgstr "Tilføj en delt note"
 
@@ -4327,7 +4320,7 @@ msgstr "Tilføj en delt note"
 msgid "When you click the <b>Add a Shared Note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
 msgstr "Når du klikker på linket <b>Tilføj en ny delt note</b> vil der åbnes et nyt vindue. Du kan nu vælge en eksisterende delt note eller oprette en ny delt note og samtidige lave et link til den."
 
-#: help_text.php:445 includes/functions/functions_edit.php:1905 library/KT/Controller/Family.php:253 modules_v4/sources_tab/module.php:84
+#: help_text.php:445 includes/functions/functions_edit.php:1906 library/KT/Controller/Family.php:253 modules_v4/sources_tab/module.php:84
 msgid "Add a source citation"
 msgstr "Tilføj en kildecitering"
 
@@ -5334,7 +5327,7 @@ msgctxt "MALE/FEMALE"
 msgid "%1$d x %2$s"
 msgstr "%1$d x %2$s"
 
-#: includes/functions/functions.php:1173 modules_v4/googlemap/module.php:1269
+#: includes/functions/functions.php:1173 modules_v4/googlemap/module.php:1274
 msgid "self"
 msgstr "selv"
 
@@ -7789,26 +7782,26 @@ msgstr "Klik på navn for at tilføje personen til listen"
 msgid "Close"
 msgstr "Luk"
 
-#: includes/functions/functions_charts.php:275 includes/functions/functions_charts.php:936 library/KT/Controller/Descendancy.php:247 modules_v4/descendancy/module.php:205 modules_v4/descendancy/module.php:224
+#: includes/functions/functions_charts.php:278 includes/functions/functions_charts.php:942 library/KT/Controller/Descendancy.php:247 modules_v4/descendancy/module.php:205 modules_v4/descendancy/module.php:224
 msgid "No children"
 msgstr "Ingen registrerede børn"
 
-#: includes/functions/functions_charts.php:277 includes/functions/functions_charts.php:938
+#: includes/functions/functions_charts.php:280 includes/functions/functions_charts.php:944
 #, php-format
 msgid "%d Child"
 msgid_plural "%d Children"
 msgstr[0] "%d Barn"
 msgstr[1] "%d Børn"
 
-#: includes/functions/functions_charts.php:283 includes/functions/functions_charts.php:943 library/KT/Controller/Family.php:127
+#: includes/functions/functions_charts.php:286 includes/functions/functions_charts.php:949 library/KT/Controller/Family.php:127
 msgid "Add a child to this family"
 msgstr "Tilføj et barn til denne familie"
 
-#: includes/functions/functions_charts.php:432 includes/functions/functions_charts.php:612 includes/functions/functions_charts.php:997
+#: includes/functions/functions_charts.php:435 includes/functions/functions_charts.php:615 includes/functions/functions_charts.php:1003
 msgid "This family remained childless"
 msgstr "Denne familie forblev barnløs"
 
-#: includes/functions/functions_charts.php:675 includes/functions/functions_charts.php:696 includes/functions/functions_charts.php:724 includes/functions/functions_charts.php:738 includes/functions/functions_charts.php:779 includes/functions/functions_charts.php:800 includes/functions/functions_charts.php:828 includes/functions/functions_charts.php:845 includes/functions/functions_charts.php:877 includes/functions/functions_charts.php:903
+#: includes/functions/functions_charts.php:681 includes/functions/functions_charts.php:702 includes/functions/functions_charts.php:730 includes/functions/functions_charts.php:744 includes/functions/functions_charts.php:785 includes/functions/functions_charts.php:806 includes/functions/functions_charts.php:834 includes/functions/functions_charts.php:851 includes/functions/functions_charts.php:883 includes/functions/functions_charts.php:909
 msgid "Add new"
 msgstr "Tilføj"
 
@@ -7884,7 +7877,7 @@ msgstr "Middag"
 msgid "P.M."
 msgstr "P.M."
 
-#: includes/functions/functions_db.php:1378
+#: includes/functions/functions_db.php:1414
 msgid "<span class=\"error\">Unable to delete user. This user has pending data changes.</span>"
 msgstr "<span class=\"error\">Kan ikke slette bruger. Denne bruger har afventende data ændringer.</span>"
 
@@ -7908,152 +7901,152 @@ msgstr "E-post genvej"
 msgid "No contact"
 msgstr "Ingen kontakt"
 
-#: includes/functions/functions_edit.php:359
+#: includes/functions/functions_edit.php:360
 #, php-format
 msgid "The record with id %s was changed by another user since you last accessed it."
 msgstr "Posten med id %s er blevet ændret af en anden bruger siden du sidst havde adgang til det."
 
-#: includes/functions/functions_edit.php:361
+#: includes/functions/functions_edit.php:362
 #, php-format
 msgid "This record was last changed by <i>%s</i> at %s"
 msgstr "Posten blev sidst ændret af <i>%s</i> den %s"
 
-#: includes/functions/functions_edit.php:362
+#: includes/functions/functions_edit.php:363
 #, php-format
 msgid "Current time is %s"
 msgstr "Nuværende tid er %s"
 
-#: includes/functions/functions_edit.php:364 includes/functions/functions_edit.php:2417 includes/functions/functions_edit.php:2426
+#: includes/functions/functions_edit.php:365 includes/functions/functions_edit.php:2418 includes/functions/functions_edit.php:2427
 msgid "Please reload the previous page to make sure you are working with the most recent record."
 msgstr "Brug venligst din browsers Forige side knap og genindlæs den forrige side for at sikre at du arbejder med den nyeste post."
 
-#: includes/functions/functions_edit.php:978
+#: includes/functions/functions_edit.php:979
 msgid "go to new individual"
 msgstr "gå til nyt individ"
 
-#: includes/functions/functions_edit.php:985
+#: includes/functions/functions_edit.php:986
 msgid "Check for possible duplicates"
 msgstr "Søg for mulige dubletter"
 
-#: includes/functions/functions_edit.php:987
+#: includes/functions/functions_edit.php:988
 msgid "check"
 msgstr "søg"
 
-#: includes/functions/functions_edit.php:1165
+#: includes/functions/functions_edit.php:1166
 msgid "Select a date"
 msgstr "Vælg en dato"
 
-#: includes/functions/functions_edit.php:1170 includes/functions/functions_edit.php:1974 library/KT/Controller/Family.php:243 modules_v4/album/module.php:96 source.php:135
+#: includes/functions/functions_edit.php:1171 includes/functions/functions_edit.php:1975 library/KT/Controller/Family.php:243 modules_v4/album/module.php:96 source.php:135
 msgid "Add a media object"
 msgstr "Tilføj et mediaobjekt"
 
-#: includes/functions/functions_edit.php:1183
+#: includes/functions/functions_edit.php:1184
 msgid "Create a new Shared Note using Assistant"
 msgstr "Opret en ny delt note via assistent"
 
-#: includes/functions/functions_edit.php:1187
+#: includes/functions/functions_edit.php:1188
 msgid "Edit shared note"
 msgstr "Redigér delt note"
 
-#: includes/functions/functions_edit.php:1433 includes/functions/functions_edit.php:1690 modules_v4/census_assistant/census-edit.php:44 modules_v4/census_assistant/census-save.php:49
+#: includes/functions/functions_edit.php:1434 includes/functions/functions_edit.php:1691 modules_v4/census_assistant/census-edit.php:44 modules_v4/census_assistant/census-save.php:49
 msgid "Create a shared note using the census assistant"
 msgstr "Opret en delt note via folketællings assistenten"
 
-#: includes/functions/functions_edit.php:1441
+#: includes/functions/functions_edit.php:1442
 msgid "No Temple - Living Ordinance"
 msgstr "Ingen Tempel-Living tilordning"
 
-#: includes/functions/functions_edit.php:1736
+#: includes/functions/functions_edit.php:1737
 msgid "Link this source to these records"
 msgstr "Link kilden til disse poster"
 
-#: includes/functions/functions_edit.php:1872 library/KT/Gedcom/Tag.php:160 modules_v4/census_assistant/census-edit.php:86 modules_v4/report_census/module.php:149
+#: includes/functions/functions_edit.php:1873 library/KT/Gedcom/Tag.php:160 modules_v4/census_assistant/census-edit.php:86 modules_v4/report_census/module.php:149
 msgid "Census date"
 msgstr "Dato"
 
-#: includes/functions/functions_edit.php:1933 includes/functions/functions_edit.php:1937
+#: includes/functions/functions_edit.php:1934 includes/functions/functions_edit.php:1938
 msgid "Add an associate"
 msgstr "Tilføj en forbindelse"
 
-#: includes/functions/functions_edit.php:1983
+#: includes/functions/functions_edit.php:1984
 msgid "Add a restriction"
 msgstr "Tilføj en restriktion"
 
-#: includes/functions/functions_edit.php:2416 includes/functions/functions_edit.php:2425
+#: includes/functions/functions_edit.php:2417 includes/functions/functions_edit.php:2426
 msgid "An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it."
 msgstr "En fejl opstod ved oprettelse af Redigering form. En anden bruger er måske igang med at lave ændringer."
 
-#: includes/functions/functions_edit.php:2674
+#: includes/functions/functions_edit.php:2675
 msgctxt "Surname tradition"
 msgid "paternal"
 msgstr "farens"
 
-#: includes/functions/functions_edit.php:2675 includes/functions/functions_edit.php:2679 includes/functions/functions_edit.php:2694 includes/functions/functions_edit.php:2699
+#: includes/functions/functions_edit.php:2676 includes/functions/functions_edit.php:2680 includes/functions/functions_edit.php:2695 includes/functions/functions_edit.php:2700
 msgid "Children take their father’s surname."
 msgstr "Børn tager deres fars efternavn"
 
-#: includes/functions/functions_edit.php:2676 includes/functions/functions_edit.php:2695 includes/functions/functions_edit.php:2700
+#: includes/functions/functions_edit.php:2677 includes/functions/functions_edit.php:2696 includes/functions/functions_edit.php:2701
 msgid "Wives take their husband’s surname."
 msgstr "Hustruer tager deres ægtemands efternavn."
 
-#: includes/functions/functions_edit.php:2678
+#: includes/functions/functions_edit.php:2679
 msgid "patrilineal"
 msgstr "patronym"
 
-#: includes/functions/functions_edit.php:2681
+#: includes/functions/functions_edit.php:2682
 msgid "matrilineal"
 msgstr "metronym"
 
-#: includes/functions/functions_edit.php:2682
+#: includes/functions/functions_edit.php:2683
 msgid "Children take their mother’s surname."
 msgstr "Børn tager deres mors efternavn"
 
-#: includes/functions/functions_edit.php:2684
+#: includes/functions/functions_edit.php:2685
 msgctxt "Surname tradition"
 msgid "Spanish"
 msgstr "Spansk"
 
-#: includes/functions/functions_edit.php:2685
+#: includes/functions/functions_edit.php:2686
 msgid "Children take one surname from the father and one surname from the mother."
 msgstr "Børn får et efternavn fra faderen og et fra moderen."
 
-#: includes/functions/functions_edit.php:2687
+#: includes/functions/functions_edit.php:2688
 msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: includes/functions/functions_edit.php:2688
+#: includes/functions/functions_edit.php:2689
 msgid "Children take one surname from the mother and one surname from the father."
 msgstr "Børn får et efternavn fra moderen og et fra faderen."
 
-#: includes/functions/functions_edit.php:2690
+#: includes/functions/functions_edit.php:2691
 msgctxt "Surname tradition"
 msgid "Icelandic"
 msgstr "Islandsk"
 
-#: includes/functions/functions_edit.php:2691
+#: includes/functions/functions_edit.php:2692
 msgid "Children take a patronym instead of a surname."
 msgstr "børn som tager patronym i stedet for efternavn"
 
-#: includes/functions/functions_edit.php:2693
+#: includes/functions/functions_edit.php:2694
 msgctxt "Surname tradition"
 msgid "Polish"
 msgstr "Polsk"
 
-#: includes/functions/functions_edit.php:2696
+#: includes/functions/functions_edit.php:2697
 msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Efternavne ændres til at indikere et individs køn."
 
-#: includes/functions/functions_edit.php:2698
+#: includes/functions/functions_edit.php:2699
 msgctxt "Surname tradition"
 msgid "Lithuanian"
 msgstr "Litauisk"
 
-#: includes/functions/functions_edit.php:2701
+#: includes/functions/functions_edit.php:2702
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr "Efternavn ændres til at indikere et individs køn og ægteskabsstatus."
 
-#: includes/functions/functions_edit.php:2703
+#: includes/functions/functions_edit.php:2704
 msgctxt "Surname tradition"
 msgid "none"
 msgstr "ingen"
@@ -8174,14 +8167,14 @@ msgstr "Log ind"
 msgid "Logout"
 msgstr "Log ud"
 
-#: includes/functions/functions_print.php:322 library/KT/Stats.php:3552
+#: includes/functions/functions_print.php:322 library/KT/Stats.php:3593
 #, php-format
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] "%d anonym bruger"
 msgstr[1] "%d anonyme brugere"
 
-#: includes/functions/functions_print.php:328 library/KT/Stats.php:3562
+#: includes/functions/functions_print.php:328 library/KT/Stats.php:3603
 #, php-format
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
@@ -8207,7 +8200,7 @@ msgstr "For hjælp med slægtsspørgsmål bedes du kontakte %s"
 msgid "…"
 msgstr "…"
 
-#: includes/functions/functions_print.php:593 library/KT/Stats.php:982 library/KT/Stats.php:1545 library/KT/Stats.php:1631 library/KT/Stats.php:1915 library/KT/Stats.php:2014 library/KT/Stats.php:2254 library/KT/Stats.php:2648 library/KT/Stats.php:2749 library/KT/Stats.php:2796
+#: includes/functions/functions_print.php:593 library/KT/Stats.php:1023 library/KT/Stats.php:1586 library/KT/Stats.php:1672 library/KT/Stats.php:1956 library/KT/Stats.php:2055 library/KT/Stats.php:2295 library/KT/Stats.php:2689 library/KT/Stats.php:2790 library/KT/Stats.php:2837
 msgid "This information is private and cannot be shown."
 msgstr "Oplysninger om denne person er privat."
 
@@ -8239,7 +8232,7 @@ msgstr "på dødsdagen"
 msgid "after death"
 msgstr "efter dødsfald"
 
-#: includes/functions/functions_print.php:991 modules_v4/googlemap/admin_places.php:189 modules_v4/googlemap/module.php:51 modules_v4/googlemap/module.php:191 modules_v4/googlemap/module.php:1465 modules_v4/googlemap/module.php:2037 modules_v4/googlemap/module.php:2076
+#: includes/functions/functions_print.php:991 modules_v4/googlemap/admin_places.php:189 modules_v4/googlemap/module.php:51 modules_v4/googlemap/module.php:196 modules_v4/googlemap/module.php:1470 modules_v4/googlemap/module.php:2043 modules_v4/googlemap/module.php:2082
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
@@ -8351,7 +8344,7 @@ msgstr "Lør"
 msgid "Pedigree"
 msgstr "Anetavle"
 
-#: includes/functions/functions_print.php:1416 modules_v4/googlemap/module.php:1330
+#: includes/functions/functions_print.php:1416 modules_v4/googlemap/module.php:1335
 msgid "Pedigree map"
 msgstr "Kort over slægtninge"
 
@@ -8420,7 +8413,7 @@ msgstr "I live"
 msgid "Show individuals who are dead or couples where both partners are deceased."
 msgstr "Vis personer der er døde eller par hvor begge partnere er døde."
 
-#: includes/functions/functions_print_lists.php:195 library/KT/Stats.php:810 modules_v4/privacy/module.php:63
+#: includes/functions/functions_print_lists.php:195 library/KT/Stats.php:851 modules_v4/privacy/module.php:63
 msgid "Dead"
 msgstr "Antal døde"
 
@@ -8691,7 +8684,7 @@ msgstr "%1s %2s - Medie objekt er ikke linket"
 msgid "Click a row then drag-and-drop to re-order media."
 msgstr "Klik på en række og træk-og-slip for at gensortere medier "
 
-#: includes/session.php:622
+#: includes/session.php:617
 msgid "Search engine"
 msgstr "Søgemaskine"
 
@@ -8806,7 +8799,7 @@ msgstr "Sæt reference"
 msgid "Ancestors of %s"
 msgstr "Aner til %s"
 
-#: library/KT/Controller/Ancestry.php:142 library/KT/Stats.php:2745 library/KT/Stats.php:2770 library/KT/Stats.php:2781 library/KT/Stats.php:2791 library/KT/Stats.php:3559
+#: library/KT/Controller/Ancestry.php:142 library/KT/Stats.php:2786 library/KT/Stats.php:2811 library/KT/Stats.php:2822 library/KT/Stats.php:2832 library/KT/Stats.php:3600
 msgid "and"
 msgstr "og"
 
@@ -9298,7 +9291,7 @@ msgctxt "One parent/multiple children"
 msgid "had"
 msgstr "havde"
 
-#: library/KT/Controller/FancyTreeView.php:648 library/KT/Stats.php:2682 library/KT/Stats.php:2686
+#: library/KT/Controller/FancyTreeView.php:648 library/KT/Stats.php:2723 library/KT/Stats.php:2727
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
@@ -9452,7 +9445,7 @@ msgstr "den "
 #: library/KT/Controller/FancyTreeView.php:1011
 msgctxt "before dateformat mmm yyyy"
 msgid "in "
-msgstr "i"
+msgstr "i "
 
 #: library/KT/Controller/FancyTreeView.php:1014
 msgctxt "before dateformat yyyy"
@@ -9523,15 +9516,15 @@ msgstr "Rediger detaljer"
 msgid "Edit note"
 msgstr "Rediger note"
 
-#: library/KT/Controller/Page.php:205
+#: library/KT/Controller/Page.php:204
 msgid "More"
 msgstr "Mere"
 
-#: library/KT/Controller/Page.php:206
+#: library/KT/Controller/Page.php:205
 msgid "Less"
 msgstr "Mindre"
 
-#: library/KT/Controller/Page.php:240
+#: library/KT/Controller/Page.php:239
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB."
 msgstr "Eksekveringstid: %1$s sek. -  Søgninger i database: %2$s. - Check af privatlivsbeskyttelse: %3$s. Brugt hukommelse: %4$s KB."
@@ -9541,7 +9534,7 @@ msgstr "Eksekveringstid: %1$s sek. -  Søgninger i database: %2$s. - Check af pr
 msgid "Pedigree tree of %s"
 msgstr "Stamtavle for %s"
 
-#: library/KT/Controller/Pedigree.php:240 library/KT/Place.php:94 modules_v4/family_nav/module.php:260 modules_v4/googlemap/admin_places.php:587 modules_v4/googlemap/admin_places.php:594 modules_v4/googlemap/admin_places.php:649 modules_v4/googlemap/admin_places_edit.php:173 modules_v4/googlemap/admin_places_edit.php:220 modules_v4/googlemap/admin_places_edit.php:224 modules_v4/googlemap/module.php:1710 modules_v4/googlemap/placehierarchy.php:311 modules_v4/googlemap/placehierarchy.php:324 modules_v4/googlemap/placehierarchy.php:326 modules_v4/googlemap/placehierarchy.php:392 modules_v4/googlemap/placehierarchy.php:405 modules_v4/googlemap/placehierarchy.php:407 placelist.php:163
+#: library/KT/Controller/Pedigree.php:240 library/KT/Place.php:94 modules_v4/family_nav/module.php:260 modules_v4/googlemap/admin_places.php:587 modules_v4/googlemap/admin_places.php:594 modules_v4/googlemap/admin_places.php:649 modules_v4/googlemap/admin_places_edit.php:173 modules_v4/googlemap/admin_places_edit.php:220 modules_v4/googlemap/admin_places_edit.php:224 modules_v4/googlemap/module.php:1715 modules_v4/googlemap/placehierarchy.php:311 modules_v4/googlemap/placehierarchy.php:324 modules_v4/googlemap/placehierarchy.php:326 modules_v4/googlemap/placehierarchy.php:392 modules_v4/googlemap/placehierarchy.php:405 modules_v4/googlemap/placehierarchy.php:407 placelist.php:163
 msgid "unknown"
 msgstr "ukendt"
 
@@ -11903,7 +11896,7 @@ msgstr "Helsinki, Finland"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Mexico"
 
-#: library/KT/Gedcom/Code/Temp.php:127 library/KT/Stats.php:4049
+#: library/KT/Gedcom/Code/Temp.php:127 library/KT/Stats.php:4090
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
@@ -12534,7 +12527,7 @@ msgstr "Voksendåb"
 msgid "Citizenship"
 msgstr "Statsborgerskab"
 
-#: library/KT/Gedcom/Tag.php:172 modules_v4/googlemap/admin_places.php:176 modules_v4/googlemap/admin_places_edit.php:286 modules_v4/googlemap/module.php:326
+#: library/KT/Gedcom/Tag.php:172 modules_v4/googlemap/admin_places.php:176 modules_v4/googlemap/admin_places_edit.php:286 modules_v4/googlemap/module.php:331
 msgid "City"
 msgstr "By"
 
@@ -12578,7 +12571,7 @@ msgstr "Dato for kremering"
 msgid "Place of cremation"
 msgstr "Sted for kremering"
 
-#: library/KT/Gedcom/Tag.php:185 modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/admin_places_edit.php:282 modules_v4/googlemap/module.php:308 modules_v4/googlemap/module.php:401 modules_v4/googlemap/module.php:1495 modules_v4/googlemap/module.php:1640
+#: library/KT/Gedcom/Tag.php:185 modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/admin_places_edit.php:282 modules_v4/googlemap/module.php:313 modules_v4/googlemap/module.php:406 modules_v4/googlemap/module.php:1500 modules_v4/googlemap/module.php:1645
 msgid "Country"
 msgstr "Land"
 
@@ -12794,7 +12787,7 @@ msgstr "Dato for indvandring"
 msgid "Place of immigration"
 msgstr "Sted for indvandring"
 
-#: library/KT/Gedcom/Tag.php:253 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1652
+#: library/KT/Gedcom/Tag.php:253 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1657
 msgid "Latitude"
 msgstr "Breddegrad"
 
@@ -12802,11 +12795,11 @@ msgstr "Breddegrad"
 msgid "Legatee"
 msgstr "Arving"
 
-#: library/KT/Gedcom/Tag.php:255 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1653
+#: library/KT/Gedcom/Tag.php:255 modules_v4/googlemap/admin_places.php:182 modules_v4/googlemap/module.php:1658
 msgid "Longitude"
 msgstr "Længdegrad"
 
-#: library/KT/Gedcom/Tag.php:256 library/KT/Gedcom/Tag.php:925 modules_v4/googlemap/module.php:258
+#: library/KT/Gedcom/Tag.php:256 library/KT/Gedcom/Tag.php:925 modules_v4/googlemap/module.php:263
 msgid "Map"
 msgstr "Geografisk kort"
 
@@ -13043,7 +13036,7 @@ msgstr "Præfiks for efternavn"
 msgid "Social Security Number"
 msgstr "Personnummer"
 
-#: library/KT/Gedcom/Tag.php:334 modules_v4/googlemap/admin_places.php:174 modules_v4/googlemap/admin_places_edit.php:284 modules_v4/googlemap/module.php:317
+#: library/KT/Gedcom/Tag.php:334 modules_v4/googlemap/admin_places.php:174 modules_v4/googlemap/admin_places_edit.php:284 modules_v4/googlemap/module.php:322
 msgid "State"
 msgstr "Stat"
 
@@ -14359,7 +14352,7 @@ msgstr "Mig selv"
 msgid "Reports"
 msgstr "Rapporter"
 
-#: library/KT/MenuBar.php:172 lifespan.php:297 medialist.php:139 modules_v4/batch_update/plugins/search_replace.php:126 modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133 modules_v4/families/module.php:146 modules_v4/individuals/module.php:146 search.php:31 search.php:251 search.php:542 themes/colors/header.php:109 themes/colors/header.php:110 themes/webtrees/header.php:109 themes/webtrees/header.php:114 themes/webtrees/header.php:115 themes/xenea/header.php:94
+#: library/KT/MenuBar.php:172 lifespan.php:297 medialist.php:139 modules_v4/batch_update/plugins/search_replace.php:126 modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133 modules_v4/families/module.php:146 modules_v4/individuals/module.php:146 search.php:31 search.php:251 search.php:542 themes/colors/header.php:109 themes/colors/header.php:110 themes/levy/header.php:98 themes/levy/header.php:99 themes/webtrees/header.php:109 themes/webtrees/header.php:114 themes/webtrees/header.php:115 themes/xenea/header.php:94
 msgid "Search"
 msgstr "Søg"
 
@@ -14444,1244 +14437,1248 @@ msgstr "Med kilder"
 msgid "Without sources"
 msgstr "Uden kilder"
 
-#: library/KT/Stats.php:750
+#: library/KT/Stats.php:577 library/KT/Stats.php:603 library/KT/Stats.php:619 library/KT/Stats.php:645 library/KT/Stats.php:671 library/KT/Stats.php:687
+msgid "None recorded"
+msgstr "Køn ikke valgt"
+
+#: library/KT/Stats.php:791
 msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: library/KT/Stats.php:804 modules_v4/privacy/module.php:79
+#: library/KT/Stats.php:845 modules_v4/privacy/module.php:79
 msgid "Living"
 msgstr "Lever"
 
-#: library/KT/Stats.php:1128
+#: library/KT/Stats.php:1169
 msgid "Surname distribution chart"
 msgstr "Udbredelse efter efternavn"
 
-#: library/KT/Stats.php:1149
+#: library/KT/Stats.php:1190
 msgid "Birth by country"
 msgstr "Fødsler efter land"
 
-#: library/KT/Stats.php:1165
+#: library/KT/Stats.php:1206
 msgid "Death by country"
 msgstr "Dødsfald efter land"
 
-#: library/KT/Stats.php:1186
+#: library/KT/Stats.php:1227
 msgid "Marriage by country"
 msgstr "Vielser efter land"
 
-#: library/KT/Stats.php:1780 library/KT/Stats.php:2506
+#: library/KT/Stats.php:1821 library/KT/Stats.php:2547
 msgid "Average"
 msgstr "Gennemsnitlig"
 
-#: library/KT/Stats.php:1879 library/KT/Stats.php:3735 modules_v4/research_links/plugins/rijksarchiefbelgie.php:28
+#: library/KT/Stats.php:1920 library/KT/Stats.php:3776 modules_v4/research_links/plugins/rijksarchiefbelgie.php:28
 msgid "birth"
 msgstr "fødsel"
 
-#: library/KT/Stats.php:1880 library/KT/Stats.php:3736 modules_v4/research_links/plugins/rijksarchiefbelgie.php:32
+#: library/KT/Stats.php:1921 library/KT/Stats.php:3777 modules_v4/research_links/plugins/rijksarchiefbelgie.php:32
 msgid "death"
 msgstr "dødsfald"
 
-#: library/KT/Stats.php:1881 library/KT/Stats.php:3737
+#: library/KT/Stats.php:1922 library/KT/Stats.php:3778
 msgid "marriage"
 msgstr "ægteskab"
 
-#: library/KT/Stats.php:1882 library/KT/Stats.php:3738
+#: library/KT/Stats.php:1923 library/KT/Stats.php:3779
 msgid "adoption"
 msgstr "adoption"
 
-#: library/KT/Stats.php:1883 library/KT/Stats.php:3739
+#: library/KT/Stats.php:1924 library/KT/Stats.php:3780
 msgid "burial"
 msgstr "begravelse"
 
-#: library/KT/Stats.php:1884 library/KT/Stats.php:3740
+#: library/KT/Stats.php:1925 library/KT/Stats.php:3781
 msgid "census added"
 msgstr "folketælling tilføjet"
 
-#: library/KT/Stats.php:2916 statisticsplot.php:900
+#: library/KT/Stats.php:2957 statisticsplot.php:900
 msgid "Month of birth of first child in a relation"
 msgstr "Fødselsmåned for førstefødte i familie"
 
-#: library/KT/Stats.php:2965 modules_v4/chart_statistics/module.php:493
+#: library/KT/Stats.php:3006 modules_v4/chart_statistics/module.php:493
 msgid "Largest families"
 msgstr "Største familier"
 
-#: library/KT/Stats.php:3232 library/KT/Stats.php:3236
+#: library/KT/Stats.php:3273 library/KT/Stats.php:3277
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s barnebarn"
 msgstr[1] "%s børnebørn"
 
-#: library/KT/Stats.php:3549
+#: library/KT/Stats.php:3590
 msgid "No logged-in and no anonymous users"
 msgstr "Ingen logget ind og ingen anonyme brugere"
 
-#: library/KT/Stats.php:3945
+#: library/KT/Stats.php:3986
 msgid "Aruba"
 msgstr "Aruba"
 
-#: library/KT/Stats.php:3946
+#: library/KT/Stats.php:3987
 msgid "Acadia"
 msgstr "Acadia"
 
-#: library/KT/Stats.php:3947
+#: library/KT/Stats.php:3988
 msgid "Afghanistan"
 msgstr "Afghanistan"
 
-#: library/KT/Stats.php:3948
+#: library/KT/Stats.php:3989
 msgid "Angola"
 msgstr "Angola"
 
-#: library/KT/Stats.php:3949
+#: library/KT/Stats.php:3990
 msgid "Anguilla"
 msgstr "Anguilla"
 
-#: library/KT/Stats.php:3950
+#: library/KT/Stats.php:3991
 msgid "Aland Islands"
 msgstr "Ølandsøerne"
 
-#: library/KT/Stats.php:3951
+#: library/KT/Stats.php:3992
 msgid "Albania"
 msgstr "Albanien"
 
-#: library/KT/Stats.php:3952
+#: library/KT/Stats.php:3993
 msgid "Andorra"
 msgstr "Andorra"
 
-#: library/KT/Stats.php:3953
+#: library/KT/Stats.php:3994
 msgid "Netherlands Antilles"
 msgstr "De Nederlandske Antiller"
 
-#: library/KT/Stats.php:3954
+#: library/KT/Stats.php:3995
 msgid "United Arab Emirates"
 msgstr "De Forenede Arabiske Emirater"
 
-#: library/KT/Stats.php:3955
+#: library/KT/Stats.php:3996
 msgid "Argentina"
 msgstr "Argentina"
 
-#: library/KT/Stats.php:3956
+#: library/KT/Stats.php:3997
 msgid "Armenia"
 msgstr "Armenien"
 
-#: library/KT/Stats.php:3957
+#: library/KT/Stats.php:3998
 msgid "American Samoa"
 msgstr "Amerikansk Samoa"
 
-#: library/KT/Stats.php:3958
+#: library/KT/Stats.php:3999
 msgid "Antarctica"
 msgstr "Antarktis"
 
-#: library/KT/Stats.php:3959
+#: library/KT/Stats.php:4000
 msgid "French Southern Territories"
 msgstr "Sydlige Franske Territorier"
 
-#: library/KT/Stats.php:3960
+#: library/KT/Stats.php:4001
 msgid "Antigua and Barbuda"
 msgstr "Antigua og Barbuda"
 
-#: library/KT/Stats.php:3961
+#: library/KT/Stats.php:4002
 msgid "Australia"
 msgstr "Australien"
 
-#: library/KT/Stats.php:3962
+#: library/KT/Stats.php:4003
 msgid "Austria"
 msgstr "Østrig"
 
-#: library/KT/Stats.php:3963
+#: library/KT/Stats.php:4004
 msgid "Azerbaijan"
 msgstr "Aserbajdsjan"
 
-#: library/KT/Stats.php:3964
+#: library/KT/Stats.php:4005
 msgid "Azores"
 msgstr "Azorerne"
 
-#: library/KT/Stats.php:3965
+#: library/KT/Stats.php:4006
 msgid "Burundi"
 msgstr "Burundi"
 
-#: library/KT/Stats.php:3966
+#: library/KT/Stats.php:4007
 msgid "Belgium"
 msgstr "Belgien"
 
-#: library/KT/Stats.php:3967
+#: library/KT/Stats.php:4008
 msgid "Benin"
 msgstr "Benin"
 
-#: library/KT/Stats.php:3968
+#: library/KT/Stats.php:4009
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
-#: library/KT/Stats.php:3969
+#: library/KT/Stats.php:4010
 msgid "Bangladesh"
 msgstr "Bangladesh"
 
-#: library/KT/Stats.php:3970
+#: library/KT/Stats.php:4011
 msgid "Bulgaria"
 msgstr "Bulgarien"
 
-#: library/KT/Stats.php:3971
+#: library/KT/Stats.php:4012
 msgid "Bahrain"
 msgstr "Bahrain"
 
-#: library/KT/Stats.php:3972
+#: library/KT/Stats.php:4013
 msgid "Bahamas"
 msgstr "Bahamas"
 
-#: library/KT/Stats.php:3973
+#: library/KT/Stats.php:4014
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnien-Hercegovina"
 
-#: library/KT/Stats.php:3974
+#: library/KT/Stats.php:4015
 msgid "Belarus"
 msgstr "Hviderusland"
 
-#: library/KT/Stats.php:3975
+#: library/KT/Stats.php:4016
 msgid "Belize"
 msgstr "Belize"
 
-#: library/KT/Stats.php:3976
+#: library/KT/Stats.php:4017
 msgid "Bermuda"
 msgstr "Bermuda"
 
-#: library/KT/Stats.php:3977
+#: library/KT/Stats.php:4018
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: library/KT/Stats.php:3978
+#: library/KT/Stats.php:4019
 msgid "Brazil"
 msgstr "Brasilien"
 
-#: library/KT/Stats.php:3979
+#: library/KT/Stats.php:4020
 msgid "Barbados"
 msgstr "Barbados"
 
-#: library/KT/Stats.php:3980
+#: library/KT/Stats.php:4021
 msgid "Brunei Darussalam"
 msgstr "Brunei"
 
-#: library/KT/Stats.php:3981
+#: library/KT/Stats.php:4022
 msgid "Bhutan"
 msgstr "Bhutan"
 
-#: library/KT/Stats.php:3982
+#: library/KT/Stats.php:4023
 msgid "Bouvet Island"
 msgstr "Bouvetøen"
 
-#: library/KT/Stats.php:3983
+#: library/KT/Stats.php:4024
 msgid "Botswana"
 msgstr "Botswana"
 
-#: library/KT/Stats.php:3984
+#: library/KT/Stats.php:4025
 msgid "British West Indies"
 msgstr "Britisk Vestindien"
 
-#: library/KT/Stats.php:3985
+#: library/KT/Stats.php:4026
 msgid "Central African Republic"
 msgstr "Centralafrikanske Republik"
 
-#: library/KT/Stats.php:3986
+#: library/KT/Stats.php:4027
 msgid "Canada"
 msgstr "Canada"
 
-#: library/KT/Stats.php:3987
+#: library/KT/Stats.php:4028
 msgid "Cape Colony"
 msgstr "Kapkolonien"
 
-#: library/KT/Stats.php:3988
+#: library/KT/Stats.php:4029
 msgid "Catalonia"
 msgstr "Catalonien"
 
-#: library/KT/Stats.php:3989
+#: library/KT/Stats.php:4030
 msgid "Cocos (Keeling) Islands"
 msgstr "Kokosøerne"
 
-#: library/KT/Stats.php:3990
+#: library/KT/Stats.php:4031
 msgid "Switzerland"
 msgstr "Svejts"
 
-#: library/KT/Stats.php:3991
+#: library/KT/Stats.php:4032
 msgid "Channel Islands"
 msgstr "Kanaløerne"
 
-#: library/KT/Stats.php:3992
+#: library/KT/Stats.php:4033
 msgid "Chile"
 msgstr "Chile"
 
-#: library/KT/Stats.php:3993
+#: library/KT/Stats.php:4034
 msgid "China"
 msgstr "Kina"
 
-#: library/KT/Stats.php:3994
+#: library/KT/Stats.php:4035
 msgid "Cote d'Ivoire"
 msgstr "Elfenbenskysten"
 
-#: library/KT/Stats.php:3995
+#: library/KT/Stats.php:4036
 msgid "Cameroon"
 msgstr "Cameroun"
 
-#: library/KT/Stats.php:3996
+#: library/KT/Stats.php:4037
 msgid "Congo (Kinshasa)"
 msgstr "Congo (Den Demokratiske Republik)"
 
-#: library/KT/Stats.php:3997
+#: library/KT/Stats.php:4038
 msgid "Congo (Brazzaville)"
 msgstr "Congo"
 
-#: library/KT/Stats.php:3998
+#: library/KT/Stats.php:4039
 msgid "Cook Islands"
 msgstr "Cookøerne"
 
-#: library/KT/Stats.php:3999
+#: library/KT/Stats.php:4040
 msgid "Colombia"
 msgstr "Colombia"
 
-#: library/KT/Stats.php:4000
+#: library/KT/Stats.php:4041
 msgid "Comoros"
 msgstr "Comorerne"
 
-#: library/KT/Stats.php:4001
+#: library/KT/Stats.php:4042
 msgid "Cape Verde"
 msgstr "Kap Verde"
 
-#: library/KT/Stats.php:4002
+#: library/KT/Stats.php:4043
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: library/KT/Stats.php:4003
+#: library/KT/Stats.php:4044
 msgid "Czechoslovakia"
 msgstr "Tjekkoslovakiet"
 
-#: library/KT/Stats.php:4004
+#: library/KT/Stats.php:4045
 msgid "Cuba"
 msgstr "Cuba"
 
-#: library/KT/Stats.php:4005
+#: library/KT/Stats.php:4046
 msgid "Christmas Island"
 msgstr "Juleøen"
 
-#: library/KT/Stats.php:4006
+#: library/KT/Stats.php:4047
 msgid "Cayman Islands"
 msgstr "Caymanøerne"
 
-#: library/KT/Stats.php:4007
+#: library/KT/Stats.php:4048
 msgid "Cyprus"
 msgstr "Cypern"
 
-#: library/KT/Stats.php:4008
+#: library/KT/Stats.php:4049
 msgid "Czech Republic"
 msgstr "Tjekkiet"
 
-#: library/KT/Stats.php:4009
+#: library/KT/Stats.php:4050
 msgid "Germany"
 msgstr "Tyskland"
 
-#: library/KT/Stats.php:4010
+#: library/KT/Stats.php:4051
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: library/KT/Stats.php:4011
+#: library/KT/Stats.php:4052
 msgid "Dominica"
 msgstr "Dominica"
 
-#: library/KT/Stats.php:4012
+#: library/KT/Stats.php:4053
 msgid "Denmark"
 msgstr "Danmark"
 
-#: library/KT/Stats.php:4013
+#: library/KT/Stats.php:4054
 msgid "Dominican Republic"
 msgstr "Den Dominikanske Republik"
 
-#: library/KT/Stats.php:4014
+#: library/KT/Stats.php:4055
 msgid "Algeria"
 msgstr "Algeriet"
 
-#: library/KT/Stats.php:4015
+#: library/KT/Stats.php:4056
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: library/KT/Stats.php:4016
+#: library/KT/Stats.php:4057
 msgid "Egypt"
 msgstr "Ægypten"
 
-#: library/KT/Stats.php:4017
+#: library/KT/Stats.php:4058
 msgid "Eire"
 msgstr "Irland"
 
-#: library/KT/Stats.php:4018
+#: library/KT/Stats.php:4059
 msgid "England"
 msgstr "England"
 
-#: library/KT/Stats.php:4019
+#: library/KT/Stats.php:4060
 msgid "Eritrea"
 msgstr "Eritrea"
 
-#: library/KT/Stats.php:4020
+#: library/KT/Stats.php:4061
 msgid "Western Sahara"
 msgstr "Vestsahara"
 
-#: library/KT/Stats.php:4021
+#: library/KT/Stats.php:4062
 msgid "Spain"
 msgstr "Spanien"
 
-#: library/KT/Stats.php:4022
+#: library/KT/Stats.php:4063
 msgid "Estonia"
 msgstr "Estland"
 
-#: library/KT/Stats.php:4023
+#: library/KT/Stats.php:4064
 msgid "Ethiopia"
 msgstr "Etiopien"
 
-#: library/KT/Stats.php:4024
+#: library/KT/Stats.php:4065
 msgid "Finland"
 msgstr "Finland"
 
-#: library/KT/Stats.php:4025
+#: library/KT/Stats.php:4066
 msgid "Fiji"
 msgstr "Fiji"
 
-#: library/KT/Stats.php:4026
+#: library/KT/Stats.php:4067
 msgid "Flanders"
 msgstr "Flandern"
 
-#: library/KT/Stats.php:4027
+#: library/KT/Stats.php:4068
 msgid "Falkland Islands"
 msgstr "Falklandsøerne"
 
-#: library/KT/Stats.php:4028
+#: library/KT/Stats.php:4069
 msgid "France"
 msgstr "Frankrig"
 
-#: library/KT/Stats.php:4029
+#: library/KT/Stats.php:4070
 msgid "Faeroe Islands"
 msgstr "Færøerne"
 
-#: library/KT/Stats.php:4030
+#: library/KT/Stats.php:4071
 msgid "Micronesia"
 msgstr "Mikronesien"
 
-#: library/KT/Stats.php:4031
+#: library/KT/Stats.php:4072
 msgid "Gabon"
 msgstr "Gabon"
 
-#: library/KT/Stats.php:4032
+#: library/KT/Stats.php:4073
 msgid "United Kingdom"
 msgstr "Storbritannien"
 
-#: library/KT/Stats.php:4033
+#: library/KT/Stats.php:4074
 msgid "Georgia"
 msgstr "Georgien"
 
-#: library/KT/Stats.php:4034
+#: library/KT/Stats.php:4075
 msgid "Guernsey"
 msgstr "Guernsey"
 
-#: library/KT/Stats.php:4035
+#: library/KT/Stats.php:4076
 msgid "Ghana"
 msgstr "Ghana"
 
-#: library/KT/Stats.php:4036
+#: library/KT/Stats.php:4077
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
-#: library/KT/Stats.php:4037
+#: library/KT/Stats.php:4078
 msgid "Guinea"
 msgstr "Guinea"
 
-#: library/KT/Stats.php:4038
+#: library/KT/Stats.php:4079
 msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
-#: library/KT/Stats.php:4039
+#: library/KT/Stats.php:4080
 msgid "Gambia"
 msgstr "Gambia"
 
-#: library/KT/Stats.php:4040
+#: library/KT/Stats.php:4081
 msgid "Guinea-Bissau"
 msgstr "Guinea-Bissau"
 
-#: library/KT/Stats.php:4041
+#: library/KT/Stats.php:4082
 msgid "Equatorial Guinea"
 msgstr "Ækvatorialguinea"
 
-#: library/KT/Stats.php:4042
+#: library/KT/Stats.php:4083
 msgid "Greece"
 msgstr "Grækenland"
 
-#: library/KT/Stats.php:4043
+#: library/KT/Stats.php:4084
 msgid "Grenada"
 msgstr "Grenada"
 
-#: library/KT/Stats.php:4044
+#: library/KT/Stats.php:4085
 msgid "Greenland"
 msgstr "Grønland"
 
-#: library/KT/Stats.php:4045
+#: library/KT/Stats.php:4086
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: library/KT/Stats.php:4046
+#: library/KT/Stats.php:4087
 msgid "French Guiana"
 msgstr "Fransk Guyana"
 
-#: library/KT/Stats.php:4047
+#: library/KT/Stats.php:4088
 msgid "Guam"
 msgstr "Guam"
 
-#: library/KT/Stats.php:4048
+#: library/KT/Stats.php:4089
 msgid "Guyana"
 msgstr "Guyana"
 
-#: library/KT/Stats.php:4050
+#: library/KT/Stats.php:4091
 msgid "Heard Island and McDonald Islands"
 msgstr "Heard Island and McDonald Island"
 
-#: library/KT/Stats.php:4051
+#: library/KT/Stats.php:4092
 msgid "Honduras"
 msgstr "Honduras"
 
-#: library/KT/Stats.php:4052
+#: library/KT/Stats.php:4093
 msgid "Croatia"
 msgstr "Kroatien"
 
-#: library/KT/Stats.php:4053
+#: library/KT/Stats.php:4094
 msgid "Haiti"
 msgstr "Haiti"
 
-#: library/KT/Stats.php:4054
+#: library/KT/Stats.php:4095
 msgid "Hungary"
 msgstr "Ungarn"
 
-#: library/KT/Stats.php:4055
+#: library/KT/Stats.php:4096
 msgid "Indonesia"
 msgstr "Indonesien"
 
-#: library/KT/Stats.php:4056
+#: library/KT/Stats.php:4097
 msgid "India"
 msgstr "Indien"
 
-#: library/KT/Stats.php:4057
+#: library/KT/Stats.php:4098
 msgid "Isle of Man"
 msgstr "Isle of Man"
 
-#: library/KT/Stats.php:4058
+#: library/KT/Stats.php:4099
 msgid "British Indian Ocean Territory"
 msgstr "Det Britiske territorium i Det indiske Ocean"
 
-#: library/KT/Stats.php:4059
+#: library/KT/Stats.php:4100
 msgid "Ireland"
 msgstr "Irland"
 
-#: library/KT/Stats.php:4060
+#: library/KT/Stats.php:4101
 msgid "Iran"
 msgstr "Iran"
 
-#: library/KT/Stats.php:4061
+#: library/KT/Stats.php:4102
 msgid "Iraq"
 msgstr "Irak"
 
-#: library/KT/Stats.php:4062
+#: library/KT/Stats.php:4103
 msgid "Iceland"
 msgstr "Island"
 
-#: library/KT/Stats.php:4063
+#: library/KT/Stats.php:4104
 msgid "Israel"
 msgstr "Israel"
 
-#: library/KT/Stats.php:4064
+#: library/KT/Stats.php:4105
 msgid "Italy"
 msgstr "Italien"
 
-#: library/KT/Stats.php:4065
+#: library/KT/Stats.php:4106
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: library/KT/Stats.php:4066
+#: library/KT/Stats.php:4107
 msgid "Jordan"
 msgstr "Jordan"
 
-#: library/KT/Stats.php:4067
+#: library/KT/Stats.php:4108
 msgid "Japan"
 msgstr "Japan"
 
-#: library/KT/Stats.php:4068
+#: library/KT/Stats.php:4109
 msgid "Kazakhstan"
 msgstr "Kasakhstan"
 
-#: library/KT/Stats.php:4069
+#: library/KT/Stats.php:4110
 msgid "Kenya"
 msgstr "Kenya"
 
-#: library/KT/Stats.php:4070
+#: library/KT/Stats.php:4111
 msgid "Kyrgyzstan"
 msgstr "Kirgisistan"
 
-#: library/KT/Stats.php:4071
+#: library/KT/Stats.php:4112
 msgid "Cambodia"
 msgstr "Cambodja"
 
-#: library/KT/Stats.php:4072
+#: library/KT/Stats.php:4113
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#: library/KT/Stats.php:4073
+#: library/KT/Stats.php:4114
 msgid "Saint Kitts and Nevis"
 msgstr "Sankt Kitts og Nevis"
 
-#: library/KT/Stats.php:4074
+#: library/KT/Stats.php:4115
 msgid "Korea"
 msgstr "Sydkorea"
 
-#: library/KT/Stats.php:4075
+#: library/KT/Stats.php:4116
 msgid "Kuwait"
 msgstr "Kuwait"
 
-#: library/KT/Stats.php:4076
+#: library/KT/Stats.php:4117
 msgid "Laos"
 msgstr "Laos"
 
-#: library/KT/Stats.php:4077
+#: library/KT/Stats.php:4118
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: library/KT/Stats.php:4078
+#: library/KT/Stats.php:4119
 msgid "Liberia"
 msgstr "Liberia"
 
-#: library/KT/Stats.php:4079
+#: library/KT/Stats.php:4120
 msgid "Libya"
 msgstr "Libyen"
 
-#: library/KT/Stats.php:4080
+#: library/KT/Stats.php:4121
 msgid "Saint Lucia"
 msgstr "Sankt Lucia"
 
-#: library/KT/Stats.php:4081
+#: library/KT/Stats.php:4122
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: library/KT/Stats.php:4082
+#: library/KT/Stats.php:4123
 msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
-#: library/KT/Stats.php:4083
+#: library/KT/Stats.php:4124
 msgid "Lesotho"
 msgstr "Lesotho"
 
-#: library/KT/Stats.php:4084
+#: library/KT/Stats.php:4125
 msgid "Lithuania"
 msgstr "Litauen"
 
-#: library/KT/Stats.php:4085
+#: library/KT/Stats.php:4126
 msgid "Luxembourg"
 msgstr "Luxemborg"
 
-#: library/KT/Stats.php:4086
+#: library/KT/Stats.php:4127
 msgid "Latvia"
 msgstr "Letland"
 
-#: library/KT/Stats.php:4087
+#: library/KT/Stats.php:4128
 msgid "Macau"
 msgstr "Macao"
 
-#: library/KT/Stats.php:4088
+#: library/KT/Stats.php:4129
 msgid "Morocco"
 msgstr "Marokko"
 
-#: library/KT/Stats.php:4089
+#: library/KT/Stats.php:4130
 msgid "Monaco"
 msgstr "Monaco"
 
-#: library/KT/Stats.php:4090
+#: library/KT/Stats.php:4131
 msgid "Moldova"
 msgstr "Republikken Moldava (Moldavien)"
 
-#: library/KT/Stats.php:4091
+#: library/KT/Stats.php:4132
 msgid "Madagascar"
 msgstr "Madagaskar"
 
-#: library/KT/Stats.php:4092
+#: library/KT/Stats.php:4133
 msgid "Maldives"
 msgstr "Maldiverne"
 
-#: library/KT/Stats.php:4093
+#: library/KT/Stats.php:4134
 msgid "Mexico"
 msgstr "Mexico"
 
-#: library/KT/Stats.php:4094
+#: library/KT/Stats.php:4135
 msgid "Marshall Islands"
 msgstr "Marshalløerne"
 
-#: library/KT/Stats.php:4095
+#: library/KT/Stats.php:4136
 msgid "Macedonia"
 msgstr "Den tidligere Jugoslaviske Republik Makedonien"
 
-#: library/KT/Stats.php:4096
+#: library/KT/Stats.php:4137
 msgid "Mali"
 msgstr "Mali"
 
-#: library/KT/Stats.php:4097
+#: library/KT/Stats.php:4138
 msgid "Malta"
 msgstr "Malta"
 
-#: library/KT/Stats.php:4098
+#: library/KT/Stats.php:4139
 msgid "Myanmar"
 msgstr "Myanmar (Burma)"
 
-#: library/KT/Stats.php:4099
+#: library/KT/Stats.php:4140
 msgid "Mongolia"
 msgstr "Mongoliet"
 
-#: library/KT/Stats.php:4100
+#: library/KT/Stats.php:4141
 msgid "Northern Mariana Islands"
 msgstr "Nordmarianerne"
 
-#: library/KT/Stats.php:4101
+#: library/KT/Stats.php:4142
 msgid "Montenegro"
 msgstr "Montenegro"
 
-#: library/KT/Stats.php:4102
+#: library/KT/Stats.php:4143
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: library/KT/Stats.php:4103
+#: library/KT/Stats.php:4144
 msgid "Mauritania"
 msgstr "Mauretanien"
 
-#: library/KT/Stats.php:4104
+#: library/KT/Stats.php:4145
 msgid "Montserrat"
 msgstr "Montserrat"
 
-#: library/KT/Stats.php:4105
+#: library/KT/Stats.php:4146
 msgid "Martinique"
 msgstr "Martinique"
 
-#: library/KT/Stats.php:4106
+#: library/KT/Stats.php:4147
 msgid "Mauritius"
 msgstr "Mauritius"
 
-#: library/KT/Stats.php:4107
+#: library/KT/Stats.php:4148
 msgid "Malawi"
 msgstr "Malawi"
 
-#: library/KT/Stats.php:4108
+#: library/KT/Stats.php:4149
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: library/KT/Stats.php:4109
+#: library/KT/Stats.php:4150
 msgid "Mayotte"
 msgstr "Mayotte"
 
-#: library/KT/Stats.php:4110
+#: library/KT/Stats.php:4151
 msgid "Namibia"
 msgstr "Namibien"
 
-#: library/KT/Stats.php:4111
+#: library/KT/Stats.php:4152
 msgid "New Caledonia"
 msgstr "Ny Kaledonien"
 
-#: library/KT/Stats.php:4112
+#: library/KT/Stats.php:4153
 msgid "Niger"
 msgstr "Niger"
 
-#: library/KT/Stats.php:4113
+#: library/KT/Stats.php:4154
 msgid "Norfolk Island"
 msgstr "Norfolkøen"
 
-#: library/KT/Stats.php:4114
+#: library/KT/Stats.php:4155
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: library/KT/Stats.php:4115
+#: library/KT/Stats.php:4156
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: library/KT/Stats.php:4116
+#: library/KT/Stats.php:4157
 msgid "Northern Ireland"
 msgstr "Nordirland"
 
-#: library/KT/Stats.php:4117
+#: library/KT/Stats.php:4158
 msgid "Niue"
 msgstr "Niue"
 
-#: library/KT/Stats.php:4118
+#: library/KT/Stats.php:4159
 msgid "Netherlands"
 msgstr "Nederlandene (Holland)"
 
-#: library/KT/Stats.php:4119
+#: library/KT/Stats.php:4160
 msgid "Norway"
 msgstr "Norge"
 
-#: library/KT/Stats.php:4120
+#: library/KT/Stats.php:4161
 msgid "Nepal"
 msgstr "Nepal"
 
-#: library/KT/Stats.php:4121
+#: library/KT/Stats.php:4162
 msgid "Nauru"
 msgstr "Nauru"
 
-#: library/KT/Stats.php:4122
+#: library/KT/Stats.php:4163
 msgid "Neutral Zone"
 msgstr "Neutral zone"
 
-#: library/KT/Stats.php:4123
+#: library/KT/Stats.php:4164
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: library/KT/Stats.php:4124
+#: library/KT/Stats.php:4165
 msgid "Oman"
 msgstr "Oman"
 
-#: library/KT/Stats.php:4125
+#: library/KT/Stats.php:4166
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: library/KT/Stats.php:4126
+#: library/KT/Stats.php:4167
 msgid "Panama"
 msgstr "Panama"
 
-#: library/KT/Stats.php:4127
+#: library/KT/Stats.php:4168
 msgid "Pitcairn"
 msgstr "Pitcairn"
 
-#: library/KT/Stats.php:4128
+#: library/KT/Stats.php:4169
 msgid "Peru"
 msgstr "Peru"
 
-#: library/KT/Stats.php:4129
+#: library/KT/Stats.php:4170
 msgid "Philippines"
 msgstr "Filippinerne"
 
-#: library/KT/Stats.php:4130
+#: library/KT/Stats.php:4171
 msgid "Palau"
 msgstr "Palau (Belau)"
 
-#: library/KT/Stats.php:4131
+#: library/KT/Stats.php:4172
 msgid "Papua New Guinea"
 msgstr "Papua Ny Guinea"
 
-#: library/KT/Stats.php:4132
+#: library/KT/Stats.php:4173
 msgid "Poland"
 msgstr "Polen"
 
-#: library/KT/Stats.php:4133
+#: library/KT/Stats.php:4174
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
-#: library/KT/Stats.php:4134
+#: library/KT/Stats.php:4175
 msgid "North Korea"
 msgstr "Nordkorea"
 
-#: library/KT/Stats.php:4135
+#: library/KT/Stats.php:4176
 msgid "Portugal"
 msgstr "Portugal"
 
-#: library/KT/Stats.php:4136
+#: library/KT/Stats.php:4177
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: library/KT/Stats.php:4137
+#: library/KT/Stats.php:4178
 msgid "Occupied Palestinian Territory"
 msgstr "Palæstina"
 
-#: library/KT/Stats.php:4138
+#: library/KT/Stats.php:4179
 msgid "French Polynesia"
 msgstr "Fransk Polynesien"
 
-#: library/KT/Stats.php:4139
+#: library/KT/Stats.php:4180
 msgid "Qatar"
 msgstr "Qatar"
 
-#: library/KT/Stats.php:4140
+#: library/KT/Stats.php:4181
 msgid "Reunion"
 msgstr "Réunion"
 
-#: library/KT/Stats.php:4141
+#: library/KT/Stats.php:4182
 msgid "Rhodesia"
 msgstr "Rhodesia"
 
-#: library/KT/Stats.php:4142
+#: library/KT/Stats.php:4183
 msgid "Romania"
 msgstr "Rumænien"
 
-#: library/KT/Stats.php:4143
+#: library/KT/Stats.php:4184
 msgid "Russia"
 msgstr "Rusland"
 
-#: library/KT/Stats.php:4144
+#: library/KT/Stats.php:4185
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: library/KT/Stats.php:4145
+#: library/KT/Stats.php:4186
 msgid "Saudi Arabia"
 msgstr "Saudi Arabien"
 
-#: library/KT/Stats.php:4146
+#: library/KT/Stats.php:4187
 msgid "Serbia and Montenegro"
 msgstr "Serbien og Montenegro"
 
-#: library/KT/Stats.php:4147
+#: library/KT/Stats.php:4188
 msgid "Scotland"
 msgstr "Skotland"
 
-#: library/KT/Stats.php:4148
+#: library/KT/Stats.php:4189
 msgid "Sudan"
 msgstr "Sudan"
 
-#: library/KT/Stats.php:4149
+#: library/KT/Stats.php:4190
 msgid "At Sea"
 msgstr "På havet"
 
-#: library/KT/Stats.php:4150
+#: library/KT/Stats.php:4191
 msgid "Senegal"
 msgstr "Senegal"
 
-#: library/KT/Stats.php:4151
+#: library/KT/Stats.php:4192
 msgid "Serbia"
 msgstr "Serbien"
 
-#: library/KT/Stats.php:4152
+#: library/KT/Stats.php:4193
 msgid "Singapore"
 msgstr "Singapore"
 
-#: library/KT/Stats.php:4153
+#: library/KT/Stats.php:4194
 msgid "Saint Helena"
 msgstr "Sankt Helena"
 
-#: library/KT/Stats.php:4154
+#: library/KT/Stats.php:4195
 msgid "Sicily"
 msgstr "Sicilien"
 
-#: library/KT/Stats.php:4155
+#: library/KT/Stats.php:4196
 msgid "Svalbard and Jan Mayen Islands"
 msgstr "Svalbard og Jan Mayen"
 
-#: library/KT/Stats.php:4156
+#: library/KT/Stats.php:4197
 msgid "Solomon Islands"
 msgstr "Salomonøerne"
 
-#: library/KT/Stats.php:4157
+#: library/KT/Stats.php:4198
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: library/KT/Stats.php:4158
+#: library/KT/Stats.php:4199
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: library/KT/Stats.php:4159
+#: library/KT/Stats.php:4200
 msgid "San Marino"
 msgstr "San Marino"
 
-#: library/KT/Stats.php:4160
+#: library/KT/Stats.php:4201
 msgid "Somalia"
 msgstr "Somalia"
 
-#: library/KT/Stats.php:4161
+#: library/KT/Stats.php:4202
 msgid "Saint Pierre and Miquelon"
 msgstr "Sankt Pierre og Miquelon"
 
-#: library/KT/Stats.php:4162
+#: library/KT/Stats.php:4203
 msgid "South Sudan"
 msgstr "Sydsudan"
 
-#: library/KT/Stats.php:4163
+#: library/KT/Stats.php:4204
 msgid "Sao Tome and Principe"
 msgstr "Sáo Tomé og Príncipe"
 
-#: library/KT/Stats.php:4164
+#: library/KT/Stats.php:4205
 msgid "USSR"
 msgstr "U.S.S.R. (Sovjetunionen)"
 
-#: library/KT/Stats.php:4165
+#: library/KT/Stats.php:4206
 msgid "Suriname"
 msgstr "Surinam"
 
-#: library/KT/Stats.php:4166
+#: library/KT/Stats.php:4207
 msgid "Slovakia"
 msgstr "Slovakiet"
 
-#: library/KT/Stats.php:4167
+#: library/KT/Stats.php:4208
 msgid "Slovenia"
 msgstr "Slovenien"
 
-#: library/KT/Stats.php:4168
+#: library/KT/Stats.php:4209
 msgid "Sweden"
 msgstr "Sverige"
 
-#: library/KT/Stats.php:4169
+#: library/KT/Stats.php:4210
 msgid "Swaziland"
 msgstr "Swaziland"
 
-#: library/KT/Stats.php:4170
+#: library/KT/Stats.php:4211
 msgid "Seychelles"
 msgstr "Seychellerne"
 
-#: library/KT/Stats.php:4171
+#: library/KT/Stats.php:4212
 msgid "Syrian Arab Republic"
 msgstr "Syrien"
 
-#: library/KT/Stats.php:4172
+#: library/KT/Stats.php:4213
 msgid "Turks and Caicos Islands"
 msgstr "Turks- og Caicosøerne"
 
-#: library/KT/Stats.php:4173
+#: library/KT/Stats.php:4214
 msgid "Chad"
 msgstr "Tchad"
 
-#: library/KT/Stats.php:4174
+#: library/KT/Stats.php:4215
 msgid "Togo"
 msgstr "Togo"
 
-#: library/KT/Stats.php:4175
+#: library/KT/Stats.php:4216
 msgid "Thailand"
 msgstr "Thailand"
 
-#: library/KT/Stats.php:4176
+#: library/KT/Stats.php:4217
 msgid "Tajikistan"
 msgstr "Tadsjikistan"
 
-#: library/KT/Stats.php:4177
+#: library/KT/Stats.php:4218
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: library/KT/Stats.php:4178
+#: library/KT/Stats.php:4219
 msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
-#: library/KT/Stats.php:4179
+#: library/KT/Stats.php:4220
 msgid "Timor-Leste"
 msgstr "Timor-Leste (Østtimor)"
 
-#: library/KT/Stats.php:4180
+#: library/KT/Stats.php:4221
 msgid "Tonga"
 msgstr "Tonga"
 
-#: library/KT/Stats.php:4181
+#: library/KT/Stats.php:4222
 msgid "Transylvania"
 msgstr "Transylvanien"
 
-#: library/KT/Stats.php:4182
+#: library/KT/Stats.php:4223
 msgid "Trinidad and Tobago"
 msgstr "Trinidad og Tobago"
 
-#: library/KT/Stats.php:4183
+#: library/KT/Stats.php:4224
 msgid "Tunisia"
 msgstr "Tunesien"
 
-#: library/KT/Stats.php:4184
+#: library/KT/Stats.php:4225
 msgid "Turkey"
 msgstr "Tyrkiet"
 
-#: library/KT/Stats.php:4185
+#: library/KT/Stats.php:4226
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: library/KT/Stats.php:4186
+#: library/KT/Stats.php:4227
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: library/KT/Stats.php:4187
+#: library/KT/Stats.php:4228
 msgid "Tanzania"
 msgstr "Tanzania"
 
-#: library/KT/Stats.php:4188
+#: library/KT/Stats.php:4229
 msgid "Uganda"
 msgstr "Uganda"
 
-#: library/KT/Stats.php:4189
+#: library/KT/Stats.php:4230
 msgid "Ukraine"
 msgstr "Ukraine"
 
-#: library/KT/Stats.php:4190
+#: library/KT/Stats.php:4231
 msgid "US Minor Outlying Islands"
 msgstr "Mindre øer fjernt fra USA"
 
-#: library/KT/Stats.php:4191
+#: library/KT/Stats.php:4232
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: library/KT/Stats.php:4192
+#: library/KT/Stats.php:4233
 msgid "USA"
 msgstr "USA"
 
-#: library/KT/Stats.php:4193
+#: library/KT/Stats.php:4234
 msgid "Uzbekistan"
 msgstr "Usbekistan"
 
-#: library/KT/Stats.php:4194
+#: library/KT/Stats.php:4235
 msgid "Vatican City"
 msgstr "Vatikanstaten"
 
-#: library/KT/Stats.php:4195
+#: library/KT/Stats.php:4236
 msgid "Saint Vincent and the Grenadines"
 msgstr "Sankt Vincent og Grenadinerne"
 
-#: library/KT/Stats.php:4196
+#: library/KT/Stats.php:4237
 msgid "Venezuela"
 msgstr "Venezuela"
 
-#: library/KT/Stats.php:4197
+#: library/KT/Stats.php:4238
 msgid "British Virgin Islands"
 msgstr "Jomfruøerne (Storbritannien)"
 
-#: library/KT/Stats.php:4198
+#: library/KT/Stats.php:4239
 msgid "US Virgin Islands"
 msgstr "De Amerikanske Jomfruøer"
 
-#: library/KT/Stats.php:4199
+#: library/KT/Stats.php:4240
 msgid "Viet Nam"
 msgstr "Vietnam"
 
-#: library/KT/Stats.php:4200
+#: library/KT/Stats.php:4241
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
-#: library/KT/Stats.php:4201
+#: library/KT/Stats.php:4242
 msgid "West Africa"
 msgstr "Vestafrika"
 
-#: library/KT/Stats.php:4202
+#: library/KT/Stats.php:4243
 msgid "Wallis and Futuna Islands"
 msgstr "Wallis- og Futunaøerne"
 
-#: library/KT/Stats.php:4203
+#: library/KT/Stats.php:4244
 msgid "Wales"
 msgstr "Wales"
 
-#: library/KT/Stats.php:4204
+#: library/KT/Stats.php:4245
 msgid "Samoa"
 msgstr "Samoa"
 
-#: library/KT/Stats.php:4205
+#: library/KT/Stats.php:4246
 msgid "Yemen"
 msgstr "Yemen"
 
-#: library/KT/Stats.php:4206
+#: library/KT/Stats.php:4247
 msgid "Yugoslavia"
 msgstr "Jugoslavien"
 
-#: library/KT/Stats.php:4207
+#: library/KT/Stats.php:4248
 msgid "South Africa"
 msgstr "Sydafrika"
 
-#: library/KT/Stats.php:4208
+#: library/KT/Stats.php:4249
 msgid "Zaire"
 msgstr "Zaire"
 
-#: library/KT/Stats.php:4209
+#: library/KT/Stats.php:4250
 msgid "Zambia"
 msgstr "Zambia"
 
-#: library/KT/Stats.php:4210
+#: library/KT/Stats.php:4251
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: library/KT/Stats.php:4217
+#: library/KT/Stats.php:4258
 #, php-format
 msgid "%s BCE"
 msgstr "%s BCE"
 
-#: library/KT/Stats.php:4220
+#: library/KT/Stats.php:4261
 msgctxt "CENTURY"
 msgid "21st"
 msgstr "21."
 
-#: library/KT/Stats.php:4221
+#: library/KT/Stats.php:4262
 msgctxt "CENTURY"
 msgid "20th"
 msgstr "20."
 
-#: library/KT/Stats.php:4222
+#: library/KT/Stats.php:4263
 msgctxt "CENTURY"
 msgid "19th"
 msgstr "19."
 
-#: library/KT/Stats.php:4223
+#: library/KT/Stats.php:4264
 msgctxt "CENTURY"
 msgid "18th"
 msgstr "18."
 
-#: library/KT/Stats.php:4224
+#: library/KT/Stats.php:4265
 msgctxt "CENTURY"
 msgid "17th"
 msgstr "17."
 
-#: library/KT/Stats.php:4225
+#: library/KT/Stats.php:4266
 msgctxt "CENTURY"
 msgid "16th"
 msgstr "16."
 
-#: library/KT/Stats.php:4226
+#: library/KT/Stats.php:4267
 msgctxt "CENTURY"
 msgid "15th"
 msgstr "15."
 
-#: library/KT/Stats.php:4227
+#: library/KT/Stats.php:4268
 msgctxt "CENTURY"
 msgid "14th"
 msgstr "14."
 
-#: library/KT/Stats.php:4228
+#: library/KT/Stats.php:4269
 msgctxt "CENTURY"
 msgid "13th"
 msgstr "13."
 
-#: library/KT/Stats.php:4229
+#: library/KT/Stats.php:4270
 msgctxt "CENTURY"
 msgid "12th"
 msgstr "12."
 
-#: library/KT/Stats.php:4230
+#: library/KT/Stats.php:4271
 msgctxt "CENTURY"
 msgid "11th"
 msgstr "11."
 
-#: library/KT/Stats.php:4231
+#: library/KT/Stats.php:4272
 msgctxt "CENTURY"
 msgid "10th"
 msgstr "10."
 
-#: library/KT/Stats.php:4232
+#: library/KT/Stats.php:4273
 msgctxt "CENTURY"
 msgid "9th"
 msgstr "9."
 
-#: library/KT/Stats.php:4233
+#: library/KT/Stats.php:4274
 msgctxt "CENTURY"
 msgid "8th"
 msgstr "8."
 
-#: library/KT/Stats.php:4234
+#: library/KT/Stats.php:4275
 msgctxt "CENTURY"
 msgid "7th"
 msgstr "7."
 
-#: library/KT/Stats.php:4235
+#: library/KT/Stats.php:4276
 msgctxt "CENTURY"
 msgid "6th"
 msgstr "6."
 
-#: library/KT/Stats.php:4236
+#: library/KT/Stats.php:4277
 msgctxt "CENTURY"
 msgid "5th"
 msgstr "5."
 
-#: library/KT/Stats.php:4237
+#: library/KT/Stats.php:4278
 msgctxt "CENTURY"
 msgid "4th"
 msgstr "4."
 
-#: library/KT/Stats.php:4238
+#: library/KT/Stats.php:4279
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr "3."
 
-#: library/KT/Stats.php:4239
+#: library/KT/Stats.php:4280
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr "2."
 
-#: library/KT/Stats.php:4240
+#: library/KT/Stats.php:4281
 msgctxt "CENTURY"
 msgid "1st"
 msgstr "1."
@@ -19294,11 +19291,11 @@ msgstr "(Bemærk: store tal kan være længe om at blive vist)"
 msgid "Others"
 msgstr "Øvrige"
 
-#: modules_v4/chart_statistics/module.php:153 statisticsTables.php:47
+#: modules_v4/chart_statistics/module.php:153 statisticsTables.php:48
 msgid "Total males"
 msgstr "Antal mænd"
 
-#: modules_v4/chart_statistics/module.php:154 statisticsTables.php:51
+#: modules_v4/chart_statistics/module.php:154 statisticsTables.php:52
 msgid "Total females"
 msgstr "Antal kvinder"
 
@@ -19306,7 +19303,7 @@ msgstr "Antal kvinder"
 msgid "Total unknown"
 msgstr "Antal ukendt"
 
-#: modules_v4/chart_statistics/module.php:156 statisticsTables.php:59
+#: modules_v4/chart_statistics/module.php:156 statisticsTables.php:60
 msgid "Total living"
 msgstr "Antal nulevende"
 
@@ -19326,11 +19323,11 @@ msgstr "Individer, efter status for levende/afgået"
 msgid "Events"
 msgstr "Begivenheder"
 
-#: modules_v4/chart_statistics/module.php:206 statisticsTables.php:135
+#: modules_v4/chart_statistics/module.php:206 statisticsTables.php:137
 msgid "Total births"
 msgstr "Antal fødsler"
 
-#: modules_v4/chart_statistics/module.php:207 statisticsTables.php:150
+#: modules_v4/chart_statistics/module.php:207 statisticsTables.php:153
 msgid "Total deaths"
 msgstr "Antal dødsfald"
 
@@ -19400,11 +19397,11 @@ msgstr "Mest brugte efternavne"
 msgid "Top given names"
 msgstr "Mest brugte fornavne"
 
-#: modules_v4/chart_statistics/module.php:368 statisticsTables.php:124
+#: modules_v4/chart_statistics/module.php:368 statisticsTables.php:126
 msgid "Total marriages"
 msgstr "Total antal vielser"
 
-#: modules_v4/chart_statistics/module.php:369 statisticsTables.php:128
+#: modules_v4/chart_statistics/module.php:369 statisticsTables.php:130
 msgid "Total divorces"
 msgstr "Total antal skilsmisser"
 
@@ -20676,7 +20673,7 @@ msgstr "Andre poster"
 msgid "Show link to Statistics charts?"
 msgstr "Vis link til Statistikdiagrammer?"
 
-#: modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/module.php:403 modules_v4/googlemap/module.php:1642
+#: modules_v4/googlemap/admin_places.php:173 modules_v4/googlemap/module.php:408 modules_v4/googlemap/module.php:1647
 msgid "Level"
 msgstr "Niveau"
 
@@ -20692,15 +20689,15 @@ msgstr "Zoom faktor"
 msgid "Icon"
 msgstr "Ikon"
 
-#: modules_v4/googlemap/admin_places.php:198 modules_v4/googlemap/module.php:141 modules_v4/googlemap/module.php:163 modules_v4/googlemap/module.php:228 modules_v4/googlemap/module.php:814 modules_v4/googlemap/module.php:1472 modules_v4/googlemap/placehierarchy.php:167
+#: modules_v4/googlemap/admin_places.php:198 modules_v4/googlemap/module.php:146 modules_v4/googlemap/module.php:168 modules_v4/googlemap/module.php:233 modules_v4/googlemap/module.php:819 modules_v4/googlemap/module.php:1477 modules_v4/googlemap/placehierarchy.php:167
 msgid "Google Maps™ preferences"
 msgstr "Google Maps™ indstillinger"
 
-#: modules_v4/googlemap/admin_places.php:203 modules_v4/googlemap/admin_places_edit.php:38 modules_v4/googlemap/module.php:142 modules_v4/googlemap/module.php:233 modules_v4/googlemap/module.php:815 modules_v4/googlemap/module.php:1476 modules_v4/googlemap/placehierarchy.php:169 modules_v4/googlemap/placehierarchy.php:345
+#: modules_v4/googlemap/admin_places.php:203 modules_v4/googlemap/admin_places_edit.php:38 modules_v4/googlemap/module.php:147 modules_v4/googlemap/module.php:238 modules_v4/googlemap/module.php:820 modules_v4/googlemap/module.php:1481 modules_v4/googlemap/placehierarchy.php:169 modules_v4/googlemap/placehierarchy.php:345
 msgid "Geographic data"
 msgstr "Geografiske data"
 
-#: modules_v4/googlemap/admin_places.php:208 modules_v4/googlemap/module.php:143 modules_v4/googlemap/module.php:238 modules_v4/googlemap/module.php:816 modules_v4/googlemap/module.php:1481 modules_v4/googlemap/placehierarchy.php:171
+#: modules_v4/googlemap/admin_places.php:208 modules_v4/googlemap/module.php:148 modules_v4/googlemap/module.php:243 modules_v4/googlemap/module.php:821 modules_v4/googlemap/module.php:1486 modules_v4/googlemap/placehierarchy.php:171
 msgid "Place Check"
 msgstr "Kontroller steder"
 
@@ -20797,15 +20794,15 @@ msgstr "Søg lokalt"
 msgid "Precision"
 msgstr "Præcision"
 
-#: modules_v4/googlemap/admin_places_edit.php:288 modules_v4/googlemap/module.php:334
+#: modules_v4/googlemap/admin_places_edit.php:288 modules_v4/googlemap/module.php:339
 msgid "Neighborhood"
 msgstr "Kvarter"
 
-#: modules_v4/googlemap/admin_places_edit.php:290 modules_v4/googlemap/module.php:342
+#: modules_v4/googlemap/admin_places_edit.php:290 modules_v4/googlemap/module.php:347
 msgid "House"
 msgstr "Hus"
 
-#: modules_v4/googlemap/admin_places_edit.php:292 modules_v4/googlemap/module.php:351
+#: modules_v4/googlemap/admin_places_edit.php:292 modules_v4/googlemap/module.php:356
 msgid "Max"
 msgstr "Maks."
 
@@ -20837,15 +20834,15 @@ msgstr "vest"
 msgid "This value will be used as the minimal value when displaying this geographic location on a map."
 msgstr "Værdien vil blive brugt som minimumsværdi ved visning af den geografiske lokation på et kort"
 
-#: modules_v4/googlemap/admin_places_edit.php:332 modules_v4/googlemap/admin_places_edit.php:338 modules_v4/googlemap/module.php:426
+#: modules_v4/googlemap/admin_places_edit.php:332 modules_v4/googlemap/admin_places_edit.php:338 modules_v4/googlemap/module.php:431
 msgid "Flag"
 msgstr "Flag"
 
-#: modules_v4/googlemap/admin_places_edit.php:336 modules_v4/googlemap/admin_places_edit.php:339 modules_v4/googlemap/module.php:532 modules_v4/googlemap/module.php:535 modules_v4/googlemap/module.php:538 modules_v4/googlemap/module.php:595 modules_v4/googlemap/places_edit.js.php:375
+#: modules_v4/googlemap/admin_places_edit.php:336 modules_v4/googlemap/admin_places_edit.php:339 modules_v4/googlemap/module.php:537 modules_v4/googlemap/module.php:540 modules_v4/googlemap/module.php:543 modules_v4/googlemap/module.php:600 modules_v4/googlemap/places_edit.js.php:375
 msgid "Change flag"
 msgstr "Skift flag"
 
-#: modules_v4/googlemap/admin_places_edit.php:340 modules_v4/googlemap/module.php:532 modules_v4/googlemap/module.php:535 modules_v4/googlemap/module.php:538
+#: modules_v4/googlemap/admin_places_edit.php:340 modules_v4/googlemap/module.php:537 modules_v4/googlemap/module.php:540 modules_v4/googlemap/module.php:543
 msgid "Remove flag"
 msgstr "Fjern flag"
 
@@ -20853,7 +20850,7 @@ msgstr "Fjern flag"
 msgid "When this geographic location is shown, this flag will be displayed."
 msgstr "Når den geografiske lokation bliver vist, fremkommer dette flag"
 
-#: modules_v4/googlemap/googlemap.js.php:280 modules_v4/googlemap/module.php:898 modules_v4/googlemap/places_edit.js.php:173
+#: modules_v4/googlemap/googlemap.js.php:280 modules_v4/googlemap/module.php:903 modules_v4/googlemap/places_edit.js.php:173
 msgid "Redraw map"
 msgstr "Gentegn kort"
 
@@ -20861,7 +20858,7 @@ msgstr "Gentegn kort"
 msgid "Date not known"
 msgstr "Dato ukendt"
 
-#: modules_v4/googlemap/googlemap.js.php:495 modules_v4/googlemap/module.php:266 modules_v4/googlemap/module.php:2040
+#: modules_v4/googlemap/googlemap.js.php:495 modules_v4/googlemap/module.php:271 modules_v4/googlemap/module.php:2046
 msgid "Google Street View™"
 msgstr "Google Street View™"
 
@@ -20869,225 +20866,225 @@ msgstr "Google Street View™"
 msgid "Show the location of places and events using the Google Maps™ mapping service."
 msgstr "Vis placeringen af steder og begivenheder via Google Maps™ kortservice."
 
-#: modules_v4/googlemap/module.php:159
+#: modules_v4/googlemap/module.php:164
 msgid "No map data for this person"
 msgstr "Ingen kortdata for denne person"
 
-#: modules_v4/googlemap/module.php:248
+#: modules_v4/googlemap/module.php:253
 msgid "Basic"
 msgstr "Grundlæggende"
 
-#: modules_v4/googlemap/module.php:249 search.php:116
+#: modules_v4/googlemap/module.php:254 search.php:116
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: modules_v4/googlemap/module.php:250 modules_v4/list_places/module.php:33 placelist.php:39 placelist.php:41
+#: modules_v4/googlemap/module.php:255 modules_v4/list_places/module.php:33 placelist.php:39 placelist.php:41
 msgid "Place hierarchy"
 msgstr "Sted-hieraki"
 
-#: modules_v4/googlemap/module.php:255
+#: modules_v4/googlemap/module.php:260
 msgid "Default map type"
 msgstr "Standard korttype"
 
-#: modules_v4/googlemap/module.php:259
+#: modules_v4/googlemap/module.php:264
 msgid "Satellite"
 msgstr "Satellit"
 
-#: modules_v4/googlemap/module.php:260
+#: modules_v4/googlemap/module.php:265
 msgid "Hybrid"
 msgstr "Hybrid"
 
-#: modules_v4/googlemap/module.php:261
+#: modules_v4/googlemap/module.php:266
 msgid "Terrain"
 msgstr "Terræn"
 
-#: modules_v4/googlemap/module.php:271
+#: modules_v4/googlemap/module.php:276
 msgid "Zoom factor of map"
 msgstr "Zoom faktor på kort"
 
-#: modules_v4/googlemap/module.php:274
+#: modules_v4/googlemap/module.php:279
 msgid "minimum"
 msgstr "minimum"
 
-#: modules_v4/googlemap/module.php:279
+#: modules_v4/googlemap/module.php:284
 msgid "maximum"
 msgstr "maksimum"
 
-#: modules_v4/googlemap/module.php:285
+#: modules_v4/googlemap/module.php:290
 msgid "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Minimum og maksimum zoom faktor for Google kortet. 1 er hele kortet, 15 er på husniveau. Bemærk at 15 kun er tilgængelig i bestemte områder."
 
-#: modules_v4/googlemap/module.php:290
+#: modules_v4/googlemap/module.php:295
 msgid "Google Maps™ API key"
 msgstr "Google Maps™"
 
-#: modules_v4/googlemap/module.php:294
+#: modules_v4/googlemap/module.php:299
 msgid "<b>Optional</b>. Google prefers that users of Google Maps™ obtain an API key from them. This is linked to their usage restrictions described at https://developers.google.com/maps/documentation/geocoding/usage-limits. The same page has a link to get a key. You can continue to use the maps feature without the API key if you do not exceed the restrictions but a warning message will exist in the source code of your web page."
 msgstr "<b>Optional</b>. Google foretrækker at Google Maps™ brugere får en API nøgle fra dem. Dette er beskrevet under deres brugsrettigheder https://developers.google.com/maps/documentation/geocoding/usage-limits. På samme side er der et link til at få en nøgle. Du kan bruge kortfunktionen uden en API nøgle, hvis du ikke overskrider begrænsningerne men en advarsel vil fremgå af kildekoden på din side."
 
-#: modules_v4/googlemap/module.php:304
+#: modules_v4/googlemap/module.php:309
 msgid "Precision of the latitude and longitude"
 msgstr "Præcision af længdegrad og breddegrad"
 
-#: modules_v4/googlemap/module.php:313 modules_v4/googlemap/module.php:322 modules_v4/googlemap/module.php:331 modules_v4/googlemap/module.php:339 modules_v4/googlemap/module.php:347 modules_v4/googlemap/module.php:356
+#: modules_v4/googlemap/module.php:318 modules_v4/googlemap/module.php:327 modules_v4/googlemap/module.php:336 modules_v4/googlemap/module.php:344 modules_v4/googlemap/module.php:352 modules_v4/googlemap/module.php:361
 msgid "digits"
 msgstr "decimaler"
 
-#: modules_v4/googlemap/module.php:366
+#: modules_v4/googlemap/module.php:371
 msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
 msgstr "Dette vælger præcisionen af de forskellige niveauer, når der indtastes nye geografiske stedet. Et land vil for eksempel have en præcision på 0 (=0 decimaler efter decimal tegnet), hvorimod en by skal have 3 eller 4 decimaler."
 
-#: modules_v4/googlemap/module.php:371
+#: modules_v4/googlemap/module.php:376
 msgid "Default value for top-level"
 msgstr "Standard værdi for topniveau"
 
-#: modules_v4/googlemap/module.php:378
+#: modules_v4/googlemap/module.php:383
 msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
 msgstr "Her kan standard niveauet for det højeste niveau defineres. Hvis et sted ikke kan findes, vil dette navn tilføjes som det højeste niveau (land) og der søges igen i databasen."
 
-#: modules_v4/googlemap/module.php:383
+#: modules_v4/googlemap/module.php:388
 msgid "Optional prefixes and suffixes"
 msgstr "Valgfrie præfiks og suffiks"
 
-#: modules_v4/googlemap/module.php:388
+#: modules_v4/googlemap/module.php:393
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Nogle stednavne kan skrives med valgfrie præfiks og suffiks. For eksempel \"Orange\" i stedet for \"Orange County\". Hvis familietræet indholder de fulde stednavne, men den geografiske database indeholder de korte stednavne, bør du angive en liste med de præfiks og suffiks der skal ignoreres. Flere angivelser skal adskilles med semikoloner. For eksempel \"County;County of\" eller \"Township;Twp;Twp.\"."
 
-#: modules_v4/googlemap/module.php:394
+#: modules_v4/googlemap/module.php:399
 msgid "Prefixes"
 msgstr "Præfikser"
 
-#: modules_v4/googlemap/module.php:395
+#: modules_v4/googlemap/module.php:400
 msgid "Suffixes"
 msgstr "Suffikser"
 
-#: modules_v4/googlemap/module.php:417
+#: modules_v4/googlemap/module.php:422
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "Brug Google Maps™ som stedhieraki"
 
-#: modules_v4/googlemap/module.php:422
+#: modules_v4/googlemap/module.php:427
 msgid "Type of place markers in Place Hierarchy"
 msgstr "Typer af stedmarkører i stedhieraki"
 
-#: modules_v4/googlemap/module.php:425
+#: modules_v4/googlemap/module.php:430
 msgid "Standard"
 msgstr "Standard"
 
-#: modules_v4/googlemap/module.php:432
+#: modules_v4/googlemap/module.php:437
 msgid "Display short placenames"
 msgstr "Vis korte stednavne"
 
-#: modules_v4/googlemap/module.php:436
+#: modules_v4/googlemap/module.php:441
 msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br /><b>Examples:<br />Full name: </b>Chicago, Illinois, USA<br /><b>Short name: </b>Chicago<br /><b>Full name: </b>Illinois, USA<br /><b>Short name: </b>Illinois"
 msgstr "Her kan du vælge mellem to måder at vise stednavne i hierakiet. Hvis Ja er valgt vil stedet have et kort navn eller det aktuelle niveaunavn, hvis Nej, det fulde navn.<br /><b>Eksempler:<br />Fulde navn: </b>Chicago, Illinois, USA<br /><b>Kort navn: </b>Chicago<br /><b>Fulde navn: </b>Illinois, USA<br /><b>Kort navn: </b>Illinois"
 
-#: modules_v4/googlemap/module.php:441
+#: modules_v4/googlemap/module.php:446
 msgid "Display Map Coordinates"
 msgstr "Vis kort koordinater"
 
-#: modules_v4/googlemap/module.php:445
+#: modules_v4/googlemap/module.php:450
 msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
 msgstr "Denne indstilling bestemmer om breddegrad og længdegrad skal vises på pop-up-vinduet ved kortmarkører."
 
-#: modules_v4/googlemap/module.php:468
+#: modules_v4/googlemap/module.php:473
 msgid "Select flag"
 msgstr "Vælg flag"
 
-#: modules_v4/googlemap/module.php:601
+#: modules_v4/googlemap/module.php:606
 msgid "Countries"
 msgstr "Lande"
 
-#: modules_v4/googlemap/module.php:610
+#: modules_v4/googlemap/module.php:615
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
 msgstr "Ved at bruge nedrulningsmenuen er det muligt at vælge et land for hvilket et flag kan vælges. Hvis der ikke vises nogen flag, er der ikke defineret nogen flag for dette land."
 
-#: modules_v4/googlemap/module.php:653 modules_v4/googlemap/module.php:1511
+#: modules_v4/googlemap/module.php:658 modules_v4/googlemap/module.php:1516
 msgid "Subdivision"
 msgstr "Område"
 
-#: modules_v4/googlemap/module.php:662
+#: modules_v4/googlemap/module.php:667
 msgid "Using the pull down menu it is possible to select a state for this country, for which a flag can be selected. If no flags are shown, then there are no flags defined for this state."
 msgstr "Ved at bruge nedrulningsmenuen er det muligt at vælge et land for hvilket et flag kan vælges. Hvis der ikke vises nogen flag, er der ikke defineret nogen flag for dette land."
 
-#: modules_v4/googlemap/module.php:714
+#: modules_v4/googlemap/module.php:719
 #, php-format
 msgid "Pedigree map of %s"
 msgstr "Stamtavle for %s"
 
-#: modules_v4/googlemap/module.php:835
+#: modules_v4/googlemap/module.php:840
 #, php-format
 msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
 msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
 msgstr[0] "%1$d individ vises, ud af normalt %2$d, fra %3$d generationer."
 msgstr[1] "%1$d individer vises, ud af normalt %2$d, fra %3$d generationer."
 
-#: modules_v4/googlemap/module.php:845
+#: modules_v4/googlemap/module.php:850
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] "%s individ er privat."
 msgstr[1] "%s individer er private."
 
-#: modules_v4/googlemap/module.php:849
+#: modules_v4/googlemap/module.php:854
 msgid "No ancestors in the database."
 msgstr "Ingen slægtninge i databasen."
 
-#: modules_v4/googlemap/module.php:852
+#: modules_v4/googlemap/module.php:857
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] "%1$d individ mangler koordinater for fødselssted: %2$s."
 msgstr[1] "%1$d individer mangler koordinater for fødselssted: %2$s."
 
-#: modules_v4/googlemap/module.php:1253
+#: modules_v4/googlemap/module.php:1258
 msgid "Root"
 msgstr "Rod"
 
-#: modules_v4/googlemap/module.php:1281
+#: modules_v4/googlemap/module.php:1286
 msgid "Individual information"
 msgstr "Individ information"
 
-#: modules_v4/googlemap/module.php:1282
+#: modules_v4/googlemap/module.php:1287
 msgid "View Person"
 msgstr "Vis person"
 
-#: modules_v4/googlemap/module.php:1370 timeline.php:286
+#: modules_v4/googlemap/module.php:1375 timeline.php:286
 msgid "Zoom in"
 msgstr "Zoom ind"
 
-#: modules_v4/googlemap/module.php:1371 timeline.php:287
+#: modules_v4/googlemap/module.php:1376 timeline.php:287
 msgid "Zoom out"
 msgstr "Zoom ud"
 
-#: modules_v4/googlemap/module.php:1372
+#: modules_v4/googlemap/module.php:1377
 msgid "Zoom in here"
 msgstr "Zoom ind her"
 
-#: modules_v4/googlemap/module.php:1373
+#: modules_v4/googlemap/module.php:1378
 msgid "Zoom out here"
 msgstr "Zoom ud her"
 
-#: modules_v4/googlemap/module.php:1374
+#: modules_v4/googlemap/module.php:1379
 msgid "Center map here"
 msgstr "Centrer kort her"
 
-#: modules_v4/googlemap/module.php:1523
+#: modules_v4/googlemap/module.php:1528
 msgid "Include fully matched places: "
 msgstr "Inkludér korrekt sammenkørte steder: "
 
-#: modules_v4/googlemap/module.php:1634
+#: modules_v4/googlemap/module.php:1639
 msgid "Family tree place"
 msgstr "Slægtstræsplacering"
 
-#: modules_v4/googlemap/module.php:1635
+#: modules_v4/googlemap/module.php:1640
 msgid "Google Maps location data"
 msgstr "Google Maps lokationsdata"
 
-#: modules_v4/googlemap/module.php:1705
+#: modules_v4/googlemap/module.php:1710
 msgid "Zoom="
 msgstr "Zoom="
 
-#: modules_v4/googlemap/module.php:1721
+#: modules_v4/googlemap/module.php:1726
 msgid "Coordinates can not be added here until the parent place has coordinates."
 msgstr "Koordinationer kan ikke blive tilføjet før det overordnet sted har koordinationer."
 
@@ -21207,7 +21204,7 @@ msgstr "En liste over delte noter"
 msgid "A list of sources"
 msgstr "En liste over kilder"
 
-#: modules_v4/logged_in/module.php:32 modules_v4/widget_logged_in/module.php:32
+#: modules_v4/logged_in/module.php:32 modules_v4/widget_logged_in/module.php:32 themes/levy/footer.php:37
 msgid "Who is online"
 msgstr "Hvem er online:"
 
@@ -21533,11 +21530,11 @@ msgstr "Diasserie"
 msgid "Random image"
 msgstr "Tilfældig billede"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:41 themes/kiwitrees/header.php:42 themes/webtrees/header.php:38 themes/xenea/header.php:38
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:41 themes/kiwitrees/header.php:42 themes/levy/header.php:38 themes/webtrees/header.php:38 themes/xenea/header.php:38
 msgid "Play"
 msgstr "Afspil"
 
-#: modules_v4/random_media/module.php:164 themes/colors/header.php:42 themes/kiwitrees/header.php:43 themes/webtrees/header.php:39 themes/xenea/header.php:39
+#: modules_v4/random_media/module.php:164 themes/colors/header.php:42 themes/kiwitrees/header.php:43 themes/levy/header.php:39 themes/webtrees/header.php:39 themes/xenea/header.php:39
 msgid "Stop"
 msgstr "Stop"
 
@@ -21761,7 +21758,6 @@ msgid "Year to - 4 digits only"
 msgstr "kun 4 cifre - År til"
 
 #: modules_v4/report_fact/module.php:214
-#| msgid "No missing records found"
 msgid "No matching records found"
 msgstr "Ingen match fundet"
 
@@ -23121,40 +23117,40 @@ msgstr "Statistik diagrammer"
 msgid "Total individuals"
 msgstr "Total antal individer"
 
-#: statisticsTables.php:55
+#: statisticsTables.php:56
 msgid "Total unknown gender"
 msgstr "Antal med ukendt køn"
 
-#: statisticsTables.php:63
+#: statisticsTables.php:64
 msgid "Total deceased"
 msgstr "Antal afdøde"
 
-#: statisticsTables.php:106 statisticsTables.php:115
+#: statisticsTables.php:108 statisticsTables.php:117
 #, php-format
 msgid "Number of %s in the %s century"
 msgstr "Antal %s i hvert %s århundrede"
 
-#: statisticsTables.php:140
+#: statisticsTables.php:143
 msgid "Total dated births"
 msgstr "Antal fødselsdatoer"
 
-#: statisticsTables.php:145
+#: statisticsTables.php:148
 msgid "Total undated births"
 msgstr "Antal uden fødselsdatoer"
 
-#: statisticsTables.php:155
+#: statisticsTables.php:158
 msgid "Total dated deaths"
 msgstr "Antal dødsfald"
 
-#: statisticsTables.php:160
+#: statisticsTables.php:163
 msgid "Total undated deaths"
 msgstr "Antal uden dødsdatoer"
 
-#: statisticsTables.php:166
+#: statisticsTables.php:169
 msgid "No table selected"
 msgstr "Diagram ikke valgt"
 
-#: statisticsTables.php:178
+#: statisticsTables.php:182
 msgid "Due to privacy settings the number of items in this list may be less than the number on the statistics chart"
 msgstr "På grund af privatlivets indstillinger kan det viste antal på denne liste være mindre end antallet i statistikdiagrammet"
 
@@ -23239,7 +23235,7 @@ msgstr "alder"
 msgid "Age in year of first marriage"
 msgstr "Alder ved første vielse"
 
-#: themes/_administration/footer.php:35 themes/colors/footer.php:43 themes/kiwitrees/footer.php:43 themes/webtrees/footer.php:43 themes/xenea/footer.php:43
+#: themes/_administration/footer.php:35 themes/colors/footer.php:43 themes/kiwitrees/footer.php:43 themes/levy/footer.php:43 themes/webtrees/footer.php:43 themes/xenea/footer.php:43
 #, php-format
 msgid "Powered by %s"
 msgstr "Udviklet af %s"
@@ -23328,97 +23324,109 @@ msgstr "Administration"
 msgid "If you have any questions or comments please contact us"
 msgstr "Hvis du har nogle spørgsmål eller kommentarer kontakt os venligst  "
 
-#: themes/colors/header.php:51 themes/kiwitrees/header.php:52 themes/webtrees/header.php:48 themes/xenea/header.php:48
+#: themes/colors/header.php:51 themes/kiwitrees/header.php:52 themes/levy/header.php:48 themes/webtrees/header.php:48 themes/xenea/header.php:48
 msgid "Open in full browser window"
 msgstr "Åbn i et nyt browser vindue"
 
-#: themes/colors/header.php:139 themes/xenea/header.php:128
-msgid "Choose a page"
-msgstr "Vælg en side"
+#: themes/colors/header.php:139 themes/kiwitrees/header.php:157 themes/webtrees/header.php:134
+msgid "Main menu"
+msgstr "Hoved menu"
 
-#: themes/colors/templates/compactbox_template.php:48 themes/colors/templates/personbox_template.php:43 themes/kiwitrees/templates/compactbox_template.php:48 themes/kiwitrees/templates/personbox_template.php:42 themes/webtrees/templates/compactbox_template.php:48 themes/webtrees/templates/personbox_template.php:42 themes/xenea/templates/compactbox_template.php:48 themes/xenea/templates/personbox_template.php:42
+#: themes/colors/templates/compactbox_template.php:48 themes/colors/templates/personbox_template.php:43 themes/kiwitrees/templates/compactbox_template.php:48 themes/kiwitrees/templates/personbox_template.php:42 themes/levy/templates/compactbox_template.php:48 themes/levy/templates/personbox_template.php:42 themes/webtrees/templates/compactbox_template.php:48 themes/webtrees/templates/personbox_template.php:42 themes/xenea/templates/compactbox_template.php:48 themes/xenea/templates/personbox_template.php:42
 msgid "Loading..."
 msgstr "Indlæser..."
 
-#: themes/colors/theme.php:48 themes/colors/theme.php:73
+#: themes/colors/theme.php:74
 msgid "Colors palette"
 msgstr "Farve palette"
 
-#: themes/colors/theme.php:92
+#: themes/colors/theme.php:93
 msgid "Aqua Marine"
 msgstr "Havblå"
 
-#: themes/colors/theme.php:93
+#: themes/colors/theme.php:94
 msgid "Ash"
 msgstr "Aske"
 
-#: themes/colors/theme.php:94
+#: themes/colors/theme.php:95
 msgid "Belgian Chocolate"
 msgstr "Belgisk chokolade"
 
-#: themes/colors/theme.php:95
+#: themes/colors/theme.php:96
 msgid "Blue Lagoon"
 msgstr "Blå Lagune"
 
-#: themes/colors/theme.php:96
+#: themes/colors/theme.php:97
 msgid "Blue Marine"
 msgstr "Blå Marine"
 
-#: themes/colors/theme.php:97
+#: themes/colors/theme.php:98
 msgid "Coffee and Cream"
 msgstr "Kaffe og fløde"
 
-#: themes/colors/theme.php:98
+#: themes/colors/theme.php:99
 msgid "Cold Day"
 msgstr "Kold Dag"
 
-#: themes/colors/theme.php:99
+#: themes/colors/theme.php:100
 msgid "Green Beam"
 msgstr "Grøn stråle"
 
-#: themes/colors/theme.php:100
+#: themes/colors/theme.php:101
 msgid "Mediterranio"
 msgstr "Middelhavet"
 
-#: themes/colors/theme.php:101
+#: themes/colors/theme.php:102
 msgid "Mercury"
 msgstr "Kviksølv"
 
-#: themes/colors/theme.php:102
+#: themes/colors/theme.php:103
 msgid "Nocturnal"
 msgstr "Natlig"
 
-#: themes/colors/theme.php:103
+#: themes/colors/theme.php:104
 msgid "Olivia"
 msgstr "Olivia"
 
-#: themes/colors/theme.php:104
+#: themes/colors/theme.php:105
 msgid "Pink Plastic"
 msgstr "Pink plastik"
 
-#: themes/colors/theme.php:105
+#: themes/colors/theme.php:106
 msgid "Sage"
 msgstr "Salvie"
 
-#: themes/colors/theme.php:106
+#: themes/colors/theme.php:107
 msgid "Shiny Tomato"
 msgstr "Skinnende tomat"
 
-#: themes/colors/theme.php:107
+#: themes/colors/theme.php:108
 msgid "Teal Top"
 msgstr "Blågrøn"
 
-#: themes/colors/theme.php:122
+#: themes/colors/theme.php:123
 msgid "colors"
 msgstr "colors"
 
-#: themes/kiwitrees/header.php:157 themes/webtrees/header.php:134
-msgid "Main menu"
-msgstr "Hoved menu"
+#: themes/levy/functions.php:48
+msgid "For technical support or genealogy questions, please contact"
+msgstr "For teknisk support eller slægtsspørgsmål, kontakt venligst"
+
+#: themes/levy/functions.php:52
+msgid "For help with genealogy questions contact"
+msgstr "For hjælp med slægtsspørgsmål, kontakt&nbsp;"
+
+#: themes/levy/functions.php:58
+msgid "For technical support and information contact"
+msgstr "For teknisk hjælp og information, kontakt"
 
 #: themes/webtrees/theme.php:30
 msgid "webtrees"
 msgstr "webtrees"
+
+#: themes/xenea/header.php:128
+msgid "Choose a page"
+msgstr "Vælg en side"
 
 #: themes/xenea/theme.php:30
 msgid "xenea"
@@ -23537,15 +23545,6 @@ msgstr "Vis livscyklus"
 
 #~ msgid "Deaths by century"
 #~ msgstr "Deaths by century"
-
-#~ msgid "For technical support or genealogy questions, please contact"
-#~ msgstr "For technical support or genealogy questions, please contact"
-
-#~ msgid "For help with genealogy questions contact"
-#~ msgstr "For help with genealogy questions contact"
-
-#~ msgid "For technical support and information contact"
-#~ msgstr "For technical support and information contact"
 
 #~ msgid "Stories2"
 #~ msgstr "Stories2"
