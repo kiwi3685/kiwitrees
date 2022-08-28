@@ -88,11 +88,14 @@ switch (KT_Filter::post('action')) {
     				} else {
 					    setUserEmail ($user_id, $email);
                     }
+
                     if ($pass1 !== null && $pass1 !== $pass2) {
                         KT_FlashMessages::addMessage(KT_I18N::translate('The passwords do not match.'));
-                    } else {
+                    }
+					if ($pass1 !== null && $pass1 === $pass2) {
 						set_user_password($user_id, $pass1);
 					}
+
 				}
 			}
 
