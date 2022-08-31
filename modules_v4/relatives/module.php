@@ -446,8 +446,8 @@ class relatives_KT_Module extends KT_Module implements KT_Module_Tab {
 		}
 		?>
 		<script>
-			persistent_toggle("checkbox_elder", ".elderdate");
-			persistent_toggle("checkbox_rela", ".fam_rela");
+			persistent_toggle('checkbox_elder', '.elderdate');
+			persistent_toggle('checkbox_rela', '.fam_rela');
 		</script>
 		<?php
 
