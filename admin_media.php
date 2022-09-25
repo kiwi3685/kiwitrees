@@ -93,17 +93,20 @@ case 'load_json':
 	switch ($files) {
 	case 'local':
 		// Filtered rows
-		$SELECT1 =
-				"SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
-				" FROM  `##media`" .
-				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-				" JOIN  `##gedcom`         USING (gedcom_id)" .
-				" WHERE setting_value=?" .
-				" AND   m_filename LIKE CONCAT(?, '%')" .
-				" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
-				" OR   m_titl LIKE CONCAT('%', ?, '%'))" .
-				" AND   m_filename NOT LIKE 'http://%'" .
-				" AND   m_filename NOT LIKE 'https://%'";
+		$SELECT1 = "
+			SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING ?
+			FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename
+			FROM  `##media`
+			JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')
+			JOIN  `##gedcom`
+			USING (gedcom_id)
+			WHERE setting_value=?
+			AND m_filename LIKE CONCAT(?, '%')
+			AND (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')
+			OR  m_titl LIKE CONCAT('%', ?, '%'))
+			AND m_filename NOT LIKE 'http://%'
+			AND m_filename NOT LIKE 'https://%'
+		";
 		$ARGS1 = array($media_path, $media_folder, $media_path, $sSearch, $sSearch);
 		// Unfiltered rows
 		$SELECT2 =
