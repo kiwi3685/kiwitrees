@@ -143,7 +143,13 @@ $controller
 								foreach ($facts as $event) {
 									if (strpos($event->getGedComRecord(), 'SOUR @' . $sid . '@') !== false && $event->getTag() != 'SOUR') {
 										preg_match('/\n\d SOUR @' . $sid . '@(?:\n[3-9].*)*\n/i', $row->gedrec, $match);
-										$record = KT_Person::getInstance($row->xref) ? KT_Person::getInstance($row->xref) : KT_Family::getInstance($row->xref) ? KT_Family::getInstance($row->xref) : KT_Media::getInstance($row->xref);
+										if (KT_Person::getInstance($row->xref)) {
+											$record = KT_Person::getInstance($row->xref);
+										} elseif (KT_Family::getInstance($row->xref)) {
+											$record = KT_Family::getInstance($row->xref);
+										} else {
+											$record = KT_Media::getInstance($row->xref);
+										}
 										?>
 										<tr>
 											<td>
@@ -258,7 +264,13 @@ $controller
 							<?php
 							foreach ($data as $row) {
 								preg_match('/\n\d SOUR @' . $sid . '@(?:\n[2-9].*)*\n/i', $row->gedrec, $match);
-								$record = KT_Person::getInstance($row->xref) ? KT_Person::getInstance($row->xref) : KT_Family::getInstance($row->xref) ? KT_Family::getInstance($row->xref) : KT_Media::getInstance($row->xref);
+								if (KT_Person::getInstance($row->xref)) {
+									$record = KT_Person::getInstance($row->xref);
+								} elseif (KT_Family::getInstance($row->xref)) {
+									$record = KT_Family::getInstance($row->xref);
+								} else {
+									$record = KT_Media::getInstance($row->xref);
+								}
 								?>
 								<tr>
 									<td>
