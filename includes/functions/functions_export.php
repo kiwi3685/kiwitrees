@@ -191,7 +191,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$head = gedcom_header($gedcom);
 	if ($exportOptions['toANSI']=="yes") {
 		$head = str_replace("UTF-8", "ANSI", $head);
-		$head = utf8_decode($head);
+		$head = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $head);
 	}
 
 	// Buffer the output.  Lots of small fwrite() calls can be very slow when writing large gedcoms.
@@ -204,7 +204,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	foreach ($rows as $row) {
 		[$rec] = KT_Person::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
-			$rec = utf8_decode($rec);
+			$rec = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $rec);
 		}
 		$buffer .= reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -220,7 +220,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	foreach ($rows as $row) {
 		[$rec] = KT_Family::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI']=="yes") {
-			$rec = utf8_decode($rec);
+			$rec = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $rec);
 		}
 		$buffer .= reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -236,7 +236,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	foreach ($rows as $row) {
 		[$rec] = KT_Source::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI'] == "yes") {
-			$rec = utf8_decode($rec);
+			$rec = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $rec);
 		}
 		$buffer .= reformat_record_export($rec);
 		if (strlen($buffer) > 65536) {
@@ -252,7 +252,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	foreach ($rows as $row) {
 		[$rec] = KT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
 		if ($exportOptions['toANSI'] == "yes") {
-			$rec=utf8_decode($rec);
+			$rec=iconv("UTF-8", "ISO-8859-1//TRANSLIT", $rec);
 		}
 		$buffer .= reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -269,7 +269,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		[$rec] = KT_Media::getInstance($row)->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path']);
 		if ($exportOptions['toANSI'] == "yes") {
-			$rec=utf8_decode($rec);
+			$rec=iconv("UTF-8", "ISO-8859-1//TRANSLIT", $rec);
 		}
 		$buffer .= reformat_record_export($rec);
 		if (strlen($buffer)>65536) {

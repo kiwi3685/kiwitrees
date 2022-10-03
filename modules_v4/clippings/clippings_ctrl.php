@@ -161,7 +161,7 @@ class KT_Controller_Clippings {
 			}
 			if ($convert == "yes") {
 				$filetext = str_replace("UTF-8", "ANSI", $filetext);
-				$filetext = utf8_decode($filetext);
+				$filetext = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $filetext);
 			}
 
 			switch($this->privatize_export) {
@@ -205,7 +205,7 @@ class KT_Controller_Clippings {
 					$record = convert_media_path($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert=='yes') {
-						$record=utf8_decode($record);
+						$record=iconv("UTF-8", "ISO-8859-1//TRANSLIT", $record);
 					}
 					switch ($object->getType()) {
 					case 'INDI':
