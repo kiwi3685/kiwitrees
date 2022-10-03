@@ -280,7 +280,7 @@ function ExtractBUT($s)
 function WriteLog($aktion)
 {
     global $config, $lang;
-    $log = date('d.m.Y H:i:s').' '.htmlspecialchars($aktion)."\n";
+    $log = date('d.m.Y H:i:s').' '.htmlspecialchars((string) $aktion)."\n";
 
     $logfile = (isset($config['logcompression']) && (1 == $config['logcompression'])) ? $config['files']['log'].'.gz' : $config['files']['log'];
     $config['log_maxsize'] = isset($config['log_maxsize']) ? $config['log_maxsize'] : 0;

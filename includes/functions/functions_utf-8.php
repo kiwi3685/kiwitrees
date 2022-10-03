@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2022 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -213,14 +213,14 @@ function utf8_strcasecmp($string1, $string2) {
 			continue;
 		}
 		// Try the local alphabet first
-		$offset1=strpos($ALPHABET_lower, $chr1);
+		$offset1=strpos((string) $ALPHABET_lower, $chr1);
 		if ($offset1===false) {
-			$offset1=strpos($ALPHABET_upper, $chr1);
+			$offset1=strpos((string) $ALPHABET_upper, $chr1);
 		}
-		$offset2=strpos($ALPHABET_lower, $chr2);
+		$offset2=strpos((string) $ALPHABET_lower, $chr2);
 		if ($offset2===false) {
-			$offset2=strpos($ALPHABET_upper, $chr2);
-		}	
+			$offset2=strpos((string) $ALPHABET_upper, $chr2);
+		}
 		if ($offset1!==false && $offset2!==false) {
 			if ($offset1==$offset2) {
 				continue;
@@ -236,7 +236,7 @@ function utf8_strcasecmp($string1, $string2) {
 		$offset2=strpos(KT_UTF8_ALPHABET_LOWER, $chr2);
 		if ($offset2===false) {
 			$offset2=strpos(KT_UTF8_ALPHABET_UPPER, $chr2);
-		}	
+		}
 		if ($offset1!==false && $offset2!==false) {
 			if ($offset1==$offset2) {
 				continue;
@@ -259,7 +259,7 @@ function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 			$string='';
 		} else {
 			$sub1=utf8_substr($string, 0, $width+1);
-			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area. 
+			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
 				$sub=$sub1;
 			else
 				$sub=utf8_substr($string, 0, $width);

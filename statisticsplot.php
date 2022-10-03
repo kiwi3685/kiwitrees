@@ -604,7 +604,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$titleLength = strpos($mytitle."\n", "\n");
 	$title = substr($mytitle, 0, $titleLength);
 
-	$imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt='.rawurlencode($title).'&amp;'.$datastring.'&amp;'.$colorstring.'&amp;chbh=';
+	$imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt='.rawurlencode((string) $title).'&amp;'.$datastring.'&amp;'.$colorstring.'&amp;chbh=';
 	if (count($ydata) > 3) {
 		$imgurl .= '5,1';
 	} else if (count($ydata) < 2) {
@@ -614,10 +614,10 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	$imgurl .= '&amp;chxt=x,x,y,y&amp;chxl=0:|';
 	for ($i=0; $i<count($xdata); $i++) {
-		$imgurl .= rawurlencode($xdata[$i]) . '|';
+		$imgurl .= rawurlencode((string) $xdata[$i]) . '|';
 	}
 
-	$imgurl .= '1:||||'.rawurlencode($xtitle).'|2:|';
+	$imgurl .= '1:||||'.rawurlencode((string) $xtitle).'|2:|';
 	$imgurl .= '0|';
 	if ($percentage) {
 		for ($i=1; $i<11; $i++) {
@@ -638,20 +638,20 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 				$imgurl .= round($ymax*$i/10, 0).'|';
 			}
 		}
-		$imgurl .= '3:||'.rawurlencode($ytitle).'|';
+		$imgurl .= '3:||'.rawurlencode((string) $ytitle).'|';
 	}
 	//only show legend if y-data is non-2-dimensional
 	if (count($ydata) > 1) {
 		$imgurl .= '&amp;chdl=';
 		for ($i=0; $i<count($legend); $i++) {
-			$imgurl .= rawurlencode($legend[$i]);
+			$imgurl .= rawurlencode((string) $legend[$i]);
 			if (!($i == (count($legend)-1))) {
 				$imgurl .= '|';
 			}
 		}
 	}
 	$title = strstr($mytitle, '|', true);
-	echo '<img src="', $imgurl, '" width="950" height="300" alt="', htmlspecialchars($title), '" title="', htmlspecialchars($title), '">';
+	echo '<img src="', $imgurl, '" width="950" height="300" alt="', htmlspecialchars((string) $title), '" title="', htmlspecialchars((string) $title), '">';
 }
 
 function calc_axis($xas_grenzen) {

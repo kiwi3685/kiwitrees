@@ -170,24 +170,24 @@ $medialist = KT_Query_Media::mediaList(
 					if ($TEXT_DIRECTION=='ltr') {
 						if ($ct>$max) {
 							if ($currentPage > 1) {
-								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=0&amp;max=' . $max. '" class="icon-ldarrow"></a>';
+								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=0&amp;max=' . $max. '" class="icon-ldarrow"></a>';
 							}
 							if ($start>0) {
 								$newstart = $start-$max;
 								if ($start<0) $start = 0;
-								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-larrow"></a>';
+								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-larrow"></a>';
 							}
 						}
 					} else {
 						if ($ct>$max) {
 							if ($currentPage < $lastPage) {
 								$lastStart = ((int) ($ct / $max)) * $max;
-								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $lastStart. '&amp;max=' . $max. '" class="icon-rdarrow"></a>';
+								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $lastStart. '&amp;max=' . $max. '" class="icon-rdarrow"></a>';
 							}
 							if ($start+$max < $ct) {
 								$newstart = $start+$count;
 								if ($start<0) $start = 0;
-								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-rarrow"></a>';
+								$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-rarrow"></a>';
 							}
 						}
 					}
@@ -199,11 +199,11 @@ $medialist = KT_Query_Media::mediaList(
 								if ($start+$max < $ct) {
 									$newstart = $start+$count;
 									if ($start<0) $start = 0;
-									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-rarrow"></a>';
+									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-rarrow"></a>';
 								}
 								if ($currentPage < $lastPage) {
 									$lastStart = ((int) ($ct / $max)) * $max;
-									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $lastStart. '&amp;max=' . $max. '" class="icon-rdarrow"></a>';
+									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $lastStart. '&amp;max=' . $max. '" class="icon-rdarrow"></a>';
 								}
 							}
 						} else {
@@ -211,11 +211,11 @@ $medialist = KT_Query_Media::mediaList(
 								if ($start>0) {
 									$newstart = $start-$max;
 									if ($start<0) $start = 0;
-									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-larrow"></a>';
+									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=' . $newstart. '&amp;max=' . $max. '" class="icon-larrow"></a>';
 								}
 								if ($currentPage > 1) {
 									$lastStart = ((int) ($ct / $max)) * $max;
-									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode($folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode($filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=0&amp;max=' . $max. '" class="icon-ldarrow"></a>';
+									$pagination .= '<a href="medialist.php?action=no&amp;search=no&amp;folder=' . rawurlencode((string) $folder). '&amp;sortby=' . $sortby. '&amp;subdirs=' . $subdirs. '&form_type=' . $form_type. '&amp;filter=' . rawurlencode((string) $filter). '&amp;apply_filter=' . $apply_filter. '&amp;start=0&amp;max=' . $max. '" class="icon-ldarrow"></a>';
 								}
 							}
 						}

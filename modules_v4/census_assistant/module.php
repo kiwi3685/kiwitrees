@@ -136,7 +136,7 @@ class census_assistant_KT_Module extends KT_Module {
 				$date			= '';
 
 				foreach ($firstRecord->getFacts('CENS') as $fact) {
-					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
+					if (trim((string) $fact->getAttribute('NOTE'), '@') === $note->getXref()) {
 						$date        = $fact->getAttribute('DATE');
 						// get country code from census place
 						$kt_place	 = new KT_Place($fact->getPlace(), KT_GED_ID);

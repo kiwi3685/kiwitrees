@@ -155,7 +155,7 @@ if ($restore['filehandle']) {
         while (($a < $restore['anzahl_zeilen']) && (!$restore['fileEOF']) && ($dauer < $restore['max_zeit']) && !$restore['EOB']) {
             $sql_command = get_sqlbefehl();
             if ($sql_command > '') {
-                //WriteLog(htmlspecialchars($sql_command));
+                //WriteLog(htmlspecialchars((string) $sql_command));
                 $res = mysqli_query($config['dbconnection'], $sql_command);
                 if (false === !$res) {
                     $anzsql = mysqli_affected_rows($config['dbconnection']);

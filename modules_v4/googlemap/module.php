@@ -1504,12 +1504,12 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 							$rows=KT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 								->fetchAssoc();
 							foreach ($rows as $id=>$place) {
-								echo '<option value="', htmlspecialchars($place), '"';
+								echo '<option value="', htmlspecialchars((string) $place), '"';
 								if ($place == $country) {
 									echo ' selected="selected"';
 									$par_id=$id;
 								}
-								echo '>', htmlspecialchars($place), '</option>';
+								echo '>', htmlspecialchars((string) $place), '</option>';
 							}
 					echo '</select>';
 					if ($country!='XYZ') {
@@ -1521,7 +1521,7 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 									->execute(array($par_id))
 									->fetchOneColumn();
 								foreach ($places as $place) {
-									echo '<option value="', htmlspecialchars($place), '"', $place == $state?' selected="selected"':'', '>', htmlspecialchars($place), '</option>';
+									echo '<option value="', htmlspecialchars((string) $place), '"', $place == $state?' selected="selected"':'', '>', htmlspecialchars((string) $place), '</option>';
 								}
 								echo '</select>';
 							}
@@ -1588,9 +1588,9 @@ class googlemap_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 			if ($country == 'XYZ') {
 				$filter = '.*$';
 			} else {
-				$filter = preg_quote($country).'$';
+				$filter = preg_quote((string) $country).'$';
 				if ($state != 'XYZ') {
-					$filter = preg_quote($state).', '.$filter;
+					$filter = preg_quote((string) $state).', '.$filter;
 				}
 			}
 			$place_list = preg_grep('/'.$filter.'/', $place_list);

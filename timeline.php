@@ -245,7 +245,7 @@ $controller->checkPrivacy();
 			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
 			<?php echo $indi->getAddName(); ?><br>
 			</a>
-			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>">
+			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars((string) $pid); ?>">
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo KT_GEDURL; ?>" >
 				<span class="details1"><?php echo KT_I18N::translate('Remove person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
@@ -260,7 +260,7 @@ $controller->checkPrivacy();
 		} else {
 			print_privacy_error();
 			?>
-			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>">
+			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars((string) $pid); ?>">
 				<br>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo KT_GEDURL; ?>" >
 				<span class="details1"><?php echo KT_I18N::translate('Remove person'); ?></span></a>
@@ -309,7 +309,7 @@ if (count($controller->people)>0) {
 	$mod = 25/$controller->scale;
 	if ($mod<1) $mod = 1;
 	for ($i=$controller->baseyear+1; $i<$controller->topyear; $i++) {
-		if ($i % $mod == 0)  {
+		if ($i % (int)$mod == 0)  {
 			echo "<div id=\"scale$i\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset")."px; top:".($baseyoffset+(($i-$controller->baseyear)*$controller->scale)-$controller->scale/2)."px; font-size: 7pt; text-align:".($TEXT_DIRECTION =="ltr"?"left":"right").";\">";
 			echo $i."--";
 			echo "</div>";

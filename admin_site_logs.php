@@ -164,7 +164,7 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$aaData = KT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
-		$row[2] = htmlspecialchars($row[2]);
+		$row[2] = htmlspecialchars((string) $row[2]);
 	}
 
 	// Total filtered/unfiltered rows
@@ -190,7 +190,7 @@ $controller
 			"bProcessing": true,
 			"bServerSide": true,
 			"sAjaxSource": "' .
-				KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",' . KT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)) . ',
+				KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode((string) $text) . '&ip=' . rawurlencode((string) $ip) . '&user=' . rawurlencode((string) $user) . '&gedc=' . rawurlencode((string) $gedc) . '",' . KT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)) . ',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],
@@ -200,13 +200,13 @@ $controller
 	');
 
 $url=
-	KT_SCRIPT_NAME.'?from='.rawurlencode($from).
-	'&amp;to='.rawurlencode($to).
-	'&amp;type='.rawurlencode($type).
-	'&amp;text='.rawurlencode($text).
-	'&amp;ip='.rawurlencode($ip).
-	'&amp;user='.rawurlencode($user).
-	'&amp;gedc='.rawurlencode($gedc);
+	KT_SCRIPT_NAME.'?from='.rawurlencode((string) $from).
+	'&amp;to='.rawurlencode((string) $to).
+	'&amp;type='.rawurlencode((string) $type).
+	'&amp;text='.rawurlencode((string) $text).
+	'&amp;ip='.rawurlencode((string) $ip).
+	'&amp;user='.rawurlencode((string) $user).
+	'&amp;gedc='.rawurlencode((string) $gedc);
 
 $users_array=array_combine(get_all_users(), get_all_users());
 uksort($users_array, 'strnatcasecmp');
@@ -218,17 +218,17 @@ echo
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
-					KT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'">'),
+					KT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars((string) $from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars((string) $to).'">'),
 				'</td>',
 			'</tr><tr>',
 				'<td>',
 					KT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search','spam'=>'spam'), null, $type, ''),
 				'</td>',
 				'<td>',
-					KT_I18N::translate('Message'), '<br><input class="log-filter" name="text" value="', htmlspecialchars($text), '"> ',
+					KT_I18N::translate('Message'), '<br><input class="log-filter" name="text" value="', htmlspecialchars((string) $text), '"> ',
 				'</td>',
 				'<td>',
-					KT_I18N::translate('IP address'), '<br><input class="log-filter" name="ip" value="', htmlspecialchars($ip), '"> ',
+					KT_I18N::translate('IP address'), '<br><input class="log-filter" name="ip" value="', htmlspecialchars((string) $ip), '"> ',
 				'</td>',
 				'<td>',
 					KT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),

@@ -361,13 +361,13 @@ class stories_KT_Module extends KT_Module implements KT_Module_Block, KT_Module_
 								<th>', KT_I18N::translate('Story title'), '</th>
 							</tr>
 							<tr>
-								<td><textarea name="title" rows="1" cols="90">', htmlspecialchars($title), '</textarea></td>
+								<td><textarea name="title" rows="1" cols="90">', htmlspecialchars((string) $title), '</textarea></td>
 							</tr>
 							<tr>
 								<th>' ,KT_I18N::translate('Story'), '</th>
 							</tr>
 							<tr>
-								<td><textarea name="story_body" class="html-edit" rows="10" cols="90">', htmlspecialchars($story_body), '</textarea></td>
+								<td><textarea name="story_body" class="html-edit" rows="10" cols="90">', htmlspecialchars((string) $story_body), '</textarea></td>
 							</tr>
 						</table>
 						<table id="faq_module2">

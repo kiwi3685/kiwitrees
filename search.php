@@ -178,19 +178,19 @@ $controller ->addInlineJavascript('
 				<div class="search-page-table">
 					<div class="label"><?php echo KT_I18N::translate('Given name'); ?></div>
 					<div class="value">
-						<input tabindex="3" type="text" data-autocomplete-type="GIVN" name="firstname" value="<?php echo htmlspecialchars($controller->firstname); ?>" autofocus>
+						<input tabindex="3" type="text" data-autocomplete-type="GIVN" name="firstname" value="<?php echo htmlspecialchars((string) $controller->firstname); ?>" autofocus>
 					</div>
 					<div class="label"><?php echo KT_I18N::translate('Last name'); ?></div>
 					<div class="value">
-						<input tabindex="4" type="text" data-autocomplete-type="SURN" name="lastname" value="<?php echo htmlspecialchars($controller->lastname); ?>">
+						<input tabindex="4" type="text" data-autocomplete-type="SURN" name="lastname" value="<?php echo htmlspecialchars((string) $controller->lastname); ?>">
 					</div>
 					<div class="label"><?php echo KT_I18N::translate('Place'); ?></div>
 					<div class="value">
-						<input tabindex="5" type="text" data-autocomplete-type="PLAC2" name="place" value="<?php echo KT_Filter::escapeHtml($controller->place); ?>">
+						<input tabindex="5" type="text" data-autocomplete-type="PLAC2" name="place" value="<?php echo KT_Filter::escapeHtml((string) $controller->place); ?>">
 					</div>
 					<div class="label"><?php echo KT_I18N::translate('Year'); ?></div>
 					<div class="value">
-						<input tabindex="6" type="text" name="year" value="<?php echo htmlspecialchars($controller->year); ?>">
+						<input tabindex="6" type="text" name="year" value="<?php echo htmlspecialchars((string) $controller->year); ?>">
 					</div>
 					<!-- Soundex type options (Russell, DaitchM) -->
 					<div class="label"><?php echo KT_I18N::translate('soundex algorithm'); ?></div>
@@ -399,7 +399,7 @@ $controller ->addInlineJavascript('
 								$currentFieldSearch = $controller->getField($i); // Get this field's name and the search criterion
 								$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 								?>
-									<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo KT_Filter::escapeHtml($controller->getValue($i)); ?>"<?php echo (substr($controller->getField($i),-4)=='PLAC') ? 'data-autocomplete-type="PLAC"' : ''; ?>>
+									<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo KT_Filter::escapeHtml((string) $controller->getValue($i)); ?>"<?php echo (substr($controller->getField($i),-4)=='PLAC') ? 'data-autocomplete-type="PLAC"' : ''; ?>>
 								<?php if (preg_match("/^NAME:/", $currentFieldSearch)>0) { ?>
 									<select name="fields[<?php echo $i; ?>]">
 										<option value="<?php echo $currentField; ?>:EXACT"<?php if (preg_match("/:EXACT$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo KT_I18N::translate('Exact'); ?></option>

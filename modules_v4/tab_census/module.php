@@ -139,7 +139,7 @@ class tab_census_KT_Module extends KT_Module implements KT_Module_Tab {
 													</a>
 												</div>
 												<div class="copylink">
-													<a class="icon-copy" href="#" onclick="jQuery.post('action.php',{action:'copy-fact', type:'<?php echo $fact->getParentObject()->getType(); ?>', factgedcom:'<?php echo rawurlencode($fact->getGedcomRecord()); ?>'},function(){location.reload();})" title="<?php echo  KT_I18N::translate('Copy'); ?>">
+													<a class="icon-copy" href="#" onclick="jQuery.post('action.php',{action:'copy-fact', type:'<?php echo $fact->getParentObject()->getType(); ?>', factgedcom:'<?php echo rawurlencode((string) $fact->getGedcomRecord()); ?>'},function(){location.reload();})" title="<?php echo  KT_I18N::translate('Copy'); ?>">
 														<span class="link_text"><?php echo KT_I18N::translate('Copy'); ?></span>
 													</a>
 												</div>

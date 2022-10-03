@@ -154,10 +154,10 @@ case 'editraw':
 			<input type="hidden" name="action" value="updateraw">
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 			<p>
-				<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly"><?php echo htmlspecialchars($gedrec1); ?></textarea>
+				<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly"><?php echo htmlspecialchars((string) $gedrec1); ?></textarea>
 			</p>
 			<p>
-				<textarea name="newgedrec2" id="newgedrec2" dir="ltr"><?php echo htmlspecialchars($gedrec2); ?></textarea>
+				<textarea name="newgedrec2" id="newgedrec2" dir="ltr"><?php echo htmlspecialchars((string) $gedrec2); ?></textarea>
 			</p>
 			<?php echo no_update_chan($record); ?>
 			<p id="save-cancel">
@@ -1111,7 +1111,7 @@ case 'editnote':
 						<?php echo KT_I18N::translate('Shared note'); ?>
 					</label>
 					<div class="input">
-						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php echo htmlspecialchars($note_content); ?></textarea>
+						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php echo htmlspecialchars((string) $note_content); ?></textarea>
 					</div>
 					<?php if (KT_USER_IS_ADMIN) { ?>
 						<div class="last_change">

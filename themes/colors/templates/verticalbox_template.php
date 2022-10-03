@@ -36,7 +36,7 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 	//	details for zoom view
 	echo '<div id="fontdef-',$boxID,'" class="details',$style,'">
 			<div class="exp_thumb">', $thumbnail, '</div>
-			<a href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">
+			<a href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode((string) $GEDCOM), '">
 				<div id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname, '</div>
 			</a>
 			<div class="name',$style,'">',$genderImage,'</div>

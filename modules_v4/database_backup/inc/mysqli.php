@@ -345,7 +345,7 @@ function mod_query($query, $error_output = true)
     if (!isset($config['dbconnection'])) {
         mod_mysqli_connect();
     }
-    // echo "<br>Query: ".htmlspecialchars($query).'<br>';
+    // echo "<br>Query: ".htmlspecialchars((string) $query).'<br>';
     $res = mysqli_query($config['dbconnection'], $query);
     // print_mem();
     if (false === $res && $error_output) {

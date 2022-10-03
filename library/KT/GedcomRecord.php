@@ -55,7 +55,7 @@ class KT_GedcomRecord {
 		} else {
 			// Construct from raw GEDCOM data
 			$this->_gedrec = $data;
-			if (preg_match('/^0 (?:@('.KT_REGEX_XREF.')@ )?('.KT_REGEX_TAG.')/', $data, $match)) {
+			if (preg_match('/^0 (?:@('.KT_REGEX_XREF.')@ )?('.KT_REGEX_TAG.')/', (string) $data, $match)) {
 				$this->xref = $match[1];
 				$this->type = $match[2];
 				$this->ged_id = KT_GED_ID;
@@ -334,13 +334,13 @@ class KT_GedcomRecord {
 		}
 
 		// Does this record have a RESN?
-		if (strpos($this->_gedrec, "\n1 RESN confidential")) {
+		if (strpos((string) $this->_gedrec, "\n1 RESN confidential")) {
 			return KT_PRIV_NONE >= $access_level;
 		}
-		if (strpos($this->_gedrec, "\n1 RESN privacy")) {
+		if (strpos((string) $this->_gedrec, "\n1 RESN privacy")) {
 			return KT_PRIV_USER >= $access_level;
 		}
-		if (strpos($this->_gedrec, "\n1 RESN none")) {
+		if (strpos((string) $this->_gedrec, "\n1 RESN none")) {
 			return true;
 		}
 
@@ -425,11 +425,11 @@ class KT_GedcomRecord {
 			// The record is not private, but the individual facts may be.
 
 			// Include the entire first line (for NOTE records)
-			list($gedrec) = explode("\n", $this->_gedrec, 2);
+			list($gedrec) = explode("\n", (string) $this->_gedrec, 2);
 
 			$private_gedrec = '';
 			// Check each of the sub facts for access
-			preg_match_all('/\n1 .*(?:\n[2-9].*)*/', $this->_gedrec, $matches);
+			preg_match_all('/\n1 .*(?:\n[2-9].*)*/', (string)$this->_gedrec, $matches);
 			foreach ($matches[0] as $match) {
 				if (canDisplayFact($this->xref, $this->ged_id, $match, $access_level)) {
 					$gedrec .= $match;
@@ -456,7 +456,7 @@ class KT_GedcomRecord {
 		$this->_getAllNames[] = array(
 			'type' =>$type,
 			'sort' => preg_replace_callback('/([0-9]+)/', function($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
-			'full' => '<span dir="auto">'.htmlspecialchars($value).'</span>',    // This is used for display
+			'full' => '<span dir="auto">'.htmlspecialchars((string) $value).'</span>',    // This is used for display
 			'fullNN' =>$value, // This goes into the database
 		);
 	}

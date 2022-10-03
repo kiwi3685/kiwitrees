@@ -54,7 +54,7 @@ if ($obj && $obj->getType() == 'SUBM' ) {
 			'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 			preg_replace(
 				'/@(' . KT_REGEX_XREF . ')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-				htmlspecialchars($obj->getGedcomRecord())
+				htmlspecialchars((string) $obj->getGedcomRecord())
 			),
 			'</pre>';
 	}

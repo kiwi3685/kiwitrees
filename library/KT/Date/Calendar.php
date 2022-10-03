@@ -597,7 +597,7 @@ class KT_Date_Calendar {
 		if (empty($date_fmt)) {
 			$date_fmt=$DATE_FORMAT;
 		}
-		$URL='calendar.php?cal='.rawurlencode($this->CALENDAR_ESCAPE());
+		$URL='calendar.php?cal='.rawurlencode((string) $this->CALENDAR_ESCAPE());
 		$view="year";
 		if (strpos($date_fmt, "Y")!==false
 		||  strpos($date_fmt, "y")!==false) {

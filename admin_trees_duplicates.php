@@ -157,7 +157,7 @@ echo '<div id="admin_dup">
 			<div id="surnm">
 				<label for="SURN">', KT_I18N::translate('Surname'), '</label>
 						<div class="exact" title="', KT_I18N::translate('Match exactly'), '">
-							<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="', htmlspecialchars($surn), '" dir="auto">
+							<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="', htmlspecialchars((string) $surn), '" dir="auto">
 							<input type="checkbox" name="exact_surn" value="1"';
 								if ($exact_surn) {
 									echo ' checked="checked"';
@@ -169,7 +169,7 @@ echo '<div id="admin_dup">
 			<div id="givnm">
 				<label for="GIVN">', KT_I18N::translate('Given name'), '</label>
 					<div class="exact" title="', KT_I18N::translate('Match exactly'), '">
-						<input data-autocomplete-type="GIVN" type="text" name="given" id="GIVN" value="', htmlspecialchars($givn), '" dir="auto">
+						<input data-autocomplete-type="GIVN" type="text" name="given" id="GIVN" value="', htmlspecialchars((string) $givn), '" dir="auto">
 						<input type="checkbox" name="exact_givn" value="1" title="', KT_I18N::translate('Match exactly'), '"';
 							if ($exact_givn) {
 								echo ' checked="checked"';

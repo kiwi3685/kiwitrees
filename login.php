@@ -154,12 +154,12 @@ switch ($action) {
             <div id="login-box">
                 <form id="login-form" name="login-form" method="post" action="<?php echo KT_LOGIN_URL; ?>" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
                     <input type="hidden" name="action" value="login">
-                    <input type="hidden" name="url" value="<?php echo htmlspecialchars($url); ?>">
+                    <input type="hidden" name="url" value="<?php echo htmlspecialchars((string) $url); ?>">
                     <input type="hidden" name="usertime" value="">
                     <?php if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>'; ?>
                     <div>
                         <label for="loginUsername"><?php echo KT_I18N::translate('Username'); ?>
-                        <input type="text" id="loginUsername" name="username" value="<?php echo htmlspecialchars($username); ?>" class="formField" autofocus>
+                        <input type="text" id="loginUsername" name="username" value="<?php echo htmlspecialchars((string) $username); ?>" class="formField" autofocus>
                         </label>
                     </div>
                     <div>
@@ -453,17 +453,17 @@ switch ($action) {
                     <div>
                         <label for="user_realname">
                             <?php echo KT_I18N::translate('Real name') . help_link('real_name'); ?>
-                            <input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?php echo htmlspecialchars($user_realname); ?>" autofocus>
+                            <input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?php echo htmlspecialchars((string) $user_realname); ?>" autofocus>
                         </label>
                     </div>
                     <div>
                         <label for="user_email"><?php echo KT_I18N::translate('Email address') . help_link('email'); ?>
-                            <input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo htmlspecialchars($user_email); ?>">
+                            <input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo htmlspecialchars((string) $user_email); ?>">
                         </label>
                     </div>
                     <div>
                         <label for="username"><?php echo KT_I18N::translate('Desired user name'), help_link('username'); ?>
-                            <input type="text" id="username" name="user_name" required maxlength="32" value="<?php echo htmlspecialchars($user_name); ?>">
+                            <input type="text" id="username" name="user_name" required maxlength="32" value="<?php echo htmlspecialchars((string) $user_name); ?>">
                         </label>
                     </div>
                     <div>
@@ -472,7 +472,7 @@ switch ($action) {
                                  type="password"
                                  id="user_password01"
                                  name="user_password01"
-                                 value="<?php echo htmlspecialchars($user_password01); ?>"
+                                 value="<?php echo htmlspecialchars((string) $user_password01); ?>"
                                  required placeholder="<?php echo /* I18N: placeholder text for new-password field */ KT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', KT_MINIMUM_PASSWORD_LENGTH, KT_I18N::number(KT_MINIMUM_PASSWORD_LENGTH)); ?>"
                                  pattern="<?php echo KT_REGEX_PASSWORD; ?>"
                                  onchange="form.user_password02.pattern = regex_quote(this.value);"
@@ -481,12 +481,12 @@ switch ($action) {
                     </div>
                     <div>
                         <label for="user_password02"><?php echo KT_I18N::translate('Confirm password'), help_link('password_confirm'); ?>
-                            <input type="password" id="user_password02" name="user_password02" value="<?php echo htmlspecialchars($user_password02); ?>" required placeholder="<?php echo /* I18N: placeholder text for repeat-password field */ KT_I18N::translate('Type the password again.'); ?>" pattern="<?php echo KT_REGEX_PASSWORD; ?>">
+                            <input type="password" id="user_password02" name="user_password02" value="<?php echo htmlspecialchars((string) $user_password02); ?>" required placeholder="<?php echo /* I18N: placeholder text for repeat-password field */ KT_I18N::translate('Type the password again.'); ?>" pattern="<?php echo KT_REGEX_PASSWORD; ?>">
                         </label>
                     </div>
                     <div>
                         <label for="user_comments"><?php echo KT_I18N::translate('Comments'), help_link('register_comments'); ?>
-                            <textarea id="user_comments" name="user_comments" <?php echo (KT_Site::preference('REQUIRE_COMMENT') ? 'required' : ''); ?>><?php echo htmlspecialchars($user_comments); ?></textarea>
+                            <textarea id="user_comments" name="user_comments" <?php echo (KT_Site::preference('REQUIRE_COMMENT') ? 'required' : ''); ?>><?php echo htmlspecialchars((string) $user_comments); ?></textarea>
                         </label>
                     </div>
                     <div>

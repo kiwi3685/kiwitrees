@@ -184,8 +184,8 @@ case 'load_json':
 	$aaData=KT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
 
-		$a = explode("\n", htmlspecialchars($row[3]));
-		$b = explode("\n", htmlspecialchars($row[4]));
+		$a = explode("\n", htmlspecialchars((string) $row[3]));
+		$b = explode("\n", htmlspecialchars((string) $row[4]));
 
 		// Generate a side by side diff
 		$renderer = new Diff_Renderer_Html_SideBySide;
@@ -227,7 +227,7 @@ $controller
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&oldged='.rawurlencode($oldged).'&newged='.rawurlencode($newged).'&xref='.rawurlencode($xref).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
+			"sAjaxSource": "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&oldged='.rawurlencode((string) $oldged).'&newged='.rawurlencode((string) $newged).'&xref='.rawurlencode((string) $xref).'&user='.rawurlencode((string) $user).'&gedc='.rawurlencode((string) $gedc).'",
 			'.KT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
@@ -247,14 +247,14 @@ $controller
 	');
 
 $url=
-	KT_SCRIPT_NAME.'?from='.rawurlencode($from).
-	'&amp;to='.rawurlencode($to).
-	'&amp;type='.rawurlencode($type).
-	'&amp;oldged='.rawurlencode($oldged).
-	'&amp;newged='.rawurlencode($newged).
-	'&amp;xref='.rawurlencode($xref).
-	'&amp;user='.rawurlencode($user).
-	'&amp;gedc='.rawurlencode($gedc);
+	KT_SCRIPT_NAME.'?from='.rawurlencode((string) $from).
+	'&amp;to='.rawurlencode((string) $to).
+	'&amp;type='.rawurlencode((string) $type).
+	'&amp;oldged='.rawurlencode((string) $oldged).
+	'&amp;newged='.rawurlencode((string) $newged).
+	'&amp;xref='.rawurlencode((string) $xref).
+	'&amp;user='.rawurlencode((string) $user).
+	'&amp;gedc='.rawurlencode((string) $gedc);
 
 $users_array=array_combine(get_all_users(), get_all_users());
 uksort($users_array, 'strnatcasecmp');
@@ -266,17 +266,17 @@ echo
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
-					KT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'">'),
+					KT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars((string) $from).'">', '<input class="log-date" name="to" value="'.htmlspecialchars((string) $to).'">'),
 				'</td>',
 			'</tr><tr>',
 				'<td>',
 					KT_I18N::translate('Status'), '<br>', select_edit_control('type', $statuses, null, $type, ''),
 				'</td>',
 				'<td>',
-					KT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars($xref), '"> ',
+					KT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars((string) $xref), '"> ',
 				'</td>',
 				'<td>',
-					KT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars($oldged), '"> ',
+					KT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars((string) $oldged), '"> ',
 				'</td>',
 				'<td></td>',
 				'<td>',

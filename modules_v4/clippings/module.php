@@ -283,8 +283,8 @@ class clippings_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module
 										<?php echo KT_I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?>
 									</td>
 									<td class="optionbox">
-										<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
-										<span dir="auto"><?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?></span>
+										<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars((string) $GEDCOM_MEDIA_PATH); ?>">
+										<span dir="auto"><?php echo htmlspecialchars((string) $GEDCOM_MEDIA_PATH); ?></span>
 									</td>
 								</tr>
 								<tr>
@@ -679,8 +679,8 @@ class clippings_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module
 		<tr>
 		<td class="descriptionbox width50 wrap">'.KT_I18N::translate('Add the GEDCOM media path to filenames').help_link('GEDCOM_MEDIA_PATH').'</td>
 		<td class="optionbox">
-		<input type="checkbox" name="conv_path" value="' . htmlspecialchars($GEDCOM_MEDIA_PATH) . '">
-		<span dir="auto">' . htmlspecialchars($GEDCOM_MEDIA_PATH) . '</span></td>
+		<input type="checkbox" name="conv_path" value="' . htmlspecialchars((string) $GEDCOM_MEDIA_PATH) . '">
+		<span dir="auto">' . htmlspecialchars((string) $GEDCOM_MEDIA_PATH) . '</span></td>
 		</tr>
 
 		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path.'">

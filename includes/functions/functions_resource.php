@@ -53,7 +53,7 @@ function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 		$html .= print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
-		$html .= '<a href="https://familysearch.org/search/tree/results#count=20&query=afn:' . rawurlencode($fact->getDetail()) . '" target="new">' . htmlspecialchars($fact->getDetail()) . '</a>';
+		$html .= '<a href="https://familysearch.org/search/tree/results#count=20&query=afn:' . rawurlencode((string) $fact->getDetail()) . '" target="new">' . htmlspecialchars((string) $fact->getDetail()) . '</a>';
 		break;
 	case 'ASSO':
 		// include RELA if recorded
@@ -87,7 +87,7 @@ function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 	case 'EDUC':
 	case 'GRAD':
 	case 'OCCU':
-		$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
+		$html .= '<span dir="auto">' . htmlspecialchars((string) $fact->getDetail()) . '</span>';
 		// include AGNC if recorded
 		if (preg_match('/\n2 AGNC (.+)/', $fact->getGedcomRecord(), $match)) {
 			$html .= KT_Gedcom_Tag::getLabelValue($fact->getTag() . ':AGNC', $match[1], null, 'span');
@@ -104,11 +104,11 @@ function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 	case 'EMAIL':
 	case 'EMAI':
 	case '_EMAIL':
-		$html .= '<a href="mailto:' . htmlspecialchars($fact->getDetail()) . '">' . htmlspecialchars($fact->getDetail()) . '</a>';
+		$html .= '<a href="mailto:' . htmlspecialchars((string) $fact->getDetail()) . '">' . htmlspecialchars((string) $fact->getDetail()) . '</a>';
 		break;
 	case 'FILE':
 		if (KT_USER_CAN_EDIT || KT_USER_CAN_ACCEPT) {
-			$html .= htmlspecialchars($fact->getDetail());
+			$html .= htmlspecialchars((string) $fact->getDetail());
 		}
 		break;
 	case 'RESN':
@@ -129,28 +129,28 @@ function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 			$html .= '<i class="icon-locked-none"></i> ' . KT_I18N::translate('Only managers can edit');
 			break;
 		default:
-			$html .= htmlspecialchars($fact->getDetail());
+			$html .= htmlspecialchars((string) $fact->getDetail());
 			break;
 		}
 		$html .= '';
 		break;
 	case 'PUBL': // Publication details might contain URLs.
-		$html .= expand_urls(htmlspecialchars($fact->getDetail()));
+		$html .= expand_urls(htmlspecialchars((string) $fact->getDetail()));
 		break;
 	case 'REPO':
 		if (preg_match('/^@('.KT_REGEX_XREF.')@$/' . $fact->getDetail() . $match)) {
 			print_repository_record($match[1]);
 		} else {
-			$html .= '<div class="error">' . htmlspecialchars($fact->getDetail()) . '</div>';
+			$html .= '<div class="error">' . htmlspecialchars((string) $fact->getDetail()) . '</div>';
 		}
 		break;
 	case 'URL':
 	case '_URL':
 	case 'WWW':
-		$html .= '<a href="' . htmlspecialchars($fact->getDetail()) . '">' . htmlspecialchars($fact->getDetail()) . '</a>';
+		$html .= '<a href="' . htmlspecialchars((string) $fact->getDetail()) . '">' . htmlspecialchars((string) $fact->getDetail()) . '</a>';
 		break;
 	case 'TEXT': // 0 SOUR / 1 TEXT
-		$html .= nl2br(htmlspecialchars($fact->getDetail()));
+		$html .= nl2br(htmlspecialchars((string) $fact->getDetail()));
 		break;
 	default:
 		// Display the value for all other facts/events
@@ -172,10 +172,10 @@ function print_resourcefactDetails(KT_Event $fact, KT_GedcomRecord $record) {
 				if ($target) {
 					$html .= '<div><a href="' . $target->getHtmlUrl() . '">' . $target->getFullName() . '</a></div>';
 				} else {
-					$html .= '<div class="error">' . htmlspecialchars($fact->getDetail()) . '</div>';
+					$html .= '<div class="error">' . htmlspecialchars((string) $fact->getDetail()) . '</div>';
 				}
 			} else {
-				$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
+				$html .= '<span dir="auto">' . htmlspecialchars((string) $fact->getDetail()) . '</span>';
 			}
 			break;
 		}
@@ -221,7 +221,7 @@ function report_sources(KT_Event $fact, $level, $short=false) {
 		$source	= KT_Source::getInstance($sid);
 		if ($source) {
 			// AUTH
-			$auth = htmlspecialchars($source->getAuth());
+			$auth = htmlspecialchars((string) $source->getAuth());
 			if (!empty($auth)) {
 				if (stripos($auth, "@") == 0 && substr($auth, -1) == '@') {
 					$pid = str_replace('@', '', $auth);
@@ -300,7 +300,7 @@ function print_fact_label(KT_Event $fact, KT_GedcomRecord $record) {
 			$type=''; // Do not print this again
 		} elseif ($type) {
 			// We don't have a translation for $type - but a custom translation might exist.
-			$label = KT_I18N::translate(htmlspecialchars($type));
+			$label = KT_I18N::translate(htmlspecialchars((string) $type));
 			$type=''; // Do not print this again
 		} else {
 			// An unspecified fact/event
@@ -308,7 +308,7 @@ function print_fact_label(KT_Event $fact, KT_GedcomRecord $record) {
 		}
 		break;
 	case 'MARR':
-		$marr_type = strtoupper($type);
+		$marr_type = strtoupper((string) $type);
 		if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
 			$marr_fact = 'MARR_' . $marr_type;
 		} else {
@@ -536,7 +536,7 @@ function add_report_descendancy($i, $person, $parents = false, $generations = -1
 }
 
 function marriageDetails($family) {
-	$marr_type = strtoupper($family->getMarriageType());
+	$marr_type = strtoupper((string) $family->getMarriageType());
 	if ($marr_type == 'CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
 		$marr_fact = 'MARR_' . $marr_type;
 	} else {

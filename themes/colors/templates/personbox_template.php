@@ -31,7 +31,7 @@ echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
 	'<div class="chart_textbox" style="max-height:', $bheight,'px;">',
 	$thumbnail,
 
-	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">
+	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode((string) $GEDCOM), '">
 		<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname,  '</span>
 		<span class="name',$style,'"> ',$genderImage,'</span>
 	</a>

@@ -106,11 +106,11 @@ function safe_REQUEST($arr, $var, $regex = KT_REGEX_NOSCRIPT, $default = null) {
 
 function preg_quote_array($var) {
 	if (is_scalar($var)) {
-		return preg_quote($var);
+		return preg_quote((string) $var);
 	} else {
 		if (is_array($var)) {
 			foreach ($var as &$v) {
-				$v = preg_quote($v);
+				$v = preg_quote((string) $v);
 			}
 			return $var;
 		} else {
@@ -340,7 +340,7 @@ function kt_error_handler($errno, $errstr, $errfile, $errline) {
 		}
 		echo $fmt_msg;
 		if (function_exists('AddToLog')) {
-			AddToLog($log_msg, 'error');
+			AddToLog((string )$log_msg, 'error');
 		}
 		if ($errno == 1) {
 			die();
@@ -2255,10 +2255,10 @@ function get_query_url($overwrite = null, $separator = '&') {
 	foreach ($get as $key => $value) {
 		if (is_array($value)) {
 			foreach ($value as $k => $v) {
-				$query_string .= $separator . $k . '%5B' . $k . '%5D=' . rawurlencode($v);
+				$query_string .= $separator . $k . '%5B' . $k . '%5D=' . rawurlencode((string) $v);
 			}
 		} else {
-			$query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
+			$query_string .= $separator . rawurlencode((string) $key) . '=' . rawurlencode((string) $value);
 		}
 	}
 	$query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”

@@ -249,10 +249,10 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 						<?php echo KT_Filter::getCsrf(); ?>
 						<table id="faq_module">
 							<tr><th><?php echo KT_I18N::translate('Title'); ?></th></tr>
-							<tr><td><input type="text" name="gallery_title" size="90" tabindex="1" value="<?php echo htmlspecialchars($item_title); ?>"></td></tr>
+							<tr><td><input type="text" name="gallery_title" size="90" tabindex="1" value="<?php echo htmlspecialchars((string) $item_title); ?>"></td></tr>
 							<tr><th><?php echo KT_I18N::translate('Description'); ?></th></tr>
 							<tr><td>
-								<textarea name="gallery_description" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars($item_description); ?></textarea>
+								<textarea name="gallery_description" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars((string) $item_description); ?></textarea>
 							</td></tr>
 							<tr><th><?php echo KT_I18N::translate('Source'); ?></th></tr>
 							<tr>
@@ -275,7 +275,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 												echo ' style="visibility:hidden;">';
 											}
 											echo KT_I18N::translate('Folder name on server');
-											echo select_edit_control("gallery_folder_w", KT_Query_Media::folderList(), null, htmlspecialchars($item_folder_w));
+											echo select_edit_control("gallery_folder_w", KT_Query_Media::folderList(), null, htmlspecialchars((string) $item_folder_w));
 										echo '</label>';
 										?>
 									</div>
@@ -297,7 +297,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 												echo ' style="visibility:hidden;">';
 											}
 											echo KT_I18N::translate('Flickr set number');
-											echo '<input id="flickr" type="text" name="gallery_folder_f" tabindex="1" value="' . htmlspecialchars($item_folder_f) . '">';
+											echo '<input id="flickr" type="text" name="gallery_folder_f" tabindex="1" value="' . htmlspecialchars((string) $item_folder_f) . '">';
 										echo '</label>';
 										?>
 									</div>
@@ -681,7 +681,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 		$final    = $before.$needle.$after;
 		$notes    = print_fact_notes($final, 1, true, true);
 		if ($notes !='' && $notes != '<br>') {
-			$html = htmlspecialchars($notes);
+			$html = htmlspecialchars((string) $notes);
 			return $html;
 		}
 		return false;
@@ -790,7 +790,7 @@ class gallery_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_B
 							}
 						$gallery_links .= '</div>';
 					}
-					$media_links = htmlspecialchars($gallery_links);
+					$media_links = htmlspecialchars((string) $gallery_links);
 					if ($mime_type == 'application/pdf'){
 						$images .= '<a href="' . $rawUrl . '"><img class="iframe" src="' . $thumbUrl . '" data-title="' . $mediaTitle.'" data-layer="' . $media_links.'" data-description="' . $media_notes . '"></a>';
 					} else {

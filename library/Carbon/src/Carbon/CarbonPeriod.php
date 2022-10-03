@@ -504,7 +504,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     protected static function addMissingParts($source, $target)
     {
-        $pattern = '/'.preg_replace('/[0-9]+/', '[0-9]+', preg_quote($target, '/')).'$/';
+        $pattern = '/'.preg_replace('/[0-9]+/', '[0-9]+', preg_quote((string) $target, '/')).'$/';
 
         $result = preg_replace($pattern, $target, $source, 1, $count);
 

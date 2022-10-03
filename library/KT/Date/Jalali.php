@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2022 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -151,7 +151,7 @@ class KT_Date_Jalali extends KT_Date_Calendar {
 		default: return '';
 		}
 	}
-	
+
 	static function CAL_START_JD() {
 		return 1948321;
 	}
@@ -163,7 +163,7 @@ class KT_Date_Jalali extends KT_Date_Calendar {
 	static function YMDtoJD($year, $month, $day) {
 		$epbase = $year - (($year >= 0) ? 474 : 473);
 		$epyear = 474 + $epbase % 2820;
-	
+
 		return $day +
 				(($month <= 7) ?
 					(($month - 1) * 31) :
@@ -177,10 +177,10 @@ class KT_Date_Jalali extends KT_Date_Calendar {
 
 	static function JDtoYMD($jd) {
 		$jd = (int)($jd) + 0.5;
-	
+
 		$depoch = $jd - self::YMDtoJD(475, 1, 1);
 		$cycle = (int)($depoch / 1029983);
-		$cyear = $depoch % 1029983;
+		$cyear = (int)$depoch % 1029983;
 		if ($cyear == 1029982) {
 			$ycycle = 2820;
 		} else {

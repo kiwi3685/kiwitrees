@@ -107,7 +107,7 @@ if (1 == $import) {
     $impaus .= '<table cellpadding="0" cellspacing="0">'.$nl;
     $impaus .= '<tr><td colspan="2"><input type="checkbox" class="checkbox" name="f_import_namefirstline0" value="1" '.((1 == $sql['import']['namefirstline']) ? 'checked' : '').'>'.$lang['L_CSV_NAMEFIRSTLINE'].'</td></tr>'.$nl;
     $impaus .= '<tr><td>'.$lang['L_CSV_FIELDSEPERATE'].'</td><td><input type="text" class="text" name="f_import_csvtrenn" size="4" maxlength="12" value="'.$sql['import']['trenn'].'"></td></tr>'.$nl;
-    $impaus .= '<tr><td>'.$lang['L_CSV_FIELDSENCLOSED'].'</td><td><input type="text" class="text" name="f_import_csvenc" size="4" maxlength="12" value="'.htmlspecialchars($sql['import']['enc']).'"></td></tr>'.$nl;
+    $impaus .= '<tr><td>'.$lang['L_CSV_FIELDSENCLOSED'].'</td><td><input type="text" class="text" name="f_import_csvenc" size="4" maxlength="12" value="'.htmlspecialchars((string) $sql['import']['enc']).'"></td></tr>'.$nl;
     $impaus .= '<tr><td>'.$lang['L_CSV_FIELDSESCAPE'].'</td><td><input type="text" class="text" name="f_import_csvesc" size="4" maxlength="12" value="'.$sql['import']['esc'].'"></td></tr>'.$nl;
     $impaus .= '<tr><td>'.$lang['L_CSV_EOL'].'</td><td><input type="text" class="text" name="f_import_csvztrenn" size="4" maxlength="12" value="'.$sql['import']['ztrenn'].'"></td></tr>'.$nl;
     $impaus .= '<tr><td>'.$lang['L_CSV_NULL'].'</td><td><input type="text" class="text" name="f_import_csvnull" size="4" maxlength="12" value="'.$sql['import']['null'].'"></td></tr>'.$nl;
@@ -237,7 +237,7 @@ if (1 == $import) {
     $exaus .= '<div id="csv0"><fieldset><legend>CSV-Optionen</legend><table cellpadding="0" cellspacing="0"><tr><td colspan="2">'.$nl;
     $exaus .= '<input type="checkbox" class="checkbox" name="f_export_namefirstline0" value="1" '.((1 == $sql['export']['namefirstline']) ? 'checked' : '').'>'.$lang['L_CSV_NAMEFIRSTLINE'].'</td></tr>'.$nl;
     $exaus .= '<tr><td>'.$lang['L_CSV_FIELDSEPERATE'].'</td><td><input type="text" class="text" name="f_export_csvtrenn" size="4" maxlength="12" value="'.$sql['export']['trenn'].'"></td></tr>'.$nl;
-    $exaus .= '<tr><td>'.$lang['L_CSV_FIELDSENCLOSED'].'</td><td><input type="text" class="text" name="f_export_csvenc" size="4" maxlength="12" value="'.htmlspecialchars($sql['export']['enc']).'"></td></tr>'.$nl;
+    $exaus .= '<tr><td>'.$lang['L_CSV_FIELDSENCLOSED'].'</td><td><input type="text" class="text" name="f_export_csvenc" size="4" maxlength="12" value="'.htmlspecialchars((string) $sql['export']['enc']).'"></td></tr>'.$nl;
     $exaus .= '<tr><td>'.$lang['L_CSV_FIELDSESCAPE'].'</td><td><input type="text" class="text" name="f_export_csvesc" size="4" maxlength="12" value="'.$sql['export']['esc'].'"></td></tr>'.$nl;
     $exaus .= '<tr><td>'.$lang['L_CSV_EOL'].'</td><td><input type="text" class="text" name="f_export_csvztrenn" size="4" maxlength="12" value="'.$sql['export']['ztrenn'].'"></td></tr>'.$nl;
     $exaus .= '<tr><td>'.$lang['L_CSV_NULL'].'</td><td><input type="text" class="text" name="f_export_csvnull0" size="4" maxlength="12" value="'.$sql['export']['null'].'"></td></tr>'.$nl;

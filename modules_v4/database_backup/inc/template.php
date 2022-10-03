@@ -141,7 +141,7 @@ class MODTemplate
 
         // Run the compiled code.
         if (defined(TPL_DEBUG) && TPL_DEBUG > 0) {
-            echo '<pre>'.htmlspecialchars($this->compiled_code[$handle]).'</pre>';
+            echo '<pre>'.htmlspecialchars((string) $this->compiled_code[$handle]).'</pre>';
         }
         eval($this->compiled_code[$handle]);
         return true;

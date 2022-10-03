@@ -51,7 +51,7 @@ $controller
 					<?php echo KT_I18N::translate('Box width'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>"> <b>%</b>
+					<input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars((string) $box_width); ?>"> <b>%</b>
 				</td>
 				<td rowspan="2" class="descriptionbox">
 					<?php echo KT_I18N::translate('Layout'); ?>

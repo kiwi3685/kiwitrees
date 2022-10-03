@@ -509,7 +509,7 @@ class ANSI
             $output.= $close . $open;
         }
 
-        $output.= htmlspecialchars($char);
+        $output.= htmlspecialchars((string) $char);
 
         return $output;
     }

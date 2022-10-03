@@ -59,7 +59,7 @@ class Swift_Encoder_Rfc2231Encoder implements Swift_Encoder
         $thisLineLength = $maxLineLength - $firstLineOffset;
 
         while (false !== $char = $this->_charStream->read(4)) {
-            $encodedChar = rawurlencode($char);
+            $encodedChar = rawurlencode((string) $char);
             if (0 != strlen($currentLine)
                 && strlen($currentLine.$encodedChar) > $thisLineLength) {
                 $lines[] = '';

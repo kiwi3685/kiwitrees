@@ -1238,7 +1238,7 @@ $aus['cron'] .= '</td></tr>';
 // comment
 $config['cron_comment'] = isset($config['cron_comment']) ? $config['cron_comment'] : '';
 $aus['cron'] .= '<tr><td>'.$lang['L_CRON_COMMENT'].':&nbsp;</td>';
-$aus['cron'] .= '<td><input type="text" class="text" name="cron_comment" size="30" maxlength="100" value="'.htmlspecialchars($config['cron_comment']).'"></td></tr>';
+$aus['cron'] .= '<td><input type="text" class="text" name="cron_comment" size="30" maxlength="100" value="'.htmlspecialchars((string) $config['cron_comment']).'"></td></tr>';
 $aus['cron'] .= '</table></fieldset>'.print_save_button().'</div>';
 
 //Formular-Buttons -->

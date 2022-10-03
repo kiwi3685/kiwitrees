@@ -69,7 +69,7 @@ echo '
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">' .
 		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) . '
-		<title>' . htmlspecialchars($title) . '</title>
+		<title>' . htmlspecialchars((string) $title) . '</title>
 		<link rel="icon" href="' . KT_THEME_URL . 'images/favicon.png" type="image/png">
 		<link rel="stylesheet" href="' . KT_THEME_URL . 'jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
 		<link rel="stylesheet" href="' . KT_THEME_URL . 'jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">

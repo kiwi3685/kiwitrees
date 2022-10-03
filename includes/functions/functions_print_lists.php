@@ -1173,7 +1173,7 @@ function format_sour_table($datalist) {
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		$key = $source->getXref() . '@' . KT_GED_ID;
 		//-- Author
-		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
+		$html .= '<td>'. highlight_search_hits(htmlspecialchars((string)$source->getAuth())). '</td>';
 		//-- Linked INDIs
 		$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
 		$html .= '<td>'. KT_I18N::number($num). '</td><td>'. $num. '</td>';
@@ -1754,7 +1754,7 @@ function format_surname_table($surnames, $script = '', $sort = '2') {
 				foreach ($surnames as $surn => $surns) {
 					// Each surname links back to the indi/fam surname list
 					if ($surn) {
-						$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . KT_GEDURL . '&show_all_firstnames=yes';
+						$url = $script . '?surname=' . rawurlencode((string) $surn) . '&amp;ged=' . KT_GEDURL . '&show_all_firstnames=yes';
 					} else {
 						$url = $script . '?alpha=,&amp;ged=' . KT_GEDURL;
 					}
@@ -1763,10 +1763,10 @@ function format_surname_table($surnames, $script = '', $sort = '2') {
 							// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 							foreach ($surns as $spfxsurn => $indis) {
 								if ($spfxsurn) {
-									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars($spfxsurn) . '</a><br>';
+									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars((string) $spfxsurn) . '</a><br>';
 								} else {
 									// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
-									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars($surn) . '</a><br>';
+									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars((string) $surn) . '</a><br>';
 								}
 							}
 						$html .= '</td>';
@@ -1851,9 +1851,9 @@ function format_surname_list($surnames, $style, $totals, $script) {
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indilist
 		if ($surn) {
-			$url=$script.'?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
+			$url=$script.'?surname='.urlencode($surn).'&amp;ged='.rawurlencode((string) $GEDCOM);
 		} else {
-			$url=$script.'?alpha=,&amp;ged='.rawurlencode($GEDCOM);
+			$url=$script.'?alpha=,&amp;ged='.rawurlencode((string) $GEDCOM);
 		}
 		// If all the surnames are just case variants, then merge them into one
 		// Comment out this block if you want SMITH listed separately from Smith
@@ -2366,7 +2366,7 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
 	$chart_url .= "&amp;chco=0000FF,FFA0CB,FF0000"; // bar color
 	$chart_url .= "&amp;chdl=".rawurlencode(KT_I18N::translate('Males'))."|".rawurlencode(KT_I18N::translate('Females'))."|".rawurlencode(KT_I18N::translate('Average age').": ".$avg); // legend & average age
-	$chart_url .= "&amp;chtt=".rawurlencode($title); // title
+	$chart_url .= "&amp;chtt=".rawurlencode((string) $title); // title
 	$chart_url .= "&amp;chxt=x,y,r"; // axis labels specification
 	$chart_url .= "&amp;chm=V,FF0000,0,".($avg-0.3).",1"; // average age line marker
 	$chart_url .= "&amp;chxl=0:|"; // label
@@ -2387,7 +2387,7 @@ function print_chart_by_age($data, $title) {
 	for ($n=$step; $n<$vmax; $n+=$step) {
 		$chart_url .= $n."|";
 	}
-	$chart_url .= rawurlencode($vmax." / ".$count); // r axis
+	$chart_url .= rawurlencode((string) $vmax." / ".$count); // r axis
 	$chart_url .= "&amp;chg=100,".round(100*$step/$vmax, 1).",1,5"; // grid
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -2417,7 +2417,7 @@ function print_chart_by_decade($data, $title) {
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
 	$chart_url .= "&amp;chco=0000FF,FFA0CB"; // bar color
-	$chart_url .= "&amp;chtt=".rawurlencode($title); // title
+	$chart_url .= "&amp;chtt=".rawurlencode((string) $title); // title
 	$chart_url .= "&amp;chxt=x,y,r"; // axis labels specification
 	$chart_url .= "&amp;chxl=0:|&lt;|||"; // <1570
 	for ($y=1600; $y<2030; $y+=50) {
@@ -2437,7 +2437,7 @@ function print_chart_by_decade($data, $title) {
 	for ($n=$step; $n<$vmax; $n+=$step) {
 		$chart_url .= $n."|";
 	}
-	$chart_url .= rawurlencode($vmax." / ".$count); // r axis
+	$chart_url .= rawurlencode((string) $vmax." / ".$count); // r axis
 	$chart_url .= "&amp;chg=100,".round(100*$step/$vmax, 1).",1,5"; // grid
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

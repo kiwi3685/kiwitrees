@@ -38,7 +38,7 @@ function get_sqlbefehl()
         //nächste Zeile lesen
         $zeile = ($restore['compressed']) ? gzgets($restore['filehandle']) : fgets($restore['filehandle']);
         if (DEBUG) {
-            echo '<br><br>Zeile: '.htmlspecialchars($zeile);
+            echo '<br><br>Zeile: '.htmlspecialchars((string) $zeile);
         }
         /******************* Setzen des Parserstatus *******************/
         // herausfinden um was für einen Befehl es sich handelt
@@ -133,7 +133,7 @@ function get_sqlbefehl()
             if ((0 == $sqlparser_status) && (trim($complete_sql) > '') && (-1 == $restore['flag'])) {
                 // Unbekannten Befehl entdeckt
                 v($restore);
-                echo '<br>Sql: '.htmlspecialchars($complete_sql);
+                echo '<br>Sql: '.htmlspecialchars((string) $complete_sql);
                 echo '<br>Erweiterte Inserts: '.$restore['erweiterte_inserts'];
                 exit('<br>'.$lang['L_UNKNOWN_SQLCOMMAND'].': '.$zeile.'<br><br>'.$complete_sql);
             }

@@ -37,8 +37,8 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 	global $GEDCOM;
 
 	$ALBUM_GROUPS = get_module_setting('album', 'ALBUM_GROUPS');
-	$ALBUM_TITLES = unserialize(get_module_setting('album', 'ALBUM_TITLES'));
-	$ALBUM_OPTIONS = unserialize(get_module_setting('album', 'ALBUM_OPTIONS'));
+	$ALBUM_TITLES = unserialize((string) get_module_setting('album', 'ALBUM_TITLES'));
+	$ALBUM_OPTIONS = unserialize((string) get_module_setting('album', 'ALBUM_OPTIONS'));
 
 	if (!isset($ALBUM_GROUPS)) {
 		$ALBUM_GROUPS = 4;

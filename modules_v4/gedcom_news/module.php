@@ -104,7 +104,7 @@ class gedcom_news_KT_Module extends KT_Module implements KT_Module_Block {
 				}
 			}
 			$content .= "<div class=\"news_box\" id=\"article{$news['id']}\">";
-			$content .= "<div class=\"news_title\">".htmlspecialchars($news['title']).'</div>';
+			$content .= "<div class=\"news_title\">".htmlspecialchars((string) $news['title']).'</div>';
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
 			if ($news["text"] == strip_tags($news["text"])) {
 				// No HTML?

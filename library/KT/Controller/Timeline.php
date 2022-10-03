@@ -225,7 +225,7 @@ class KT_Controller_Timeline extends KT_Controller_Page {
 				echo '<span class="age"> ', KT_I18N::translate('Age'), ' ', $ageh, '</span>';
 			}
 		}
-		echo " ".htmlspecialchars($desc);
+		echo " ".htmlspecialchars((string) $desc);
 		if ($SHOW_PEDIGREE_PLACES>0) {
 			$place = $event->getPlace();
 			if ($place!=null) {
@@ -234,7 +234,7 @@ class KT_Controller_Timeline extends KT_Controller_Page {
 				for ($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
 					if (!empty($plevels[$plevel])) {
 						if ($plevel>0) echo ", ";
-						echo htmlspecialchars($plevels[$plevel]);
+						echo htmlspecialchars((string) $plevels[$plevel]);
 					}
 				}
 			}

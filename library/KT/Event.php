@@ -248,7 +248,7 @@ class KT_Event {
 			case 'FACT':
 				if ($this->getType()) {
 					// Custom FACT/EVEN - with a TYPE
-					return KT_I18N::translate(htmlspecialchars($this->type));
+					return KT_I18N::translate(htmlspecialchars((string) $this->type));
 				}
 				// no break - drop into next case
 			default:
@@ -285,7 +285,7 @@ class KT_Event {
 		$data = '<span class="details_label">'.$this->getLabel($ABBREVIATE_CHART_LABELS).'</span>';
 		// Don't display "yes", because format_fact_date() does this for us.  (Should it?)
 		if ($this->detail && $this->detail!='Y') {
-			$data .= ' <span dir="auto">'.htmlspecialchars($this->detail).'</span>';
+			$data .= ' <span dir="auto">'.htmlspecialchars((string) $this->detail).'</span>';
 		}
 		$data .= ' '.format_fact_date($this, $this->getParentObject(), $anchor, false);
 		$data .= ' '.format_fact_place($this, $anchor, false, false);

@@ -186,7 +186,7 @@ if (!ini_get('date.timezone')) {
 $QUERY_STRING = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
 // Calculate the base URL, so we can generate absolute URLs.
-$https    	= strtolower(KT_Filter::server('HTTPS'));
+$https    	= strtolower(KT_Filter::server('HTTPS')?? '');
 $protocol	= ($https === '' || $https === 'off') ? 'http' : 'https';
 $protocol	= KT_Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
 $host		= KT_Filter::server('SERVER_ADDR', null, '127.0.0.1');

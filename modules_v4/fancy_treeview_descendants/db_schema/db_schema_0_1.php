@@ -26,7 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
-$settings = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS'));
+$settings = unserialize((string) get_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS'));
 if(!empty($settings)) {
 	foreach ($settings as $setting) {
 		if(!array_key_exists('LINK', $setting)) {
@@ -38,7 +38,7 @@ if(!empty($settings)) {
 	unset($new_settings);
 }
 
-$options = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
+$options = unserialize((string) get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
 if(!empty($options)) {
 	foreach (KT_Tree::getAll() as $tree) {
 		$new_options[$tree->tree_id] = array(

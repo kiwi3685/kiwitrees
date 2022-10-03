@@ -457,7 +457,7 @@ function SQLParser($command, $debug = 0)
                 }
             }
             if (1 == $debug) {
-                echo "<font color='#0000FF'>".$sql['parser']['start'].'/'.$sql['parser']['end']."</font> Feld $i: ".htmlspecialchars($tb[$i]).'<font color=#008000>- '.$sql['parser']['sqlparts']."  ($B_Ticks / $B_Esc)</font><br>";
+                echo "<font color='#0000FF'>".$sql['parser']['start'].'/'.$sql['parser']['end']."</font> Feld $i: ".htmlspecialchars((string) $tb[$i]).'<font color=#008000>- '.$sql['parser']['sqlparts']."  ($B_Ticks / $B_Esc)</font><br>";
             }
             if (1 == $sql['parser']['start'] && 1 == $sql['parser']['end']) {
                 ++$sql['parser']['sqlparts'];
@@ -570,7 +570,7 @@ function ComboCommandDump($when, $index, $disabled = '')
         if (is_array($SQL_ARRAY) && count($SQL_ARRAY) > 0) {
             for ($i = 0; $i < count($SQL_ARRAY); ++$i) {
                 $s = trim(SQL_String($i));
-                $r .= '<option value="'.htmlspecialchars($s).'" '.(($csql == $s) ? ' selected="selected"' : '').'>'.SQL_Name($i).'</option>'."\n";
+                $r .= '<option value="'.htmlspecialchars((string) $s).'" '.(($csql == $s) ? ' selected="selected"' : '').'>'.SQL_Name($i).'</option>'."\n";
             }
         }
         $r .= '</select>';

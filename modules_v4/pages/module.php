@@ -227,13 +227,13 @@ class pages_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Blo
 								<th>', KT_I18N::translate('Title'),'</th>
 							</tr>
 							<tr>
-								<td><input type="text" name="pages_title" size="90" tabindex="1" value="'.htmlspecialchars($items_title).'"></td>
+								<td><input type="text" name="pages_title" size="90" tabindex="1" value="'.htmlspecialchars((string) $items_title).'"></td>
 							</tr>
 							<tr>
 								<th>', KT_I18N::translate('Content'),'</th>
 							</tr>
 							<tr>
-								<td><textarea name="pages_content" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($items_content), '</textarea><td>
+								<td><textarea name="pages_content" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars((string) $items_content), '</textarea><td>
 							</tr>
 							<tr>
 								<th>', KT_I18N::translate('Access level'),'</th>

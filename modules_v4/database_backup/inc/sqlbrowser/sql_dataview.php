@@ -379,7 +379,7 @@ if ($numrowsabs > 0 && $Anzahl_SQLs <= 1) {
                     if (is_null($rowval)) {
                         $data = '<i>NULL</i>';
                     } else {
-                        $data = htmlspecialchars($data, ENT_COMPAT, 'UTF-8');
+                        $data = htmlspecialchars((string) $data, ENT_COMPAT, 'UTF-8');
                     }
                 }
                 ++$spalte;

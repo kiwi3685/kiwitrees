@@ -40,7 +40,7 @@ if (KT_USER_GEDCOM_ID) {
 
 $controller = new KT_Controller_Page();
 if ($surn) {
-	$controller->setPageTitle(/* I18N: %s is a surname */ KT_I18N::translate('Branches of the %s family', htmlspecialchars($surn)));
+	$controller->setPageTitle(/* I18N: %s is a surname */ KT_I18N::translate('Branches of the %s family', htmlspecialchars((string) $surn)));
 } else {
 	$controller->setPageTitle(KT_I18N::translate('Branches'));
 }

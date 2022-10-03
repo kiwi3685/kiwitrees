@@ -121,14 +121,14 @@ if (isset($_POST['username'])) {
         if (false !== $saved) {
             $msg = '<span class="success">'.$lang['L_HTACC_CREATED'].'</span>';
             $tpl->assign_block_vars('CREATE_SUCCESS', [
-                'HTACCESS' => htmlspecialchars($htaccess),
-                'HTPASSWD' => htmlspecialchars($htpasswd),
+                'HTACCESS' => htmlspecialchars((string) $htaccess),
+                'HTPASSWD' => htmlspecialchars((string) $htpasswd),
             ]);
             @chmod($config['paths']['root'], 0755);
         } else {
             $tpl->assign_block_vars('CREATE_ERROR', [
-                'HTACCESS' => htmlspecialchars($htaccess),
-                'HTPASSWD' => htmlspecialchars($htpasswd),
+                'HTACCESS' => htmlspecialchars((string) $htaccess),
+                'HTPASSWD' => htmlspecialchars((string) $htpasswd),
             ]);
         }
     }
@@ -141,9 +141,9 @@ if (sizeof($error) > 0 || !isset($_POST['username'])) {
     ]);
 
     $tpl->assign_block_vars('INPUT', [
-        'USERNAME' => htmlspecialchars($username),
-        'USERPASS1' => htmlspecialchars($userpass1),
-        'USERPASS2' => htmlspecialchars($userpass2),
+        'USERNAME' => htmlspecialchars((string) $username),
+        'USERPASS1' => htmlspecialchars((string) $userpass1),
+        'USERPASS2' => htmlspecialchars((string) $userpass2),
         'TYPE0_CHECKED' => 0 == $type ? ' checked="checked"' : '',
         'TYPE1_CHECKED' => 1 == $type ? ' checked="checked"' : '',
         'TYPE2_CHECKED' => 2 == $type ? ' checked="checked"' : '',

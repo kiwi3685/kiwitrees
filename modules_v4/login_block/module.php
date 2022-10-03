@@ -59,8 +59,8 @@ class login_block_KT_Module extends KT_Module implements KT_Module_Block {
 			$content='<div id="login-box">
 				<form id="login-form" name="login-form" method="post" action="' .$url. '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
 				<input type="hidden" name="action" value="login">
-				<input type="hidden" name="ged" value="'; if (isset($ged)) $content.= htmlspecialchars($ged); else $content.= htmlentities(KT_GEDCOM); $content.= '">
-				<input type="hidden" name="pid" value="'; if (isset($pid)) $content.= htmlspecialchars($pid); $content.= '">
+				<input type="hidden" name="ged" value="'; if (isset($ged)) $content.= htmlspecialchars((string) $ged); else $content.= htmlentities(KT_GEDCOM); $content.= '">
+				<input type="hidden" name="pid" value="'; if (isset($pid)) $content.= htmlspecialchars((string) $pid); $content.= '">
 				<input type="hidden" name="usertime" value="">';
 			$content.= '<div>
 				<label for="moduleUsername">'. KT_I18N::translate('Username').

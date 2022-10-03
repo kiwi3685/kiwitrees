@@ -54,7 +54,7 @@ class search_replace_bu_plugin extends base_plugin {
     function updateRecord($xref, $gedrec) {
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
-        return preg_replace('/'.$this->regex.'/mu'.$this->case, str_replace('\n', "\n", $this->replace), $gedrec);
+        return preg_replace('/'.$this->regex.'/mu'.$this->case, str_replace('\n', "\n", (string) $this->replace), $gedrec);
     }
 
     function getOptions() {
@@ -67,13 +67,13 @@ class search_replace_bu_plugin extends base_plugin {
         $this->error = '';
         switch ($this->method) {
         case 'exact':
-            $this->regex = preg_quote($this->search, '/');
+            $this->regex = preg_quote((string) $this->search, '/');
             break;
         case 'words':
-            $this->regex = '\b' . preg_quote($this->search, '/') . '\b';
+            $this->regex = '\b' . preg_quote((string) $this->search, '/') . '\b';
             break;
         case 'wildcards':
-            $this->regex = '\b' . str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')) . '\b';
+            $this->regex = '\b' . str_replace(array('\*', '\?'), array('.*', '.'), preg_quote((string) $this->search, '/')) . '\b';
             break;
         case 'regex':
             $this->regex=$this->search;

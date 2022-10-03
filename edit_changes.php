@@ -169,7 +169,7 @@ if ($changed_gedcoms) {
 							</tr>';
 				}
 				$output .= '<td>
-								<a href="edit_changes.php?action=accept&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
+								<a href="edit_changes.php?action=accept&amp;ged=' . rawurlencode((string) $change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
 									KT_I18N::translate('Accept') . '
 								</a>
 							</td>
@@ -184,16 +184,16 @@ if ($changed_gedcoms) {
 							$output .= '</b></td>
 							<td>
 								<a href="message.php?to=' . $change->user_name . '&amp;subject=' . KT_I18N::translate('Moderate pending changes') . '&amp;ged=' . KT_GEDCOM . '" target="_blank" rel="noopener noreferrer" title="' . KT_I18N::translate('Send Message') . '">' .
-									'<span>' . htmlspecialchars($change->real_name) . '</span>
+									'<span>' . htmlspecialchars((string) $change->real_name) . '</span>
 									&nbsp;-&nbsp;
-									<span>' . htmlspecialchars($change->user_name) . '</span>
+									<span>' . htmlspecialchars((string) $change->user_name) . '</span>
 									<i class="fa-envelope-o"></i>
 								</a>
 							</td>
 							<td>' . $change->change_time . '</td>
 							<td>' . $change->gedcom_name . '</td>
 							<td>
-								<a href="edit_changes.php?action=undo&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
+								<a href="edit_changes.php?action=undo&amp;ged=' . rawurlencode((string) $change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
 									KT_I18N::translate('Undo') . '
 								</a>
 							</td>
@@ -213,7 +213,7 @@ if ($changed_gedcoms) {
 						$count = 0;
 						foreach ($changed_gedcoms as $gedcom_name) {
 							if ($count != 0) $output2 .= '<br>';
-							$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . $gedcom_name . ' - ' . KT_I18N::translate('Approve all changes') . '</a>';
+							$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode((string) $gedcom_name) . '">' . $gedcom_name . ' - ' . KT_I18N::translate('Approve all changes') . '</a>';
 							$count ++;
 						}
 					$output2 .= '</td>
@@ -224,7 +224,7 @@ if ($changed_gedcoms) {
 								$output2 .= '<br>';
 							}
 							$output2 .= '
-								<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name)."\" onclick=\"return confirm('" . KT_I18N::translate('Are you sure you want to undo all the changes to this family tree?')."');\">
+								<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode((string) $gedcom_name)."\" onclick=\"return confirm('" . KT_I18N::translate('Are you sure you want to undo all the changes to this family tree?')."');\">
 									$gedcom_name - " . KT_I18N::translate('Undo all changes') . '
 								</a>';
 							$count++;

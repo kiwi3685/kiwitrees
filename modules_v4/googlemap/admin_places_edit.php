@@ -248,7 +248,7 @@ $api='v3';
 	<table class="facts_table">
 	<tr>
 		<td class="descriptionbox"><?php echo KT_Gedcom_Tag::getLabel('PLAC'); ?></td>
-		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input">
+		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars((string) $place_name); ?>" size="25" class="address_input">
 			<div id="INDI_PLAC_pop" style="display: inline;">
 			<?php echo print_specialchar_link('new_pl_name'); ?></div></td><td class="optionbox">
 			<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo KT_I18N::translate('Search globally'); ?></a></label>

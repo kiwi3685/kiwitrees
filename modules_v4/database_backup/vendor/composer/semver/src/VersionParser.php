@@ -177,9 +177,9 @@ class VersionParser
         }
 
         $extraMessage = '';
-        if (preg_match('{ +as +' . preg_quote($version) . '(?:@(?:'.self::$stabilitiesRegex.'))?$}', $fullVersion)) {
+        if (preg_match('{ +as +' . preg_quote((string) $version) . '(?:@(?:'.self::$stabilitiesRegex.'))?$}', $fullVersion)) {
             $extraMessage = ' in "' . $fullVersion . '", the alias must be an exact version';
-        } elseif (preg_match('{^' . preg_quote($version) . '(?:@(?:'.self::$stabilitiesRegex.'))? +as +}', $fullVersion)) {
+        } elseif (preg_match('{^' . preg_quote((string) $version) . '(?:@(?:'.self::$stabilitiesRegex.'))? +as +}', $fullVersion)) {
             $extraMessage = ' in "' . $fullVersion . '", the alias source must be an exact version, if it is a branch name you should prefix it with dev-';
         }
 

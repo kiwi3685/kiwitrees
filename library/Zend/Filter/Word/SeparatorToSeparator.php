@@ -121,7 +121,7 @@ class Zend_Filter_Word_SeparatorToSeparator extends Zend_Filter_PregReplace
             throw new Zend_Filter_Exception('You must provide a search separator for this filter to work.');
         }
 
-        $this->setMatchPattern('#' . preg_quote($this->_searchSeparator, '#') . '#');
+        $this->setMatchPattern('#' . preg_quote((string) $this->_searchSeparator, '#') . '#');
         $this->setReplacement($this->_replacementSeparator);
         return parent::filter($value);
     }

@@ -40,7 +40,7 @@ class KT_Stats {
 	public function __construct($gedcom) {
 		$this->_gedcom = $gedcom;
 		$this->_ged_id = get_id_from_gedcom($gedcom);
-		$this->_gedcom_url = rawurlencode($gedcom);
+		$this->_gedcom_url = rawurlencode((string) $gedcom);
 	}
 
 	/**

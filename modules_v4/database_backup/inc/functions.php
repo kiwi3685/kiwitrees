@@ -86,7 +86,7 @@ function DeleteFilesM($dir, $pattern = '*.*')
     ], [
             '.*',
             '.',
-    ], preg_quote($pattern));
+    ], preg_quote((string) $pattern));
     if ('/' != substr($dir, -1)) {
         $dir .= '/';
     }

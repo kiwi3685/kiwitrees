@@ -157,7 +157,7 @@ class widget_html_KT_Module extends KT_Module implements KT_Module_Widget {
 		echo '
 			<tr>
 				<td class="descriptionbox wrap">' . KT_Gedcom_Tag::getLabel('TITL') . '</td>
-				<td class="optionbox"><input type="text" name="title" size="30" value="' . htmlspecialchars($title) . '"></td>
+				<td class="optionbox"><input type="text" name="title" size="30" value="' . htmlspecialchars((string) $title) . '"></td>
 			</tr>
 		';
 
@@ -192,7 +192,7 @@ class widget_html_KT_Module extends KT_Module implements KT_Module_Widget {
 			</tr>
 			<tr>
 				<td colspan="2" class="optionbox">
-					<textarea name="html" class="html-edit" rows="10" style="width:98%;">' . htmlspecialchars($html) . '</textarea>
+					<textarea name="html" class="html-edit" rows="10" style="width:98%;">' . htmlspecialchars((string) $html) . '</textarea>
 				</td>
 			</tr>
 			<tr>

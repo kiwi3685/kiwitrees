@@ -95,7 +95,7 @@ class Zend_Debug
                 if (defined('ENT_SUBSTITUTE')) {
                     $flags = ENT_QUOTES | ENT_SUBSTITUTE;
                 }
-                $output = htmlspecialchars($output, $flags);
+                $output = htmlspecialchars((string) $output, $flags);
             }
 
             $output = '<pre>'

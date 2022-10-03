@@ -182,12 +182,12 @@ class contact_KT_Module extends KT_Module implements KT_Module_Menu {
 				// Errors? Go back to the form.
 				header(
 					'Location: module.php?mod=' . $this->getName() . '&mod_action=show' .
-					'&to=' . rawurlencode($to) .
-					'&from_name=' . rawurlencode($from_name) .
-					'&from_email=' . rawurlencode($from_email) .
-					'&subject=' . rawurlencode($subject) .
-					'&body=' . rawurlencode($body) .
-					'&url=' . rawurlencode($url)
+					'&to=' . rawurlencode((string) $to) .
+					'&from_name=' . rawurlencode((string) $from_name) .
+					'&from_email=' . rawurlencode((string) $from_email) .
+					'&subject=' . rawurlencode((string) $subject) .
+					'&body=' . rawurlencode((string) $body) .
+					'&url=' . rawurlencode((string) $url)
 				);
 			} else {
 				if ($termsConditions == '1') {

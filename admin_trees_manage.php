@@ -237,11 +237,11 @@ case 'importform':
 						sort($files);
 						echo '<select name="ged_name">';
 							foreach ($files as $file) {
-								echo '<option value="' . htmlspecialchars($file) . '"';
+								echo '<option value="' . htmlspecialchars((string) $file) . '"';
 								if ($file == $previous_gedcom_filename) {
 									echo ' selected="selected"';
 								}
-								echo'>' . htmlspecialchars($file) . '</option>';
+								echo'>' . htmlspecialchars((string) $file) . '</option>';
 							}
 							if (!$files) {
 								echo '<option disabled selected>' . KT_I18N::translate('No GEDCOM files found.') . '</option>';

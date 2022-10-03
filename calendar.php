@@ -47,7 +47,7 @@ if ($cal . $day . $month . $year == '') {
 // Create a KT_Date_Calendar from the parameters
 
 // advance-year "year range"
-if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
+if (preg_match('/^(\d+)-(\d+)$/', (string)$year, $match)) {
 	if (strlen($match[1]) > strlen($match[2])){
 		$match[2] = substr($match[1], 0, strlen($match[1]) - strlen($match[2])) . $match[2];
 	}
@@ -55,7 +55,7 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 	$view		= 'year';
 } else
 	// advanced-year "decade/century wildcard"
-	if (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
+	if (preg_match('/^(\d+)(\?+)$/', (string)$year, $match)) {
 		$y1				= $match[1] . str_replace('?', '0', $match[2]);
 		$y2				= $match[1] . str_replace('?', '9', $match[2]);
 		$ged_date	= new KT_Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
@@ -137,7 +137,7 @@ $controller
 		<input type="hidden" name="filterof" value="<?php echo $filterof; ?>">
 
 		<!-- All further uses of $cal are to generate URLs -->
-		<?php $cal = rawurlencode($cal); ?>
+		<?php $cal = rawurlencode((string) $cal); ?>
 
 		<!-- Day selector-->
 		<div class="cal-selectors">

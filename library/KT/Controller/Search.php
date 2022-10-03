@@ -108,7 +108,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 				$this->myquery="";
 			} else {
 				$this->query = $_REQUEST["query"];
-				$this->myquery = htmlspecialchars($this->query);
+				$this->myquery = htmlspecialchars((string) $this->query);
 			}
 		}
 		if (isset ($_REQUEST["replace"])) {
@@ -338,7 +338,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 			'_MILI',
 		);
 		// Allow (some of) the user-specified fields to be selected
-		preg_match_all('/(' . KT_REGEX_TAG . ')/', get_gedcom_setting(KT_GED_ID, 'INDI_FACTS_ADD'), $facts);
+		preg_match_all('/(' . KT_REGEX_TAG . ')/', (string) get_gedcom_setting(KT_GED_ID, 'INDI_FACTS_ADD'), $facts);
 		foreach ($facts[1] as $fact) {
 			if (
 				$fact!='BIRT' &&
@@ -430,7 +430,7 @@ class KT_Controller_Search extends KT_Controller_Page {
 		$_REQUEST["$str"] = "yes";
 
 		// Then see if an ID is typed in. If so, we might want to jump there.
-		if (preg_match('/' . KT_REGEX_XREF . '/', $this->query)) {
+		if (preg_match('/' . KT_REGEX_XREF . '/', (string) $this->query)) {
 			$record = KT_GedcomRecord::getInstance($this->query);
 			if ($record && $record->canDisplayDetails()) {
 				Zend_Session::writeClose();
@@ -448,12 +448,12 @@ class KT_Controller_Search extends KT_Controller_Page {
 		$query_terms = array();
 		$query=$this->query;
 		// Words in double quotes stay together
-		while (preg_match('/"([^"]+)"/', $query, $match)) {
+		while (preg_match('/"([^"]+)"/', (string) $query, $match)) {
 			$query_terms[]	= trim($match[1]);
 			$query			= str_replace($match[0], '', $query);
 		}
 		// Other words get treated separately
-		while (preg_match('/[\S]+/', $query, $match)) {
+		while (preg_match('/[\S]+/', (string) $query, $match)) {
 			$query_terms[]	= trim($match[0]);
 			$query			= str_replace($match[0], '', $query);
 		}
@@ -1178,8 +1178,8 @@ class KT_Controller_Search extends KT_Controller_Page {
 			$person = KT_Person::getInstance($row);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
 			foreach ($this->fields as $n=>$field) {
-				if ($this->values[$n] && preg_match('/^(' . KT_REGEX_TAG . '):PLAC$/', $field, $match)) {
-					if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($this->values[$n], '/').'/i', $person->getGedcomRecord())) {
+				if ($this->values[$n] && preg_match('/^(' . KT_REGEX_TAG . '):PLAC$/', (string) $field, $match)) {
+					if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote((string) $this->values[$n], '/').'/i', (string) $person->getGedcomRecord())) {
 						continue 2;
 					}
 				}

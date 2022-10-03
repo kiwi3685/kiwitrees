@@ -245,7 +245,7 @@ function ersetze_suchtreffer($text)
     $ersetzen = [
         '<span class="treffer">',
         '</span>', ];
-    return str_replace($such, $ersetzen, htmlspecialchars($text));
+    return str_replace($such, $ersetzen, htmlspecialchars((string) $text));
 }
 
 $suchbegriffe = trim($suchbegriffe); // Leerzeichen vorne und hinten wegschneiden

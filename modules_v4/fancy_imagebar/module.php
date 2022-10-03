@@ -94,7 +94,7 @@ class fancy_imagebar_KT_Module extends KT_Module implements KT_Module_Config, KT
 	 * @return type
 	 */
 	protected function options($k) {
-		$FIB_OPTIONS = unserialize(get_module_setting($this->getName(), 'FIB_OPTIONS'));
+		$FIB_OPTIONS = unserialize((string) get_module_setting($this->getName(), 'FIB_OPTIONS'));
 		$key		 = strtoupper($k);
 
 		if (empty($FIB_OPTIONS[$this->getTreeId()]) || (is_array($FIB_OPTIONS[$this->getTreeId()]) && !array_key_exists($key, $FIB_OPTIONS[$this->getTreeId()]))) {

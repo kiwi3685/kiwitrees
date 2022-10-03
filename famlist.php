@@ -66,7 +66,7 @@ if ($show_all=='yes') {
 	} else	if ($falpha) {
 		$alpha='';
 		$surname='';
-		$legend=KT_I18N::translate('All').', '.htmlspecialchars($falpha).'…';
+		$legend=KT_I18N::translate('All').', '.htmlspecialchars((string) $falpha).'…';
 		$url=KT_SCRIPT_NAME.'?show_all=yes&amp;ged='.KT_GEDURL;
 		$show='indi';
 	} else {
@@ -82,41 +82,41 @@ if ($show_all=='yes') {
 	if ($surname=='@N.N.') {
 		$legend=$UNKNOWN_NN;
 	} else {
-		$legend=htmlspecialchars($surname);
+		$legend=htmlspecialchars((string) $surname);
 		// The surname parameter is a root/canonical form.
 		// Display it as the actual surname
 		foreach (KT_Query_Name::surnames($surname, $alpha, $show_marnm === 'yes', true, KT_GED_ID) as $details) {
 			$legend = implode('/', array_keys($details));
 		}
 	}
-	$url=KT_SCRIPT_NAME.'?surname='.rawurlencode($surname).'&amp;ged='.KT_GEDURL;
+	$url=KT_SCRIPT_NAME.'?surname='.rawurlencode((string) $surname).'&amp;ged='.KT_GEDURL;
 	switch($falpha) {
 	case '':
 		break;
 	case '@':
 		$legend.=', '.$UNKNOWN_PN;
-		$url.='&amp;falpha='.rawurlencode($falpha).'&amp;ged='.KT_GEDURL;
+		$url.='&amp;falpha='.rawurlencode((string) $falpha).'&amp;ged='.KT_GEDURL;
 		break;
 	default:
-		$legend.=', '.htmlspecialchars($falpha).'…';
-		$url.='&amp;falpha='.rawurlencode($falpha).'&amp;ged='.KT_GEDURL;
+		$legend.=', '.htmlspecialchars((string) $falpha).'…';
+		$url.='&amp;falpha='.rawurlencode((string) $falpha).'&amp;ged='.KT_GEDURL;
 		break;
 	}
 	$show='indi'; // SURN list makes no sense here
 } elseif ($alpha=='@') {
 	$show_all='no';
 	$legend=$UNKNOWN_NN;
-	$url=KT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.KT_GEDURL;
+	$url=KT_SCRIPT_NAME.'?alpha='.rawurlencode((string) $alpha).'&amp;ged='.KT_GEDURL;
 	$show='indi'; // SURN list makes no sense here
 } elseif ($alpha==',') {
 	$show_all='no';
 	$legend=KT_I18N::translate('None');
-	$url=KT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.KT_GEDURL;
+	$url=KT_SCRIPT_NAME.'?alpha='.rawurlencode((string) $alpha).'&amp;ged='.KT_GEDURL;
 	$show='indi'; // SURN list makes no sense here
 } elseif ($alpha) {
 	$show_all='no';
-	$legend=htmlspecialchars($alpha).'…';
-	$url=KT_SCRIPT_NAME.'?alpha='.rawurlencode($alpha).'&amp;ged='.KT_GEDURL;
+	$legend=htmlspecialchars((string) $alpha).'…';
+	$url=KT_SCRIPT_NAME.'?alpha='.rawurlencode((string) $alpha).'&amp;ged='.KT_GEDURL;
 	$show=safe_GET('show', array('surn', 'indi'), 'surn');
 } else {
 	$show_all='no';
@@ -149,14 +149,14 @@ echo '
 				$html=KT_I18N::translate('None');
 				break;
 			default:
-				$html=htmlspecialchars($letter);
+				$html=htmlspecialchars((string) $letter);
 				break;
 			}
 			if ($count) {
 				if ($letter==$alpha) {
-					$list[]='<a href="'.KT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.KT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
+					$list[]='<a href="'.KT_SCRIPT_NAME.'?alpha='.rawurlencode((string) $letter).'&amp;ged='.KT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
 				} else {
-					$list[]='<a href="'.KT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.KT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
+					$list[]='<a href="'.KT_SCRIPT_NAME.'?alpha='.rawurlencode((string) $letter).'&amp;ged='.KT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
 				}
 			} else {
 				$list[]=$html;
@@ -236,14 +236,14 @@ echo '
 								$html=$UNKNOWN_PN;
 								break;
 							default:
-								$html=htmlspecialchars($givn_initial);
+								$html=htmlspecialchars((string) $givn_initial);
 								break;
 							}
 							if ($count) {
 								if ($show=='indi' && $givn_initial==$falpha && $show_all_firstnames=='no') {
-									$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+									$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode((string) $givn_initial).'" title="'.$count.'">'.$html.'</a>';
 								} else {
-									$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+									$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode((string) $givn_initial).'" title="'.$count.'">'.$html.'</a>';
 								}
 							} else {
 								$list[]=$html;

@@ -29,7 +29,7 @@ if (!defined('KT_KIWITREES')) {
 echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 	<div class="compact_view">',
 		$thumbnail,
-		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name.$addname),'">
+		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode((string) $GEDCOM), '" title="',strip_tags($name.$addname),'">
 			<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
 		</a>
 		<p>', $person->getLifeSpan(), '</p>
@@ -38,7 +38,7 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 	//	details for zoom view
 		echo '<div id="fontdef-',$boxID,'" class="details',$style,'" style="display:none;">
 			<br><hr>
-				<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
+				<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode((string) $GEDCOM), '">',
 					'<span id="namedef-',$boxID, '.2" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
 					<span class="name',$style,'">',$genderImage,'</span>
 				</a>',

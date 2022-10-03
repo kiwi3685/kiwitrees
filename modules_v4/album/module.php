@@ -226,8 +226,8 @@ class album_KT_Module extends KT_Module implements KT_Module_Tab, KT_Module_Conf
 		$SHOW_FIND = KT_Filter::post('show');
 		$HIDE_FIND = KT_Filter::post('hide');
 		$ALBUM_GROUPS = get_module_setting($this->getName(), 'ALBUM_GROUPS');
-		$ALBUM_TITLES = unserialize(get_module_setting($this->getName(), 'ALBUM_TITLES'));
-		$ALBUM_OPTIONS = unserialize(get_module_setting($this->getName(), 'ALBUM_OPTIONS'));
+		$ALBUM_TITLES = unserialize((string) get_module_setting($this->getName(), 'ALBUM_TITLES'));
+		$ALBUM_OPTIONS = unserialize((string) get_module_setting($this->getName(), 'ALBUM_OPTIONS'));
 
 		if (!isset($ALBUM_GROUPS)) {
 			$ALBUM_GROUPS = 4;

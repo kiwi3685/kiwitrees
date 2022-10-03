@@ -48,18 +48,18 @@ class KT_Tree {
 	// Create a tree object.  This is a private constructor - it can only
 	// be called from KT_Tree::getAll() to ensure proper initialisation.
 	private function __construct($tree_id, $tree_name, $tree_title, $tree_subtitle, $imported) {
-		if (strpos($tree_title, '%') === false) {
+		if (strpos((string) $tree_title, '%') === false) {
 			// Allow users to translate tree titles.
 			//$tree_title = KT_I18N::Translate($tree_title);
 		}
 		$this->tree_id        		= $tree_id;
 		$this->tree_name      		= $tree_name;
-		$this->tree_name_url  		= rawurlencode($tree_name);
-		$this->tree_name_html 		= htmlspecialchars($tree_name);
+		$this->tree_name_url  		= rawurlencode((string) $tree_name);
+		$this->tree_name_html 		= htmlspecialchars((string) $tree_name);
 		$this->tree_title     		= $tree_title;
-		$this->tree_title_html		= '<span class="treetitle" dir="auto">' . htmlspecialchars($tree_title) . '</span>';
+		$this->tree_title_html		= '<span class="treetitle" dir="auto">' . htmlspecialchars((string) $tree_title) . '</span>';
 		$this->tree_subtitle		= $tree_subtitle;
-		$this->tree_subtitle_html	= '<span class="subtitle" dir="auto">' . htmlspecialchars($tree_subtitle) . '</span>';
+		$this->tree_subtitle_html	= '<span class="subtitle" dir="auto">' . htmlspecialchars((string) $tree_subtitle) . '</span>';
 		$this->imported       		= $imported;
 	}
 

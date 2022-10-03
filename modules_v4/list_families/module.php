@@ -65,7 +65,7 @@ class list_families_KT_Module extends KT_Module implements KT_Module_List {
 			"SELECT EXISTS(SELECT 1 FROM `##families` WHERE f_file=?)"
 		)->execute(array(KT_GED_ID))->fetchOneRow();
 		if ($row) {
-			$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
+			$surname_url = '?surname=' . rawurlencode((string) $controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
 			$menus = array();
 			$menu  = new KT_Menu(
 				$this->getTitle(),

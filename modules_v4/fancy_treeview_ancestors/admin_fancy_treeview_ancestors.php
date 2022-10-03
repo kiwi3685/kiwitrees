@@ -74,7 +74,7 @@ if (KT_Filter::postBool('save')) {
 		}
 
 		if(isset($pid)) {
-			$FTV_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
+			$FTV_SETTINGS = unserialize((string) get_module_setting($this->getName(), 'FTV_SETTINGS'));
 
 			if(!empty($FTV_SETTINGS)) {
 				$i = 0;
@@ -121,7 +121,7 @@ if (KT_Filter::postBool('save')) {
 
 	if($new_pids || $new_display_name || $new_access_level || $new_sort) {
 		// retrieve the array again from the database because it could have been changed due to an add action.
-		$FTV_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
+		$FTV_SETTINGS = unserialize((string) get_module_setting($this->getName(), 'FTV_SETTINGS'));
 		foreach ($new_pids as $key => $new_pid) {
 			if(!empty($new_pid)) {
 				$new_pid = strtoupper($new_pid); // make sure the PID is entered in the format I200 and not i200.
@@ -163,7 +163,7 @@ if (KT_Filter::postBool('save')) {
 	}
 
 	// retrieve the current options from the database
-	$FTV_OPTIONS = unserialize(get_module_setting($this->getName(), 'FTV_OPTIONS'));
+	$FTV_OPTIONS = unserialize((string) get_module_setting($this->getName(), 'FTV_OPTIONS'));
 	$key = KT_Filter::postInteger('NEW_FTV_TREE');
 
 	// check if options are not empty and if the options for the tree are already set. If not add them to the array.
@@ -187,7 +187,7 @@ if (KT_Filter::postBool('save')) {
 }
 
 // get module settings (options are coming from function options)
-$FTV_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
+$FTV_SETTINGS = unserialize((string) get_module_setting($this->getName(), 'FTV_SETTINGS'));
 $controller
 	->addExternalJavascript(KT_FANCY_TREEVIEW_JS_URL)
 	->addInlineJavascript('autocomplete();')

@@ -445,7 +445,7 @@ class KT_Media extends KT_GedcomRecord {
 			' href="'           . $this->getHtmlUrlDirect('main')    . '"' .
 			' type="'           . $this->mimeType()                  . '"' .
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
-			' data-obje-note="' . htmlspecialchars($this->getNote()) . '"' .
+			' data-obje-note="' . htmlspecialchars((string) $this->getNote()) . '"' .
 			' data-title="'     . KT_Filter::escapeHtml($this->getFullName())   . '"' .
 			'>' . $image . '</a>';
 	}

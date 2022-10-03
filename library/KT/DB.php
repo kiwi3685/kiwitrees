@@ -122,7 +122,7 @@ class KT_DB {
 					$bind_variables[$key]='[NULL]';
 				}
 			}
-			foreach (str_split(htmlspecialchars($query)) as $char) {
+			foreach (str_split(htmlspecialchars((string) $query)) as $char) {
 				if ($char=='?') {
 					$query2.='<abbr title="'.htmlspecialchars(array_shift($bind_variables)).'">'.$char.'</abbr>';
 				} else {

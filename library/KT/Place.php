@@ -79,7 +79,7 @@ class KT_Place {
 		$url='placelist.php';
 		foreach (array_reverse($this->gedcom_place) as $n=>$place) {
 			$url.=$n ? '&amp;' : '?';
-			$url.='parent%5B%5D='.rawurlencode($place);
+			$url.='parent%5B%5D='.rawurlencode((string) $place);
 		}
 		$url.='&amp;ged='.rawurlencode(get_gedcom_from_id($this->gedcom_id));
 		return $url;
@@ -91,13 +91,13 @@ class KT_Place {
 
 	public function getPlaceName() {
 		$place=reset($this->gedcom_place);
-		return $place ? '<span dir="auto">'.htmlspecialchars($place).'</span>' : KT_I18N::translate('unknown');
+		return $place ? '<span dir="auto">'.htmlspecialchars((string) $place).'</span>' : KT_I18N::translate('unknown');
 	}
 
 	public function getFullName() {
 		$tmp=array();
 		foreach ($this->gedcom_place as $place) {
-			$tmp[]='<span dir="auto">' . htmlspecialchars($place) . '</span>';
+			$tmp[]='<span dir="auto">' . htmlspecialchars((string) $place) . '</span>';
 		}
 		return implode(KT_I18N::$list_separator, $tmp);
 	}
@@ -119,7 +119,7 @@ class KT_Place {
 				$short_name=implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
 			}
 			// Add a tool-tip showing the full name
-			return '<span title="'.htmlspecialchars($this->getGedcomName()).'" dir="auto">'.htmlspecialchars($short_name).'</span>';
+			return '<span title="'.htmlspecialchars((string) $this->getGedcomName()).'" dir="auto">'.htmlspecialchars((string) $short_name).'</span>';
 		}
 	}
 
@@ -127,7 +127,7 @@ class KT_Place {
 	public function getReverseName() {
 		$tmp=array();
 		foreach (array_reverse($this->gedcom_place) as $place) {
-			$tmp[]='<span dir="auto">' . htmlspecialchars($place) . '</span>';
+			$tmp[]='<span dir="auto">' . htmlspecialchars((string) $place) . '</span>';
 		}
 		return implode(KT_I18N::$list_separator, $tmp);
 	}
@@ -180,7 +180,7 @@ class KT_Place {
 				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', ?, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) REGEXP CONCAT('^[^,]*', ?) AND p1.p_file=?".
 				" ORDER BY  CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE '".KT_I18N::$collation."'"
 			)
-			->execute(array($filter, preg_quote($filter), $gedcom_id))
+			->execute(array($filter, preg_quote((string) $filter), $gedcom_id))
 			->fetchOneColumn();
 		foreach ($rows as $row) {
 			$places[] = new KT_Place($row, $gedcom_id);

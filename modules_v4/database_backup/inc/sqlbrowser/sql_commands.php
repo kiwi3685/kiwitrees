@@ -41,7 +41,7 @@ if (isset($_POST['sqlnewupdate'])) {
     if (count($SQL_ARRAY) > 0) {
         array_push($SQL_ARRAY, $_POST['sqlname'.$ind].'|'.$_POST['sqlstring'.$ind]);
     } else {
-        $SQL_ARRAY[0] = htmlspecialchars($_POST['sqlname0'], ENT_COMPAT, 'UTF-8').'|'.$_POST['sqlstring0'];
+        $SQL_ARRAY[0] = htmlspecialchars((string) $_POST['sqlname0'], ENT_COMPAT, 'UTF-8').'|'.$_POST['sqlstring0'];
     }
     WriteSQL();
     echo '<p>'.$lang['L_SQL_BEFEHLSAVED1'].' \''.$_POST['sqlname'.$ind].'\' '.$lang['L_SQL_BEFEHLSAVED2'].'</p>';
@@ -58,7 +58,7 @@ if (count($SQL_ARRAY) > 0) {
     for ($i = 0; $i < count($SQL_ARRAY); ++$i) {
         if (isset($_POST['sqlupdate'.$i])) {
             echo '<tr><td colspan="4"><p class="success">'.$lang['L_SQL_BEFEHLSAVED1']
-            .' \''.htmlspecialchars($_POST['sqlname'.$i], ENT_COMPAT, 'UTF-8').'\' '.$lang['L_SQL_BEFEHLSAVED3'].'</p></td></tr>';
+            .' \''.htmlspecialchars((string) $_POST['sqlname'.$i], ENT_COMPAT, 'UTF-8').'\' '.$lang['L_SQL_BEFEHLSAVED3'].'</p></td></tr>';
             $SQL_ARRAY[$i] = $_POST['sqlname'.$i].'|'.nl2null($_POST['sqlstring'.$i]);
             WriteSQL();
         }

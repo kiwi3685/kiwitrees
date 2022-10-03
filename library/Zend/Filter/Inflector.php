@@ -459,7 +459,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
             $source[ltrim($sourceName, ':')] = $sourceValue;
         }
 
-        $pregQuotedTargetReplacementIdentifier = preg_quote($this->_targetReplacementIdentifier, '#');
+        $pregQuotedTargetReplacementIdentifier = preg_quote((string) $this->_targetReplacementIdentifier, '#');
         $processedParts = array();
 
         foreach ($this->_rules as $ruleName => $ruleValue) {

@@ -40,17 +40,17 @@ if ($search && $replace) {
 		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')".
 		" WHERE i_file = ?" .
 		" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array(KT_GED_ID, preg_quote($search)))->fetchAll();
+	)->execute(array(KT_GED_ID, preg_quote((string) $search)))->fetchAll();
 	foreach ($rows as $row) {
 		$record = KT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record) {
 			foreach ($record->getFacts() as $fact) {
 				$old_place = $fact->getPlace();
-				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-					$new_place = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+				if (preg_match('/(^|, )' . preg_quote((string) $search, '/') . '$/i', (string) $old_place)) {
+					$new_place = preg_replace('/(^|, )' . preg_quote((string) $search, '/') . '$/i', '$1' . $replace, $old_place);
 					$changes[$old_place] = $new_place;
 					if ($confirm == 'update') {
-						$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $row->gedcom);
+						$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote((string) $search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $row->gedcom);
 						replace_gedrec($row->xref, KT_GED_ID, $gedcom, false);
 					}
 				}
@@ -63,17 +63,17 @@ if ($search && $replace) {
 		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')".
 		" WHERE f_file = ?" .
 		" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array(KT_GED_ID, preg_quote($search)))->fetchAll();
+	)->execute(array(KT_GED_ID, preg_quote((string) $search)))->fetchAll();
 	foreach ($rows as $row) {
 		$record = KT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record) {
 			foreach ($record->getFacts() as $fact) {
 				$old_place = $fact->getPlace();
-				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-					$new_place = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+				if (preg_match('/(^|, )' . preg_quote((string) $search, '/') . '$/i', (string) $old_place)) {
+					$new_place = preg_replace('/(^|, )' . preg_quote((string) $search, '/') . '$/i', '$1' . $replace, $old_place);
 					$changes[$old_place] = $new_place;
 					if ($confirm == 'update') {
-						$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $row->gedcom);
+						$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote((string) $search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $row->gedcom);
 						replace_gedrec($row->xref, KT_GED_ID, $gedcom, false);
 					}
 				}

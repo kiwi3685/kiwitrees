@@ -188,14 +188,14 @@ class faq_KT_Module extends KT_Module implements KT_Module_Menu, KT_Module_Block
 								<th><?php echo KT_I18N::translate('Question'); ?></th>
 							</tr>
 							<tr>
-								<td><input type="text" name="header" size="90" tabindex="1" value="<?php echo htmlspecialchars($header); ?>"></td>
+								<td><input type="text" name="header" size="90" tabindex="1" value="<?php echo htmlspecialchars((string) $header); ?>"></td>
 							</tr>
 							<tr>
 								<th><?php echo KT_I18N::translate('Answer'); ?></th>
 							</tr>
 							<tr>
 									<td>
-										<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars($faqbody); ?></textarea>
+										<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars((string) $faqbody); ?></textarea>
 									</td>
 							</tr>
 						</table>

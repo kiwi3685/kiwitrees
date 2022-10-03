@@ -57,7 +57,7 @@ class list_branches_KT_Module extends KT_Module implements KT_Module_List {
 	// Implement KT_Module_List
 	public function getListMenus() {
 		global $controller;
-		$surname_url = '?surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
+		$surname_url = '?surname=' . rawurlencode((string) $controller->getSignificantSurname()) . '&amp;ged=' . KT_GEDURL;
 		$menus = array();
 		$menu  = new KT_Menu(
 			$this->getTitle(),

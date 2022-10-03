@@ -262,7 +262,7 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 				break;
 			case 'gedcom':
 			default:
-				$header_links .= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
+				$header_links .= '<meta name="description" content="'. htmlspecialchars((string) $META_DESCRIPTION). '">';
 				break;
 		}
 	}
@@ -340,7 +340,7 @@ function whoisonline() {
 					} else {
 						$content .= htmlspecialchars(getUserFullName($user_id));
 					}
-					$content .= ' - ' . htmlspecialchars($user_name);
+					$content .= ' - ' . htmlspecialchars((string) $user_name);
 
 					if (KT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod')!="none") {
 						$content .= '<a class="fa-envelope-o" href="message.php?to=' . $user_name . '&amp;url=' . addslashes(urlencode(get_query_url())) . '"  title="' . KT_I18N::translate('Send Message') . '"></a>';
@@ -596,7 +596,7 @@ function print_privacy_error() {
 		break;
 	case 'mailto':
 		$email = getUserEmail($user_id);
-		echo '<div class="error">' . KT_I18N::translate('For more information contact') . ' ' . '<a href="mailto:' . htmlspecialchars($email) . '">' . htmlspecialchars($fullname) . '</a></div>';
+		echo '<div class="error">' . KT_I18N::translate('For more information contact') . ' ' . '<a href="mailto:' . htmlspecialchars((string) $email) . '">' . htmlspecialchars((string) $fullname) . '</a></div>';
 		break;
 	default:
 		echo '<div class="error">' . KT_I18N::translate('For more information contact') . ' ' . '<a class="fa-envelope-o" href="message.php?to=' . $user_id . '&amp;url=' . addslashes(urlencode(get_query_url())) . '"  title="' . KT_I18N::translate('Send Message') . '">' . $fullname . '</a></div>';
@@ -625,7 +625,7 @@ function highlight_search_hits($string) {
 		// The controller needs to provide its "query_terms" array.
 		$regex = array();
 		foreach (array($controller->query) as $search_term) {
-			$regex[] = preg_quote($search_term, '/');
+			$regex[] = preg_quote((string) $search_term, '/');
 		}
 		// Match these strings, provided they do not occur inside HTML tags
 		$regex = '('.implode('|', $regex).')(?![^<]*>)';
@@ -685,7 +685,7 @@ function print_asso_rela_record(KT_Event $event, KT_GedcomRecord $record) {
 						$note = KT_Filter::formatText($note->getNote(), $KT_TREE);
 					}
 				} else {
-					$note = '<span class="error">' . htmlspecialchars($nid) . '</span>';
+					$note = '<span class="error">' . htmlspecialchars((string) $nid) . '</span>';
 				}
 			}
 		} else {
@@ -942,7 +942,7 @@ function format_fact_place(KT_Event $event, $anchor = false, $sub = false, $lds 
 	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX, $SEARCH_SPIDER;
 
 	$factrec	= $event->getGedcomRecord();
-	$name_parts = explode(', ', $event->getPlace());
+	$name_parts = explode(', ', (string) $event->getPlace());
 	$ct			= count($name_parts);
 	$kt_place	= new KT_Place($event->getPlace(), KT_GED_ID);
 
@@ -1405,7 +1405,7 @@ function getPersonLinks ($person){
 
 	$personlinks = '<ul class="person_box' . $isF . '">
 		<li>
-			<a href="pedigree.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;talloffset=' . $talloffset . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+			<a href="pedigree.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;talloffset=' . $talloffset . '&amp;ged=' . rawurlencode((string) $GEDCOM) . '">
 				<b>' . KT_I18N::translate('Pedigree') . '</b>
 			</a>
 		</li>';
@@ -1428,27 +1428,27 @@ function getPersonLinks ($person){
 			';
 		}
 		$personlinks .= '<li>
-			<a href="descendancy.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;generations=' . $generations . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+			<a href="descendancy.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;generations=' . $generations . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode((string) $GEDCOM) . '">
 				<b>' . KT_I18N::translate('Descendants') . '</b>
 			</a>
 		</li>
 		<li>
-			<a href="ancestry.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;chart_style=' . $chart_style . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+			<a href="ancestry.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;chart_style=' . $chart_style . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode((string) $GEDCOM) . '">
 				<b>' . KT_I18N::translate('Ancestors') . '</b>
 			</a>
 		</li>
 		<li>
-			<a href="compact.php?rootid=' . $pid . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+			<a href="compact.php?rootid=' . $pid . '&amp;ged=' . rawurlencode((string) $GEDCOM) . '">
 				<b>' . KT_I18N::translate('Compact tree') . '</b>
 			</a>
 			</li>
 		<li>
-			<a href="module.php?mod=chart_fanchart&mod_action=show&rootid=' . $pid . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+			<a href="module.php?mod=chart_fanchart&mod_action=show&rootid=' . $pid . '&amp;ged=' . rawurlencode((string) $GEDCOM) . '">
 				<b>' . KT_I18N::translate('Fanchart') . '</b>
 			</a>
 		</li>
 		<li>
-			<a href="hourglass.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;chart_style=' . $chart_style . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode($GEDCOM) . '&amp;show_spouse=' . $show_spouse . '">
+			<a href="hourglass.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;chart_style=' . $chart_style . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode((string) $GEDCOM) . '&amp;show_spouse=' . $show_spouse . '">
 				<b>' . KT_I18N::translate('Hourglass chart') . '</b>
 			</a>
 		</li>';

@@ -26,7 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
-$options = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
+$options = unserialize((string) get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
 if(!empty($options)) {
 	foreach($options as $option) {
 		$option['THUMB_SIZE'] = '60';

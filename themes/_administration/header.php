@@ -69,7 +69,7 @@ $this
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="robots" content="noindex,nofollow"><title><?php echo htmlspecialchars($title); ?></title>
+	<meta name="robots" content="noindex,nofollow"><title><?php echo htmlspecialchars((string) $title); ?></title>
 	<link rel="icon" href="<?php echo KT_THEME_URL; ?>images/kt.png" type="image/png">
 	<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
 	<link rel="stylesheet" href="<?php echo KT_THEME_URL; ?>jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
@@ -158,7 +158,7 @@ if ($view != 'simple') {
 						// Add a title="" element, since long tree titles are cropped ?>
 						<p>
 							<span>
-								<a <?php echo (KT_SCRIPT_NAME == "admin_trees_config.php" && KT_GED_ID == $tree->tree_id ? 'class="current" ' : ''); ?>href="admin_trees_config.php?ged=<?php echo $tree->tree_name_url; ?>" title="<?php echo htmlspecialchars($tree->tree_title); ?>" dir="auto">
+								<a <?php echo (KT_SCRIPT_NAME == "admin_trees_config.php" && KT_GED_ID == $tree->tree_id ? 'class="current" ' : ''); ?>href="admin_trees_config.php?ged=<?php echo $tree->tree_name_url; ?>" title="<?php echo htmlspecialchars((string) $tree->tree_title); ?>" dir="auto">
 									<?php echo $tree->tree_title_html; ?>
 								</a>
 							</span>
