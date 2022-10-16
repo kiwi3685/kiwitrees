@@ -717,5 +717,6 @@ class research_links_KT_Module extends KT_Module implements KT_Module_Config, KT
 }
 
 // Each plugin should extend the base_plugin class, and implement any functions included here
+#[AllowDynamicProperties]
 class research_base_plugin {
 }

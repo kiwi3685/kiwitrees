@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Query_Media {
 	// Generate a list of all the folders in the current tree - for the media list.
 	public static function folderList() {

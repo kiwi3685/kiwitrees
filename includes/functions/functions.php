@@ -2198,6 +2198,7 @@ function get_relationship_name_from_path($path, KT_Person $person1 = null, KT_Pe
 	return $relationship;
 }
 
+#[AllowDynamicProperties]
 class Functions {
 	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
 	public static $relationshipsCache = array();

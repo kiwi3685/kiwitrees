@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Controller_FancyTreeView {
 
 	/** @var Individual[] Ancestors of the root person - for SOSA numbers */

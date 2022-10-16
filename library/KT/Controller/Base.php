@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Controller_Base {
 	// The controller accumulates Javascript (inline and external), and renders it in the footer
 	const JS_PRIORITY_HIGH   = 0;

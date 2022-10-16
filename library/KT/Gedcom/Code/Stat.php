@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Gedcom_Code_Stat {
 
 	// Get a list of status codes that can be used on a given LDS tag

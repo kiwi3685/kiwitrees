@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Query_Admin {
 	public static function countIndiChangesToday($ged_id) {
 		return

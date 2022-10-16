@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Gedcom_Code_Adop {
 	
 	private static $TYPES=array('BOTH', 'HUSB', 'WIFE');

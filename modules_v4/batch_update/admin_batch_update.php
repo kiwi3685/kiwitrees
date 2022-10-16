@@ -33,6 +33,7 @@ if (!KT_USER_GEDCOM_ADMIN) {
 
 require KT_ROOT . 'includes/functions/functions_edit.php';
 
+#[AllowDynamicProperties]
 class batch_update {
 	var $plugin    = null; // Form parameter: chosen plugin
 	var $xref      = null; // Form parameter: record to update
@@ -353,6 +354,7 @@ class batch_update {
 //  bool doesRecordNeedUpdate($xref, $gedrec)
 //  string updateRecord($xref, $gedrec)
 //
+#[AllowDynamicProperties]
 class base_plugin {
 	var $chan = false; // User option; update change record
 

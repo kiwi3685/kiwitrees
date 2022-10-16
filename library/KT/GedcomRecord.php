@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_GedcomRecord {
 	protected $xref        = null;  // The record identifier
 	protected $type        = null;  // INDI, FAM, etc.

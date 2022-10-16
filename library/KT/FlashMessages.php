@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_FlashMessages {
 	public static function addMessage($message) {
 		$flash_messenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');

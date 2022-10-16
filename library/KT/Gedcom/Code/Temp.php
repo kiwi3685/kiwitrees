@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Gedcom_Code_Temp {
 
 	// A list of GEDCOM tags that require a TEMP subtag

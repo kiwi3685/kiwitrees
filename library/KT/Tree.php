@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Tree {
 	// Tree attributes
 	public $tree_id         	= null; // The "gedcom ID" number

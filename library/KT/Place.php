@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Place {
 	const GEDCOM_SEPARATOR = ', ';
 	private $gedcom_place;  // e.g. array("Westminster", "London", "England")

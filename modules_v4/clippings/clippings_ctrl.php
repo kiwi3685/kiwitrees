@@ -32,6 +32,7 @@ require_once KT_ROOT.'library/pclzip.lib.php';
 /**
 * Main controller class for the Clippings page.
 */
+#[AllowDynamicProperties]
 class KT_Controller_Clippings {
 
 	var $download_data;

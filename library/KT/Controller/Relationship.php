@@ -28,6 +28,7 @@ if (!defined('KT_KIWITREES')) {
 
 require_once KT_ROOT.'library/algorithm/optimized_dijkstra.php';
 
+#[AllowDynamicProperties]
 class Descendant {
 
 	private $xref; //xref
@@ -40,7 +41,8 @@ class Descendant {
 		$this->xref = $xref;
 	}
 }
-
+#[AllowDynamicProperties]
+class Descendant {
 class IdWithDescendant {
 
 	private $id; //xref
@@ -70,7 +72,8 @@ class IdWithDescendant {
 	public function next($id) {
 		return new IdWithDescendant($id, new Descendant($this->getId()));
 	}
-}
+#[AllowDynamicProperties]
+class Descendant {
 
 class CommonAncestorAndPath {
 
@@ -100,7 +103,8 @@ class CommonAncestorAndPath {
 	 */
 	public function next($id) {
 		return new IdWithDescendant($id, new Descendant($this->getId()));
-	}
+#[AllowDynamicProperties]
+class Descendant {
 }
 
 class CorPlus {

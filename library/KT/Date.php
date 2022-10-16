@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Date {
 	var $qual1 = null; // Optional qualifier, such as BEF, FROM, ABT
 	var $date1 = null; // The first (or only) date

@@ -21,6 +21,7 @@
  * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#[AllowDynamicProperties]
 class KT_File {
 	//////////////////////////////////////////////////////////////////////////////
 	// Fetch a remote file

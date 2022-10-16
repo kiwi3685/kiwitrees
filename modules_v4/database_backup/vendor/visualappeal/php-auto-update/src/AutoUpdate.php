@@ -18,6 +18,7 @@ use VisualAppeal\Exceptions\ParserException;
 /**
  * Auto update class.
  */
+#[AllowDynamicProperties]
 class AutoUpdate {
     /**
      * The latest version.

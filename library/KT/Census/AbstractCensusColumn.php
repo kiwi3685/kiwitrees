@@ -24,6 +24,7 @@
 /**
  * Definitions for a census column
  */
+#[AllowDynamicProperties]
 class KT_Census_AbstractCensusColumn {
 	/** @var CensusInterface */
 	private $census;

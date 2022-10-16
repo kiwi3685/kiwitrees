@@ -28,6 +28,7 @@ if (!defined('KT_KIWITREES')) {
 
 require_once KT_ROOT.'includes/functions/functions_print_lists.php';
 
+#[AllowDynamicProperties]
 class KT_Stats {
 	private $_gedcom;
 	private $_gedcom_url;

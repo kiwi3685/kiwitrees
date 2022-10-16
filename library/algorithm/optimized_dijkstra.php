@@ -4,6 +4,7 @@
  * Class OptimizedDijkstra - Use Dijkstra's algorithm to calculate the shortest path
  * through a weighted, directed graph.
  */
+#[AllowDynamicProperties]
 class OptimizedDijkstra {
 
   /** @var integer[][] The graph, where $graph[node1][node2]=cost */

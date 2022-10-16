@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Filter {
 	// REGEX to match a URL
 	// Some versions of RFC3987 have an appendix B which gives the following regex

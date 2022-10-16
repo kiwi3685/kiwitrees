@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Menu {
 	var $label			= ' ';
 	var $labelpos		= 'right';

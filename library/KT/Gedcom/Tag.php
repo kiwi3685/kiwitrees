@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Gedcom_Tag {
 	// All tags that kiwitrees knows how to translate - including special/internal tags
 	private static $ALL_TAGS = array(

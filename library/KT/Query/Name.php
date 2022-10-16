@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Query_Name {
 	// Get a list of initial letters, for lists of names
 	private static function _getAlphabet() {

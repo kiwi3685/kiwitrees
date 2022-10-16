@@ -17,6 +17,7 @@
 /**
  * Definitions for a census
  */
+#[AllowDynamicProperties]
 class KT_Census_Census {
 	/**
 	 * @return CensusPlaceInterface[]

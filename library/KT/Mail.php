@@ -31,6 +31,7 @@ require_once KT_ROOT . 'library/swiftmailer/lib/swift_required.php';
 /**
  * Send mail messages.
  */
+#[AllowDynamicProperties]
 class KT_Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 

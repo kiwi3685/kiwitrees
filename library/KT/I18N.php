@@ -32,6 +32,7 @@
  * functionality, such as mixed RTL and LTR text.
  */
 
+#[AllowDynamicProperties]
 class KT_I18N {
 	// Lookup table to convert unicode code-points into scripts.
 	// See https://en.wikipedia.org/wiki/Unicode_block

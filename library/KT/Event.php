@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Event {
 // These objects need further refinement in their implementations and parsing
 // var $address = null;

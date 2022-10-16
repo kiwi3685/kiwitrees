@@ -26,6 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
+#[AllowDynamicProperties]
 class KT_Gedcom_Code_Quay {
 	private static $TYPES=array('3', '2', '1', '0');
 
