@@ -11,7 +11,9 @@
 
 namespace Carbon\Exceptions;
 
-interface BadMethodCallException extends Exception
+use RuntimeException as BaseRuntimeException;
+
+final class EndLessPeriodException extends BaseRuntimeException implements RuntimeException
 {
     //
 }
