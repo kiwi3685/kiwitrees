@@ -15,8 +15,10 @@ use Closure;
 use ReflectionException;
 use ReflectionFunction;
 use Symfony\Component\Translation;
+use Symfony\Component\Translation\Formatter\MessageFormatterInterface;
+use Symfony\Component\Translation\Loader\ArrayLoader;
 
-class AbstractTranslator extends Translation\Translator
+abstract class AbstractTranslator extends Translation\Translator
 {
     /**
      * Translator singletons for each language.
@@ -66,20 +68,21 @@ class AbstractTranslator extends Translation\Translator
     public static function get($locale = null)
     {
         $locale = $locale ?: 'en';
+        $key = static::class === Translator::class ? $locale : static::class.'|'.$locale;
 
-        if (!isset(static::$singletons[$locale])) {
-            static::$singletons[$locale] = new static($locale ?: 'en');
+        if (!isset(static::$singletons[$key])) {
+            static::$singletons[$key] = new static($locale);
         }
 
-        return static::$singletons[$locale];
+        return static::$singletons[$key];
     }
 
-    public function __construct($locale, Translation\Formatter\MessageFormatterInterface $formatter = null, $cacheDir = null, $debug = false)
+    public function __construct($locale, MessageFormatterInterface $formatter = null, $cacheDir = null, $debug = false)
     {
         parent::setLocale($locale);
         $this->initializing = true;
         $this->directories = [__DIR__.'/Lang'];
-        $this->addLoader('array', new Translation\Loader\ArrayLoader());
+        $this->addLoader('array', new ArrayLoader());
         parent::__construct($locale, $formatter, $cacheDir, $debug);
         $this->initializing = false;
     }
@@ -217,8 +220,8 @@ class AbstractTranslator extends Translation\Translator
 
         $catalogue = $this->getCatalogue($locale);
         $format = $this instanceof TranslatorStrongTypeInterface
-            ? $this->getFromCatalogue($catalogue, (string) $id, $domain) // @codeCoverageIgnore
-            : $this->getCatalogue($locale)->get((string) $id, $domain);
+            ? $this->getFromCatalogue($catalogue, (string) $id, $domain)
+            : $this->getCatalogue($locale)->get((string) $id, $domain); // @codeCoverageIgnore
 
         if ($format instanceof Closure) {
             // @codeCoverageIgnoreStart
@@ -247,11 +250,7 @@ class AbstractTranslator extends Translation\Translator
      */
     protected function loadMessagesFromFile($locale)
     {
-        if (isset($this->messages[$locale])) {
-            return true;
-        }
-
-        return $this->resetMessages($locale);
+        return isset($this->messages[$locale]) || $this->resetMessages($locale);
     }
 
     /**
@@ -308,7 +307,7 @@ class AbstractTranslator extends Translation\Translator
      */
     public function setLocale($locale)
     {
-        $locale = preg_replace_callback('/[-_]([a-z]{2,}|[0-9]{2,})/', function ($matches) {
+        $locale = preg_replace_callback('/[-_]([a-z]{2,}|\d{2,})/', function ($matches) {
             // _2-letters or YUE is a region, _3+-letters is a variant
             $upper = strtoupper($matches[1]);
 
@@ -335,7 +334,7 @@ class AbstractTranslator extends Translation\Translator
             $completeLocaleChunks = preg_split('/[_.-]+/', $completeLocale);
 
             $getScore = function ($language) use ($completeLocaleChunks) {
-                return static::compareChunkLists($completeLocaleChunks, preg_split('/[_.-]+/', $language));
+                return self::compareChunkLists($completeLocaleChunks, preg_split('/[_.-]+/', $language));
             };
 
             usort($locales, function ($first, $second) use ($getScore) {
@@ -356,13 +355,13 @@ class AbstractTranslator extends Translation\Translator
             parent::setLocale($macroLocale);
         }
 
-        if ($this->loadMessagesFromFile($locale) || $this->initializing) {
-            parent::setLocale($locale);
-
-            return true;
+        if (!$this->loadMessagesFromFile($locale) && !$this->initializing) {
+            return false;
         }
 
-        return false;
+        parent::setLocale($locale);
+
+        return true;
     }
 
     /**
