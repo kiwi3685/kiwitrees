@@ -41,8 +41,8 @@ class Descendant {
 		$this->xref = $xref;
 	}
 }
+
 #[AllowDynamicProperties]
-class Descendant {
 class IdWithDescendant {
 
 	private $id; //xref
@@ -72,9 +72,9 @@ class IdWithDescendant {
 	public function next($id) {
 		return new IdWithDescendant($id, new Descendant($this->getId()));
 	}
-#[AllowDynamicProperties]
-class Descendant {
+}
 
+#[AllowDynamicProperties]
 class CommonAncestorAndPath {
 
 	private $ca; //xref
@@ -103,8 +103,7 @@ class CommonAncestorAndPath {
 	 */
 	public function next($id) {
 		return new IdWithDescendant($id, new Descendant($this->getId()));
-#[AllowDynamicProperties]
-class Descendant {
+    }
 }
 
 class CorPlus {
