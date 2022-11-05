@@ -121,7 +121,7 @@ echo '<div id="place-hierarchy">';
 			<?php
 			break;
 		case 'hierarchy':
-			$use_googlemap = array_key_exists('googlemap', KT_Module::getActiveModules()) && get_module_setting('googlemap', 'GM_PLACE_HIERARCHY') && table_exists ('##placelocations');
+			$use_googlemap = array_key_exists('googlemap', KT_Module::getActiveModules()) && get_module_setting('googlemap', 'GM_PLACE_HIERARCHY');
 
 			if ($use_googlemap) {
 				require KT_ROOT . KT_MODULES_DIR . 'googlemap/placehierarchy.php';
