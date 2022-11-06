@@ -26,7 +26,7 @@ if (!defined('KT_KIWITREES')) {
 	exit;
 }
 
-require_once KT_ROOT . 'library/swiftmailer/lib/swift_required.php';
+require_once KT_ROOT . 'library/swiftmailer-6.3.0/lib/swift_required.php';
 
 /**
  * Send mail messages.

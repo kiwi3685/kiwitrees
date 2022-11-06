@@ -24,6 +24,9 @@ developer_tips.txt
 
 /library/swiftmailer/tests
 /library/swiftmailer/doc
+/library/swiftmailer-6.3.0/doc
+/library/swiftmailer-6.3.0/.github
+
 /library/php-diff/example
 
 /modules_v4/advent
