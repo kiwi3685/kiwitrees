@@ -221,7 +221,8 @@ class relatives_KT_Module extends KT_Module implements KT_Module_Tab {
 					&nbsp;
 				</td>
 				<td class="facts_value">
-					<?php $marr_type = strtoupper($family->getMarriageType());
+					<?php
+					$marr_type = strtoupper((string) $family->getMarriageType());
 					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
 						$marr_fact = 'MARR_' . $marr_type;
 					} else {
