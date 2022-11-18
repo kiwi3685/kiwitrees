@@ -343,19 +343,13 @@ class report_vital_records_KT_Module extends KT_Module implements KT_Module_Repo
                                                 <?php foreach ($indifacts as $fact) {
                                                     if ($fact->getParentObject() instanceof KT_Family && ($fact->getTag() == 'MARR' || $fact->getTag() == '_NMR')) {
                                                         foreach ($fact->getParentObject() as $family_fact) {
-                                                            $sex = $person->getSex();
-                                                            switch ($sex) {
-                                                                case 'M':
-                                                                    $spouse = $fact->getParentObject()->getWife();
-                                                                    break;
-                                                                case 'F':
-                                                                    $spouse = $fact->getParentObject()->getHusband();
-                                                                    break;
-                                                                default:
-                                                                    $spouse = '';
-                                                                    break;
-                                                            } ?>
-                                                            <?php
+                                                            $spouse = '';
+                                                            if ($person->getXref() == $fact->getParentObject()->getWife()->getXref()) {
+                                                                $spouse = $fact->getParentObject()->getHusband();
+                                                            }
+                                                            if ($person->getXref() == $fact->getParentObject()->getHusband()->getXref()) {
+                                                                $spouse = $fact->getParentObject()->getWife();
+                                                            }
                                                             if ($spouse) { ?>
                                                                 <div>
                                                                     <p class="first">
