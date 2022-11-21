@@ -100,6 +100,9 @@ $gender		= KT_Filter::get('gender');
 $date 		= KT_Filter::getInteger('date');
 $range 		= KT_Filter::getInteger('range');
 
+$births 	= "'" . str_replace("|", "','", KT_EVENTS_BIRT) . "'";
+$deaths 	= "'" . str_replace("|", "','", KT_EVENTS_DEAT) . "'";
+
 // the sql query used to identify duplicates
 $sql = '
 	SELECT DISTINCT n_id, n_full, n_type, n_sort
@@ -112,9 +115,9 @@ if ($date || preg_match('/\d{4}(?<!0000)/', $date)) {
 		INNER JOIN `##dates` ON d_gid = n_id
 		WHERE n_file = '. $gedcom_id . '
 		AND (
-			(d_fact="BIRT" AND d_year <= ' . $maxDate . ' AND d_year >= ' . $minDate . ')
+			(d_fact IN ('. $births . ') AND d_year <= ' . $maxDate . ' AND d_year >= ' . $minDate . ')
 			 OR
-			(d_fact="DEAT" AND d_year <= ' . $maxDate . ' AND d_year >= ' . $minDate . ')
+			(d_fact IN ('. $deaths . ') AND d_year <= ' . $maxDate . ' AND d_year >= ' . $minDate . ')
 		)
 	';
 } else {
