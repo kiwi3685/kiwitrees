@@ -48,6 +48,7 @@ class KT_Controller_Clippings {
 	var $level1;  // number of levels of ancestors
 	var $level2;
 	var $level3; // number of levels of descendents
+	var $action;
 
 	public function __construct() {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $KT_SESSION;
