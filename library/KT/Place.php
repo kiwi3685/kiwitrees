@@ -31,6 +31,7 @@ class KT_Place {
 	const GEDCOM_SEPARATOR = ', ';
 	private $gedcom_place;  // e.g. array("Westminster", "London", "England")
 	private $gedcom_id;     // We may have the same place in different trees
+	private $place_id; 
 
 	public function __construct($gedcom_place, $gedcom_id) {
 		if ($gedcom_place) {
