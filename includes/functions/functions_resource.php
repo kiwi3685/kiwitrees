@@ -666,14 +666,10 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 
 // list marriage records
 function report_marriages ($place, $m_fromJD, $m_toJD, $ged, $name = ''){
+
 	$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families` ";
 	$sql_join     = "";
 	$sql_where    = " WHERE f_file = " . $ged . " AND f_gedcom LIKE '%1 MARR%'";
-
-	// Place filter
-	if ($place) {
-		$sql_where .= " AND f_gedcom LIKE CONCAT('%', '" . $place . "', '%')";
-	}
 
 	// Date filters
 	if ($m_fromJD || $m_toJD) {
@@ -688,6 +684,17 @@ function report_marriages ($place, $m_fromJD, $m_toJD, $ged, $name = ''){
 	}
 
 	$rows = KT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
+
+	// Limit rows to marriages in selected place (easier here than in DB)
+	if ($place) {
+		foreach ($rows as $row) {
+			$family = KT_Family::getInstance($row->xref);
+			if ($family->getMarriagePlace() && stristr($family->getMarriagePlace(), $place)) {
+				$newrows[] = $row;
+			}
+		}
+		$rows = $newrows;
+	}
 
 	$list = array();
 	foreach ($rows as $row) {
