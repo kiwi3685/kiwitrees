@@ -447,7 +447,7 @@ $controller->pageHeader();?>
 			$gedrec = find_gedcom_record($pid, KT_GED_ID, true);
 
 			// 1 FILE
-			if (preg_match('/\n\d (FILE.*)/', $gedrec, $match)) {
+			if ($gedrec && preg_match('/\n\d (FILE.*)/', $gedrec, $match)) {
 				$gedfile = $match[1];
 			} elseif ($filename) {
 				$gedfile = 'FILE ' . $filename;

@@ -1746,7 +1746,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				$level2_checked = '';
 
 			}
-			if (strpos($bdm, 'B') !== false) {
+			if ($bdm && strpos($bdm, 'B') !== false) {
 				echo '
 					<p>
 						<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">',
@@ -1764,7 +1764,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 					}
 				}
 			}
-			if (strpos($bdm, 'D') !== false) {
+			if ($bdm && strpos($bdm, 'D') !== false) {
 				if (preg_match_all('/('.KT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
 					foreach ($matches[1] as $match) {
 						if (in_array($match, explode('|', KT_EVENTS_DEAT))) {
@@ -1777,7 +1777,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 					}
 				}
 			}
-			if (strpos($bdm, 'M') !== false) {
+			if ($bdm && strpos($bdm, 'M') !== false) {
 				echo '
 					<p>
 						<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">',
