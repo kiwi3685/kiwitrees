@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// No errors.  Send the message.
 			foreach ($recipients as $recipient) {
 				$message         		= array();
-				$message['to']   		= $to;
+				$message['to']   		= $recipient;
 				$message['from_name']	= $from_name;
 				$message['from_email']	= $from_email;
 				$message['subject']		= $subject;
