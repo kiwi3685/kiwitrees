@@ -1351,8 +1351,8 @@ case 'update':
 	 * -----------------------------------------------------------------------------
 	 */
 
-	$cens_pids	= explode(',', KT_Filter::post('pid_array'));
-	$pid		= KT_Filter::post('pid');
+	KT_Filter::post('pid_array') ? $cens_pids = explode(',', KT_Filter::post('pid_array')) : $cens_pids = '';
+	$pid = KT_Filter::post('pid');
 
 	if ($cens_pids && count($cens_pids) > 1) {
 		$idnums="multi";
