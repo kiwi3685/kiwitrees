@@ -68,6 +68,7 @@ class tab_changes_KT_Module extends KT_Module implements KT_Module_Tab {
 				autoWidth: false,
 				displayLength: 10,
 				pagingType: "full_numbers",
+                sorting: [[ 0, "desc" ]],
                 columns: [
 					/* 0-Timestamp */   { },
 					/* 1-User */        { },
