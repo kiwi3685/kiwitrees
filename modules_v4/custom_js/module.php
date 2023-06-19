@@ -67,20 +67,20 @@ class custom_js_KT_Module extends KT_Module implements KT_Module_Config, KT_Modu
 					}
 				');
 
-			$action = safe_POST("action");
+			$action = KT_Filter::post("action");
 
 			if ($action == 'update') {
-				set_module_setting('custom_js', 'CJS_FOOTER',  $_POST['NEW_CJS_FOOTER']);
+				set_module_setting('custom_js', 'CJS_FOOTER',  KT_Filter::post('NEW_CJS_FOOTER'));
 				AddToLog($this->getTitle().' config updated', 'config');
 			}
 
-			$CJS_FOOTER=get_module_setting('custom_js', 'CJS_FOOTER');
+			$CJS_FOOTER = get_module_setting('custom_js', 'CJS_FOOTER');
                 echo '
-					<div id="js_form" style="width:80%; min-width:600px;" >
-						<h3>', KT_I18N::translate('Custom Javascript for Footer'), '</h3>
-						<form style="width:98%;" method="post" name="configform" action="', $this->getConfigLink(), '">
+					<div id="js_form" style="width:80%; min-width:600px; min-height: 600px;" >
+						<h3>' . KT_I18N::translate('Custom Javascript for Footer') . '</h3>
+						<form method="post" name="configform" action="' . $this->getConfigLink() . '">
 							<input type="hidden" name="action" value="update">
-							<textarea id="new_js" style="width:100%;" name="NEW_CJS_FOOTER">', $CJS_FOOTER, '</textarea>
+							<textarea id="new_js" style="width:100%;" name="NEW_CJS_FOOTER">' . $CJS_FOOTER . '</textarea>
 							<button class="btn btn-primary save" type="submit">
 							    <i class="fa fa-floppy-o"></i>'.
 							    KT_I18N::translate('save').'
