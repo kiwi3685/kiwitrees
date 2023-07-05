@@ -152,11 +152,11 @@ $controller
 									<td>', two_state_checkbox('status-' . $module_name, $status == 'enabled'), '</td>
 									<td>', $status, '</td>
 									<td>';
-										if ( $module instanceof KT_Module_Config ) {
+										if ( $module instanceof KT_Module_Config && $module->getConfigLink()) {
 											echo '<a href="', $module->getConfigLink(), '">';
 										}
 										echo $module->getTitle();
-										if ( $module instanceof KT_Module_Config && array_key_exists( $module_name, KT_Module::getActiveModules() ) ) {
+										if ( $module instanceof KT_Module_Config && array_key_exists($module_name, KT_Module::getActiveModules())  && $module->getConfigLink() ) {
 											echo ' <i class="fa fa-cogs"></i></a>';
 										}
 									echo '</td>
