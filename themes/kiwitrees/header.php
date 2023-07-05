@@ -172,12 +172,6 @@ if (array_key_exists('float_contacts', KT_Module::getActiveModules())) {
 	float_contacts_KT_Module::show();
 }
 
-/*foreach (KT_Module::getActiveModules() as $module) {
-	KT_Module::getModuleByName('tab_changes')->getTabContent();
-	if ('float_contacts' == $module->getName()) {
-			echo $module->show();
-	}
-}*/
 // begin content section
 echo $javascript; ?>
 <div id="content">
