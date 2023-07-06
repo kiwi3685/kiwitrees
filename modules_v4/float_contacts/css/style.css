@@ -27,8 +27,6 @@
 #floating_contact {
 	bottom: 0;
 	display: flex;
-	flex-direction: row-reverse;
-	flex-wrap: wrap-reverse;
 	right: 0;
 	z-index: 9999;
 	position: fixed;
@@ -36,9 +34,9 @@
 #floating_contact button {
 	border-radius: 50%;
 	border-style: none;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 	height: 5rem;
 	margin: 2rem;
-	position: absolute;
 	width: 5rem;
 }
 #floating_contact i {
