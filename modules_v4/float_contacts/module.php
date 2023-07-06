@@ -40,11 +40,13 @@ class float_contacts_KT_Module extends KT_Module implements KT_Module_Config {
 	// Implement KT_Module_Config
 	public function getConfigLink() {
 		return false;
+
 	}
 
 	// Extend KT_Module
 	public function modAction($mod_action) {
 		return false;
+
 	}
 
 	// Extend KT_Module
@@ -54,11 +56,12 @@ class float_contacts_KT_Module extends KT_Module implements KT_Module_Config {
 			<link type="text/css" href="<?php echo KT_STATIC_URL . KT_MODULES_DIR; ?>float_contacts/css/style.css" rel="stylesheet">
 			<button>
 				<a href="message.php?url=<?php echo KT_SERVER_NAME . KT_SCRIPT_PATH . addslashes(rawurlencode(get_query_url())); ?>" rel="noopener noreferrer" title="<?php echo KT_I18N::translate('Send Message'); ?>">
-					<i class="fas fa-commenting-o"></i>
+					<i class="fa fa-commenting-o"></i>
 				</a>
 			</button>
 		</div>
-	<?php
-	}
+
+	<?php }
+
 
 }

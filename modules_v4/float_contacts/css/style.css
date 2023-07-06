@@ -36,13 +36,13 @@
 #floating_contact button {
 	border-radius: 50%;
 	border-style: none;
-	height: 6rem;
+	height: 5rem;
 	margin: 2rem;
 	position: absolute;
-	width: 6rem;
+	width: 5rem;
 }
 #floating_contact i {
-	font-size: 5rem;
+	font-size: 4rem;
 	margin-bottom: 1rem;
 	margin-left: 0.275rem;
 }
