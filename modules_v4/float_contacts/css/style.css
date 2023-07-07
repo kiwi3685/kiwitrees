@@ -26,7 +26,6 @@
 */
 #floating_contact {
 	bottom: 0;
-	display: flex;
 	right: 0;
 	z-index: 9999;
 	position: fixed;
