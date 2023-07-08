@@ -313,7 +313,6 @@ function duplicate_famtag($tag) {
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
 
-
 function duplicate_child() {
 	$html	= '<ul>';
 	$count	= 0;
