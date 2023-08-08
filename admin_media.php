@@ -174,7 +174,7 @@ case 'load_json':
 			}
 
             // table array
-			$aaData[] = array(
+			$aaData = [
 				media_file_info($media_folder, $media_path, $row['media_path']),
 				$media->displayImage(),
 				media_object_info($media),
@@ -182,7 +182,7 @@ case 'load_json':
 				KT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
                 '',
                 $media_path . $row['media_path']
-			);
+			];
 		}
 		break;
 
@@ -551,7 +551,7 @@ $controller
 			serverSide: true,
 			ajaxSource: "' . KT_SERVER_NAME . KT_SCRIPT_PATH . KT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 			' . KT_I18N::datatablesI18N(array(1, 5, 10, 20, 50, 100, 500, 1000, -1)) . ',
-            buttons: [{extend: "csv", exportOptions: {columns: [6] }}],
+            buttons: [{extend: "csv", exportOptions: {columns: [0,1,2,3,4,6] }}],
 			jQueryUI: true,
 			autoWidth:false,
 			pageLength: 10,
