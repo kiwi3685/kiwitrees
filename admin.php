@@ -1643,6 +1643,8 @@ function old_paths() {
 		KT_ROOT . 'modules_v4/research_links/plugins/zoekakten.php', // very old file not previously removed
 		KT_ROOT . 'library/KT/Census/RegisterOfWales1939.php', // change of file name
 		KT_ROOT . 'library/KT/Census/RegisterOfEngland1939.php', // change of file name
+		// Removed in kiwitrees 3.3.12
+		KT_ROOT . 'library/swiftmailer',
 	);
 }
 
