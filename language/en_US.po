@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2022-10-27 15:02+1300\n"
-"PO-Revision-Date: 2022-10-27 15:04+1300\n"
+"POT-Creation-Date: 2023-08-30 11:42+1200\n"
+"PO-Revision-Date: 2023-08-30 11:43+1200\n"
 "Last-Translator: Nigel Osborne <kiwi3685@me.com>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -412,12 +412,12 @@ msgstr "Kiwitrees is compatible with this version."
 #, php-format
 msgid ""
 "Kiwitrees is not yet tested for compatibility with your version of PHP. It "
-"might work, but if you find any issues please report them on the <a class="
-"\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
+"might work, but if you find any issues please report them on the <a "
+"class=\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
 msgstr ""
 "Kiwitrees is not yet tested for compatibility with your version of PHP. It "
-"might work, but if you find any issues please report them on the <a class="
-"\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
+"might work, but if you find any issues please report them on the <a "
+"class=\"current\" href=\"%s\" target=\"_blank\">kiwitrees support forum</a>"
 
 #: admin.php:122 admin_site_info.php:30 themes/_administration/header.php:138
 msgid "Server information"
@@ -602,7 +602,7 @@ msgstr "The file %s was deleted."
 msgid "The file %s could not be deleted."
 msgstr "The file %s could not be deleted."
 
-#: admin_media.php:166 admin_media.php:241 admin_trees_duplicates.php:312
+#: admin_media.php:166 admin_media.php:241 admin_trees_duplicates.php:315
 #: admin_users.php:266 admin_users.php:267 branches.php:191
 #: includes/functions/functions_edit.php:142
 #: includes/functions/functions_edit.php:1425
@@ -661,12 +661,12 @@ msgstr "Create"
 msgid "Delete"
 msgstr "Delete"
 
-#: admin_media.php:459 library/KT/Media.php:212
+#: admin_media.php:459 library/KT/Media.php:214
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: admin_media.php:463 library/KT/Media.php:293
+#: admin_media.php:463 library/KT/Media.php:294
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s × %2$s pixels"
@@ -906,7 +906,7 @@ msgstr "Restrict access to the site, using IP addresses and user-agent strings"
 #: admin_trees_append.php:35 admin_trees_check.php:36
 #: admin_trees_manage.php:302 admin_trees_renumber.php:64
 #: admin_trees_sanity.php:231 modules_v4/album/module.php:271
-#: modules_v4/backup_to_dropbox/module.php:107
+#: modules_v4/backup_to_dropbox/module.php:103
 #: modules_v4/census_assistant/census-edit.php:53
 #: modules_v4/census_assistant/census-edit.php:54
 #: modules_v4/chart_relationship/module.php:200
@@ -1369,14 +1369,14 @@ msgid ""
 "administrator will either approve or decline your account application. You "
 "will receive an email message when your application has been approved.</"
 "center></div><br/></li><li><b>Predefined text that states only family "
-"members can request a user account:</b><div class=\"list_value_wrap"
-"\"><center><b>Welcome to this Genealogy website</b><br>Access to this site "
-"is permitted to <u>family members only</u>.<br>If you have a user account "
-"you can login on this page. If you don't have a user account, you can apply "
-"for one by clicking on the appropriate link below.<br>After verifying the "
-"information you provide, the administrator will either approve or decline "
-"your request for an account. You will receive an email when your request is "
-"approved.</center></div></li></ul>"
+"members can request a user account:</b><div "
+"class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</"
+"b><br>Access to this site is permitted to <u>family members only</u>.<br>If "
+"you have a user account you can login on this page. If you don't have a user "
+"account, you can apply for one by clicking on the appropriate link below."
+"<br>After verifying the information you provide, the administrator will "
+"either approve or decline your request for an account. You will receive an "
+"email when your request is approved.</center></div></li></ul>"
 msgstr ""
 "Here you can choose text to appear on the login page. You must determine "
 "which predefined text is most appropriate. You can also choose to enter your "
@@ -1399,14 +1399,14 @@ msgstr ""
 "administrator will either approve or decline your account application. You "
 "will receive an email message when your application has been approved.</"
 "center></div><br/></li><li><b>Predefined text that states only family "
-"members can request a user account:</b><div class=\"list_value_wrap"
-"\"><center><b>Welcome to this Genealogy website</b><br>Access to this site "
-"is permitted to <u>family members only</u>.<br>If you have a user account "
-"you can login on this page. If you don't have a user account, you can apply "
-"for one by clicking on the appropriate link below.<br>After verifying the "
-"information you provide, the administrator will either approve or decline "
-"your request for an account. You will receive an email when your request is "
-"approved.</center></div></li></ul>"
+"members can request a user account:</b><div "
+"class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</"
+"b><br>Access to this site is permitted to <u>family members only</u>.<br>If "
+"you have a user account you can login on this page. If you don't have a user "
+"account, you can apply for one by clicking on the appropriate link below."
+"<br>After verifying the information you provide, the administrator will "
+"either approve or decline your request for an account. You will receive an "
+"email when your request is approved.</center></div></li></ul>"
 
 #: admin_site_config.php:412
 msgid "Custom welcome text"
@@ -1445,20 +1445,22 @@ msgstr "Show acceptable use agreement on «Request new user account» page"
 #: admin_site_config.php:434
 msgid ""
 "When set to <b>Yes</b>, the following message will appear above the input "
-"fields on the «Request new user account» page:<div class=\"list_value_wrap"
-"\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing "
-"and submitting this form, you agree:<ul><li>to protect the privacy of living "
-"people listed on our site;</li><li>and in the text box below, to explain to "
-"whom you are related, or to provide us with information on someone who "
-"should be listed on our site.</li></ul></div></div>"
+"fields on the «Request new user account» page:<div "
+"class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div "
+"class=\"error\">By completing and submitting this form, you agree:<ul><li>to "
+"protect the privacy of living people listed on our site;</li><li>and in the "
+"text box below, to explain to whom you are related, or to provide us with "
+"information on someone who should be listed on our site.</li></ul></div></"
+"div>"
 msgstr ""
 "When set to <b>Yes</b>, the following message will appear above the input "
-"fields on the «Request new user account» page:<div class=\"list_value_wrap"
-"\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing "
-"and submitting this form, you agree:<ul><li>to protect the privacy of living "
-"people listed on our site;</li><li>and in the text box below, to explain to "
-"whom you are related, or to provide us with information on someone who "
-"should be listed on our site.</li></ul></div></div>"
+"fields on the «Request new user account» page:<div "
+"class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div "
+"class=\"error\">By completing and submitting this form, you agree:<ul><li>to "
+"protect the privacy of living people listed on our site;</li><li>and in the "
+"text box below, to explain to whom you are related, or to provide us with "
+"information on someone who should be listed on our site.</li></ul></div></"
+"div>"
 
 #: admin_site_config.php:445
 msgid "Use secret field"
@@ -1615,12 +1617,12 @@ msgstr "Message"
 
 #: admin_site_logs.php:234 admin_site_logs.php:259 admin_trees_change.php:283
 #: admin_trees_change.php:309 edit_changes.php:165
-#: modules_v4/tab_changes/module.php:159
+#: modules_v4/tab_changes/module.php:160
 msgid "User"
 msgstr "User"
 
 #: admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_change.php:286
-#: admin_trees_change.php:310 admin_trees_duplicates.php:146
+#: admin_trees_change.php:310 admin_trees_duplicates.php:149
 #: admin_trees_findunlinked.php:111 admin_trees_manage.php:312
 #: admin_trees_missing-source.php:120 admin_trees_missing.php:106
 #: admin_trees_places.php:103 admin_trees_sanity.php:241
@@ -1651,7 +1653,7 @@ msgid "Export"
 msgstr "Export"
 
 #: admin_site_logs.php:255 admin_trees_change.php:304
-#: modules_v4/tab_changes/module.php:158
+#: modules_v4/tab_changes/module.php:159
 msgid "Timestamp"
 msgstr "Timestamp"
 
@@ -1768,7 +1770,7 @@ msgstr "pending"
 
 #: admin_trees_change.php:273 admin_trees_change.php:305
 #: includes/functions/functions_print.php:1009 library/KT/Gedcom/Tag.php:336
-#: modules_v4/tab_changes/module.php:161
+#: modules_v4/tab_changes/module.php:162
 msgid "Status"
 msgstr "Status"
 
@@ -1788,7 +1790,7 @@ msgstr "Record"
 msgid "Old data"
 msgstr "Old data"
 
-#: admin_trees_change.php:307 modules_v4/tab_changes/module.php:160
+#: admin_trees_change.php:307 modules_v4/tab_changes/module.php:161
 msgid "GEDCOM Data"
 msgstr "GEDCOM Data"
 
@@ -2117,8 +2119,8 @@ msgstr "Family"
 #: library/KT/Gedcom/Tag.php:332 modules_v4/gallery/module.php:257
 #: modules_v4/report_marriages/module.php:227
 #: modules_v4/report_vital_records/module.php:332
-#: modules_v4/report_vital_records/module.php:373
-#: modules_v4/report_vital_records/module.php:396
+#: modules_v4/report_vital_records/module.php:367
+#: modules_v4/report_vital_records/module.php:390
 #: modules_v4/tab_dna/module.php:155 modules_v4/tab_dna/module.php:313
 #: modules_v4/tab_dna/module.php:383
 msgid "Source"
@@ -3504,7 +3506,7 @@ msgstr "Media filenames will be prefixed by %s."
 msgid "Find duplicate individuals"
 msgstr "Find duplicate individuals"
 
-#: admin_trees_duplicates.php:158 help_text.php:538
+#: admin_trees_duplicates.php:161 help_text.php:538
 #: library/KT/Gedcom/Tag.php:340
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:229
 #: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:234
@@ -3512,29 +3514,29 @@ msgstr "Find duplicate individuals"
 msgid "Surname"
 msgstr "Surname"
 
-#: admin_trees_duplicates.php:159 admin_trees_duplicates.php:171
-#: admin_trees_duplicates.php:173
+#: admin_trees_duplicates.php:162 admin_trees_duplicates.php:174
+#: admin_trees_duplicates.php:176
 msgid "Match exactly"
 msgstr "Match exactly"
 
-#: admin_trees_duplicates.php:166 admin_trees_duplicates.php:178
+#: admin_trees_duplicates.php:169 admin_trees_duplicates.php:181
 msgid "Tick for exact match"
 msgstr "Tick for exact match"
 
-#: admin_trees_duplicates.php:170 search.php:179
+#: admin_trees_duplicates.php:173 search.php:179
 msgid "Given name"
 msgstr "Given name"
 
-#: admin_trees_duplicates.php:183 admin_trees_sanity.php:212
+#: admin_trees_duplicates.php:186 admin_trees_sanity.php:212
 #: library/KT/Gedcom/Tag.php:326
 msgid "Gender"
 msgstr "Gender"
 
-#: admin_trees_duplicates.php:187
+#: admin_trees_duplicates.php:190
 msgid "Any"
 msgstr "Any"
 
-#: admin_trees_duplicates.php:191 calendar.php:670
+#: admin_trees_duplicates.php:194 calendar.php:670
 #: includes/functions/functions_edit.php:1477
 #: library/KT/Controller/Individual.php:266
 #: library/KT/Controller/Individual.php:269 library/KT/Stats.php:3511
@@ -3542,7 +3544,7 @@ msgstr "Any"
 msgid "Male"
 msgstr "Male"
 
-#: admin_trees_duplicates.php:195 calendar.php:674
+#: admin_trees_duplicates.php:198 calendar.php:674
 #: includes/functions/functions_edit.php:1479
 #: library/KT/Controller/Individual.php:275
 #: library/KT/Controller/Individual.php:278 library/KT/Stats.php:3511
@@ -3550,7 +3552,7 @@ msgstr "Male"
 msgid "Female"
 msgstr "Female"
 
-#: admin_trees_duplicates.php:199 calendar.php:678
+#: admin_trees_duplicates.php:202 calendar.php:678
 #: includes/functions/functions_edit.php:1481
 #: library/KT/Controller/Individual.php:284
 #: library/KT/Controller/Individual.php:287
@@ -3560,50 +3562,47 @@ msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Unknown"
 
-#: admin_trees_duplicates.php:204
-#| msgid "Include married names: "
+#: admin_trees_duplicates.php:207
 msgid "Include married names"
 msgstr "Include married names"
 
-#: admin_trees_duplicates.php:213
+#: admin_trees_duplicates.php:216
 msgid "Enter a birth or death year, and a range either side of that"
 msgstr "Enter a birth or death year, and a range either side of that"
 
-#: admin_trees_duplicates.php:215 admin_trees_duplicates.php:255
-#: admin_trees_duplicates.php:257 admin_trees_missing.php:262
+#: admin_trees_duplicates.php:218 admin_trees_duplicates.php:258
+#: admin_trees_duplicates.php:260 admin_trees_missing.php:262
 #: admin_trees_sanity.php:256 admin_trees_sanity.php:260 edit_changes.php:166
 #: help_text.php:170 help_text.php:202 library/KT/Gedcom/Tag.php:189
 #: modules_v4/report_fact/module.php:182 modules_v4/report_fact/module.php:344
 #: modules_v4/report_marriages/module.php:224
 #: modules_v4/report_vital_records/module.php:324
-#: modules_v4/report_vital_records/module.php:365
-#: modules_v4/report_vital_records/module.php:388
+#: modules_v4/report_vital_records/module.php:359
+#: modules_v4/report_vital_records/module.php:382
 #: modules_v4/tab_census/module.php:108
 msgid "Date"
 msgstr "Date"
 
-#: admin_trees_duplicates.php:216
-#| msgid "Birth year"
+#: admin_trees_duplicates.php:219
 msgid "4-digit year"
 msgstr "4-digit year"
 
-#: admin_trees_duplicates.php:219
+#: admin_trees_duplicates.php:222
 msgid "Range of years (plus / minus)"
 msgstr "Range of years (plus / minus)"
 
-#: admin_trees_duplicates.php:225 admin_trees_missing.php:137 branches.php:85
+#: admin_trees_duplicates.php:228 admin_trees_missing.php:137 branches.php:85
 #: calendar.php:203 modules_v4/chart_fanchart/module.php:128
 #: modules_v4/stories/module.php:505 relationship.php:115
 msgid "Show"
 msgstr "Show"
 
-#: admin_trees_duplicates.php:239
+#: admin_trees_duplicates.php:242
 #, php-format
-#| msgid "More than %s possible duplicates found."
 msgid "%s possible duplicates found"
 msgstr "%s possible duplicates found"
 
-#: admin_trees_duplicates.php:245 admin_trees_missing-source.php:185
+#: admin_trees_duplicates.php:248 admin_trees_missing-source.php:185
 #: admin_trees_missing.php:260 admin_trees_sanity.php:213
 #: edit_interface.php:2669 inverselink.php:112 inverselink.php:186
 #: library/KT/Controller/Individual.php:173 library/KT/Gedcom/Tag.php:277
@@ -3614,7 +3613,7 @@ msgstr "%s possible duplicates found"
 msgid "Name"
 msgstr "Name"
 
-#: admin_trees_duplicates.php:246 admin_trees_sanity.php:207
+#: admin_trees_duplicates.php:249 admin_trees_sanity.php:207
 #: admin_trees_source.php:131 admin_trees_source.php:254
 #: library/KT/Controller/FancyTreeView.php:919 library/KT/Gedcom/Tag.php:145
 #: modules_v4/googlemap/module.php:1289
@@ -3623,18 +3622,18 @@ msgstr "Name"
 msgid "Birth"
 msgstr "Birth"
 
-#: admin_trees_duplicates.php:247 admin_trees_sanity.php:209
+#: admin_trees_duplicates.php:250 admin_trees_sanity.php:209
 #: admin_trees_source.php:257 library/KT/Controller/FancyTreeView.php:922
 #: library/KT/Gedcom/Tag.php:190 modules_v4/report_related_indi/module.php:240
 #: modules_v4/report_vital_records/module.php:290
 msgid "Death"
 msgstr "Death"
 
-#: admin_trees_duplicates.php:250
+#: admin_trees_duplicates.php:253
 msgid "Merge selected"
 msgstr "Merge selected"
 
-#: admin_trees_duplicates.php:256 admin_trees_duplicates.php:258
+#: admin_trees_duplicates.php:259 admin_trees_duplicates.php:261
 #: admin_trees_missing.php:263 admin_trees_sanity.php:257
 #: admin_trees_sanity.php:261 admin_trees_source.php:256
 #: admin_trees_source.php:259 library/KT/Gedcom/Tag.php:302
@@ -3649,17 +3648,17 @@ msgstr "Merge selected"
 #: modules_v4/report_related_indi/module.php:239
 #: modules_v4/report_related_indi/module.php:242
 #: modules_v4/report_vital_records/module.php:325
-#: modules_v4/report_vital_records/module.php:366
-#: modules_v4/report_vital_records/module.php:389
+#: modules_v4/report_vital_records/module.php:360
+#: modules_v4/report_vital_records/module.php:383
 #: modules_v4/tab_census/module.php:109 search.php:187 search.php:264
 msgid "Place"
 msgstr "Place"
 
-#: admin_trees_duplicates.php:271
+#: admin_trees_duplicates.php:274
 msgid "Married name"
 msgstr "Married name"
 
-#: admin_trees_duplicates.php:357
+#: admin_trees_duplicates.php:360
 msgid "No duplicates to display"
 msgstr "No duplicates to display"
 
@@ -3821,13 +3820,13 @@ msgstr "Keep media objects"
 msgid ""
 "If you have created media objects in kiwitrees, and edited your gedcom off-"
 "line using a program that deletes media objects, then check this box to "
-"merge the current media objects with the new GEDCOM. <p style=\"color:red"
-"\">Otherwise, ensure this box is NOT checked</p>"
+"merge the current media objects with the new GEDCOM. <p style=\"color:"
+"red\">Otherwise, ensure this box is NOT checked</p>"
 msgstr ""
 "If you have created media objects in kiwitrees, and edited your gedcom off-"
 "line using a program that deletes media objects, then check this box to "
-"merge the current media objects with the new GEDCOM. <p style=\"color:red"
-"\">Otherwise, ensure this box is NOT checked</p>"
+"merge the current media objects with the new GEDCOM. <p style=\"color:"
+"red\">Otherwise, ensure this box is NOT checked</p>"
 
 #: admin_trees_manage.php:269
 msgid "Add spaces where notes were wrapped"
@@ -4274,7 +4273,7 @@ msgstr "Replace with"
 msgid "preview"
 msgstr "preview"
 
-#: admin_trees_places.php:116 modules_v4/backup_to_dropbox/module.php:163
+#: admin_trees_places.php:116 modules_v4/backup_to_dropbox/module.php:159
 msgid "update"
 msgstr "update"
 
@@ -4812,8 +4811,9 @@ msgstr "Edit user"
 #: includes/functions/functions_print.php:346
 #: includes/functions/functions_print.php:371
 #: includes/functions/functions_print.php:602 library/KT/Stats.php:3621
-#: themes/colors/footer.php:35 themes/kiwitrees/footer.php:35
-#: themes/webtrees/footer.php:35 themes/xenea/footer.php:35
+#: modules_v4/float_contacts/module.php:58 themes/colors/footer.php:35
+#: themes/kiwitrees/footer.php:35 themes/webtrees/footer.php:35
+#: themes/xenea/footer.php:35
 msgid "Send Message"
 msgstr "Send Message"
 
@@ -11566,7 +11566,7 @@ msgid "Story title"
 msgstr "Story title"
 
 #: includes/functions/functions_print_lists.php:1638
-#: modules_v4/backup_to_dropbox/module.php:209
+#: modules_v4/backup_to_dropbox/module.php:205
 msgid "File name"
 msgstr "File name"
 
@@ -11642,7 +11642,7 @@ msgstr "Common ancestor: "
 #: modules_v4/report_family/module.php:322
 #: modules_v4/report_individual/module.php:362
 #: modules_v4/report_related_fam/module.php:418
-#: modules_v4/report_vital_records/module.php:362
+#: modules_v4/report_vital_records/module.php:356
 msgid "Spouse"
 msgstr "Spouse"
 
@@ -11653,72 +11653,72 @@ msgstr "Spouse"
 msgid "Partner"
 msgstr "Partner"
 
-#: includes/functions/functions_sanity_checks.php:376
+#: includes/functions/functions_sanity_checks.php:375
 #, php-format
 msgid "One or more empty %s tags "
 msgstr "One or more empty %s tags "
 
-#: includes/functions/functions_sanity_checks.php:577
+#: includes/functions/functions_sanity_checks.php:576
 #, php-format
 msgid "born in %1s, now aged %2s years"
 msgstr "born in %1s, now aged %2s years"
 
-#: includes/functions/functions_sanity_checks.php:585
+#: includes/functions/functions_sanity_checks.php:584
 #, php-format
 msgid "married in %1s at age %2s years"
 msgstr "married in %1s at age %2s years"
 
-#: includes/functions/functions_sanity_checks.php:593
+#: includes/functions/functions_sanity_checks.php:592
 #, php-format
 msgid "Age difference = %1s years"
 msgstr "Age difference = %1s years"
 
-#: includes/functions/functions_sanity_checks.php:605
+#: includes/functions/functions_sanity_checks.php:604
 #, php-format
 msgid "gave birth before age %1s years to %2s in %3s"
 msgstr "gave birth before age %1s years to %2s in %3s"
 
-#: includes/functions/functions_sanity_checks.php:617
+#: includes/functions/functions_sanity_checks.php:616
 #, php-format
 msgid "gave birth after age %1s years to %2s in %3s"
 msgstr "gave birth after age %1s years to %2s in %3s"
 
-#: includes/functions/functions_sanity_checks.php:625
+#: includes/functions/functions_sanity_checks.php:624
 #, php-format
 msgid "born in %1s, baptised at age %2s years"
 msgstr "born in %1s, baptised at age %2s years"
 
-#: includes/functions/functions_sanity_checks.php:633
+#: includes/functions/functions_sanity_checks.php:632
 #, php-format
 msgid "born in %1s, christened at age %2s years"
 msgstr "born in %1s, christened at age %2s years"
 
-#: includes/functions/functions_sanity_checks.php:757
+#: includes/functions/functions_sanity_checks.php:756
 #, php-format
 msgid "No %s data"
 msgstr "No %s data"
 
-#: includes/functions/functions_sanity_checks.php:855
+#: includes/functions/functions_sanity_checks.php:854
 #, php-format
 msgid "%1s %2s - Media object has 0 Bytes"
 msgstr "%1s %2s - Media object has 0 Bytes"
 
-#: includes/functions/functions_sanity_checks.php:863
+#: includes/functions/functions_sanity_checks.php:862
 #, php-format
 msgid "%1s %2s - Missing main image"
 msgstr "%1s %2s - Missing main image"
 
-#: includes/functions/functions_sanity_checks.php:870
+#: includes/functions/functions_sanity_checks.php:869
 #, php-format
 msgid "%1s %2s - Missing thumbnail image"
 msgstr "%1s %2s - Missing thumbnail image"
 
-#: includes/functions/functions_sanity_checks.php:877
+#: includes/functions/functions_sanity_checks.php:876
 #, php-format
 msgid "%1s %2s - Missing main and thumbnail images"
 msgstr "%1s %2s - Missing main and thumbnail images"
 
-#: includes/functions/functions_sanity_checks.php:893
+#: includes/functions/functions_sanity_checks.php:892
 #, php-format
 msgid "%1s %2s - Media object not linked"
 msgstr "%1s %2s - Media object not linked"
@@ -12675,7 +12675,7 @@ msgstr ""
 msgid "Pedigree tree of %s"
 msgstr "Pedigree tree of %s"
 
-#: library/KT/Controller/Pedigree.php:240 library/KT/Place.php:95
+#: library/KT/Controller/Pedigree.php:240 library/KT/Place.php:96
 #: modules_v4/family_nav/module.php:260
 #: modules_v4/googlemap/admin_places.php:587
 #: modules_v4/googlemap/admin_places.php:594
@@ -19501,15 +19501,15 @@ msgstr ""
 msgid "Show media objects with no TYPE"
 msgstr "Show media objects with no TYPE"
 
-#: modules_v4/backup_to_dropbox/module.php:36
+#: modules_v4/backup_to_dropbox/module.php:32
 msgid "Backup to Dropbox"
 msgstr "Backup to Dropbox"
 
-#: modules_v4/backup_to_dropbox/module.php:41
+#: modules_v4/backup_to_dropbox/module.php:37
 msgid "Allows you to backup your media and other files to a Dropbox account"
 msgstr "Allows you to backup your media and other files to a Dropbox account"
 
-#: modules_v4/backup_to_dropbox/module.php:111
+#: modules_v4/backup_to_dropbox/module.php:107
 msgid ""
 "If you have a Dropbox account you can use this tool to copy the content of "
 "your kiwitrees data folder to Dropbox. The data folder includes any GEDCOM "
@@ -19521,79 +19521,79 @@ msgstr ""
 "files you have created and your media files. More details on setting this up "
 "are available at the kiwitrees.net FAQ page."
 
-#: modules_v4/backup_to_dropbox/module.php:116
+#: modules_v4/backup_to_dropbox/module.php:112
 msgid "Settings"
 msgstr "ID settings"
 
-#: modules_v4/backup_to_dropbox/module.php:120
+#: modules_v4/backup_to_dropbox/module.php:116
 msgid "Dropbox App folder"
 msgstr "Dropbox App folder"
 
-#: modules_v4/backup_to_dropbox/module.php:126
+#: modules_v4/backup_to_dropbox/module.php:122
 msgid "Dropbox App token"
 msgstr "Dropbox App token"
 
-#: modules_v4/backup_to_dropbox/module.php:128
+#: modules_v4/backup_to_dropbox/module.php:124
 msgid "Not a valid Dropbox token"
 msgstr "Not a valid Dropbox token"
 
-#: modules_v4/backup_to_dropbox/module.php:133
+#: modules_v4/backup_to_dropbox/module.php:129
 msgid "These files and folders are always excluded from the backup."
 msgstr "These files and folders are always excluded from the backup."
 
-#: modules_v4/backup_to_dropbox/module.php:146
+#: modules_v4/backup_to_dropbox/module.php:142
 msgid "Also exclude these files and folders"
 msgstr "Also exclude these files and folders"
 
-#: modules_v4/backup_to_dropbox/module.php:150
+#: modules_v4/backup_to_dropbox/module.php:146
 msgid "Separate each item by a comma"
 msgstr "Separate each item by a comma"
 
-#: modules_v4/backup_to_dropbox/module.php:155
+#: modules_v4/backup_to_dropbox/module.php:151
 msgid "Date of last backup"
 msgstr "Date of last backup"
 
-#: modules_v4/backup_to_dropbox/module.php:174
+#: modules_v4/backup_to_dropbox/module.php:170
 msgid "These are the files and folders that will be sent to Dropbox."
 msgstr "These are the files and folders that will be sent to Dropbox."
 
-#: modules_v4/backup_to_dropbox/module.php:175
+#: modules_v4/backup_to_dropbox/module.php:171
 msgid "Where a folder is shown, the entire contents will be sent."
 msgstr "Where a folder is shown, the entire contents will be sent."
 
-#: modules_v4/backup_to_dropbox/module.php:179
+#: modules_v4/backup_to_dropbox/module.php:175
 msgid "File or folder name"
 msgstr "File or folder name"
 
-#: modules_v4/backup_to_dropbox/module.php:180
+#: modules_v4/backup_to_dropbox/module.php:176
 msgid "Date last modified"
 msgstr "Date last modified"
 
-#: modules_v4/backup_to_dropbox/module.php:205
+#: modules_v4/backup_to_dropbox/module.php:201
 msgid "Files uploaded to Dropbox"
 msgstr "Files uploaded to Dropbox"
 
-#: modules_v4/backup_to_dropbox/module.php:210
+#: modules_v4/backup_to_dropbox/module.php:206
 msgid "Size"
 msgstr "Size"
 
-#: modules_v4/backup_to_dropbox/module.php:211
+#: modules_v4/backup_to_dropbox/module.php:207
 msgid "Last modified date"
 msgstr "Last modified date"
 
-#: modules_v4/backup_to_dropbox/module.php:225
+#: modules_v4/backup_to_dropbox/module.php:221
 msgid "backup"
 msgstr "backup"
 
-#: modules_v4/backup_to_dropbox/module.php:229
+#: modules_v4/backup_to_dropbox/module.php:225
 msgid "Dropbox and the Dropbox logo are trademarks of Dropbox, Inc."
 msgstr "Dropbox and the Dropbox logo are trademarks of Dropbox, Inc."
 
-#: modules_v4/backup_to_dropbox/module.php:314
+#: modules_v4/backup_to_dropbox/module.php:310
 msgid "No files uploaded"
 msgstr "No files uploaded"
 
-#: modules_v4/backup_to_dropbox/module.php:317
+#: modules_v4/backup_to_dropbox/module.php:313
 #, php-format
 msgid "Dropbox error message: <span class=\"error\">%s</span>"
 msgstr "Dropbox error message: <span class=\"error\">%s</span>"
@@ -19605,15 +19605,15 @@ msgstr "Batch update"
 
 #: modules_v4/batch_update/admin_batch_update.php:58
 msgid ""
-"These tools can help fix common issues in GEDCOM data.<p  class=\"accepted"
-"\">When you select a tool it will immediately search for the first record "
-"needing correction. This may take a minute or two so wait for it to complete "
-"before proceeding.</p>"
+"These tools can help fix common issues in GEDCOM data.<p  "
+"class=\"accepted\">When you select a tool it will immediately search for the "
+"first record needing correction. This may take a minute or two so wait for "
+"it to complete before proceeding.</p>"
 msgstr ""
-"These tools can help fix common issues in GEDCOM data.<p  class=\"accepted"
-"\">When you select a tool it will immediately search for the first record "
-"needing correction. This may take a minute or two so wait for it to complete "
-"before proceeding.</p>"
+"These tools can help fix common issues in GEDCOM data.<p  "
+"class=\"accepted\">When you select a tool it will immediately search for the "
+"first record needing correction. This may take a minute or two so wait for "
+"it to complete before proceeding.</p>"
 
 #: modules_v4/batch_update/admin_batch_update.php:72
 msgid "Batch update tool"
@@ -19635,7 +19635,7 @@ msgstr ""
 
 #: modules_v4/batch_update/admin_batch_update.php:120
 #: modules_v4/report_related_fam/module.php:476
-#: modules_v4/report_vital_records/module.php:413
+#: modules_v4/report_vital_records/module.php:407
 msgid "Nothing found"
 msgstr "Nothing found"
 
@@ -19752,13 +19752,13 @@ msgstr ""
 
 #: modules_v4/batch_update/plugins/search_replace.php:95
 msgid ""
-"Regular expressions are an advanced pattern matching technique.  See <a href="
-"\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/"
-"manual/en/regexp.reference.php</a> for futher details."
+"Regular expressions are an advanced pattern matching technique.  See <a "
+"href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php."
+"net/manual/en/regexp.reference.php</a> for futher details."
 msgstr ""
-"Regular expressions are an advanced pattern matching technique.  See <a href="
-"\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/"
-"manual/en/regexp.reference.php</a> for futher details."
+"Regular expressions are an advanced pattern matching technique.  See <a "
+"href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php."
+"net/manual/en/regexp.reference.php</a> for futher details."
 
 #: modules_v4/batch_update/plugins/search_replace.php:100
 msgid "Search method"
@@ -21740,10 +21740,10 @@ msgstr ""
 msgid ""
 "\n"
 "\t\t\t\t<p>\n"
-"\t\t\t\t\tThis page is based on work done by Ian MacInnes <span class=\"note"
-"\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people."
-"albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's "
-"English Calendar</b></a></p>\n"
+"\t\t\t\t\tThis page is based on work done by Ian MacInnes <span "
+"class=\"note\">(imacinnes@albion.edu)</span> at his website <a href=\"http://"
+"people.albion.edu/imacinnes/calendar/Welcome.html\" "
+"target=\"blank\"><b>Ian's English Calendar</b></a></p>\n"
 "\t\t\t\t<p>\n"
 "\t\t\t\t\tHis site is intended to replace quick reference handbooks of dates "
 "for those interested in English history, literature, and genealogy. It is "
@@ -21752,13 +21752,13 @@ msgid ""
 "documents from this period will need to follow this link\n"
 "\t\t\t\t</p>\n"
 "\t\t\t\t<p>\n"
-"\t\t\t\t\t<i title=\"Help with English calendar\" onclick="
-"\"modalNotes('%1s', 'Help with English calendar')\">Help with English "
-"calendar</i>\n"
+"\t\t\t\t\t<i title=\"Help with English calendar\" "
+"onclick=\"modalNotes('%1s', 'Help with English calendar')\">Help with "
+"English calendar</i>\n"
 "\t\t\t\t</p>\n"
 "\t\t\t\t<p>\n"
-"\t\t\t\t\t<a title=\"Easter Formulae\" href=\"%2s\" target=\"_blank\" rel="
-"\"noopener noreferrer\">\n"
+"\t\t\t\t\t<a title=\"Easter Formulae\" href=\"%2s\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">\n"
 "\t\t\t\t\t\t<i>The formulae for calculating Easter are derived from the 11th "
 "edition Encyclopedia Brittanica</i>\n"
 "\t\t\t\t\t</a>\n"
@@ -21767,10 +21767,10 @@ msgid ""
 msgstr ""
 "\n"
 "\t\t\t\t<p>\n"
-"\t\t\t\t\tThis page is based on work done by Ian MacInnes <span class=\"note"
-"\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people."
-"albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's "
-"English Calendar</b></a></p>\n"
+"\t\t\t\t\tThis page is based on work done by Ian MacInnes <span "
+"class=\"note\">(imacinnes@albion.edu)</span> at his website <a href=\"http://"
+"people.albion.edu/imacinnes/calendar/Welcome.html\" "
+"target=\"blank\"><b>Ian's English Calendar</b></a></p>\n"
 "\t\t\t\t<p>\n"
 "\t\t\t\t\tHis site is intended to replace quick reference handbooks of dates "
 "for those interested in English history, literature, and genealogy. It is "
@@ -21779,13 +21779,13 @@ msgstr ""
 "documents from this period will need to follow this link\n"
 "\t\t\t\t</p>\n"
 "\t\t\t\t<p>\n"
-"\t\t\t\t\t<i title=\"Help with English calendar\" onclick="
-"\"modalNotes('%1s', 'Help with English calendar')\">Help with English "
-"calendar</i>\n"
+"\t\t\t\t\t<i title=\"Help with English calendar\" "
+"onclick=\"modalNotes('%1s', 'Help with English calendar')\">Help with "
+"English calendar</i>\n"
 "\t\t\t\t</p>\n"
 "\t\t\t\t<p>\n"
-"\t\t\t\t\t<a title=\"Easter Formulae\" href=\"%2s\" target=\"_blank\" rel="
-"\"noopener noreferrer\">\n"
+"\t\t\t\t\t<a title=\"Easter Formulae\" href=\"%2s\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">\n"
 "\t\t\t\t\t\t<i>The formulae for calculating Easter are derived from the 11th "
 "edition Encyclopedia Brittanica</i>\n"
 "\t\t\t\t\t</a>\n"
@@ -23592,19 +23592,19 @@ msgstr ""
 "Allow other modules to edit text using a “WYSIWYG” editor, instead of using "
 "HTML codes."
 
-#: modules_v4/clippings/clippings_ctrl.php:285
+#: modules_v4/clippings/clippings_ctrl.php:286
 msgid "Cannot create"
 msgstr "Cannot create"
 
-#: modules_v4/clippings/clippings_ctrl.php:285
+#: modules_v4/clippings/clippings_ctrl.php:286
 msgid "Check access rights on this directory."
 msgstr "Check access rights on this directory."
 
-#: modules_v4/clippings/clippings_ctrl.php:315 save.php:265
+#: modules_v4/clippings/clippings_ctrl.php:316 save.php:265
 msgid " Clippings cart"
 msgstr " Clippings cart"
 
-#: modules_v4/clippings/clippings_ctrl.php:316 save.php:266
+#: modules_v4/clippings/clippings_ctrl.php:317 save.php:266
 #, php-format
 msgid "User %s has just downloaded a clippings cart file"
 msgstr "User %s has just downloaded a clippings cart file"
@@ -23739,10 +23739,10 @@ msgstr "Some items could not be added due to privacy restrictions"
 #: modules_v4/clippings/module.php:182
 msgid ""
 "This allows you to take extracts (\"clippings\") from this family tree and "
-"collect them into a single file to download in GEDCOM format.<ul><li class="
-"\"warning\">By definition a \"clipping\" is a very small part of a family "
-"tree. This tool cannot provide a complete download of a large tree. If you "
-"require a substantial part of the dataplease please contact the site "
+"collect them into a single file to download in GEDCOM format.<ul><li "
+"class=\"warning\">By definition a \"clipping\" is a very small part of a "
+"family tree. This tool cannot provide a complete download of a large tree. "
+"If you require a substantial part of the dataplease please contact the site "
 "administrator.</li><li><b>How to take clippings?</b><br>This is really "
 "simple. Whenever you see a clickable name (individual, family, or source) "
 "you can go to the Details page of that name. There you will see the <b>Add "
@@ -23752,10 +23752,10 @@ msgid ""
 "<b>Download Now</b> link. Follow the instructions and links.</li></ul>"
 msgstr ""
 "This allows you to take extracts (\"clippings\") from this family tree and "
-"collect them into a single file to download in GEDCOM format.<ul><li class="
-"\"warning\">By definition a \"clipping\" is a very small part of a family "
-"tree. This tool cannot provide a complete download of a large tree. If you "
-"require a substantial part of the dataplease please contact the site "
+"collect them into a single file to download in GEDCOM format.<ul><li "
+"class=\"warning\">By definition a \"clipping\" is a very small part of a "
+"family tree. This tool cannot provide a complete download of a large tree. "
+"If you require a substantial part of the dataplease please contact the site "
 "administrator.</li><li><b>How to take clippings?</b><br>This is really "
 "simple. Whenever you see a clickable name (individual, family, or source) "
 "you can go to the Details page of that name. There you will see the <b>Add "
@@ -24644,6 +24644,14 @@ msgstr "The FAQ list is empty."
 #: modules_v4/faq/module.php:558
 msgid "Edit FAQ items"
 msgstr "Edit FAQ items"
+
+#: modules_v4/float_contacts/module.php:32
+msgid "Floating contact link"
+msgstr "Floating contact link"
+
+#: modules_v4/float_contacts/module.php:37
+msgid "A floating link button for contact messaging"
+msgstr "A floating link button for contact messaging"
 
 #: modules_v4/gallery/help_text.php:31 modules_v4/gallery/module.php:310
 #: modules_v4/gallery/module.php:523
@@ -27080,11 +27088,11 @@ msgstr "Expand all notes"
 msgid "A tab summarising changes to an individual's record"
 msgstr "A tab summarising changes to an individual's record"
 
-#: modules_v4/tab_changes/module.php:85
+#: modules_v4/tab_changes/module.php:86
 msgid "All recorded data changes for this person."
 msgstr "All recorded data changes for this person."
 
-#: modules_v4/tab_changes/module.php:178
+#: modules_v4/tab_changes/module.php:179
 msgid "No change data available"
 msgstr "No change data available"
 
@@ -28146,13 +28154,13 @@ msgstr ""
 #: site-unavailable.php:67
 msgid ""
 "Oops!  The webserver is unable to connect to the database server.  It could "
-"be busy, undergoing maintenance, or simply broken.  You should <a href="
-"\"index.php\">try again</a> in a few minutes or contact the website "
+"be busy, undergoing maintenance, or simply broken.  You should <a "
+"href=\"index.php\">try again</a> in a few minutes or contact the website "
 "administrator."
 msgstr ""
 "Oops!  The webserver is unable to connect to the database server.  It could "
-"be busy, undergoing maintenance, or simply broken.  You should <a href="
-"\"index.php\">try again</a> in a few minutes or contact the website "
+"be busy, undergoing maintenance, or simply broken.  You should <a "
+"href=\"index.php\">try again</a> in a few minutes or contact the website "
 "administrator."
 
 #: site-unavailable.php:74
