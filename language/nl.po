@@ -12,15 +12,16 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 # Nigel Osborne <kiwi3685@me.com>, 2016
-# wim meijberg <jwmeijberg@home.nl>, 2016-2022
+# wim meijberg <jwmeijberg@home.nl>, 2016-2023
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2023-08-30 12:13+1200\n"
-"PO-Revision-Date: 2023-08-30 13:58+1200\n"
-"Last-Translator: wim meijberg <jwmeijberg@home.nl>, 2016-2022\n"
+"PO-Revision-Date: 2023-08-31 15:00+1200\n"
+"Last-Translator: wim meijberg <jwmeijberg@home.nl>, 2016-2023\n"
 "Language-Team: Dutch (http://app.transifex.com/kiwitrees/kiwitrees/language/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -20367,11 +20368,11 @@ msgstr "Wijzig FAQs"
 
 #: modules_v4/float_contacts/module.php:32
 msgid "Floating contact link"
-msgstr ""
+msgstr "Floating contact-link"
 
 #: modules_v4/float_contacts/module.php:37
 msgid "A floating link button for contact messaging"
-msgstr ""
+msgstr "Een floating link voor contact berichten"
 
 #: modules_v4/gallery/help_text.php:31 modules_v4/gallery/module.php:310 modules_v4/gallery/module.php:523
 msgid "Gallery position"
