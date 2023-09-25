@@ -40,6 +40,7 @@
  * @link http://github.com/chrisboulton/php-diff
  */
 
+#[AllowDynamicProperties]
 class Diff_SequenceMatcher
 {
 	/**
