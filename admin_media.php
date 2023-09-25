@@ -158,7 +158,7 @@ case 'load_json':
 		$iTotalDisplayRecords = KT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 		$iTotalRecords        = KT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
 
-		$aaData = array();
+		$aaData = [];
 		foreach ($rows as $row) {
 			$media = KT_Media::getInstance($row);
 			switch ($media->isPrimary()) {
@@ -174,7 +174,7 @@ case 'load_json':
 			}
 
             // table array
-			$aaData = [
+			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $row['media_path']),
 				$media->displayImage(),
 				media_object_info($media),
@@ -182,7 +182,7 @@ case 'load_json':
 				KT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
                 '',
                 $media_path . $row['media_path']
-			];
+			);
 		}
 		break;
 
@@ -449,7 +449,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 }
 
 function media_file_info($media_folder, $media_path, $file) {
-	$html = '<b>' . htmlspecialchars((string) $file). '</b>';
+	$html = '<b>' . htmlspecialchars($file). '</b>';
 
 	$full_path = KT_DATA_DIR . $media_folder . $media_path . $file;
 	if ($file && file_exists($full_path)) {
