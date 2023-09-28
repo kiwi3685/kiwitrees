@@ -1,7 +1,7 @@
 <?php
 /**
  * Kiwitrees: Web based Family History software
- * Copyright (C) 2012 to 2023 kiwitrees.net
+ * Copyright (C) 2012 to 2023 kiwitrees.net.
  *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
@@ -18,22 +18,23 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>
  */
-
 define('KT_SCRIPT_NAME', 'mediafirewall.php');
+
 require './includes/session.php';
 
 Zend_Session::writeClose();
 
-$mid   = KT_Filter::get('mid', KT_REGEX_XREF);
+$mid = KT_Filter::get('mid', KT_REGEX_XREF);
 $thumb = KT_Filter::getBool('thumb');
 $media = KT_Media::getInstance($mid, KT_GED_ID);
 
 /**
- * Send a “Not found” error as an image
+ * Send a “Not found” error as an image.
  */
-function send404AndExit() {
+function send404AndExit()
+{
 	$error = KT_I18N::translate('The media file was not found in this family tree.');
 
 	$width  = mb_strlen($error) * 6.5 + 50;
@@ -61,27 +62,28 @@ function send404AndExit() {
  *
  * @return resource
  */
-function applyWatermark($im) {
+function applyWatermark($im)
+{
 	// text to watermark with
-	$word1_text   = KT_TREE_TITLE;
+	$word1_text = KT_TREE_TITLE;
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
 	$word1_color = '0,0,0';
 	// ttf font file to use
-	$word1_font   = KT_FONT_DEJAVU_SANS_TTF;
+	$word1_font = KT_FONT_DEJAVU_SANS_TTF;
 	// vertical position for the text to past; possible values are: top, middle or bottom, across
 	$word1_vpos = 'across';
 	// horizontal position for the text to past in media file; possible values are: left, right, top2bottom, bottom2top
 	// this value is used only if $word1_vpos=across
 	$word1_hpos = 'left';
 
-	$word2_text    = $_SERVER['HTTP_HOST'];
+	$word2_text = $_SERVER['HTTP_HOST'];
 	$word2_maxsize = 20;
-	$word2_color   = '0,0,0';
-	$word2_font   = KT_FONT_DEJAVU_SANS_TTF;
-	$word2_vpos    = 'top';
-	$word2_hpos    = 'top2bottom';
+	$word2_color = '0,0,0';
+	$word2_font = KT_FONT_DEJAVU_SANS_TTF;
+	$word2_vpos = 'top';
+	$word2_hpos = 'top2bottom';
 
 	embedText($im, $word1_text, $word1_maxsize, $word1_color, $word1_font, $word1_vpos, $word1_hpos);
 	embedText($im, $word2_text, $word2_maxsize, $word2_color, $word2_font, $word2_vpos, $word2_hpos);
@@ -100,79 +102,94 @@ function applyWatermark($im) {
  * @param string   $vpos
  * @param string   $hpos
  */
-function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
+function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos)
+{
 	global $useTTF;
 
 	// there are two ways to embed text with PHP
 	// (preferred) using GD and FreeType you can embed text using any True Type font
 	// (fall back) if that is not available, you can insert basic monospaced text
 
-	$col       = explode(',', $color);
+	$col = explode(',', $color);
 	$textcolor = imagecolorallocate($im, $col[0], $col[1], $col[2]);
 
 	// make adjustments to settings that imagestring and imagestringup can’t handle
 	if (!$useTTF) {
 		// imagestringup only writes up, can’t use top2bottom
-		if ($hpos === 'top2bottom') {
+		if ('top2bottom' === $hpos) {
 			$hpos = 'bottom2top';
 		}
 	}
 
-	$text		= reverseText($text);
-	$height		= imagesy($im);
-	$width		= imagesx($im);
-	$calc_angle	= rad2deg(atan($height / $width));
-	$hypoth		= $height / sin(deg2rad($calc_angle));
+	$text = reverseText($text);
+	$height = imagesy($im);
+	$width = imagesx($im);
+	$calc_angle = rad2deg(atan($height / $width));
+	$hypoth = $height / sin(deg2rad($calc_angle));
 
 	// vertical and horizontal position of the text
 	switch ($vpos) {
 	default:
 	case 'top':
-			$taille		= textlength($maxsize, $width, $text);
-			$pos_y		= $height * 0.15 + $taille;
-			$pos_x		= $width * 0.15;
-			$rotation	= 0;
+			$taille = textlength($maxsize, $width, $text);
+			$pos_y = $height * 0.15 + $taille;
+			$pos_x = $width * 0.15;
+			$rotation = 0;
+
 			break;
+
 	case 'middle':
-			$taille		= textlength($maxsize, $width, $text);
-			$pos_y		= ($height + $taille) / 2;
-			$pos_x		= $width * 0.15;
-			$rotation	= 0;
+			$taille = textlength($maxsize, $width, $text);
+			$pos_y = ($height + $taille) / 2;
+			$pos_x = $width * 0.15;
+			$rotation = 0;
+
 			break;
+
 	case 'bottom':
-			$taille		= textlength($maxsize, $width, $text);
-			$pos_y		= ($height * 0.85 - $taille);
-			$pos_x		= $width * 0.15;
-			$rotation	= 0;
+			$taille = textlength($maxsize, $width, $text);
+			$pos_y = ($height * 0.85 - $taille);
+			$pos_x = $width * 0.15;
+			$rotation = 0;
+
 			break;
+
 	case 'across':
 			switch ($hpos) {
 		default:
 		case 'left':
-				$taille		= textlength($maxsize, $hypoth, $text);
-				$pos_y		= ($height * 1 - $taille);
-				$pos_x		= $width * 0.15;
-				$rotation	= $calc_angle;
+				$taille = textlength($maxsize, $hypoth, $text);
+				$pos_y = ($height * 1 - $taille);
+				$pos_x = $width * 0.15;
+				$rotation = $calc_angle;
+
 				break;
+
 		case 'right':
-				$taille		= textlength($maxsize, $hypoth, $text);
-				$pos_y		= ($height * 0.15 - $taille);
-				$pos_x		= $width * 0.85;
-				$rotation	= $calc_angle + 180;
+				$taille = textlength($maxsize, $hypoth, $text);
+				$pos_y = ($height * 0.15 - $taille);
+				$pos_x = $width * 0.85;
+				$rotation = $calc_angle + 180;
+
 				break;
+
 		case 'top2bottom':
-				$taille		= textlength($maxsize, $height, $text);
-				$pos_y		= ($height * 0.15 - $taille);
-				$pos_x		= ($width * 0.85 - $taille);
-				$rotation	= -90;
+				$taille = textlength($maxsize, $height, $text);
+				$pos_y = ($height * 0.15 - $taille);
+				$pos_x = ($width * 0.85 - $taille);
+				$rotation = -90;
+
 				break;
+
 		case 'bottom2top':
-				$taille		= textlength($maxsize, $height, $text);
-				$pos_y		= $height * 0.85;
-				$pos_x		= $width * 0.15;
-				$rotation	= 90;
+				$taille = textlength($maxsize, $height, $text);
+				$pos_y = $height * 0.85;
+				$pos_x = $width * 0.15;
+				$rotation = 90;
+
 				break;
 			}
+
 			break;
 	}
 
@@ -185,10 +202,10 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	}
 	// Don’t use an ‘else’ here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
 	if (!$useTTF) {
-		if ($rotation !== 90) {
-			imagestring($im, 5, $pos_x, $pos_y, $text, $textcolor);
+		if (90 !== $rotation) {
+			imagestring($im, 5, (int) $pos_x, (int) $pos_y, $text, $textcolor);
 		} else {
-			imagestringup($im, 5, $pos_x, $pos_y, $text, $textcolor);
+			imagestringup($im, 5, (int) $pos_x, (int) $pos_y, $text, $textcolor);
 		}
 	}
 }
@@ -202,12 +219,13 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
  *
  * @return int
  */
-function textlength($t, $mxl, $text) {
+function textlength($t, $mxl, $text)
+{
 	$taille_c = $t;
-	$len      = mb_strlen($text);
+	$len = mb_strlen($text);
 	while (($taille_c - 2) * $len > $mxl) {
 		$taille_c--;
-		if ($taille_c == 2) {
+		if (2 == $taille_c) {
 			break;
 		}
 	}
@@ -217,14 +235,15 @@ function textlength($t, $mxl, $text) {
 
 /**
  * imagettftext is the function that is most likely to throw an error
- * use this custom error handler to catch and log it
+ * use this custom error handler to catch and log it.
  *
  * @param int    $errno
  * @param string $errstr
  *
  * @return bool
  */
-function imagettftextErrorHandler($errno, $errstr) {
+function imagettftextErrorHandler($errno, $errstr)
+{
 	global $useTTF, $serverFilename;
 	// log the error
 	AddToLog('Media Firewall error: >' . $errno . '/' . $errstr . '< while processing file >' . $serverFilename . '<', 'error');
@@ -236,15 +255,16 @@ function imagettftextErrorHandler($errno, $errstr) {
 }
 
 /**
- * Determine if the system supports editing of that image type
+ * Determine if the system supports editing of that image type.
  *
  * @param string $reqtype
  *
- * @return string|false
+ * @return false|string
  */
-function isImageTypeSupported($reqtype) {
-	$supportByGD = array('jpg'=>'jpeg', 'jpeg'=>'jpeg', 'gif'=>'gif', 'png'=>'png');
-	$reqtype = strtolower($reqtype);
+function isImageTypeSupported($reqtype)
+{
+	$supportByGD = ['jpg' => 'jpeg', 'jpeg' => 'jpeg', 'gif' => 'gif', 'png' => 'png'];
+	$reqtype = mb_strtolower($reqtype);
 
 	if (empty($supportByGD[$reqtype])) {
 		return false;
@@ -283,7 +303,7 @@ if (!file_exists($serverFilename)) {
 
 $mimetype = $media->mimeType();
 $imgsize = $media->getImageAttributes($which);
-$protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
+$protocol = $_SERVER['SERVER_PROTOCOL'];  // determine if we are using HTTP/1.0 or HTTP/1.1
 $filetime = $media->getFiletime($which);
 $filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
@@ -297,9 +317,9 @@ $usewatermark = false;
 // if this image supports watermarks and the watermark module is intalled...
 if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
-	if (($which === 'main') || $WATERMARK_THUMB ) {
+	if (('main' === $which) || $WATERMARK_THUMB) {
 		// if the user’s priv’s justify it...
-		if (KT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK ) {
+		if (KT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -314,11 +334,11 @@ if ($usewatermark) {
 	}
 }
 
-$watermarkfile     = '';
-$generatewatermark	= false;
+$watermarkfile = '';
+$generatewatermark = false;
 
 if ($usewatermark) {
-	if ($which == 'thumb') {
+	if ('thumb' == $which) {
 		$watermarkfile = KT_DATA_DIR . 'media_watermarks_cache_' . KT_GEDCOM . '/thumb/' . $media->getFilename();
 	} else {
 		$watermarkfile = KT_DATA_DIR . 'media_watermarks_cache_' . KT_GEDCOM . '/main/' . $media->getFilename();
@@ -354,7 +374,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
 
 // add caching headers.  allow browser to cache file, but not proxy
 header('Last-Modified: ' . $filetimeHeader);
-header('ETag: "'.$etag.'"');
+header('ETag: "' . $etag . '"');
 header('Expires: ' . $expireHeader);
 header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalidate');
 
@@ -363,7 +383,7 @@ header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalida
 if ($if_modified_since === $filetimeHeader) {
 	// then check if the etag matches
 	if ($if_none_match === $etag) {
-		header($protocol." 304 Not Modified");
+		header($protocol . ' 304 Not Modified');
 
 		return;
 	}
@@ -375,15 +395,15 @@ header('Content-Disposition: filename="' . addslashes(basename($media->getFilena
 
 if ($generatewatermark) {
 	// generate the watermarked image
-	$imCreateFunc = 'imagecreatefrom'.$type;
-	$imSendFunc   = 'image' . $type;
+	$imCreateFunc = 'imagecreatefrom' . $type;
+	$imSendFunc = 'image' . $type;
 
 	if (function_exists($imCreateFunc) && function_exists($imSendFunc)) {
 		$im = $imCreateFunc($serverFilename);
 		$im = applyWatermark($im);
 
 		// save the image, if preferences allow
-		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
+		if ((('thumb' == $which) && $SAVE_WATERMARK_THUMB) || (('main' == $which) && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the folder exists
 			if (!is_dir(dirname($watermarkfile))) {
 				KT_File::mkdir(dirname($watermarkfile), KT_PERM_EXE, true);
@@ -391,7 +411,7 @@ if ($generatewatermark) {
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}
-		if ($which === 'thumb' && $SAVE_WATERMARK_THUMB || $which === 'main' && $SAVE_WATERMARK_IMAGE) {
+		if ('thumb' === $which && $SAVE_WATERMARK_THUMB || 'main' === $which && $SAVE_WATERMARK_IMAGE) {
 			// make sure the folder exists
 			KT_File::mkdir(dirname($watermarkfile));
 			// save the image
@@ -423,13 +443,13 @@ if ($usewatermark) {
 $filesize = filesize($serverFilename);
 
 // set content-length header, send file
-header("Content-Length: " . $filesize);
+header('Content-Length: ' . $filesize);
 
 // Some servers disable fpassthru() and readfile()
 if (function_exists('readfile')) {
 	readfile($serverFilename);
 } else {
-	$fp=fopen($serverFilename, 'rb');
+	$fp = fopen($serverFilename, 'rb');
 	if (function_exists('fpassthru')) {
 		fpassthru($fp);
 	} else {
