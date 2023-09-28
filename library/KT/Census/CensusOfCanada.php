@@ -42,6 +42,7 @@ class KT_Census_CensusOfCanada extends KT_Census_Census implements KT_Census_Cen
 			new KT_Census_CensusOfCanada1911(),
 			new KT_Census_CensusOfCanada1916(),
 			new KT_Census_CensusOfCanada1921(),
+			new KT_Census_CensusOfCanada1931(),
 		);
 	}
 
