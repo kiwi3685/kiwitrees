@@ -443,8 +443,8 @@ function delete_gedrec($xref, $ged_id) {
 
 	AddToLog("Deleting gedcom record $xref", 'edit');
 
-	if (get_user_setting(KT_USER_ID, 'auto_accept')) {
-		accept_all_changes($xref, KT_GED_ID);
+	if (get_user_setting(KT_USER_ID, 'auto_accept') == 1) {
+		accept_all_changes($xref, $ged_id);
 	}
 }
 
@@ -2289,7 +2289,7 @@ function handle_updates($newged, $levelOverride = "no") {
 			}
 		}
 
-		if (trim($text[$j]) != '') {
+		if (trim((string)$text[$j]) != '') {
 			$pass = true;
 		} else {
 			//-- for facts with empty values they must have sub records
