@@ -823,7 +823,9 @@ function get_NOTE_rows($term) {
 			SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full
 			 FROM `##other`
 			 JOIN `##name` ON (o_id=n_id AND o_file=n_file)
-			 WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='NOTE'
+			 WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')
+			 AND o_file=?
+			 AND o_type='NOTE'
 			 ORDER BY n_full COLLATE '" . KT_I18N::$collation . "'
 		")
 		->execute(array($term, KT_GED_ID))
@@ -842,45 +844,28 @@ function get_OBJE_rows($term) {
 }
 
 function get_REPO_rows($term) {
-	global $REPO_ID_PREFIX;
-
-	// Fetch all data, regardless of privacy
-	// Don't search until a minimum number of characters are entered or search uses an id number
-	if (strlen($term) >= 2 && substr($term,0,1) === $REPO_ID_PREFIX && is_numeric(substr($term,1,1))) {
-		// Search for Xref only
-		return KT_DB::prepare("
-			SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec
-			FROM `##other`
-			WHERE o_id LIKE ?
-			AND o_type='REPO'
-			AND o_file = ?
-		")
-		->execute(array($term, KT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
-
-	} elseif (strlen($term) >= 3 && !is_numeric(substr($term,1,1))) {
+	return
 		KT_DB::prepare("
 			SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full
 			FROM `##other`
 			JOIN `##name` ON (o_id=n_id AND o_file=n_file)
-			WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')
-			AND o_file = ?
-			AND o_type LIKE 'REPO'
+			WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')
+			AND o_file=?
+			AND o_type='REPO'
 			ORDER BY n_full COLLATE '" . KT_I18N::$collation . "'
 		")
 		->execute(array($term, KT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
-
-	}
 }
-
 
 function get_SOUR_rows($term) {
 	return
 		KT_DB::prepare("
 			SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, s_name AS n_full
 			 FROM `##sources`
-			 WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '" . KT_I18N::$collation . "'
+			 WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')
+			 AND s_file=?
+			 ORDER BY s_name COLLATE '" . KT_I18N::$collation . "'
 		")
 		->execute(array($term, KT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
