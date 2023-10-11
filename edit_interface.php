@@ -739,9 +739,7 @@ case 'addnewsource':
 					</label>
 					<div class="input">
 						<input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value="">
-						<?php echo print_findrepository_link('REPO') .
-						' ' .
-						print_addnewrepository_link('REPO'); ?>
+						<?php echo ' ' . print_findrepository_link('REPO') . ' ' . print_addnewrepository_link('REPO'); ?>
 					</div>
 				</div>
 				<div id="CALN_factdiv">
